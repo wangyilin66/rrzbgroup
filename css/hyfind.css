@@ -1,0 +1,119 @@
+.hytitle{
+    height: 30px;
+    padding-left: 100px;
+    padding-top: 20px;
+}
+.hytitle_font{
+    width: 126px;
+    height: 15px;
+    border-bottom: solid;
+    color: #5d8bc8;
+    margin-top: 12px;
+    text-align: center;
+    line-height: 8px;
+    font-weight: 800;
+    font-size: 16px;
+}
+.content{
+    background-color:#eceff4;
+    height: 650px;
+}
+.content_nav{
+    width: 90%;
+    height: 800px;
+    margin: auto;
+}
+.content_navl{
+    width: 300px;
+    font-weight: 800;
+    font-size: 15px;
+    margin-left: 5px;
+    color: gray;
+    padding-top: 20px;
+}
+.content_navl span{
+    width: 300px;
+    color: #5d8bc8;
+}
+.layui-input, .layui-textarea {
+    display: block;
+    width: 300px;
+    padding-left: 10px;
+}
+.layui-input-block {
+     margin-left: 0;
+     min-height: 0;
+}
+.grid-demo{
+    padding-left: 117px;
+}
+label input{
+    height: 30px;
+    width: 300px;
+    cursor: pointer;
+    border: none;
+}
+.diqu{
+    width: 136px;
+ 
+}
+.diqu input{
+    width:140px;
+}
+.grid-demo {
+    padding-left: 4px;
+    margin-top: 25px;
+}
+.layui-form-select{
+    width: 300px;
+}
+.diqu .layui-form-select{
+    width: 144px;
+}
+.date_font{
+    display: inline-block;
+    width: 38px;
+    height: 38px;
+    background-color: white;
+}
+.hy_btn{
+    margin-top: 24px;
+}
+.hy_btn button{
+    float: right;
+    margin-right: 5px;
+    margin-left: 1px;
+}
+@media screen and (min-width: 768px){
+.layui-col-sm3 {
+    width: 25%;
+    margin-top: -20px;
+}
+}
+.clear{
+    clear:both
+}
+.layui-btn+.layui-btn{
+    margin-left: 0px;
+}
+.findres{
+    width: 100%;
+    height: 318px;
+    background-color: white;
+    margin-top: 35px;
+}
+td{
+    text-align: center;
+}
+.layui-table th {
+    text-align: center;
+    font-weight: 400;
+}
+.findres button{
+    margin-left: 10px;
+    margin-top: 10px;
+}
+#shuju{
+    margin: auto;
+    width: 400px;
+}

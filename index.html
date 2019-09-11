@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+	<link rel="stylesheet" href="./layui/css/layui.css">
+	<link rel="stylesheet" href="./css/hyfind.css">
+</head>
+
+<body>
+	<div class="hytitle">
+		<div class="hytitle_font">本协会的会员</div>
+	</div>
+	<div class="content">
+		<div class="content_nav">
+			<div class="content_navl"><span>首页&nbsp;&nbsp;</span>/<span>&nbsp;会员管理&nbsp;&nbsp;</span>/&nbsp;会员查询</div>
+			<div class="content_navi">
+				<form class="layui-form" action="">
+
+					<div class="layui-container-fluid">
+						<div class="layui-fluid">
+							<div class="layui-row">
+								<div class="layui-col-sm3">
+									<div class="grid-demo grid-demo-bg1">
+										<label for="">会员姓名：
+											<div >
+												<input type="text" placeholder="会员姓名">
+											</div>
+										</label>
+									</div>
+								</div>
+								<div class="layui-col-sm3">
+									<div class="grid-demo">
+										<label for="">会员编号：
+											<div>
+												<input type="text" placeholder="会员编号">
+											</div>
+										</label>
+									</div>
+								</div>
+								<div class="layui-col-sm3">
+									<div class="grid-demo grid-demo-bg1">
+										<label for="">艺术门类：
+											<div>
+												<select name="modules" lay-verify="required" lay-search="">
+													<option value="">请选择</option>
+													<option value="1">layer</option>
+													<option value="2">form</option>
+													<option value="3">layim</option>
+												</select>
+											</div>
+										</label>
+									</div>
+								</div>
+								<div class="layui-col-sm3">
+									<div class="grid-demo">
+										<label class="">地域:</label>
+										<div>
+											<div class="layui-input-inline diqu">
+												<select name="quiz1">
+													<option value="">请选择省</option>
+													<option value="浙江" selected="">浙江省</option>
+													<option value="你的工号">江西省</option>
+													<option value="你最喜欢的老师">福建省</option>
+												</select>
+											</div>
+											<div class="layui-input-inline diqu">
+												<select name="quiz2">
+													<option value="">请选择市</option>
+													<option value="杭州">杭州</option>
+													<option value="宁波" disabled="">宁波</option>
+													<option value="温州">温州</option>
+													<option value="温州">台州</option>
+													<option value="温州">绍兴</option>
+												</select>
+											</div>
+											<div class="layui-input-inline diqu">
+												<select name="quiz3">
+													<option value="">请选择县/区</option>
+													<option value="西湖区">西湖区</option>
+													<option value="余杭区">余杭区</option>
+													<option value="拱墅区">临安市</option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="layui-col-sm4">
+									<div class="grid-demo">
+										<label for="">入会日期：
+											<div>
+												<div class="layui-input-inline">
+													<input type="text" name="date" id="time1" lay-verify="date"
+														style="width:122px;display: inline-block" placeholder="开始时间"
+														autocomplete="off" class="layui-input">
+													至
+													<input type="text" name="date" id="time2" lay-verify="date"
+														style="width:122px;display: inline-block" placeholder="结束时间"
+														autocomplete="off" class="layui-input">
+												</div>
+											</div>
+										</label>
+									</div>
+								</div>
+								<div class="layui-col-sm4">
+									<div class="grid-demo">
+										<label for="">推荐单位：
+											<div>
+												<input type="text" placeholder="推荐单位">
+											</div>
+										</label>
+									</div>
+								</div>
+								<div class="layui-col-sm4">
+									<div class="grid-demo">
+										<label for="">组织身份：
+											<div>
+												<select name="modules" lay-verify="required" lay-search="">
+													<option value="">请选择</option>
+													<option value="1">aaaa</option>
+													<option value="2">bbb</option>
+													<option value="3">ccc</option>
+												</select>
+											</div>
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="hy_btn">
+				<button type="button" class="layui-btn layui-btn-normal" style="background-color: grey;">清空条件</button>
+				<button type="button" class="layui-btn layui-btn-normal">通讯录导出</button>
+				<button type="button" class="layui-btn layui-btn-normal">新增</button>
+				<button type="button" class="layui-btn layui-btn-normal">查询</button>
+				<div class="clear"></div>
+			</div>
+			<div class="findres">
+					<button type="button" class="layui-btn layui-btn-normal">批量导出</button>
+					<table class="layui-table" lay-skin="line">
+							<colgroup>
+								<col width="150">
+								<col width="200">
+								<col>
+							  </colgroup>
+							  <thead>
+								<tr class="tatou">
+							      <th style="width: 50px">
+										<input type="checkbox" name="" title="" lay-skin="primary"> 
+								  </th>
+								  <th>平台编号</th>
+								  <th>会员编号</th>
+								  <th>会员姓名</th>
+								  <th>入会日期</th>
+								  <th>推荐单位</th>
+								  <th>组织身份</th>
+								  <th>艺术门类</th>
+								  <th>地域</th>
+								  <th>操作</th>
+								</tr> 
+							  </thead>
+							  <tbody>
+								<tr>
+									<td style="width: 50px">
+											<input type="checkbox" name="" title="" lay-skin="primary"> 
+									</td>
+								  <td>123123132</td>
+								  <td>000111</td>
+								  <td>詹三</td>
+								  <td>2018-11-22</td>
+								  <td>人生就像是一场修行</td>
+								  <td>历史</td>
+								  <td>贤心.超市，身份</td>
+								  <td>天津</td>
+								  <td>
+									  <button class="layui-btn">编辑</button>
+									  <button class="layui-btn layui-btn-normal">查看</button>
+									  <button class="layui-btn layui-btn-normal">导出</button>
+									  <button class="layui-btn layui-btn-warm">移除</button>
+									  <button class="layui-btn layui-btn-danger">重置密码</button>
+								  </td>
+								</tr>
+								<tr>
+									    <td style="width: 50px">
+												<input type="checkbox" name="" title="" lay-skin="primary"> 
+										</td>
+										<td>123123132</td>
+										<td>000111</td>
+										<td>詹三</td>
+										<td>2018-11-22</td>
+										<td>人生就像是一场修行</td>
+										<td>历史</td>
+										<td>贤心.超市，身份</td>
+										<td>天津</td>
+										<td>
+											<button class="layui-btn">编辑</button>
+											<button class="layui-btn layui-btn-normal">查看</button>
+											<button class="layui-btn layui-btn-normal">导出</button>
+											<button class="layui-btn layui-btn-warm">移除</button>
+											<button class="layui-btn layui-btn-danger">重置密码</button>
+										</td>
+									  </tr>
+							  </tbody>
+					</table>
+					<div>
+					<div>共12条数据</div>
+					<div id="shuju"></div>
+					<div></div>
+					<div></div>
+					</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script src="./layui/layui.js"></script>
+	<script src="./js/hyfind.js"></script>
+	<script src="./js/jquery.min.js"></script>
+	<script>
+		$(".tatou").css({"background-color":"#059afe","color":"white"});
+		layui.use('laypage', function(){
+		var laypage = layui.laypage;
+		
+		//执行一个laypage实例
+		laypage.render({
+			elem: 'shuju' //注意，这里的 test1 是 ID，不用加 # 号
+			,count: 5 //数据总数，从服务端得到
+			,limit:1
+		});
+		});
+	</script>
+</body>
+
+</html>
