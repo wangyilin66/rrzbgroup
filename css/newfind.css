@@ -1,0 +1,83 @@
+.hytitle{
+    height: 30px;
+}
+.content{
+    background-color:#eceff4;
+    height: 1870px;
+}
+.content_nav{
+    width: 90%;
+    height: 800px;
+    margin: auto;
+}
+.content_navl{
+    width: 300px;
+    font-weight: 800;
+    font-size: 15px;
+    margin-left: 5px;
+    color: gray;
+    padding-top: 20px;
+}
+.content_navl span{
+    width: 300px;
+    color: #5d8bc8;
+}
+.grinfo{
+    height: 403px;
+}
+.qtinfo{
+    height: 228px;
+}
+.gzinfo{
+    height: 568px;
+}
+.zyinfo{
+    height: 333px;
+}
+.tjinfo{
+    height: 243px;
+}
+.grinfoc, .qtinfoc,.gzinfoc,.zyinfoc,.tjinfoc{
+    background-color: white;
+    padding-top: 23px;
+    padding-bottom: 21px;
+}
+.grinfot,.qtinfot,.gzinfot,.zyinfot,.tjinfot{
+    background-color:#059afe;
+    color: white;
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+    padding-left: 14px;
+}
+.headimg{
+    width: 218px;
+    height: 218px;
+    border: solid rgba(224,227,236,0.3);
+}
+.headimg img{
+    border-radius: 50%;
+    width: 218px;
+}
+.mz{
+    padding-bottom: 14px;
+}
+.xinwenti{
+    padding-top: 14px;
+}
+.headp{
+    padding-left: 144px;
+}
+.diqu{
+    width: 183px;
+}
+.tec{
+    padding-top: 15px;
+}
+.anniu{
+    width: 200px;
+    margin: auto;
+}
+span{
+    color: red;
+}
