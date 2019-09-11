@@ -48,10 +48,11 @@
     padding-left: 117px;
 }
 label input{
-    height: 30px;
+    height: 38px;
     width: 300px;
     cursor: pointer;
     border: none;
+    padding-left: 9px;
 }
 .diqu{
     width: 136px;
