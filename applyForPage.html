@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href='./css/common.css'><link>
+    <link rel="stylesheet" href='./css/applyForPage.css'><link>
+    <link rel="stylesheet" href='./css/commonHeader.css'><link>
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+    <div class="content">
+    
+    <div class="header">
+        <div>首页</div>
+        <div>要闻资讯</div>
+        <div>精彩视频</div>
+        <div>品牌活动</div>
+        <div>各地联动</div>
+        <div>志愿者协</div>
+        <div>名家公益</div>
+        <div>志愿之星</div>
+        <div>互动交流</div>
+        <div>资料下载</div>
+        </div>
+        
+        <div class="c_cont">
+            <div class="c_c_left">
+                <h3>中国文艺志愿者协会个人会员申请</h3>
+                <div class="line"></div>
+                <ul>
+                    <li><input class="name" type="text" placeholder="身份证/用户名/会员编号/手机号"></li>
+                    <li><input class="psw" type="text" placeholder="请输入密码"></li>
+                    <li><input class="mark" type="text" placeholder="请输入邀请码"></li>
+                </ul>
+                <div class="l_cont">
+                    <div class="l_c_l">
+                        <input type="checkbox" id="check" />
+                        <span class="text">记住我（公共场合慎用）</span>
+                    </div>
+                    <div class="l_c_r">
+                        <a href="#">忘记密码？</a>
+                    </div>
+                </div>
+                <div class="login">
+                    立刻登录
+                </div>
+                <p class="ptit">
+                    还没有账号
+                </p>
+                <div class="zuce">注册登录</div>
+            </div>
+            <div class="c_c_right">
+                <p>温馨提示：</p>
+                <ul>
+                    <li>1.如已在中国文艺志愿者注册管理平台注册过，请直接登录;</li>
+                    <li>2.如忘记密码请点击“忘记密码？”找回;</li>
+                    <li>3.如还未注册;</li>
+                    <li>4.注册新账号时提示身份证号码重复，请点击“忘记密码？”找回密码;</li>
+                </ul>
+            </div>
+            <div class="but_line"></div>
+        </div>
+      
+        </div>
+    </div>
+    <script type="text/javascript" src='./js/common.js'></script>
+    <script type="text/javascript" src='./js/jquery.min.js'></script>
+    <script type="text/javascript">
+
+        $('#check').on('click', function () {
+            console.log($(this).prop('checked'));
+        })
+        $('.zuce').on('click', function () {
+            window.location.href = "applyFormPage.html";
+        });
+
+        $('.login').on('click', function () {
+            let name = $('.name').val();
+            let paw = $('.psw').val();
+            let mark = $('.mark').val();
+            if(name != '' && paw != '' && mark != ''){
+                let obj = {
+                    loginName:name,
+                    password:paw,
+                    inviteCode:mark
+                }
+                        //引用ajax的方法
+        $.ajax({
+            url: 'http://39.98.186.243/clav/sysUser/loginByPhoneAndPassword', //获取数据的url
+            dateType: "json", //参数返回的类型
+            type: "POST", //参数传送的方式
+            data: obj,
+            traditional: true,
+            async: true,
+            // headers: {
+            //     // "Content-Type": "application/json;charset=utf-8",
+            //    'Authorization': token
+            // },
+            success: function (data) {
+                //请求成功后的回调函数
+                console.log(data);
+                // if (typeof data == "string") {
+                //     data = $.parseJSON(data);
+                // }
+                // if (typeof eval(funcName) == "function") {
+                //     eval(funcName)(data);
+                //     return true;
+                // }
+            }
+        });
+        //    base.commonAjax('clav/sysUser/loginByPhoneAndPassword',obj,function(res){
+        //     console.log(res);
+        //    }); 
+            }else{
+                alert('请填写账号用户名和邀请码');
+            }
+        });
+
+    </script>
+</body>
+</html>
