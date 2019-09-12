@@ -91,3 +91,9 @@ span{
     height:218px;
     opacity: 0;
 }
+#sr{
+    cursor: pointer;
+}
+#sex{
+    cursor: pointer;
+}
