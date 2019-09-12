@@ -87,7 +87,7 @@
     </div>
     <div class="content">
         <div class="content_nav">
-            <div class="content_navl"><span>首页&nbsp;&nbsp;</span>/<span>&nbsp;志愿者管理&nbsp;&nbsp;</span>/&nbsp;添加文艺志愿者
+            <div class="content_navl"><span><i class="layui-icon layui-icon-home"></i>首页&nbsp;&nbsp;</span>/<span>&nbsp;志愿者管理&nbsp;&nbsp;</span>/&nbsp;添加文艺志愿者
             </div>
             <form class="layui-form" action="">
                 <div class="grinfo">
@@ -187,9 +187,13 @@
                                     <div class="layui-col-md4 headp">
                                         <div class="grid-demo grid-demo-bg1">
                                             <div class="headimg">
-                                                <img src="./img/head.png" alt="">
+                                                <img src="./img/head.png" alt="" id="show">
                                             </div>
-                                            <div><span>*</span>点击上传个人近期白底免冠照</div>
+                                            <div style="position: relative"><span>*</span>点击上传个人近期白底免冠照
+                                                <div  class="file" >
+                                                        <input type="file" name="file" id="file"class="" onchange="changepic(this)">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -497,7 +501,24 @@
     <script src="./js/jquery.min.js"></script>
     <script src="./js/header.js"></script>
     <script type="text/javascript">
-         
+         		function changepic(obj) {
+                 //console.log(obj.files[0]);//这里可以获取上传文件的name
+                 var newsrc=getObjectURL(obj.files[0]);
+                 document.getElementById('show').src=newsrc;
+             }   
+             //建立一個可存取到該file的url
+             function getObjectURL(file) {
+                 var url = null ;
+                 // 下面函数执行的效果是一样的，只是需要针对不同的浏览器执行不同的 js 函数而已
+                 if (window.createObjectURL!=undefined) { // basic
+                     url = window.createObjectURL(file) ;
+                 } else if (window.URL!=undefined) { // mozilla(firefox)
+                     url = window.URL.createObjectURL(file) ;
+                 } else if (window.webkitURL!=undefined) { // webkit or chrome
+                     url = window.webkitURL.createObjectURL(file) ;
+                 }
+                 return url ;
+             }
     </script>
 </body>
 

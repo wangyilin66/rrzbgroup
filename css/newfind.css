@@ -58,6 +58,7 @@
 .headimg img{
     border-radius: 50%;
     width: 218px;
+    height: 218px;
 }
 .mz{
     padding-bottom: 14px;
@@ -80,4 +81,13 @@
 }
 span{
     color: red;
+}
+.file{
+    position: absolute;
+    bottom: 21px;
+}
+#file{
+    width: 218px;
+    height:218px;
+    opacity: 0;
 }
