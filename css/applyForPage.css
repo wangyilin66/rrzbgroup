@@ -1,9 +1,9 @@
 .wrapper{
-    width: 100%;
+    width: 980px;
+    margin: 0 auto;
 }
 .content{
-    width: 80%;
-    margin-left: 10%;
+    width: 100%;
     margin-top: 150px;
     border:1px solid #ccc;
     height: 500px;

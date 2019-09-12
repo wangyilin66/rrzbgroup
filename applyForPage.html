@@ -89,31 +89,18 @@
                 }
                         //引用ajax的方法
         $.ajax({
-            url: 'http://39.98.186.243/clav/sysUser/loginByPhoneAndPassword', //获取数据的url
+            url: 'http://39.98.186.243/clav/sysUser/loginByPhoneAndPassword/', //获取数据的url
             dateType: "json", //参数返回的类型
             type: "POST", //参数传送的方式
             data: obj,
             traditional: true,
             async: true,
-            // headers: {
-            //     // "Content-Type": "application/json;charset=utf-8",
-            //    'Authorization': token
-            // },
             success: function (data) {
                 //请求成功后的回调函数
                 console.log(data);
-                // if (typeof data == "string") {
-                //     data = $.parseJSON(data);
-                // }
-                // if (typeof eval(funcName) == "function") {
-                //     eval(funcName)(data);
-                //     return true;
-                // }
             }
         });
-        //    base.commonAjax('clav/sysUser/loginByPhoneAndPassword',obj,function(res){
-        //     console.log(res);
-        //    }); 
+
             }else{
                 alert('请填写账号用户名和邀请码');
             }

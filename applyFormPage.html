@@ -23,7 +23,8 @@
         width: 100%;
         height: 100%;
         background: rgba(0, 0, 0,0.3);
-     
+        box-sizing: border-box;
+      
     }
     .p_u_box{
         width: 417px;
@@ -31,10 +32,10 @@
         border:6px solid #E95A5D;
         border-top: 0;
         position: absolute;
-        top:50%;
+        top:362px;
         left: 50%;
         margin-left: -208px;
-        margin-top: -118px;
+        /* margin-top: -118px; */
         background: #fff;
         border-radius: 4px;
     }
@@ -71,11 +72,11 @@
     }
     .p_u_cont ul li a{
         font-size: 14px;
-        color: #6082AB;
+         color: #339afe;
         font-weight:400;
     }
     .p_u_cont ul li span{
-        font-size: 14px;
+        font-size: 12px;
     }
     .yuedu{
         margin-top: 5px;
@@ -104,7 +105,7 @@
     }
     .content{
         margin-top: 90px;
-        width: 1106px;
+        width: 980px;
         height: auto;
         margin: 0 auto;
         border:1px solid #999;
@@ -117,11 +118,11 @@
         font-size: 24px;
         font-weight: 900;
         text-align: center;
-        margin-top: 34px;
+        margin-top: 16px;
         margin-bottom: 24px;
     }
     .select{
-        width: 1106px;
+        width: 980px;
         height: auto;
         background: #fff;
         box-sizing: border-box;
@@ -147,7 +148,7 @@
     }
     .j_c_ulF{
         float: left;
-        margin-left: 30px;
+        margin-left: 18px;
        margin-top: 15px;
     }
     .j_c_ulF li{
@@ -200,8 +201,9 @@
         font-size: 14px;
         padding-left: 12px;
         box-sizing: border-box;
-        width: 800px;
-        height: 100px;
+        width: 680px;
+        height: 90px;
+        resize: none;
     }
     .tzyes{
         margin-left: 40px;
@@ -217,7 +219,7 @@
     }
 
     .w_top{
-        width: 1106px;
+        width: 980px;
         margin: 0 auto;
         margin-top: 82px;
     }
@@ -245,6 +247,36 @@
 .gz_box{
     height: 400px;
 }
+.zyfw_box{
+    height: 210px;
+}
+.tjlx_box{
+    height: 168px;
+}
+.c_click_box{
+    width: 234px;
+    height: 32px;
+    margin: 0 auto;
+    margin-top: 55px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+
+}
+.c_click_box> div{
+    width: 100px;
+    height: 32px;
+    background: #D62330;
+    font-size: 14px;
+    color:#fff;
+    text-align: center;
+    line-height: 32px;
+    border: 0;
+    cursor:pointer;
+}
+.bc{
+    margin-left: 36px;
+}
     </style>
     <title>Document</title>
 </head>
@@ -268,6 +300,10 @@
 <div class="content">
 
     <div class="c_tit">会员申请信息</div>
+    <div class='c_click_box'>
+        <div class="updown">下载申请表</div>
+        <div class="bc">保存草稿</div>
+    </div>
     <div class="select">
     <div class="s_jbbox">
         <p class="j_tit">个人基本认证信息</p>
@@ -365,7 +401,7 @@
 </div>
 
 <div class="gz_box">
-        <p class="j_tit">其他基本信息</p>
+        <p class="j_tit">工作教育信息</p>
         <div class="j_cont">
             <ul class="j_c_ulF">
                 <li>
@@ -387,14 +423,14 @@
                     <li>
                         <div class="ll"><span>*</span>工作经历(艺术简历):</div>
                         <div class="rr">
-                            <textarea name="" class="texta1 txdzinp" placeholder="请输入文艺志愿服务或公益活动经历，300字以内"  id="" cols="30" rows="10"></textarea>
+                            <textarea name="" class="texta1 gzjlinp" placeholder="请输入工作经历（艺术简历），300字以内"  id="" cols="30" rows="10"></textarea>
                            </div>
                     </li>
             </ul>
             <ul class="j_c_ulF">
                 <li>
                     <div class="ll"><span>*</span>专业职称:</div>
-                    <div class="rr"><input placeholder="" type="text" class="inp mzinp" /></div>
+                    <div class="rr"><input placeholder="" type="text" class="inp zyzcinp" /></div>
                 </li>
               
             </ul>
@@ -405,6 +441,64 @@
                     </li>
 
                 </ul>
+        </div>
+    </div>
+
+
+    
+<div class="zyfw_box">
+    <p class="j_tit">志愿服务信息</p>
+    <div class="j_cont">
+        <ul class="j_c_ulF">
+            <li>
+                <div class="ll"><span>*</span>文化程度:</div>
+                <div class="rr"><input type="text" class="inp whcdinp" /></div>
+            </li>
+            <li>
+                <div class="ll"><span>*</span>工作单位及职务:</div>
+                <div class="rr">
+                    <textarea name="" class="texta1 gzdwinp" placeholder="请输入文艺志愿服务或公益活动经历，300字以内" id="" cols="30" rows="10"></textarea>
+                </div>
+            </li>
+
+        </ul>
+        <ul class="j_c_ulF">
+            <li>
+                <div class="ll"><span>*</span>具体领域:</div>
+                <div class="rr"><input placeholder="" type="text" class="inp jtlyinp" /></div>
+            </li>
+          
+        </ul>
+
+    </div>
+</div>
+
+    
+<div class="tjlx_box">
+        <p class="j_tit">推荐类型信息</p>
+        <div class="j_cont">
+            <ul class="j_c_ulF">
+                <li>
+                    <div class="ll"><span>*</span>推荐类型:</div>
+                    <div class="rr"><input type="text" class="inp tylxdinp" /></div>
+                </li>
+                <li>
+                    <div class="ll"><span>*</span>联系人:</div>
+                    <div class="rr"><input type="text" class="inp lxrinp" /></div>
+                </li>
+            
+            </ul>
+            <ul class="j_c_ulF">
+                <li>
+                    <div class="ll"><span>*</span>推荐单位/人:</div>
+                    <div class="rr"><input placeholder="" type="text" class="inp tydwinp" /></div>
+                </li>
+                <li>
+                    <div class="ll"><span>*</span>手机号:</div>
+                    <div class="rr"><input type="text" class="inp typhoneinp" /></div>
+                </li>
+            </ul>
+    
         </div>
     </div>
 
@@ -440,9 +534,9 @@
     <script type="text/javascript" src='./js/common.js'></script>
     <script type="text/javascript" src='./js/jquery.min.js'></script>
     <script type="text/javascript">
-    let height = $(window).height();
-    $('.pop_up').css('height',height);
-    $('.pop_up').hide();
+    let height = $('body').height();
+    $('.pop_up').css('height',height+200);
+    // $('.pop_up').hide();
     // $('.pop_up').slideDown(5000);
     $('.u_f_queren').on('click',function (param) { 
         let flag = $('.yuedu').prop('checked');
