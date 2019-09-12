@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href='./css/common.css'><link>
+    <link rel="stylesheet" href='./css/commonHeader.css'><link>
+    <style>
+    .wraper{
+        position: relative;
+        width: 100%;
+        box-sizing: border-box;
+      
+    }
+    body{
+        background: #ECF0F5;
+    }
+    .pop_up{
+        position: absolute;
+        left: 0;
+        top:0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0,0.3);
+        box-sizing: border-box;
+      
+    }
+    .p_u_box{
+        width: 417px;
+        height: 236px;
+        border:6px solid #E95A5D;
+        border-top: 0;
+        position: absolute;
+        top:362px;
+        left: 50%;
+        margin-left: -208px;
+        /* margin-top: -118px; */
+        background: #fff;
+        border-radius: 4px;
+    }
+    .u_b_header{
+        height: 26px;
+        width: 100%;
+        background: #ED2122;
+        display: flex;
+        justify-content: space-between;
+    }
+    .h_close{
+        width: 23px;
+        height: 13px;
+        border:1px solid #ccc;
+        font-weight: 700;
+        color: #fff;
+        text-align: center;
+        line-height: 13px;
+        cursor:pointer;
+    }
+    .h_tit{
+        color: #fff;
+        font-size: 12px;
+        font-weight: 700;
+    }
+    .p_u_cont{
+        width: 100%;
+    }
+    .p_u_cont ul{
+        margin-left: 38px;
+    }
+    .p_u_cont ul li{
+        margin-top: 15px;
+    }
+    .p_u_cont ul li a{
+        font-size: 14px;
+         color: #339afe;
+        font-weight:400;
+    }
+    .p_u_cont ul li span{
+        font-size: 12px;
+    }
+    .yuedu{
+        margin-top: 5px;
+        margin-right: 4px;
+        cursor:pointer;
+    }
+    .p_u_footer{
+        width: 100%;
+        height: 36px;
+        background: #F6F6F6;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+       border-top: 1px solid #ccc;
+    }
+    .u_f_cont{
+        float: right;
+        margin-right: 20px;
+    }
+    .u_f_cont button{
+    width: 45px;
+    height: 21px;
+    margin-top: 6px;
+    margin-left: 6px;
+    cursor:pointer;
+    }
+    .content{
+        margin-top: 90px;
+        width: 980px;
+        height: auto;
+        margin: 0 auto;
+        border:1px solid #999;
+        border-radius: 6px;
+        margin-top: 12px;
+        background: #fff;
+    }
+    .content .c_tit{
+        width: 100%;
+        font-size: 24px;
+        font-weight: 900;
+        text-align: center;
+        margin-top: 16px;
+        margin-bottom: 24px;
+    }
+    .select{
+        width: 980px;
+        height: auto;
+        background: #fff;
+        box-sizing: border-box;
+    }
+    .s_jbbox{
+        width: 100%;
+        height: 360px;
+    }
+    .j_tit{
+        width: 98%;
+        height: 38px;
+        margin-left: 1%;
+        border: 1px solid #F4F4F4;
+        font-size: 20px;
+        line-height: 38px;
+        padding-left: 10px;
+        background: #DB2033;
+        box-sizing: border-box;
+        color: #fff;
+    }
+    .j_cont{
+        width: 100%;
+    }
+    .j_c_ulF{
+        float: left;
+        margin-left: 18px;
+       margin-top: 15px;
+    }
+    .j_c_ulF li{
+        display: flex;
+        margin-top: 14px;
+    }
+   .ll span{
+    color: red;
+    margin-right: 4px;
+    }
+    .ll{
+        font-size: 14px;
+        font-weight: 700;
+        width: 95px;
+        text-align: right;
+    }
+    .up_ll{
+        display: flex;
+        width: 182px;
+        margin-top: 15px;
+    }
+    .up_ll span{
+        color: red;
+    margin-right: 4px;
+    font-size: 14px;
+    margin-left: 10px;
+    }
+    .up_p{
+        font-size: 12px;
+    }
+    .j_c_ulF li .rr{
+     margin-left: 34px;
+     width: 208px;
+    }
+    .j_c_ulF li .inp{
+        width: 206px;
+        height: 32px;
+        border-radius: 6px;
+        border:1px solid #ccc;
+        color: #999999;
+        font-size: 14px;
+        padding-left: 12px;
+        box-sizing: border-box;
+    }
+
+    .texta1{
+        border-radius: 6px;
+        border:1px solid #ccc;
+        color: #999999;
+        font-size: 14px;
+        padding-left: 12px;
+        box-sizing: border-box;
+        width: 680px;
+        height: 90px;
+        resize: none;
+    }
+    .tzyes{
+        margin-left: 40px;
+    }
+    .tzno{
+        margin-left: 40px;
+    }
+    .wyyes{
+        margin-left: 30px;
+    }
+    .wyno{
+        margin-left: 30px;
+    }
+
+    .w_top{
+        width: 980px;
+        margin: 0 auto;
+        margin-top: 82px;
+    }
+    .uploadImg{
+        widows: 182px;
+        float: left;
+        margin-left: 45px;
+        margin-top: 16px;
+    }
+    .up_cont{
+        width: 182px;
+        height: 182px;
+        border:3px solid #F5F5F5;
+       
+    }
+    .up_cont>img{
+        width: 182px;
+        height: 182px;
+        border-radius: 50%;
+        cursor:pointer;
+    }
+.qt_box{
+    height: 220px;
+}
+.gz_box{
+    height: 400px;
+}
+.zyfw_box{
+    height: 210px;
+}
+.tjlx_box{
+    height: 168px;
+}
+.c_click_box{
+    width: 234px;
+    height: 32px;
+    margin: 0 auto;
+    margin-top: 55px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+
+}
+.c_click_box> div{
+    width: 100px;
+    height: 32px;
+    background: #D62330;
+    font-size: 14px;
+    color:#fff;
+    text-align: center;
+    line-height: 32px;
+    border: 0;
+    cursor:pointer;
+}
+.bc{
+    margin-left: 36px;
+}
+    </style>
+    <title>Document</title>
+</head>
+<body>
+
+<div class="wraper">
+<div class="w_top">
+        <div class="header">
+                <div>首页</div>
+                <div>要闻资讯</div>
+                <div>精彩视频</div>
+                <div>品牌活动</div>
+                <div>各地联动</div>
+                <div>志愿者协</div>
+                <div>名家公益</div>
+                <div>志愿之星</div>
+                <div>互动交流</div>
+                <div>资料下载</div>
+                </div>
+</div>
+<div class="content">
+
+    <div class="c_tit">会员申请信息</div>
+    <div class='c_click_box'>
+        <div class="updown">下载申请表</div>
+        <div class="bc">保存草稿</div>
+    </div>
+    <div class="select">
+    <div class="s_jbbox">
+        <p class="j_tit">个人基本认证信息</p>
+        <div class="j_cont">
+            <ul class="j_c_ulF">
+                <li>
+                    <div class="ll"><span>*</span>姓名:</div>
+                    <div class="rr"><input placeholder="姓名" type="text" class="inp name" /></div>
+                </li>
+                <li>
+                    <div class="ll"><span>*</span>身份证号:</div>
+                    <div class="rr"><input type="text" placeholder="请输入身份证号码" class="inp sfzinp" />
+                        <p>注册后不可修改，身份证最后一位为X，请填写大写X</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="ll"><span>*</span>性别:</div>
+                    <div class="rr"><input type="text" class="inp xbinp" /></div>
+                </li>
+                <!-- <li><div class="ll"><span>*</span>体制内:</div><div class="rr"><input type='radio' class="tzyes" name='tz'/>是<input type='radio' class="tzno" name='tz'/>否</div></li> -->
+                <li>
+                    <div class="ll"><span>*</span>手机号码:</div>
+                    <div class="rr"><input type="text" placeholder="手机号码" class="inp phoneinp" /></div>
+                </li>
+                <li>
+                    <div class="ll"><span>*</span>政治面貌:</div>
+                    <div class="rr"><input type="text" class="inp mminp" /></div>
+                </li>
+            </ul>
+    
+            <ul class="j_c_ulF">
+                <li>
+                    <div class="ll"><span>*</span>民族:</div>
+                    <div class="rr"><input placeholder="民族" type="text" class="inp mzinp" /></div>
+                </li>
+                <li>
+                    <div class="ll"><span>*</span>艺名(笔名):</div>
+                    <div class="rr"><input type="text" placeholder="艺名（笔名）" class="inp yminp" /></div>
+                </li>
+                <li>
+                    <div class="ll"><span>*</span>出生日期:</div>
+                    <div class="rr"><input type="text" class="inp csinp" /></div>
+                </li>
+                <li>
+                    <div class="ll"><span>*</span>籍贯:</div>
+                    <div class="rr"><input type="text" class="inp jginp" /></div>
+                </li>
+                <li>
+                    <div class="ll"><span>*</span>新文艺群体:</div>
+                    <div class="rr"><input type='radio' class="wyyes" name='xb' />是<input type='radio' class="wyno"
+                            name='xb' />否</div>
+                </li>
+    
+            </ul>
+            <div class="uploadImg">
+                <div class="up_cont">
+                    <img src="./image/updatabg.png" alt="">
+                </div>
+                <div class="up_ll"><span>*</span>
+                    <p class="up_p">点击上传个人近期白底免冠照</p>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+
+<div class="qt_box">
+    <p class="j_tit">其他基本信息</p>
+    <div class="j_cont">
+        <ul class="j_c_ulF">
+            <li>
+                <div class="ll"><span>*</span>现所在地:</div>
+                <div class="rr"><input type="text" class="inp szdinp" /></div>
+            </li>
+            <li>
+                <div class="ll"><span>*</span>办公电话:</div>
+                <div class="rr"><input type="text" placeholder="请输入身份证号码" class="inp bgdhinp" /></div>
+            </li>
+            <li>
+                <div class="ll"><span>*</span>通讯地址:</div>
+                <div class="rr"><input type="text" class="inp txdzinp" /></div>
+            </li>
+        </ul>
+        <ul class="j_c_ulF">
+            <li>
+                <div class="ll"><span>*</span>民族:</div>
+                <div class="rr"><input placeholder="民族" type="text" class="inp mzinp" /></div>
+            </li>
+            <li>
+                <div class="ll"><span>*</span>艺名(笔名):</div>
+                <div class="rr"><input type="text" placeholder="艺名（笔名）" class="inp yminp" /></div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="gz_box">
+        <p class="j_tit">工作教育信息</p>
+        <div class="j_cont">
+            <ul class="j_c_ulF">
+                <li>
+                    <div class="ll"><span>*</span>文化程度:</div>
+                    <div class="rr"><input type="text" class="inp szdinp" /></div>
+                </li>
+                <li>
+                    <div class="ll"><span>*</span>工作单位及职务:</div>
+                    <div class="rr"><input type="text" placeholder="请输入身份证号码" class="inp bgdhinp" /></div>
+                </li>
+                <li>
+                    <div class="ll"><span>*</span>全国文艺家协会职务:</div>
+                    <div class="rr"><input type="text" class="inp txdzinp" /></div>
+                </li>
+                <li>
+                        <div class="ll"><span>*</span>其他主要社会职务:</div>
+                        <div class="rr"><input type="text" class="inp txdzinp" /></div>
+                    </li>
+                    <li>
+                        <div class="ll"><span>*</span>工作经历(艺术简历):</div>
+                        <div class="rr">
+                            <textarea name="" class="texta1 gzjlinp" placeholder="请输入工作经历（艺术简历），300字以内"  id="" cols="30" rows="10"></textarea>
+                           </div>
+                    </li>
+            </ul>
+            <ul class="j_c_ulF">
+                <li>
+                    <div class="ll"><span>*</span>专业职称:</div>
+                    <div class="rr"><input placeholder="" type="text" class="inp zyzcinp" /></div>
+                </li>
+              
+            </ul>
+            <ul class="j_c_ulF">
+                    <li>
+                        <div class="ll"><span>*</span>毕业院校:</div>
+                        <div class="rr"><input placeholder="" type="text" class="inp mzinp" /></div>
+                    </li>
+
+                </ul>
+        </div>
+    </div>
+
+
+    
+<div class="zyfw_box">
+    <p class="j_tit">志愿服务信息</p>
+    <div class="j_cont">
+        <ul class="j_c_ulF">
+            <li>
+                <div class="ll"><span>*</span>文化程度:</div>
+                <div class="rr"><input type="text" class="inp whcdinp" /></div>
+            </li>
+            <li>
+                <div class="ll"><span>*</span>工作单位及职务:</div>
+                <div class="rr">
+                    <textarea name="" class="texta1 gzdwinp" placeholder="请输入文艺志愿服务或公益活动经历，300字以内" id="" cols="30" rows="10"></textarea>
+                </div>
+            </li>
+
+        </ul>
+        <ul class="j_c_ulF">
+            <li>
+                <div class="ll"><span>*</span>具体领域:</div>
+                <div class="rr"><input placeholder="" type="text" class="inp jtlyinp" /></div>
+            </li>
+          
+        </ul>
+
+    </div>
+</div>
+
+    
+<div class="tjlx_box">
+        <p class="j_tit">推荐类型信息</p>
+        <div class="j_cont">
+            <ul class="j_c_ulF">
+                <li>
+                    <div class="ll"><span>*</span>推荐类型:</div>
+                    <div class="rr"><input type="text" class="inp tylxdinp" /></div>
+                </li>
+                <li>
+                    <div class="ll"><span>*</span>联系人:</div>
+                    <div class="rr"><input type="text" class="inp lxrinp" /></div>
+                </li>
+            
+            </ul>
+            <ul class="j_c_ulF">
+                <li>
+                    <div class="ll"><span>*</span>推荐单位/人:</div>
+                    <div class="rr"><input placeholder="" type="text" class="inp tydwinp" /></div>
+                </li>
+                <li>
+                    <div class="ll"><span>*</span>手机号:</div>
+                    <div class="rr"><input type="text" class="inp typhoneinp" /></div>
+                </li>
+            </ul>
+    
+        </div>
+    </div>
+
+
+    </div>
+
+</div>
+</div>
+
+<div class="pop_up">
+        <div class="p_u_box">
+         <div class="u_b_header">
+           <div class="h_tit">提示</div>
+           <div class="h_close">X</div>
+         </div>
+         <div class="p_u_cont">
+           <ul>
+               <li><a href="./staic/中国文艺志愿者协会章程.docx">中国文艺志愿者协会章程.docx</a></li>
+               <li><a href="./staic/中国文艺志愿者协会个人会员入会细则.doc">中国文艺志愿者协会个人会员入会细则.doc</a></li>
+               <li><a href="./staic/中国文艺志愿者协会入会申请表.docx">中国文艺志愿者协会入会申请表.docx</a></li>
+               <li><input type="checkbox" class="yuedu"/><span>我已经阅读以上中国文艺志愿者协会章程和入会准则</span></li>
+           </ul>
+         </div>
+         <div class="p_u_footer">
+          <div class="u_f_cont">
+              <button class="u_f_queren">确认</button>
+              <button class="u_f_quxiao">取消</button>
+          </div>
+         </div>
+        </div>
+      </div>
+
+    <script type="text/javascript" src='./js/common.js'></script>
+    <script type="text/javascript" src='./js/jquery.min.js'></script>
+    <script type="text/javascript">
+    let height = $('body').height();
+    $('.pop_up').css('height',height+200);
+    // $('.pop_up').hide();
+    // $('.pop_up').slideDown(5000);
+    $('.u_f_queren').on('click',function (param) { 
+        let flag = $('.yuedu').prop('checked');
+        if(flag){
+            $('.pop_up').slideUp();
+           
+        }else{
+            alert("请勾选按钮");
+        }
+     });
+     $('.u_f_quxiao').on('click',function () { 
+        window.location.href = "applyForPage.html";
+      });
+    </script>
+</body>
+</html>

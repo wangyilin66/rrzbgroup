@@ -29,7 +29,7 @@ var base = {
     },
     // baseurl: "http://39.98.37.28:8085/", //公共的url,url前不加http://默认认为相对路径，会截取当前地址的头部
     // baseurl: 'http://39.100.50.205:8085/', //公共的url,url前不加http://默认认为相对路径，会截取当前地址的头部
-    baseurl: 'http://39.100.50.205/junminPC/api/', //公共的url,url前不加http://默认认为相对路径，会截取当前地址的头部
+    baseurl: 'http://39.98.186.243/', //公共的url,url前不加http://默认认为相对路径，会截取当前地址的头部
     commonAjax: function (thisurl, thisdata, funcName) {
         //引用ajax的方法
         $.ajax({
@@ -39,10 +39,10 @@ var base = {
             data: thisdata,
             traditional: true,
             async: true,
-            headers: {
-                // "Content-Type": "application/json;charset=utf-8",
-                'Authorization': token
-            },
+            // headers: {
+            //     // "Content-Type": "application/json;charset=utf-8",
+            //     'Authorization': token
+            // },
             success: function (data) {
                 //请求成功后的回调函数
                 if (typeof data == "string") {
