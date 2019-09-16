@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>会员申请</title>
     <link rel="stylesheet" href='./css/common.css'><link>
     <link rel="stylesheet" href='./css/commonHeader.css'><link>
     <link rel="stylesheet" href="./layui/css/layui.css">
@@ -144,6 +145,8 @@
         background: #DB2033;
         box-sizing: border-box;
         color: #fff;
+        text-align: left;
+        margin-top: 4px;
     }
     .j_cont{
         width: 100%;
@@ -166,11 +169,15 @@
         font-weight: 700;
         width: 95px;
         text-align: right;
+     
     }
     .up_ll{
         display: flex;
         width: 182px;
         margin-top: 15px;
+        position: absolute;
+        left: 0;
+        top:192px;
     }
     .up_ll span{
         color: red;
@@ -243,19 +250,38 @@
         float: left;
         margin-left: 45px;
         margin-top: 16px;
+        box-sizing: border-box;
+        position: relative;
     }
     .up_cont{
         width: 182px;
         height: 182px;
         border:3px solid #F5F5F5;
-       
+        box-sizing: border-box;
+        position: absolute;
+        left: 0;
+        top:0;
     }
     .up_cont>img{
-        width: 182px;
-        height: 182px;
+        width: 178px;
+        height: 178px;
         border-radius: 50%;
         cursor:pointer;
+       
     }
+    .uploadImg .up_date{
+        width: 182px;
+        height: 182px;
+        position: absolute;
+        left: 0;
+        top:0;
+        opacity: 0;
+    }
+    .uploadImg .up_date > input{
+        width: 182px;
+        height: 182px;
+    }
+
 .qt_box{
     height: 280px;
 }
@@ -387,7 +413,10 @@
             </ul>
             <div class="uploadImg">
                 <div class="up_cont">
-                    <img src="./image/updatabg.png" alt="">
+                    <img id='show' src="./image/updatabg.png" alt="">
+                </div>
+                <div class="up_date">
+                    <input type="file" name="file" id="file" class="" onchange="changepic(this)">
                 </div>
                 <div class="up_ll"><span>*</span>
                     <p class="up_p">点击上传个人近期白底免冠照</p>
@@ -578,6 +607,29 @@
     $('.pop_up').css('height',height+200);
      $('.pop_up').hide();
     // $('.pop_up').slideDown(5000);
+
+
+    function changepic(obj) {
+                 //console.log(obj.files[0]);//这里可以获取上传文件的name
+                 var newsrc=getObjectURL(obj.files[0]);
+                 document.getElementById('show').src=newsrc;
+                 //console.log(newsrc);
+             }   
+             //建立一個可存取到該file的url
+             function getObjectURL(file) {
+                 var url = null ;
+                 // 下面函数执行的效果是一样的，只是需要针对不同的浏览器执行不同的 js 函数而已
+                 if (window.createObjectURL!=undefined) { // basic
+                     url = window.createObjectURL(file) ;
+                 } else if (window.URL!=undefined) { // mozilla(firefox)
+                     url = window.URL.createObjectURL(file) ;
+                 } else if (window.webkitURL!=undefined) { // webkit or chrome
+                     url = window.webkitURL.createObjectURL(file) ;
+                 }
+                 return url ;
+             }
+
+
     $('.u_f_queren').on('click',function (param) { 
         let flag = $('.yuedu').prop('checked');
         if(flag){
@@ -628,10 +680,39 @@
           linkmanPhone:$('.typhoneinp').val(),
       }
       console.log(data);
-      window.location.href = "applyUpdatePage.html";
-      base.commonAjax('clav/member/addClavMember',data,function (res) { 
-          console.log(res);
-       })
+      //window.location.href = "applyUpdatePage.html";
+      var file = $("#file")[0].files[0];
+    var formData = new FormData();
+    formData.append("file", file);
+
+    $.ajax({
+        type: "post",
+        url: base.baseurl + 'clav/upload/uploadFile',
+        data: formData,
+        cache: false,
+        processData: false,
+        contentType: false,
+        success:function(data){
+            if(data.code == 1){
+                base.commonAjax('clav/member/addClavMember',data,function (res) { 
+                  if(res.code == 1){
+                      console.log('添加会员成功');
+                      window.location.href = "applyUpdatePage.html";
+                  }else{
+                      console.log('添加会员失败');
+                  }
+               });
+            }
+        }
+
+    })
+
+    //   base.commonAjax('clav/upload/uploadFile',formData,function (res) { 
+    //       console.log(res);
+    //       if(res.code == 1){
+
+    //       }
+    //    })
      });
 
 

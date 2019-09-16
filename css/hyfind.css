@@ -6,7 +6,7 @@
 .hytitle_font{
     width: 126px;
     height: 15px;
-    border-bottom: solid;
+    /* border-bottom: solid; */
     color: #5d8bc8;
     margin-top: 12px;
     text-align: center;

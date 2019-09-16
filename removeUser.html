@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>理事调整</title>
+	<link rel="stylesheet" href="./layui/css/layui.css">
+	<link rel="stylesheet" href="./css/hyfind.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <style>
+        .content{
+            height: auto;
+        }
+        .content_nav{
+            width: 90%;
+            border:1px solid #ccc;
+            position: relative;
+        }
+
+        .c_cont{
+          margin-top: 30px;
+          width: 100%;
+          /* padding-left: 100px; */
+          display: flex;
+          }
+
+        .lis{
+            box-sizing: border-box;
+            margin-left: 140px;
+         
+        }
+        .lis>p{
+            font-size: 14px;
+            float: left;
+            line-height: 32px;
+        }
+        .mq{
+            font-size: 18px;
+         font-weight: 800;
+        }
+        .lis_r{
+            float: left;
+            width: 200px;
+            margin-left: 20px;
+            box-sizing: border-box;
+        }
+        #test1{
+            width: 300px;
+            height: 32px;
+        }
+        .textinp{
+        width: 300px;
+        height: 30px;
+        border: 0;
+        padding-left: 8px;
+        box-sizing: border-box;
+        }
+        #areabox{
+            width: 500px;
+            height: 50px;
+            border:0;
+            resize: none;
+            padding-left: 8px;
+            padding-top: 4px;
+            box-sizing: border-box;
+        }
+        .butbox{
+           width: 137px;
+           height: 28px;
+            display: flex;
+            margin: 0 auto;
+        }
+        .jumpnext{
+            width: 74px;
+            height: 28px;
+            background: #3196FE;
+            border-radius: 4px;
+            text-align: center;
+            line-height: 28px;
+            font-weight: 600;
+            color:#fff;
+            cursor:pointer;
+        }
+        .beback{
+            width: 47px;
+            height: 28px;
+            background: #3196FE;
+            margin-left: 16px;
+            border-radius: 4px;
+            text-align: center;
+            line-height: 28px;
+            font-weight: 600;
+            color:#fff;
+            cursor:pointer;
+        }
+        .cont_b{
+            width: 100%;
+            margin-top: 168px;
+        }
+    </style>
+</head>
+
+<body>
+	<!-- 头部 -->
+	<div class="headerpage">
+		<div class="layui-container-fluid">
+			<div class="layui-fluid">
+				<div class="layui-row layui-col-space5">
+					<div class="layui-col-md5" style="padding-right: 0px;">
+						<div class="wltop">
+							<div class="logo">
+								<img src="./img/admin_logo.png" alt="">
+							</div>
+						</div>
+					</div>
+					<div class="layui-col-md7" style="padding-left: 0px;">
+						<ul class="layui-nav layui-bg-blue tou">
+							<li class="layui-nav-item layui-this"><a href="">首页</a></li>
+							<li class="layui-nav-item">
+								<a href="javascript:;">志愿者管理</a>
+								<dl class="layui-nav-child">
+									<dd><a href="">移动模块</a></dd>
+									<dd><a href="">后台模版</a></dd>
+									<dd><a href="">电商平台</a></dd>
+								</dl>
+							</li>
+							<li class="layui-nav-item">
+								<a href="javascript:;">组织管理</a>
+								<dl class="layui-nav-child">
+									<dd><a href="">移动模块</a></dd>
+									<dd><a href="">后台模版</a></dd>
+									<dd><a href="">电商平台</a></dd>
+								</dl>
+							</li>
+							<li class="layui-nav-item">
+								<a href="javascript:;">活动管理</a>
+								<dl class="layui-nav-child">
+									<dd><a href="">移动模块</a></dd>
+									<dd><a href="">后台模版</a></dd>
+									<dd><a href="">电商平台</a></dd>
+								</dl>
+							</li>
+							<li class="layui-nav-item">
+								<a href="javascript:;">会员管理</a>
+								<dl class="layui-nav-child">
+									<dd><a href="">移动模块</a></dd>
+									<dd><a href="">后台模版</a></dd>
+									<dd><a href="">电商平台</a></dd>
+								</dl>
+							</li>
+							<li class="layui-nav-item">
+								<a href="javascript:;">系统管理</a>
+								<dl class="layui-nav-child">
+									<dd><a href="">移动模块</a></dd>
+									<dd><a href="">后台模版</a></dd>
+									<dd><a href="">电商平台</a></dd>
+								</dl>
+							</li>
+							<li class="layui-nav-item">
+								<a href="javascript:;">统计报表</a>
+								<dl class="layui-nav-child">
+									<dd><a href="">移动模块</a></dd>
+									<dd><a href="">后台模版</a></dd>
+									<dd><a href="">电商平台</a></dd>
+								</dl>
+							</li>
+							<li class="layui-nav-item"><a href="">系统管理员</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 内容 -->
+	<div class="hytitle">
+		<div class="hytitle_font"></div>
+	</div>
+    <div class="content">
+        <div class="content_nav">
+            <div class="content_navl"><span><i
+                        class="layui-icon layui-icon-home"></i>首页&nbsp;&nbsp;</span>/<span>&nbsp;志愿者管理&nbsp;&nbsp;</span>/&nbsp;理事调整
+            </div>
+            <div class="content_navi">
+                <form class="layui-form" action="">
+            
+                    <div class="c_cont">
+                        <div class="lis">
+                            <p class="mq">免去理事姓名：</p>
+                            <div class="lis_r">
+                                <select class="inp" id="nameinp" lay-verify="required" lay-search="">
+                                    <option value="">请选择</option>
+                                    <option value="1">layer</option>
+                                    <option value="2">form</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div class="c_cont">
+                        <div class="lis">
+                            <p>性别：</p>
+                            <div class="lis_r">
+                                <select class="inp" id="sexinp" lay-verify="required" lay-search="">
+                                    <option value="">男</option>
+                                    <option value="1">女</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="lis">
+                            <p>出生年月：</p>
+                            <div class="lis_r">
+                                <input type="text" class="layui-input" id="test1">
+                            </div>
+                        </div>
+                        <div class="lis">
+                            <p>联系方式：</p>
+                            <div class="lis_r">
+                                    <input type="text" class="textinp">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="c_cont">
+                            <div class="lis">
+                                    <p>职务：</p>
+                                    <div class="lis_r">
+                                       <textarea name=""id="areabox" placeholder="职务" id="" cols="30" rows="10"></textarea>
+                                    </div>
+                                </div>
+                    </div>
+                </form>
+           <div class="cont_b">
+                <div class="butbox">
+                        <div class="jumpnext">下一步</div>
+                        <div class="beback">返回</div>
+                    </div>
+           </div>
+            </div>
+
+		</div>
+	</div>
+
+
+    <script src="./layui/layui.js"></script>
+    <script src="./js/layuicommon.js"></script>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/header.js"></script>
+    <script src="./js/common.js"></script>
+    <script src="./js/hyfind.js"></script>
+    <script>
+        layui.use('laydate', function () {
+            var laydate = layui.laydate;
+
+            //执行一个laydate实例
+            laydate.render({
+                elem: '#test1' //指定元素
+            });
+        });
+        
+        $('.jumpnext').on('click',function () {
+            window.location.href = "addUserPage.html";
+          })
+        $('.beback').on('click',function(){
+          window.history.back();
+        });
+
+    </script>
+</body>
+
+</html>
