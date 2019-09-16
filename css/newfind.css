@@ -6,7 +6,7 @@
     height: 1870px;
 }
 .content_nav{
-    width: 58%;
+    width: 60%;
     height: 800px;
     margin: auto;
 }
@@ -31,12 +31,13 @@
 #test1 {
     height: 128px;
     overflow: auto;
-    width: 309px;
+    width: 343px;
     position: absolute;
     left: 111px;
     background-color: white;
     z-index: 999;
     border: solid rgba(222,225,230,0.3);
+    visibility: hidden;
 }
 .gzinfo{
     height: 568px;
@@ -101,7 +102,7 @@ span{
     height:218px;
     opacity: 0;
 }
-#sr{
+#sr,#szd{
     cursor: pointer;
 }
 #sex{

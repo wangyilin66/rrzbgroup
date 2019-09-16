@@ -134,8 +134,8 @@
                                                     <select name="hy" lay-verify="required" lay-search=""
                                                         id="politicsStatusId">
                                                         <option value="">请选择</option>
-                                                        <option value="1">layer</option>
-                                                        <option value="2">form</option>
+                                                        <!-- <option value="1">layer</option>
+                                                        <option value="2">form</option> -->
                                                     </select>
                                                 </div>
                                             </div>
@@ -146,10 +146,10 @@
                                             <div class="mz">
                                                 <label class="layui-form-label"><span>*</span>民族：</label>
                                                 <div class="layui-input-inline mz2">
-                                                    <select name="hy" lay-verify="required" lay-search="">
+                                                    <select name="hy" lay-verify="required" lay-search="" id="mz3">
                                                         <option value="">请选择</option>
-                                                        <option value="1">layer</option>
-                                                        <option value="2">form</option>
+                                                        <!-- <option value="1">layer</option>
+                                                        <option value="2">form</option> -->
                                                     </select>
                                                 </div>
                                             </div>
@@ -513,14 +513,17 @@
             data.map((v, i) => {
                 let obj = {};
                 obj.title = v.areaName;
+                obj.id = i;
                 obj.children = [];
                 v.childList.map((val, ind) => {
                     let objc = {};
                     objc.title = val.areaName;
+                    objc.id = i+'-'+ind;
                     objc.children = [];
                     val.childList.map((vv, ii) => {
                         let objcc = {};
                         objcc.title = vv.areaName;
+                        objcc.id = i+'-'+ind + '-' + ii;
                         objc.children.push(objcc);
                     })
                     obj.children.push(objc);
@@ -541,16 +544,37 @@
                     //渲染
                     var inst1 = tree.render({
                         elem: '#test1'  //绑定元素
+                        ,click: function(obj){
+                        console.log(obj.data); //得到当前点击的节点数据
+                       // console.log(obj.elem); //得到当前节点元素 
+                        // console.log($('.layui-tree-set').attr("data-id"));
+                      //  console.log(obj.data.id); //得到当前点击的节点数据
+                        let str = obj.data.id;
+                        console.log(str.indexOf('-')>-1);
+                         if(str.indexOf('-')>-1 && str.indexOf('-')){
+                            let arr = str.split('-');
+                            if(arr.length == 3){
+                                console.log(arr);
+                        console.log(treedata[arr[0]].title);
+                        console.log(treedata[arr[0]].title);
+                        console.log(obj.data.title);
+                        var place=treedata[arr[0]].title+"-"+treedata[arr[0]].title+"-"+obj.data.title;
+                        console.log("地区",place);
+                        $('#szd').val(place);
+                        $('#test1').css("visibility","hidden");
+                            }
+                         }
+                    }
                         , data:treedata
                     });
                     
                 });
             }
         });
-        $('.layui-tree-txt').click(function(){
-           var a= $(this).text();
-           console.log(a)
+        $('#szd').click(function(){
+            $('#test1').css("visibility","visible");
         })
+        
     </script>
 </body>
 

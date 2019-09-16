@@ -82,12 +82,12 @@
 	</div>
 	<!-- 内容 -->
 	<div class="hytitle">
-        <div class="hytitle_font">会员审核</div>
+        <div class="hytitle_font" style="border-bottom: solid">会员审核</div>
         <div class="hytitle_font">理事审核</div>
         <div class="hytitle_font">会员单位审核</div>
 	</div>
 	<div class="content">
-		<div class="content_nav" style="display: none">
+		<div class="content_nav" >
 			<div class="content_navl"><span><i class="layui-icon layui-icon-home"></i>首页&nbsp;&nbsp;</span>/<span>&nbsp;会员管理&nbsp;&nbsp;</span>/&nbsp;审核管理</div>
 			<div class="content_navi">
 				<form class="layui-form" action="">
@@ -213,7 +213,7 @@
 			</div>
 		</div>
     <!-- 理事审核 -->
-    <div class="content_nav">
+    <div class="content_nav" style="display: none">
         <div class="content_navl"><span><i class="layui-icon layui-icon-home"></i>首页&nbsp;&nbsp;</span>/<span>&nbsp;会员管理&nbsp;&nbsp;</span>/&nbsp;审核管理</div>
         <div class="content_navi">
             <form class="layui-form" action="">
@@ -221,42 +221,30 @@
                 <div class="layui-container-fluid">
                     <div class="layui-fluid">
                         <div class="layui-row">
-                            <div class="layui-col-sm3">
-                                <div class="grid-demo grid-demo-bg1">
-                                    <label for="">会员姓名：
-                                        <div>
-                                            <input type="text" placeholder="会员姓名">
-                                        </div>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="layui-col-sm3">
+                            <div class="layui-col-sm9">
                                 <div class="grid-demo">
-                                    <label for="">会员编号：
-                                        <div>
-                                            <input type="text" placeholder="会员编号">
-                                        </div>
-                                    </label>
+                                    <label for="" class="datesz">设置申报时间：</label>
+                                        
+                                            <div class="layui-input-inline">
+                                                    <div class="date_font date_tubiao"><i class="layui-icon layui-icon-date"></i></div>
+                                                <input type="text" name="date" id="time1" lay-verify="date"
+                                                    style="width:122px;display: inline-block" placeholder="开始时间"
+                                                    autocomplete="off" class="layui-input">
+                                                <div class="date_font">至</div> 
+                                                <input type="text" name="date" id="time2" lay-verify="date"
+                                                    style="width:122px;display: inline-block" placeholder="结束时间"
+                                                    autocomplete="off" class="layui-input">
+                                                <div class="date_font date_tubiao2"><i class="layui-icon layui-icon-refresh-1"></i></div>	
+                                            </div>
+                                            <button type="button" class="layui-btn layui-btn-normal quer">确认</button>
+                                   
                                 </div>
                             </div>
-                            <div class="layui-col-sm3">
-                                <div class="grid-demo grid-demo-bg1">
-                                    <label for="">艺术门类：
-                                        <div>
-                                            <select id="yishu"name="modules" lay-verify="required" lay-search="">
-                                                <option value="">请选择</option>
-                                                <!-- <option value="1">layer</option>
-                                                <option value="2">form</option>
-                                                <option value="3">layim</option> -->
-                                            </select>
-                                        </div>
-                                    </label>
-                                </div>
-                            </div>
+                       
                             <div class="layui-col-sm3">
                                 <div class="hy_btn">
-                                    <button type="button" class="layui-btn layui-btn-normal" style="background-color: grey;">清空条件</button>
-                                    <button type="button" class="layui-btn layui-btn-normal">查询</button>
+                                    <button type="button" class="layui-btn layui-btn-normal" >导出</button>
+                                   
                                     <div class="clear"></div>
                                 </div>
                             </div>
@@ -265,8 +253,7 @@
                 </div>
             </form>
         </div>
-        <div class="findres">
-            <button type="button" class="layui-btn layui-btn-normal">批量导出</button>
+        <div class="findres lisfindres">
             <table class="layui-table" lay-skin="line">
                 <colgroup>
                     <col width="150">
@@ -274,60 +261,44 @@
                     <col>
                 </colgroup>
                 <thead>
-                    <tr class="tatou">
-                        <th style="width: 50px">
-                            <input type="checkbox" name="" title="" lay-skin="primary">
-                        </th>
-                        <th>平台编号</th>
-                        <th>会员编号</th>
-                        <th>会员姓名</th>
-                        <th>入会日期</th>
-                        <th>推荐单位</th>
-                        <th>组织身份</th>
-                        <th>艺术门类</th>
-                        <th>地域</th>
+                    <tr class="tatou">                   
+                        <th>序号</th>
+                        <th>申报时间</th>
+                        <th>单位名称</th>
+                        <th>原理事姓名</th>
+                        <th>原理事职务</th>
+                        <th>新理事姓名</th>
+                        <th>新理事职务</th>
                         <th>操作</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td style="width: 50px">
-                            <input type="checkbox" name="" title="" lay-skin="primary">
-                        </td>
-                        <td>123123132</td>
-                        <td>000111</td>
-                        <td>詹三</td>
-                        <td>2018-11-22</td>
-                        <td>人生就像是一场修行</td>
-                        <td>历史</td>
-                        <td>贤心.超市，身份</td>
-                        <td>天津</td>
+                    <tr>                   
+                        <td>1</td>
+                        <td>2019-1-2</td>
+                        <td>中国协会</td>
+                        <td>张三</td>
+                        <td>主席</td>
+                        <td>李四</td>
+                        <td>主席</td>
                         <td>
-                            <button class="layui-btn">编辑</button>
-                            <button class="layui-btn layui-btn-normal">查看</button>
-                            <button class="layui-btn layui-btn-normal">导出</button>
-                            <button class="layui-btn layui-btn-warm">移除</button>
-                            <button class="layui-btn layui-btn-danger">重置密码</button>
+                            <button class="layui-btn">查看</button>
+                            <button class="layui-btn layui-btn-normal">通过</button>
+                            <button class="layui-btn layui-btn-danger">不通过</button>
                         </td>
                     </tr>
                     <tr>
-                        <td style="width: 50px">
-                            <input type="checkbox" name="" title="" lay-skin="primary">
-                        </td>
-                        <td>123123132</td>
-                        <td>000111</td>
-                        <td>詹三</td>
-                        <td>2018-11-22</td>
-                        <td>人生就像是一场修行</td>
-                        <td>历史</td>
-                        <td>贤心.超市，身份</td>
-                        <td>天津</td>
+                        <td>2</td>
+                        <td>2019-1-2</td>
+                        <td>中国协会</td>
+                        <td>张三</td>
+                        <td>主席</td>
+                        <td>李四</td>
+                        <td>主席</td>
                         <td>
-                            <button class="layui-btn">编辑</button>
-                            <button class="layui-btn layui-btn-normal">查看</button>
-                            <button class="layui-btn layui-btn-normal">导出</button>
-                            <button class="layui-btn layui-btn-warm">移除</button>
-                            <button class="layui-btn layui-btn-danger">重置密码</button>
+                            <button class="layui-btn">查看</button>
+                            <button class="layui-btn layui-btn-normal">通过</button>
+                            <button class="layui-btn layui-btn-danger">不通过</button>
                         </td>
                     </tr>
                 </tbody>
@@ -340,7 +311,104 @@
             </div>
         </div>
     </div>
-    </div>
+        <!--会员单位审核 -->
+        <div class="content_nav">
+            <div class="content_navl"><span><i class="layui-icon layui-icon-home"></i>首页&nbsp;&nbsp;</span>/<span>&nbsp;会员管理&nbsp;&nbsp;</span>/&nbsp;审核管理</div>
+            <div class="content_navi">
+                <form class="layui-form" action="">
+    
+                    <div class="layui-container-fluid">
+                        <div class="layui-fluid">
+                            <div class="layui-row">
+                                <div class="layui-col-sm9">
+                                    <div class="grid-demo">
+                                        <label for="" class="datesz">设置申报时间：</label>
+                                            
+                                                <div class="layui-input-inline">
+                                                        <div class="date_font date_tubiao"><i class="layui-icon layui-icon-date"></i></div>
+                                                    <input type="text" name="date" id="time1" lay-verify="date"
+                                                        style="width:122px;display: inline-block" placeholder="开始时间"
+                                                        autocomplete="off" class="layui-input">
+                                                    <div class="date_font">至</div> 
+                                                    <input type="text" name="date" id="time2" lay-verify="date"
+                                                        style="width:122px;display: inline-block" placeholder="结束时间"
+                                                        autocomplete="off" class="layui-input">
+                                                    <div class="date_font date_tubiao2"><i class="layui-icon layui-icon-refresh-1"></i></div>	
+                                                </div>
+                                                <button type="button" class="layui-btn layui-btn-normal quer">确认</button>
+                                       
+                                    </div>
+                                </div>
+                           
+                                <div class="layui-col-sm3">
+                                    <div class="hy_btn">                                      
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="findres">
+                    <button type="button" class="layui-btn layui-btn-normal">批量导出</button>
+                <table class="layui-table" lay-skin="line">
+                    <colgroup>
+                        <col width="150">
+                        <col width="200">
+                        <col>
+                    </colgroup>
+                    <thead>
+                        <tr class="tatou"> 
+                            <th style="width: 50px">
+                                <input type="checkbox" name="" title="" lay-skin="primary">
+                            </th>                  
+                            <th>序号</th>
+                            <th>申报时间</th>
+                            <th style="width:680px;">单位名称</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr> 
+                            <td style="width: 50px">
+                                <input type="checkbox" name="" title="" lay-skin="primary">
+                            </td>                  
+                            <td>1</td>
+                            <td>2019-1-2</td>
+                            <td>中国文艺志愿者协会</td>
+                            <td>
+                                <button class="layui-btn">查看</button>
+                                <button class="layui-btn layui-btn-normal">通过</button>
+                                <button class="layui-btn layui-btn-danger">不通过</button>
+                                <button class="layui-btn layui-btn-warm">下载</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 50px">
+                                <input type="checkbox" name="" title="" lay-skin="primary">
+                            </td>
+                            <td>1</td>
+                            <td>2019-1-2</td>
+                            <td>中国协会</td>
+                            <td>
+                                    <button class="layui-btn">查看</button>
+                                    <button class="layui-btn layui-btn-normal">通过</button>
+                                    <button class="layui-btn layui-btn-danger">不通过</button>
+                                    <button class="layui-btn layui-btn-warm">下载</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div>
+                    <div>共12条数据</div>
+                    <div id="shuju"></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+</div>
 
 
 	<script src="./layui/layui.js"></script>
@@ -360,7 +428,14 @@
 				, count: 5 //数据总数，从服务端得到
 				, limit: 1
 			});
-		});
+        });
+        
+        $('.hytitle_font').click(function() {
+				var i = $(this).index();				
+				$('.hytitle_font').css("border-bottom","");
+				$('.hytitle_font').eq(i).css("border-bottom","solid");
+				$('.content_nav').eq(i).show().siblings().hide();				  
+			});
 	</script>
 </body>
 
