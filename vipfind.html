@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8" />
-	<title></title>
+	<title>会员查询</title>
 	<link rel="stylesheet" href="./layui/css/layui.css">
 	<link rel="stylesheet" href="./css/hyfind.css">
 	<link rel="stylesheet" href="./css/header.css">
@@ -86,7 +86,7 @@
 	</div>
 	<div class="content">
 		<div class="content_nav">
-			<div class="content_navl"><span>首页&nbsp;&nbsp;</span>/<span>&nbsp;会员管理&nbsp;&nbsp;</span>/&nbsp;会员查询</div>
+			<div class="content_navl"><span><i class="layui-icon layui-icon-home"></i>首页&nbsp;&nbsp;</span>/<span>&nbsp;会员管理&nbsp;&nbsp;</span>/&nbsp;会员查询</div>
 			<div class="content_navi">
 				<form class="layui-form" action="">
 
@@ -115,11 +115,11 @@
 									<div class="grid-demo grid-demo-bg1">
 										<label for="">艺术门类：
 											<div>
-												<select name="modules" lay-verify="required" lay-search="">
+												<select id="yishu"name="modules" lay-verify="required" lay-search="">
 													<option value="">请选择</option>
-													<option value="1">layer</option>
+													<!-- <option value="1">layer</option>
 													<option value="2">form</option>
-													<option value="3">layim</option>
+													<option value="3">layim</option> -->
 												</select>
 											</div>
 										</label>
@@ -163,13 +163,15 @@
 										<label for="">入会日期：
 											<div>
 												<div class="layui-input-inline">
+														<div class="date_font date_tubiao"><i class="layui-icon layui-icon-date"></i></div>
 													<input type="text" name="date" id="time1" lay-verify="date"
 														style="width:122px;display: inline-block" placeholder="开始时间"
 														autocomplete="off" class="layui-input">
-													至
+													<div class="date_font">至</div> 
 													<input type="text" name="date" id="time2" lay-verify="date"
 														style="width:122px;display: inline-block" placeholder="结束时间"
 														autocomplete="off" class="layui-input">
+													<div class="date_font date_tubiao2"><i class="layui-icon layui-icon-refresh-1"></i></div>	
 												</div>
 											</div>
 										</label>
@@ -289,10 +291,11 @@
 
 
 	<script src="./layui/layui.js"></script>
-	<script src="./js/hyfind.js"></script>
 	<script src="./js/layuicommon.js"></script>
 	<script src="./js/jquery.min.js"></script>
 	<script src="./js/header.js"></script>
+	<script src="./js/common.js"></script>
+	<script src="./js/hyfind.js"></script>
 	<script>
 		$(".tatou").css({ "background-color": "#059afe", "color": "white" });
 		layui.use('laypage', function () {
