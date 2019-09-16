@@ -1,40 +1,13 @@
 $(function () {
         //地区
-        function diqu() {
-            var data = {
-            }
-            base.commonAjax('clav/area/getProvinceList', data, function (data) {
-                if (data.code == 1) {
-                    console.log(data)                                
-                    for (var i = 0; i < data.data.length; i++) {
-                            $('#provinceid').append(
-                                    '<option value="' + data.data[i].id + '">' + data.data[i].areaName + '</option>'
-                            );
-                    }       
-            }
-            });
-    }
-    diqu();
+    //     function diqu() {
+    //         var data = {
+    //         }
+
+    // }
+    // diqu();
     //所在地——市
 //var id = $('#provinceid option:selected').val();
-$('.pro').find('dd').click(function () {  
-    console.log("1");
-    var id = $('.pro .layui-this').attr("lay-value");
-    var data={
-        id: id
-    }
-    console.log(data)
-    base.commonAjax('clav/area/getCityList', data, function (data) {
-        if(data.code==1){
-           
-            for (var i = 0; i < data.data.length; i++) {
-                $('#cityid').append(
-                        '<option value="' + data.data[i].id + '">' + data.data[i].areaName + '</option>'
-                );
-            }    
-        }  
-    })
-});
     //文化程度
     function wenhuacd() {
             var data = {

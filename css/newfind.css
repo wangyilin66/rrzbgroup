@@ -6,7 +6,7 @@
     height: 1870px;
 }
 .content_nav{
-    width: 90%;
+    width: 58%;
     height: 800px;
     margin: auto;
 }
@@ -26,7 +26,17 @@
     height: 403px;
 }
 .qtinfo{
-    height: 228px;
+    height: 232px;
+}
+#test1 {
+    height: 128px;
+    overflow: auto;
+    width: 309px;
+    position: absolute;
+    left: 111px;
+    background-color: white;
+    z-index: 999;
+    border: solid rgba(222,225,230,0.3);
 }
 .gzinfo{
     height: 568px;
@@ -67,10 +77,10 @@
     padding-top: 14px;
 }
 .headp{
-    padding-left: 144px;
+    padding-left: 50px;
 }
 .diqu{
-    width: 183px;
+    width: 113px;
 }
 .tec{
     padding-top: 15px;
@@ -96,4 +106,10 @@ span{
 }
 #sex{
     cursor: pointer;
+}
+.zzmm2,.mz2,.jg2{
+    width:265px;
+}
+.tjlx,.tjr{
+    width: 254px;
 }

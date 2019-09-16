@@ -13,7 +13,7 @@
 
 <body>
     <!-- 头部 -->
-     <div class="headerpage">
+    <div class="headerpage">
         <div class="layui-container-fluid">
             <div class="layui-fluid">
                 <div class="layui-row layui-col-space5">
@@ -81,19 +81,20 @@
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
     <!-- 内容 -->
     <div class="hytitle">
     </div>
     <div class="content">
         <div class="content_nav">
-            <div class="content_navl"><span><i class="layui-icon layui-icon-home"></i>首页&nbsp;&nbsp;</span>/<span>&nbsp;志愿者管理&nbsp;&nbsp;</span>/&nbsp;添加文艺志愿者
+            <div class="content_navl"><span><i
+                        class="layui-icon layui-icon-home"></i>首页&nbsp;&nbsp;</span>/<span>&nbsp;志愿者管理&nbsp;&nbsp;</span>/&nbsp;添加文艺志愿者
             </div>
             <form class="layui-form" action="">
                 <div class="grinfo">
                     <div class="grinfot">个人基本认证信息</div>
                     <div class="grinfoc">
-                        <div class="layui-container-fluid">
+                        <div class="layui-container">
                             <div class="layui-fluid">
                                 <div class="layui-row layui-col-space5">
                                     <div class="layui-col-md4">
@@ -115,8 +116,9 @@
                                             <div class="layui-form-item">
                                                 <label class="layui-form-label"><span>*</span>性别：</label>
                                                 <div class="layui-input-block">
-                                                    <input type="text" name="title" lay-verify="title" id="sex" onclick="sexfind()"
-                                                        autocomplete="off" readonly="readonly" placeholder="（读取身份证号）" class="layui-input">
+                                                    <input type="text" name="title" lay-verify="title" id="sex"
+                                                        onclick="sexfind()" autocomplete="off" readonly="readonly"
+                                                        placeholder="（读取身份证号）" class="layui-input">
                                                 </div>
                                             </div>
                                             <div class="layui-form-item">
@@ -128,8 +130,9 @@
                                             </div>
                                             <div>
                                                 <label class="layui-form-label"><span>*</span>政治面貌：</label>
-                                                <div class="layui-input-inline">
-                                                    <select name="hy" lay-verify="required" lay-search="" id="politicsStatusId">
+                                                <div class="layui-input-inline zzmm2">
+                                                    <select name="hy" lay-verify="required" lay-search=""
+                                                        id="politicsStatusId">
                                                         <option value="">请选择</option>
                                                         <option value="1">layer</option>
                                                         <option value="2">form</option>
@@ -142,7 +145,7 @@
                                         <div class="grid-demo">
                                             <div class="mz">
                                                 <label class="layui-form-label"><span>*</span>民族：</label>
-                                                <div class="layui-input-inline">
+                                                <div class="layui-input-inline mz2">
                                                     <select name="hy" lay-verify="required" lay-search="">
                                                         <option value="">请选择</option>
                                                         <option value="1">layer</option>
@@ -160,13 +163,14 @@
                                             <div class="layui-form-item">
                                                 <label class="layui-form-label"><span>*</span>出生日期：</label>
                                                 <div class="layui-input-block">
-                                                    <input type="text" name="title" lay-verify="title" id="sr" onclick="birthfind()"
-                                                        autocomplete="off" readonly="readonly" placeholder="（读取身份证号）" class="layui-input">
+                                                    <input type="text" name="title" lay-verify="title" id="sr"
+                                                        onclick="birthfind()" autocomplete="off" readonly="readonly"
+                                                        placeholder="（读取身份证号）" class="layui-input">
                                                 </div>
                                             </div>
                                             <div>
                                                 <label class="layui-form-label"><span>*</span>籍贯：</label>
-                                                <div class="layui-input-inline">
+                                                <div class="layui-input-inline jg2">
                                                     <select name="hy" lay-verify="required" lay-search="" id="jg">
                                                         <option value="">请选择</option>
                                                         <!-- <option value="1">layer</option>
@@ -177,7 +181,8 @@
                                             <div class="layui-form-item xinwenti">
                                                 <label class="layui-form-label"><span>*</span>新文艺群体:</label>
                                                 <div class="layui-input-block">
-                                                    <input type="radio" name="sex" value="是" title="是" data="1" checked="">
+                                                    <input type="radio" name="sex" value="是" title="是" data="1"
+                                                        checked="">
                                                     <input type="radio" name="sex" value="否" title="否" data="2">
                                                 </div>
                                             </div>
@@ -190,8 +195,9 @@
                                                 <img src="./img/head.png" alt="" id="show">
                                             </div>
                                             <div style="position: relative"><span>*</span>点击上传个人近期白底免冠照
-                                                <div  class="file" >
-                                                        <input type="file" name="file" id="file"class="" onchange="changepic(this)">
+                                                <div class="file">
+                                                    <input type="file" name="file" id="file" class=""
+                                                        onchange="changepic(this)">
                                                 </div>
                                             </div>
                                         </div>
@@ -211,26 +217,11 @@
                                         <div class="grid-demo grid-demo-bg1">
                                             <div class="grid-demo">
                                                 <label class="layui-form-label"><span>*</span>现所在地:</label>
-                                                <div>
-                                                    <div class="layui-input-inline diqu pro">
-                                                        <select name="quiz1" id='provinceid'>
-                                                            <option value="">请选择省</option>
-                                                            
-                                                        </select>
-                                                    </div>
-                                                    <div class="layui-input-inline diqu cit">
-                                                        <select name="quiz2" id="cityid" onclick="areafind()">
-                                                            <option value="">请选择市</option>
-                                                           
-                                                        </select>
-                                                    </div>
-                                                    <div class="layui-input-inline diqu are">
-                                                        <select name="quiz3" id="areaid">
-                                                            <option value="">请选择县/区</option>
-                                                            
-                                                        </select>
-                                                    </div>
+                                                <div class="layui-input-block">
+                                                    <input type="text" name="title" lay-verify="title" id="szd"
+                                                        autocomplete="off" placeholder="现所在地" class="layui-input">
                                                 </div>
+                                                <div id="test1"></div>
                                             </div>
                                             <div class="layui-form-item tec">
                                                 <label class="layui-form-label">办公电话:</label>
@@ -326,7 +317,8 @@
                                                 <label class="layui-form-label">毕业院校</label>
                                                 <div class="layui-input-block">
                                                     <input type="text" name="title" lay-verify="title" id="school"
-                                                        autocomplete="off" placeholder="毕业院校" class="layui-input">
+                                                        autocomplete="off" placeholder="毕业院校" class="layui-input"
+                                                        style="width:183px;">
                                                 </div>
                                             </div>
                                         </div>
@@ -400,8 +392,9 @@
                                             <div class="layui-form-item tec">
                                                 <label class="layui-form-label">具体领域：</label>
                                                 <div class="layui-input-block">
-                                                    <input type="text" name="title" lay-verify="title" id="genre" 
-                                                        autocomplete="off" placeholder="具体领域：" class="layui-input">
+                                                    <input type="text" name="title" lay-verify="title" id="genre"
+                                                        autocomplete="off" placeholder="具体领域：" class="layui-input"
+                                                        style="width:190px;">
                                                 </div>
                                             </div>
                                         </div>
@@ -431,7 +424,7 @@
                                     <div class="layui-col-md4">
 
                                         <label class="layui-form-label"><span>*</span>推荐类型：</label>
-                                        <div class="layui-input-inline">
+                                        <div class="layui-input-inline tjlx">
                                             <select name="hy" lay-verify="required" lay-search="">
                                                 <option value="">请选择</option>
                                                 <option value="1">layer</option>
@@ -442,7 +435,7 @@
                                     </div>
                                     <div class="layui-col-md4">
                                         <label class="layui-form-label"><span>*</span>推荐单位/人：</label>
-                                        <div class="layui-input-inline">
+                                        <div class="layui-input-inline tjr">
                                             <select name="hy" lay-verify="required" lay-search="">
                                                 <option value="">请选择</option>
                                                 <option value="1">layer</option>
@@ -457,8 +450,9 @@
                                                 <div class="layui-form-item tec">
                                                     <label class="layui-form-label">联系人：</label>
                                                     <div class="layui-input-block">
-                                                        <input type="text" name="title" lay-verify="title" id="lxpeople "
-                                                            autocomplete="off" placeholder="联系人" class="layui-input">
+                                                        <input type="text" name="title" lay-verify="title"
+                                                            id="lxpeople " autocomplete="off" placeholder="联系人"
+                                                            class="layui-input" style="width:254px;">
                                                     </div>
                                                 </div>
                                             </div>
@@ -469,7 +463,8 @@
                                                     <label class="layui-form-label">手机号：</label>
                                                     <div class="layui-input-block">
                                                         <input type="text" name="title" lay-verify="title" id="sjh "
-                                                            autocomplete="off" placeholder="手机号" class="layui-input">
+                                                            autocomplete="off" placeholder="手机号" class="layui-input"
+                                                            style="width:254px;">
                                                     </div>
                                                 </div>
                                             </div>
@@ -494,24 +489,68 @@
     <script src="./js/header.js"></script>
     <script src="./js/newvip.js"></script>
     <script type="text/javascript">
-         		function changepic(obj) {
-                 //console.log(obj.files[0]);//这里可以获取上传文件的name
-                 var newsrc=getObjectURL(obj.files[0]);
-                 document.getElementById('show').src=newsrc;
-             }   
-             //建立一個可存取到該file的url
-             function getObjectURL(file) {
-                 var url = null ;
-                 // 下面函数执行的效果是一样的，只是需要针对不同的浏览器执行不同的 js 函数而已
-                 if (window.createObjectURL!=undefined) { // basic
-                     url = window.createObjectURL(file) ;
-                 } else if (window.URL!=undefined) { // mozilla(firefox)
-                     url = window.URL.createObjectURL(file) ;
-                 } else if (window.webkitURL!=undefined) { // webkit or chrome
-                     url = window.webkitURL.createObjectURL(file) ;
-                 }
-                 return url ;
-             }
+        let treedata = [];
+        function changepic(obj) {
+            //console.log(obj.files[0]);//这里可以获取上传文件的name
+            var newsrc = getObjectURL(obj.files[0]);
+            document.getElementById('show').src = newsrc;
+        }
+        //建立一個可存取到該file的url
+        function getObjectURL(file) {
+            var url = null;
+            // 下面函数执行的效果是一样的，只是需要针对不同的浏览器执行不同的 js 函数而已
+            if (window.createObjectURL != undefined) { // basic
+                url = window.createObjectURL(file);
+            } else if (window.URL != undefined) { // mozilla(firefox)
+                url = window.URL.createObjectURL(file);
+            } else if (window.webkitURL != undefined) { // webkit or chrome
+                url = window.webkitURL.createObjectURL(file);
+            }
+            return url;
+        }
+
+        function wtf(data) {
+            data.map((v, i) => {
+                let obj = {};
+                obj.title = v.areaName;
+                obj.children = [];
+                v.childList.map((val, ind) => {
+                    let objc = {};
+                    objc.title = val.areaName;
+                    objc.children = [];
+                    val.childList.map((vv, ii) => {
+                        let objcc = {};
+                        objcc.title = vv.areaName;
+                        objc.children.push(objcc);
+                    })
+                    obj.children.push(objc);
+                });
+                treedata.push(obj);
+            });
+        }
+        var data = {
+        }
+        base.commonAjax('clav/area/getAddressList', data, function (data) {
+            if (data.code == 1) {
+                console.log("z", data);
+                wtf(data.data);
+                console.log(treedata)
+                layui.use('tree', function () {
+                    var tree = layui.tree;
+
+                    //渲染
+                    var inst1 = tree.render({
+                        elem: '#test1'  //绑定元素
+                        , data:treedata
+                    });
+                    
+                });
+            }
+        });
+        $('.layui-tree-txt').click(function(){
+           var a= $(this).text();
+           console.log(a)
+        })
     </script>
 </body>
 
