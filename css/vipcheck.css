@@ -6,7 +6,6 @@
 .hytitle_font{
     width: 97px;
     height: 15px;
-    border-bottom: solid;
     color: #5d8bc8;
     margin-top: 12px;
     text-align: center;
@@ -15,6 +14,7 @@
     font-size: 16px;
     display: inline-block;
     margin-left: 21px;
+    cursor: pointer;
 }
 .content_navi{
     margin-top: 63px;
@@ -135,6 +135,9 @@ label{
     background-color: white;
     margin-top: 35px;
 }
+.lisfindres{
+    padding-top: 34px;
+}
 td{
     text-align: center;
 }
@@ -152,4 +155,10 @@ td{
 }
 .layui-btn{
     border-radius: 5px;
+}
+.datesz{
+    margin-right: 21px;
+}
+.quer{
+    margin-left: 38px;
 }
