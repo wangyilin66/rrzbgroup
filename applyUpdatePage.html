@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href='./css/common.css'><link>
     <link rel="stylesheet" href='./css/commonHeader.css'><link>
+    <title>会员申请</title>
     <style>
         .wraper {
             position: relative;
@@ -14,14 +15,24 @@
     
         }
     
-        body {
+        body{
             background: #fff;
-        }
-    
+        background: url('./image//bodyBg22.jpg') top center no-repeat;
+    }
+    .headerbg{
+        position: absolute;
+        width: 312px;
+        height: 78px;
+        top:-82px;
+        left: 30px;
+        background: url('./image/headerlogo.png')100% 100% no-repeat;
+    }
+
         .w_top {
             width: 980px;
             margin: 0 auto;
             margin-top: 82px;
+            position: relative;
         }
 
         .content{
@@ -138,8 +149,10 @@
     <title>Document</title>
 </head>
 <body>
+
 <div class="wraper">
         <div class="w_top">
+                <div class="headerbg"></div>
                 <div class="header">
                         <div>首页</div>
                         <div>要闻资讯</div>
@@ -179,5 +192,12 @@
             </div>
 
 </div>
+<script type="text/javascript" src='./js/common.js'></script>
+<script type="text/javascript" src='./js/jquery.min.js'></script>
+<script type="text/javascript">
+$('.xg').on('click',function () { 
+    window.location.href = "applyFormPage.html";
+ })
+</script>
 </body>
 </html>

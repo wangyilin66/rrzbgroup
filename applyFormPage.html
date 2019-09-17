@@ -4,18 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>会员申请</title>
     <link rel="stylesheet" href='./css/common.css'><link>
     <link rel="stylesheet" href='./css/commonHeader.css'><link>
+    <link rel="stylesheet" href="./layui/css/layui.css">
     <style>
     .wraper{
         position: relative;
         width: 100%;
-        box-sizing: border-box;
-      
+        box-sizing: border-box; 
     }
     body{
         background: #ECF0F5;
+        background: url('./image//bodyBg22.jpg') top center no-repeat;
     }
+
     .pop_up{
         position: absolute;
         left: 0;
@@ -142,6 +145,8 @@
         background: #DB2033;
         box-sizing: border-box;
         color: #fff;
+        text-align: left;
+        margin-top: 4px;
     }
     .j_cont{
         width: 100%;
@@ -164,11 +169,15 @@
         font-weight: 700;
         width: 95px;
         text-align: right;
+     
     }
     .up_ll{
         display: flex;
         width: 182px;
         margin-top: 15px;
+        position: absolute;
+        left: 0;
+        top:192px;
     }
     .up_ll span{
         color: red;
@@ -180,18 +189,22 @@
         font-size: 12px;
     }
     .j_c_ulF li .rr{
-     margin-left: 34px;
+     margin-left: 30px;
      width: 208px;
     }
-    .j_c_ulF li .inp{
-        width: 206px;
-        height: 32px;
-        border-radius: 6px;
-        border:1px solid #ccc;
+    
+    .j_c_ulF li .inp::-webkit-input-placeholder{
         color: #999999;
-        font-size: 14px;
-        padding-left: 12px;
-        box-sizing: border-box;
+    }
+    .j_c_ulF li .inp{
+        width: 206px !important;
+        height: 32px!important;
+        border-radius: 6px!important;
+        border:1px solid #ccc!important;
+        font-size: 14px!important;
+        padding-left: 12px!important;
+        font-weight: 500!important;
+        box-sizing: border-box!important;
     }
 
     .texta1{
@@ -222,27 +235,55 @@
         width: 980px;
         margin: 0 auto;
         margin-top: 82px;
+        position: relative;
+    }
+    .headerbg{
+        position: absolute;
+        width: 312px;
+        height: 78px;
+        top:-82px;
+        left: 30px;
+        background: url('./image/headerlogo.png')100% 100% no-repeat;
     }
     .uploadImg{
         widows: 182px;
         float: left;
         margin-left: 45px;
         margin-top: 16px;
+        box-sizing: border-box;
+        position: relative;
     }
     .up_cont{
         width: 182px;
         height: 182px;
         border:3px solid #F5F5F5;
-       
+        box-sizing: border-box;
+        position: absolute;
+        left: 0;
+        top:0;
     }
     .up_cont>img{
-        width: 182px;
-        height: 182px;
+        width: 178px;
+        height: 178px;
         border-radius: 50%;
         cursor:pointer;
+       
     }
+    .uploadImg .up_date{
+        width: 182px;
+        height: 182px;
+        position: absolute;
+        left: 0;
+        top:0;
+        opacity: 0;
+    }
+    .uploadImg .up_date > input{
+        width: 182px;
+        height: 182px;
+    }
+
 .qt_box{
-    height: 220px;
+    height: 280px;
 }
 .gz_box{
     height: 400px;
@@ -283,7 +324,9 @@
 <body>
 
 <div class="wraper">
+      
 <div class="w_top">
+        <div class="headerbg"></div>
         <div class="header">
                 <div>首页</div>
                 <div>要闻资讯</div>
@@ -304,14 +347,17 @@
         <div class="updown">下载申请表</div>
         <div class="bc">保存草稿</div>
     </div>
+
     <div class="select">
+            <form class="layui-form" action="">
+     
     <div class="s_jbbox">
         <p class="j_tit">个人基本认证信息</p>
         <div class="j_cont">
             <ul class="j_c_ulF">
                 <li>
                     <div class="ll"><span>*</span>姓名:</div>
-                    <div class="rr"><input placeholder="姓名" type="text" class="inp name" /></div>
+                    <div class="rr"><input placeholder="姓名" type="text" class="inp nameinp" /></div>
                 </li>
                 <li>
                     <div class="ll"><span>*</span>身份证号:</div>
@@ -330,7 +376,14 @@
                 </li>
                 <li>
                     <div class="ll"><span>*</span>政治面貌:</div>
-                    <div class="rr"><input type="text" class="inp mminp" /></div>
+                    <!-- <input type="text" class="inp mminp" /> -->
+                    <div class="rr">
+                    <select class="inp" id="mminp" lay-verify="required" lay-search="">
+                        <option value="">请选择</option>
+                        <option value="1">layer</option>
+                        <option value="2">form</option>
+                    </select>
+                </div>
                 </li>
             </ul>
     
@@ -360,7 +413,10 @@
             </ul>
             <div class="uploadImg">
                 <div class="up_cont">
-                    <img src="./image/updatabg.png" alt="">
+                    <img id='show' src="./image/updatabg.png" alt="">
+                </div>
+                <div class="up_date">
+                    <input type="file" name="file" id="file" class="" onchange="changepic(this)">
                 </div>
                 <div class="up_ll"><span>*</span>
                     <p class="up_p">点击上传个人近期白底免冠照</p>
@@ -376,25 +432,36 @@
         <ul class="j_c_ulF">
             <li>
                 <div class="ll"><span>*</span>现所在地:</div>
-                <div class="rr"><input type="text" class="inp szdinp" /></div>
+                <div class="rr"><input type="text" class="inp xszdinp" /></div>
             </li>
             <li>
                 <div class="ll"><span>*</span>办公电话:</div>
-                <div class="rr"><input type="text" placeholder="请输入身份证号码" class="inp bgdhinp" /></div>
+                <div class="rr"><input type="text" class="inp bgdhinp" /></div>
             </li>
-            <li>
-                <div class="ll"><span>*</span>通讯地址:</div>
-                <div class="rr"><input type="text" class="inp txdzinp" /></div>
-            </li>
+         
         </ul>
+
+        <ul class="j_c_ulF">
+                <li>
+                        <div class="ll"><span>*</span>通讯地址:</div>
+                        <div class="rr"><input type="text" class="inp txdzinp" /></div>
+                    </li>
+                <li>
+                    <div class="ll"><span>*</span>电子邮箱:</div>
+                    <div class="rr"><input type="text" class="inp dzyxinp" /></div>
+                </li>
+             
+            </ul>
+
+
         <ul class="j_c_ulF">
             <li>
-                <div class="ll"><span>*</span>民族:</div>
-                <div class="rr"><input placeholder="民族" type="text" class="inp mzinp" /></div>
+                <div class="ll"><span>*</span>通讯邮编:</div>
+                <div class="rr"><input  type="text" class="inp txybinp" /></div>
             </li>
             <li>
-                <div class="ll"><span>*</span>艺名(笔名):</div>
-                <div class="rr"><input type="text" placeholder="艺名（笔名）" class="inp yminp" /></div>
+                <div class="ll"><span>*</span>微信号:</div>
+                <div class="rr"><input type="text"  class="inp wxhinp" /></div>
             </li>
         </ul>
     </div>
@@ -406,19 +473,19 @@
             <ul class="j_c_ulF">
                 <li>
                     <div class="ll"><span>*</span>文化程度:</div>
-                    <div class="rr"><input type="text" class="inp szdinp" /></div>
+                    <div class="rr"><input type="text" class="inp whcdinp" /></div>
                 </li>
                 <li>
                     <div class="ll"><span>*</span>工作单位及职务:</div>
-                    <div class="rr"><input type="text" placeholder="请输入身份证号码" class="inp bgdhinp" /></div>
+                    <div class="rr"><input type="text"  class="inp gzdwinp" /></div>
                 </li>
                 <li>
                     <div class="ll"><span>*</span>全国文艺家协会职务:</div>
-                    <div class="rr"><input type="text" class="inp txdzinp" /></div>
+                    <div class="rr"><input type="text" class="inp wyzwinp" /></div>
                 </li>
                 <li>
                         <div class="ll"><span>*</span>其他主要社会职务:</div>
-                        <div class="rr"><input type="text" class="inp txdzinp" /></div>
+                        <div class="rr"><input type="text" class="inp qtzwinp" /></div>
                     </li>
                     <li>
                         <div class="ll"><span>*</span>工作经历(艺术简历):</div>
@@ -437,7 +504,7 @@
             <ul class="j_c_ulF">
                     <li>
                         <div class="ll"><span>*</span>毕业院校:</div>
-                        <div class="rr"><input placeholder="" type="text" class="inp mzinp" /></div>
+                        <div class="rr"><input placeholder="" type="text" class="inp byyxinp" /></div>
                     </li>
 
                 </ul>
@@ -451,13 +518,13 @@
     <div class="j_cont">
         <ul class="j_c_ulF">
             <li>
-                <div class="ll"><span>*</span>文化程度:</div>
-                <div class="rr"><input type="text" class="inp whcdinp" /></div>
+                <div class="ll"><span>*</span>主要从事的艺术门类:</div>
+                <div class="rr"><input type="text" class="inp ysmlinp" /></div>
             </li>
             <li>
-                <div class="ll"><span>*</span>工作单位及职务:</div>
+                <div class="ll"><span>*</span>文艺志愿服务或公益活动经历:</div>
                 <div class="rr">
-                    <textarea name="" class="texta1 gzdwinp" placeholder="请输入文艺志愿服务或公益活动经历，300字以内" id="" cols="30" rows="10"></textarea>
+                    <textarea name="" class="texta1 hdjlinp" placeholder="请输入文艺志愿服务或公益活动经历，300字以内" id="" cols="30" rows="10"></textarea>
                 </div>
             </li>
 
@@ -502,7 +569,7 @@
         </div>
     </div>
 
-
+</form>
     </div>
 
 </div>
@@ -533,11 +600,36 @@
 
     <script type="text/javascript" src='./js/common.js'></script>
     <script type="text/javascript" src='./js/jquery.min.js'></script>
+    <script src="./layui/layui.js"></script>
+    <script src="./js/layuicommon.js"></script>
     <script type="text/javascript">
     let height = $('body').height();
     $('.pop_up').css('height',height+200);
-    // $('.pop_up').hide();
+     $('.pop_up').hide();
     // $('.pop_up').slideDown(5000);
+
+
+    function changepic(obj) {
+                 //console.log(obj.files[0]);//这里可以获取上传文件的name
+                 var newsrc=getObjectURL(obj.files[0]);
+                 document.getElementById('show').src=newsrc;
+                 //console.log(newsrc);
+             }   
+             //建立一個可存取到該file的url
+             function getObjectURL(file) {
+                 var url = null ;
+                 // 下面函数执行的效果是一样的，只是需要针对不同的浏览器执行不同的 js 函数而已
+                 if (window.createObjectURL!=undefined) { // basic
+                     url = window.createObjectURL(file) ;
+                 } else if (window.URL!=undefined) { // mozilla(firefox)
+                     url = window.URL.createObjectURL(file) ;
+                 } else if (window.webkitURL!=undefined) { // webkit or chrome
+                     url = window.webkitURL.createObjectURL(file) ;
+                 }
+                 return url ;
+             }
+
+
     $('.u_f_queren').on('click',function (param) { 
         let flag = $('.yuedu').prop('checked');
         if(flag){
@@ -550,6 +642,83 @@
      $('.u_f_quxiao').on('click',function () { 
         window.location.href = "applyForPage.html";
       });
+
+
+
+     $('.updown').on('click',function(){
+         var file = $("#file")[0].files[0];
+         var formData = new FormData();
+         formData.append("file", file);
+ 
+      //window.location.href = "applyUpdatePage.html";
+
+
+    $.ajax({
+        type: "post",
+        url: base.baseurl + 'clav/upload/uploadFile',
+        data: formData,
+        cache: false,
+        processData: false,
+        contentType: false,
+        success:function(ress){
+            if(ress.code == 1){
+                console.log(ress);
+                let data = {
+          name:$('.nameinp').val(),
+          nation:$('.mzinp').val(),
+          gender:$('.xbinp').val() == '男'? 1 : 2,
+          birthday:$('.csinp').val(),
+          idNumber:$('.sfzinp').val(),
+          nativePlace:$('.jginp').val(),
+          politicsStatusId:$('.mminp').val(),
+          sNewGroup:$('.wyyes').prop('checked') == true ? 1 : 2,
+          phone:$('.phoneinp').val(),
+          avatar:ress.data[0].url,
+          penName:$('.yminp').val(),
+          location:$('.xszdinp').val(),
+          postalAddress:$('.txdzinp').val(),
+          postcode:$('.txybinp').val(),
+          officePhone:$('.bgdhinp').val(),
+          email:$('.dzyxinp').val(),
+          wechatNumber:$('.wxhinp').val(),
+          educationLevelId:$('.whcdinp').val(),
+          professionalTitleId:$('.zyzcinp').val(),
+          unitAndDuty:$('.gzdwinp').val(),
+          workExperience:$('.gzjlinp').val(),
+          graduateSchool:$('.byyxinp').val(),
+          associationDuty:$('.wyzwinp').val(),
+          socialDuty:$('.qtzwinp').val(),
+          artTypeId:$('.ysmlinp').val(),
+          specificAreas:$('.jtlyinp').val(),
+          activityExperience:$('.hdjlinp').val(),
+          recommendType:$('.tylxdinp').val(),
+          relationshipGroup:$('.tydwinp').val(),
+          linkman:$('.lxrinp').val(),
+          linkmanPhone:$('.typhoneinp').val(),
+      }
+      console.log(data);
+                base.commonAjax('clav/member/addClavMember',data,function (res) { 
+                  if(res.code == 1){
+                      console.log('添加会员成功');
+                      //window.location.href = "applyUpdatePage.html";
+                  }else{
+                      console.log('添加会员失败');
+                  }
+               });
+            }
+        }
+
+    })
+
+    //   base.commonAjax('clav/upload/uploadFile',formData,function (res) { 
+    //       console.log(res);
+    //       if(res.code == 1){
+
+    //       }
+    //    })
+     });
+
+
     </script>
 </body>
 </html>
