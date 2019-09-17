@@ -644,9 +644,26 @@
       });
 
 
-      
+
      $('.updown').on('click',function(){
-      let data = {
+         var file = $("#file")[0].files[0];
+         var formData = new FormData();
+         formData.append("file", file);
+ 
+      //window.location.href = "applyUpdatePage.html";
+
+
+    $.ajax({
+        type: "post",
+        url: base.baseurl + 'clav/upload/uploadFile',
+        data: formData,
+        cache: false,
+        processData: false,
+        contentType: false,
+        success:function(ress){
+            if(ress.code == 1){
+                console.log(ress);
+                let data = {
           name:$('.nameinp').val(),
           nation:$('.mzinp').val(),
           gender:$('.xbinp').val() == '男'? 1 : 2,
@@ -656,7 +673,7 @@
           politicsStatusId:$('.mminp').val(),
           sNewGroup:$('.wyyes').prop('checked') == true ? 1 : 2,
           phone:$('.phoneinp').val(),
-          avatar:'头像',
+          avatar:ress.data[0].url,
           penName:$('.yminp').val(),
           location:$('.xszdinp').val(),
           postalAddress:$('.txdzinp').val(),
@@ -680,24 +697,10 @@
           linkmanPhone:$('.typhoneinp').val(),
       }
       console.log(data);
-      //window.location.href = "applyUpdatePage.html";
-      var file = $("#file")[0].files[0];
-    var formData = new FormData();
-    formData.append("file", file);
-
-    $.ajax({
-        type: "post",
-        url: base.baseurl + 'clav/upload/uploadFile',
-        data: formData,
-        cache: false,
-        processData: false,
-        contentType: false,
-        success:function(data){
-            if(data.code == 1){
                 base.commonAjax('clav/member/addClavMember',data,function (res) { 
                   if(res.code == 1){
                       console.log('添加会员成功');
-                      window.location.href = "applyUpdatePage.html";
+                      //window.location.href = "applyUpdatePage.html";
                   }else{
                       console.log('添加会员失败');
                   }
