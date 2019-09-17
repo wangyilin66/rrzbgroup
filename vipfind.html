@@ -208,7 +208,7 @@
 			<div class="hy_btn">
 				<button type="button" class="layui-btn layui-btn-normal" style="background-color: grey;">清空条件</button>
 				<button type="button" class="layui-btn layui-btn-normal">通讯录导出</button>
-				<button type="button" class="layui-btn layui-btn-normal">新增</button>
+				<a href="./newvip.html"><button type="button" class="layui-btn layui-btn-normal">新增</button></a>
 				<button type="button" class="layui-btn layui-btn-normal">查询</button>
 				<div class="clear"></div>
 			</div>
@@ -236,52 +236,13 @@
 							<th>操作</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr>
-							<td style="width: 50px">
-								<input type="checkbox" name="" title="" lay-skin="primary">
-							</td>
-							<td>123123132</td>
-							<td>000111</td>
-							<td>詹三</td>
-							<td>2018-11-22</td>
-							<td>人生就像是一场修行</td>
-							<td>历史</td>
-							<td>贤心.超市，身份</td>
-							<td>天津</td>
-							<td>
-								<button class="layui-btn">编辑</button>
-								<button class="layui-btn layui-btn-normal">查看</button>
-								<button class="layui-btn layui-btn-normal">导出</button>
-								<button class="layui-btn layui-btn-warm">移除</button>
-								<button class="layui-btn layui-btn-danger">重置密码</button>
-							</td>
-						</tr>
-						<tr>
-							<td style="width: 50px">
-								<input type="checkbox" name="" title="" lay-skin="primary">
-							</td>
-							<td>123123132</td>
-							<td>000111</td>
-							<td>詹三</td>
-							<td>2018-11-22</td>
-							<td>人生就像是一场修行</td>
-							<td>历史</td>
-							<td>贤心.超市，身份</td>
-							<td>天津</td>
-							<td>
-								<button class="layui-btn">编辑</button>
-								<button class="layui-btn layui-btn-normal">查看</button>
-								<button class="layui-btn layui-btn-normal">导出</button>
-								<button class="layui-btn layui-btn-warm">移除</button>
-								<button class="layui-btn layui-btn-danger">重置密码</button>
-							</td>
-						</tr>
+					<tbody id='tb'>
+
 					</tbody>
 				</table>
 				<div>
-					<div>共12条数据</div>
-					<div id="shuju"></div>
+
+					<div id="layui"></div>
 					<div></div>
 					<div></div>
 				</div>
@@ -298,16 +259,87 @@
 	<script src="./js/hyfind.js"></script>
 	<script>
 		$(".tatou").css({ "background-color": "#059afe", "color": "white" });
-		layui.use('laypage', function () {
-			var laypage = layui.laypage;
+		// layui.use('laypage', function () {
+		// 	var laypage = layui.laypage;
 
-			//执行一个laypage实例
-			laypage.render({
-				elem: 'shuju' //注意，这里的 test1 是 ID，不用加 # 号
-				, count: 5 //数据总数，从服务端得到
-				, limit: 1
+		// 	//执行一个laypage实例
+		// 	laypage.render({
+		// 		elem: 'shuju' //注意，这里的 test1 是 ID，不用加 # 号
+		// 		, count: 5 //数据总数，从服务端得到
+		// 		, limit: 1
+		// 	});
+		// });
+
+		
+
+
+	var data = {
+
+	}
+
+		base.commonAjax('clav/member/getClavMemberList', data, function (data) {
+			var pagedata = [];
+			console.log(data);
+			pagedata = data.data;
+			//console.log(pagedata)
+
+			//调用分页
+			layui.use(['laypage', 'layer'], function () {
+				var laypage = layui.laypage
+					, layer = layui.layer;
+
+				laypage.render({
+					elem: 'layui'
+					, count: pagedata.length,
+					layout: ['count', 'prev', 'page', 'next', 'skip'],
+					limit: 5,
+					jump: function (obj) {
+						//模拟渲染
+						document.getElementById('tb').innerHTML = function () {
+							var arr = []
+								, thisData = pagedata.concat().splice(obj.curr * obj.limit - obj.limit, obj.limit);
+							layui.each(thisData, function (index, item) {
+								arr.push(auto(item));
+								console.log(item);
+							});
+							return arr.join('');
+						}();
+					}
+				});
 			});
 		});
+
+
+
+	function auto(obj){
+		return '<tr>' +
+				'<td style="width: 50px">' +
+				'<input type="checkbox" name="" title="" lay-skin="primary">' +
+				'</td>' +
+				'<td>' + 123 + '</td>' +
+				'<td>' + obj.memberNo + '</td>' +
+				'<td>' + obj.name + '</td>' +
+				'<td>' + obj.createDate + '</td>' +
+				'<td>' + obj.recommendType + '</td>' +
+				'<td>' + obj.orgIdentityId + '</td>' +
+				'<td>' + obj.artTypeId + '</td>' +
+				'<td>' + obj.location + '</td>' +
+				'<td>' +
+				'<button class="layui-btn">编辑</button>' +
+				'<button class="layui-btn layui-btn-normal">查看</button>' +
+				'<button class="layui-btn layui-btn-normal">导出</button>' +
+				'<button class="layui-btn layui-btn-warm">移除</button>' +
+				'<button class="layui-btn layui-btn-danger">重置密码</button>' +
+				'</td>' +
+				'</tr>'
+	}
+
+
+
+
+
+
+
 	</script>
 </body>
 

@@ -425,7 +425,7 @@
 
                                         <label class="layui-form-label"><span>*</span>推荐类型：</label>
                                         <div class="layui-input-inline tjlx">
-                                            <select name="hy" lay-verify="required" lay-search="">
+                                            <select name="hy" lay-verify="required" lay-search="" id="tjtype">
                                                 <option value="">请选择</option>
                                                 <option value="1">layer</option>
                                                 <option value="2">form</option>
@@ -436,7 +436,7 @@
                                     <div class="layui-col-md4">
                                         <label class="layui-form-label"><span>*</span>推荐单位/人：</label>
                                         <div class="layui-input-inline tjr">
-                                            <select name="hy" lay-verify="required" lay-search="">
+                                            <select name="hy" lay-verify="required" lay-search="" id="tjcompany">
                                                 <option value="">请选择</option>
                                                 <option value="1">layer</option>
                                                 <option value="2">form</option>
@@ -451,7 +451,7 @@
                                                     <label class="layui-form-label">联系人：</label>
                                                     <div class="layui-input-block">
                                                         <input type="text" name="title" lay-verify="title"
-                                                            id="lxpeople " autocomplete="off" placeholder="联系人"
+                                                            id="lxpeople" autocomplete="off" placeholder="联系人"
                                                             class="layui-input" style="width:254px;">
                                                     </div>
                                                 </div>
@@ -462,7 +462,7 @@
                                                 <div class="layui-form-item tec">
                                                     <label class="layui-form-label">手机号：</label>
                                                     <div class="layui-input-block">
-                                                        <input type="text" name="title" lay-verify="title" id="sjh "
+                                                        <input type="text" name="title" lay-verify="title" id="sjh"
                                                             autocomplete="off" placeholder="手机号" class="layui-input"
                                                             style="width:254px;">
                                                     </div>
@@ -535,9 +535,9 @@
         }
         base.commonAjax('clav/area/getAddressList', data, function (data) {
             if (data.code == 1) {
-                console.log("z", data);
+                //console.log("z", data);
                 wtf(data.data);
-                console.log(treedata)
+               // console.log(treedata)
                 layui.use('tree', function () {
                     var tree = layui.tree;
 
@@ -545,21 +545,21 @@
                     var inst1 = tree.render({
                         elem: '#test1'  //绑定元素
                         ,click: function(obj){
-                        console.log(obj.data); //得到当前点击的节点数据
+                       // console.log(obj.data); //得到当前点击的节点数据
                        // console.log(obj.elem); //得到当前节点元素 
                         // console.log($('.layui-tree-set').attr("data-id"));
                       //  console.log(obj.data.id); //得到当前点击的节点数据
                         let str = obj.data.id;
-                        console.log(str.indexOf('-')>-1);
+                       // console.log(str.indexOf('-')>-1);
                          if(str.indexOf('-')>-1 && str.indexOf('-')){
                             let arr = str.split('-');
                             if(arr.length == 3){
-                                console.log(arr);
-                        console.log(treedata[arr[0]].title);
-                        console.log(treedata[arr[0]].title);
-                        console.log(obj.data.title);
+                               // console.log(arr);
+                       // console.log(treedata[arr[0]].title);
+                       // console.log(treedata[arr[0]].title);
+                       // console.log(obj.data.title);
                         var place=treedata[arr[0]].title+"-"+treedata[arr[0]].title+"-"+obj.data.title;
-                        console.log("地区",place);
+                        //console.log("地区",place);
                         $('#szd').val(place);
                         $('#test1').css("visibility","hidden");
                             }
