@@ -3,7 +3,7 @@
 }
 .content{
     background-color:#eceff4;
-    height: 1870px;
+    height: 2005px;
 }
 .content_nav{
     width: 60%;
@@ -23,10 +23,15 @@
     color: #5d8bc8;
 }
 .grinfo{
-    height: 403px;
+    height: auto;
+    margin-bottom: 35px;
 }
+.warn{
+ color: red  
+}    
 .qtinfo{
-    height: 232px;
+    height: auto;
+    margin-bottom: 35px;
 }
 #test1 {
     height: 128px;
@@ -40,13 +45,16 @@
     visibility: hidden;
 }
 .gzinfo{
-    height: 568px;
+    height: auto;
+    margin-bottom: 35px;
 }
 .zyinfo{
-    height: 333px;
+    height: auto;
+    margin-bottom: 35px;
 }
 .tjinfo{
-    height: 243px;
+    height: auto;
+    margin-bottom: 35px;
 }
 .grinfoc, .qtinfoc,.gzinfoc,.zyinfoc,.tjinfoc{
     background-color: white;
@@ -113,4 +121,9 @@ span{
 }
 .tjlx,.tjr{
     width: 254px;
+}
+.jiah{
+    position: absolute;
+    top: 0;
+    right: 2px;
 }

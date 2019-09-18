@@ -6,7 +6,7 @@
 .hytitle_font{
     width: 126px;
     height: 15px;
-    /* border-bottom: solid; */
+    border-bottom: solid; 
     color: #5d8bc8;
     margin-top: 12px;
     text-align: center;
@@ -58,8 +58,8 @@ label input{
 }
 .date_font{
     display: inline-block;
-    width: 38px;
-    height: 38px;
+    width: 32px;
+    height: 32px;
     background-color: #fff;
     line-height: 38px;
     text-align: center;
@@ -71,11 +71,26 @@ label input{
     top: 1px;
     margin-right: -3px;
 }
+.z_tubiao{
+    position: relative;
+}
 .date_tubiao2{
     position: relative;
     top: 1px;
     margin-left: -2px;
     cursor: pointer;
+    width: 31px;
+}
+#test1 {
+    height: 128px;
+    overflow: auto;
+    width: 301px;
+    position: absolute;
+    left: 1px;
+    background-color: white;
+    z-index: 999;
+    border: solid rgba(222,225,230,0.3);
+    visibility: hidden;
 }
 label{
     font-size: 14px;
@@ -100,8 +115,9 @@ label{
 }
 .date_font{
     display: inline-block;
-    width: 38px;
-    height: 38px;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
     background-color: white;
 }
 .hy_btn{
@@ -147,4 +163,10 @@ td{
 }
 .layui-btn{
     border-radius: 5px;
+}
+#layui{
+    padding-left: 480px;
+}
+#layui .layui-laypage-btn{
+    margin-top: 0;
 }

@@ -111,6 +111,72 @@ function birthfind() {
 }
 //提交
 function tijiao() {
+        if( $('#file').val()==''){
+                $('.w_tx').text('请上传头像')          
+        }
+        if( $('#username').val()==''){
+                $('.w_xm').text('请填写姓名')              
+        }
+        if( $('#sfnumber').val()==''){
+                $('.w_sf').text('请填写身份证号')          
+        }
+        if( $('#sex').val()==''){
+                $('.w_xb').text('请获取性别')              
+        }
+        if( $('#tec').val()==''){
+                $('.w_sj').text('请填写手机号码')          
+        }
+        if( $('#politicsStatusId').val()==''){
+                $('.w_zz').text('请选择政治面貌')              
+        }
+        if( $('#mz3').val()==''){
+                $('.w_mz').text('请选择民族')              
+        }
+        if( $('#sr').val()==''){
+                $('.w_sr').text('请获取出生日期')          
+        }
+        if( $('#jg').val()==''){
+                $('.w_jg').text('请选择籍贯')              
+        }
+        if( $('#szd').val()==''){
+                $('.w_sz').text('请填写现所在地')          
+        }
+        if( $('#place').val()==''){
+                $('.w_tx2').text('请填写通讯地址')              
+        }
+        if( $('#placenum').val()==''){
+                $('.w_yb').text('请填写通讯邮编')          
+        }
+        if( $('#whcd').val()==''){
+                $('.w_wh').text('请选择文化程度')              
+        }
+        if( $('#zyzc').val()==''){
+                $('.w_zc').text('请选择专业职称')              
+        }
+        if( $('#work').val()==''){
+                $('.w_gzdw').text('请填写工作单位及职务')          
+        }
+        if( $('#experience').val()==''){
+                $('.w_jl').text('请填写工作经历（艺术简历）')              
+        }
+        if( $('#ysml').val()==''){
+                $('.w_yis').text('请选择主要从事的艺术门类')          
+        }
+        if( $('#experience2').val()==''){
+                $('.w_gyhd').text('请填写文艺志愿服务或公益活动经历')              
+        }
+        if( $('#tjtype').val()==''){
+                $('.w_lx').text('请选择推荐类型')          
+        }
+        if( $('#tjcompany').val()==''){
+                $('.w_tjdw').text('请选择推荐单位/人')              
+        }
+        if( $('#lxpeople').val()==''){
+                $('.w_lxr').text('请填写联系人')          
+        }
+        if( $('#sjh').val()==''){
+                $('.w_sjh').text('请填写手机号')          
+        }else{
         var file = $("#file")[0].files[0];
         var formData = new FormData();
         formData.append("file", file);
@@ -124,17 +190,22 @@ function tijiao() {
                 success: function (data, textStatus, jqXHR) {
                         if (data.code == 1) {
                                 //	console.log("上传图片成功")
-                                //var img =data.file;
+                                //console.log(data.data[0].url)
                                 var name = $('#username').val();//姓名
-                                var nation = $('#sfnumber').val();//民族
-                                var gender = $('#sex').val();//性别
+                                var nation = mz3;//民族
+                                if($('#sex').val()=='男'){
+                                        var gender = 1
+                                };//性别
+                                if($('#sex').val()=='女'){
+                                        var gender = 2
+                                };//性别
                                 var birthday = $('#sr').val();//出生日期
                                 var idNumber = $('#sfnumber').val();//身份证号
-                                var nativePlace = $('#jg option:selected').val();//籍贯
-                                var politicsStatusId = $('#politicsStatusId option:selected').val();//政治面貌
+                                var nativePlace = jg;//籍贯
+                                var politicsStatusId = politicsStatusIdd;//政治面貌
                                 var isNewGroup = $('input[name="sex"]:checked').attr("data");//是否新文艺群体
                                 var phone = $('#tec').val();//手机号
-                                var avatar = data.file;//头像
+                                var avatar = data.data[0].url;//头像
                                 var penName = $('#username2').val();//笔名
                                 var location = $('#szd').val();//所在地
                                 var postalAddress = $('#place').val();//通讯地址
@@ -142,14 +213,14 @@ function tijiao() {
                                 var officePhone = $('#bgtec').val();//办公电话
                                 var email = $('#email').val();//邮箱
                                 var wechatNumber = $('#weixinnum').val();//微信号
-                                var educationLevelId = $('#whcd option:selected').val();//文化程度
-                                var professionalTitleId = $('#zyzc option:selected').val();//专业职称
+                                var educationLevelId = whcd;//文化程度
+                                var professionalTitleId = zyzc;//专业职称
                                 var unitAndDuty = $('#work').val();//工作单位
                                 var workExperience = $('#experience').val();//工作经历
                                 var graduateSchool = $('#school').val();//毕业院校
                                 var associationDuty = $('#qgwork').val();//全国职务
                                 var socialDuty = $('#qtwork').val();//其他职务
-                                var artTypeId = $('#ysml option:selected').val();//艺术门类
+                                var artTypeId = ysml;//艺术门类
                                 var specificAreas = $('#genre').val();//具体领域
                                 var activityExperience = $('#experience2').val();//文艺或公益经历
                                 var recommendType = $('#tjtype').val();//推荐类型
@@ -199,4 +270,5 @@ function tijiao() {
                         }
                 }
         })
+}
 }  
