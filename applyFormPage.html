@@ -115,6 +115,7 @@
         border-radius: 6px;
         margin-top: 12px;
         background: #fff;
+        margin-bottom: 40px;
     }
     .content .c_tit{
         width: 100%;
@@ -159,6 +160,7 @@
     .j_c_ulF li{
         display: flex;
         margin-top: 14px;
+        box-sizing: border-box;
     }
    .ll span{
     color: red;
@@ -169,7 +171,7 @@
         font-weight: 700;
         width: 95px;
         text-align: right;
-     
+        margin-top: 4px;
     }
     .up_ll{
         display: flex;
@@ -191,17 +193,29 @@
     .j_c_ulF li .rr{
      margin-left: 30px;
      width: 208px;
+     position: relative;
+    }
+    #test3{
+        width: 206px;
+        height: 128px;
+    overflow: auto;
+    position: absolute;
+    left: 0;
+    background-color: white;
+    z-index: 999;
+    border: solid rgba(222,225,230,0.3);
+    visibility: hidden;
     }
     
     .j_c_ulF li .inp::-webkit-input-placeholder{
         color: #999999;
     }
     .j_c_ulF li .inp{
-        width: 206px !important;
-        height: 32px!important;
-        border-radius: 6px!important;
+        width: 206px;
+        height: 32px;
+        border-radius: 6px;
         border:1px solid #ccc!important;
-        font-size: 14px!important;
+        font-size: 14px;
         padding-left: 12px!important;
         font-weight: 500!important;
         box-sizing: border-box!important;
@@ -286,10 +300,10 @@
     height: 280px;
 }
 .gz_box{
-    height: 400px;
+    height: 390px;
 }
 .zyfw_box{
-    height: 210px;
+    height: 230px;
 }
 .tjlx_box{
     height: 168px;
@@ -317,6 +331,15 @@
 }
 .bc{
     margin-left: 36px;
+}
+.layui-form-radio{
+    margin: 0 !important;
+    padding: 0 !important;
+    margin-left: 10px !important;
+
+}
+.txdzinp{
+    width: 300px !important;
 }
     </style>
     <title>Document</title>
@@ -367,7 +390,13 @@
                 </li>
                 <li>
                     <div class="ll"><span>*</span>性别:</div>
-                    <div class="rr"><input type="text" class="inp xbinp" /></div>
+                    <div class="rr">
+                        <select class="inp" id="xbinp" lay-filter="xbinp" lay-verify="required" lay-search="">
+                                <option value="0">性别</option>
+                                <option value="1">男</option>
+                                <option value="2">女</option>
+                        </select>
+                    </div>
                 </li>
                 <!-- <li><div class="ll"><span>*</span>体制内:</div><div class="rr"><input type='radio' class="tzyes" name='tz'/>是<input type='radio' class="tzno" name='tz'/>否</div></li> -->
                 <li>
@@ -378,7 +407,7 @@
                     <div class="ll"><span>*</span>政治面貌:</div>
                     <!-- <input type="text" class="inp mminp" /> -->
                     <div class="rr">
-                    <select class="inp" id="mminp" lay-verify="required" lay-search="">
+                    <select class="inp" id="mminp" lay-filter="zzmminp" lay-verify="required" lay-search="">
                         <option value="">请选择</option>
                         <option value="1">layer</option>
                         <option value="2">form</option>
@@ -390,7 +419,13 @@
             <ul class="j_c_ulF">
                 <li>
                     <div class="ll"><span>*</span>民族:</div>
-                    <div class="rr"><input placeholder="民族" type="text" class="inp mzinp" /></div>
+                    <div class="rr">
+                        <select class="inp" lay-filter="mzinp" id="mzinp" lay-verify="required" lay-search="">
+                            <option value="">民族</option>
+                    
+                        </select>
+                    </div>
+                 
                 </li>
                 <li>
                     <div class="ll"><span>*</span>艺名(笔名):</div>
@@ -402,7 +437,11 @@
                 </li>
                 <li>
                     <div class="ll"><span>*</span>籍贯:</div>
-                    <div class="rr"><input type="text" class="inp jginp" /></div>
+                    <div class="rr">
+                        <select class="inp" lay-filter="jginp" id="jginp" lay-verify="required" lay-search="">
+                                <option value="">籍贯</option>
+                            </select>
+                    </div>
                 </li>
                 <li>
                     <div class="ll"><span>*</span>新文艺群体:</div>
@@ -432,7 +471,11 @@
         <ul class="j_c_ulF">
             <li>
                 <div class="ll"><span>*</span>现所在地:</div>
-                <div class="rr"><input type="text" class="inp xszdinp" /></div>
+                <div class="rr">
+                    <input type="text" class="inp xszdinp" />
+                    <div id="test3"></div>
+                </div>
+                
             </li>
             <li>
                 <div class="ll"><span>*</span>办公电话:</div>
@@ -473,7 +516,11 @@
             <ul class="j_c_ulF">
                 <li>
                     <div class="ll"><span>*</span>文化程度:</div>
-                    <div class="rr"><input type="text" class="inp whcdinp" /></div>
+                    <div class="rr">
+                        <select class="inp" lay-filter="whcdinp" id="whcdinp" lay-verify="required" lay-search="">
+                                <option value="">文化程度</option>
+                            </select>
+                    </div>
                 </li>
                 <li>
                     <div class="ll"><span>*</span>工作单位及职务:</div>
@@ -497,7 +544,11 @@
             <ul class="j_c_ulF">
                 <li>
                     <div class="ll"><span>*</span>专业职称:</div>
-                    <div class="rr"><input placeholder="" type="text" class="inp zyzcinp" /></div>
+                    <div class="rr">
+                        <select class="inp" lay-filter="zyzcinp" id="zyzcinp" lay-verify="required" lay-search="">
+                                <option value="">专业职称</option>
+                            </select>
+                    </div>
                 </li>
               
             </ul>
@@ -519,7 +570,11 @@
         <ul class="j_c_ulF">
             <li>
                 <div class="ll"><span>*</span>主要从事的艺术门类:</div>
-                <div class="rr"><input type="text" class="inp ysmlinp" /></div>
+                <div class="rr">
+                    <select class="inp" lay-filter="ysmlinp" id="ysmlinp" lay-verify="required" lay-search="">
+                            <option value="">艺术门类</option>
+                        </select>
+                </div>
             </li>
             <li>
                 <div class="ll"><span>*</span>文艺志愿服务或公益活动经历:</div>
@@ -603,19 +658,181 @@
     <script src="./layui/layui.js"></script>
     <script src="./js/layuicommon.js"></script>
     <script type="text/javascript">
-    let height = $('body').height();
-    $('.pop_up').css('height',height+200);
-     $('.pop_up').hide();
-    // $('.pop_up').slideDown(5000);
+        let treedata = [];
+        let xbinp,zzmminp,mzinp,jginp,whcdinp,zyzcinp,ysmlinp;
+        let height = $('body').height();
+        $('.pop_up').css('height', height + 200);
+        $('.pop_up').hide();
+        let data = {};
+        layui.use('form', function () {
+            var form = layui.form;
+            base.commonAjax('clav/nation/getClavNationList', data, function (res) {
+                if (res.code == 1) {
+                    //console.log(res.data);
+                    res.data.map(item => {
+                        $('#mzinp').append('<option value="' + item.id + '">' + item.nation + '</option>');
+                    });
+                    form.render();
+                }
+            });
+
+            base.commonAjax('clav/area/getProvinceList', data, function (res) {
+                if (res.code == 1) {
+                    //console.log(res.data);
+                    res.data.map(item => {
+                        $('#jginp').append('<option value="' + item.id + '">' + item.areaName + '</option>');
+                    });
+                    form.render();
+                }
+            });
+            base.commonAjax('clav/politicsStatus/getClavPoliticsStatusList', data, function (res) {
+                if (res.code == 1) {
+                    //console.log(res.data);
+                    res.data.map(item => {
+                        $('#mminp').append('<option value="' + item.id + '">' + item.politicsStatus + '</option>');
+                    });
+                    form.render();
+                }
+            });
+            base.commonAjax('clav/educationLevel/getClavEducationLevelList', data, function (res) {
+                if (res.code == 1) {
+                    //console.log(res.data);
+                    res.data.map(item => {
+                        $('#whcdinp').append('<option value="' + item.id + '">' + item.educationLevel + '</option>');
+                    });
+                    form.render();
+                }
+            });
+
+            base.commonAjax('clav/professionalTitle/getClavProfessionalTitleList', data, function (res) {
+                if (res.code == 1) {
+                    //console.log(res.data);
+                    res.data.map(item => {
+                        $('#zyzcinp').append('<option value="' + item.id + '">' + item.professionalTitle + '</option>');
+                    });
+                    form.render();
+                }
+            });
+
+            base.commonAjax('clav/artType/getClavArtTypeList', data, function (res) {
+                if (res.code == 1) {
+                    console.log(res.data);
+                    res.data.map(item => {
+                        $('#ysmlinp').append('<option value="' + item.id + '">' + item.artType + '</option>');
+                    });
+                    form.render();
+                }
+            });
+
+        });
+
+    layui.use('form', function () {
+        var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+        form.on('select(xbinp)', function (data) {
+            xbinp = data.elem[data.elem.selectedIndex].text;
+            form.render('select');
+        });
+        form.on('select(zzmminp)', function (data) {
+            zzmminp = data.elem[data.elem.selectedIndex].text;
+            form.render('select');
+        });
+        form.on('select(mzinp)', function (data) {
+            mzinp = data.elem[data.elem.selectedIndex].text;
+            form.render('select');
+        });
+        form.on('select(jginp)', function (data) {
+            jginp = data.elem[data.elem.selectedIndex].text;
+            form.render('select');
+        });
+        form.on('select(whcdinp)', function (data) {
+            whcdinp = data.elem[data.elem.selectedIndex].text;
+            form.render('select');
+        });
+        form.on('select(zyzcinp)', function (data) {
+            zyzcinp = data.elem[data.elem.selectedIndex].text;
+            form.render('select');
+        });
+        form.on('select(ysmlinp)', function (data) {
+            ysmlinp = data.elem[data.elem.selectedIndex].text;
+            form.render('select');
+        });
+    });
 
 
-    function changepic(obj) {
-                 //console.log(obj.files[0]);//这里可以获取上传文件的name
-                 var newsrc=getObjectURL(obj.files[0]);
-                 document.getElementById('show').src=newsrc;
-                 //console.log(newsrc);
-             }   
-             //建立一個可存取到該file的url
+        function wtf(data) {
+            data.map((v, i) => {
+                let obj = {};
+                obj.title = v.areaName;
+                obj.id = i;
+                obj.children = [];
+                v.childList.map((val, ind) => {
+                    let objc = {};
+                    objc.title = val.areaName;
+                    objc.id = i+'-'+ind;
+                    objc.children = [];
+                    val.childList.map((vv, ii) => {
+                        let objcc = {};
+                        objcc.title = vv.areaName;
+                        objcc.id = i+'-'+ind + '-' + ii;
+                        objc.children.push(objcc);
+                    })
+                    obj.children.push(objc);
+                });
+                treedata.push(obj);
+            });
+        }
+
+        base.commonAjax('clav/area/getAddressList', data, function (data) {
+            if (data.code == 1) {
+                //console.log("z", data);
+                wtf(data.data);
+               // console.log(treedata)
+                layui.use('tree', function () {
+                    var tree = layui.tree;
+
+                    //渲染
+                    var inst1 = tree.render({
+                        elem: '#test3'  //绑定元素
+                        ,click: function(obj){
+                       // console.log(obj.data); //得到当前点击的节点数据
+                       // console.log(obj.elem); //得到当前节点元素 
+                        // console.log($('.layui-tree-set').attr("data-id"));
+                      //  console.log(obj.data.id); //得到当前点击的节点数据
+                        let str = obj.data.id;
+                       // console.log(str.indexOf('-')>-1);
+                         if(str.indexOf('-')>-1 && str.indexOf('-')){
+                            let arr = str.split('-');
+                            if(arr.length == 3){
+                               // console.log(arr);
+                       // console.log(treedata[arr[0]].title);
+                       // console.log(treedata[arr[0]].title);
+                       // console.log(obj.data.title);
+                        var place=treedata[arr[0]].title+"-"+treedata[arr[0]].title+"-"+obj.data.title;
+                        //console.log("地区",place);
+                        $('.xszdinp').val(place);
+                        $('#test3').css("visibility","hidden");
+                            }
+                         }
+                    }
+                        , data:treedata
+                    });
+                    
+                });
+            }
+        });
+        $('.xszdinp').click(function(){
+            $('#test3').css("visibility","visible");
+        })
+     
+
+
+        function changepic(obj) {
+            //console.log(obj.files[0]);//这里可以获取上传文件的name
+            var newsrc = getObjectURL(obj.files[0]);
+            document.getElementById('show').src = newsrc;
+            //console.log(newsrc);
+        }
+                 //建立一個可存取到該file的url
              function getObjectURL(file) {
                  var url = null ;
                  // 下面函数执行的效果是一样的，只是需要针对不同的浏览器执行不同的 js 函数而已
@@ -665,12 +882,12 @@
                 console.log(ress);
                 let data = {
           name:$('.nameinp').val(),
-          nation:$('.mzinp').val(),
-          gender:$('.xbinp').val() == '男'? 1 : 2,
+          nation:mzinp,
+          gender:xbinp == '男'? 1 : 2,
           birthday:$('.csinp').val(),
           idNumber:$('.sfzinp').val(),
-          nativePlace:$('.jginp').val(),
-          politicsStatusId:$('.mminp').val(),
+          nativePlace:jginp,
+          politicsStatusId:zzmminp,
           sNewGroup:$('.wyyes').prop('checked') == true ? 1 : 2,
           phone:$('.phoneinp').val(),
           avatar:ress.data[0].url,
@@ -681,14 +898,14 @@
           officePhone:$('.bgdhinp').val(),
           email:$('.dzyxinp').val(),
           wechatNumber:$('.wxhinp').val(),
-          educationLevelId:$('.whcdinp').val(),
-          professionalTitleId:$('.zyzcinp').val(),
+          educationLevelId:whcdinp,
+          professionalTitleId:zyzcinp,
           unitAndDuty:$('.gzdwinp').val(),
           workExperience:$('.gzjlinp').val(),
           graduateSchool:$('.byyxinp').val(),
           associationDuty:$('.wyzwinp').val(),
           socialDuty:$('.qtzwinp').val(),
-          artTypeId:$('.ysmlinp').val(),
+          artTypeId:ysmlinp,
           specificAreas:$('.jtlyinp').val(),
           activityExperience:$('.hdjlinp').val(),
           recommendType:$('.tylxdinp').val(),
@@ -708,14 +925,8 @@
             }
         }
 
-    })
+    });
 
-    //   base.commonAjax('clav/upload/uploadFile',formData,function (res) { 
-    //       console.log(res);
-    //       if(res.code == 1){
-
-    //       }
-    //    })
      });
 
 

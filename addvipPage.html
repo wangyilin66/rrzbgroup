@@ -7,6 +7,119 @@
 	<link rel="stylesheet" href="./layui/css/layui.css">
 	<link rel="stylesheet" href="./css/hyfind.css">
 	<link rel="stylesheet" href="./css/header.css">
+	<style>
+		     .content{
+            height: 1080px;
+        }
+		.cont_bg{
+			
+		}
+		.content_navl{
+			background-color: #eceff4;
+			width: 102%;
+			margin-left: -2px;
+			padding-bottom: 29px;
+		}
+		.content_nav{
+			margin-top: 42px;
+			width: 80%;
+			background: #fff;
+			height: auto;
+		}
+		.tit{
+			margin-left: 30px;
+			margin-top: 28px;
+			font-size: 20px;
+			color: #408BE2;
+			font-weight: 600;
+		}
+		.textbox{
+			width: 79.4%;
+			height: 160px;
+			background: #0081FF;
+			color: #fff;
+			border-radius: 16px;
+			margin-left: 28px;
+			margin-top: 16px;
+			box-sizing: border-box;
+			padding-top: 2px;
+		}
+
+		.textbox > ul > li{
+			font-size: 16px;
+			margin-left: 20px;
+			margin-top: 4px;
+		}
+		.cont_li{
+			width: 100%;
+			box-sizing: border-box;
+			padding-left: 28px;
+			padding-right: 96px;
+			display: flex;
+			justify-content:space-between;
+			line-height: 32px;
+			margin-top: 20px;
+		}
+		.dwtitle{
+			width: 270px;
+			height: 32px;
+			border:2px solid #E4E4E4;
+			padding-left: 12px;
+			box-sizing: border-box;
+		}
+		.sp{
+			color: red;
+			margin-right: 4px;
+		}
+		.pp{
+			margin-right: 8px;
+			width: 110px;
+			text-align: right;
+		}
+		.c_l_right{
+			display: flex;
+		}
+		.c_l_left{
+			display: flex;
+		}
+		.c_l_inp{
+			width: 230px;
+			height: 32px;
+			border:2px solid #E4E4E4;
+			padding-left: 12px;
+			box-sizing: border-box;
+		}
+		.upfile{
+			width: 37px;
+			height: 32px;
+			z-index: 9;
+           opacity: 0;
+           cursor:pointer;
+		}
+		.layui-icon-upload{
+           width: 37px;
+           height: 32px;
+           background: #EEEDEB;
+           /* border: 2px solid #E4E4E4; */
+           border-left: 0;
+           text-align: center;
+           line-height: 30px;
+           font-size: 18px;
+           margin-left: -37px;
+           z-index: 1;
+	   }
+	   .upload{
+		   width: 72px;
+		   height: 32px;
+		   background: #0280FC;
+		   font-size: 16px;
+		   color: #fff;
+		   text-align: center;
+		   line-height: 32px;
+		   cursor:pointer;
+		   border-radius: 6px;
+	   }
+	</style>
 </head>
 
 <body>
@@ -81,26 +194,68 @@
 		</div>
 	</div>
 	<!-- 内容 -->
-	<div class="hytitle">
-		<div class="hytitle_font">本协会的会员</div>
-	</div>
+
 	<div class="content">
 		<div class="content_nav">
-			<div class="content_navl"><span><i class="layui-icon layui-icon-home"></i>首页&nbsp;&nbsp;</span>/<span>&nbsp;会员管理&nbsp;&nbsp;</span>/&nbsp;会员查询</div>
+			<div class="content_navl"><span><i class="layui-icon layui-icon-home"></i>首页&nbsp;&nbsp;</span>/<span>&nbsp;志愿者管理&nbsp;&nbsp;</span>/&nbsp;增补会员单位</div>
+	        <div class="cont_bg">
 			<div class="content_navi">
+				<h3 class="tit">注意事项：</h3>
+				<div class="textbox">
+                 <ul>
+					 <li>副省级城市以上文艺志愿者协会，可申请增补为会员单位。申请材料为：</li>
+					 <li>1，由本级文联组织出具的申请书；</li>
+					 <li>2，本单位情况介绍，需说明成立时间，发起单位，经费来源，主席团成员介绍，理事和会员名册，工作机构和联系方式；</li>
+					 <li>3，协会章程；</li>
+					 <li>4，相关资质证明，由当地民政部门颁发的社团证或党委宣传部的同意成立批准文件。</li>
+					 <li>5，请务必检查申请材料完成度，在点击提交，审核期间不得修改。</li>
+				 </ul>
+				</div>
 				<form class="layui-form" action="">
+                <div class="cont_li">
+					<div class="c_l_left">
+							<p class="pp"><span class="sp">*</span>申报单位名称：</p>
+							<input type="text" class="dwtitle" placeholder="请填写申报单位名称"/>
+					</div>
+					<div class="c_l_right">
+						<p class="pp"><span class="sp">*</span>申请书：</p>
+						<input type="text" class="c_l_inp" placeholder="点击选择文件"/>
+						<input type="file" class='upfile'/>
+						<i class="layui-icon layui-icon-upload"></i>  
+					</div>
+				</div>
+
+				<div class="cont_li">
+						<div class="c_l_left">
+								<p class="pp"><span class="sp">*</span>协会章程：</p>
+						<input type="text" class="c_l_inp" placeholder="点击选择文件"/>
+						<input type="file" class='upfile'/>
+						<i class="layui-icon layui-icon-upload"></i>  
+						</div>
+						<div class="c_l_right">
+							<p class="pp"><span class="sp">*</span>单位情况介绍：</p>
+							<input type="text" class="c_l_inp" placeholder="点击选择文件"/>
+							<input type="file" class='upfile'/>
+							<i class="layui-icon layui-icon-upload"></i>  
+						</div>
+					</div>
+
+					<div class="cont_li">
+							<div class="c_l_left">
+									<p class="pp"><span class="sp">*</span>资质证明：</p>
+									<input type="text" class="c_l_inp" placeholder="点击选择文件"/>
+									<input type="file" class='upfile'/>
+									<i class="layui-icon layui-icon-upload"></i>  
+							</div>
+							<div class="c_l_right">
+								<div class="upload">提交</div>
+							</div>
+						</div>
 
 				</form>
 			</div>
-			<div class="hy_btn">
-				<button type="button" class="layui-btn layui-btn-normal" style="background-color: grey;">清空条件</button>
-				<button type="button" class="layui-btn layui-btn-normal">通讯录导出</button>
-				<a href="./newvip.html"><button type="button" class="layui-btn layui-btn-normal">新增</button></a>
-				<button type="button" class="layui-btn layui-btn-normal">查询</button>
-				<div class="clear"></div>
-			</div>
+
 			<div class="findres">
-				<button type="button" class="layui-btn layui-btn-normal">批量导出</button>
 				<table class="layui-table" lay-skin="line">
 					<colgroup>
 						<col width="150">
@@ -109,9 +264,7 @@
 					</colgroup>
 					<thead>
 						<tr class="tatou">
-							<th style="width: 50px">
-								<input type="checkbox" name="" title="" lay-skin="primary">
-							</th>
+
 							<th>平台编号</th>
 							<th>会员编号</th>
 							<th>会员姓名</th>
@@ -135,6 +288,7 @@
 				</div>
 			</div>
 		</div>
+		</div>
 	</div>
 
 
@@ -157,13 +311,10 @@
 		// 	});
 		// });
 
-		
-
 
 	var data = {
 
 	}
-
 		base.commonAjax('clav/member/getClavMemberList', data, function (data) {
 			var pagedata = [];
 			console.log(data);
@@ -200,9 +351,6 @@
 
 	function auto(obj){
 		return '<tr>' +
-				'<td style="width: 50px">' +
-				'<input type="checkbox" name="" title="" lay-skin="primary">' +
-				'</td>' +
 				'<td>' + 123 + '</td>' +
 				'<td>' + obj.memberNo + '</td>' +
 				'<td>' + obj.name + '</td>' +
