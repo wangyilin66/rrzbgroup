@@ -12,7 +12,7 @@
 <body>
 	<!-- 头部 -->
 	<div class="headerpage">
-		<div class="layui-container-fluid">
+		<!-- <div class="layui-container-fluid">
 			<div class="layui-fluid">
 				<div class="layui-row layui-col-space5">
 					<div class="layui-col-md5" style="padding-right: 0px;">
@@ -78,7 +78,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 	</div>
 	<!-- 内容 -->
 	<div class="hytitle">
@@ -141,7 +141,7 @@
 							</div>
 						</div>
 					</div>
-				</form>
+				
 			</div>
 			
 			<div class="findres">
@@ -155,7 +155,9 @@
 					<thead>
 						<tr class="tatou">
 							<th style="width: 50px">
-								<input type="checkbox" name="" title="" lay-skin="primary">
+								<input type="checkbox" name="" title="" lay-skin="primary" class="table_button" lay-filter="table111">
+								<div class="tableyuan"></div>
+								<div class="tableyuan2"></div>
 							</th>
 							<th>平台编号</th>
 							<th>单位类型</th>
@@ -171,6 +173,7 @@
 						<tr>
 							<td style="width: 50px">
 								<input type="checkbox" name="" title="" lay-skin="primary">
+								
 							</td>
 							<td>12313</td>
 							<td>各全国文艺家协会</td>
@@ -211,6 +214,7 @@
 					<div></div>
 				</div>
 			</div>
+		</form>
 		</div>
     <!-- 理事审核 -->
     <div class="content_nav" style="display: none">
@@ -436,6 +440,18 @@
 				$('.hytitle_font').eq(i).css("border-bottom","solid");
 				$('.content_nav').eq(i).show().siblings().hide();				  
 			});
+
+
+			layui.use('form', function(){
+			  var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+			form.on('checkbox(table111)', function(data){
+			// console.log(data.elem); //得到checkbox原始DOM对象
+			console.log(data.elem.checked); //是否被选中，true或者false
+			// console.log(data.value); //复选框value值，也可以通过data.elem.value得到
+			// console.log(data.othis); //得到美化后的DOM对象
+			});        
+		      form.render();
+			})
 	</script>
 </body>
 
