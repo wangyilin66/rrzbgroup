@@ -21,7 +21,7 @@
 }
 .content{
     background-color:#eceff4;
-    height: 650px;
+    height: 100%；
 }
 .content_nav{
     width: 90%;
@@ -131,10 +131,10 @@ label{
 }
 .findres{
     width: 100%;
-    height: auto;
+    height: 318px;
     background-color: white;
     margin-top: 35px;
-    padding-bottom: 55px;
+    padding-top: 35px;
     padding-left: 13px;
     padding-right: 13px;
 }

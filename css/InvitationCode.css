@@ -4,7 +4,7 @@
     padding-top: 20px;
 }
 .hytitle_font{
-    width: 97px;
+    width: 150px;
     height: 15px;
     color: #5d8bc8;
     margin-top: 12px;
@@ -17,11 +17,11 @@
     cursor: pointer;
 }
 .content_navi{
-    margin-top: 63px;
+    margin-top: 60px;
 }
 .content{
     background-color:#eceff4;
-    height: 650px;
+    height: 100%
 }
 .content_nav{
     width: 90%;
@@ -53,7 +53,7 @@
     padding-left: 117px;
 }
 label input{
-    height: 38px;
+    height: 32px;
     width: 300px;
     cursor: pointer;
     border: none;
@@ -129,6 +129,16 @@ label{
 .layui-btn+.layui-btn{
     margin-left: 0px;
 }
+.findres2{
+    width: 100%;
+    height: auto;
+    background-color: white;
+    margin-top: 35px;
+    padding-top: 35px;
+    padding-bottom: 55px;
+    padding-left: 13px;
+    padding-right: 13px;
+}
 .findres{
     width: 100%;
     height: auto;
@@ -137,6 +147,18 @@ label{
     padding-bottom: 55px;
     padding-left: 13px;
     padding-right: 13px;
+}
+.bl_code{
+    width: 19%;
+    display: inline-block;
+    text-align: center;
+    font-size: 19px;
+    margin-top: 31px;
+}
+.yqm_btn{
+    width: 300px;
+    margin: auto;
+    margin-top: 34px;
 }
 .lisfindres{
     padding-top: 34px;

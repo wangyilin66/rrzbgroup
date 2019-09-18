@@ -115,7 +115,7 @@
 									<div class="grid-demo grid-demo-bg1">
 										<label for="">艺术门类：
 											<div>
-												<select id="yishu"name="modules" lay-verify="required" lay-search="" id="arttype">
+												<select id="yishu"name="modules" lay-verify="required" lay-search="" id="arttype"lay-filter="yishu">
 													<option value="">请选择</option>
 													<!-- <option value="1">layer</option>
 													<option value="2">form</option>
@@ -192,7 +192,7 @@
 				<button type="button" class="layui-btn layui-btn-normal" id="btnclear"style="background-color: grey;">清空条件</button>
 				<button type="button" class="layui-btn layui-btn-normal">通讯录导出</button>
 				<a href="./newvip.html"><button type="button" class="layui-btn layui-btn-normal">新增</button></a>
-				<button type="button" class="layui-btn layui-btn-normal">查询</button>
+				<button type="button" class="layui-btn layui-btn-normal" onclick="tjfind()">查询</button>
 				<div class="clear"></div>
 			</div>
 			<div class="findres">
@@ -316,11 +316,19 @@
             }
         });
 
-
+function findvip(name,memberNo,artTypeId,location,orgIdentityId){
+	var name;
+	var memberNo;
+	var artTypeId;
+	var location;
+	var orgIdentityId;
 	var data = {
-
+		name:name,
+		memberNo:memberNo,
+		artTypeId:artTypeId,
+		location:location,
+		orgIdentityId:orgIdentityId
 	}
-
 		base.commonAjax('clav/member/getClavMemberList', data, function (data) {
 			var pagedata = [];
 			console.log(data);
@@ -344,7 +352,7 @@
 								, thisData = pagedata.concat().splice(obj.curr * obj.limit - obj.limit, obj.limit);
 							layui.each(thisData, function (index, item) {
 								arr.push(auto(item));
-								console.log(item);
+								//console.log(item);
 							});
 							return arr.join('');
 						}();
@@ -352,9 +360,33 @@
 				});
 			});
 		});
-
-
-
+	}
+	findvip();
+	layui.use('form', function(){
+          var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+       form.on('select(yishu)',function(data){
+		category=data.value;
+		yishu=data.elem[data.elem.selectedIndex].text;
+           form.render('select');
+	   })
+	})
+	function tjfind(){
+		var name;
+		var memberNo;
+		//console.log( $("#vipname").val())
+		//console.log( $("#vipnumber").val())
+		//console.log( $("#szd").val())
+		if ($("#vipname").val()!='') {
+			name=$("#vipname").val();
+		} 	
+		if ($("#vipnumber").val()!='') {
+			memberNo=$("#vipnumber").val();	
+		} 
+		 //location=$("#szd").val();
+		 //console.log(category)
+		 //artTypeId=category
+		findvip(name,memberNo);
+	}
 	function auto(obj){
 		return '<tr>' +
 				'<td style="width: 50px">' +
