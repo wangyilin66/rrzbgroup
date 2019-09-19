@@ -12,7 +12,7 @@
 <body>
 	<!-- 头部 -->
 	<div class="headerpage">
-		 <div class="layui-container-fluid">
+		<div class="layui-container-fluid">
 			<div class="layui-fluid">
 				<div class="layui-row layui-col-space5">
 					<div class="layui-col-md5" style="padding-right: 0px;">
@@ -52,9 +52,14 @@
 							<li class="layui-nav-item">
 								<a href="javascript:;">会员管理</a>
 								<dl class="layui-nav-child">
-									<dd><a href="">移动模块</a></dd>
-									<dd><a href="">后台模版</a></dd>
-									<dd><a href="">电商平台</a></dd>
+									<dd><a href="./vipfind.html">会员查询</a></dd>
+									<dd><a href="./vipcheck.html">审核管理</a></dd>
+									<dd><a href="./recommendedUnits.html">推荐单位管理</a></dd>
+									<dd><a href="#">会员职位管理</a></dd>
+									<dd><a href="./InvitationCode.html">邀请码管理</a></dd>
+									<dd><a href="">通知管理</a></dd>
+									<dd><a href="">会员信息统计</a></dd>
+									<dd><a href="">会费管理</a></dd>
 								</dl>
 							</li>
 							<li class="layui-nav-item">
@@ -78,7 +83,7 @@
 					</div>
 				</div>
 			</div>
-		</div> 
+		</div>
 	</div>
 	<!-- 内容 -->
 	<div class="hytitle">
@@ -105,7 +110,7 @@
                                     <div class="hy_btn">
                                         <button type="button" class="layui-btn layui-btn-normal" style="background-color: grey;">清空条件</button>
                                         <button type="button" class="layui-btn layui-btn-normal">新增</button>
-                                        <button type="button" class="layui-btn layui-btn-normal">查询</button>
+                                        <button type="button" class="layui-btn layui-btn-normal" onclick="preduty()">查询</button>
                                         <div class="clear"></div>
                                     </div>
                                 </div>
@@ -116,7 +121,7 @@
 			</div>
 			
 			<div class="findres">
-				<table class="layui-table" lay-skin="line">
+				<table class="layui-table" lay-skin="line" lay-filter="test">
 					<colgroup>
 						<col width="150">
 						<col width="200">
@@ -136,9 +141,9 @@
 							<td>主席</td>							
 							<td>111</td>
 							<td>                                
-								<button class="layui-btn ">编辑</button>
-                                <button class="layui-btn layui-btn-danger">删除</button>
-                                <button class="layui-btn layui-btn-normal">查看列表</button>
+								<button type="button" class="layui-btn ">编辑</button>
+                                <button type="button" class="layui-btn layui-btn-danger">删除</button>
+								<button type="button" class="layui-btn layui-btn-normal" onclick="preduty()">查看列表</button>
 							</td>
 						</tr>
 						<tr>
@@ -146,9 +151,9 @@
                             <td>副主席</td>							
                             <td>111</td>
 							<td>
-                                <button class="layui-btn ">编辑</button>
-                                <button class="layui-btn layui-btn-danger">删除</button>
-                                <button class="layui-btn layui-btn-normal">查看列表</button>
+                                <button type="button" class="layui-btn ">编辑</button>
+                                <button type="button" class="layui-btn layui-btn-danger">删除</button>
+                                <button type="button" class="layui-btn layui-btn-normal">查看列表</button>
 							</td>
 						</tr>
 					</tbody>
@@ -165,13 +170,16 @@
 
 
 	<script src="./layui/layui.js"></script>
-	<script src="./js/layuicommon.js"></script>
+	
 	<script src="./js/jquery.min.js"></script>
 	<script src="./js/header.js"></script>
 	<script src="./js/common.js"></script>
-	<script src="./js/vipcheck.js"></script>
 	<script>
-        $(".tatou").css({ "background-color": "#059afe", "color": "white" });
+		$(".tatou").css({ "background-color": "#059afe", "color": "white" });
+		function preduty() {
+			console.log('a')
+			window.location.href="./vipdutylist.html";
+		}
 	</script>
 </body>
 

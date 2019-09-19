@@ -7,6 +7,8 @@
 	<link rel="stylesheet" href="./layui/css/layui.css">
 	<link rel="stylesheet" href="./css/hyfind.css">
 	<link rel="stylesheet" href="./css/header.css">
+	<style>
+	</style>
 </head>
 
 <body>
@@ -52,9 +54,14 @@
 							<li class="layui-nav-item">
 								<a href="javascript:;">会员管理</a>
 								<dl class="layui-nav-child">
-									<dd><a href="">移动模块</a></dd>
-									<dd><a href="">后台模版</a></dd>
-									<dd><a href="">电商平台</a></dd>
+									<dd><a href="#">会员查询</a></dd>
+									<dd><a href="./vipcheck.html">审核管理</a></dd>
+									<dd><a href="./recommendedUnits.html">推荐单位管理</a></dd>
+									<dd><a href="./vipduty.html">会员职位管理</a></dd>
+									<dd><a href="./InvitationCode.html">邀请码管理</a></dd>
+									<dd><a href="">通知管理</a></dd>
+									<dd><a href="">会员信息统计</a></dd>
+									<dd><a href="">会费管理</a></dd>
 								</dl>
 							</li>
 							<li class="layui-nav-item">
@@ -89,7 +96,6 @@
 			<div class="content_navl"><span><i class="layui-icon layui-icon-home"></i>首页&nbsp;&nbsp;</span>/<span>&nbsp;会员管理&nbsp;&nbsp;</span>/&nbsp;会员查询</div>
 			<div class="content_navi">
 				<form class="layui-form" action="">
-
 					<div class="layui-container-fluid">
 						<div class="layui-fluid">
 							<div class="layui-row">
@@ -129,11 +135,11 @@
 										<div class="grid-demo grid-demo-bg1">
 												<label for="">地域：
 													<div>
-															<div class="layui-input-block">
-																	<input type="text" name="title" lay-verify="title" id="szd"
-																		autocomplete="off" placeholder="现所在地" class="layui-input">
-																</div>
-																<div id="test1"></div>
+														<div class="layui-input-block">
+															<input type="text" name="title" lay-verify="title" id="szd"
+																autocomplete="off" placeholder="现所在地" class="layui-input">
+															</div>
+															<div id="test1"></div>
 													</div>
 												</label>
 											</div>
@@ -224,10 +230,7 @@
 					</tbody>
 				</table>
 				<div>
-
 					<div id="layui"></div>
-					<div></div>
-					<div></div>
 				</div>
 			</div>
 		</div>
@@ -344,7 +347,7 @@ function findvip(name,memberNo,artTypeId,location,orgIdentityId){
 					elem: 'layui'
 					, count: pagedata.length,
 					layout: ['count', 'prev', 'page', 'next', 'limit','skip'],
-					limit: 2,
+					limit: 10,
 					jump: function (obj) {
 						//模拟渲染
 						document.getElementById('tb').innerHTML = function () {
