@@ -39,6 +39,10 @@ var base = {
             data: thisdata,
             traditional: true,
             async: true,
+            // headers: {
+            //     // "Content-Type": "application/json;charset=utf-8",
+            //     'Authorization': token
+            // },
             success: function (data) {
                 //请求成功后的回调函数
                 if (typeof data == "string") {
@@ -48,10 +52,6 @@ var base = {
                     eval(funcName)(data);
                     return true;
                 }
-                layui.use('element', function() {
-                    var element = layui.element;
-                    element.init();
-                });
             }
         });
     },
