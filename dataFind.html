@@ -7,6 +7,150 @@
 	<link rel="stylesheet" href="./layui/css/layui.css">
 	<link rel="stylesheet" href="./css/hyfind.css">
 	<link rel="stylesheet" href="./css/header.css">
+	<style>
+		.content_nav {
+			width: 80%;
+		}
+
+		.content {
+			height: auto;
+		}
+
+		.c_n_lis {
+			width: 100%;
+			margin-top: 30px;
+			display: flex;
+			position: relative;
+		}
+
+		.c_n_lis1 {
+			margin-top: 30px;
+		}
+
+		.n_l_cont {
+			width: 272px;
+			margin-left: 40px;
+		}
+
+		.n_l_cont1 {
+			margin-left: 0 !important;
+		}
+
+		.n_l_cont>p {
+			margin-bottom: 10px;
+			font-size: 14px;
+			font-weight: 600;
+			padding-left: 4px;
+		}
+
+		.layui-input,
+		.layui-unselect {
+			width: 272px;
+			height: 30px;
+		}
+
+		.inpbox {
+			width: 272px;
+			height: 30px;
+			display: flex;
+		}
+
+		.ib_cont>.layui-form-select {
+			width: 80px;
+			height: 30px;
+		}
+
+		.ib_cont>.layui-form-select>.layui-select-title>.layui-input {
+			width: 80px;
+			height: 30px;
+		}
+
+		.i_b_tit {
+			width: 50px;
+			line-height: 30px;
+			text-align: center;
+
+		}
+
+		.hytitle {
+			margin-left: 100px;
+		}
+
+		#xszdinp {
+			width: 100%;
+			height: 30px;
+			z-index: 0;
+			border: 0;
+			border-radius: 6px;
+			box-sizing: border-box;
+			padding-left: 10px;
+		}
+
+		#test3 {
+			width: 272px;
+			height: 30px;
+			position: absolute;
+			left: 0;
+			z-index: 99;
+			height: 128px;
+			overflow: auto;
+			border: solid rgba(222, 225, 230, 0.1) 1;
+			visibility: hidden;
+			background-color: white;
+		}
+		.l_c_box{
+			width: 272px;
+			display: flex;
+		}
+		.layui-icon-table,.layui-icon-refresh-3{
+			width: 30px !important;
+			height: 28px;
+			display: block;
+			text-align: center;
+			font-size: 20px;
+			padding: 0 4px;
+			background: #fff;
+			line-height: 30px;
+			cursor:pointer;
+			border:1px solid #ccc;
+		}
+		.layui-icon-refresh-3{
+		font-size: 16px;
+		padding: 0 6px;
+		}
+		.c_b_tits{
+			display: block;
+			width: 30px;
+			height: 27px;
+			margin-top: 1px;
+			text-align: center;
+			line-height: 30px;
+			background: #fff;
+			padding: 0 8px;
+		}
+		.n_l_but{
+			position: absolute;
+			bottom:0;
+			right: 30px;
+		}
+		.n_l_but > div{
+           width:74px;
+		   height: 34px;
+		   text-align: center;
+		   line-height: 34px;
+		   color: #fff;
+		   border-radius: 4px;
+		   float: left;
+		   cursor:pointer;
+		}
+		.chaxun{
+			background: #0081FF;
+		}
+        .qingkong{
+			background: #9E9E9E;
+			margin-left: 24px;
+		}
+	</style>
 </head>
 
 <body>
@@ -82,23 +226,147 @@
 	</div>
 	<!-- 内容 -->
 	<div class="hytitle">
-		<div class="hytitle_font">本协会的会员</div>
+		<div class="hytitle_font2">统计结果展示</div>
+		<div class="hytitle_font">会员数据查询</div>
 	</div>
 	<div class="content">
 		<div class="content_nav">
-			<div class="content_navl"><span><i class="layui-icon layui-icon-home"></i>首页&nbsp;&nbsp;</span>/<span>&nbsp;会员管理&nbsp;&nbsp;</span>/&nbsp;会员查询</div>
+			<div class="content_navl"><span><i
+						class="layui-icon layui-icon-home"></i>首页&nbsp;&nbsp;</span>/<span>&nbsp;会员管理&nbsp;&nbsp;</span>/&nbsp;会员信息统计
+			</div>
 			<div class="content_navi">
 				<form class="layui-form" action="">
 
-					
+					<div class="c_n_lis c_n_lis1">
+						<div class="n_l_cont n_l_cont1">
+							<p>性别：</p>
+
+							<select name="hy" lay-verify="xbinp" id="xbinp">
+								<option value="">请选择</option>
+								<option value="1">男</option>
+								<option value="2">女</option>
+							</select>
+
+						</div>
+						<div class="n_l_cont">
+							<p>年龄：</p>
+							<div class="inpbox">
+								<div class="ib_cont">
+									<select name="hy" lay-verify="nlinp1" id="nlinp1">
+										<option value="">0</option>
+									</select>
+								</div>
+								<div class="i_b_tit">至</div>
+								<div class="ib_cont">
+									<select name="hy" lay-verify="nlinp2" id="nlinp2">
+										<option value="">100</option>
+									</select>
+								</div>
+							</div>
+						</div>
+
+						<div class="n_l_cont">
+							<p>民族：</p>
+
+							<select name="hy" lay-verify="mzinp" id="mzinp">
+								<option value="">请选择</option>
+							</select>
+
+						</div>
+
+						<div class="n_l_cont">
+							<p>籍贯：</p>
+
+							<select name="hy" lay-verify="jginp" id="jginp">
+								<option value="">请选择</option>
+							</select>
+
+						</div>
+
+					</div>
+					<div class="c_n_lis">
+						<div class="n_l_cont n_l_cont1">
+							<p>现所在地：</p>
+
+							<input id='xszdinp' type="text" />
+							<div id='test3'></div>
+						</div>
+						<div class="n_l_cont">
+							<p>文化程度：</p>
+
+							<select name="hy" lay-verify="whcdinp" id="whcdinp">
+								<option value="">请选择</option>
+							</select>
+						</div>
+						<div class="n_l_cont">
+							<p>政治面貌：</p>
+
+							<select name="hy" lay-verify="mminp" id="mminp">
+								<option value="">请选择</option>
+							</select>
+						</div>
+						<div class="n_l_cont">
+							<p>新文艺群体：</p>
+
+							<select name="hy" lay-verify="wyqtinp" id="wyqtinp">
+								<option value="">请选择</option>
+								<option value="1">是</option>
+								<option value="2">否</option>
+							</select>
+						</div>
+					</div>
+					<div class="c_n_lis">
+							<div class="n_l_cont n_l_cont1">
+								<p>艺术门类：</p>
+	
+								<select name="hy" lay-verify="ysmlinp" id="ysmlinp">
+										<option value="">请选择</option>
+									</select>
+							</div>
+							<div class="n_l_cont">
+								<p>推荐单位/人：</p>
+	
+								<select name="hy" lay-verify="tjdwinp" id="tjdwinp">
+									<option value="">请选择</option>
+								</select>
+							</div>
+							<div class="n_l_cont">
+								<p>组织身份：</p>
+	
+								<select name="hy" lay-verify="zzsfinp" id="zzsfinp">
+									<option value="">请选择</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="c_n_lis">
+								<div class="n_l_cont n_l_cont1">
+									<p>入会时间：</p>
+		
+									<div class="l_c_box">
+											<i class="layui-icon layui-icon-table"></i>  
+											<input type="text" name="date" id="time1" lay-verify="date"
+											style="width:122px;display: inline-block" placeholder="开始时间"
+											autocomplete="off" class="layui-input">
+											<div class="c_b_tits">至</div> 
+											<input type="text" name="date" id="time2" lay-verify="date"
+												style="width:122px;display: inline-block" placeholder="结束时间"
+												autocomplete="off" class="layui-input">
+												<i class="layui-icon layui-icon-refresh-3"></i>  
+											
+									</div>
+								</div>
+
+								<div class="n_l_but">
+								<div class="chaxun">查询</div>
+								<div class="qingkong">清空条件</div>
+								</div>
+
+							</div>
 				</form>
 			</div>
 			<div class="hy_btn">
-				<button type="button" class="layui-btn layui-btn-normal" id="btnclear"style="background-color: grey;">清空条件</button>
-				<button type="button" class="layui-btn layui-btn-normal">通讯录导出</button>
-				<a href="./newvip.html"><button type="button" class="layui-btn layui-btn-normal">新增</button></a>
-				<button type="button" class="layui-btn layui-btn-normal">查询</button>
-				<div class="clear"></div>
+
 			</div>
 			<div class="findres">
 				<button type="button" class="layui-btn layui-btn-normal">批量导出</button>
@@ -145,7 +413,12 @@
 	<script src="./js/header.js"></script>
 	<script src="./js/common.js"></script>
 	<script src="./js/hyfind.js"></script>
+
 	<script>
+		var data = {
+
+		};
+		let treedata = [];
 		$(".tatou").css({ "background-color": "#059afe", "color": "white" });
 		// layui.use('laypage', function () {
 		// 	var laypage = layui.laypage;
@@ -157,74 +430,130 @@
 		// 		, limit: 1
 		// 	});
 		// });
-		let treedata = [];
-		function wtf(data) {
-            data.map((v, i) => {
-                let obj = {};
-                obj.title = v.areaName;
-                obj.id = i;
-                obj.children = [];
-                v.childList.map((val, ind) => {
-                    let objc = {};
-                    objc.title = val.areaName;
-                    objc.id = i+'-'+ind;
-                    objc.children = [];
-                    val.childList.map((vv, ii) => {
-                        let objcc = {};
-                        objcc.title = vv.areaName;
-                        objcc.id = i+'-'+ind + '-' + ii;
-                        objc.children.push(objcc);
-                    })
-                    obj.children.push(objc);
-                });
-                treedata.push(obj);
-            });
-        }
-        var data = {
-        }
-        base.commonAjax('clav/area/getAddressList', data, function (data) {
-            if (data.code == 1) {
-                //console.log("z", data);
-                wtf(data.data);
-               // console.log(treedata)
-                layui.use('tree', function () {
-                    var tree = layui.tree;
 
-                    //渲染
-                    var inst1 = tree.render({
-                        elem: '#test1'  //绑定元素
-                        ,click: function(obj){
-                       // console.log(obj.data); //得到当前点击的节点数据
-                       // console.log(obj.elem); //得到当前节点元素 
-                        // console.log($('.layui-tree-set').attr("data-id"));
-                      //  console.log(obj.data.id); //得到当前点击的节点数据
-                        let str = obj.data.id;
-                       // console.log(str.indexOf('-')>-1);
-                         if(str.indexOf('-')>-1 && str.indexOf('-')){
-                            let arr = str.split('-');
-                            if(arr.length == 3){
-                               // console.log(arr);
-                       // console.log(treedata[arr[0]].title);
-                       // console.log(treedata[arr[0]].title);
-                       // console.log(obj.data.title);
-                        var place=treedata[arr[0]].title+"-"+treedata[arr[0]].title+"-"+obj.data.title;
-                        //console.log("地区",place);
-                        $('#szd').val(place);
-                        $('#test1').css("visibility","hidden");
-                            }
-                         }
-                    }
-                        , data:treedata
+		for (var i = 1; i <= 100; i++) {
+			let str = '<option value="' + i + '">' + i + '</option>';
+			$('#nlinp1').append(str);
+			$('#nlinp2').append(str);
+		}
+
+
+
+
+		layui.use('form', function () {
+			var form = layui.form;
+			//民族
+			base.commonAjax('clav/nation/getClavNationList', data, function (res) {
+				if (res.code == 1) {
+					//console.log(res.data);
+					res.data.map(item => {
+						$('#mzinp').append('<option value="' + item.id + '">' + item.nation + '</option>');
+					});
+					form.render();
+				}
+			});
+			//籍贯
+			base.commonAjax('clav/area/getProvinceList', data, function (res) {
+				if (res.code == 1) {
+					//console.log(res.data);
+					res.data.map(item => {
+						$('#jginp').append('<option value="' + item.id + '">' + item.areaName + '</option>');
+					});
+					form.render();
+				}
+			});
+			//面貌
+			base.commonAjax('clav/politicsStatus/getClavPoliticsStatusList', data, function (res) {
+				if (res.code == 1) {
+					//console.log(res.data);
+					res.data.map(item => {
+						$('#mminp').append('<option value="' + item.id + '">' + item.politicsStatus + '</option>');
+					});
+					form.render();
+				}
+			});
+
+			        //艺术门类
+					base.commonAjax('clav/artType/getClavArtTypeList', data, function (res) {
+                if (res.code == 1) {
+                    console.log(res.data);
+                    res.data.map(item => {
+                        $('#ysmlinp').append('<option value="' + item.id + '">' + item.artType + '</option>');
                     });
-                    
-                });
-            }
-        });
+                    form.render();
+                }
+            });
+
+		});
 
 
-	var data = {
 
-	}
+
+		function wtf(data) {
+			data.map((v, i) => {
+				let obj = {};
+				obj.title = v.areaName;
+				obj.id = i;
+				obj.children = [];
+				v.childList.map((val, ind) => {
+					let objc = {};
+					objc.title = val.areaName;
+					objc.id = i + '-' + ind;
+					objc.children = [];
+					val.childList.map((vv, ii) => {
+						let objcc = {};
+						objcc.title = vv.areaName;
+						objcc.id = i + '-' + ind + '-' + ii;
+						objc.children.push(objcc);
+					})
+					obj.children.push(objc);
+				});
+				treedata.push(obj);
+			});
+		}
+
+		base.commonAjax('clav/area/getAddressList', data, function (data) {
+			if (data.code == 1) {
+				//console.log("z", data);
+				wtf(data.data);
+				// console.log(treedata)
+				layui.use('tree', function () {
+					var tree = layui.tree;
+
+					//渲染
+					var inst1 = tree.render({
+						elem: '#test3'  //绑定元素
+						, click: function (obj) {
+							// console.log(obj.data); //得到当前点击的节点数据
+							// console.log(obj.elem); //得到当前节点元素 
+							// console.log($('.layui-tree-set').attr("data-id"));
+							//  console.log(obj.data.id); //得到当前点击的节点数据
+							let str = obj.data.id;
+							// console.log(str.indexOf('-')>-1);
+							if (str.indexOf('-') > -1 && str.indexOf('-')) {
+								let arr = str.split('-');
+								if (arr.length == 3) {
+									// console.log(arr);
+									// console.log(treedata[arr[0]].title);
+									// console.log(treedata[arr[0]].title);
+									// console.log(obj.data.title);
+									var place = treedata[arr[0]].title + "-" + treedata[arr[0]].title + "-" + obj.data.title;
+									//console.log("地区",place);
+									$('#xszdinp').val(place);
+									$('#test3').css("visibility", "hidden");
+								}
+							}
+						}
+						, data: treedata
+					});
+
+				});
+			}
+		});
+		$('#xszdinp').click(function () {
+			$('#test3').css("visibility", "visible");
+		});
+
 
 		base.commonAjax('clav/member/getClavMemberList', data, function (data) {
 			var pagedata = [];
@@ -240,7 +569,7 @@
 				laypage.render({
 					elem: 'layui'
 					, count: pagedata.length,
-					layout: ['count', 'prev', 'page', 'next', 'limit','skip'],
+					layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
 					limit: 2,
 					jump: function (obj) {
 						//模拟渲染
@@ -260,8 +589,8 @@
 
 
 
-	function auto(obj){
-		return '<tr>' +
+		function auto(obj) {
+			return '<tr>' +
 				'<td style="width: 50px">' +
 				'<input type="checkbox" name="" title="" lay-skin="primary">' +
 				'</td>' +
@@ -274,35 +603,32 @@
 				'<td>' + obj.artTypeId + '</td>' +
 				'<td>' + obj.location + '</td>' +
 				'<td>' +
-				'<button class="layui-btn">编辑</button>' +
-				'<button class="layui-btn layui-btn-normal">查看</button>' +
+				'<button class="layui-btn">查看</button>' +
 				'<button class="layui-btn layui-btn-normal">导出</button>' +
-				'<button class="layui-btn layui-btn-warm">移除</button>' +
-				'<button class="layui-btn layui-btn-danger">重置密码</button>' +
 				'</td>' +
 				'</tr>'
-	}
+		}
 
 
 
 
-	$('#szd').click(function(){
-            $('#test1').css("visibility","visible");
-        })
-	$('#btnclear').click(function(){
-		$('#vipname,#vipnumber,#arttype,#szd,#time1,#time2,#tjdw,#zzsf').val('');
-		//$('#arttype,#zzsf').empty();
-		//form.render("select");
-	})
-	layui.use('form', function(){
-          var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
-	form.on('#btnclear',function(elem){
-     //执行清空
-    $("#arttype").empty();
-    form.render();
-	});
+		$('#szd').click(function () {
+			$('#test1').css("visibility", "visible");
+		})
+		$('#btnclear').click(function () {
+			$('#vipname,#vipnumber,#arttype,#szd,#time1,#time2,#tjdw,#zzsf').val('');
+			//$('#arttype,#zzsf').empty();
+			//form.render("select");
+		})
+		layui.use('form', function () {
+			var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+			form.on('#btnclear', function (elem) {
+				//执行清空
+				$("#arttype").empty();
+				form.render();
+			});
 
-})
+		})
 	</script>
 </body>
 

@@ -198,13 +198,13 @@
     #test3{
         width: 206px;
         height: 128px;
-    overflow: auto;
-    position: absolute;
-    left: 0;
-    background-color: white;
-    z-index: 999;
-    border: solid rgba(222,225,230,0.3);
-    visibility: hidden;
+        overflow: auto;
+        position: absolute;
+        left: 0;
+        background-color: white;
+        z-index: 999;
+        border: solid rgba(222,225,230,0.3);
+        visibility: hidden;
     }
     
     .j_c_ulF li .inp::-webkit-input-placeholder{
@@ -666,6 +666,7 @@
         let data = {};
         layui.use('form', function () {
             var form = layui.form;
+            //民族列表
             base.commonAjax('clav/nation/getClavNationList', data, function (res) {
                 if (res.code == 1) {
                     //console.log(res.data);
@@ -675,7 +676,7 @@
                     form.render();
                 }
             });
-
+         //籍贯
             base.commonAjax('clav/area/getProvinceList', data, function (res) {
                 if (res.code == 1) {
                     //console.log(res.data);
@@ -685,6 +686,7 @@
                     form.render();
                 }
             });
+            //面貌
             base.commonAjax('clav/politicsStatus/getClavPoliticsStatusList', data, function (res) {
                 if (res.code == 1) {
                     //console.log(res.data);
@@ -694,6 +696,7 @@
                     form.render();
                 }
             });
+            //文化程度
             base.commonAjax('clav/educationLevel/getClavEducationLevelList', data, function (res) {
                 if (res.code == 1) {
                     //console.log(res.data);
@@ -703,7 +706,7 @@
                     form.render();
                 }
             });
-
+          //专业职称
             base.commonAjax('clav/professionalTitle/getClavProfessionalTitleList', data, function (res) {
                 if (res.code == 1) {
                     //console.log(res.data);
@@ -713,7 +716,7 @@
                     form.render();
                 }
             });
-
+        //艺术门类
             base.commonAjax('clav/artType/getClavArtTypeList', data, function (res) {
                 if (res.code == 1) {
                     console.log(res.data);
