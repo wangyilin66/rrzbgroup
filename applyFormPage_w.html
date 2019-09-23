@@ -662,7 +662,7 @@
         let xbinp,zzmminp,mzinp,jginp,whcdinp,zyzcinp,ysmlinp;
         let height = $('body').height();
         $('.pop_up').css('height', height + 200);
-        $('.pop_up').hide();
+        // $('.pop_up').hide();
         let data = {};
         layui.use('form', function () {
             var form = layui.form;
@@ -860,19 +860,19 @@
         }
      });
      $('.u_f_quxiao').on('click',function () { 
-        window.location.href = "applyForPage.html";
+        window.location.href = "applyForPage_w.html";
       });
 
+$('.bc').on('click',function () { 
 
+    window.location.href = "applyUpdatePage_w.html";
+ })
 
      $('.updown').on('click',function(){
          var file = $("#file")[0].files[0];
          var formData = new FormData();
          formData.append("file", file);
  
-      //window.location.href = "applyUpdatePage.html";
-
-
     $.ajax({
         type: "post",
         url: base.baseurl + 'clav/upload/uploadFile',

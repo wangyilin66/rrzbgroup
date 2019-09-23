@@ -210,7 +210,7 @@ font-weight: 600;
             console.log($(this).prop('checked'));
         })
         $('.zuce').on('click', function () {
-            window.location.href = "applyFormPage.html";
+          
         });
 
         $('.login').on('click', function () {
@@ -234,6 +234,7 @@ font-weight: 600;
             success: function (data) {
                 //请求成功后的回调函数
                 console.log(data);
+                window.location.href = "applyFormPage_w.html";
             }
         });
 

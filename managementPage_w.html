@@ -35,7 +35,8 @@
             height: 32px;
             border:0;
             border-radius: 6px;
-            padding-left: 10px;
+			padding-left: 10px;
+	
         }
         .n_l_cont2{
             margin-left: 50px;
@@ -117,7 +118,8 @@
 
         #zwinp{
             width: 189px;
-            height: 28px;
+			height: 28px;
+			border:1px solid #E8E8E8;
           
         }
         #m_b_pagebox{
@@ -126,7 +128,30 @@
         }
         .m_b_inpbox2{
             display: none;
-        }
+		}
+		.m_b_bot_box{
+			float:right;
+			display: flex;
+			margin-right: 20px;
+			margin-top: 30px;
+		}
+		.m_b_bot_box > div{
+			width: 70px;
+			height: 30px;
+			text-align: center;
+			line-height: 30px;
+			font-size: 14px;
+			cursor:pointer;
+		}
+		.b_b_xuanze{
+			color: #fff;
+			background: #398DC0;
+		}
+		.b_b_quxiao{
+			color: #999;
+			border:1px solid #ccc;
+			margin-left: 10px;
+		}
 
 	</style>
 </head>
@@ -152,7 +177,8 @@
 									<dl class="layui-nav-child">
 											<dd><a href="removeUserPage_w.html">理事调整</a></dd>
 											<dd><a href="addvipPage_w.html">增补会员单位</a></dd>
-										<dd><a href="">电商平台</a></dd>
+											<dd><a href="addVipPage1.html">添加文艺志愿者1</a></dd>
+											<dd><a href="addVipPage2.html">添加文艺志愿者2</a></dd>
 									</dl>
 								</li>
 								<li class="layui-nav-item">
@@ -237,7 +263,7 @@
                 <thead>
                     <tr class="tatou">
                         <th style="width: 50px">
-                            <input type="checkbox" name="" title="" lay-skin="primary">
+                            <input type="radio" name="" title="" class="popallchecked">
                             <span>全选</span>
                         </th>
                         <th>会内职务</th>
@@ -253,7 +279,10 @@
                 </tbody>
             </table>
             <div id="m_b_pagebox"></div>
-
+            <div class="m_b_bot_box">
+				<div class="b_b_xuanze">选择</div>
+				<div class="b_b_quxiao">取消</div>
+			</div>
           </div>
     </div>
 	<div class="content">
@@ -291,7 +320,7 @@
 					<thead>
 						<tr class="tatou">
 							<th style="width: 50px">
-								<input type="checkbox" name="" title="" lay-skin="primary">
+								<input type="radio" name="" title="" lay-skin="primary">
 							</th>
 							<th>平台编号</th>
 							<th>会员编号</th>
@@ -330,6 +359,7 @@
 		var data = {
 
 		};
+		let popallflag = false;
 		let treedata = [];
         let height = $('body').height();
         $('.pop_up').css('height', height+300);
@@ -350,7 +380,41 @@
                 {zw:"主席",c:100},
                 {zw:"主席",c:100},
                 {zw:"主席",c:100},
-            ]
+            ];
+
+        $('.b_b_xuanze').on('click',function () { 
+
+			objdata.map((item,ind) => {
+
+            //console.log($('m_b_c'+ind).is(':checked'));
+	
+			console.log($('.m_b_c'+ind).is(':checked'));
+	
+		   });
+		});
+
+			$('.popallchecked').on('click', function () {
+
+			if(!popallflag){
+				objdata.map((item, ind) => {
+					//console.log($('m_b_c'+ind).is(':checked'));
+					$('.m_b_c' + ind).prop('checked',true);
+
+				});
+				$('.popallchecked').prop('checked',true);
+				popallflag = true;
+			}else{
+				objdata.map((item, ind) => {
+					//console.log($('m_b_c'+ind).is(':checked'));
+					$('.m_b_c' + ind).prop('checked',false);
+
+				});
+				$('.popallchecked').prop('checked',false);
+				popallflag = false;
+			}
+
+			})
+
 			//调用分页
 			layui.use(['laypage', 'layer'], function () {
 				var laypage = layui.laypage
@@ -376,7 +440,7 @@
 				});
 			});
             function auto2(obj,ind) {
-			return '<tr><td><input type="checkbox" class="m_b_c'+ind+'" name="m_b_check" title=""></td><td>'+ obj.zw+'</td><td>'+obj.c+'</td></tr>';
+			return '<tr><td><input type="radio" class="tbut m_b_c'+ind+'" title=""></td><td>'+ obj.zw+'</td><td>'+obj.c+'</td></tr>';
 		}
 
 		base.commonAjax('clav/member/getClavMemberList', data, function (data) {
