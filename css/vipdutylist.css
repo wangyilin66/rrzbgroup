@@ -2,7 +2,6 @@
     height: 30px;
     padding-left: 100px;
     padding-top: 20px;
-    display: flex;
 }
 .hytitle_font{
     width: 126px;
@@ -14,22 +13,11 @@
     line-height: 8px;
     font-weight: 800;
     font-size: 16px;
-    margin-left: 50px;
-}
-.hytitle_font2{
-    width: 126px;
-    height: 15px;
-    border-bottom: 0; 
-    color: #999;
-    margin-top: 12px;
-    text-align: center;
-    line-height: 8px;
-    font-weight: 800;
-    font-size: 16px;
 }
 .content{
     background-color:#eceff4;
     height:auto;
+    padding-bottom: 43px;
 }
 .content_nav{
     width: 90%;

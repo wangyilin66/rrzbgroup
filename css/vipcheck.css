@@ -131,9 +131,12 @@ label{
 }
 .findres{
     width: 100%;
-    height: 318px;
+    height: auto;
     background-color: white;
     margin-top: 35px;
+    padding-bottom: 55px;
+    padding-left: 13px;
+    padding-right: 13px;
 }
 .lisfindres{
     padding-top: 34px;
@@ -187,4 +190,54 @@ td{
     position: relative;
     z-index: 101;
     /* opacity: 0; */
+}
+.cover1,.cover2,.cover3{
+    width: 100%;
+    height:100%;
+    background-color: rgba(143, 144, 148,0.3);
+    position: absolute;
+    z-index: 999;
+    top: 2px;
+
+    /* visibility: visible;*/
+    display:none;    
+}
+
+.cover2 textarea{
+    width: 492px;
+    margin-top: 33px;
+    padding-left: 6px;
+    padding-top: 6px;
+}
+.tcc_content{
+    width: 600px;
+    height: 300px;
+    background-color: #fff;
+    margin: auto;
+    margin-top: 12%;
+}
+.tcc_title{
+    padding-top: 10px;
+    padding-left: 12px;
+    font-size: 16px;
+}
+.tcc_scwj{
+    height: 226px;
+    text-align: center;
+    line-height: 226px;
+}
+.findfile{
+    height: 190px;
+}
+.tcc_an{
+    padding-left: 450px;
+}
+.wj{
+    margin-top: 33px;
+    padding-left: 60px;
+}
+.findfile_an{
+    float: right;
+    position: relative;
+    right: 14px;
 }

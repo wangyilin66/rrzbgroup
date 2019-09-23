@@ -7,6 +7,8 @@
 	<link rel="stylesheet" href="./layui/css/layui.css">
 	<link rel="stylesheet" href="./css/hyfind.css">
 	<link rel="stylesheet" href="./css/header.css">
+	<style>
+	</style>
 </head>
 
 <body>
@@ -52,9 +54,14 @@
 							<li class="layui-nav-item">
 								<a href="javascript:;">会员管理</a>
 								<dl class="layui-nav-child">
-									<dd><a href="">移动模块</a></dd>
-									<dd><a href="">后台模版</a></dd>
-									<dd><a href="">电商平台</a></dd>
+									<dd><a href="#">会员查询</a></dd>
+									<dd><a href="./vipcheck.html">审核管理</a></dd>
+									<dd><a href="./recommendedUnits.html">推荐单位管理</a></dd>
+									<dd><a href="./vipduty.html">会员职位管理</a></dd>
+									<dd><a href="./InvitationCode.html">邀请码管理</a></dd>
+									<dd><a href="">通知管理</a></dd>
+									<dd><a href="">会员信息统计</a></dd>
+									<dd><a href="">会费管理</a></dd>
 								</dl>
 							</li>
 							<li class="layui-nav-item">
@@ -89,7 +96,6 @@
 			<div class="content_navl"><span><i class="layui-icon layui-icon-home"></i>首页&nbsp;&nbsp;</span>/<span>&nbsp;会员管理&nbsp;&nbsp;</span>/&nbsp;会员查询</div>
 			<div class="content_navi">
 				<form class="layui-form" action="">
-
 					<div class="layui-container-fluid">
 						<div class="layui-fluid">
 							<div class="layui-row">
@@ -115,7 +121,7 @@
 									<div class="grid-demo grid-demo-bg1">
 										<label for="">艺术门类：
 											<div>
-												<select id="yishu"name="modules" lay-verify="required" lay-search="" id="arttype">
+												<select id="yishu"name="modules" lay-verify="required" lay-search="" id="arttype"lay-filter="yishu">
 													<option value="">请选择</option>
 													<!-- <option value="1">layer</option>
 													<option value="2">form</option>
@@ -129,11 +135,11 @@
 										<div class="grid-demo grid-demo-bg1">
 												<label for="">地域：
 													<div>
-															<div class="layui-input-block">
-																	<input type="text" name="title" lay-verify="title" id="szd"
-																		autocomplete="off" placeholder="现所在地" class="layui-input">
-																</div>
-																<div id="test1"></div>
+														<div class="layui-input-block">
+															<input type="text" name="title" lay-verify="title" id="szd"
+																autocomplete="off" placeholder="现所在地" class="layui-input">
+															</div>
+															<div id="test1"></div>
 													</div>
 												</label>
 											</div>
@@ -192,7 +198,7 @@
 				<button type="button" class="layui-btn layui-btn-normal" id="btnclear"style="background-color: grey;">清空条件</button>
 				<button type="button" class="layui-btn layui-btn-normal">通讯录导出</button>
 				<a href="./newvip.html"><button type="button" class="layui-btn layui-btn-normal">新增</button></a>
-				<button type="button" class="layui-btn layui-btn-normal">查询</button>
+				<button type="button" class="layui-btn layui-btn-normal" onclick="tjfind()">查询</button>
 				<div class="clear"></div>
 			</div>
 			<div class="findres">
@@ -224,10 +230,7 @@
 					</tbody>
 				</table>
 				<div>
-
 					<div id="layui"></div>
-					<div></div>
-					<div></div>
 				</div>
 			</div>
 		</div>
@@ -316,11 +319,19 @@
             }
         });
 
-
+function findvip(name,memberNo,artTypeId,location,orgIdentityId){
+	var name;
+	var memberNo;
+	var artTypeId;
+	var location;
+	var orgIdentityId;
 	var data = {
-
+		name:name,
+		memberNo:memberNo,
+		artTypeId:artTypeId,
+		location:location,
+		orgIdentityId:orgIdentityId
 	}
-
 		base.commonAjax('clav/member/getClavMemberList', data, function (data) {
 			var pagedata = [];
 			console.log(data);
@@ -336,7 +347,7 @@
 					elem: 'layui'
 					, count: pagedata.length,
 					layout: ['count', 'prev', 'page', 'next', 'limit','skip'],
-					limit: 2,
+					limit: 10,
 					jump: function (obj) {
 						//模拟渲染
 						document.getElementById('tb').innerHTML = function () {
@@ -344,7 +355,7 @@
 								, thisData = pagedata.concat().splice(obj.curr * obj.limit - obj.limit, obj.limit);
 							layui.each(thisData, function (index, item) {
 								arr.push(auto(item));
-								console.log(item);
+								//console.log(item);
 							});
 							return arr.join('');
 						}();
@@ -352,9 +363,33 @@
 				});
 			});
 		});
-
-
-
+	}
+	findvip();
+	layui.use('form', function(){
+          var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+       form.on('select(yishu)',function(data){
+		category=data.value;
+		yishu=data.elem[data.elem.selectedIndex].text;
+           form.render('select');
+	   })
+	})
+	function tjfind(){
+		var name;
+		var memberNo;
+		//console.log( $("#vipname").val())
+		//console.log( $("#vipnumber").val())
+		//console.log( $("#szd").val())
+		if ($("#vipname").val()!='') {
+			name=$("#vipname").val();
+		} 	
+		if ($("#vipnumber").val()!='') {
+			memberNo=$("#vipnumber").val();	
+		} 
+		 //location=$("#szd").val();
+		 //console.log(category)
+		 //artTypeId=category
+		findvip(name,memberNo);
+	}
 	function auto(obj){
 		return '<tr>' +
 				'<td style="width: 50px">' +
