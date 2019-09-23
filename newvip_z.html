@@ -12,16 +12,15 @@
 </head>
 
 <body>
-  	<!-- 头部 -->
-	<div class="headerpage">
-            <div class="layui-container-fluid">
-                <div class="layui-fluid">
-                    <div class="layui-row layui-col-space5">
-                        <div class="layui-col-md5" style="padding-right: 0px;">
-                            <div class="wltop">
-                                <div class="logo">
-                                    <img src="./img/admin_logo.png" alt="">
-                                </div>
+    <!-- 头部 -->
+    <div class="headerpage">
+        <div class="layui-container-fluid">
+            <div class="layui-fluid">
+                <div class="layui-row layui-col-space5">
+                    <div class="layui-col-md5" style="padding-right: 0px;">
+                        <div class="wltop">
+                            <div class="logo">
+                                <img src="./img/admin_logo.png" alt="">
                             </div>
                         </div>
                         <div class="layui-col-md7" style="padding-left: 0px;">
@@ -88,13 +87,14 @@
                 </div>
             </div>
         </div>
+    </div>
     <!-- 内容 -->
     <div class="hytitle">
     </div>
     <div class="content">
         <div class="content_nav">
             <div class="content_navl"><span><i
-                        class="layui-icon layui-icon-home"></i>首页&nbsp;&nbsp;</span>/<span>&nbsp;志愿者管理&nbsp;&nbsp;</span>/&nbsp;添加会员
+                        class="layui-icon layui-icon-home"></i>首页&nbsp;&nbsp;</span>/<span>&nbsp;会员管理&nbsp;&nbsp;</span>/&nbsp;添加会员
             </div>
             <form class="layui-form" action="">
                 <div class="grinfo">
@@ -423,13 +423,13 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="layui-col-md12  ewai" style="visibility: hidden;">
+                                    <div class="layui-col-md12  ewai" style="display: none;">
                                         <div class="layui-col-md4">
                                             <div class="grid-demo grid-demo-bg1">
                                                 <div class="layui-form-item tec">
-                                                    <label class="layui-form-label"><span>*</span>主要从事的艺术门类：</label>
+                                                    <label class="layui-form-label">主要从事的艺术门类：</label>
                                                     <div class="layui-input-inline">
-                                                        <select name="hy" lay-verify="required" lay-search="" id="ysml2" lay-filter="ysml">
+                                                        <select name="hy" lay-verify="required" lay-search="" id="ysml2" lay-filter="ysml2">
                                                             <option value="">请选择</option>
                                                             <!-- <option value="1">layer</option>
                                                             <option value="2">form</option> -->
@@ -535,7 +535,7 @@
                 </div>
                 <div class="anniu">
                     <button type="button" class="layui-btn layui-btn-normal" onclick="tijiao()">提交</button>
-                    <button type="button" class="layui-btn layui-btn-primary">取消</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">取消</button>
                 </div>
             </form>
         </div>
@@ -664,10 +664,14 @@
            //ysml=data.elem[data.elem.selectedIndex].text;
            form.render('select');
        })
+       form.on('select(ysml2)',function(data){
+           ysml2=data.value;
+           //ysml=data.elem[data.elem.selectedIndex].text;
+           form.render('select');
+       })
     });
     $(".jiah").on('click', function () {
-        $(".ewai").css()
-    
+        $(".ewai").css('display','block')   
     })
     </script>
 </body>

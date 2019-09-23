@@ -58,11 +58,14 @@ base.commonAjax('clav/educationLevel/getClavEducationLevelList', data, function 
 base.commonAjax('clav/artType/getClavArtTypeList', data, function (data) {
         if (data.code == 1) {
                 let str = '';
+                let str2 = '';
                 for (var i = 0; i < data.data.length; i++) {
                         // $('#ysml').append(
                         str += '<option value="' + data.data[i].id + '">' + data.data[i].artType + '</option>';
+                        str2 += '<option value="' + data.data[i].id + '">' + data.data[i].artType + '</option>';
                 }
                 $('#ysml').append(str);
+                $('#ysml2').append(str2);
                 form.render();
         }
 });
@@ -221,13 +224,20 @@ function tijiao() {
                                 var associationDuty = $('#qgwork').val();//全国职务
                                 var socialDuty = $('#qtwork').val();//其他职务
                                 var artTypeId = ysml;//艺术门类
+                                var artTypeId2 = ysml2;//艺术门类
                                 var specificAreas = $('#genre').val();//具体领域
+                                var specificAreas2 = $('#genre2').val();//具体领域2
                                 var activityExperience = $('#experience2').val();//文艺或公益经历
                                 var recommendType = $('#tjtype').val();//推荐类型
                                 var relationshipGroup = $('#tjcompany').val();//关联组织
                                 var linkman = $('#lxpeople').val();//联系人
                                 var linkmanPhone = $('#sjh').val();//联系人电话
-                                
+
+                                var art_type_id=artTypeId+'-'+specificAreas;
+                                var specific_areas;
+                                if($('#ysml2').val()!=''){
+                                        specific_areas=artTypeId2+'-'+specificAreas2;
+                                }                             
                                 var data = {
                                         name: name,
                                         nation: nation,
@@ -253,8 +263,10 @@ function tijiao() {
                                         graduateSchool: graduateSchool,
                                         associationDuty: associationDuty,
                                         socialDuty: socialDuty,
-                                        artTypeId: artTypeId,
-                                        specificAreas: specificAreas,
+                                        // artTypeId: artTypeId,
+                                        // specificAreas: specificAreas,
+                                        art_type_id:art_type_id,
+                                        specific_areas:specific_areas,
                                         activityExperience: activityExperience,
                                         recommendType: recommendType,
                                         relationshipGroup: relationshipGroup,
@@ -264,7 +276,11 @@ function tijiao() {
                                 console.log(data);
                                 base.commonAjax('clav/member/addClavMember', data, function (data) {
                                         if (data.code == 1) {
-                                                alert('成功');
+                                                console.log('成功')
+                                                window.location.href='./vipfind_z.html'
+                                        }
+                                        else{
+                                                alert(data.message)
                                         }
                                 })
                         }

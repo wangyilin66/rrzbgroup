@@ -119,6 +119,7 @@
 									</div>
 								</div>
 								<div class="layui-col-md3">
+										<div class="layui-form-item">
 									<div class="grid-demo grid-demo-bg1">
 										<label for="">艺术门类：
 											<div>
@@ -130,6 +131,7 @@
 												</select>
 											</div>
 										</label>
+									</div>
 									</div>
 								</div>
 								<div class="layui-col-md3">
@@ -178,11 +180,11 @@
 												<div class="grid-demo">
 													<label for="">组织身份：
 														<div>
-															<select name="modules" lay-verify="required" lay-search="" id="zzsf">
+															<select name="modules" lay-verify="required" lay-search="" id="zzsf" lay-filter="zzsf">
 																<option value="">请选择</option>
-																<option value="1">aaaa</option>
+																<!-- <option value="1">aaaa</option>
 																<option value="2">bbb</option>
-																<option value="3">ccc</option>
+																<option value="3">ccc</option> -->
 															</select>
 														</div>
 													</label>
@@ -193,15 +195,16 @@
 							</div>
 						</div>
 					</div>
-				</form>
+				
 			</div>
 			<div class="hy_btn">
-				<button type="button" class="layui-btn layui-btn-normal" id="btnclear"style="background-color: grey;">清空条件</button>
+				<button type="reset" class="layui-btn layui-btn-normal" id="btnclear"style="background-color: grey;">清空条件</button>
 				<button type="button" class="layui-btn layui-btn-normal">通讯录导出</button>
-				<a href="./newvip.html"><button type="button" class="layui-btn layui-btn-normal">新增</button></a>
+				<a href="./newvip_z.html"><button type="button" class="layui-btn layui-btn-normal">新增</button></a>
 				<button type="button" class="layui-btn layui-btn-normal" onclick="tjfind()">查询</button>
 				<div class="clear"></div>
 			</div>
+		</form>
 			<div class="findres">
 				<button type="button" class="layui-btn layui-btn-normal">批量导出</button>
 				<table class="layui-table" lay-skin="line">
