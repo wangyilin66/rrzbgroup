@@ -3,34 +3,34 @@ layui.use(['form', 'layedit', 'laydate'], function(){
     var form = layui.form
     ,layer = layui.layer
     ,layedit = layui.layedit
-    ,laydate = layui.laydate;
+    //,laydate = layui.laydate;
     
-    //日期
-    laydate.render({
-      elem: '#date'
-    });
-    laydate.render({
-      elem: '#date1'
-    });
-    function useLayDateMultiple(cls) {
-      layui.use('laydate', function() {
-      var laydate = layui.laydate;
-      lay('#' + cls).each(function() {
-      laydate.render({
-      elem : this,
-      trigger : 'click'
-      //,done: function(value, date, endDate){
-        //var timechecked=endDate;
-        //console.log(timechecked);
-        //console.log(value); //得到日期生成的值，如：2017-08-18
-        //console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
-        //console.log(endDate); //得结束的日期时间对象，开启范围选择（range: true）才会返回。对象成员同上。
-      //}
-      });
-      });
-      });
-      }
-      useLayDateMultiple('time1'); useLayDateMultiple('time2');
+    // //日期
+    // laydate.render({
+    //   elem: '#date'
+    // });
+    // laydate.render({
+    //   elem: '#date1'
+    // });
+    // function useLayDateMultiple(cls) {
+    //   layui.use('laydate', function() {
+    //   var laydate = layui.laydate;
+    //   lay('#' + cls).each(function() {
+    //   laydate.render({
+    //   elem : this,
+    //   trigger : 'click'
+    //   //,done: function(value, date, endDate){
+    //     //var timechecked=endDate;
+    //     //console.log(timechecked);
+    //     //console.log(value); //得到日期生成的值，如：2017-08-18
+    //     //console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+    //     //console.log(endDate); //得结束的日期时间对象，开启范围选择（range: true）才会返回。对象成员同上。
+    //   //}
+    //   });
+    //   });
+    //   });
+    //   }
+    //   useLayDateMultiple('time1'); useLayDateMultiple('time2');
     //创建一个编辑器
     var editIndex = layedit.build('LAY_demo_editor');
    

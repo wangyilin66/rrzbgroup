@@ -30,6 +30,7 @@
 .content{
     background-color:#eceff4;
     height:auto;
+    padding-bottom: 50px;
 }
 .content_nav{
     width: 90%;
@@ -157,7 +158,6 @@ label{
     height: auto;
     background-color: white;
     margin-top: 35px;
-    padding-bottom: 55px;
     padding-left: 13px;
     padding-right: 13px;
 }
