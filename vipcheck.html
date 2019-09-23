@@ -95,7 +95,7 @@
 		<div class="content_nav" >
 			<div class="content_navl"><span><i class="layui-icon layui-icon-home"></i>首页&nbsp;&nbsp;</span>/<span>&nbsp;会员管理&nbsp;&nbsp;</span>/&nbsp;审核管理</div>
 			<div class="content_navi">
-				<form class="layui-form" action="">
+				<form class="layui-form" action="" >
 					<div class="layui-container-fluid">
 						<div class="layui-fluid">
 							<div class="layui-row">
@@ -219,7 +219,7 @@
 					<div></div>
 				</div>
 			</div>
-		</form>
+		
 		</div>
     <!-- 理事审核 -->
     <div class="content_nav" style="display: none">
@@ -336,15 +336,15 @@
                                                 <div class="layui-input-inline">
                                                         <div class="date_font date_tubiao"><i class="layui-icon layui-icon-date"></i></div>
                                                     <input type="text" name="date" id="time1" lay-verify="date"
-                                                        style="width:122px;display: inline-block" placeholder="开始时间"
+                                                        style="width:122px;box-shadow: 0px 1px 3px #888888;display: inline-block" placeholder="开始时间"
                                                         autocomplete="off" class="layui-input">
                                                     <div class="date_font">至</div> 
                                                     <input type="text" name="date" id="time2" lay-verify="date"
-                                                        style="width:122px;display: inline-block" placeholder="结束时间"
+                                                        style="width:122px;box-shadow: 0px 1px 3px #888888;display: inline-block" placeholder="结束时间"
                                                         autocomplete="off" class="layui-input">
-                                                    <div class="date_font date_tubiao2"><i class="layui-icon layui-icon-refresh-1"></i></div>	
+                                                    <button class="date_font date_tubiao2 "type="reset" style="border: none;"><i class="layui-icon layui-icon-refresh-1"></i></button>	
                                                 </div>
-                                                <button type="button" class="layui-btn layui-btn-normal quer">确认</button>
+                                                <button type="button" id="z" class="layui-btn layui-btn-normal quer">确认</button>
                                        
                                     </div>
                                 </div>
@@ -378,7 +378,7 @@
                             <th>操作</th>
                         </tr>
                     </thead>
-                    <tbody class="vipdutysh">
+                    <tbody id="vipdutysh">
                         <!-- <tr> 
                             <td style="width: 50px">
                                 <input type="checkbox" name="" title="" lay-skin="primary">
@@ -396,10 +396,11 @@
                     </tbody>
                 </table>
                 <div>
-                    <div id="shuju"></div>
+                    <div id="shuju3"></div>
                 </div>
             </div>
 		</div>
+	</form>
 </div>
 <!-- 会员单位审核 通过 -->
 <div class="cover1">
@@ -439,7 +440,7 @@
 	</div>
 </div>
 	<script src="./layui/layui.js"></script>
-	<script src="./js/layuicommon.js"></script>
+	 <script src="./js/layuicommon2.js"></script> 
 	<script src="./js/jquery.min.js"></script>
 	<script src="./js/header.js"></script>
 	<script src="./js/common.js"></script>
@@ -450,9 +451,6 @@
 		function close1() {
 			$(".cover1,.cover2,.cover3").css( "display", "none");		
 		}
-		layui.use('laypage', function () {
-			var laypage = layui.laypage;
-        });
         
         $('.hytitle_font').click(function() {
 				var i = $(this).index();				
@@ -460,18 +458,86 @@
 				$('.hytitle_font').eq(i).css("border-bottom","solid");
 				$('.content_nav').eq(i).show().siblings().hide();				  
 			});
+ layui.use('laydate', function(){
+   var laydate = layui.laydate;
+   //日期
+   laydate.render({
+	  elem: '#date'
+    });
+    laydate.render({
+	  elem: '#date1'	
+    });
+function useLayDateMultiple(cls) {
+      layui.use('laydate', function() {
+	  var laydate = layui.laydate;
 
+      lay('#' + cls).each(function() {
+      laydate.render({
+	  elem : this
+	  ,trigger : 'click'
+	  ,format: 'yyyy/MM/dd HH:mm:ss'
+      ,done: function(value, datetime, endDate){
+		 timechecked=value;
+		 bjtime1=timechecked.split(/\s+/)[0].replace(/\//g, "");
+        console.log(bjtime1);
+	  }
+      });
+      });
+      });
+}
+	  
+function useLayDateMultiple2(cls) {
+      layui.use('laydate', function() {
+      var laydate = layui.laydate;
+      lay('#' + cls).each(function() {
+      laydate.render({
+      elem : this,
+	  trigger : 'click'
+	  ,format: 'yyyy/MM/dd HH:mm:ss'
+      ,done: function(value, datetime, endDate){
+		 timechecked2=value;
+		 bjtime2=timechecked2.split(/\s+/)[0].replace(/\//g, "");
+        console.log(bjtime2);
+      }
+      });
+      });
+      });
+	  }	  
+useLayDateMultiple('time1'); useLayDateMultiple2('time2');
 
-			layui.use('form', function(){
-			  var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
-			form.on('checkbox(table111)', function(data){
-			// console.log(data.elem); //得到checkbox原始DOM对象
-			console.log(data.elem.checked); //是否被选中，true或者false
-			// console.log(data.value); //复选框value值，也可以通过data.elem.value得到
-			// console.log(data.othis); //得到美化后的DOM对象
-			});        
-		      form.render();
-			})
+ });	
+$('#z').on('click', function (){
+	if(bjtime2<bjtime1){
+		alert("结束时间不能小于开始时间")
+	}
+	else{
+		startTime=timechecked;
+    endTime=timechecked2;
+    timeType=2;
+    var data={
+        startTime:startTime,
+        endTime:endTime,
+        timeType:timeType
+    }
+	console.log(data)
+    base.commonAjax('clav/scheduleTime/updateScheduleTime', data, function (data) {
+        if(data.code==1){
+            alert("设置成功")
+        }
+    })
+	}
+})
+// $('').on('click', function () {
+// 	console.log("a")
+// 	timechecked=''
+// 	$('#time2').empty();
+// })
+// $(document).on('click','.date_tubiao2', function () {
+// 	console.log('a')
+// 	$('#time1').reset();
+	
+// })
+
 	</script>
 </body>
 
