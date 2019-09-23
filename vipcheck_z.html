@@ -52,7 +52,7 @@
 							<li class="layui-nav-item">
 								<a href="javascript:;">会员管理</a>
 								<dl class="layui-nav-child">
-									<dd><a href="#">会员查询</a></dd>
+										<dd><a href="vipfind_z.html">会员查询</a></dd>
 									<dd><a href="./vipcheck_z.html">审核管理</a></dd>
 									<dd><a href="./recommendedUnits_z.html">推荐单位管理</a></dd>
 									<dd><a href="./vipduty_z.html">会员职位管理</a></dd>
@@ -243,16 +243,16 @@
                                                 <input type="text" name="date" id="time2" lay-verify="date"
                                                     style="width:122px;box-shadow: 0px 1px 3px #888888;display: inline-block" placeholder="结束时间"
                                                     autocomplete="off" class="layui-input">
-                                                <div class="date_font date_tubiao2"><i class="layui-icon layui-icon-refresh-1"></i></div>	
+                                                <button class="date_font date_tubiao2" type="reset" style="border: none;"><i class="layui-icon layui-icon-refresh-1"></i></button>	
                                             </div>
-                                            <button type="button" class="layui-btn layui-btn-normal quer">确认</button>
+                                            <button type="button" id="z2"class="layui-btn layui-btn-normal quer">确认</button>
                                    
                                 </div>
                             </div>
                        
                             <div class="layui-col-sm3">
                                 <div class="hy_btn">
-                                    <button type="button" class="layui-btn layui-btn-normal" >导出</button>
+                                    <button type="button" class="layui-btn layui-btn-normal" id="li_daochu">导出</button>
                                    
                                     <div class="clear"></div>
                                 </div>
@@ -282,20 +282,6 @@
                     </tr>
                 </thead>
                 <tbody id="viplish">
-                    <!-- <tr>                   
-                        <td>1</td>
-                        <td>2019-1-2</td>
-                        <td>中国协会</td>
-                        <td>张三</td>
-                        <td>主席</td>
-                        <td>李四</td>
-                        <td>主席</td>
-                        <td>
-                            <button class="layui-btn">查看</button>
-                            <button class="layui-btn layui-btn-normal">通过</button>
-                            <button class="layui-btn layui-btn-danger">不通过</button>
-                        </td>
-                    </tr> -->
                 </tbody>
             </table>
             <div>
@@ -327,8 +313,7 @@
                                                         autocomplete="off" class="layui-input">
                                                     <button class="date_font date_tubiao2 "type="reset" style="border: none;"><i class="layui-icon layui-icon-refresh-1"></i></button>	
                                                 </div>
-                                                <button type="button" id="z" class="layui-btn layui-btn-normal quer">确认</button>
-                                       
+                                                <button type="button" id="z" class="layui-btn layui-btn-normal quer">确认</button>                                      
                                     </div>
                                 </div>
                            
@@ -362,20 +347,6 @@
                         </tr>
                     </thead>
                     <tbody id="vipdutysh">
-                        <!-- <tr> 
-                            <td style="width: 50px">
-                                <input type="checkbox" name="" title="" lay-skin="primary">
-                            </td>                  
-                            <td>1</td>
-                            <td>2019-1-2</td>
-                            <td>中国文艺志愿者协会</td>
-                            <td>
-                                <button class="layui-btn">查看</button>
-                                <button class="layui-btn layui-btn-normal">通过</button>
-                                <button class="layui-btn layui-btn-danger">不通过</button>
-                                <button class="layui-btn layui-btn-warm">下载</button>
-                            </td>
-                        </tr> -->
                     </tbody>
                 </table>
                 <div>
@@ -385,7 +356,7 @@
 		</div>
 	</form>
 </div>
-<!-- 理事审核 -->
+<!-- 理事审核 按钮操作-->
 <div class="cover4">
 		<div class="tcc_content">
 				<div class="tcc_title">查看上传文件</div>
@@ -396,6 +367,30 @@
 				</div>
 			</div>
 	</div>
+	<div class="cover5">
+		<div class="tcc_content">
+				<div class="tcc_title">操作确认</div>
+				<div class="findfile li_querentg">
+					请您确定是否通过？
+				</div>
+				<div class="findfile_an">
+						<button type="button" class="layui-btn layui-btn-normal" id="li_titg">确认</button>
+						<button type="button" class="layui-btn layui-btn-primary" onclick="close1()">关闭</button>
+				</div>
+			</div>
+	</div>
+	<div class="cover6">
+			<div class="tcc_content">
+					<div class="tcc_title">操作确认</div>
+					<div class="findfile li_querentg">
+						请您确定是否不通过？
+					</div>
+					<div class="findfile_an">
+							<button type="button" class="layui-btn layui-btn-normal" id="li_tinotg">确认</button>
+							<button type="button" class="layui-btn layui-btn-primary" onclick="close1()">关闭</button>
+					</div>
+				</div>
+		</div>
 <!-- 会员单位审核 通过 -->
 <div class="cover1">
 	<div class="tcc_content">
@@ -443,7 +438,7 @@
 		$('.content_nav').eq(0).show().siblings().hide();
 		$(".tatou").css({ "background-color": "#059afe", "color": "white" });
 		function close1() {
-			$(".cover1,.cover2,.cover3,.cover4").css( "display", "none");		
+			$(".cover1,.cover2,.cover3,.cover4,.cover5,.cover6").css( "display", "none");		
 		}
         
         $('.hytitle_font').click(function() {
@@ -508,6 +503,28 @@ $('#z').on('click', function (){
 		startTime=timechecked;
     endTime=timechecked2;
     timeType=2;
+    var data={
+        startTime:startTime,
+        endTime:endTime,
+        timeType:timeType
+    }
+	console.log(data)
+    base.commonAjax('clav/scheduleTime/updateScheduleTime', data, function (data) {
+        if(data.code==1){
+            alert("设置成功")
+        }
+    })
+	}
+})
+
+$('#z2').on('click', function (){
+	if(bjtime2<bjtime1){
+		alert("结束时间不能小于开始时间")
+	}
+	else{
+		startTime=timechecked;
+    endTime=timechecked2;
+    timeType=1;
     var data={
         startTime:startTime,
         endTime:endTime,
