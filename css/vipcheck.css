@@ -180,7 +180,7 @@ td{
     z-index: 101;
     /* opacity: 0; */
 }
-.cover1,.cover2,.cover3{
+.cover1,.cover2,.cover3,.cover4{
     width: 100%;
     height:100%;
     background-color: rgba(143, 144, 148,0.3);
@@ -191,7 +191,14 @@ td{
     /* visibility: visible;*/
     display:none;    
 }
-
+/* .cover4{
+    width: 100%;
+    height:100%;
+    background-color: rgba(143, 144, 148,0.3);
+    position: absolute;
+    z-index: 999;
+    top: 2px;
+} */
 .cover2 textarea{
     width: 492px;
     margin-top: 33px;
@@ -230,10 +237,13 @@ td{
     position: relative;
     right: 14px;
 }
-#shuju3{
+#shuju3,#shuju2{
     padding-left: 480px;
 }
 #shuju3 .layui-laypage-btn {
+    margin-top: 0;
+}
+#shuju2 .layui-laypage-btn {
     margin-top: 0;
 }
 .date_tubiao2{
