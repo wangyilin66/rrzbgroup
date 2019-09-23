@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8" />
-	<title>会员查询</title>
+	<title>增补会员单位</title>
 	<link rel="stylesheet" href="./layui/css/layui.css">
 	<link rel="stylesheet" href="./css/hyfind.css">
 	<link rel="stylesheet" href="./css/header.css">
@@ -119,6 +119,9 @@
 		   cursor:pointer;
 		   border-radius: 6px;
 	   }
+	   .findres{
+		   padding:0 !important;
+	   }
 	</style>
 </head>
 
@@ -143,7 +146,8 @@
 									<dl class="layui-nav-child">
 											<dd><a href="removeUserPage_w.html">理事调整</a></dd>
 											<dd><a href="addvipPage_w.html">增补会员单位</a></dd>
-										<dd><a href="">电商平台</a></dd>
+											<dd><a href="addVipPage1.html">添加文艺志愿者1</a></dd>
+											<dd><a href="addVipPage2.html">添加文艺志愿者2</a></dd>
 									</dl>
 								</li>
 								<li class="layui-nav-item">
@@ -165,7 +169,7 @@
 								<li class="layui-nav-item">
 									<a href="javascript:;">会员管理</a>
 									<dl class="layui-nav-child">
-											<dd><a href="vipfind_z.html">会员查询</a></dd>
+										<dd><a href="vipfind_z.html">会员查询</a></dd>
 										<dd><a href="./vipcheck_z.html">审核管理</a></dd>
 										<dd><a href="./recommendedUnits_z.html">推荐单位管理</a></dd>
 										<dd><a href="./vipduty_z.html">会员职位管理</a></dd>
@@ -224,8 +228,8 @@
 					</div>
 					<div class="c_l_right">
 						<p class="pp"><span class="sp">*</span>申请书：</p>
-						<input type="text" class="c_l_inp" placeholder="点击选择文件"/>
-						<input type="file" class='upfile'/>
+						<input type="text" class="c_l_inp sqtext" placeholder="点击选择文件"/>
+						<input type="file" id='sqinp' class='upfile' onchange="sqschangepic(this)"/>
 						<i class="layui-icon layui-icon-upload"></i>  
 					</div>
 				</div>
@@ -233,14 +237,14 @@
 				<div class="cont_li">
 						<div class="c_l_left">
 								<p class="pp"><span class="sp">*</span>协会章程：</p>
-						<input type="text" class="c_l_inp" placeholder="点击选择文件"/>
-						<input type="file" class='upfile'/>
+						<input type="text" class="c_l_inp zctext" placeholder="点击选择文件"/>
+						<input type="file" id='zcinp' class='upfile'  onchange="zcchangepic(this)"/>
 						<i class="layui-icon layui-icon-upload"></i>  
 						</div>
 						<div class="c_l_right">
 							<p class="pp"><span class="sp">*</span>单位情况介绍：</p>
-							<input type="text" class="c_l_inp" placeholder="点击选择文件"/>
-							<input type="file" class='upfile'/>
+							<input type="text" class="c_l_inp jstext" placeholder="点击选择文件"/>
+							<input type="file" id='jsinp' class='upfile'  onchange="jschangepic(this)"/>
 							<i class="layui-icon layui-icon-upload"></i>  
 						</div>
 					</div>
@@ -248,8 +252,8 @@
 					<div class="cont_li">
 							<div class="c_l_left">
 									<p class="pp"><span class="sp">*</span>资质证明：</p>
-									<input type="text" class="c_l_inp" placeholder="点击选择文件"/>
-									<input type="file" class='upfile'/>
+									<input type="text" class="c_l_inp zztext" placeholder="点击选择文件"/>
+									<input type="file" id='zzinp' class='upfile'  onchange="zzchangepic(this)"/>
 									<i class="layui-icon layui-icon-upload"></i>  
 							</div>
 							<div class="c_l_right">
@@ -320,6 +324,178 @@
 	var data = {
 
 	}
+
+
+	let sqs = null,zc = null,js = null,zz = null;
+
+	function sqschangepic(obj) {
+            //console.log(obj.files[0]);//这里可以获取上传文件的name
+            var newsrc = getObjectURL(obj.files[0]);
+			sqs = newsrc;
+			$('.sqtext').val(newsrc);
+		}
+		function zcchangepic(obj) {
+            //console.log(obj.files[0]);//这里可以获取上传文件的name
+            var newsrc = getObjectURL(obj.files[0]);
+			zc = newsrc;
+			$('.zctext').val(newsrc);
+		}
+		function jschangepic(obj) {
+            //console.log(obj.files[0]);//这里可以获取上传文件的name
+            var newsrc = getObjectURL(obj.files[0]);
+		   js = newsrc;
+		   $('.jstext').val(newsrc);
+		}
+		function zzchangepic(obj) {
+            //console.log(obj.files[0]);//这里可以获取上传文件的name
+            var newsrc = getObjectURL(obj.files[0]);
+			zz = newsrc;
+			$('.zztext').val(newsrc);
+		}
+		
+        //建立一個可存取到該file的url
+        function getObjectURL(file) {
+            var url = null;
+            // 下面函数执行的效果是一样的，只是需要针对不同的浏览器执行不同的 js 函数而已
+            if (window.createObjectURL != undefined) { // basic
+                url = window.createObjectURL(file);
+            } else if (window.URL != undefined) { // mozilla(firefox)
+                url = window.URL.createObjectURL(file);
+            } else if (window.webkitURL != undefined) { // webkit or chrome
+                url = window.webkitURL.createObjectURL(file);
+            }
+            return url;
+		}
+		
+		$('.upload').on('click',function () { 
+			let sqs2 = null,zc2 = null,js2 = null,zz2 = null,dwname;
+			dwname = $('.dwtitle').val();
+			console.log(dwname);
+           if(sqs == null){
+			   alert('请上传申请书');
+			} else {
+				var file = $("#sqinp")[0].files[0];
+				var formData = new FormData();
+				formData.append("file", file);
+					$.ajax({
+						type: "post",
+						url: base.baseurl + 'clav/upload/uploadFile',
+						data: formData,
+						cache: false,
+						processData: false,
+						contentType: false,
+						success: function (res) {
+							console.log(res);
+						 if(res.code == 1){
+                          sqs2 = res.data[0].url;
+						 }else{
+							 console.log('申请书上传失败');
+						 }
+						}
+
+					});
+			}
+			if (zc == null) {
+				alert('请上传协会章程');
+			}else {
+				var file = $("#zcinp")[0].files[0];
+				var formData = new FormData();
+				formData.append("file", file);
+					$.ajax({
+						type: "post",
+						url: base.baseurl + 'clav/upload/uploadFile',
+						data: formData,
+						cache: false,
+						processData: false,
+						contentType: false,
+						success: function (res) {
+							console.log(res);
+						 if(res.code == 1){
+                          zc2 = res.data[0].url;
+						 }else{
+							 console.log('协会章程上传失败');
+						 }
+						}
+
+					});
+			}
+			if (js == null) {
+				alert('请上传单位情况介绍');
+			}else {
+				var file = $("#jsinp")[0].files[0];
+				var formData = new FormData();
+				formData.append("file", file);
+					$.ajax({
+						type: "post",
+						url: base.baseurl + 'clav/upload/uploadFile',
+						data: formData,
+						cache: false,
+						processData: false,
+						contentType: false,
+						success: function (res) {
+							console.log(res);
+						 if(res.code == 1){
+                          js2 = res.data[0].url;
+						 }else{
+							 console.log('单位情况介绍上传失败');
+						 }
+						}
+
+					});
+			}
+			if (zz == null) {
+				alert('请上传资质证明');
+			}else {
+				var file = $("#zzinp")[0].files[0];
+				var formData = new FormData();
+				formData.append("file", file);
+					$.ajax({
+						type: "post",
+						url: base.baseurl + 'clav/upload/uploadFile',
+						data: formData,
+						cache: false,
+						processData: false,
+						contentType: false,
+						success: function (res) {
+							console.log(res);
+						 if(res.code == 1){
+						  zz2 = res.data[0].url;
+						 }else{
+								console.log('资质证明上传失败');
+							}
+						}
+
+					});
+			}
+				
+			setTimeout(() => {
+				if (dwname != null && sqs2 != null && zc2 != null && js2 != null && zz2 != null) {
+					let data = {
+						unitName: dwname,
+						applicationBook: sqs2,
+						unitSituation: js2,
+						aptitudeProve: zz2,
+						associationRule: zc2,
+					}
+					base.commonAjax('clav/memberUnit/addClavMemberUnit', data, function (res) {
+						console.log(res);
+						if(res.code == 1){
+							alert('上传成功');
+						}else{
+							alert('上传失败');
+						}
+					});
+
+				} else {
+					alert("请填写单位名称。");
+				}
+			}, 2000);
+
+		
+		})
+
+		
+
 		base.commonAjax('clav/member/getClavMemberList', data, function (data) {
 			var pagedata = [];
 			console.log(data);

@@ -37,6 +37,7 @@ var base = {
             dateType: "json", //参数返回的类型
             type: "POST", //参数传送的方式
             data: thisdata,
+
             traditional: true,
             async: true,
             success: function (data) {
