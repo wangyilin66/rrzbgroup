@@ -348,7 +348,7 @@
 			var location;
 			var sTime;
 			var eTime;
-			var orgIdentityId = 9;
+			var orgIdentityId =9;
 			var data = {
 				name: name,
 				memberNo: memberNo,
@@ -521,6 +521,12 @@
 				'</td>' +
 				'</tr>'
 		}
+				// 会员查询 按钮编辑
+				$(document).on('click', '.hy_edit', function () {
+			// console.log(id);
+			var hy_edit = $(this).attr('id').replace("hy_edit", "");
+			window.location.href="./newvip2_z.html?id="+hy_edit;
+		})
 		// 会员查询 按钮查看
 		$(document).on('click', '.hy_find', function () {
 			// console.log(id);

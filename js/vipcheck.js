@@ -270,13 +270,4 @@ $(document).on('click','.no', function () {
      
          })
 })
- $("#li_daochu").click(function(){
-     var data={
-         
-     }
-    base.commonAjax('clav/testWord/exportMillCertificate', data, function (data) {
-    
-    
-    })
- })
 

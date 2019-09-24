@@ -232,7 +232,7 @@ function tijiao() {
                                 var relationshipGroup = $('#tjcompany').val();//关联组织
                                 var linkman = $('#lxpeople').val();//联系人
                                 var linkmanPhone = $('#sjh').val();//联系人电话
-
+                                var orgIdentityId=9
                                 //var artTypeId=artTypeId+'-'+specificAreas;
                                 //var specific_areas;
                                 if($('#ysml2').val()!=''){
@@ -240,9 +240,10 @@ function tijiao() {
                                         specificAreas=artTypeId21+'-'+specificAreas21+','+artTypeId22+'-'+specificAreas22;
                                 }if($('#ysml2').val()==''){
                                         artTypeId=artTypeId21;
-                                        specificAreas=specificAreas21;
+                                        specificAreas=artTypeId21+'-'+specificAreas21;
                                 }                             
                                 var data = {
+                                        orgIdentityId:orgIdentityId,
                                         name: name,
                                         nation: nation,
                                         gender: gender,

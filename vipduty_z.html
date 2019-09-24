@@ -102,15 +102,15 @@
 									<div class="grid-demo">
 										<label for="">会内职务：
 											<div>
-												<input type="text" placeholder="会内职务：">
+												<input type="text" placeholder="会内职务：" id="hnzw">
 											</div>
 										</label>
 									</div>
                                 </div>
                                 <div class="layui-col-sm3 layui-col-md-offset6">
                                     <div class="hy_btn">
-                                        <button type="button" class="layui-btn layui-btn-normal" style="background-color: grey;">清空条件</button>
-                                        <button type="button" class="layui-btn layui-btn-normal">新增</button>
+                                        <button type="reset" class="layui-btn layui-btn-normal" style="background-color: grey;">清空条件</button>
+                                        <button type="button" class="layui-btn layui-btn-normal"id="hnzw_add1">新增</button>
                                         <button type="button" class="layui-btn layui-btn-normal" onclick="preduty()">查询</button>
                                         <div class="clear"></div>
                                     </div>
@@ -136,42 +136,32 @@
 							<th>操作</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr>						
-							<td>12313</td>
-							<td>主席</td>							
-							<td>111</td>
-							<td>                                
-								<button type="button" class="layui-btn ">编辑</button>
-                                <button type="button" class="layui-btn layui-btn-danger">删除</button>
-								<button type="button" class="layui-btn layui-btn-normal" onclick="preduty()">查看列表</button>
-							</td>
-						</tr>
-						<tr>
-                            <td>12313</td>
-                            <td>副主席</td>							
-                            <td>111</td>
-							<td>
-                                <button type="button" class="layui-btn ">编辑</button>
-                                <button type="button" class="layui-btn layui-btn-danger">删除</button>
-                                <button type="button" class="layui-btn layui-btn-normal">查看列表</button>
-							</td>
-						</tr>
+					<tbody id="duty_info">
+						
 					</tbody>
 				</table>
 				<div>
 					<div id="shuju"></div>
-					<div></div>
-					<div></div>
 				</div>
 			</div>
 		</form>
 		</div>
 </div>
-
+<div class="cover4">
+	<div class="tcc_content">
+		<div class="tcc_title">新增职位</div>
+		<div class="findfile hnzw">
+			会内职务：<input type="text">
+		</div>
+		<div class="findfile_an">
+				<button type="button" class="layui-btn layui-btn-normal" onclick="hnzw_add()">确定</button>
+			<button type="button" class="layui-btn layui-btn-primary" onclick="close1()">关闭</button>
+		</div>
+	</div>
+</div>
 
 	<script src="./layui/layui.js"></script>
-	
+	<script src="./js/layuicommon2.js"></script>
 	<script src="./js/jquery.min.js"></script>
 	<script src="./js/header.js"></script>
 	<script src="./js/common.js"></script>
@@ -180,6 +170,80 @@
 		function preduty() {
 			console.log('a')
 			window.location.href="./vipdutylist_z.html";
+		}
+		function close1() {
+			$(".cover4").css("display", "none");
+		}
+		 $(document).on('click','#hnzw_add1', function () {
+			$(".cover4").css("display", "inline-block");		
+			var orgIdentity=$("#hnzw").val()
+			var data={
+				orgIdentity:orgIdentity
+			}
+			$(document).on('click','#hnzw_add1', function () {
+			base.commonAjax('clav/orgIdentity/addClavOrgIdentity', data, function (data) {
+				if(data.code==1){
+					$(".cover4").css("display", "none");
+				}
+			})
+			})
+		 })
+		function vipdutygl(orgIdentity){
+			var orgIdentity;
+		var data={
+			orgIdentity:orgIdentity
+		}
+			base.commonAjax('clav/orgIdentity/getClavOrgIdentityList', data, function (data) {
+				var pagedata = [];
+				console.log(data);
+				pagedata = data.data;
+				//console.log(pagedata)
+
+				//调用分页
+				layui.use(['laypage', 'layer'], function () {
+					var laypage = layui.laypage
+						, layer = layui.layer;
+
+					laypage.render({
+						elem: 'shuju'
+						, count: pagedata.length,
+						layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+						limit: 10,
+						jump: function (obj) {
+							//模拟渲染
+							document.getElementById('duty_info').innerHTML = function () {
+								var arr = []
+									, thisData = pagedata.concat().splice(obj.curr * obj.limit - obj.limit, obj.limit);
+								layui.each(thisData, function (index, item) {
+									arr.push(auto(index, item));
+									//console.log(item);
+								});
+								return arr.join('');
+							}();
+						}
+					});
+				});
+			});
+		}
+		vipdutygl();
+			function auto(index, obj) {
+			return '<tr>'+						
+					'<td>' + (index + 1) + '</td>'+	
+					'<td>' + obj.orgIdentity + '</td>'+								
+					'<td>' + obj.count + '</td>'+	
+					'<td>'+	                            
+						'<button type="button" class="layui-btn ">编辑</button>'+	
+						'<button type="button" class="layui-btn layui-btn-danger">删除</button>'+	
+						'<button type="button" class="layui-btn layui-btn-normal" onclick="preduty()">查看列表</button>'+	
+					'</td>'+	
+				'</tr>'
+		}
+		function preduty(){
+			var orgIdentity;
+			if ($("#hnzw").val() != '') {
+				orgIdentity = $("#hnzw").val();
+			}
+			vipdutygl(orgIdentity)
 		}
 	</script>
 </body>
