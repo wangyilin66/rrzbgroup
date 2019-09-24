@@ -72,8 +72,111 @@
             top:0;
             width: 100%;
             background: rgba(0, 0, 0,0.3);
-            z-index: 999;
-        }
+			z-index: 999;
+			display: none;
+		}
+		.textare_box{
+			width: 685px;
+            height: 500px;
+            margin-left: -343px;
+            background: #fff;
+            position: absolute;
+            left: 50%;
+			top:200px;
+			display: none;
+		}
+		.textare_box > p{
+            font-size: 16px;
+            padding-left: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            line-height: 60px;
+            border-bottom: 1px solid #ccc;
+		}
+		.top_tit{
+			font-size: 16px;
+			
+		}
+		.to_list{
+			width: 75px;
+			height: 30px;
+			text-align: center;
+			line-height: 30px;
+			color: #fff;
+			background: #0396FC;
+			border-radius: 6px;
+			margin-top:15px;
+			margin-left: 15px;
+			cursor:pointer;
+		}
+		.top_box{
+			width: 100%;
+			display: flex;
+			margin-left: 10px;
+			line-height: 60px;
+		}
+		.top_box > input{
+			margin-left: 20px;
+			margin-top: 22px;
+			cursor:pointer;
+		}
+		.top_box>span{
+			margin-left: 10px;
+		}
+
+		 .show_list_box{
+			width: 685px;
+            height: 700px;
+            margin-left: -343px;
+            background: #fff;
+            position: absolute;
+            left: 50%;
+			top:100px;
+		 }
+		 .show_list_box > p{
+            font-size: 16px;
+            padding-left: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            line-height: 60px;
+            border-bottom: 1px solid #ccc;
+		}
+		.reback_send{
+			width: 75px;
+			height: 34px;
+			background: #3692FE;
+			color: #fff;
+			line-height: 34px;
+			text-align: center;
+			float: right;
+			margin-right: 20px;
+			margin-top: 15px;
+			cursor:pointer;
+		}
+		.l_b_box{
+			float: right;
+			margin-right: 20px;
+			display:flex;
+			margin-top: 60px;
+			line-height: 28px;
+			margin-right: -75px;
+		}
+		.l_b_box > span{
+			margin-left: 10px;
+		}
+		.search_name{
+			width: 90px;
+			height: 28px;
+			box-sizing: border-box;
+			padding-left: 8px;
+			margin-left: 15px;
+		}
+		#jginp{
+			width: 85px;
+			height: 28px;
+			margin-left: 15px;
+			cursor:pointer;
+		}
         .send_message_box{
             width: 685px;
             height: 700px;
@@ -81,7 +184,8 @@
             background: #fff;
             position: absolute;
             left: 50%;
-            top:100px;
+			top:100px;
+			display: none;
         }
         .send_message_box > p{
             font-size: 16px;
@@ -90,7 +194,84 @@
             box-sizing: border-box;
             line-height: 60px;
             border-bottom: 1px solid #ccc;
-        }
+		}
+		.tit_text_box{
+			width: 100%;
+			display: flex;
+			margin-left: 60px;
+			line-height: 30px;
+		}
+		.tit_text{
+			width: 390px;
+			height: 30px;
+			margin-left: 15px;
+			box-sizing: border-box;
+			padding-left: 15px;
+			border: 1px solid #E3E3E3;
+		
+		}
+		#tit_are{
+			width: 600px;
+			height: 230px;
+			margin-left: 41px;
+			margin-top: 20px;
+			resize: none;
+			padding: 0 10px;
+			line-height: 28px;
+			font-size: 14px;
+			box-sizing: border-box;
+		
+		}
+		.bot_box{
+			width: 100%;
+			box-sizing: border-box;
+			padding:0 40px;
+			display: flex;
+			justify-content: space-between;
+		}
+		.b_b_tit{
+			line-height: 30px;
+			color: red;
+		}
+		.b_b_cont{
+			line-height: 30px;
+		}
+		.b_b_cont > input{
+		margin-top: 12px;
+		margin-right: 10px;
+		cursor:pointer;
+		}
+		.b_b_cont  > span{
+			margin-right: 20px;
+		}
+		.but_box{
+			float: right;
+			display: flex;
+			margin-right: 20px;
+			margin-top: 15px;
+		}
+		.send_mess{
+		   width: 85px;
+		   height: 30px;
+		   line-height: 30px;
+		   color: #fff;
+		   text-align: center;
+		   background: #3C8DBC;
+		   cursor:pointer;
+		   margin-right: 20px;
+		}
+		.close_box{
+			width: 70px;
+			height: 30px;
+		   line-height: 30px;
+		   color: #000;
+		   text-align: center;
+		   background: #F9F9F9;
+		   cursor:pointer;
+		   border:1px solid #DDE2DE;
+
+		   
+		}
         .m_b_but{
             margin-top: 20px;
             display: flex;
@@ -103,24 +284,28 @@
             border:0;
             background: #F4F4F4;
             color: #B5B5B5;
-            margin-left: 20px;
+			margin-left: 20px;
+			cursor:pointer;
         }
         .m_b_tab{
             background: #2F97FF !important;
             color: #fff !important;
-            cursor:pointer;
         }
         .m_b_inpbox{
             float: right;
             margin-right: 20px;
             margin-bottom: 10px;
-        }
+		}
+		#layui{
+			display: flex;
+			justify-content: space-between;
+		}
 
         #zwinp{
             width: 189px;
 			height: 28px;
 			border:1px solid #E8E8E8;
-          
+            
         }
         #m_b_pagebox{
             display: flex;
@@ -177,8 +362,8 @@
 									<dl class="layui-nav-child">
 											<dd><a href="removeUserPage_w.html">理事调整</a></dd>
 											<dd><a href="addvipPage_w.html">增补会员单位</a></dd>
-											<dd><a href="addVipPage1.html">添加文艺志愿者1</a></dd>
-											<dd><a href="addVipPage2.html">添加文艺志愿者2</a></dd>
+											<dd><a href="addVipPage1_w.html">添加文艺志愿者1</a></dd>
+											<dd><a href="addVipPage2_w.html">添加文艺志愿者2</a></dd>
 									</dl>
 								</li>
 								<li class="layui-nav-item">
@@ -243,6 +428,7 @@
 
     </div>
     <div class="pop_up">
+	
           <div class="send_message_box">
            <p>发送选择</p>
            <div class="m_b_but">
@@ -283,7 +469,56 @@
 				<div class="b_b_xuanze">选择</div>
 				<div class="b_b_quxiao">取消</div>
 			</div>
-          </div>
+			</div>
+			
+			<div class="textare_box">
+				<p>发送通知</p>
+				<div class="top_box">
+					<span class="top_tit">发送到：</span>
+					<div class="to_list">选择列表</div>
+					<input type="checkbox" class="send_all" />
+					<span>发送给全部会员</span>
+				</div>
+				<div class="tit_text_box">
+					<span>主题：</span>
+					<input type="text" class="tit_text" />
+				</div>
+				<textarea id="tit_are"></textarea>
+				<div class="bot_box">
+					<span class="b_b_tit">* 群发只能使用站内信和短信</span>
+					<div class="b_b_cont">
+							<input type="checkbox" class="znxbut" />
+							<span>站内信</span>
+							<input type="checkbox" class="yjbut" />
+							<span>邮件</span>
+							<input type="checkbox" class="dxbut" />
+							<span>短信</span>
+					</div>
+				</div>
+				<div class="but_box">
+					<div class="send_mess">发送</div>
+					<div class="close_box">关闭</div>
+				</div>
+			</div>
+
+
+			<div class="show_list_box">
+		
+					<p>发送结果</p>
+					<div class="reback_send">一键重发</div>
+				   <div class="l_b_box">
+						<span>发送结果：</span>
+						<select  id="jginp" lay-filter="jginp" lay-verify="required" lay-search="">
+								<option value="">请选择</option>
+								<option value="1">成功</option>
+								<option value="2">失败</option>
+							</select>
+							<span>收件人姓名：</span>
+							<input type="text" class="search_name"/>
+				   </div>
+			</div>
+
+
     </div>
 	<div class="content">
 		<div class="content_nav">
@@ -292,6 +527,7 @@
             </div>
             <div class="content_navi">
                 <form class="layui-form" action="">
+
                     <div class="c_n_lis">
                         <div class="n_l_cont">
                             <p class="pp">标题：</p>
@@ -308,7 +544,11 @@
                         <div class="xinzheng">新增</div>
                         <!-- <div class="sanchu">删除</div> -->
                         </div>
-                    </div>
+					</div>
+					
+					<div>
+
+					</div>
             
                 </form>
 			</div>
@@ -361,6 +601,7 @@
 		};
 		let popallflag = false;
 		let treedata = [];
+		let jg;
         let height = $('body').height();
         $('.pop_up').css('height', height+300);
 		$(".tatou").css({ "background-color": "#059afe", "color": "white" });
@@ -381,6 +622,11 @@
                 {zw:"主席",c:100},
                 {zw:"主席",c:100},
             ];
+
+
+			layui.use('form', function () {
+			var form = layui.form;
+			});
 
         $('.b_b_xuanze').on('click',function () { 
 
@@ -500,11 +746,10 @@
 
 		layui.use('form', function () {
 			var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
-			form.on('#btnclear', function (elem) {
-				//执行清空
-				$("#arttype").empty();
-				form.render();
-			});
+			form.on('select(jginp)', function (data) {
+            jginp = data.elem[data.elem.selectedIndex].text;
+            form.render('select');
+        });
 
 		})
 	</script>

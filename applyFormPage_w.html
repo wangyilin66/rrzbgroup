@@ -391,11 +391,7 @@
                 <li>
                     <div class="ll"><span>*</span>性别:</div>
                     <div class="rr">
-                        <select class="inp" id="xbinp" lay-filter="xbinp" lay-verify="required" lay-search="">
-                                <option value="0">性别</option>
-                                <option value="1">男</option>
-                                <option value="2">女</option>
-                        </select>
+                            <input type="text" class="inp xbinp" />
                     </div>
                 </li>
                 <!-- <li><div class="ll"><span>*</span>体制内:</div><div class="rr"><input type='radio' class="tzyes" name='tz'/>是<input type='radio' class="tzno" name='tz'/>否</div></li> -->
@@ -409,8 +405,8 @@
                     <div class="rr">
                     <select class="inp" id="mminp" lay-filter="zzmminp" lay-verify="required" lay-search="">
                         <option value="">请选择</option>
-                        <option value="1">layer</option>
-                        <option value="2">form</option>
+                        <!-- <option value="1">layer</option>
+                        <option value="2">form</option> -->
                     </select>
                 </div>
                 </li>
@@ -602,7 +598,14 @@
             <ul class="j_c_ulF">
                 <li>
                     <div class="ll"><span>*</span>推荐类型:</div>
-                    <div class="rr"><input type="text" class="inp tylxdinp" /></div>
+                    <div class="rr">
+                        <!-- <input type="text" class="inp tylxdinp" /> -->
+                        <select class="inp" lay-filter="tylxdinp"  lay-verify="required" lay-search="">
+                                <option value="0"></option>
+                                <option value="1">内推</option>
+                                <option value="2">外推</option>
+                            </select>
+                    </div>
                 </li>
                 <li>
                     <div class="ll"><span>*</span>联系人:</div>
@@ -613,7 +616,14 @@
             <ul class="j_c_ulF">
                 <li>
                     <div class="ll"><span>*</span>推荐单位/人:</div>
-                    <div class="rr"><input placeholder="" type="text" class="inp tydwinp" /></div>
+                    <div class="rr">
+                        <!-- <input placeholder="" type="text" class="inp tydwinp" /> -->
+                        <select class="inp" lay-filter="tydwinp"  lay-verify="required" lay-search="">
+                                <option value="0"></option>
+                                <option value="1">国企</option>
+                                <option value="2">外企</option>
+                            </select>
+                    </div>
                 </li>
                 <li>
                     <div class="ll"><span>*</span>手机号:</div>
@@ -659,7 +669,7 @@
     <script src="./js/layuicommon.js"></script>
     <script type="text/javascript">
         let treedata = [];
-        let xbinp,zzmminp,mzinp,jginp,whcdinp,zyzcinp,ysmlinp;
+        let zzmminp,mzinp,jginp,whcdinp,zyzcinp,ysmlinp,tydwinp,tylxdinp;
         let height = $('body').height();
         $('.pop_up').css('height', height + 200);
         // $('.pop_up').hide();
@@ -731,10 +741,6 @@
 
     layui.use('form', function () {
         var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
-        form.on('select(xbinp)', function (data) {
-            xbinp = data.elem[data.elem.selectedIndex].text;
-            form.render('select');
-        });
         form.on('select(zzmminp)', function (data) {
             zzmminp = data.elem[data.elem.selectedIndex].text;
             form.render('select');
@@ -757,6 +763,14 @@
         });
         form.on('select(ysmlinp)', function (data) {
             ysmlinp = data.elem[data.elem.selectedIndex].text;
+            form.render('select');
+        });
+        form.on('select(tydwinp)', function (data) {
+            tydwinp = data.elem[data.elem.selectedIndex].text;
+            form.render('select');
+        });
+        form.on('select(tylxdinp)', function (data) {
+            tylxdinp = data.elem[data.elem.selectedIndex].text;
             form.render('select');
         });
     });
@@ -863,6 +877,23 @@
         window.location.href = "applyForPage_w.html";
       });
 
+
+      $('.sfzinp').on('keyup',function(e){
+      //console.log($(this).val().length);
+      if($(this).val().length == 15 || $(this).val().length == 18){
+         let url = 'clav/idNumber/checkIdNumberAndReturnInfo?idNumber=' + $(this).val();
+         let data = {};
+        base.commonAjax(url,data,function (res) { 
+            console.log(res);
+            if(res.code == 1){
+            $('.xbinp').val(res.gender);
+            $('.csinp').val(res.birthDay);
+
+            }
+        });
+      }
+      });
+
 $('.bc').on('click',function () { 
 
     window.location.href = "applyUpdatePage_w.html";
@@ -886,7 +917,7 @@ $('.bc').on('click',function () {
                 let data = {
           name:$('.nameinp').val(),
           nation:mzinp,
-          gender:xbinp == '男'? 1 : 2,
+          gender:$('.xbinp').val() == '男'? 1 : 2,
           birthday:$('.csinp').val(),
           idNumber:$('.sfzinp').val(),
           nativePlace:jginp,
@@ -911,8 +942,8 @@ $('.bc').on('click',function () {
           artTypeId:ysmlinp,
           specificAreas:$('.jtlyinp').val(),
           activityExperience:$('.hdjlinp').val(),
-          recommendType:$('.tylxdinp').val(),
-          relationshipGroup:$('.tydwinp').val(),
+          recommendType:tylxdinp,
+          relationshipGroup:tydwinp,
           linkman:$('.lxrinp').val(),
           linkmanPhone:$('.typhoneinp').val(),
       }
@@ -922,7 +953,7 @@ $('.bc').on('click',function () {
                       console.log('添加会员成功');
                       //window.location.href = "applyUpdatePage.html";
                   }else{
-                      console.log('添加会员失败');
+                      alert('添加会员失败，请填补正确信息');
                   }
                });
             }

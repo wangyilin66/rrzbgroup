@@ -210,7 +210,7 @@ font-weight: 600;
             console.log($(this).prop('checked'));
         })
         $('.zuce').on('click', function () {
-          
+            window.location.href = "signVipPage_w.html";
         });
 
         $('.login').on('click', function () {
@@ -234,7 +234,16 @@ font-weight: 600;
             success: function (data) {
                 //请求成功后的回调函数
                 console.log(data);
-                window.location.href = "applyFormPage_w.html";
+                if(data.code == 1){
+                    // window.location.href = "applyFormPage_w.html";
+                    if(data.data.isFinishTable == 1){
+                        window.location.href = "applyFormPage_w.html";
+                    }else{
+                        window.location.href = "applyUpdatePage_w.html";
+                    }
+                }else{
+                   alert('账号或密码错误');
+                }
             }
         });
 
