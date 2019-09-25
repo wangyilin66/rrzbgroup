@@ -104,7 +104,7 @@
 									<div class="grid-demo grid-demo-bg1">
 										<label for="">单位类型：
 											<div>
-												<select id="yishu"name="modules" lay-verify="required" lay-search="">
+												<select id="vipb_yishu"name="modules" lay-verify="required" lay-search="">
 													<option value="">请选择</option>
 													<!-- <option value="1">layer</option>
 													<option value="2">form</option>
@@ -118,7 +118,7 @@
 									<div class="grid-demo grid-demo-bg1">
 										<label for="">单位名称：
 											<div>
-												<select id="yishu"name="modules" lay-verify="required" lay-search="">
+												<select id="vipb_yishu2"name="modules" lay-verify="required" lay-search="">
 													<option value="">请选择</option>
 													<!-- <option value="1">layer</option>
 													<option value="2">form</option>
@@ -132,22 +132,21 @@
 									<div class="grid-demo">
 										<label for="">姓名：
 											<div>
-												<input type="text" placeholder="姓名">
+												<input type="text" placeholder="姓名" id="vipbname">
 											</div>
 										</label>
 									</div>
                                 </div>
                                 <div class="layui-col-sm3">
                                     <div class="hy_btn">
-                                        <button type="button" class="layui-btn layui-btn-normal" style="background-color: grey;">清空条件</button>
-                                        <button type="button" class="layui-btn layui-btn-normal">查询</button>
+                                        <button type="reset" class="layui-btn layui-btn-normal" style="background-color: grey;">清空条件</button>
+                                        <button type="button" class="layui-btn layui-btn-normal" id="vipbfind">查询</button>
                                         <div class="clear"></div>
                                     </div>
                                 </div>
 							</div>
 						</div>
-					</div>
-				
+					</div>				
 			</div>
 			
 			<div class="findres">
@@ -175,8 +174,8 @@
 							<th>操作</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr>
+					<tbody id="vipsh">
+						<!-- <tr>
 							<td style="width: 50px">
 								<input type="checkbox" name="" title="" lay-skin="primary">
 								
@@ -193,31 +192,11 @@
 								<button class="layui-btn layui-btn-normal">通过</button>
 								<button class="layui-btn layui-btn-warm">转人才库</button>
 							</td>
-						</tr>
-						<tr>
-							<td style="width: 50px">
-								<input type="checkbox" name="" title="" lay-skin="primary">
-							</td>
-							<td>12313</td>
-							<td>各全国文艺家协会</td>
-							<td>中国剧协</td>
-							<td>田园</td>
-							<td>志愿服务部干部</td>
-							<td>电影，摄影，艺术管理</td>
-							<td>郑阳</td>
-							<td>
-								<button class="layui-btn">查看</button>
-								<button class="layui-btn layui-btn-normal">通过</button>
-								<button class="layui-btn layui-btn-warm">转人才库</button>
-							</td>
-						</tr>
+						</tr> -->
 					</tbody>
 				</table>
 				<div>
-					<div>共12条数据</div>
 					<div id="shuju"></div>
-					<div></div>
-					<div></div>
 				</div>
 			</div>
 		
@@ -357,6 +336,41 @@
 		</div>
 	</form>
 </div>
+<!-- 会员审核 按钮操作-->
+<div class="cover7">
+	<div class="tcc_content">
+			<div class="tcc_title">查看上传文件</div>
+			<div class="findfile vipb_file">
+			</div>
+			<div class="findfile_an">
+				<button type="button" class="layui-btn layui-btn-primary" onclick="close1()">关闭</button>
+			</div>
+		</div>
+</div>
+<div class="cover8">
+	<div class="tcc_content">
+			<div class="tcc_title">操作确认</div>
+			<div class="findfile li_querentg">
+				请您确定是否通过？
+			</div>
+			<div class="findfile_an">
+					<button type="button" class="layui-btn layui-btn-normal" id="vipb_titg">确认</button>
+					<button type="button" class="layui-btn layui-btn-primary" onclick="close1()">关闭</button>
+			</div>
+		</div>
+</div>
+<div class="cover9">
+	<div class="tcc_content">
+			<div class="tcc_title">操作确认</div>
+			<div class="findfile li_querentg">
+				请您确定是否转人才库？
+			</div>
+			<div class="findfile_an">
+					<button type="button" class="layui-btn layui-btn-normal" id="vipb_rck">确认</button>
+					<button type="button" class="layui-btn layui-btn-primary" onclick="close1()">关闭</button>
+			</div>
+		</div>
+</div>
 <!-- 理事审核 按钮操作-->
 <div class="cover4">
 		<div class="tcc_content">
@@ -439,7 +453,7 @@
 		$('.content_nav').eq(0).show().siblings().hide();
 		$(".tatou").css({ "background-color": "#059afe", "color": "white" });
 		function close1() {
-			$(".cover1,.cover2,.cover3,.cover4,.cover5,.cover6").css( "display", "none");		
+			$(".cover1,.cover2,.cover3,.cover4,.cover5,.cover6,.cover7,.cover8").css( "display", "none");		
 		}
         
         $('.hytitle_font').click(function() {
