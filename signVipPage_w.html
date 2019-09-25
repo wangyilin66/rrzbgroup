@@ -188,17 +188,19 @@
                                     </li>
                                     <li>
                                         <p><span>*</span>身份证号码：</p><input placeholder="请输入身份证号码" class="inps sfzhminp" />
+                                        <h6 class="sfztit"></h6>
                                     </li>
                                     <li>
                                         <p><span>*</span>密码：</p><input type="password" placeholder="请输入密码" class="inps pswinp" />
-                                        <h6>密码为6-16个字符的数字字母组合，不能为空</h6>
+                                        <h6 class="pswtit1">密码为6-16个字符的数字字母组合，不能为空</h6>
                                     </li>
                                     <li>
                                         <p><span>*</span>确认密码：</p><input  type="password"  placeholder="请再次输入密码" class="inps psw2minp" />
+                                        <h6 class="pswtit2"></h6>
                                     </li>
                                     <li>
                                         <p><span>*</span>手机号码：</p><input type="password" placeholder="请输入手机号码" class="inps phoneinp" />
-                                        <h6>手机号码非常重要，请确认无误后注册</h6>
+                                        <h6 class="phonetit">手机号码非常重要，请确认无误后注册</h6>
                                     </li>
                                     <li>
                                         <p><span>*</span>验证码：</p><input type="text" placeholder="请输入验证码" class="inps yzminp" />
@@ -216,7 +218,7 @@
 <script type="text/javascript" src='./js/common.js'></script>
 <script type="text/javascript" src='./js/jquery.min.js'></script>
 <script type="text/javascript">
-
+    let passwordinp;
     $('.zhuce').on('click', function () {
         window.location.href = "applyFormPage_w.html";
     });
@@ -224,6 +226,40 @@
     $('.quxiao').on('click', function () {
         window.location.href = "applyForPage_w.html";
     });
+    $('.sfzhminp').on('keyup', function () {
+
+        let len = $(this).val().length;
+        console.log(len);
+        if (len == 15 || len == 18) {
+            $('.sfztit').text('');
+        } else {
+            $('.sfztit').text('身份证格式错误');
+        }
+    });
+
+    $('.pswinp').on('keyup', function () {
+
+        let len = $(this).val().length;
+        console.log(len);
+        if (len < 6) {
+            $('.pswtit1').text("密码长度过短");
+        } else if (len > 16) {
+            $('.pswtit1').text("密码长度过长");
+        } else {
+            $('.pswtit1').text("");
+        }
+        passwordinp = $(this).val();
+    });
+
+
+        $('.psw2minp').on('keyup', function () {
+
+            let len = $(this).val().length;
+            console.log(len);
+            
+        });
+    
+
 </script>
 </body>
 </html>
