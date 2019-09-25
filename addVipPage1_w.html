@@ -5,97 +5,108 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>添加文艺志愿者1</title>
+    <title>添加文艺志愿者</title>
     <link rel="stylesheet" href="./layui/css/layui.css">
     <link rel="stylesheet" href="./css/newfind.css">
     <link rel="stylesheet" href="./css/header.css">
+    <style>
+    
+    .tjinfo{
+        opacity: 0 !important;
+    }
+    .anniu{
+        margin-top: -250px !important;
+    }
+    </style>
 </head>
 
 <body>
-  	<!-- 头部 -->
+    	<!-- 头部 -->
 	<div class="headerpage">
-            <div class="layui-container-fluid">
-                <div class="layui-fluid">
-                    <div class="layui-row layui-col-space5">
-                        <div class="layui-col-md5" style="padding-right: 0px;">
-                            <div class="wltop">
-                                <div class="logo">
-                                    <img src="./img/admin_logo.png" alt="">
-                                </div>
+        <div class="layui-container-fluid">
+            <div class="layui-fluid">
+                <div class="layui-row layui-col-space5">
+                    <div class="layui-col-md5" style="padding-right: 0px;">
+                        <div class="wltop">
+                            <div class="logo">
+                                <img src="./img/admin_logo.png" alt="">
                             </div>
                         </div>
-                        <div class="layui-col-md7" style="padding-left: 0px;">
-                            <ul class="layui-nav layui-bg-blue tou">
-                                <li class="layui-nav-item layui-this"><a href="">首页</a></li>
-                                <li class="layui-nav-item">
-                                    <a href="javascript:;">志愿者管理</a>
-                                    <dl class="layui-nav-child">
-                                           
-                                            <!-- <dd><a href="addvipPage_w.html">增补会员单位</a></dd> -->
-                                            <dd><a href="addVipPage1_w.html">添加文艺志愿者1</a></dd>
-											<dd><a href="addVipPage2_w.html">添加文艺志愿者2</a></dd>
-                                    </dl>
-                                </li>
-                                <li class="layui-nav-item">
-                                    <a href="javascript:;">组织管理</a>
-                                    <dl class="layui-nav-child">
-                                        <dd><a href="">移动模块</a></dd>
-                                        <dd><a href="">后台模版</a></dd>
-                                        <dd><a href="">电商平台</a></dd>
-                                    </dl>
-                                </li>
-                                <li class="layui-nav-item">
-                                    <a href="javascript:;">活动管理</a>
-                                    <dl class="layui-nav-child">
-                                        <dd><a href="">移动模块</a></dd>
-                                        <dd><a href="">后台模版</a></dd>
-                                        <dd><a href="">电商平台</a></dd>
-                                    </dl>
-                                </li>
-                                <li class="layui-nav-item">
-                                    <a href="javascript:;">会员管理</a>
-                                    <dl class="layui-nav-child">
-                                            <dd><a href="vipfind_z.html">会员查询</a></dd>
-                                        <dd><a href="./vipcheck_z.html">审核管理</a></dd>
-                                        <dd><a href="./recommendedUnits_z.html">推荐单位管理</a></dd>
-                                        <dd><a href="./tjVipFindPage.html">推荐会员管理</a></dd>
-                                        <dd><a href="./vipduty_z.html">会员职位管理</a></dd>
-                                        <dd><a href="./InvitationCode_z.html">邀请码管理</a></dd>
-                                        <dd><a href="managementPage_w.html">通知管理</a></dd>
-                                        <dd><a href="dataFind_w.html">会员信息统计</a></dd>
-                                        <dd><a href="">会费管理</a></dd>
-                                    </dl>
-                                </li>
-                                <li class="layui-nav-item">
-                                    <a href="javascript:;">系统管理</a>
-                                    <dl class="layui-nav-child">
-                                        <dd><a href="">移动模块</a></dd>
-                                        <dd><a href="">后台模版</a></dd>
-                                        <dd><a href="">电商平台</a></dd>
-                                    </dl>
-                                </li>
-                                <li class="layui-nav-item">
-                                    <a href="javascript:;">统计报表</a>
-                                    <dl class="layui-nav-child">
-                                        <dd><a href="">移动模块</a></dd>
-                                        <dd><a href="">后台模版</a></dd>
-                                        <dd><a href="">电商平台</a></dd>
-                                    </dl>
-                                </li>
-                                <li class="layui-nav-item"><a href="">系统管理员</a></li>
-                            </ul>
-                        </div>
+                    </div>
+                    <div class="layui-col-md7" style="padding-left: 0px;">
+                        <ul class="layui-nav layui-bg-blue tou">
+                            <li class="layui-nav-item layui-this"><a href="">首页</a></li>
+                            <li class="layui-nav-item">
+                                <a href="javascript:;">志愿者管理</a>
+                                <dl class="layui-nav-child">
+                                      
+                                        <!-- <dd><a href="addvipPage_w.html">增补会员单位</a></dd> -->
+                                        <dd><a href="./tjVipFindPage.html">推荐会员查询</a></dd>
+
+                                        <dd><a href="addVipPage1_w.html">添加文艺志愿者1</a></dd>
+                                        <dd><a href="addVipPage2_w.html">添加文艺志愿者2</a></dd>
+                                </dl>
+                            </li>
+                            <li class="layui-nav-item">
+                                <a href="javascript:;">组织管理</a>
+                                <dl class="layui-nav-child">
+                                    <dd><a href="">移动模块</a></dd>
+                                    <dd><a href="">后台模版</a></dd>
+                                    <dd><a href="">电商平台</a></dd>
+                                </dl>
+                            </li>
+                            <li class="layui-nav-item">
+                                <a href="javascript:;">活动管理</a>
+                                <dl class="layui-nav-child">
+                                    <dd><a href="">移动模块</a></dd>
+                                    <dd><a href="">后台模版</a></dd>
+                                    <dd><a href="">电商平台</a></dd>
+                                </dl>
+                            </li>
+                            <li class="layui-nav-item">
+                                <a href="javascript:;">会员管理</a>
+                                <dl class="layui-nav-child">
+                                        <dd><a href="vipfind_z.html">会员查询</a></dd>
+                                    <dd><a href="./vipcheck_z.html">审核管理</a></dd>
+                                    <dd><a href="./recommendedUnits_z.html">推荐单位管理</a></dd>
+                                    <dd><a href="./vipduty_z.html">会员职位管理</a></dd>
+                                    <dd><a href="./InvitationCode_z.html">邀请码管理</a></dd>
+                                    <dd><a href="managementPage_w.html">通知管理</a></dd>
+                                    <dd><a href="dataFind_w.html">会员信息统计</a></dd>
+                                    <dd><a href="">会费管理</a></dd>
+                                </dl>
+                            </li>
+                            <li class="layui-nav-item">
+                                <a href="javascript:;">系统管理</a>
+                                <dl class="layui-nav-child">
+                                    <dd><a href="">移动模块</a></dd>
+                                    <dd><a href="">后台模版</a></dd>
+                                    <dd><a href="">电商平台</a></dd>
+                                </dl>
+                            </li>
+                            <li class="layui-nav-item">
+                                <a href="javascript:;">统计报表</a>
+                                <dl class="layui-nav-child">
+                                    <dd><a href="">移动模块</a></dd>
+                                    <dd><a href="">后台模版</a></dd>
+                                    <dd><a href="">电商平台</a></dd>
+                                </dl>
+                            </li>
+                            <li class="layui-nav-item"><a href="">系统管理员</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+
     <!-- 内容 -->
     <div class="hytitle">
     </div>
     <div class="content">
         <div class="content_nav">
             <div class="content_navl"><span><i
-                        class="layui-icon layui-icon-home"></i>首页&nbsp;&nbsp;</span>/<span>&nbsp;志愿者管理&nbsp;&nbsp;</span>/&nbsp;添加文艺志愿者
+                        class="layui-icon layui-icon-home"></i>首页&nbsp;&nbsp;</span>/<span>&nbsp;会员管理&nbsp;&nbsp;</span>/&nbsp;添加会员
             </div>
             <form class="layui-form" action="">
                 <div class="grinfo">
@@ -110,7 +121,7 @@
                                                 <label class="layui-form-label"><span>*</span>姓名：</label>
                                                 <div class="layui-input-block">
                                                     <input type="text" name="title" lay-verify="title" id="username"
-                                                        autocomplete="off" placeholder="姓名" class="layui-input">
+                                                        autocomplete="off" placeholder="姓名" class="layui-input inpList">
                                                         <div class="warn w_xm"></div>
                                                 </div>
                                             </div>
@@ -118,7 +129,7 @@
                                                 <label class="layui-form-label"><span>*</span>身份证号：</label>
                                                 <div class="layui-input-block">
                                                     <input type="text" name="title" lay-verify="title" id="sfnumber"
-                                                        autocomplete="off" placeholder="身份证号" class="layui-input">
+                                                        autocomplete="off" placeholder="身份证号" class="layui-input inpList">
                                                         <div class="warn w_sf"></div>
                                                 </div>
                                             </div>
@@ -127,7 +138,7 @@
                                                 <div class="layui-input-block">
                                                     <input type="text" name="title" lay-verify="title" id="sex"
                                                         onclick="sexfind()" autocomplete="off" readonly="readonly"
-                                                        placeholder="（读取身份证号）" class="layui-input">
+                                                        placeholder="（读取身份证号）" class="layui-input inpList">
                                                         <div class="warn w_xb"></div>
                                                 </div>
                                             </div>
@@ -135,14 +146,14 @@
                                                 <label class="layui-form-label"><span>*</span>手机号码：</label>
                                                 <div class="layui-input-block">
                                                     <input type="text" name="title" lay-verify="title" id="tec"
-                                                        autocomplete="off" placeholder="手机号码" class="layui-input">
+                                                        autocomplete="off" placeholder="手机号码" class="layui-input inpList">
                                                         <div class="warn w_sj"></div>
                                                 </div>
                                             </div>
                                             <div>
                                                 <label class="layui-form-label"><span>*</span>政治面貌：</label>
                                                 <div class="layui-input-inline zzmm2">
-                                                    <select name="hy" lay-verify="required" lay-search=""
+                                                    <select name="hy" lay-verify="required" lay-search="" class="inpList"
                                                         id="politicsStatusId" lay-filter="politicsStatusIdd">
                                                         <option value="">请选择</option>
                                                         <!-- <option value="1">layer</option>
@@ -368,7 +379,7 @@
                                                 <div class="layui-input-block">
                                                     <input type="text" name="title" lay-verify="title" id="qtwork"
                                                         autocomplete="off" placeholder="请输入其他主要社会职务"
-                                                        class="layui-input">
+                                                        class="layui-input inp">
                                                 </div>
                                             </div>
                                         </div>
@@ -424,13 +435,13 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="layui-col-md12  ewai" style="visibility: hidden;">
+                                    <div class="layui-col-md12  ewai" style="display: none;">
                                         <div class="layui-col-md4">
                                             <div class="grid-demo grid-demo-bg1">
                                                 <div class="layui-form-item tec">
-                                                    <label class="layui-form-label"><span>*</span>主要从事的艺术门类：</label>
+                                                    <label class="layui-form-label">主要从事的艺术门类：</label>
                                                     <div class="layui-input-inline">
-                                                        <select name="hy" lay-verify="required" lay-search="" id="ysml2" lay-filter="ysml">
+                                                        <select name="hy" lay-verify="required" lay-search="" id="ysml2" lay-filter="ysml2">
                                                             <option value="">请选择</option>
                                                             <!-- <option value="1">layer</option>
                                                             <option value="2">form</option> -->
@@ -470,10 +481,75 @@
                         </div>
                     </div>
                 </div>
+                <div class="tjinfo">
+                    <div class="tjinfot">推荐类型信息</div>
+                    <div class="tjinfoc">
+                        <div class="layui-container-fluid">
+                            <div class="layui-fluid">
+                                <div class="layui-row layui-col-space5">
+                                    <div class="layui-col-md4">
 
+                                        <label class="layui-form-label"><span>*</span>推荐类型：</label>
+                                        <div class="layui-input-inline tjlx">
+                                            <!-- <select name="hy" lay-verify="required" lay-search="" id="tjtype">
+                                                <option value="">请选择</option>
+                                                <option value="1">layer</option>
+                                                <option value="2">form</option>
+                                            </select> -->
+                                            <input type="text"class="layui-input" id="tjtype">
+                                            <div class="warn w_lx"></div>
+                                        </div>
+                                        <div id="test2"></div>
+
+                                    </div>
+                                    <div class="layui-col-md4">
+                                        <label class="layui-form-label"><span>*</span>推荐单位/人：</label>
+                                        <div class="layui-input-inline tjr">
+                                            <select name="hy" lay-verify="required" lay-search="" id="tjcompany" lay-filter="tjcompany"> 
+                                                <option value="">请选择</option>
+                                                <!-- <option value="1">layer</option>
+                                                <option value="2">form</option> -->
+                                            </select>
+                                            <div class="warn w_tjdw"></div>
+                                        </div>
+
+                                    </div>
+                                    <div class="layui-col-md12">
+                                        <div class="layui-col-md4">
+                                            <div class="grid-demo grid-demo-bg1">
+                                                <div class="layui-form-item tec">
+                                                    <label class="layui-form-label"><span>*</span>联系人：</label>
+                                                    <div class="layui-input-block">
+                                                        <input type="text" name="title" lay-verify="title"
+                                                            id="lxpeople" autocomplete="off" placeholder="联系人"
+                                                            class="layui-input" style="width:254px;">
+                                                            <div class="warn w_lxr"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-col-md4">
+                                            <div class="grid-demo grid-demo-bg1">
+                                                <div class="layui-form-item tec">
+                                                    <label class="layui-form-label"><span>*</span>手机号：</label>
+                                                    <div class="layui-input-block">
+                                                        <input type="text" name="title" lay-verify="title" id="sjh"
+                                                            autocomplete="off" placeholder="手机号" class="layui-input"
+                                                            style="width:254px;">
+                                                            <div class="warn w_sjh"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="anniu">
                     <button type="button" class="layui-btn layui-btn-normal" onclick="tijiao()">提交</button>
-                    <button type="button" class="layui-btn layui-btn-primary">取消</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">取消</button>
                 </div>
             </form>
         </div>
@@ -483,9 +559,11 @@
     <script src="./js/jquery.min.js"></script>
     <script src="./js/common.js"></script>
     <script src="./js/header.js"></script>
-    <script src="./js/newVip2.js"></script>
+    <script src="./js/newvip.js"></script>
     <script type="text/javascript">
         let treedata = [];
+        let treedata2 = [];
+        let treelocaldata = [];
         function changepic(obj) {
             //console.log(obj.files[0]);//这里可以获取上传文件的name
             var newsrc = getObjectURL(obj.files[0]);
@@ -525,6 +603,24 @@
                     obj.children.push(objc);
                 });
                 treedata.push(obj);
+            });
+        }
+        //获取推荐类型
+        function wtf2(data) {
+            data.map((v, i) => {
+                let obj = {};
+                obj.title = v.name;
+                obj.id = i;
+                obj.children = [];
+                v.childList.map((val, ind) => {
+                    console.log(val);
+                    let objc = {};
+                    objc.title = val.name;
+                    objc.id = i+'-'+ind;
+                    objc.children = [];
+                    obj.children.push(objc);
+                });
+                treedata2.push(obj);
             });
         }
         var data = {
@@ -567,6 +663,69 @@
                 });
             }
         });
+        //推荐类型
+        $('#test2').css("visibility","hidden");
+        base.commonAjax('clav/recommendUnit/getRecommendType', data, function (data) {
+            if (data.code == 1) {
+                //console.log("z", data);
+                treelocaldata = data.data;
+                wtf2(data.data);
+               // console.log(treedata)
+                layui.use('tree', function () {
+                    var tree = layui.tree;
+
+                    //渲染
+                    var inst1 = tree.render({
+                        elem: '#test2'  //绑定元素
+                        ,click: function(obj){
+                           // console.log(obj);
+                       // console.log(obj.data); //得到当前点击的节点数据
+                       // console.log(obj.elem); //得到当前节点元素 
+                        // console.log($('.layui-tree-set').attr("data-id"));
+                      //  console.log(obj.data.id); //得到当前点击的节点数据
+                        let str = obj.data.id;
+                       // console.log(str.indexOf('-')>-1);
+                         if(str.indexOf('-')>-1 && str.indexOf('-')){
+                            let arr = str.split('-');
+                            if(arr.length == 2){
+                                console.log(treelocaldata[Number(arr[0])].childList[Number(arr[1])]);
+                                let ids = treelocaldata[Number(arr[0])].childList[Number(arr[1])].id;
+                                //console.log("推荐",arr);
+                        //console.log(treedata2[arr[0]].title);
+                       // console.log(treedata[arr[0]].title);
+                       // console.log(obj.data.title);
+                        var tjplace2 = obj.data.title;
+                                    //+treedata2[arr[0]].title;
+                                    //console.log("地区",place);
+                                    $('#tjtype').val(tjplace2);
+                                    $('#test2').css("visibility", "hidden");
+                                    var data = {
+                                        id: ids
+                                    }
+                                    base.commonAjax('clav/recommendUnit/getRecommendUnitOrPeople', data, function (res) {
+                                        //console.log(res);
+                                        layui.use('form', function () {
+                                            var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+                                            for (var i = 0; i < res.data.length; i++) {
+                                                $('#tjcompany').append(
+                                                    '<option value="' + res.data[i].id + '">' + res.data[i].name + '</option>'
+                                                );
+                                            }
+                                            form.render();
+                                        });
+                                    })
+                                }
+                            }
+                        }
+                        , data: treedata2
+                    });
+
+                });
+            }
+        });
+        $('#tjtype').on('click',function () { 
+            $('#test2').css("visibility","visible");
+         })
         $('#szd').click(function(){
             $('#test1').css("visibility","visible");
         })
@@ -602,11 +761,136 @@
            //ysml=data.elem[data.elem.selectedIndex].text;
            form.render('select');
        })
+       form.on('select(ysml2)',function(data){
+           ysml2=data.value;
+           //ysml=data.elem[data.elem.selectedIndex].text;
+           form.render('select');
+       })
+       form.on('select(tjcompany)',function(data){
+          //tjcompany=data.value;
+          tjcompany=data.elem[data.elem.selectedIndex].text;
+           form.render('select');
+       })
     });
     $(".jiah").on('click', function () {
-        $(".ewai").css()
-    
+        $(".ewai").css('display','block')
     })
+
+    $('.inpList').on('keydown',function() {
+                var i = $(this).index();
+                console.log('a')				
+                // $('.inpList').eq(i)+$('.warn').text('');			
+        if( $('#file').val()==''){
+                $('.w_tx').text('请上传头像');       
+        }else{
+            $('.w_tx').text('');
+        }
+        if( $('#username').val()==''){
+                $('.w_xm').text('请填写姓名')              
+        }else{
+            $('.w_xm').text('')   
+        }
+        if( $('#sfnumber').val()==''){
+                $('.w_sf').text('请填写身份证号')          
+        }else{
+            $('.w_sf').text('')   
+        }
+        if( $('#sex').val()==''){
+                $('.w_xb').text('请获取性别')              
+        }else{
+            $('.w_xb').text('')   
+        }
+        if( $('#tec').val()==''){
+                $('.w_sj').text('请填写手机号码')          
+        }else{
+            $('.w_sj').text('')   
+        }
+        if( $('#politicsStatusId').val()==''){
+                $('.w_zz').text('请选择政治面貌')              
+        }else{
+            $('.w_zz').text('')   
+        }
+        if( $('#mz3').val()==''){
+                $('.w_mz').text('请选择民族')              
+        }else{
+            $('.w_mz').text('')   
+        }
+        if( $('#sr').val()==''){
+                $('.w_sr').text('请获取出生日期')          
+        }else{
+            $('.w_sr').text('')   
+        }
+        if( $('#jg').val()==''){
+                $('.w_jg').text('请选择籍贯')              
+        }else{
+            $('.w_jg').text('')   
+        }
+        if( $('#szd').val()==''){
+                $('.w_sz').text('请填写现所在地')          
+        }else{
+            $('.w_sz').text('')   
+        }
+        if( $('#place').val()==''){
+                $('.w_tx2').text('请填写通讯地址')              
+        }else{
+            $('.w_tx2').text('')   
+        }
+        if( $('#placenum').val()==''){
+                $('.w_yb').text('请填写通讯邮编')          
+        }else{
+            $('.w_yb').text('')   
+        }
+        if( $('#whcd').val()==''){
+                $('.w_wh').text('请选择文化程度')              
+        }else{
+            $('.w_wh').text('')   
+        }
+        if( $('#zyzc').val()==''){
+                $('.w_zc').text('请选择专业职称')              
+        }else{
+            $('.w_zc').text('')   
+        }
+        if( $('#work').val()==''){
+                $('.w_gzdw').text('请填写工作单位及职务')          
+        }else{
+            $('.w_gzdw').text('')   
+        }
+        if( $('#experience').val()==''){
+                $('.w_jl').text('请填写工作经历（艺术简历）')              
+        }else{
+            $('.w_jl').text('')   
+        }
+        if( $('#ysml').val()==''){
+                $('.w_yis').text('请选择主要从事的艺术门类')          
+        }else{
+            $('.w_yis').text('')   
+        }
+        if( $('#experience2').val()==''){
+                $('.w_gyhd').text('请填写文艺志愿服务或公益活动经历')              
+        }else{
+            $('.w_gyhd').text('')   
+        }
+        if( $('#tjtype').val()==''){
+                $('.w_lx').text('请选择推荐类型')          
+        }else{
+            $('.w_lx').text('')   
+        }
+        if( $('#tjcompany').val()==''){
+                $('.w_tjdw').text('请选择推荐单位/人')              
+        }else{
+            $('.w_tjdw').text('')   
+        }
+        if( $('#lxpeople').val()==''){
+                $('.w_lxr').text('请填写联系人')          
+        }else{
+            $('.w_lxr').text('')   
+        }
+        if( $('#sjh').val()==''){
+                $('.w_sjh').text('请填写手机号')          
+        }  else{
+            $('.w_sjh').text('')   
+        }
+			});
     </script>
 </body>
 

@@ -113,26 +113,10 @@ function birthfind() {
                 }
         });
 }
-
-function down() {
-        window.open('http://39.98.186.243/clav/testWord/exportMillCertificate2');
-//     let data = {};
-//         base.commonAjax('clav/testWord/exportMillCertificate2', data, function (data) {
-//                 console.log(data);
-//                 // if (data.code == 1) {
-//                 //         console.log('成功');
-//                 //         console.log(data);
-//                 //         // window.location.href='./vipfind_z.html'
-//                 // }
-//                 // else {
-//                 //         alert(data.message)
-//                 // }
-//         })
-}
-
 //提交
 function tijiao() {
-       // window.open("applyUpdatePage_w.html?id="+data.theId);
+        console.log(tjcompany);
+   
         if( $('#file').val()==''){
                 $('.w_tx').text('请上传头像')          
         }
@@ -255,10 +239,10 @@ function tijiao() {
                                 //var artTypeId=artTypeId+'-'+specificAreas;
                                 //var specific_areas;
                                 if($('#ysml2').val()!=''){
-                                        artTypeId=artTypeId21+','+artTypeId22;
+                                        artTypeId=artTypeId21+','+artTypeId22+',';
                                         specificAreas=artTypeId21+'-'+specificAreas21+','+artTypeId22+'-'+specificAreas22;
                                 }if($('#ysml2').val()==''){
-                                        artTypeId=artTypeId21;
+                                        artTypeId=artTypeId21+',';
                                         specificAreas=artTypeId21+'-'+specificAreas21;
                                 }                             
                                 var data = {
@@ -298,14 +282,12 @@ function tijiao() {
                                         linkmanPhone: linkmanPhone
                                 }
                                 console.log(data);
-                                base.commonAjax('clav/member/addRedClavMember', data, function (data) {
-                                        console.log(data);
+                                base.commonAjax('clav/member/addClavMember', data, function (data) {
                                         if (data.code == 1) {
                                                 console.log('成功');
                                                 alert('注册成功。');
-                                                console.log(data.theId);
-                                                //window.location.href = "applyUpdatePage_w.html?id="+data.theId;
-                                                window.open("applyUpdatePage_w.html?id="+data.theId);
+                                                history.go(0);
+                                                //window.location.href='./vipfind_z.html'
                                         }
                                         else{
                                                 alert(data.message)

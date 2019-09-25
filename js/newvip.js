@@ -116,6 +116,7 @@ function birthfind() {
 //提交
 function tijiao() {
         console.log(tjcompany);
+   
         if( $('#file').val()==''){
                 $('.w_tx').text('请上传头像')          
         }
@@ -283,7 +284,8 @@ function tijiao() {
                                 console.log(data);
                                 base.commonAjax('clav/member/addClavMember', data, function (data) {
                                         if (data.code == 1) {
-                                                console.log('成功')
+                                                console.log('成功');
+                                                alert('注册成功。');
                                                 window.location.href='./vipfind_z.html'
                                         }
                                         else{
