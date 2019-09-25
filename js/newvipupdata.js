@@ -116,9 +116,9 @@ function updateinfo(idinfo){
     var data={
         id:id
     }
-    console.log(data)
     base.commonAjax('clav/member/getClavMemberList', data, function (data) {
         console.log("会员信息", data)
+        
         $('#username').val(data.data[0].name);
         if(data.data[0].gender==1){
             $('#sex').val('男')
@@ -128,7 +128,8 @@ function updateinfo(idinfo){
         $('#sfnumber').val(data.data[0].idNumber);
         $('#tec').val(data.data[0].phone);
         $('#politicsStatusId').val(data.data[0].politicsStatusId);
-        $('#mz3').val(data.data[0].nation);
+        //$('#mz3').val(data.data[0].nation);
+        $("#mz3 option[value='"+data.data[0].nation+"']").attr("selected","selected");
         $('#username2').val(data.data[0].penName);
         $('#jg').val(data.data[0].nativePlace);
         // $('#show').arr("src",data.data[0].avatar)
@@ -147,7 +148,10 @@ function updateinfo(idinfo){
         $('#qtwork').val(data.data[0].socialDuty);form.render();
         $('#experience').val(data.data[0].workExperience);form.render();
         $('#tjtype').val(data.data[0].recommendType);form.render();
-        $('#tjcompany').val(data.data[0].relationshipGroup);form.render();
+        //$('#tjcompany').val(data.data[0].relationshipGroup);form.render();
+        console.log('会员info',$('#mz3').val(data.data[0].nation))
+        //$('#tjlx').val(data.data[0].linkman);form.render();
+        
         $('#lxpeople').val(data.data[0].linkman);form.render();
         $('#sjh').val(data.data[0].linkmanPhone);form.render();
         $('#experience2').val(data.data[0].activityExperience)
@@ -249,7 +253,7 @@ function birthfind() {
 //提交
 function tijiao() {
  
-        idinfo2=getQueryString("id").id;
+        idinfo2=idinfo;
         //console.log('校验',idinfo)
         var dataa={
                 id:idinfo2
@@ -330,8 +334,8 @@ function tijiao() {
     if( $('#sjh').val()==''){
             $('.w_sjh').text('请填写手机号')          
     }else{
-        if( $('#politicsStatusId').val()!=jy8){     
-        console.log("头像",$('#show').attr('src'));
+        
+       
     var file = $("#file")[0].files[0];
     var formData = new FormData();
     formData.append("file", file);
@@ -351,13 +355,13 @@ function tijiao() {
 
                             //var nation = mz3;//民族
                             
-                            if( $('#mz3').val()==jy2){
-                                console.log("mz1",jy2)
-                                var nation=jy2
-                            }if( $('#mz3').val()!=jy2){
-                                console.log("mz2",jy2)
-                                var nation = mz3;//民族
-                            }
+                        //     if( $('#mz3').val()==jy2){
+                        //         console.log("mz1",jy2)
+                        //         var nation=jy2
+                        //     }if( $('#mz3').val()!=jy2){
+                        //         console.log("mz2",jy2)
+                        //         var nation = mz3;//民族
+                        //     }
                             
                             
                             if($('#sex').val()=='男'){
@@ -425,6 +429,7 @@ function tijiao() {
                             var activityExperience = $('#experience2').val();//文艺或公益经历
                             var recommendType = $('#tjtype').val();//推荐类型
                             var relationshipGroup = $('#tjcompany').val();//关联组织
+                            
                             var linkman = $('#lxpeople').val();//联系人
                             var linkmanPhone = $('#sjh').val();//联系人电话
 
@@ -486,154 +491,6 @@ function tijiao() {
                     }
             }
     })
-        }
-        if( $('#politicsStatusId').val()==jy8){   
-                var id=idinfo2;                       
-                                    //	console.log("上传图片成功")
-                                    //console.log(data.data[0].url)
-                                    var name = $('#username').val();//姓名
         
-                                    //var nation = mz3;//民族
-                                    
-                                    if( $('#mz3').val()==jy2){
-                                        console.log("mz1",jy2)
-                                        var nation=jy2
-                                    }if( $('#mz3').val()!=jy2){
-                                        console.log("mz2",jy2)
-                                        var nation = mz3;//民族
-                                    }
-                                    
-                                    
-                                    if($('#sex').val()=='男'){
-                                            var gender = 1
-                                    };//性别
-                                    if($('#sex').val()=='女'){
-                                            var gender = 2
-                                    };//性别
-                                    var birthday = $('#sr').val();//出生日期
-                                    var idNumber = $('#sfnumber').val();//身份证号
-                                    //var nativePlace = jg;//籍贯
-                                    if( $('#jg').val()==jy3){
-                                        var nativePlace=jy3
-                                    }if( $('#jg').val()!=jy3){
-                                        //console.log(typeof(jy1))
-                                        var nativePlace = jg;//籍贯
-                                    }
-                                    if( $('#politicsStatusId').val()==jy1){
-                                        var politicsStatusId=jy1
-                                    }if( $('#politicsStatusId').val()!=jy1){
-                                        //console.log(typeof(jy1))
-                                        var politicsStatusId = politicsStatusIdd;//政治面貌
-                                    }
-                                
-                                    var isNewGroup = $('input[name="sex"]:checked').attr("data");//是否新文艺群体
-                                    var phone = $('#tec').val();//手机号
-                                    //var avatar = data.data[0].url;//头像
-                                    
-
-        
-        
-                                    var penName = $('#username2').val();//笔名
-                                    var location = $('#szd').val();//所在地
-                                    var postalAddress = $('#place').val();//通讯地址
-                                    var postcode = $('#placenum').val();//邮编
-                                    var officePhone = $('#bgtec').val();//办公电话
-                                    var email = $('#email').val();//邮箱
-                                    var wechatNumber = $('#weixinnum').val();//微信号
-        
-        
-                                    //var educationLevelId = whcd;//文化程度
-                                    if( $('#whcd').val()==jy5){
-                                        var educationLevelId=jy5
-                                    }if( $('#whcd').val()!=jy5){
-                                        //console.log(typeof(jy1))
-                                        var educationLevelId = whcd;//文化程度
-                                    }
-        
-                                    //var professionalTitleId = zyzc;//专业职称
-                                    if( $('#zyzc').val()==jy6){
-                                        var professionalTitleId=jy6
-                                    }if( $('#zyzc').val()!=jy6){
-                                        //console.log(typeof(jy1))
-                                        var professionalTitleId = zyzc;//专业职称
-                                    }
-        
-        
-        
-        
-                                    var unitAndDuty = $('#work').val();//工作单位
-                                    var workExperience = $('#experience').val();//工作经历
-                                    var graduateSchool = $('#school').val();//毕业院校
-                                    var associationDuty = $('#qgwork').val();//全国职务
-                                    var socialDuty = $('#qtwork').val();//其他职务
-                                    var artTypeId21 = ysml;//艺术门类
-                                    var artTypeId22 = ysml2;//艺术门类
-                                    var specificAreas21 = $('#genre').val();//具体领域
-                                    var specificAreas22 = $('#genre2').val();//具体领域2
-                                    var activityExperience = $('#experience2').val();//文艺或公益经历
-                                    var recommendType = $('#tjtype').val();//推荐类型
-                                    var relationshipGroup = $('#tjcompany').val();//关联组织
-                                    var linkman = $('#lxpeople').val();//联系人
-                                    var linkmanPhone = $('#sjh').val();//联系人电话
-        
-                                    //var artTypeId=artTypeId+'-'+specificAreas;
-                                    //var specific_areas;
-                                    if($('#ysml2').val()!=''){
-                                            artTypeId=artTypeId21+','+artTypeId22;
-                                            specificAreas=artTypeId21+'-'+specificAreas21+','+artTypeId22+'-'+specificAreas22;
-                                    }if($('#ysml2').val()==''){
-                                            artTypeId=artTypeId21;
-                                            specificAreas=specificAreas21;
-                                    }                             
-                                    var data = {
-                                            id:id,
-                                            name: name,
-                                            nation: nation,
-                                            gender: gender,
-                                            birthday: birthday,
-                                            idNumber: idNumber,
-                                            nativePlace: nativePlace,
-                                            politicsStatusId: politicsStatusId,
-                                            isNewGroup: isNewGroup,
-                                            phone: phone,
-                                           
-                                            penName: penName,
-                                            location: location,
-                                            postalAddress: postalAddress,
-                                            postcode: postcode,
-                                            officePhone: officePhone,
-                                            email: email,
-                                            wechatNumber: wechatNumber,
-                                            educationLevelId: educationLevelId,
-                                            professionalTitleId: professionalTitleId,
-                                            unitAndDuty: unitAndDuty,
-                                            workExperience: workExperience,
-                                            graduateSchool: graduateSchool,
-                                            associationDuty: associationDuty,
-                                            socialDuty: socialDuty,
-                                            artTypeId: artTypeId,
-                                            specificAreas: specificAreas,
-                                            // art_type_id:art_type_id,
-                                            // specific_areas:specific_areas,
-                                            activityExperience: activityExperience,
-                                            recommendType: recommendType,
-                                            relationshipGroup: relationshipGroup,
-                                            linkman: linkman,
-                                            linkmanPhone: linkmanPhone
-                                    }
-                                    console.log(data);
-                                    base.commonAjax('clav/member/updateClavMember', data, function (data) {
-                                            if (data.code == 1) {
-                                                    console.log('成功')
-                                                   // window.location.href='./vipfind_z.html'
-                                            }
-                                            else{
-                                                    alert(data.message)
-                                            }
-                                    })
-                            
-                    
-           
-                }
 }
 }  

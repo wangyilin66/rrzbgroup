@@ -179,10 +179,7 @@
 	<script src="./js/common.js"></script>
 	<script>
 		$(".tatou").css({ "background-color": "#059afe", "color": "white" });
-		function preduty() {
-			console.log('a')
-			window.location.href="./vipdutylist_z.html";
-		}
+		
 		function close1() {
 			$(".cover4,.cover5").css("display", "none");
 		}
@@ -249,7 +246,7 @@
 					'<td>'+	                            
 						'<button id="' + 'duty_updata' + obj.id + '" type="button" class="layui-btn duty_updata">编辑</button>'+	
 						'<button id="' + 'duty_move' + obj.id + '" type="button" class="layui-btn layui-btn-danger duty_move">删除</button>'+	
-						'<button id="' + 'duty_find' + obj.id + '" type="button" class="layui-btn layui-btn-normal duty_find" onclick="preduty()">查看列表</button>'+	
+						'<a href="./vipdutylist_z.html?id='+obj.id+'"><button id="' + 'duty_find' + obj.id + '" type="button" class="layui-btn layui-btn-normal duty_find" >查看列表</button></a>'+	
 					'</td>'+	
 				'</tr>'
 		}

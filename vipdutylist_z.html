@@ -162,26 +162,8 @@
 							<th>操作</th>
 						</tr>
 					</thead>
-					<tbody id='tb'>
-                        <tr>
-                            <td>
-                                <input type="checkbox" name="" title="" lay-skin="primary">
-                            </td>
-                            <td>123123123123</td>
-                            <td>055245</td>
-                            <td>张三</td>
-                            <td>2018-02-12</td>
-                            <td>中国文艺志愿者</td>
-                            <td>席位制理事
-                                <i class="layui-icon layui-icon-edit"></i>  
-                            </td>
-                            <td>音乐，戏剧，电影</td>
-                            <td>北京</td>
-                            <td>
-                                    <button type="button" class="layui-btn layui-btn-normal">上移</button>
-                                <button type="button" class="layui-btn layui-btn-normal">下移</button>
-                            </td>
-                        </tr>
+					<tbody id='tbcc'>
+                       
 					</tbody>
 				</table>
 				<div>
@@ -202,6 +184,80 @@
 	<script src="./js/common.js"></script>
 	<script>
 		$(".tatou").css({ "background-color": "#059afe", "color": "white" });
+
+      //获取URL数据  
+      function getQueryString() {
+        var url = location.search; //获取url中"?"符后的字串
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for (var i = 0; i < strs.length; i++) {
+                theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+            }
+        }
+        return theRequest;
+}
+	idinfo=getQueryString("id").id;
+	var zhiweid=idinfo;
+		var data={
+			orgIdentityId:zhiweid
+		}
+	base.commonAjax('clav/member/getClavMemberList', data, function (data) {
+		console.log(data)
+		var pagedata = [];
+				console.log(data);
+				pagedata = data.data;
+				console.log(pagedata)
+
+				//调用分页
+				layui.use(['laypage', 'layer'], function () {
+					var laypage = layui.laypage
+						, layer = layui.layer;
+
+					laypage.render({
+						elem: 'layui'
+						, count: pagedata.length,
+						layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+						limit: 10,
+						jump: function (obj) {
+							//模拟渲染
+							document.getElementById('tb').innerHTML = function () {
+								var arr = []
+									, thisData = pagedata.concat().splice(obj.curr * obj.limit - obj.limit, obj.limit);
+								layui.each(thisData, function (index, item) {
+									arr.push(auto(index, item));
+									//console.log(item);
+								});
+								return arr.join('');
+							}();
+						}
+					});
+				});
+
+	})
+	function auto(index, obj) {
+			return  '<tr>'+
+                            '<td>'+
+                                '<input type="checkbox" name="" title="" lay-skin="primary">'+
+                            '</td>'+
+                            '<td>123123123123</td>'+
+                            '<td>055245</td>'+
+                            '<td>张三</td>'+
+                            '<td>2018-02-12</td>'+
+                            '<td>中国文艺志愿者</td>'+
+							'<td>'+
+								席位制理事
+                                +'<i class="layui-icon layui-icon-edit"></i>'+
+                           '</td>'+
+                            '<td>音乐，戏剧，电影</td>'+
+                            '<td>北京</td>'+
+                            '<td>'+
+                                    '<button type="button" class="layui-btn layui-btn-normal">上移</button>'+
+                                '<button type="button" class="layui-btn layui-btn-normal">下移</button>'+
+                            '</td>'+
+                        '</tr>'
+		}
 	</script>
 </body>
 
