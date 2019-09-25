@@ -228,7 +228,7 @@
 <script type="text/javascript" src='./js/jquery.min.js'></script>
 <script type="text/javascript">
 
-    let zz;
+    let zz = null;
 
     //获取URL数据  
     function getQueryString() {
@@ -277,7 +277,10 @@
                 return url;
             }
 $('.tijiao').on('click',function () { 
-    var file = $("#file")[0].files[0];
+      if(zz == null){
+      alert('请上传文件');
+      }else{
+        var file = $("#file")[0].files[0];
             var formData = new FormData();
             formData.append("file", file);
             $.ajax({
@@ -303,6 +306,7 @@ $('.tijiao').on('click',function () {
                     });
                 }
             });
+      }
 
  })
            
