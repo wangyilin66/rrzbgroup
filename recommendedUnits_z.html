@@ -8,91 +8,156 @@
 	<link rel="stylesheet" href="./css/recommendedUnits.css">
 	<link rel="stylesheet" href="./css/header.css">
 </head>
+<style>
+	.cover10,
+	.cover11 {
+		width: 100%;
+		height: 100%;
+		background-color: rgba(143, 144, 148, 0.3);
+		position: absolute;
+		z-index: 999;
+		top: 2px;
+		display: none;
+	}
+
+	/* .cover11{
+	width: 100%;
+    height:100%;
+    background-color: rgba(143, 144, 148,0.3);
+    position: absolute;
+    z-index: 999;
+	top: 2px;
+} */
+	.tcc_content {
+		width: 600px;
+		height: 300px;
+		background-color: #fff;
+		margin: auto;
+		margin-top: 12%;
+	}
+
+	.tcc_title {
+		padding-top: 10px;
+		padding-left: 12px;
+		font-size: 16px;
+	}
+
+	.tcc_an {
+		padding-left: 450px;
+	}
+
+	.tuijian123 {
+		height: 29px;
+		width: 290px;
+		cursor: pointer;
+		border: solid rgba(195, 197, 201, 0.3);
+		padding-left: 9px;
+		margin-top: 6px;
+		border-width: 1px;
+		border-style: solid;
+	}
+
+	.cnm {
+		margin-bottom: 7px;
+		padding-left: 72px;
+		margin-top: 21px;
+	}
+
+	#shuju6 {
+		padding-left: 480px;
+	}
+
+	#shuju6 .layui-laypage-btn {
+		margin-top: 0;
+	}
+</style>
 
 <body>
 	<!-- 头部 -->
 	<div class="headerpage">
-			<div class="layui-container-fluid">
-				<div class="layui-fluid">
-					<div class="layui-row layui-col-space5">
-						<div class="layui-col-md5" style="padding-right: 0px;">
-							<div class="wltop">
-								<div class="logo">
-									<img src="./img/admin_logo.png" alt="">
-								</div>
+		<div class="layui-container-fluid">
+			<div class="layui-fluid">
+				<div class="layui-row layui-col-space5">
+					<div class="layui-col-md5" style="padding-right: 0px;">
+						<div class="wltop">
+							<div class="logo">
+								<img src="./img/admin_logo.png" alt="">
 							</div>
 						</div>
-						<div class="layui-col-md7" style="padding-left: 0px;">
-							<ul class="layui-nav layui-bg-blue tou">
-								<li class="layui-nav-item layui-this"><a href="">首页</a></li>
-								<li class="layui-nav-item">
-									<a href="javascript:;">志愿者管理</a>
-									<dl class="layui-nav-child">
-											<dd><a href="removeUserPage_w.html">理事调整</a></dd>
-											<dd><a href="addvipPage_w.html">增补会员单位</a></dd>
-											<dd><a href="addVipPage1_w.html">添加文艺志愿者1</a></dd>
-											<dd><a href="addVipPage2_w.html">添加文艺志愿者2</a></dd>
-									</dl>
-								</li>
-								<li class="layui-nav-item">
-									<a href="javascript:;">组织管理</a>
-									<dl class="layui-nav-child">
-										<dd><a href="">移动模块</a></dd>
-										<dd><a href="">后台模版</a></dd>
-										<dd><a href="">电商平台</a></dd>
-									</dl>
-								</li>
-								<li class="layui-nav-item">
-									<a href="javascript:;">活动管理</a>
-									<dl class="layui-nav-child">
-										<dd><a href="">移动模块</a></dd>
-										<dd><a href="">后台模版</a></dd>
-										<dd><a href="">电商平台</a></dd>
-									</dl>
-								</li>
-								<li class="layui-nav-item">
-									<a href="javascript:;">会员管理</a>
-									<dl class="layui-nav-child">
-											<dd><a href="vipfind_z.html">会员查询</a></dd>
-										<dd><a href="./vipcheck_z.html">审核管理</a></dd>
-										<dd><a href="./recommendedUnits_z.html">推荐单位管理</a></dd>
-										<dd><a href="./vipduty_z.html">会员职位管理</a></dd>
-										<dd><a href="./InvitationCode_z.html">邀请码管理</a></dd>
-										<dd><a href="managementPage_w.html">通知管理</a></dd>
-										<dd><a href="dataFind_w.html">会员信息统计</a></dd>
-										<dd><a href="">会费管理</a></dd>
-									</dl>
-								</li>
-								<li class="layui-nav-item">
-									<a href="javascript:;">系统管理</a>
-									<dl class="layui-nav-child">
-										<dd><a href="">移动模块</a></dd>
-										<dd><a href="">后台模版</a></dd>
-										<dd><a href="">电商平台</a></dd>
-									</dl>
-								</li>
-								<li class="layui-nav-item">
-									<a href="javascript:;">统计报表</a>
-									<dl class="layui-nav-child">
-										<dd><a href="">移动模块</a></dd>
-										<dd><a href="">后台模版</a></dd>
-										<dd><a href="">电商平台</a></dd>
-									</dl>
-								</li>
-								<li class="layui-nav-item"><a href="">系统管理员</a></li>
-							</ul>
-						</div>
+					</div>
+					<div class="layui-col-md7" style="padding-left: 0px;">
+						<ul class="layui-nav layui-bg-blue tou">
+							<li class="layui-nav-item layui-this"><a href="">首页</a></li>
+							<li class="layui-nav-item">
+								<a href="javascript:;">志愿者管理</a>
+								<dl class="layui-nav-child">
+									<dd><a href="removeUserPage_w.html">理事调整</a></dd>
+									<dd><a href="addvipPage_w.html">增补会员单位</a></dd>
+									<dd><a href="addVipPage1_w.html">添加文艺志愿者1</a></dd>
+									<dd><a href="addVipPage2_w.html">添加文艺志愿者2</a></dd>
+								</dl>
+							</li>
+							<li class="layui-nav-item">
+								<a href="javascript:;">组织管理</a>
+								<dl class="layui-nav-child">
+									<dd><a href="">移动模块</a></dd>
+									<dd><a href="">后台模版</a></dd>
+									<dd><a href="">电商平台</a></dd>
+								</dl>
+							</li>
+							<li class="layui-nav-item">
+								<a href="javascript:;">活动管理</a>
+								<dl class="layui-nav-child">
+									<dd><a href="">移动模块</a></dd>
+									<dd><a href="">后台模版</a></dd>
+									<dd><a href="">电商平台</a></dd>
+								</dl>
+							</li>
+							<li class="layui-nav-item">
+								<a href="javascript:;">会员管理</a>
+								<dl class="layui-nav-child">
+									<dd><a href="vipfind_z.html">会员查询</a></dd>
+									<dd><a href="./vipcheck_z.html">审核管理</a></dd>
+									<dd><a href="./recommendedUnits_z.html">推荐单位管理</a></dd>
+									<dd><a href="./vipduty_z.html">会员职位管理</a></dd>
+									<dd><a href="./InvitationCode_z.html">邀请码管理</a></dd>
+									<dd><a href="managementPage_w.html">通知管理</a></dd>
+									<dd><a href="dataFind_w.html">会员信息统计</a></dd>
+									<dd><a href="">会费管理</a></dd>
+								</dl>
+							</li>
+							<li class="layui-nav-item">
+								<a href="javascript:;">系统管理</a>
+								<dl class="layui-nav-child">
+									<dd><a href="">移动模块</a></dd>
+									<dd><a href="">后台模版</a></dd>
+									<dd><a href="">电商平台</a></dd>
+								</dl>
+							</li>
+							<li class="layui-nav-item">
+								<a href="javascript:;">统计报表</a>
+								<dl class="layui-nav-child">
+									<dd><a href="">移动模块</a></dd>
+									<dd><a href="">后台模版</a></dd>
+									<dd><a href="">电商平台</a></dd>
+								</dl>
+							</li>
+							<li class="layui-nav-item"><a href="">系统管理员</a></li>
+						</ul>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 	<!-- 内容 -->
 	<div class="hytitle">
-        <div class="hytitle_font" style="border-bottom: solid">本协会的会员</div>
+		<div class="hytitle_font" style="border-bottom: solid">本协会的会员</div>
 	</div>
 	<div class="content">
-		<div class="content_nav" >
-			<div class="content_navl"><span><i class="layui-icon layui-icon-home"></i>首页&nbsp;&nbsp;</span>/<span>&nbsp;会员管理&nbsp;&nbsp;</span>/&nbsp;推荐单位管理</div>
+		<div class="content_nav">
+			<div class="content_navl"><span><i
+						class="layui-icon layui-icon-home"></i>首页&nbsp;&nbsp;</span>/<span>&nbsp;会员管理&nbsp;&nbsp;</span>/&nbsp;推荐单位管理
+			</div>
 			<div class="content_navi">
 				<form class="layui-form" action="">
 					<div class="layui-container-fluid">
@@ -102,7 +167,7 @@
 									<div class="grid-demo grid-demo-bg1">
 										<label for="">推荐类型：
 											<div>
-												<select id="yishu"name="modules" lay-verify="required" lay-search="">
+												<select id="yishu" name="modules" lay-verify="required" lay-search="">
 													<option value="">请选择</option>
 													<!-- <option value="1">layer</option>
 													<option value="2">form</option>
@@ -116,7 +181,7 @@
 									<div class="grid-demo grid-demo-bg1">
 										<label for="">单位类型：
 											<div>
-												<select id="yishu"name="modules" lay-verify="required" lay-search="">
+												<select id="yishu" name="modules" lay-verify="required" lay-search="">
 													<option value="">请选择</option>
 													<!-- <option value="1">layer</option>
 													<option value="2">form</option>
@@ -134,21 +199,21 @@
 											</div>
 										</label>
 									</div>
-                                </div>
-                                <div class="layui-col-sm3">
-                                    <div class="hy_btn">
-                                        <button type="button" class="layui-btn layui-btn-normal" style="background-color: grey;">清空条件</button>
-                                        <button type="button" class="layui-btn layui-btn-normal">新增</button>
-                                        <button type="button" class="layui-btn layui-btn-normal">查询</button>
-                                        <div class="clear"></div>
-                                    </div>
-                                </div>
+								</div>
+								<div class="layui-col-sm3">
+									<div class="hy_btn">
+										<button type="reset" class="layui-btn layui-btn-normal"
+											style="background-color: grey;">清空条件</button>
+										<button type="button" class="layui-btn layui-btn-normal" id="cnmadd">新增</button>
+										<button type="button" class="layui-btn layui-btn-normal" id="cnmfind">查询</button>
+										<div class="clear"></div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
-				
 			</div>
-			
+
 			<div class="findres">
 				<table class="layui-table" lay-skin="line">
 					<colgroup>
@@ -157,7 +222,7 @@
 						<col>
 					</colgroup>
 					<thead>
-						<tr class="tatou">							
+						<tr class="tatou">
 							<th>序号</th>
 							<th>推荐类型</th>
 							<th>单位类型</th>
@@ -166,54 +231,221 @@
 							<th>操作</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr>						
-							<td>12313</td>
-							<td>各全国文艺家协会</td>
-							<td>中国剧协</td>
-							<td>田园</td>
-							<td>是</td>
-							<td>
-                                <button class="layui-btn">上移</button>
-                                <button class="layui-btn">下移</button>
-								<button class="layui-btn layui-btn-normal">编辑</button>
-								<button class="layui-btn layui-btn-danger">删除</button>
-							</td>
-						</tr>
-						<tr>
-							<td>12313</td>
-							<td>各全国文艺家协会</td>
-							<td>中国剧协</td>
-							<td>田园</td>
-							<td>否</td>
-							<td>
-                                    <button class="layui-btn">上移</button>
-                                    <button class="layui-btn">下移</button>
-                                    <button class="layui-btn layui-btn-normal">编辑</button>
-                                    <button class="layui-btn layui-btn-danger">删除</button>
-							</td>
-						</tr>
+					<tbody id="tuijiandanweiss">
+
 					</tbody>
 				</table>
 				<div>
-					<div id="shuju"></div>
-					<div></div>
-					<div></div>
+					<div id="shuju6"></div>
 				</div>
 			</div>
-		</form>
+			</form>
 		</div>
-</div>
+	</div>
+	<div class="cover10">
+		<div class="tcc_content">
+			<div class="tcc_title">新增单位</div>
+			<form class="layui-form" action="">
+				<div class="cnm">
+					<span>单位名称：</span><input class="tuijian123" type="text" name="" value="">
+				</div>
+				<div class="cnm" style="padding-left: 43px;">
+					<div style="display: inline-block">所属推荐类型：</div>
+					<div style="display: inline-block">
+						<select id="" name="modules" lay-verify="required" lay-search="">
+							<option value="">请选择</option>
+							<!-- <option value="1">layer</option>
+						<option value="2">form</option>
+						<option value="3">layim</option> -->
+						</select>
+					</div>
+				</div>
+				<div class="cnm">
+					<div style="display: inline-block">关联组织：</div>
+					<div style="display: inline-block">
+						<select id="" name="modules" lay-verify="required" lay-search="">
+							<option value="">请选择</option>
+							<!-- <option value="1">layer</option>
+							<option value="2">form</option>
+							<option value="3">layim</option> -->
+						</select>
+					</div>
+				</div>
+				<div class="cnm" style="padding-left:23px;">
+					<label class="layui-form-label" style="width: 106px;">会员是否可见：</label>
+					<div class="layui-input-block">
+						<input type="radio" name="sex" value="是" title="是" data="1" checked="">
+						<input type="radio" name="sex" value="否" title="否" data="2">
+					</div>
+				</div>
+				<div class="tcc_an">
+					<button type="button" class="layui-btn layui-btn-normal" id="titg">确认</button>
+					<button type="button" class="layui-btn layui-btn-primary" onclick="close1()">关闭</button>
+				</div>
+			</form>
+		</div>
+	</div>
 
-
+	<div class="cover11">
+		<div class="tcc_content">
+			<div class="tcc_title">单位名称</div>
+			<div class="findfile hnzw">
+				单位名称：<input type="text" id="xiugaituijian">
+			</div>
+			<div class="findfile_an">
+				<button type="button" class="layui-btn layui-btn-normal" id="xiugaituijian_update">确定</button>
+				<button type="button" class="layui-btn layui-btn-primary" onclick="close1()">关闭</button>
+			</div>
+		</div>
+	</div>
 	<script src="./layui/layui.js"></script>
 	<script src="./js/layuicommon.js"></script>
 	<script src="./js/jquery.min.js"></script>
 	<script src="./js/header.js"></script>
 	<script src="./js/common.js"></script>
-	<script src="./js/vipcheck.js"></script>
 	<script>
-        $(".tatou").css({ "background-color": "#059afe", "color": "white" });
+		$(".tatou").css({ "background-color": "#059afe", "color": "white" });
+		function close1() {
+			$(".cover10,.cover11").css("display", "none");
+		}
+		//会员审核
+		function tuijiandanwiesh(name) {
+			var orgIdentityId = 11;
+			var auditStatus = 1;
+			var name;
+			var data = {
+				name: name,
+				orgIdentityId: orgIdentityId,
+				auditStatus: auditStatus
+			}
+			base.commonAjax('clav/recommendUnit/getRecommendUnitList', data, function (data) {
+				//console.log("理事",data)
+				var pagedata = [];
+				// 
+				pagedata = data.data;
+				//调用分页
+				layui.use(['laypage', 'layer'], function () {
+					var laypage = layui.laypage
+						, layer = layui.layer;
+
+					laypage.render({
+						elem: 'shuju6'
+						, count: pagedata.length,
+						layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+						limit: 10,
+						jump: function (obj) {
+							//模拟渲染
+							document.getElementById('tuijiandanweiss').innerHTML = function () {
+								var arr = []
+									, thisData = pagedata.concat().splice(obj.curr * obj.limit - obj.limit, obj.limit);
+								layui.each(thisData, function (index, item) {
+									// console.log(item)
+									arr.push(auto4(index, item));
+									//console.log(item);                         
+								});
+								return arr.join('');
+							}();
+						}
+					});
+				});
+			})
+		}
+		function auto4(index, obj) {
+			// console.log('dx',obj.status)
+			var msg;
+			if (obj.status == 1) {
+				msg = '否'
+			} else {
+				msg = '是'
+			}
+			return '<tr>' +
+				'<td>' + (index + 1) + '</td>' +
+				'<td>' + obj.recommendType + '</td>' +
+				'<td>' + obj.unitType + '</td>' +
+				'<td>' + obj.name + '</td>' +
+				'<td>' + msg + '<td>' +
+				'<button id="' + 'cnm_up' + obj.id + '"class="layui-btn cnm_up">上移</button>' +
+				'<button id="' + 'cnm_down' + obj.id + '"class="layui-btn cnm_down">下移</button>' +
+				'<button id="' + 'cnm_update' + obj.id + '"class="layui-btn layui-btn-normal cnm_update">编辑</button>' +
+				'<button id="' + 'cnm_move' + obj.id + '"class="layui-btn layui-btn-danger cnm_move">删除</button>' +
+				'</td>' +
+				'</tr>'
+
+		}
+		tuijiandanwiesh();
+//查询
+$(document).on('click', '#cnmfind', function () {
+	var sousuoname=$('#xiugaituijian').val()
+	name=sousuoname
+	tuijiandanwiesh(name);
+})
+
+		//新增
+		$(document).on('click', '#cnmadd', function () {
+			$(".cover10").css("display", "inline-block");
+		})
+		//编辑
+		$(document).on('click', '.cnm_update', function () {
+			$(".cover11").css("display", "inline-block");
+			var cnm_update = $(this).attr('id').replace("cnm_update", "");
+			var data = {
+				id: cnm_update
+			}
+			console.log(data)
+			base.commonAjax('clav/recommendUnit/getRecommendUnitList', data, function (data) {
+				$('#xiugaituijian').val(data.data[0].name)
+				$(document).on('click', '#xiugaituijian_update', function () {
+					var newname = $('#xiugaituijian').val();
+					var data = {
+						name: newname,
+						id: cnm_update
+					}
+					base.commonAjax('clav/recommendUnit/updateRecommendUnit', data, function (data) {
+						$(".cover10,.cover11").css("display", "none");
+						tuijiandanwiesh();
+					})
+				})
+			})
+		})
+		//删除
+		$(document).on('click', '.cnm_move', function () {
+			var cnm_move = $(this).attr('id').replace("cnm_move", "");
+			var data = {
+				id: cnm_move
+			}
+			console.log(data)
+			base.commonAjax('clav/recommendUnit/deleteRecommendUnit', data, function (data) {
+				tuijiandanwiesh();
+				alert('删除成功')
+			})
+		})
+		//上移动
+		$(document).on('click', '.cnm_up', function () {
+			var cnm_up = $(this).attr('id').replace("cnm_up", "");
+			var status = 1;
+			var data = {
+				id: cnm_up,
+				status: status
+			}
+			console.log(data)
+			base.commonAjax('clav/recommendUnit/upOrDown', data, function (data) {
+				tuijiandanwiesh();
+			})
+		})
+		//下移动
+		$(document).on('click', '.cnm_down', function () {
+			var cnm_down = $(this).attr('id').replace("cnm_down", "");
+			var status = 2;
+			var data = {
+				id: cnm_down,
+				status: status
+			}
+			base.commonAjax('clav/recommendUnit/upOrDown', data, function (data) {
+				tuijiandanwiesh();
+			})
+		})
+
+
 	</script>
 </body>
 
