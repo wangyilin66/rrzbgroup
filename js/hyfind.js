@@ -15,12 +15,12 @@ layui.use('form', function(){
                                 form.render();
                         }
                 });
-                base.commonAjax('clav/artType/getClavArtTypeList', data, function (data) {
+                base.commonAjax('clav/orgIdentity/getClavOrgIdentList', data, function (data) {
                         if (data.code == 1) {
                                 //console.log(data);      
                                 for (var i = 0; i < data.data.length; i++) {
                                         $('#zzsf').append(
-                                                '<option value="' + data.data[i].id + '">' + data.data[i].artType + '</option>'
+                                                '<option value="' + data.data[i].id + '">' + data.data[i].orgIdentity + '</option>'
                                         );
                                 }
                                 form.render();
