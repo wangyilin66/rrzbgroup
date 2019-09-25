@@ -151,15 +151,26 @@
 	<div class="tcc_content">
 		<div class="tcc_title">新增职位</div>
 		<div class="findfile hnzw">
-			会内职务：<input type="text">
+			会内职务：<input type="text" id="newzhiwei">
 		</div>
 		<div class="findfile_an">
-				<button type="button" class="layui-btn layui-btn-normal" onclick="hnzw_add()">确定</button>
+				<button type="button" class="layui-btn layui-btn-normal" id="hnzw_add">确定</button>
 			<button type="button" class="layui-btn layui-btn-primary" onclick="close1()">关闭</button>
 		</div>
 	</div>
 </div>
-
+<div class="cover5">
+		<div class="tcc_content">
+			<div class="tcc_title">职位名称</div>
+			<div class="findfile hnzw">
+				职位名称：<input type="text" id="zhiweiname">
+			</div>
+			<div class="findfile_an">
+					<button type="button" class="layui-btn layui-btn-normal" id="zwname_add">确定</button>
+				<button type="button" class="layui-btn layui-btn-primary" onclick="close1()">关闭</button>
+			</div>
+		</div>
+	</div>
 	<script src="./layui/layui.js"></script>
 	<script src="./js/layuicommon2.js"></script>
 	<script src="./js/jquery.min.js"></script>
@@ -172,18 +183,21 @@
 			window.location.href="./vipdutylist_z.html";
 		}
 		function close1() {
-			$(".cover4").css("display", "none");
+			$(".cover4,.cover5").css("display", "none");
 		}
 		 $(document).on('click','#hnzw_add1', function () {
 			$(".cover4").css("display", "inline-block");		
-			var orgIdentity=$("#hnzw").val()
+			
+			$(document).on('click','#hnzw_add', function () {
+				var orgIdentity=$("#newzhiwei").val()
 			var data={
 				orgIdentity:orgIdentity
 			}
-			$(document).on('click','#hnzw_add1', function () {
-			base.commonAjax('clav/orgIdentity/addClavOrgIdentity', data, function (data) {
+			console.log('职位',data)
+			base.commonAjax('clav/orgIdentity/addClavOrgIdentity', data, function (data) {				
 				if(data.code==1){
-					$(".cover4").css("display", "none");
+					$(".cover4").css("display", "none");					
+					vipdutygl();
 				}
 			})
 			})
@@ -232,9 +246,9 @@
 					'<td>' + obj.orgIdentity + '</td>'+								
 					'<td>' + obj.count + '</td>'+	
 					'<td>'+	                            
-						'<button type="button" class="layui-btn ">编辑</button>'+	
-						'<button type="button" class="layui-btn layui-btn-danger">删除</button>'+	
-						'<button type="button" class="layui-btn layui-btn-normal" onclick="preduty()">查看列表</button>'+	
+						'<button id="' + 'duty_updata' + obj.id + '" type="button" class="layui-btn duty_updata">编辑</button>'+	
+						'<button id="' + 'duty_move' + obj.id + '" type="button" class="layui-btn layui-btn-danger duty_move">删除</button>'+	
+						'<button id="' + 'duty_find' + obj.id + '" type="button" class="layui-btn layui-btn-normal duty_find" onclick="preduty()">查看列表</button>'+	
 					'</td>'+	
 				'</tr>'
 		}
@@ -245,6 +259,48 @@
 			}
 			vipdutygl(orgIdentity)
 		}
+		//更新会员职位名称
+		$(document).on('click','.duty_updata', function () {
+         // console.log(id);
+         var duty_updata=$(this).attr('id').replace("duty_updata","");
+		 $(".cover5").css("display", "inline-block");
+		 var data={
+			 id:duty_updata
+		 }
+		 base.commonAjax('clav/orgIdentity/getClavOrgIdentityList', data, function (data) {
+			console.log("xuo",data.data[0].orgIdentity)
+			$('#zhiweiname').val(data.data[0].orgIdentity);
+		 })
+         $("#zwname_add").on('click', function () {
+             var orgIdentity = $('#zhiweiname').val()
+             var id = duty_updata;
+             var data = {
+				orgIdentity: orgIdentity,
+				id: id,
+             }
+             console.log(data)
+             base.commonAjax('clav/orgIdentity/updateClavOrgIdentity', data, function (data) {
+                 if (data.code == 1) {
+                     $(".cover5").css("display", "none");
+                     vipdutygl();
+                 }
+             })   
+         })
+		})
+		//删除
+		$(document).on('click','.duty_move', function () {
+         // console.log(id);
+         var duty_move=$(this).attr('id').replace("duty_move","");
+		 var data={
+			 id:duty_move
+		 }
+             console.log(data)
+             base.commonAjax('clav/orgIdentity/deleteClavOrgIdentity', data, function (data) {
+                 if (data.code == 1) {
+                     vipdutygl();
+                 }
+             })   
+         })
 	</script>
 </body>
 

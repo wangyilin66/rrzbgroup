@@ -109,7 +109,7 @@
                                                 <label class="layui-form-label"><span>*</span>姓名：</label>
                                                 <div class="layui-input-block">
                                                     <input type="text" name="title" lay-verify="title" id="username"
-                                                        autocomplete="off" placeholder="姓名" class="layui-input">
+                                                        autocomplete="off" placeholder="姓名" class="layui-input inpList">
                                                         <div class="warn w_xm"></div>
                                                 </div>
                                             </div>
@@ -117,7 +117,7 @@
                                                 <label class="layui-form-label"><span>*</span>身份证号：</label>
                                                 <div class="layui-input-block">
                                                     <input type="text" name="title" lay-verify="title" id="sfnumber"
-                                                        autocomplete="off" placeholder="身份证号" class="layui-input">
+                                                        autocomplete="off" placeholder="身份证号" class="layui-input inpList">
                                                         <div class="warn w_sf"></div>
                                                 </div>
                                             </div>
@@ -126,7 +126,7 @@
                                                 <div class="layui-input-block">
                                                     <input type="text" name="title" lay-verify="title" id="sex"
                                                         onclick="sexfind()" autocomplete="off" readonly="readonly"
-                                                        placeholder="（读取身份证号）" class="layui-input">
+                                                        placeholder="（读取身份证号）" class="layui-input inpList">
                                                         <div class="warn w_xb"></div>
                                                 </div>
                                             </div>
@@ -134,14 +134,14 @@
                                                 <label class="layui-form-label"><span>*</span>手机号码：</label>
                                                 <div class="layui-input-block">
                                                     <input type="text" name="title" lay-verify="title" id="tec"
-                                                        autocomplete="off" placeholder="手机号码" class="layui-input">
+                                                        autocomplete="off" placeholder="手机号码" class="layui-input inpList">
                                                         <div class="warn w_sj"></div>
                                                 </div>
                                             </div>
                                             <div>
                                                 <label class="layui-form-label"><span>*</span>政治面貌：</label>
                                                 <div class="layui-input-inline zzmm2">
-                                                    <select name="hy" lay-verify="required" lay-search=""
+                                                    <select name="hy" lay-verify="required" lay-search="" class="inpList"
                                                         id="politicsStatusId" lay-filter="politicsStatusIdd">
                                                         <option value="">请选择</option>
                                                         <!-- <option value="1">layer</option>
@@ -367,7 +367,7 @@
                                                 <div class="layui-input-block">
                                                     <input type="text" name="title" lay-verify="title" id="qtwork"
                                                         autocomplete="off" placeholder="请输入其他主要社会职务"
-                                                        class="layui-input">
+                                                        class="layui-input inp">
                                                 </div>
                                             </div>
                                         </div>
@@ -479,13 +479,15 @@
 
                                         <label class="layui-form-label"><span>*</span>推荐类型：</label>
                                         <div class="layui-input-inline tjlx">
-                                            <select name="hy" lay-verify="required" lay-search="" id="tjtype">
+                                            <!-- <select name="hy" lay-verify="required" lay-search="" id="tjtype">
                                                 <option value="">请选择</option>
                                                 <option value="1">layer</option>
                                                 <option value="2">form</option>
-                                            </select>
+                                            </select> -->
+                                            <input type="text"class="layui-input" id="tjtype">
                                             <div class="warn w_lx"></div>
                                         </div>
+                                        <div id="test2"></div>
 
                                     </div>
                                     <div class="layui-col-md4">
@@ -548,6 +550,7 @@
     <script src="./js/newvip.js"></script>
     <script type="text/javascript">
         let treedata = [];
+        let treedata2 = [];
         function changepic(obj) {
             //console.log(obj.files[0]);//这里可以获取上传文件的name
             var newsrc = getObjectURL(obj.files[0]);
@@ -589,6 +592,23 @@
                 treedata.push(obj);
             });
         }
+        //获取推荐类型
+        function wtf2(data) {
+            data.map((v, i) => {
+                let obj = {};
+                obj.title = v.name;
+                obj.id = i;
+                obj.children = [];
+                v.childList.map((val, ind) => {
+                    let objc = {};
+                    objc.title = val.name;
+                    objc.id = i+'-'+ind;
+                    objc.children = [];
+                    obj.children.push(objc);
+                });
+                treedata2.push(obj);
+            });
+        }
         var data = {
         }
         base.commonAjax('clav/area/getAddressList', data, function (data) {
@@ -624,6 +644,45 @@
                          }
                     }
                         , data:treedata
+                    });
+                    
+                });
+            }
+        });
+        //推荐类型
+        base.commonAjax('clav/recommendUnit/getRecommendType', data, function (data) {
+            if (data.code == 1) {
+                //console.log("z", data);
+                wtf2(data.data);
+               // console.log(treedata)
+                layui.use('tree', function () {
+                    var tree = layui.tree;
+
+                    //渲染
+                    var inst1 = tree.render({
+                        elem: '#test2'  //绑定元素
+                        ,click: function(obj){
+                       // console.log(obj.data); //得到当前点击的节点数据
+                       // console.log(obj.elem); //得到当前节点元素 
+                        // console.log($('.layui-tree-set').attr("data-id"));
+                      //  console.log(obj.data.id); //得到当前点击的节点数据
+                        let str = obj.data.id;
+                       // console.log(str.indexOf('-')>-1);
+                         if(str.indexOf('-')>-1 && str.indexOf('-')){
+                            let arr = str.split('-');
+                            if(arr.length == 2){
+                                //console.log("推荐",arr);
+                        //console.log(treedata2[arr[0]].title);
+                       // console.log(treedata[arr[0]].title);
+                       // console.log(obj.data.title);
+                        var tjplace2=treedata2[arr[0]].title+"-"+treedata2[arr[0]].title;
+                        //console.log("地区",place);
+                        $('#tjtype').val(tjplace2);
+                        $('#test2').css("visibility","hidden");
+                            }
+                         }
+                    }
+                        , data:treedata2
                     });
                     
                 });
@@ -673,6 +732,122 @@
     $(".jiah").on('click', function () {
         $(".ewai").css('display','block')
     })
+
+    $('.inpList').on('keydown',function() {
+                var i = $(this).index();
+                console.log('a')				
+                // $('.inpList').eq(i)+$('.warn').text('');			
+        if( $('#file').val()==''){
+                $('.w_tx').text('请上传头像');       
+        }else{
+            $('.w_tx').text('');
+        }
+        if( $('#username').val()==''){
+                $('.w_xm').text('请填写姓名')              
+        }else{
+            $('.w_xm').text('')   
+        }
+        if( $('#sfnumber').val()==''){
+                $('.w_sf').text('请填写身份证号')          
+        }else{
+            $('.w_sf').text('')   
+        }
+        if( $('#sex').val()==''){
+                $('.w_xb').text('请获取性别')              
+        }else{
+            $('.w_xb').text('')   
+        }
+        if( $('#tec').val()==''){
+                $('.w_sj').text('请填写手机号码')          
+        }else{
+            $('.w_sj').text('')   
+        }
+        if( $('#politicsStatusId').val()==''){
+                $('.w_zz').text('请选择政治面貌')              
+        }else{
+            $('.w_zz').text('')   
+        }
+        if( $('#mz3').val()==''){
+                $('.w_mz').text('请选择民族')              
+        }else{
+            $('.w_mz').text('')   
+        }
+        if( $('#sr').val()==''){
+                $('.w_sr').text('请获取出生日期')          
+        }else{
+            $('.w_sr').text('')   
+        }
+        if( $('#jg').val()==''){
+                $('.w_jg').text('请选择籍贯')              
+        }else{
+            $('.w_jg').text('')   
+        }
+        if( $('#szd').val()==''){
+                $('.w_sz').text('请填写现所在地')          
+        }else{
+            $('.w_sz').text('')   
+        }
+        if( $('#place').val()==''){
+                $('.w_tx2').text('请填写通讯地址')              
+        }else{
+            $('.w_tx2').text('')   
+        }
+        if( $('#placenum').val()==''){
+                $('.w_yb').text('请填写通讯邮编')          
+        }else{
+            $('.w_yb').text('')   
+        }
+        if( $('#whcd').val()==''){
+                $('.w_wh').text('请选择文化程度')              
+        }else{
+            $('.w_wh').text('')   
+        }
+        if( $('#zyzc').val()==''){
+                $('.w_zc').text('请选择专业职称')              
+        }else{
+            $('.w_zc').text('')   
+        }
+        if( $('#work').val()==''){
+                $('.w_gzdw').text('请填写工作单位及职务')          
+        }else{
+            $('.w_gzdw').text('')   
+        }
+        if( $('#experience').val()==''){
+                $('.w_jl').text('请填写工作经历（艺术简历）')              
+        }else{
+            $('.w_jl').text('')   
+        }
+        if( $('#ysml').val()==''){
+                $('.w_yis').text('请选择主要从事的艺术门类')          
+        }else{
+            $('.w_yis').text('')   
+        }
+        if( $('#experience2').val()==''){
+                $('.w_gyhd').text('请填写文艺志愿服务或公益活动经历')              
+        }else{
+            $('.w_gyhd').text('')   
+        }
+        if( $('#tjtype').val()==''){
+                $('.w_lx').text('请选择推荐类型')          
+        }else{
+            $('.w_lx').text('')   
+        }
+        if( $('#tjcompany').val()==''){
+                $('.w_tjdw').text('请选择推荐单位/人')              
+        }else{
+            $('.w_tjdw').text('')   
+        }
+        if( $('#lxpeople').val()==''){
+                $('.w_lxr').text('请填写联系人')          
+        }else{
+            $('.w_lxr').text('')   
+        }
+        if( $('#sjh').val()==''){
+                $('.w_sjh').text('请填写手机号')          
+        }  else{
+            $('.w_sjh').text('')   
+        }
+			});
     </script>
 </body>
 

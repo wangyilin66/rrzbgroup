@@ -89,6 +89,7 @@ base.commonAjax('clav/professionalTitle/getClavProfessionalTitleList', data, fun
           //因此你需要在相应的地方，执行下述方法来手动渲染，跟这类似的还有 element.init();
      
         });
+
 //身份证信息
 function sexfind() {
         var idNumber = $('#sfnumber').val();

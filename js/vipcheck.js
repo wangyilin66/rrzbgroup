@@ -193,17 +193,17 @@ $(document).on('click','.find', function () {
             console.log(data)
             $(".findfile").empty();
             $('.findfile').append(
-                '<a href="'+data.data.applicationBook+'" download="申请表">'+
-                '<div class="wj">申请书</div>'+
+                '<a href="'+data.data.applicationBook+'" >'+
+                '<div class="wj">申请书.doc</div>'+
                 '</a>'+
-                '<a href="'+data.data.associationRule+'" download="协会章程">'+
-                '<div class="wj">协会章程</div>'+
+                '<a href="'+data.data.associationRule+'" >'+
+                '<div class="wj">协会章程.doc</div>'+
                 '</a>'+
-                '<a href="'+data.data.unitSituation+'" download="单位情况介绍">'+
-                '<div class="wj" >单位情况介绍</div>'+
+                '<a href="'+data.data.unitSituation+'" >'+
+                '<div class="wj" >单位情况介绍.pdf</div>'+
                 '</a>'+
-                '<a href="'+data.data.aptitudeProve+'" download="资质证明">'+
-                '<div class="wj">资质证明</div>'+
+                '<a href="'+data.data.aptitudeProve+'">'+
+                '<div class="wj">资质证明.pdf</div>'+
                 '</a>'
             );                   
         }

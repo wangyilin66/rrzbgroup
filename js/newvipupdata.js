@@ -261,7 +261,7 @@ function tijiao() {
                 jy3=data.data[0].nativePlace;//籍贯
                // jy4=data.data[0].isNewGroup;//新文艺体
                 jy5=data.data[0].educationLevelId;//文化程度
-                jy6=data.data[0].professionalTitleId;//专业职称
+                jy6=data.data[0].professionalTitleId;//专业职称  
                 jy7=data.data[0].artTypeId;//艺术门类
                 jy8=data.data[0].avatar;//头像
         })

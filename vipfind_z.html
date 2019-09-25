@@ -264,6 +264,9 @@
 	<script src="./js/common.js"></script>
 	<script src="./js/hyfind.js"></script>
 	<script>
+		$('#test1').mouseleave(function(){
+			$('#test1').css("visibility", "hidden");
+			})
 		$(".tatou").css({ "background-color": "#059afe", "color": "white" });
 		function close1() {
 			$(".cover4").css("display", "none");
@@ -342,28 +345,30 @@
 			}
 		});
 
-		function findvip(name, memberNo, artTypeId, location, orgIdentityId,sTime,eTime) {
+		function findvip(name, memberNo, artTypeId, location,recommendType,orgIdentityId,sTime,eTime) {
 			var name;
 			var memberNo;
 			var artTypeId;
 			var location;
 			var sTime;
 			var eTime;
-			var orgIdentityId =9;
+			var orgIdentityId;
+			var recommendType;
 			var data = {
 				name: name,
 				memberNo: memberNo,
 				artTypeId: artTypeId,
 				location: location,
+				recommendType,recommendType,
 				orgIdentityId: orgIdentityId,
 				sTime:sTime,
 				eTime:eTime
 			}
-			base.commonAjax('clav/member/getClavMemberList', data, function (data) {
+			base.commonAjax('clav/member/getClavMemberList2', data, function (data) {
 				var pagedata = [];
 				console.log(data);
 				pagedata = data.data;
-				//console.log(pagedata)
+				console.log(pagedata)
 
 				//调用分页
 				layui.use(['laypage', 'layer'], function () {
@@ -463,6 +468,7 @@
 			var recommendType;
 			var sTime;
 			var eTime;
+			var orgIdentityId;
 			//console.log(eTime);
 			//console.log( $("#vipname").val())
 			//console.log( $("#vipnumber").val())
@@ -484,6 +490,10 @@
 				recommendType = $("#tjdw").val();
 				//console.log(recommendType)
 			}
+			if ($("#zzsf").val() != '') {
+				orgIdentityId = category2;
+				//console.log(recommendType)
+			}
 			if ($('#time1').val() != '') {
 				sTime =  timechecked4;
 				console.log(sTime)
@@ -495,7 +505,7 @@
 			//location=$("#szd").val();
 			//console.log(category)
 			//artTypeId=category
-			findvip(name, memberNo, artTypeId, location, recommendType,sTime,eTime);
+			findvip(name, memberNo, artTypeId, location, recommendType,orgIdentityId,sTime,eTime);
 		})
 		function tjfind() {
 
@@ -510,8 +520,8 @@
 				'<td>' + obj.name + '</td>' +
 				'<td>' + (obj.createDate).split(/\s+/)[0] + '</td>' +
 				'<td>' + obj.recommendType + '</td>' +
-				'<td>' + obj.orgIdentityId + '</td>' +
-				'<td>' + obj.artTypeId + '</td>' +
+				'<td>' + obj.orgIdentityStr + '</td>' +
+				'<td>' + obj.artStr + '</td>' +
 				'<td>' + obj.location + '</td>' +
 				'<td>' +
 				'<button id="' + 'hy_edit' + obj.id + '"class="layui-btn hy_edit">编辑</button>' +
