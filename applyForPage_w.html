@@ -168,7 +168,7 @@ font-weight: 600;
                 <div class="line"></div>
                 <ul>
                     <li><input class="name" type="text" placeholder="身份证/用户名/会员编号/手机号"></li>
-                    <li><input class="psw" type="text" placeholder="请输入密码"></li>
+                    <li><input class="psw" type="password" placeholder="请输入密码"></li>
                     <li><input class="mark" type="text" placeholder="请输入邀请码"></li>
                 </ul>
                 <div class="l_cont">
@@ -219,7 +219,7 @@ font-weight: 600;
             let mark = $('.mark').val();
             if(name != '' && paw != '' && mark != ''){
                 let obj = {
-                    loginName:name,
+                    name:name,
                     password:paw,
                     inviteCode:mark
                 }
@@ -236,7 +236,7 @@ font-weight: 600;
                 console.log(data);
                 if(data.code == 1){
                     // window.location.href = "applyFormPage_w.html";
-                    if(data.data.isFinishTable == 1){
+                    if(data.isFinishTable == 2){
                         window.location.href = "applyFormPage_w.html";
                     }else{
                         window.location.href = "applyUpdatePage_w.html";

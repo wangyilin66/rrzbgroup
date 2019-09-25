@@ -8,6 +8,7 @@
     <link rel="stylesheet" href='./css/common.css'><link>
     <link rel="stylesheet" href='./css/commonHeader.css'><link>
     <link rel="stylesheet" href="./layui/css/layui.css">
+    <link rel="stylesheet" href="./css/newfind.css">
     <style>
     .wraper{
         position: relative;
@@ -108,7 +109,8 @@
     }
     .content{
         margin-top: 90px;
-        width: 980px;
+        /* width: 980px; */
+        width: 1141px;
         height: auto;
         margin: 0 auto;
         border:1px solid #999;
@@ -126,7 +128,8 @@
         margin-bottom: 24px;
     }
     .select{
-        width: 980px;
+        /* width: 980px; */
+        width: 1141px;
         height: auto;
         background: #fff;
         box-sizing: border-box;
@@ -341,6 +344,15 @@
 .txdzinp{
     width: 300px !important;
 }
+.flex_box{
+    display: flex;
+}
+.grinfot,.qtinfot,.gzinfot,.zyinfot,.tjinfot{
+    background: #DB2033 !important;
+}
+.layui-icon-add-circle{
+    color:  #DB2033 !important;
+}
     </style>
     <title>Document</title>
 </head>
@@ -367,274 +379,455 @@
 
     <div class="c_tit">会员申请信息</div>
     <div class='c_click_box'>
-        <div class="updown">下载申请表</div>
-        <div class="bc">保存草稿</div>
+        <div class="updown" onclick="down()">下载申请表</div>
+        <div class="bc"  onclick="tijiao()">保存草稿</div>
     </div>
 
     <div class="select">
             <form class="layui-form" action="">
-     
-    <div class="s_jbbox">
-        <p class="j_tit">个人基本认证信息</p>
-        <div class="j_cont">
-            <ul class="j_c_ulF">
-                <li>
-                    <div class="ll"><span>*</span>姓名:</div>
-                    <div class="rr"><input placeholder="姓名" type="text" class="inp nameinp" /></div>
-                </li>
-                <li>
-                    <div class="ll"><span>*</span>身份证号:</div>
-                    <div class="rr"><input type="text" placeholder="请输入身份证号码" class="inp sfzinp" />
-                        <p>注册后不可修改，身份证最后一位为X，请填写大写X</p>
-                    </div>
-                </li>
-                <li>
-                    <div class="ll"><span>*</span>性别:</div>
-                    <div class="rr">
-                            <input type="text" class="inp xbinp" />
-                    </div>
-                </li>
-                <!-- <li><div class="ll"><span>*</span>体制内:</div><div class="rr"><input type='radio' class="tzyes" name='tz'/>是<input type='radio' class="tzno" name='tz'/>否</div></li> -->
-                <li>
-                    <div class="ll"><span>*</span>手机号码:</div>
-                    <div class="rr"><input type="text" placeholder="手机号码" class="inp phoneinp" /></div>
-                </li>
-                <li>
-                    <div class="ll"><span>*</span>政治面貌:</div>
-                    <!-- <input type="text" class="inp mminp" /> -->
-                    <div class="rr">
-                    <select class="inp" id="mminp" lay-filter="zzmminp" lay-verify="required" lay-search="">
-                        <option value="">请选择</option>
-                        <!-- <option value="1">layer</option>
-                        <option value="2">form</option> -->
-                    </select>
-                </div>
-                </li>
-            </ul>
+                    <div class="grinfo">
+                        <div class="grinfot">个人基本认证信息</div>
+                        <div class="grinfoc">
+                            <div class="layui-container">
+                                <div class="layui-fluid">
+                                    <div class="layui-row layui-col-space5">
+                                        <div class="layui-col-md4">
+                                            <div class="grid-demo grid-demo-bg1">
+                                                <div class="layui-form-item">
+                                                    <label class="layui-form-label"><span>*</span>姓名：</label>
+                                                    <div class="layui-input-block">
+                                                        <input type="text" name="title" lay-verify="title" id="username"
+                                                            autocomplete="off" placeholder="姓名" class="layui-input inpList">
+                                                            <div class="warn w_xm"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="layui-form-item">
+                                                    <label class="layui-form-label"><span>*</span>身份证号：</label>
+                                                    <div class="layui-input-block">
+                                                        <input type="text" name="title" lay-verify="title" id="sfnumber"
+                                                            autocomplete="off" placeholder="身份证号" class="layui-input inpList">
+                                                            <div class="warn w_sf"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="layui-form-item">
+                                                    <label class="layui-form-label"><span>*</span>性别：</label>
+                                                    <div class="layui-input-block">
+                                                        <input type="text" name="title" lay-verify="title" id="sex"
+                                                            onclick="sexfind()" autocomplete="off" readonly="readonly"
+                                                            placeholder="（读取身份证号）" class="layui-input inpList">
+                                                            <div class="warn w_xb"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="layui-form-item">
+                                                    <label class="layui-form-label"><span>*</span>手机号码：</label>
+                                                    <div class="layui-input-block">
+                                                        <input type="text" name="title" lay-verify="title" id="tec"
+                                                            autocomplete="off" placeholder="手机号码" class="layui-input inpList">
+                                                            <div class="warn w_sj"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="flex_box">
+                                                    <label class="layui-form-label"><span>*</span>政治面貌：</label>
+                                                    <div class="layui-input-inline zzmm2">
+                                                        <select name="hy" lay-verify="required" lay-search="" class="inpList"
+                                                            id="politicsStatusId" lay-filter="politicsStatusIdd">
+                                                            <option value="">请选择</option>
+                                                            <!-- <option value="1">layer</option>
+                                                            <option value="2">form</option> -->
+                                                        </select>
+                                                        <div class="warn w_zz"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-col-md4">
+                                            <div class="grid-demo">
+                                                <div class="mz flex_box">
+                                                    <label class="layui-form-label"><span>*</span>民族：</label>
+                                                    <div class="layui-input-inline mz2">
+                                                        <select name="hy" lay-verify="required" lay-search="" lay-filter="mz3" id="mz3">
+                                                            <option value="">请选择</option>
+                                                            <!-- <option value="1">layer</option>
+                                                            <option value="2">form</option> -->
+                                                        </select>
+                                                        <div class="warn w_mz"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="layui-form-item">
+                                                    <label class="layui-form-label">艺名（笔名）：</label>
+                                                    <div class="layui-input-block">
+                                                        <input type="text" name="title" lay-verify="title" id="username2"
+                                                            autocomplete="off" placeholder="艺名（笔名）" class="layui-input">
+                                                    </div>
+                                                </div>
+                                                <div class="layui-form-item">
+                                                    <label class="layui-form-label"><span>*</span>出生日期：</label>
+                                                    <div class="layui-input-block">
+                                                        <input type="text" name="title" lay-verify="title" id="sr"
+                                                            onclick="birthfind()" autocomplete="off" readonly="readonly"
+                                                            placeholder="（读取身份证号）" class="layui-input">
+                                                            <div class="warn w_sr"></div>
+                                                    </div>
+                                                </div>
+                                                <div  class="flex_box">
+                                                    <label class="layui-form-label"><span>*</span>籍贯：</label>
+                                                    <div class="layui-input-inline jg2">
+                                                        <select name="hy" lay-verify="required" lay-search="" id="jg" lay-filter="jg">
+                                                            <option value="">请选择</option>
+                                                            <!-- <option value="1">layer</option>
+                                                            <option value="2">form</option> -->
+                                                        </select>
+                                                        <div class="warn w_jg"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="layui-form-item xinwenti">
+                                                    <label class="layui-form-label"><span>*</span>新文艺群体:</label>
+                                                    <div class="layui-input-block">
+                                                        <input type="radio" name="sex" value="是" title="是" data="1"
+                                                            checked="">
+                                                        <input type="radio" name="sex" value="否" title="否" data="2">
+                                                    </div>
+                                                </div>
     
-            <ul class="j_c_ulF">
-                <li>
-                    <div class="ll"><span>*</span>民族:</div>
-                    <div class="rr">
-                        <select class="inp" lay-filter="mzinp" id="mzinp" lay-verify="required" lay-search="">
-                            <option value="">民族</option>
-                    
-                        </select>
+                                            </div>
+                                        </div>
+                                        <div class="layui-col-md4 headp">
+                                            <div class="grid-demo grid-demo-bg1">
+                                                <div class="headimg">
+                                                    <img src="./img/head.png" alt="" id="show">
+                                                </div>
+                                                <div style="position: relative"><span>*</span>点击上传个人近期白底免冠照
+                                                    <div class="warn w_tx"></div>
+                                                    <div class="file">
+                                                        <input type="file" name="file" id="file" class=""
+                                                            onchange="changepic(this)">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                 
-                </li>
-                <li>
-                    <div class="ll"><span>*</span>艺名(笔名):</div>
-                    <div class="rr"><input type="text" placeholder="艺名（笔名）" class="inp yminp" /></div>
-                </li>
-                <li>
-                    <div class="ll"><span>*</span>出生日期:</div>
-                    <div class="rr"><input type="text" class="inp csinp" /></div>
-                </li>
-                <li>
-                    <div class="ll"><span>*</span>籍贯:</div>
-                    <div class="rr">
-                        <select class="inp" lay-filter="jginp" id="jginp" lay-verify="required" lay-search="">
-                                <option value="">籍贯</option>
-                            </select>
+                    <div class="qtinfo">
+                        <div class="qtinfot">其他基本信息</div>
+                        <div class="qtinfoc">
+                            <div class="layui-container-fluid">
+                                <div class="layui-fluid">
+                                    <div class="layui-row layui-col-space5">
+                                        <div class="layui-col-md4">
+                                            <div class="grid-demo grid-demo-bg1">
+                                                <div class="grid-demo">
+                                                    <label class="layui-form-label"><span>*</span>现所在地:</label>
+                                                    <div class="layui-input-block">
+                                                        <input type="text" name="title" lay-verify="title" id="szd"
+                                                            autocomplete="off" placeholder="现所在地" class="layui-input">
+                                                            <div class="warn w_sz"></div>
+                                                    </div>
+                                                    <div id="test1"></div>
+                                                </div>
+                                                <div class="layui-form-item tec">
+                                                    <label class="layui-form-label">办公电话:</label>
+                                                    <div class="layui-input-block">
+                                                        <input type="text" name="title" lay-verify="title" id="bgtec"
+                                                            autocomplete="off" placeholder="办公电话" class="layui-input">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-col-md5">
+                                            <div class="grid-demo">
+                                                <div class="layui-form-item">
+                                                    <label class="layui-form-label"><span>*</span>通讯地址：</label>
+                                                    <div class="layui-input-block" >
+                                                        <input type="text" name="title" lay-verify="title" id="place"
+                                                            autocomplete="off" placeholder="通讯地址" class="layui-input" >
+                                                            <div class="warn w_tx2"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="layui-form-item">
+                                                    <label class="layui-form-label">电子邮箱：</label>
+                                                    <div class="layui-input-block" >
+                                                        <input type="text" name="title" lay-verify="title" id="email"
+                                                            autocomplete="off" placeholder="电子邮箱" class="layui-input" >
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-col-md3">
+                                            <div class="grid-demo grid-demo-bg1">
+                                                <div class="layui-form-item">
+                                                    <label class="layui-form-label"><span>*</span>通讯邮编：</label>
+                                                    <div class="layui-input-block" style="width: 155px;">
+                                                        <input type="text" name="title" lay-verify="title" id="placenum"
+                                                            autocomplete="off" placeholder="通讯邮编" class="layui-input">
+                                                            <div class="warn w_yb"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="layui-form-item">
+                                                    <label class="layui-form-label">微信号：</label>
+                                                    <div class="layui-input-block"style="width: 155px;">
+                                                        <input type="text" name="title" lay-verify="title" id="weixinnum"
+                                                            autocomplete="off" placeholder="微信号" class="layui-input">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </li>
-                <li>
-                    <div class="ll"><span>*</span>新文艺群体:</div>
-                    <div class="rr"><input type='radio' class="wyyes" name='xb' />是<input type='radio' class="wyno"
-                            name='xb' />否</div>
-                </li>
+                    <div class="gzinfo">
+                        <div class="gzinfot">工作教育信息</div>
+                        <div class="gzinfoc">
+                            <div class="layui-container-fluid">
+                                <div class="layui-fluid">
+                                    <div class="layui-row layui-col-space5">
+                                        <div class="layui-col-md4">
+                                            <div class="grid-demo grid-demo-bg1">
+                                                <div class="grid-demo">
+                                                    <label class="layui-form-label"><span>*</span>文化程度:</label>
+                                                    <div class="layui-input-inline diqu">
+                                                        <select name="quiz1" id="whcd" lay-filter="whcd">
+                                                            <option value="">请选择</option>
+                                                            <!-- <option value="浙江" selected="">浙江省</option>
+                                                            <option value="你的工号">江西省</option>
+                                                            <option value="你最喜欢的老师">福建省</option> -->
+                                                        </select>
+                                                        <div class="warn w_wh"></div>
+                                                    </div>
     
-            </ul>
-            <div class="uploadImg">
-                <div class="up_cont">
-                    <img id='show' src="./image/updatabg.png" alt="">
-                </div>
-                <div class="up_date">
-                    <input type="file" name="file" id="file" class="" onchange="changepic(this)">
-                </div>
-                <div class="up_ll"><span>*</span>
-                    <p class="up_p">点击上传个人近期白底免冠照</p>
-                </div>
-            </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-col-md4">
+                                            <div class="grid-demo grid-demo-bg1">
+                                                <div class="grid-demo">
+                                                    <label class="layui-form-label"><span>*</span>专业职称:</label>
+                                                    <div class="layui-input-inline diqu">
+                                                        <select name="quiz1" id="zyzc" lay-filter="zyzc">
+                                                            <option value="">请选择</option>
+                                                            <!-- <option value="浙江" selected="">浙江省</option>
+                                                            <option value="你的工号">江西省</option>
+                                                            <option value="你最喜欢的老师">福建省</option> -->
+                                                        </select>
+                                                        <div class="warn w_zc"></div>
+                                                    </div>
     
-        </div>
-    </div>
-
-<div class="qt_box">
-    <p class="j_tit">其他基本信息</p>
-    <div class="j_cont">
-        <ul class="j_c_ulF">
-            <li>
-                <div class="ll"><span>*</span>现所在地:</div>
-                <div class="rr">
-                    <input type="text" class="inp xszdinp" />
-                    <div id="test3"></div>
-                </div>
-                
-            </li>
-            <li>
-                <div class="ll"><span>*</span>办公电话:</div>
-                <div class="rr"><input type="text" class="inp bgdhinp" /></div>
-            </li>
-         
-        </ul>
-
-        <ul class="j_c_ulF">
-                <li>
-                        <div class="ll"><span>*</span>通讯地址:</div>
-                        <div class="rr"><input type="text" class="inp txdzinp" /></div>
-                    </li>
-                <li>
-                    <div class="ll"><span>*</span>电子邮箱:</div>
-                    <div class="rr"><input type="text" class="inp dzyxinp" /></div>
-                </li>
-             
-            </ul>
-
-
-        <ul class="j_c_ulF">
-            <li>
-                <div class="ll"><span>*</span>通讯邮编:</div>
-                <div class="rr"><input  type="text" class="inp txybinp" /></div>
-            </li>
-            <li>
-                <div class="ll"><span>*</span>微信号:</div>
-                <div class="rr"><input type="text"  class="inp wxhinp" /></div>
-            </li>
-        </ul>
-    </div>
-</div>
-
-<div class="gz_box">
-        <p class="j_tit">工作教育信息</p>
-        <div class="j_cont">
-            <ul class="j_c_ulF">
-                <li>
-                    <div class="ll"><span>*</span>文化程度:</div>
-                    <div class="rr">
-                        <select class="inp" lay-filter="whcdinp" id="whcdinp" lay-verify="required" lay-search="">
-                                <option value="">文化程度</option>
-                            </select>
-                    </div>
-                </li>
-                <li>
-                    <div class="ll"><span>*</span>工作单位及职务:</div>
-                    <div class="rr"><input type="text"  class="inp gzdwinp" /></div>
-                </li>
-                <li>
-                    <div class="ll"><span>*</span>全国文艺家协会职务:</div>
-                    <div class="rr"><input type="text" class="inp wyzwinp" /></div>
-                </li>
-                <li>
-                        <div class="ll"><span>*</span>其他主要社会职务:</div>
-                        <div class="rr"><input type="text" class="inp qtzwinp" /></div>
-                    </li>
-                    <li>
-                        <div class="ll"><span>*</span>工作经历(艺术简历):</div>
-                        <div class="rr">
-                            <textarea name="" class="texta1 gzjlinp" placeholder="请输入工作经历（艺术简历），300字以内"  id="" cols="30" rows="10"></textarea>
-                           </div>
-                    </li>
-            </ul>
-            <ul class="j_c_ulF">
-                <li>
-                    <div class="ll"><span>*</span>专业职称:</div>
-                    <div class="rr">
-                        <select class="inp" lay-filter="zyzcinp" id="zyzcinp" lay-verify="required" lay-search="">
-                                <option value="">专业职称</option>
-                            </select>
-                    </div>
-                </li>
-              
-            </ul>
-            <ul class="j_c_ulF">
-                    <li>
-                        <div class="ll"><span>*</span>毕业院校:</div>
-                        <div class="rr"><input placeholder="" type="text" class="inp byyxinp" /></div>
-                    </li>
-
-                </ul>
-        </div>
-    </div>
-
-
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-col-md4">
+                                            <div class="grid-demo">
+                                                <div class="layui-form-item">
+                                                    <label class="layui-form-label">毕业院校</label>
+                                                    <div class="layui-input-block">
+                                                        <input type="text" name="title" lay-verify="title" id="school"
+                                                            autocomplete="off" placeholder="毕业院校" class="layui-input"
+                                                            style="width:183px;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
     
-<div class="zyfw_box">
-    <p class="j_tit">志愿服务信息</p>
-    <div class="j_cont">
-        <ul class="j_c_ulF">
-            <li>
-                <div class="ll"><span>*</span>主要从事的艺术门类:</div>
-                <div class="rr">
-                    <select class="inp" lay-filter="ysmlinp" id="ysmlinp" lay-verify="required" lay-search="">
-                            <option value="">艺术门类</option>
-                        </select>
-                </div>
-            </li>
-            <li>
-                <div class="ll"><span>*</span>文艺志愿服务或公益活动经历:</div>
-                <div class="rr">
-                    <textarea name="" class="texta1 hdjlinp" placeholder="请输入文艺志愿服务或公益活动经历，300字以内" id="" cols="30" rows="10"></textarea>
-                </div>
-            </li>
-
-        </ul>
-        <ul class="j_c_ulF">
-            <li>
-                <div class="ll"><span>*</span>具体领域:</div>
-                <div class="rr"><input placeholder="" type="text" class="inp jtlyinp" /></div>
-            </li>
-          
-        </ul>
-
-    </div>
-</div>
-
-    
-<div class="tjlx_box">
-        <p class="j_tit">推荐类型信息</p>
-        <div class="j_cont">
-            <ul class="j_c_ulF">
-                <li>
-                    <div class="ll"><span>*</span>推荐类型:</div>
-                    <div class="rr">
-                        <!-- <input type="text" class="inp tylxdinp" /> -->
-                        <select class="inp" lay-filter="tylxdinp"  lay-verify="required" lay-search="">
-                                <option value="0"></option>
-                                <option value="1">内推</option>
-                                <option value="2">外推</option>
-                            </select>
+                                        <div class="layui-col-md7">
+                                            <div class="grid-demo grid-demo-bg1">
+                                                <div class="layui-form-item tec">
+                                                    <label class="layui-form-label"><span>*</span>工作单位及职务:</label>
+                                                    <div class="layui-input-block">
+                                                        <input type="text" name="title" lay-verify="title" id="work"
+                                                            autocomplete="off" placeholder="请输入工作单位及职务" class="layui-input">
+                                                            <div class="warn w_gzdw"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="layui-form-item tec">
+                                                    <label class="layui-form-label">全国文艺家协会职务:</label>
+                                                    <div class="layui-input-block">
+                                                        <input type="text" name="title" lay-verify="title" id="qgwork"
+                                                            autocomplete="off" placeholder="请输入全国文艺家协会职务（含中国作协和中国评协）"
+                                                            class="layui-input">
+                                                    </div>
+                                                </div>
+                                                <div class="layui-form-item tec">
+                                                    <label class="layui-form-label">其他主要社会职务:</label>
+                                                    <div class="layui-input-block">
+                                                        <input type="text" name="title" lay-verify="title" id="qtwork"
+                                                            autocomplete="off" placeholder="请输入其他主要社会职务"
+                                                            class="layui-input inp">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-col-md9">
+                                            <div class="grid-demo">
+                                                <div class="layui-form-item">
+                                                    <label class="layui-form-label"><span>*</span>工作经历（艺术简历）:</label>
+                                                    <div class="layui-input-block">
+                                                        <textarea placeholder="请输入工作经历（艺术简历），300字以内" id="experience"
+                                                            class="layui-textarea"></textarea>
+                                                            <div class="warn w_jl"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </li>
-                <li>
-                    <div class="ll"><span>*</span>联系人:</div>
-                    <div class="rr"><input type="text" class="inp lxrinp" /></div>
-                </li>
+                    <div class="zyinfo">
+                        <div class="zyinfot">志愿服务信息</div>
+                        <div class="zyinfoc">
+                            <div class="layui-container-fluid">
+                                <div class="layui-fluid">
+                                    <div class="layui-row layui-col-space5">
+                                        <div class="layui-col-md4">
+                                            <div class="grid-demo grid-demo-bg1">
+                                                <div class="layui-form-item tec">
+                                                    <label class="layui-form-label"><span>*</span>主要从事的艺术门类：</label>
+                                                    <div class="layui-input-inline">
+                                                        <select name="hy" lay-verify="required" lay-search="" id="ysml" lay-filter="ysml">
+                                                            <option value="">请选择</option>
+                                                            <!-- <option value="1">layer</option>
+                                                            <option value="2">form</option> -->
+                                                        </select>
+                                                        <div class="warn w_yis"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-col-md4">
+                                            <div class="grid-demo grid-demo-bg1">
+                                                <div class="layui-form-item tec">
+                                                    <label class="layui-form-label">具体领域：</label>
+                                                    <div class="layui-input-block">
+                                                        <input type="text" name="title" lay-verify="title" id="genre"
+                                                            autocomplete="off" placeholder="具体领域：" class="layui-input"
+                                                            style="width:190px;">
+                                                            <i class="layui-icon layui-icon-add-circle jiah" style="float: right;font-size: 30px; color: #059afe;"></i>
+                                                    </div>                                               
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-col-md12  ewai" style="display: none;">
+                                            <div class="layui-col-md4">
+                                                <div class="grid-demo grid-demo-bg1">
+                                                    <div class="layui-form-item tec">
+                                                        <label class="layui-form-label">主要从事的艺术门类：</label>
+                                                        <div class="layui-input-inline">
+                                                            <select name="hy" lay-verify="required" lay-search="" id="ysml2" lay-filter="ysml2">
+                                                                <option value="">请选择</option>
+                                                                <!-- <option value="1">layer</option>
+                                                                <option value="2">form</option> -->
+                                                            </select>
+                                                            <div class="warn w_yis"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="layui-col-md4">
+                                                <div class="grid-demo grid-demo-bg1">
+                                                    <div class="layui-form-item tec">
+                                                        <label class="layui-form-label">具体领域：</label>
+                                                        <div class="layui-input-block">
+                                                            <input type="text" name="title" lay-verify="title" id="genre2"
+                                                                autocomplete="off" placeholder="具体领域：" class="layui-input"
+                                                                style="width:190px;">
+                                                        </div>                                               
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-col-md9">
+                                            <div class="grid-demo">
+                                                <div class="layui-form-item">
+                                                    <label class="layui-form-label"><span>*</span>文艺志愿服务或公益活动经历：</label>
+                                                    <div class="layui-input-block">
+                                                        <textarea placeholder="请输入文艺志愿服务或公益活动经历，300字以内" id="experience2"
+                                                            class="layui-textarea"></textarea>
+                                                            <div class="warn w_gyhd"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tjinfo">
+                        <div class="tjinfot">推荐类型信息</div>
+                        <div class="tjinfoc">
+                            <div class="layui-container-fluid">
+                                <div class="layui-fluid">
+                                    <div class="layui-row layui-col-space5">
+                                            <div class="layui-col-md4">
+
+                                                    <label class="layui-form-label"><span>*</span>推荐类型：</label>
+                                                    <div class="layui-input-inline tjlx">
+                                                        <!-- <select name="hy" lay-verify="required" lay-search="" id="tjtype">
+                                                            <option value="">请选择</option>
+                                                            <option value="1">layer</option>
+                                                            <option value="2">form</option>
+                                                        </select> -->
+                                                        <input type="text"class="layui-input" id="tjtype">
+                                                        <div class="warn w_lx"></div>
+                                                    </div>
+                                                    <div id="test2"></div>
             
-            </ul>
-            <ul class="j_c_ulF">
-                <li>
-                    <div class="ll"><span>*</span>推荐单位/人:</div>
-                    <div class="rr">
-                        <!-- <input placeholder="" type="text" class="inp tydwinp" /> -->
-                        <select class="inp" lay-filter="tydwinp"  lay-verify="required" lay-search="">
-                                <option value="0"></option>
-                                <option value="1">国企</option>
-                                <option value="2">外企</option>
-                            </select>
-                    </div>
-                </li>
-                <li>
-                    <div class="ll"><span>*</span>手机号:</div>
-                    <div class="rr"><input type="text" class="inp typhoneinp" /></div>
-                </li>
-            </ul>
-    
-        </div>
-    </div>
-
-</form>
+                                                </div>
+                                                <div class="layui-col-md4">
+                                                    <label class="layui-form-label"><span>*</span>推荐单位/人：</label>
+                                                    <div class="layui-input-inline tjr">
+                                                        <select name="hy" lay-verify="required" lay-search="" id="tjcompany" lay-filter="tjcompany"> 
+                                                            <option value="">请选择</option>
+                                                            <!-- <option value="1">layer</option>
+                                                            <option value="2">form</option> -->
+                                                        </select>
+                                                        <div class="warn w_tjdw"></div>
+                                                    </div>
+            
+                                                </div>
+                                        <div class="layui-col-md12">
+                                            <div class="layui-col-md4">
+                                                <div class="grid-demo grid-demo-bg1">
+                                                    <div class="layui-form-item tec">
+                                                        <label class="layui-form-label"><span>*</span>联系人：</label>
+                                                        <div class="layui-input-block">
+                                                            <input type="text" name="title" lay-verify="title"
+                                                                id="lxpeople" autocomplete="off" placeholder="联系人"
+                                                                class="layui-input" style="width:254px;">
+                                                                <div class="warn w_lxr"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="layui-col-md4">
+                                                <div class="grid-demo grid-demo-bg1">
+                                                    <div class="layui-form-item tec">
+                                                        <label class="layui-form-label"><span>*</span>手机号：</label>
+                                                        <div class="layui-input-block">
+                                                            <input type="text" name="title" lay-verify="title" id="sjh"
+                                                                autocomplete="off" placeholder="手机号" class="layui-input"
+                                                                style="width:254px;">
+                                                                <div class="warn w_sjh"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <!-- </div>
+                    <div class="anniu">
+                        <button type="button" class="layui-btn layui-btn-normal" onclick="tijiao()">提交</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">取消</button>
+                    </div> -->
+                </form>
     </div>
 
 </div>
@@ -667,114 +860,40 @@
     <script type="text/javascript" src='./js/jquery.min.js'></script>
     <script src="./layui/layui.js"></script>
     <script src="./js/layuicommon.js"></script>
+    <script src="./js/newvip3.js"></script>
     <script type="text/javascript">
-        let treedata = [];
+
         let zzmminp,mzinp,jginp,whcdinp,zyzcinp,ysmlinp,tydwinp,tylxdinp;
         let height = $('body').height();
         $('.pop_up').css('height', height + 200);
         // $('.pop_up').hide();
-        let data = {};
-        layui.use('form', function () {
-            var form = layui.form;
-            //民族列表
-            base.commonAjax('clav/nation/getClavNationList', data, function (res) {
-                if (res.code == 1) {
-                    //console.log(res.data);
-                    res.data.map(item => {
-                        $('#mzinp').append('<option value="' + item.id + '">' + item.nation + '</option>');
-                    });
-                    form.render();
-                }
-            });
-         //籍贯
-            base.commonAjax('clav/area/getProvinceList', data, function (res) {
-                if (res.code == 1) {
-                    //console.log(res.data);
-                    res.data.map(item => {
-                        $('#jginp').append('<option value="' + item.id + '">' + item.areaName + '</option>');
-                    });
-                    form.render();
-                }
-            });
-            //面貌
-            base.commonAjax('clav/politicsStatus/getClavPoliticsStatusList', data, function (res) {
-                if (res.code == 1) {
-                    //console.log(res.data);
-                    res.data.map(item => {
-                        $('#mminp').append('<option value="' + item.id + '">' + item.politicsStatus + '</option>');
-                    });
-                    form.render();
-                }
-            });
-            //文化程度
-            base.commonAjax('clav/educationLevel/getClavEducationLevelList', data, function (res) {
-                if (res.code == 1) {
-                    //console.log(res.data);
-                    res.data.map(item => {
-                        $('#whcdinp').append('<option value="' + item.id + '">' + item.educationLevel + '</option>');
-                    });
-                    form.render();
-                }
-            });
-          //专业职称
-            base.commonAjax('clav/professionalTitle/getClavProfessionalTitleList', data, function (res) {
-                if (res.code == 1) {
-                    //console.log(res.data);
-                    res.data.map(item => {
-                        $('#zyzcinp').append('<option value="' + item.id + '">' + item.professionalTitle + '</option>');
-                    });
-                    form.render();
-                }
-            });
-        //艺术门类
-            base.commonAjax('clav/artType/getClavArtTypeList', data, function (res) {
-                if (res.code == 1) {
-                    console.log(res.data);
-                    res.data.map(item => {
-                        $('#ysmlinp').append('<option value="' + item.id + '">' + item.artType + '</option>');
-                    });
-                    form.render();
-                }
-            });
 
-        });
+ 
+    //=============================================================
 
-    layui.use('form', function () {
-        var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
-        form.on('select(zzmminp)', function (data) {
-            zzmminp = data.elem[data.elem.selectedIndex].text;
-            form.render('select');
-        });
-        form.on('select(mzinp)', function (data) {
-            mzinp = data.elem[data.elem.selectedIndex].text;
-            form.render('select');
-        });
-        form.on('select(jginp)', function (data) {
-            jginp = data.elem[data.elem.selectedIndex].text;
-            form.render('select');
-        });
-        form.on('select(whcdinp)', function (data) {
-            whcdinp = data.elem[data.elem.selectedIndex].text;
-            form.render('select');
-        });
-        form.on('select(zyzcinp)', function (data) {
-            zyzcinp = data.elem[data.elem.selectedIndex].text;
-            form.render('select');
-        });
-        form.on('select(ysmlinp)', function (data) {
-            ysmlinp = data.elem[data.elem.selectedIndex].text;
-            form.render('select');
-        });
-        form.on('select(tydwinp)', function (data) {
-            tydwinp = data.elem[data.elem.selectedIndex].text;
-            form.render('select');
-        });
-        form.on('select(tylxdinp)', function (data) {
-            tylxdinp = data.elem[data.elem.selectedIndex].text;
-            form.render('select');
-        });
-    });
 
+
+    let treedata = [];
+        let treedata2 = [];
+        let treelocaldata = [];
+        function changepic(obj) {
+            //console.log(obj.files[0]);//这里可以获取上传文件的name
+            var newsrc = getObjectURL(obj.files[0]);
+            document.getElementById('show').src = newsrc;
+        }
+        //建立一個可存取到該file的url
+        function getObjectURL(file) {
+            var url = null;
+            // 下面函数执行的效果是一样的，只是需要针对不同的浏览器执行不同的 js 函数而已
+            if (window.createObjectURL != undefined) { // basic
+                url = window.createObjectURL(file);
+            } else if (window.URL != undefined) { // mozilla(firefox)
+                url = window.URL.createObjectURL(file);
+            } else if (window.webkitURL != undefined) { // webkit or chrome
+                url = window.webkitURL.createObjectURL(file);
+            }
+            return url;
+        }
 
         function wtf(data) {
             data.map((v, i) => {
@@ -798,7 +917,26 @@
                 treedata.push(obj);
             });
         }
-
+        //获取推荐类型
+        function wtf2(data) {
+            data.map((v, i) => {
+                let obj = {};
+                obj.title = v.name;
+                obj.id = i;
+                obj.children = [];
+                v.childList.map((val, ind) => {
+                    console.log(val);
+                    let objc = {};
+                    objc.title = val.name;
+                    objc.id = i+'-'+ind;
+                    objc.children = [];
+                    obj.children.push(objc);
+                });
+                treedata2.push(obj);
+            });
+        }
+        var data = {
+        }
         base.commonAjax('clav/area/getAddressList', data, function (data) {
             if (data.code == 1) {
                 //console.log("z", data);
@@ -809,7 +947,7 @@
 
                     //渲染
                     var inst1 = tree.render({
-                        elem: '#test3'  //绑定元素
+                        elem: '#test1'  //绑定元素
                         ,click: function(obj){
                        // console.log(obj.data); //得到当前点击的节点数据
                        // console.log(obj.elem); //得到当前节点元素 
@@ -826,8 +964,8 @@
                        // console.log(obj.data.title);
                         var place=treedata[arr[0]].title+"-"+treedata[arr[0]].title+"-"+obj.data.title;
                         //console.log("地区",place);
-                        $('.xszdinp').val(place);
-                        $('#test3').css("visibility","hidden");
+                        $('#szd').val(place);
+                        $('#test1').css("visibility","hidden");
                             }
                          }
                     }
@@ -837,32 +975,238 @@
                 });
             }
         });
-        $('.xszdinp').click(function(){
-            $('#test3').css("visibility","visible");
+        //推荐类型
+        $('#test2').css("visibility","hidden");
+        base.commonAjax('clav/recommendUnit/getRecommendType', data, function (data) {
+            if (data.code == 1) {
+                //console.log("z", data);
+                treelocaldata = data.data;
+                wtf2(data.data);
+               // console.log(treedata)
+                layui.use('tree', function () {
+                    var tree = layui.tree;
+
+                    //渲染
+                    var inst1 = tree.render({
+                        elem: '#test2'  //绑定元素
+                        ,click: function(obj){
+                           // console.log(obj);
+                       // console.log(obj.data); //得到当前点击的节点数据
+                       // console.log(obj.elem); //得到当前节点元素 
+                        // console.log($('.layui-tree-set').attr("data-id"));
+                      //  console.log(obj.data.id); //得到当前点击的节点数据
+                        let str = obj.data.id;
+                       // console.log(str.indexOf('-')>-1);
+                         if(str.indexOf('-')>-1 && str.indexOf('-')){
+                            let arr = str.split('-');
+                            if(arr.length == 2){
+                                console.log(treelocaldata[Number(arr[0])].childList[Number(arr[1])]);
+                                let ids = treelocaldata[Number(arr[0])].childList[Number(arr[1])].id;
+                                //console.log("推荐",arr);
+                        //console.log(treedata2[arr[0]].title);
+                       // console.log(treedata[arr[0]].title);
+                       // console.log(obj.data.title);
+                        var tjplace2 = obj.data.title;
+                                    //+treedata2[arr[0]].title;
+                                    //console.log("地区",place);
+                                    $('#tjtype').val(tjplace2);
+                                    $('#test2').css("visibility", "hidden");
+                                    var data = {
+                                        id: ids
+                                    }
+                                    base.commonAjax('clav/recommendUnit/getRecommendUnitOrPeople', data, function (res) {
+                                        //console.log(res);
+                                        layui.use('form', function () {
+                                            var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+                                            for (var i = 0; i < res.data.length; i++) {
+                                                $('#tjcompany').append(
+                                                    '<option value="' + res.data[i].id + '">' + res.data[i].name + '</option>'
+                                                );
+                                            }
+                                            form.render();
+                                        });
+                                    })
+                                }
+                            }
+                        }
+                        , data: treedata2
+                    });
+
+                });
+            }
+        });
+        $('#tjtype').on('click',function () { 
+            $('#test2').css("visibility","visible");
+         })
+        $('#szd').click(function(){
+            $('#test1').css("visibility","visible");
         })
-     
+        layui.use('form', function(){
+          var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+       form.on('select(mz3)',function(data){
+            mz3=data.value;
+           //mz3=data.elem[data.elem.selectedIndex].text;
+           form.render('select');
+       })
+       form.on('select(jg)',function(data){
+        jg=data.value;
+           //jg=data.elem[data.elem.selectedIndex].text;
+           form.render('select');
+       })
+       form.on('select(politicsStatusIdd)',function(data){
+        politicsStatusIdd=data.value;
+           //politicsStatusIdd=data.elem[data.elem.selectedIndex].text;
+           form.render('select');
+       })
+       form.on('select(whcd)',function(data){
+        whcd=data.value;
+           //whcd=data.elem[data.elem.selectedIndex].text;
+           form.render('select');
+       })
+       form.on('select(zyzc)',function(data){
+        zyzc=data.value;
+           //zyzc=data.elem[data.elem.selectedIndex].text;
+           form.render('select');
+       })
+       form.on('select(ysml)',function(data){
+           ysml=data.value;
+           //ysml=data.elem[data.elem.selectedIndex].text;
+           form.render('select');
+       })
+       form.on('select(ysml2)',function(data){
+           ysml2=data.value;
+           //ysml=data.elem[data.elem.selectedIndex].text;
+           form.render('select');
+       })
+       form.on('select(tjcompany)',function(data){
+          //tjcompany=data.value;
+          tjcompany=data.elem[data.elem.selectedIndex].text;
+           form.render('select');
+       })
+    });
+    $(".jiah").on('click', function () {
+        $(".ewai").css('display','block')
+    })
 
-
-        function changepic(obj) {
-            //console.log(obj.files[0]);//这里可以获取上传文件的name
-            var newsrc = getObjectURL(obj.files[0]);
-            document.getElementById('show').src = newsrc;
-            //console.log(newsrc);
+    $('.inpList').on('keydown',function() {
+                var i = $(this).index();
+                console.log('a')				
+                // $('.inpList').eq(i)+$('.warn').text('');			
+        if( $('#file').val()==''){
+                $('.w_tx').text('请上传头像');       
+        }else{
+            $('.w_tx').text('');
         }
-                 //建立一個可存取到該file的url
-             function getObjectURL(file) {
-                 var url = null ;
-                 // 下面函数执行的效果是一样的，只是需要针对不同的浏览器执行不同的 js 函数而已
-                 if (window.createObjectURL!=undefined) { // basic
-                     url = window.createObjectURL(file) ;
-                 } else if (window.URL!=undefined) { // mozilla(firefox)
-                     url = window.URL.createObjectURL(file) ;
-                 } else if (window.webkitURL!=undefined) { // webkit or chrome
-                     url = window.webkitURL.createObjectURL(file) ;
-                 }
-                 return url ;
-             }
+        if( $('#username').val()==''){
+                $('.w_xm').text('请填写姓名')              
+        }else{
+            $('.w_xm').text('')   
+        }
+        if( $('#sfnumber').val()==''){
+                $('.w_sf').text('请填写身份证号')          
+        }else{
+            $('.w_sf').text('')   
+        }
+        if( $('#sex').val()==''){
+                $('.w_xb').text('请获取性别')              
+        }else{
+            $('.w_xb').text('')   
+        }
+        if( $('#tec').val()==''){
+                $('.w_sj').text('请填写手机号码')          
+        }else{
+            $('.w_sj').text('')   
+        }
+        if( $('#politicsStatusId').val()==''){
+                $('.w_zz').text('请选择政治面貌')              
+        }else{
+            $('.w_zz').text('')   
+        }
+        if( $('#mz3').val()==''){
+                $('.w_mz').text('请选择民族')              
+        }else{
+            $('.w_mz').text('')   
+        }
+        if( $('#sr').val()==''){
+                $('.w_sr').text('请获取出生日期')          
+        }else{
+            $('.w_sr').text('')   
+        }
+        if( $('#jg').val()==''){
+                $('.w_jg').text('请选择籍贯')              
+        }else{
+            $('.w_jg').text('')   
+        }
+        if( $('#szd').val()==''){
+                $('.w_sz').text('请填写现所在地')          
+        }else{
+            $('.w_sz').text('')   
+        }
+        if( $('#place').val()==''){
+                $('.w_tx2').text('请填写通讯地址')              
+        }else{
+            $('.w_tx2').text('')   
+        }
+        if( $('#placenum').val()==''){
+                $('.w_yb').text('请填写通讯邮编')          
+        }else{
+            $('.w_yb').text('')   
+        }
+        if( $('#whcd').val()==''){
+                $('.w_wh').text('请选择文化程度')              
+        }else{
+            $('.w_wh').text('')   
+        }
+        if( $('#zyzc').val()==''){
+                $('.w_zc').text('请选择专业职称')              
+        }else{
+            $('.w_zc').text('')   
+        }
+        if( $('#work').val()==''){
+                $('.w_gzdw').text('请填写工作单位及职务')          
+        }else{
+            $('.w_gzdw').text('')   
+        }
+        if( $('#experience').val()==''){
+                $('.w_jl').text('请填写工作经历（艺术简历）')              
+        }else{
+            $('.w_jl').text('')   
+        }
+        if( $('#ysml').val()==''){
+                $('.w_yis').text('请选择主要从事的艺术门类')          
+        }else{
+            $('.w_yis').text('')   
+        }
+        if( $('#experience2').val()==''){
+                $('.w_gyhd').text('请填写文艺志愿服务或公益活动经历')              
+        }else{
+            $('.w_gyhd').text('')   
+        }
+        if( $('#tjtype').val()==''){
+                $('.w_lx').text('请选择推荐类型')          
+        }else{
+            $('.w_lx').text('')   
+        }
+        if( $('#tjcompany').val()==''){
+                $('.w_tjdw').text('请选择推荐单位/人')              
+        }else{
+            $('.w_tjdw').text('')   
+        }
+        if( $('#lxpeople').val()==''){
+                $('.w_lxr').text('请填写联系人')          
+        }else{
+            $('.w_lxr').text('')   
+        }
+        if( $('#sjh').val()==''){
+                $('.w_sjh').text('请填写手机号')          
+        }  else{
+            $('.w_sjh').text('')   
+        }
+			});
 
+
+
+//==================================================
 
     $('.u_f_queren').on('click',function (param) { 
         let flag = $('.yuedu').prop('checked');
@@ -878,90 +1222,13 @@
       });
 
 
-      $('.sfzinp').on('keyup',function(e){
-      //console.log($(this).val().length);
-      if($(this).val().length == 15 || $(this).val().length == 18){
-         let url = 'clav/idNumber/checkIdNumberAndReturnInfo?idNumber=' + $(this).val();
-         let data = {};
-        base.commonAjax(url,data,function (res) { 
-            console.log(res);
-            if(res.code == 1){
-            $('.xbinp').val(res.gender);
-            $('.csinp').val(res.birthDay);
+// $('.bc').on('click',function () { 
 
-            }
-        });
-      }
-      });
+//     window.location.href = "applyUpdatePage_w.html";
+//  })
 
-$('.bc').on('click',function () { 
 
-    window.location.href = "applyUpdatePage_w.html";
- })
 
-     $('.updown').on('click',function(){
-         var file = $("#file")[0].files[0];
-         var formData = new FormData();
-         formData.append("file", file);
- 
-    $.ajax({
-        type: "post",
-        url: base.baseurl + 'clav/upload/uploadFile',
-        data: formData,
-        cache: false,
-        processData: false,
-        contentType: false,
-        success:function(ress){
-            if(ress.code == 1){
-                console.log(ress);
-                let data = {
-          name:$('.nameinp').val(),
-          nation:mzinp,
-          gender:$('.xbinp').val() == '男'? 1 : 2,
-          birthday:$('.csinp').val(),
-          idNumber:$('.sfzinp').val(),
-          nativePlace:jginp,
-          politicsStatusId:zzmminp,
-          sNewGroup:$('.wyyes').prop('checked') == true ? 1 : 2,
-          phone:$('.phoneinp').val(),
-          avatar:ress.data[0].url,
-          penName:$('.yminp').val(),
-          location:$('.xszdinp').val(),
-          postalAddress:$('.txdzinp').val(),
-          postcode:$('.txybinp').val(),
-          officePhone:$('.bgdhinp').val(),
-          email:$('.dzyxinp').val(),
-          wechatNumber:$('.wxhinp').val(),
-          educationLevelId:whcdinp,
-          professionalTitleId:zyzcinp,
-          unitAndDuty:$('.gzdwinp').val(),
-          workExperience:$('.gzjlinp').val(),
-          graduateSchool:$('.byyxinp').val(),
-          associationDuty:$('.wyzwinp').val(),
-          socialDuty:$('.qtzwinp').val(),
-          artTypeId:ysmlinp,
-          specificAreas:$('.jtlyinp').val(),
-          activityExperience:$('.hdjlinp').val(),
-          recommendType:tylxdinp,
-          relationshipGroup:tydwinp,
-          linkman:$('.lxrinp').val(),
-          linkmanPhone:$('.typhoneinp').val(),
-      }
-      console.log(data);
-                base.commonAjax('clav/member/addClavMember',data,function (res) { 
-                  if(res.code == 1){
-                      console.log('添加会员成功');
-                      //window.location.href = "applyUpdatePage.html";
-                  }else{
-                      alert('添加会员失败，请填补正确信息');
-                  }
-               });
-            }
-        }
-
-    });
-
-     });
 
 
     </script>
