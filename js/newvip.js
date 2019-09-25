@@ -115,6 +115,7 @@ function birthfind() {
 }
 //提交
 function tijiao() {
+        console.log(tjcompany);
         if( $('#file').val()==''){
                 $('.w_tx').text('请上传头像')          
         }
@@ -230,7 +231,7 @@ function tijiao() {
                                 var specificAreas22 = $('#genre2').val();//具体领域2
                                 var activityExperience = $('#experience2').val();//文艺或公益经历
                                 var recommendType = $('#tjtype').val();//推荐类型
-                                var relationshipGroup = $('#tjcompany').val();//关联组织
+                                var relationshipGroup = tjcompany;//关联组织
                                 var linkman = $('#lxpeople').val();//联系人
                                 var linkmanPhone = $('#sjh').val();//联系人电话
                                 var orgIdentityId=9
