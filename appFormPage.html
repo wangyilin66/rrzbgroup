@@ -379,8 +379,8 @@
 
     <div class="c_tit">会员申请信息</div>
     <div class='c_click_box'>
-        <div class="updown">下载申请表</div>
-        <div class="bc">保存草稿</div>
+        <div class="updown" onclick="down()">下载申请表</div>
+        <div class="bc"  onclick="tijiao()">保存草稿</div>
     </div>
 
     <div class="select">
@@ -763,33 +763,33 @@
                             <div class="layui-container-fluid">
                                 <div class="layui-fluid">
                                     <div class="layui-row layui-col-space5">
-                                        <div class="layui-col-md4">
-    
-                                            <label class="layui-form-label"><span>*</span>推荐类型：</label>
-                                            <div class="layui-input-inline tjlx">
-                                                <!-- <select name="hy" lay-verify="required" lay-search="" id="tjtype">
-                                                    <option value="">请选择</option>
-                                                    <option value="1">layer</option>
-                                                    <option value="2">form</option>
-                                                </select> -->
-                                                <input type="text"class="layui-input" id="tjtype">
-                                                <div class="warn w_lx"></div>
-                                            </div>
-                                            <div id="test2"></div>
-    
-                                        </div>
-                                        <div class="layui-col-md4">
-                                            <label class="layui-form-label"><span>*</span>推荐单位/人：</label>
-                                            <div class="layui-input-inline tjr">
-                                                <select name="hy" lay-verify="required" lay-search="" id="tjcompany">
-                                                    <option value="">请选择</option>
-                                                    <option value="1">layer</option>
-                                                    <option value="2">form</option>
-                                                </select>
-                                                <div class="warn w_tjdw"></div>
-                                            </div>
-    
-                                        </div>
+                                            <div class="layui-col-md4">
+
+                                                    <label class="layui-form-label"><span>*</span>推荐类型：</label>
+                                                    <div class="layui-input-inline tjlx">
+                                                        <!-- <select name="hy" lay-verify="required" lay-search="" id="tjtype">
+                                                            <option value="">请选择</option>
+                                                            <option value="1">layer</option>
+                                                            <option value="2">form</option>
+                                                        </select> -->
+                                                        <input type="text"class="layui-input" id="tjtype">
+                                                        <div class="warn w_lx"></div>
+                                                    </div>
+                                                    <div id="test2"></div>
+            
+                                                </div>
+                                                <div class="layui-col-md4">
+                                                    <label class="layui-form-label"><span>*</span>推荐单位/人：</label>
+                                                    <div class="layui-input-inline tjr">
+                                                        <select name="hy" lay-verify="required" lay-search="" id="tjcompany" lay-filter="tjcompany"> 
+                                                            <option value="">请选择</option>
+                                                            <!-- <option value="1">layer</option>
+                                                            <option value="2">form</option> -->
+                                                        </select>
+                                                        <div class="warn w_tjdw"></div>
+                                                    </div>
+            
+                                                </div>
                                         <div class="layui-col-md12">
                                             <div class="layui-col-md4">
                                                 <div class="grid-demo grid-demo-bg1">
@@ -822,11 +822,11 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    <!-- </div>
                     <div class="anniu">
                         <button type="button" class="layui-btn layui-btn-normal" onclick="tijiao()">提交</button>
                         <button type="reset" class="layui-btn layui-btn-primary">取消</button>
-                    </div>
+                    </div> -->
                 </form>
     </div>
 
@@ -860,21 +860,22 @@
     <script type="text/javascript" src='./js/jquery.min.js'></script>
     <script src="./layui/layui.js"></script>
     <script src="./js/layuicommon.js"></script>
-    <script src="./js/newvip.js"></script>
+    <script src="./js/newvip3.js"></script>
     <script type="text/javascript">
+
         let zzmminp,mzinp,jginp,whcdinp,zyzcinp,ysmlinp,tydwinp,tylxdinp;
         let height = $('body').height();
         $('.pop_up').css('height', height + 200);
-         $('.pop_up').hide();
+        $('.pop_up').hide();
 
  
     //=============================================================
 
 
 
-
     let treedata = [];
         let treedata2 = [];
+        let treelocaldata = [];
         function changepic(obj) {
             //console.log(obj.files[0]);//这里可以获取上传文件的name
             var newsrc = getObjectURL(obj.files[0]);
@@ -924,6 +925,7 @@
                 obj.id = i;
                 obj.children = [];
                 v.childList.map((val, ind) => {
+                    console.log(val);
                     let objc = {};
                     objc.title = val.name;
                     objc.id = i+'-'+ind;
@@ -973,12 +975,12 @@
                 });
             }
         });
-
         //推荐类型
         $('#test2').css("visibility","hidden");
         base.commonAjax('clav/recommendUnit/getRecommendType', data, function (data) {
             if (data.code == 1) {
                 //console.log("z", data);
+                treelocaldata = data.data;
                 wtf2(data.data);
                // console.log(treedata)
                 layui.use('tree', function () {
@@ -988,6 +990,7 @@
                     var inst1 = tree.render({
                         elem: '#test2'  //绑定元素
                         ,click: function(obj){
+                           // console.log(obj);
                        // console.log(obj.data); //得到当前点击的节点数据
                        // console.log(obj.elem); //得到当前节点元素 
                         // console.log($('.layui-tree-set').attr("data-id"));
@@ -997,21 +1000,38 @@
                          if(str.indexOf('-')>-1 && str.indexOf('-')){
                             let arr = str.split('-');
                             if(arr.length == 2){
+                                console.log(treelocaldata[Number(arr[0])].childList[Number(arr[1])]);
+                                let ids = treelocaldata[Number(arr[0])].childList[Number(arr[1])].id;
                                 //console.log("推荐",arr);
                         //console.log(treedata2[arr[0]].title);
                        // console.log(treedata[arr[0]].title);
                        // console.log(obj.data.title);
                         var tjplace2 = obj.data.title;
-                        //+treedata2[arr[0]].title;
-                        //console.log("地区",place);
-                        $('#tjtype').val(tjplace2);
-                        $('#test2').css("visibility","hidden");
+                                    //+treedata2[arr[0]].title;
+                                    //console.log("地区",place);
+                                    $('#tjtype').val(tjplace2);
+                                    $('#test2').css("visibility", "hidden");
+                                    var data = {
+                                        id: ids
+                                    }
+                                    base.commonAjax('clav/recommendUnit/getRecommendUnitOrPeople', data, function (res) {
+                                        //console.log(res);
+                                        layui.use('form', function () {
+                                            var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+                                            for (var i = 0; i < res.data.length; i++) {
+                                                $('#tjcompany').append(
+                                                    '<option value="' + res.data[i].id + '">' + res.data[i].name + '</option>'
+                                                );
+                                            }
+                                            form.render();
+                                        });
+                                    })
+                                }
                             }
-                         }
-                    }
-                        , data:treedata2
+                        }
+                        , data: treedata2
                     });
-                    
+
                 });
             }
         });
@@ -1019,12 +1039,8 @@
             $('#test2').css("visibility","visible");
          })
         $('#szd').click(function(){
-            event.stopPropagation();
             $('#test1').css("visibility","visible");
-        });
-        // $('.select').on('click',function () { 
-        //     $('#test1').css("visibility","hidden");
-        //  });
+        })
         layui.use('form', function(){
           var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
        form.on('select(mz3)',function(data){
@@ -1062,12 +1078,17 @@
            //ysml=data.elem[data.elem.selectedIndex].text;
            form.render('select');
        })
+       form.on('select(tjcompany)',function(data){
+          //tjcompany=data.value;
+          tjcompany=data.elem[data.elem.selectedIndex].text;
+           form.render('select');
+       })
     });
     $(".jiah").on('click', function () {
         $(".ewai").css('display','block')
     })
 
-    $('.inpList').on('keydown click',function() {
+    $('.inpList').on('keydown',function() {
                 var i = $(this).index();
                 console.log('a')				
                 // $('.inpList').eq(i)+$('.warn').text('');			
@@ -1182,9 +1203,6 @@
             $('.w_sjh').text('')   
         }
 			});
-
-
-
 
 
 
