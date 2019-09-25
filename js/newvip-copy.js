@@ -205,6 +205,7 @@ function goupdate() {
                                         socialDuty: socialDuty,
                                         artTypeId: artTypeId,
                                         specificAreas: specificAreas,
+                                        orgIdentityId:9,
                                         // art_type_id:art_type_id,
                                         // specific_areas:specific_areas,
                                         activityExperience: activityExperience,
@@ -214,12 +215,12 @@ function goupdate() {
                                         linkmanPhone: linkmanPhone
                                 }
                                 console.log(data);
-                                base.commonAjax('clav/member/addRedClavMember', data, function (data) {
+                                base.commonAjax('clav/member/addClavMember', data, function (data) {
                                         if (data.code == 1) {
                                                 console.log('成功');
                                                 alert('注册成功。');
-                                                // history.go(0);
-                                                window.open("applyUpdatePage_w.html?id="+data.theId);
+                                                history.go(0);
+                                                //window.location.href='./vipfind_z.html'
                                         }
                                         else{
                                                 alert(data.message)
@@ -229,10 +230,6 @@ function goupdate() {
                 }
         })
  }
-
-
-
-
 
 
 //提交
