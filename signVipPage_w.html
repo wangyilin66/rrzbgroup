@@ -199,7 +199,7 @@
                                         <h6 class="pswtit2"></h6>
                                     </li>
                                     <li>
-                                        <p><span>*</span>手机号码：</p><input type="password" placeholder="请输入手机号码" class="inps phoneinp" />
+                                        <p><span>*</span>手机号码：</p><input type="text" placeholder="请输入手机号码" class="inps phoneinp" />
                                         <h6 class="phonetit">手机号码非常重要，请确认无误后注册</h6>
                                     </li>
                                     <li>
@@ -218,48 +218,99 @@
 <script type="text/javascript" src='./js/common.js'></script>
 <script type="text/javascript" src='./js/jquery.min.js'></script>
 <script type="text/javascript">
-    let passwordinp;
-    $('.zhuce').on('click', function () {
-        window.location.href = "applyFormPage_w.html";
-    });
+    let passwordinp,sfzF = false,pswF = false,phoneF = false;
 
-    $('.quxiao').on('click', function () {
-        window.location.href = "applyForPage_w.html";
-    });
-    $('.sfzhminp').on('keyup', function () {
+        $('.sfzhminp').on('keyup', function () {
 
-        let len = $(this).val().length;
-        console.log(len);
-        if (len == 15 || len == 18) {
-            $('.sfztit').text('');
-        } else {
-            $('.sfztit').text('身份证格式错误');
-        }
-    });
+            let len = $(this).val().length;
+            console.log(len);
+            if (len == 15 || len == 18) {
+                $('.sfztit').text('');
+                sfzF = true;
+            } else {
+                $('.sfztit').text('身份证格式错误');
+                sfzF = false;
+            }
+        });
 
-    $('.pswinp').on('keyup', function () {
+        $('.pswinp').on('keyup', function () {
 
-        let len = $(this).val().length;
-        console.log(len);
-        if (len < 6) {
-            $('.pswtit1').text("密码长度过短");
-        } else if (len > 16) {
-            $('.pswtit1').text("密码长度过长");
-        } else {
-            $('.pswtit1').text("");
-        }
-        passwordinp = $(this).val();
-    });
+            let len = $(this).val().length;
+            console.log(len);
+            if (len < 6) {
+                $('.pswtit1').text("密码长度过短");
+            } else if (len > 16) {
+                $('.pswtit1').text("密码长度过长");
+            } else {
+                $('.pswtit1').text("");
+            }
+            passwordinp = $(this).val();
+        });
 
 
         $('.psw2minp').on('keyup', function () {
 
-            let len = $(this).val().length;
+            let len = $(this).val();
             console.log(len);
-            
-        });
-    
+            if (len == passwordinp) {
+                $('.pswtit2').text('');
+                pswF = true;
+            } else {
+                $('.pswtit2').text('两次密码输入不一致');
+                pswF = false;
+            }
 
-</script>
+        });
+
+        $('.phoneinp').on('keyup', function () {
+
+            let len = $(this).val();
+            if (phone(len) == false) {
+                console.log("请核对您的手机号码");
+                $('.phonetit').text('请输入正确的手机号');
+                phoneF = false;
+            } else {
+                $('.phonetit').text('');
+                phoneF = true;
+            }
+        });
+
+        function phone(TEL) {
+            var strTemp = /^1[3|4|5|6|7|8|9][0-9]{9}$/;
+            if (strTemp.test(TEL)) {
+                return true;
+            }
+            return false;
+        }
+        $('.zhuce').on('click', function () {
+             if(sfzF && pswF && phoneF){
+                 let data = {
+                     name : $('.sfzxminp').val(),
+                     idNumber:$('.sfzhminp').val(),
+                     password:$('.psw2minp').val(),
+                     phone:$('.phoneinp').val()
+                 };
+                 console.log(data);
+                base.commonAjax('clav/sysUser/registerByIdNumber', data, function (res) {
+               console.log(res);
+               if(res.code == 1){
+                   alert('注册成功');
+                   window.location.href = "applyFormPage_w.html";
+               }else{
+                   alert(res.message);
+               }
+                })
+             }else{
+                 alert('请填写正确的信息再确定');
+             }
+           // window.location.href = "applyFormPage_w.html";
+        });
+
+        $('.quxiao').on('click', function () {
+            window.location.href = "applyForPage_w.html";
+        });
+
+    </script>
 </body>
+
 </html>
