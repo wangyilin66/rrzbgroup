@@ -2,10 +2,10 @@
 function lishicheck(){
     var aduitStatus=1;
     var data = {
-        // aduitStatus:aduitStatus
+         aduitStatus:aduitStatus
    }
     base.commonAjax('clav/lishiReplace/getClavLishiReplaceList', data, function (data) {
-        console.log("理事",data)
+        //console.log("理事",data)
         var pagedata = [];
         // 
          pagedata = data.data;
@@ -48,14 +48,56 @@ $(document).on('click','.lis_find', function () {
     }
     base.commonAjax('clav/lishiReplace/chakanClavLishiReplace', data, function (data) {
         if (data.code == 1) {
-            console.log(data)
+           // console.log(data)
             $(".li_file").empty();
             $('.li_file').append(
                 '<a href="'+data.data.remarks1+'" download="">'+
-                '<div class="wj sli_downloadfile">理事申请书</div>'+
+                '<div class="wj sli_downloadfile">理事申请上传文件</div>'+
                 '</a>'
             );
         }
+    })
+})
+$(document).on('click','.lis_tongg', function () {
+    // console.log(id);
+    var lis_tongg=$(this).attr('id').replace("li_tong","");
+    $(".cover5").css("display", "inline-block");
+    $("#li_titg").on('click', function () {
+        var noid = lis_tongg;
+        var aduitStatus = 2;
+        var data = {
+            id: noid,
+            aduitStatus: aduitStatus,
+        }
+       // console.log(data)
+        base.commonAjax('clav/lishiReplace/updateClavLishiReplace', data, function (data) {
+            if (data.code == 1) {
+                $(".cover1,.cover2,.cover3,.cover4,.cover5,.cover6").css( "display", "none");
+                lishicheck();
+            }
+        })
+
+    })
+})
+$(document).on('click','.lis_notongg', function () {
+    // console.log(id);
+    var lis_notongg=$(this).attr('id').replace("li_no","");
+    $(".cover6").css("display", "inline-block");
+    $("#li_tinotg").on('click', function () {
+        var noid = lis_notongg;
+        var aduitStatus = 3;
+        var data = {
+            id: noid,
+            aduitStatus: aduitStatus,
+        }
+        //console.log(data)
+        base.commonAjax('clav/lishiReplace/updateClavLishiReplace', data, function (data) {
+            if (data.code == 1) {
+                $(".cover1,.cover2,.cover3,.cover4,.cover5,.cover6").css( "display", "none"); 
+                lishicheck();
+            }
+        })
+
     })
 })
 //会员单位审核
@@ -197,6 +239,7 @@ $(document).on('click','.but', function () {
                     base.commonAjax('clav/memberUnit/updateClavMemberUnit', data, function (data) {
                         if (data.code == 1) {
                             $(".cover1,.cover2").css("display", "none");
+                            huiyuancheck();
                         }
                     })
                 }
@@ -221,10 +264,10 @@ $(document).on('click','.no', function () {
              base.commonAjax('clav/memberUnit/updateClavMemberUnit', data, function (data) {
                  if (data.code == 1) {
                      $(".cover1,.cover2").css("display", "none");
+                     huiyuancheck();
                  }
              })
      
          })
 })
-
 

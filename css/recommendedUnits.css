@@ -154,7 +154,7 @@ td{
 }
 #shuju{
     margin: auto;
-    width: 400px;
+    width: 515px;
 }
 .layui-btn{
     border-radius: 5px;
@@ -193,4 +193,41 @@ td{
 }
 a {
     color: #fff;
+}
+#shuju .layui-laypage-btn{
+    margin-top: 0px;
+}
+.cover4{
+    width: 100%;
+    height:100%;
+    background-color: rgba(143, 144, 148,0.3);
+    position: absolute;
+    z-index: 999;
+    top: 2px;
+    display: none
+}
+.tcc_content{
+    width: 600px;
+    height: 300px;
+    background-color: #fff;
+    margin: auto;
+    margin-top: 12%;
+}
+.findfile_an{
+    float: right;
+    position: relative;
+    right: 14px;
+}
+.findfile{
+    height: 216px;
+}
+.tcc_title{
+    padding-top: 10px;
+    padding-left: 12px;
+    font-size: 16px;
+}
+.hnzw{
+    line-height: 216px;
+    padding-left: 80px;
+    font-size: 22px;
 }

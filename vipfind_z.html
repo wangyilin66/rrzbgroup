@@ -55,7 +55,7 @@
 							<li class="layui-nav-item">
 								<a href="javascript:;">会员管理</a>
 								<dl class="layui-nav-child">
-										<dd><a href="vipfind_z.html">会员查询</a></dd>
+									<dd><a href="vipfind_z.html">会员查询</a></dd>
 									<dd><a href="./vipcheck_z.html">审核管理</a></dd>
 									<dd><a href="./recommendedUnits_z.html">推荐单位管理</a></dd>
 									<dd><a href="./vipduty_z.html">会员职位管理</a></dd>
@@ -94,7 +94,9 @@
 	</div>
 	<div class="content">
 		<div class="content_nav">
-			<div class="content_navl"><span><i class="layui-icon layui-icon-home"></i>首页&nbsp;&nbsp;</span>/<span>&nbsp;会员管理&nbsp;&nbsp;</span>/&nbsp;会员查询</div>
+			<div class="content_navl"><span><i
+						class="layui-icon layui-icon-home"></i>首页&nbsp;&nbsp;</span>/<span>&nbsp;会员管理&nbsp;&nbsp;</span>/&nbsp;会员查询
+			</div>
 			<div class="content_navi">
 				<form class="layui-form" action="">
 					<div class="layui-container-fluid">
@@ -119,92 +121,97 @@
 									</div>
 								</div>
 								<div class="layui-col-md3">
-										<div class="layui-form-item">
-									<div class="grid-demo grid-demo-bg1">
-										<label for="">艺术门类：
-											<div>
-												<select id="yishu"name="modules" lay-verify="required" lay-search="" id="arttype"lay-filter="yishu">
-													<option value="">请选择</option>
-													<!-- <option value="1">layer</option>
+									<div class="layui-form-item">
+										<div class="grid-demo grid-demo-bg1">
+											<label for="">艺术门类：
+												<div>
+													<select id="yishu" name="modules" lay-verify="required"
+														lay-search="" id="arttype" lay-filter="yishu">
+														<option value="">请选择</option>
+														<!-- <option value="1">layer</option>
 													<option value="2">form</option>
 													<option value="3">layim</option> -->
-												</select>
-											</div>
-										</label>
-									</div>
+													</select>
+												</div>
+											</label>
+										</div>
 									</div>
 								</div>
 								<div class="layui-col-md3">
-										<div class="grid-demo grid-demo-bg1">
-												<label for="">地域：
-													<div>
-														<div class="layui-input-block">
-															<input type="text" name="title" lay-verify="title" id="szd"
-																autocomplete="off" placeholder="现所在地" class="layui-input">
-															</div>
-															<div id="test1"></div>
-													</div>
-												</label>
+									<div class="grid-demo grid-demo-bg1">
+										<label for="">地域：
+											<div>
+												<div class="layui-input-block">
+													<input type="text" name="title" lay-verify="title" id="szd"
+														autocomplete="off" placeholder="现所在地" class="layui-input">
+												</div>
+												<div id="test1"></div>
 											</div>
+										</label>
+									</div>
 								</div>
 								<div class="layui-col-md12">
-										<div class="layui-col-md4">
-												<div class="grid-demo">
-													<label for="">入会日期：
-														<div>
-															<div class="layui-input-inline">
-																	<div class="date_font date_tubiao"><i class="layui-icon layui-icon-date"></i></div>
-																<input type="text" name="date" id="time1" lay-verify="date"
-																	style="width:122px;display: inline-block" placeholder="开始时间"
-																	autocomplete="off" class="layui-input">
-																<div class="date_font z_tubiao">至</div> 
-																<input type="text" name="date" id="time2" lay-verify="date"
-																	style="width:122px;display: inline-block" placeholder="结束时间"
-																	autocomplete="off" class="layui-input">
-																<div class="date_font date_tubiao2"><i class="layui-icon layui-icon-refresh-1"></i></div>	
-															</div>
-														</div>
-													</label>
+									<div class="layui-col-md4">
+										<div class="grid-demo">
+											<label for="">入会日期：
+												<div>
+													<div class="layui-input-inline">
+														<div class="date_font date_tubiao"><i
+																class="layui-icon layui-icon-date"></i></div>
+														<input type="text" name="date" id="time1" lay-verify="date"
+															style="width:122px;display: inline-block" placeholder="开始时间"
+															autocomplete="off" class="layui-input">
+														<div class="date_font z_tubiao">至</div>
+														<input type="text" name="date" id="time2" lay-verify="date"
+															style="width:122px;display: inline-block" placeholder="结束时间"
+															autocomplete="off" class="layui-input">
+														<div class="date_font date_tubiao2"><i
+																class="layui-icon layui-icon-refresh-1"></i></div>
+													</div>
 												</div>
+											</label>
 										</div>
-										<div class="layui-col-md4">
-												<div class="grid-demo">
-													<label for="">推荐单位：
-														<div>
-															<input type="text" placeholder="推荐单位" id="tjdw">
-														</div>
-													</label>
+									</div>
+									<div class="layui-col-md4">
+										<div class="grid-demo">
+											<label for="">推荐单位：
+												<div>
+													<input type="text" placeholder="推荐单位" id="tjdw">
 												</div>
-											</div>
-											<div class="layui-col-md4">
-												<div class="grid-demo">
-													<label for="">组织身份：
-														<div>
-															<select name="modules" lay-verify="required" lay-search="" id="zzsf" lay-filter="zzsf">
-																<option value="">请选择</option>
-																<!-- <option value="1">aaaa</option>
+											</label>
+										</div>
+									</div>
+									<div class="layui-col-md4">
+										<div class="grid-demo">
+											<label for="">组织身份：
+												<div>
+													<select name="modules" lay-verify="required" lay-search="" id="zzsf"
+														lay-filter="zzsf">
+														<option value="">请选择</option>
+														<!-- <option value="1">aaaa</option>
 																<option value="2">bbb</option>
 																<option value="3">ccc</option> -->
-															</select>
-														</div>
-													</label>
+													</select>
 												</div>
-											</div>
+											</label>
+										</div>
+									</div>
 								</div>
 
 							</div>
 						</div>
 					</div>
-				
+
 			</div>
 			<div class="hy_btn">
-				<button type="reset" class="layui-btn layui-btn-normal" id="btnclear"style="background-color: grey;">清空条件</button>
+				<button type="reset" class="layui-btn layui-btn-normal" id="btnclear"
+					style="background-color: grey;">清空条件</button>
 				<button type="button" class="layui-btn layui-btn-normal">通讯录导出</button>
 				<a href="./newvip_z.html"><button type="button" class="layui-btn layui-btn-normal">新增</button></a>
-				<button type="button" class="layui-btn layui-btn-normal" onclick="tjfind()">查询</button>
+				<button type="button" class="layui-btn layui-btn-normal" id="tjfind">查询</button>
 				<div class="clear"></div>
 			</div>
-		</form>
+			</form>
 			<div class="findres">
 				<button type="button" class="layui-btn layui-btn-normal">批量导出</button>
 				<table class="layui-table" lay-skin="line">
@@ -239,16 +246,28 @@
 			</div>
 		</div>
 	</div>
-
+	<div class="cover4">
+		<div class="tcc_content">
+			<div class="tcc_title">查看上传文件</div>
+			<div class="findfile hy_file">
+			</div>
+			<div class="findfile_an">
+				<button type="button" class="layui-btn layui-btn-primary" onclick="close1()">关闭</button>
+			</div>
+		</div>
+	</div>
 
 	<script src="./layui/layui.js"></script>
-	<script src="./js/layuicommon.js"></script>
+	<script src="./js/layuicommon2.js"></script>
 	<script src="./js/jquery.min.js"></script>
 	<script src="./js/header.js"></script>
 	<script src="./js/common.js"></script>
 	<script src="./js/hyfind.js"></script>
 	<script>
 		$(".tatou").css({ "background-color": "#059afe", "color": "white" });
+		function close1() {
+			$(".cover4").css("display", "none");
+		}
 		// layui.use('laypage', function () {
 		// 	var laypage = layui.laypage;
 
@@ -261,182 +280,342 @@
 		// });
 		let treedata = [];
 		function wtf(data) {
-            data.map((v, i) => {
-                let obj = {};
-                obj.title = v.areaName;
-                obj.id = i;
-                obj.children = [];
-                v.childList.map((val, ind) => {
-                    let objc = {};
-                    objc.title = val.areaName;
-                    objc.id = i+'-'+ind;
-                    objc.children = [];
-                    val.childList.map((vv, ii) => {
-                        let objcc = {};
-                        objcc.title = vv.areaName;
-                        objcc.id = i+'-'+ind + '-' + ii;
-                        objc.children.push(objcc);
-                    })
-                    obj.children.push(objc);
-                });
-                treedata.push(obj);
-            });
-        }
-        var data = {
-        }
-        base.commonAjax('clav/area/getAddressList', data, function (data) {
-            if (data.code == 1) {
-                //console.log("z", data);
-                wtf(data.data);
-               // console.log(treedata)
-                layui.use('tree', function () {
-                    var tree = layui.tree;
+			data.map((v, i) => {
+				let obj = {};
+				obj.title = v.areaName;
+				obj.id = i;
+				obj.children = [];
+				v.childList.map((val, ind) => {
+					let objc = {};
+					objc.title = val.areaName;
+					objc.id = i + '-' + ind;
+					objc.children = [];
+					val.childList.map((vv, ii) => {
+						let objcc = {};
+						objcc.title = vv.areaName;
+						objcc.id = i + '-' + ind + '-' + ii;
+						objc.children.push(objcc);
+					})
+					obj.children.push(objc);
+				});
+				treedata.push(obj);
+			});
+		}
+		var data = {
+		}
+		base.commonAjax('clav/area/getAddressList', data, function (data) {
+			if (data.code == 1) {
+				//console.log("z", data);
+				wtf(data.data);
+				// console.log(treedata)
+				layui.use('tree', function () {
+					var tree = layui.tree;
 
-                    //渲染
-                    var inst1 = tree.render({
-                        elem: '#test1'  //绑定元素
-                        ,click: function(obj){
-                       // console.log(obj.data); //得到当前点击的节点数据
-                       // console.log(obj.elem); //得到当前节点元素 
-                        // console.log($('.layui-tree-set').attr("data-id"));
-                      //  console.log(obj.data.id); //得到当前点击的节点数据
-                        let str = obj.data.id;
-                       // console.log(str.indexOf('-')>-1);
-                         if(str.indexOf('-')>-1 && str.indexOf('-')){
-                            let arr = str.split('-');
-                            if(arr.length == 3){
-                               // console.log(arr);
-                       // console.log(treedata[arr[0]].title);
-                       // console.log(treedata[arr[0]].title);
-                       // console.log(obj.data.title);
-                        var place=treedata[arr[0]].title+"-"+treedata[arr[0]].title+"-"+obj.data.title;
-                        //console.log("地区",place);
-                        $('#szd').val(place);
-                        $('#test1').css("visibility","hidden");
-                            }
-                         }
-                    }
-                        , data:treedata
-                    });
-                    
-                });
-            }
-        });
+					//渲染
+					var inst1 = tree.render({
+						elem: '#test1'  //绑定元素
+						, click: function (obj) {
+							// console.log(obj.data); //得到当前点击的节点数据
+							// console.log(obj.elem); //得到当前节点元素 
+							// console.log($('.layui-tree-set').attr("data-id"));
+							//  console.log(obj.data.id); //得到当前点击的节点数据
+							let str = obj.data.id;
+							// console.log(str.indexOf('-')>-1);
+							if (str.indexOf('-') > -1 && str.indexOf('-')) {
+								let arr = str.split('-');
+								if (arr.length == 3) {
+									// console.log(arr);
+									// console.log(treedata[arr[0]].title);
+									// console.log(treedata[arr[0]].title);
+									// console.log(obj.data.title);
+									var place = treedata[arr[0]].title + "-" + treedata[arr[0]].title + "-" + obj.data.title;
+									//console.log("地区",place);
+									$('#szd').val(place);
+									$('#test1').css("visibility", "hidden");
+								}
+							}
+						}
+						, data: treedata
+					});
 
-function findvip(name,memberNo,artTypeId,location,orgIdentityId){
-	var name;
-	var memberNo;
-	var artTypeId;
-	var location;
-	var orgIdentityId;
-	var data = {
-		name:name,
-		memberNo:memberNo,
-		artTypeId:artTypeId,
-		location:location,
-		orgIdentityId:orgIdentityId
-	}
-		base.commonAjax('clav/member/getClavMemberList', data, function (data) {
-			var pagedata = [];
-			console.log(data);
-			pagedata = data.data;
-			//console.log(pagedata)
+				});
+			}
+		});
 
-			//调用分页
-			layui.use(['laypage', 'layer'], function () {
-				var laypage = layui.laypage
-					, layer = layui.layer;
+		function findvip(name, memberNo, artTypeId, location, orgIdentityId,sTime,eTime) {
+			var name;
+			var memberNo;
+			var artTypeId;
+			var location;
+			var sTime;
+			var eTime;
+			var orgIdentityId =9;
+			var data = {
+				name: name,
+				memberNo: memberNo,
+				artTypeId: artTypeId,
+				location: location,
+				orgIdentityId: orgIdentityId,
+				sTime:sTime,
+				eTime:eTime
+			}
+			base.commonAjax('clav/member/getClavMemberList', data, function (data) {
+				var pagedata = [];
+				console.log(data);
+				pagedata = data.data;
+				//console.log(pagedata)
 
-				laypage.render({
-					elem: 'layui'
-					, count: pagedata.length,
-					layout: ['count', 'prev', 'page', 'next', 'limit','skip'],
-					limit: 10,
-					jump: function (obj) {
-						//模拟渲染
-						document.getElementById('tb').innerHTML = function () {
-							var arr = []
-								, thisData = pagedata.concat().splice(obj.curr * obj.limit - obj.limit, obj.limit);
-							layui.each(thisData, function (index, item) {
-								arr.push(auto(item));
-								//console.log(item);
-							});
-							return arr.join('');
-						}();
-					}
+				//调用分页
+				layui.use(['laypage', 'layer'], function () {
+					var laypage = layui.laypage
+						, layer = layui.layer;
+
+					laypage.render({
+						elem: 'layui'
+						, count: pagedata.length,
+						layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+						limit: 10,
+						jump: function (obj) {
+							//模拟渲染
+							document.getElementById('tb').innerHTML = function () {
+								var arr = []
+									, thisData = pagedata.concat().splice(obj.curr * obj.limit - obj.limit, obj.limit);
+								layui.each(thisData, function (index, item) {
+									arr.push(auto(index, item));
+									//console.log(item);
+								});
+								return arr.join('');
+							}();
+						}
+					});
 				});
 			});
+		}
+		findvip();
+		layui.use('form', function () {
+			var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+			form.on('select(yishu)', function (data) {
+				category = data.value;
+				yishu = data.elem[data.elem.selectedIndex].text;
+				form.render('select');
+			})
+			form.on('select(zzsf)', function (data) {
+				category2 = data.value;
+				zzsf = data.elem[data.elem.selectedIndex].text;
+				form.render('select');
+			})
+		})
+		//日期
+		layui.use('laydate', function () {
+			var laydate = layui.laydate;
+			//日期
+			laydate.render({
+				elem: '#date'
+			});
+			laydate.render({
+				elem: '#date1'
+			});
+			function useLayDateMultiple(cls) {
+				layui.use('laydate', function () {
+					var laydate = layui.laydate;
+
+					lay('#' + cls).each(function () {
+						laydate.render({
+							elem: this
+							, trigger: 'click'
+							, format: 'yyyy/MM/dd HH:mm:ss'
+							, done: function (value, datetime, endDate) {
+								timechecked4 = value;
+								bjtime4 = timechecked4.split(/\s+/)[0].replace(/\//g, "");
+								console.log(bjtime4);
+							}
+						});
+					});
+				});
+			}
+
+			function useLayDateMultiple2(cls) {
+				layui.use('laydate', function () {
+					var laydate = layui.laydate;
+					lay('#' + cls).each(function () {
+						laydate.render({
+							elem: this,
+							trigger: 'click'
+							, format: 'yyyy/MM/dd HH:mm:ss'
+							, done: function (value, datetime, endDate) {
+								timechecked3 = value;
+								bjtime3 = timechecked3.split(/\s+/)[0].replace(/\//g, "");
+								console.log(bjtime3);
+							}
+						});
+					});
+				});
+			}
+			useLayDateMultiple('time1'); useLayDateMultiple2('time2');
 		});
-	}
-	findvip();
-	layui.use('form', function(){
-          var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
-       form.on('select(yishu)',function(data){
-		category=data.value;
-		yishu=data.elem[data.elem.selectedIndex].text;
-           form.render('select');
-	   })
-	})
-	function tjfind(){
-		var name;
-		var memberNo;
-		//console.log( $("#vipname").val())
-		//console.log( $("#vipnumber").val())
-		//console.log( $("#szd").val())
-		if ($("#vipname").val()!='') {
-			name=$("#vipname").val();
-		} 	
-		if ($("#vipnumber").val()!='') {
-			memberNo=$("#vipnumber").val();	
-		} 
-		 //location=$("#szd").val();
-		 //console.log(category)
-		 //artTypeId=category
-		findvip(name,memberNo);
-	}
-	function auto(obj){
-		return '<tr>' +
+
+		//查询
+		$('#tjfind').on('click', function (){
+			var name;
+			var memberNo;
+			var artTypeId;
+			var location;
+			var recommendType;
+			var sTime;
+			var eTime;
+			//console.log(eTime);
+			//console.log( $("#vipname").val())
+			//console.log( $("#vipnumber").val())
+			//console.log( $("#szd").val())
+			if ($("#vipname").val() != '') {
+				name = $("#vipname").val();
+			}
+			if ($("#vipnumber").val() != '') {
+				memberNo = $("#vipnumber").val();
+			}
+			if ($("#yishu").val() != '') {
+				artTypeId = category
+				//console.log(artTypeId)
+			}
+			if ($("#szd").val() != '') {
+				location = $("#szd").val();
+			}
+			if ($("#tjdw").val() != '') {
+				recommendType = $("#tjdw").val();
+				//console.log(recommendType)
+			}
+			if ($('#time1').val() != '') {
+				sTime =  timechecked4;
+				console.log(sTime)
+			}
+			if ($('#time2').val() != '') {
+				eTime = timechecked3;
+				//console.log(recommendType)
+			}
+			//location=$("#szd").val();
+			//console.log(category)
+			//artTypeId=category
+			findvip(name, memberNo, artTypeId, location, recommendType,sTime,eTime);
+		})
+		function tjfind() {
+
+		}
+		function auto(index, obj) {
+			return '<tr>' +
 				'<td style="width: 50px">' +
 				'<input type="checkbox" name="" title="" lay-skin="primary">' +
 				'</td>' +
-				'<td>' + 123 + '</td>' +
+				'<td>' + (index + 1) + '</td>' +
 				'<td>' + obj.memberNo + '</td>' +
 				'<td>' + obj.name + '</td>' +
-				'<td>' + obj.createDate + '</td>' +
+				'<td>' + (obj.createDate).split(/\s+/)[0] + '</td>' +
 				'<td>' + obj.recommendType + '</td>' +
 				'<td>' + obj.orgIdentityId + '</td>' +
 				'<td>' + obj.artTypeId + '</td>' +
 				'<td>' + obj.location + '</td>' +
 				'<td>' +
-				'<button class="layui-btn">编辑</button>' +
-				'<button class="layui-btn layui-btn-normal">查看</button>' +
-				'<button class="layui-btn layui-btn-normal">导出</button>' +
-				'<button class="layui-btn layui-btn-warm">移除</button>' +
-				'<button class="layui-btn layui-btn-danger">重置密码</button>' +
+				'<button id="' + 'hy_edit' + obj.id + '"class="layui-btn hy_edit">编辑</button>' +
+				'<button id="' + 'hy_find' + obj.id + '"class="layui-btn layui-btn-normal hy_find">查看</button>' +
+				'<button id="' + 'hy_daochu' + obj.id + '"class="layui-btn layui-btn-normal hy_daochu">导出</button>' +
+				'<button id="' + 'hy_move' + obj.id + '"class="layui-btn layui-btn-warm hy_move">移除</button>' +
+				'<button id="' + 'hy_repass' + obj.id + '"class="layui-btn layui-btn-danger hy_repass">重置密码</button>' +
 				'</td>' +
 				'</tr>'
-	}
+		}
+				// 会员查询 按钮编辑
+				$(document).on('click', '.hy_edit', function () {
+			// console.log(id);
+			var hy_edit = $(this).attr('id').replace("hy_edit", "");
+			window.location.href="./newvip2_z.html?id="+hy_edit;
+		})
+		// 会员查询 按钮查看
+		$(document).on('click', '.hy_find', function () {
+			// console.log(id);
+			var hy_find = $(this).attr('id').replace("hy_find", "");
+			$(".cover4").css("display", "inline-block");
+			var data = {
+				id: hy_find
+			}
+			base.commonAjax('clav/member/chakanClavMember', data, function (data) {
+				if (data.code == 1) {
+					console.log("会员文件", data)
+					$(".hy_file").empty();
+					$('.hy_file').append(
+						'<a href="' + data.data.uploadFile + '" download="">' +
+						'<div class="wj">会员上传文件</div>' +
+						'</a>'
+					);
+				}
+			})
+		})
+		// 会员查询 按钮移除
+		$(document).on('click', '.hy_move', function () {
+			// console.log(id);
+			var hy_move = $(this).attr('id').replace("hy_move", "");
+			var data = {
+				id: hy_move
+			}
+			console.log("yichu", data)
+			base.commonAjax('clav/member/yichuClavMember', data, function (data) {
+				if (data.code == 1) {
+					findvip();
+				}
+			})
+		})
+		// 会员查询 重置密码
+		$(document).on('click', '.hy_repass', function () {
+			// console.log(id);
+			var hy_repass = $(this).attr('id').replace("hy_repass", "");
+			var data = {
+				id: hy_repass
+			}
+			base.commonAjax('clav/member/resetClavMember', data, function (data) {
+				if (data.code == 1) {
+					alert("重置密码为：" + data.data)
+					//console.log(data)
+				}
+			})
+		})
 
+		$('#szd').click(function () {
+			$('#test1').css("visibility", "visible");
+		})
+		$('#btnclear').click(function () {
+			$('#vipname,#vipnumber,#arttype,#szd,#time1,#time2,#tjdw,#zzsf').val('');
+			//$('#arttype,#zzsf').empty();
+			//form.render("select");
+		})
+		layui.use('form', function () {
+			var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+			form.on('#btnclear', function (elem) {
+				//执行清空
+				$("#arttype").empty();
+				form.render();
+			});
 
+		})
 
-
-	$('#szd').click(function(){
-            $('#test1').css("visibility","visible");
-        })
-	$('#btnclear').click(function(){
-		$('#vipname,#vipnumber,#arttype,#szd,#time1,#time2,#tjdw,#zzsf').val('');
-		//$('#arttype,#zzsf').empty();
-		//form.render("select");
-	})
-	layui.use('form', function(){
-          var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
-	form.on('#btnclear',function(elem){
-     //执行清空
-    $("#arttype").empty();
-    form.render();
-	});
-
-})
+// 		$('#z2').on('click', function (){
+// 	if(bjtime2<bjtime1){
+// 		alert("结束时间不能小于开始时间")
+// 	}
+// 	else{
+// 		startTime=timechecked;
+//     endTime=timechecked2;
+//     timeType=1;
+//     var data={
+//         startTime:startTime,
+//         endTime:endTime,
+//         timeType:timeType
+//     }
+// 	console.log(data)
+//     base.commonAjax('clav/scheduleTime/updateScheduleTime', data, function (data) {
+//         if(data.code==1){
+//             alert("设置成功")
+//         }
+//     })
+// 	}
+// })
 	</script>
 </body>
 
