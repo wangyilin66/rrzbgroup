@@ -44,16 +44,46 @@ daweimingcheng();
         
         
         //查询
-          $(document).on('click', '#cnmfind', function () {				
+         // $(document).on('click', '#cnmfind', function () {	
+			$('#cnmfind').on('click', function (){
+			var name;
+			var recommendType;
+			var unitType;
 			if($('#wjcname').val()!=''){
-				var name=$('#wjcname').val();
+				 name=$('#wjcname').val();
 			//console.log(name)
 			}
-			//	var recommendType=recttype;
+			if(recttype!=''){
+				console.log('xixi')
+				var a=recttype;
+				 recommendType=a;
+			}
+			if(recdtype!=''){
+				var b=recdtype;
+				unitType=b;
+			}
+			console.log(recommendType)
+			// var a=recttype;
+			// var b=recdtype;
+			//console.log(a)
+			//	var recommendType=a;
+				//console.log(typeof(recommendType))
+				//var b=rectdype;
+				// var b=recdtype;
+			//	console.log(b)
+				//	var unitType=b;
+				//	console.log(typeof(unitType))
 			//console.log(name)
-            //    var unitType=recdtype;
-                console.log($('#rec_dtype').text())
-			//tuijiandanwiesh(name,recommendType,unitType);
+			   // var unitType=recdtype;
+			
+                //console.log($('#rec_dtype').val())
+			tuijiandanwiesh(name,recommendType,unitType);
+			console.log(Boolean(recttype));
+			console.log($('#wjcname').val() == '');
+			if(($('#wjcname').val()=='')&& !Boolean(recttype)  && !Boolean(recdtype)  ){
+				console.log("sss");
+				tuijiandanwiesh();
+			}
 		
         })
         

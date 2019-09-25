@@ -1,6 +1,21 @@
+        a='';
+		b='';
 layui.use('form', function(){
       var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
-
+    form.on('select(vipb_yishu)',function(data){
+        //recttype=data.value;
+        
+        a=data.elem[data.elem.selectedIndex].text;
+         //console.log(a)
+       form.render('select');
+   })
+   form.on('select(vipb_yishu2)',function(data){
+    //recttype=data.value;
+    
+    b=data.elem[data.elem.selectedIndex].text;
+     //console.log(b)
+   form.render('select');
+})
     //单位类型
     function daweileixing(){
         var data = {
@@ -39,14 +54,18 @@ layui.use('form', function(){
     daweimingcheng();
 })
 //会员审核
-function vipdutyshenh(name){
+function vipdutyshenh(name,createBy,recommendType){
     var orgIdentityId=11;
     var auditStatus=1;
     var name;
+    var createBy;
+    var recommendType;
     var data={
         name:name,
         orgIdentityId:orgIdentityId,
-        auditStatus:auditStatus
+        auditStatus:auditStatus,
+        createBy:createBy,
+        recommendType:recommendType
     }
     base.commonAjax('clav/member/getClavMemberList', data, function (data) {
         //console.log("理事",data)
@@ -82,10 +101,24 @@ function vipdutyshenh(name){
 }
 vipdutyshenh();
 $(document).on('click','#vipbfind', function () {
-    if($('#vipbname').val()!=0){
-        var name=$('#vipbname').val() 
+    var name;
+    var createBy;
+    var recommendType;
+    if($('#vipbname').val()!=''){
+        name=$('#vipbname').val() 
     } 
-    vipdutyshenh(name)
+    if(a!=''){
+        createBy=a;
+    }
+    if(b!=''){
+        recommendType=b;
+    }
+    console.log(name);
+    vipdutyshenh(name,createBy,recommendType)
+    if(($('#vipbname').val()=='')&& !Boolean(a)  && !Boolean(b)  ){
+        console.log("sss");
+        vipdutyshenh();
+    }
 })
 
 //理事审核

@@ -238,10 +238,10 @@ function tijiao() {
                                 //var artTypeId=artTypeId+'-'+specificAreas;
                                 //var specific_areas;
                                 if($('#ysml2').val()!=''){
-                                        artTypeId=artTypeId21+','+artTypeId22;
+                                        artTypeId=artTypeId21+','+artTypeId22+',';
                                         specificAreas=artTypeId21+'-'+specificAreas21+','+artTypeId22+'-'+specificAreas22;
                                 }if($('#ysml2').val()==''){
-                                        artTypeId=artTypeId21;
+                                        artTypeId=artTypeId21+',';
                                         specificAreas=artTypeId21+'-'+specificAreas21;
                                 }                             
                                 var data = {

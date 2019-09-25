@@ -19,7 +19,9 @@
 		top: 2px;
 		display: none;
 	}
-
+.content{
+	padding-bottom: 30px;
+}
 	/* .cover11{
 	width: 100%;
     height:100%;
@@ -69,6 +71,9 @@
 
 	#shuju6 .layui-laypage-btn {
 		margin-top: 0;
+	}
+	#test2{
+		position: absolute;
 	}
 </style>
 
@@ -203,7 +208,7 @@
 								<div class="layui-col-sm3">
 									<div class="hy_btn">
 										<button type="reset" class="layui-btn layui-btn-normal"
-											style="background-color: grey;">清空条件</button>
+											style="background-color: grey;" id="ccinp">清空条件</button>
 										<button type="button" class="layui-btn layui-btn-normal" id="cnmadd">新增</button>
 										<button type="button" class="layui-btn layui-btn-normal" id="cnmfind">查询</button>
 										<div class="clear"></div>
@@ -247,23 +252,24 @@
 			<div class="tcc_title">新增单位</div>
 			<form class="layui-form" action="">
 				<div class="cnm">
-					<span>单位名称：</span><input class="tuijian123" type="text" name="" value="">
+					<span>单位名称：</span><input id="ccname"class="tuijian123" type="text" name="" value="">
 				</div>
 				<div class="cnm" style="padding-left: 43px;">
 					<div style="display: inline-block">所属推荐类型：</div>
 					<div style="display: inline-block">
-						<select id="" name="modules" lay-verify="required" lay-search="">
-							<option value="">请选择</option>
+						<input id="wwcc" name="modules" lay-verify="required" class="layui-input"lay-search="">
+							
 							<!-- <option value="1">layer</option>
 						<option value="2">form</option>
 						<option value="3">layim</option> -->
-						</select>
+						</input>
+						<div id="test2"></div>
 					</div>
 				</div>
 				<div class="cnm">
 					<div style="display: inline-block">关联组织：</div>
 					<div style="display: inline-block">
-						<select id="" name="modules" lay-verify="required" lay-search="">
+						<select id="ccglzz" name="modules" lay-verify="required" lay-search="">
 							<option value="">请选择</option>
 							<!-- <option value="1">layer</option>
 							<option value="2">form</option>
@@ -274,12 +280,12 @@
 				<div class="cnm" style="padding-left:23px;">
 					<label class="layui-form-label" style="width: 106px;">会员是否可见：</label>
 					<div class="layui-input-block">
-						<input type="radio" name="sex" value="是" title="是" data="1" checked="">
-						<input type="radio" name="sex" value="否" title="否" data="2">
+						<input type="radio" name="sex" value="是" title="是" data="2" checked="">
+						<input type="radio" name="sex" value="否" title="否" data="1">
 					</div>
 				</div>
 				<div class="tcc_an">
-					<button type="button" class="layui-btn layui-btn-normal" id="titg">确认</button>
+					<button type="button" class="layui-btn layui-btn-normal" id="cccnnm">确认</button>
 					<button type="button" class="layui-btn layui-btn-primary" onclick="close1()">关闭</button>
 				</div>
 			</form>
@@ -305,16 +311,21 @@
 	<script src="./js/common.js"></script>
 	<script src="./js/recommendedUnits_z.js"></script>
 	<script>
+	    recttype='';
+		recdtype='';
+		let ind1;
 	layui.use('form', function(){
 		  var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
 			form.on('select(rec_ttype)',function(data){
-            //recttype=data.value;
+			//recttype=data.value;
+			
 			recttype=data.elem[data.elem.selectedIndex].text;
 			 console.log(recttype)
            form.render('select');
 	   })
 	   form.on('select(rec_dtype)',function(data){
-            //recdtype=data.value;
+			//recdtype=data.value;
+			
 			recdtype=data.elem[data.elem.selectedIndex].text;
            form.render('select');
 	   })
@@ -329,11 +340,30 @@
 
 
 
- 
+         $('#ccinp').on('click',function(){
+			recttype = false;
+			recdtype = false;
+		 });
 
 		//新增
 		$(document).on('click', '#cnmadd', function () {
 			$(".cover10").css("display", "inline-block");
+			var data={
+
+			}
+			layui.use('form', function(){
+		  var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+			base.commonAjax('clav/recommendUnit/getClavOrg', data, function (data) {
+				console.log('cc',data)
+				for (var i = 0; i < data.data.length; i++) {
+                                        $('#ccglzz').append(
+                                                '<option value="' + data.data[i].id + '">' + data.data[i].name + '</option>'
+                                        );
+								}
+								form.render('select');
+				
+			})
+		})
 		})
 		//编辑
 		$(document).on('click', '.cnm_update', function () {
@@ -396,9 +426,106 @@
 			})
 		})
 
+		$(document).on('click', '#cccnnm', function () {
+			var name=$('#ccname').val();
+			var data={
+				name:name,
+			}
 
 
-	</script>
-</body>
+		})
+//////
+let treedata2 = [];
+let treelocaldata = [];
+
+ var data={
+
+ }
+base.commonAjax('clav/recommendUnit/getRecommendType', data, function (data) {
+            if (data.code == 1) {
+                //console.log("z", data);
+                treelocaldata = data.data;
+                wtf2(data.data);
+               // console.log(treedata)
+                layui.use('tree', function () {
+                    var tree = layui.tree;
+
+                    //渲染
+                    var inst1 = tree.render({
+                        elem: '#test2'  //绑定元素
+                        ,click: function(obj){
+                           // console.log(obj);
+                       // console.log(obj.data); //得到当前点击的节点数据
+                       // console.log(obj.elem); //得到当前节点元素 
+                        // console.log($('.layui-tree-set').attr("data-id"));
+                      //  console.log(obj.data.id); //得到当前点击的节点数据
+						let str = obj.data.id;
+						console.log(String(str).indexOf('-'));
+					   // console.log(str.indexOf('-')>-1);
+
+                         if(String(str).indexOf('-') != -1){
+							 
+                            let arr = str.split('-');
+                            if(arr.length == 2){
+                                console.log(treelocaldata[Number(arr[0])].childList[Number(arr[1])]);
+								ind1 = treelocaldata[Number(arr[0])].childList[Number(arr[1])].id;
+								
+                                //console.log("推荐",arr);
+									//console.log(treedata2[arr[0]].title);
+									// console.log(treedata[arr[0]].title);
+									// console.log(obj.data.title);
+									var tjplace2 = obj.data.title;
+									//+treedata2[arr[0]].title;
+									//console.log("地区",place);
+									$('#wwcc').val(tjplace2);
+									$('#test2').css("visibility", "hidden");
+								}
+
+							} else {
+								let arr = str;
+								console.log(arr);
+								console.log(treelocaldata[arr]);
+								ind1 = treelocaldata[arr].id;
+
+								//console.log("推荐",arr);
+								//console.log(treedata2[arr[0]].title);
+								// console.log(treedata[arr[0]].title);
+								// console.log(obj.data.title);
+								var tjplace2 = obj.data.title;
+								//+treedata2[arr[0]].title;
+								//console.log("地区",place);
+								$('#wwcc').val(tjplace2);
+								$('#test2').css("visibility", "hidden");
+							}
+						}
+						, data: treedata2
+					});
+
+				});
+	}
+});
+
+
+
+
+									function wtf2(data) {
+										data.map((v, i) => {
+											let obj = {};
+											obj.title = v.name;
+											obj.id = i;
+											obj.children = [];
+											v.childList.map((val, ind) => {
+												console.log(val);
+												let objc = {};
+												objc.title = val.name;
+												objc.id = i + '-' + ind;
+												objc.children = [];
+												obj.children.push(objc);
+											});
+											treedata2.push(obj);
+										});
+									}
+								</script>
+	</body>
 
 </html>

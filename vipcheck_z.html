@@ -104,7 +104,7 @@
 									<div class="grid-demo grid-demo-bg1">
 										<label for="">单位类型：
 											<div>
-												<select id="vipb_yishu"name="modules" lay-verify="required" lay-search="">
+												<select id="vipb_yishu"name="modules" lay-verify="required" lay-search="" lay-filter="vipb_yishu">
 													<option value="">请选择</option>
 													<!-- <option value="1">layer</option>
 													<option value="2">form</option>
@@ -118,7 +118,7 @@
 									<div class="grid-demo grid-demo-bg1">
 										<label for="">单位名称：
 											<div>
-												<select id="vipb_yishu2"name="modules" lay-verify="required" lay-search="">
+												<select id="vipb_yishu2"name="modules" lay-verify="required" lay-search="" lay-filter="vipb_yishu2">
 													<option value="">请选择</option>
 													<!-- <option value="1">layer</option>
 													<option value="2">form</option>
@@ -139,7 +139,7 @@
                                 </div>
                                 <div class="layui-col-sm3">
                                     <div class="hy_btn">
-                                        <button type="reset" class="layui-btn layui-btn-normal" style="background-color: grey;">清空条件</button>
+                                        <button type="reset" id="qqkk"class="layui-btn layui-btn-normal" style="background-color: grey;">清空条件</button>
                                         <button type="button" class="layui-btn layui-btn-normal" id="vipbfind">查询</button>
                                         <div class="clear"></div>
                                     </div>
@@ -563,7 +563,10 @@ $('#z2').on('click', function (){
 // 	$('#time1').reset();
 	
 // })
-
+$('#qqkk').on('click',function(){
+			a = false;
+			b = false;
+		 });
 	</script>
 </body>
 
