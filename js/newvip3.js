@@ -132,7 +132,7 @@ function down() {
 
 //提交
 function tijiao() {
-        console.log(tjcompany);
+       // window.open("applyUpdatePage_w.html?id="+data.theId);
         if( $('#file').val()==''){
                 $('.w_tx').text('请上传头像')          
         }
@@ -298,11 +298,13 @@ function tijiao() {
                                         linkmanPhone: linkmanPhone
                                 }
                                 console.log(data);
-                                base.commonAjax('clav/member/addClavMember', data, function (data) {
+                                base.commonAjax('clav/member/addRedClavMember', data, function (data) {
+                                        console.log(data);
                                         if (data.code == 1) {
                                                 console.log('成功');
-                                                console.log(data);
-                                               // window.location.href='./vipfind_z.html'
+                                                console.log(data.theId);
+                                                //window.location.href = "applyUpdatePage_w.html?id="+data.theId;
+                                                window.open("applyUpdatePage_w.html?id="+data.theId);
                                         }
                                         else{
                                                 alert(data.message)
