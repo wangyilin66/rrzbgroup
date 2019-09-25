@@ -651,6 +651,7 @@
             }
         });
         //推荐类型
+        $('#test2').css("visibility","hidden");
         base.commonAjax('clav/recommendUnit/getRecommendType', data, function (data) {
             if (data.code == 1) {
                 //console.log("z", data);
@@ -690,6 +691,9 @@
                 });
             }
         });
+        $('#tjtype').on('click',function () { 
+            $('#test2').css("visibility","visible");
+         })
         $('#szd').click(function(){
             $('#test1').css("visibility","visible");
         })

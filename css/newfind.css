@@ -127,3 +127,16 @@ span{
     top: 0;
     right: 2px;
 }
+.layui-col-md4{
+    position: relative;
+}
+#test2{
+    position: absolute;
+    left:110px;
+    top:34px;
+    z-index: 999;
+    background: #fff;
+    height: 150px;
+    overflow-y: scroll;
+    width: 254px;
+}
