@@ -4,6 +4,7 @@ body{
 .wltop{
     height: 90px;
     background-color:#1E9FFF;
+    display: flex;
 }
 .logo{
     height: 50px;
