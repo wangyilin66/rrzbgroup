@@ -74,6 +74,14 @@
 	}
 	#test2{
 		position: absolute;
+    z-index: 999;
+    background: #fff;
+    height: 90px;
+    overflow-y: scroll;
+    width: 301px;
+    border: solid rgba(195, 197, 201, 0.3);
+    border-width: 1px;
+	display: none;
 	}
 </style>
 
@@ -258,7 +266,7 @@
 				<div class="cnm" style="padding-left: 43px;">
 					<div style="display: inline-block">所属推荐类型：</div>
 					<div style="display: inline-block">
-						<input id="wwcc" name="modules" lay-verify="required" class="layui-input"lay-search="">
+						<input id="wwcc" name="modules"readonly="readonly" lay-verify="required" class="layui-input"lay-search="">
 							
 							<!-- <option value="1">layer</option>
 						<option value="2">form</option>
@@ -270,7 +278,7 @@
 				<div class="cnm">
 					<div style="display: inline-block">关联组织：</div>
 					<div style="display: inline-block">
-						<select id="ccglzz" name="modules" lay-verify="required" lay-search="">
+						<select id="ccglzz" name="modules" lay-verify="required" lay-search="" lay-filter="ccglzz">
 							<option value="">请选择</option>
 							<!-- <option value="1">layer</option>
 							<option value="2">form</option>
@@ -427,14 +435,17 @@
 			})
 		})
 
-		$(document).on('click', '#cccnnm', function () {
-			var name=$('#ccname').val();
-			var data={
-				name:name,
-			}
+		
+		
+		layui.use('form', function(){
+          var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+       form.on('select(ccglzz)',function(data){
+		ccglzz=data.value;
+           //mz3=data.elem[data.elem.selectedIndex].text;
+           form.render('select');
+	   })
+	})
 
-
-		})
 //////
 let treedata2 = [];
 let treelocaldata = [];
@@ -479,7 +490,8 @@ base.commonAjax('clav/recommendUnit/getRecommendType', data, function (data) {
 									//+treedata2[arr[0]].title;
 									//console.log("地区",place);
 									$('#wwcc').val(tjplace2);
-									$('#test2').css("visibility", "hidden");
+									$('#test2').css("display", "none");
+
 								}
 
 							} else {
@@ -496,7 +508,8 @@ base.commonAjax('clav/recommendUnit/getRecommendType', data, function (data) {
 								//+treedata2[arr[0]].title;
 								//console.log("地区",place);
 								$('#wwcc').val(tjplace2);
-								$('#test2').css("visibility", "hidden");
+								$('#test2').css("display", "none");
+
 							}
 						}
 						, data: treedata2
@@ -526,6 +539,33 @@ base.commonAjax('clav/recommendUnit/getRecommendType', data, function (data) {
 											treedata2.push(obj);
 										});
 									}
+									$(document).on('click', '#wwcc', function () {
+										$("#test2").css("display", "inline-block");
+									})
+
+
+
+
+									$(document).on('click', '#cccnnm', function () {
+										var name=$('#ccname').val();
+										var parentId=ind1;
+										var remarks1=ccglzz;
+										var status=$('input[name="sex"]:checked').attr("data");
+										var data={
+											name:name,
+											parentId:parentId,
+											remarks1:remarks1,
+											status:status
+										}
+										console.log('d66',data)
+										base.commonAjax('clav/recommendUnit/addRecommendUnit', data, function (data) {
+											if(data.code==1){
+												$(".cover10").css("display", "none");	
+												tuijiandanwiesh();											
+											}
+										})
+
+									})
 								</script>
 	</body>
 

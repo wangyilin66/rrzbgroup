@@ -360,8 +360,8 @@
 				memberNo: memberNo,
 				artTypeId: artTypeId,
 				location: location,
-				recommendType,recommendType,
-				orgIdentityId: orgIdentityId,
+				recommendType:recommendType,
+				orgIdentityId:orgIdentityId,
 				sTime:sTime,
 				eTime:eTime
 			}
@@ -397,6 +397,59 @@
 				});
 			});
 		}
+		
+		
+		// function findvip2(name, memberNo, artTypeId, location,recommendType,orgIdentityId,sTime,eTime) {
+		// 	var name;
+		// 	var memberNo;
+		// 	var artTypeId;
+		// 	var location;
+		// 	var sTime;
+		// 	var eTime;
+		// 	var orgIdentityId=9;
+		// 	var recommendType;
+		// 	var data = {
+		// 		name: name,
+		// 		memberNo: memberNo,
+		// 		artTypeId: artTypeId,
+		// 		location: location,
+		// 		recommendType:recommendType,
+		// 		orgIdentityId:orgIdentityId,
+		// 		sTime:sTime,
+		// 		eTime:eTime
+		// 	}
+		// 	base.commonAjax('clav/member/getClavMemberList2', data, function (data) {
+		// 		var pagedata = [];
+		// 		console.log(data);
+		// 		pagedata = data.data;
+		// 		console.log(pagedata)
+
+		// 		//调用分页
+		// 		layui.use(['laypage', 'layer'], function () {
+		// 			var laypage = layui.laypage
+		// 				, layer = layui.layer;
+
+		// 			laypage.render({
+		// 				elem: 'layui'
+		// 				, count: pagedata.length,
+		// 				layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+		// 				limit: 10,
+		// 				jump: function (obj) {
+		// 					//模拟渲染
+		// 					document.getElementById('tb').innerHTML = function () {
+		// 						var arr = []
+		// 							, thisData = pagedata.concat().splice(obj.curr * obj.limit - obj.limit, obj.limit);
+		// 						layui.each(thisData, function (index, item) {
+		// 							arr.push(auto(index, item));
+		// 							//console.log(item);
+		// 						});
+		// 						return arr.join('');
+		// 					}();
+		// 				}
+		// 			});
+		// 		});
+		// 	});
+		// }
 		findvip();
 		layui.use('form', function () {
 			var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
@@ -506,6 +559,7 @@
 			//location=$("#szd").val();
 			//console.log(category)
 			//artTypeId=category
+			console.log("xxx",orgIdentityId)
 			findvip(name, memberNo, artTypeId, location, recommendType,orgIdentityId,sTime,eTime);
 		})
 		function tjfind() {
