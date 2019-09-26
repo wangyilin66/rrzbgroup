@@ -12,9 +12,9 @@ var commHeader = {
        '</div>' +
        '<div class="layui-col-md7" style="padding-left: 0px;">' +
        '<ul class="layui-nav layui-bg-blue tou">' +
-       '<li class="layui-nav-item layui-this"><a href="">首页</a></li>' +
+       '<li class="layui-nav-item"><a href="">首页</a></li>' +
        '<li class="layui-nav-item">' +
-       '<a href="javascript:;">志愿者管理</a>' +
+       '<a class="aa zyzgl" href="javascript:;">志愿者管理</a>' +
        '<dl class="layui-nav-child">' +                    
        '<!-- <dd><a href="addvipPage_w.html">增补会员单位</a></dd> -->' +
        '<dd><a href="./tjVipFindPage.html">推荐会员查询</a></dd>' +
@@ -23,7 +23,7 @@ var commHeader = {
        '</dl>' +
        '</li>' +
        '<li class="layui-nav-item">' +
-       '<a href="javascript:;">组织管理</a>' +
+       '<a class="aa zzgl" href="javascript:;">组织管理</a>' +
        '<dl class="layui-nav-child">' +
        '<dd><a href="">移动模块</a></dd>' +
        '<dd><a href="">后台模版</a></dd>' +
@@ -31,7 +31,7 @@ var commHeader = {
        '</dl>' +
        '</li>' +
        '<li class="layui-nav-item">' +
-       '<a href="javascript:;">活动管理</a>' +
+       '<a class="aa hdgl" href="javascript:;">活动管理</a>' +
        '<dl class="layui-nav-child">' +
        '<dd><a href="">移动模块</a></dd>' +
        '<dd><a href="">后台模版</a></dd>' +
@@ -39,7 +39,7 @@ var commHeader = {
        '</dl>' +
        '</li>' +
        '<li class="layui-nav-item">' +
-       '<a href="javascript:;">会员管理</a>' +
+       '<a class="aa hygl" href="javascript:;">会员管理</a>' +
        '<dl class="layui-nav-child">' +
        '<dd><a href="vipfind_z.html">会员查询</a></dd>' +
        '<dd><a href="./vipcheck_z.html">审核管理</a></dd>' +
@@ -52,7 +52,7 @@ var commHeader = {
        '</dl>' +
        '</li>' +
        '<li class="layui-nav-item">' +
-       '<a href="javascript:;">系统管理</a>' +
+       '<a class="aa xtgl" href="javascript:;">系统管理</a>' +
        '<dl class="layui-nav-child">' +
        '<dd><a href="">移动模块</a></dd>' +
        '<dd><a href="">后台模版</a></dd>' +
@@ -60,7 +60,7 @@ var commHeader = {
        '</dl>' +
        '</li>' +
        '<li class="layui-nav-item">' +
-       '<a href="javascript:;">统计报表</a>' +
+       '<a class="aa tjbb" href="javascript:;">统计报表</a>' +
        '<dl class="layui-nav-child">' +
        '<dd><a href="">移动模块</a></dd>' +
        '<dd><a href="">后台模版</a></dd>' +
