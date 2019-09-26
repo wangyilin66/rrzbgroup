@@ -21,7 +21,7 @@
 } 
 .tcc_content{
     width: 635px;
-    height: 350px;
+    height: 363px;
     background-color: #fff;
     margin: auto;
     margin-top: 12%;
@@ -30,6 +30,11 @@
     padding-top: 10px;
     padding-left: 12px;
     font-size: 16px;
+}
+.findfile_an{
+	padding-left: 462px;
+	padding-top: 11px;
+	/* display: inline-block */
 }
 </style>
 <body>
@@ -154,7 +159,7 @@
                                         <div class="hy_btn">
                                                 <button type="reset" class="layui-btn layui-btn-normal" id="btnclear"style="background-color: grey;">清空条件</button>
                                                 <button type="button" class="layui-btn layui-btn-normal">通讯录导出</button>
-                                                <button type="button" class="layui-btn layui-btn-normal" id="chosedyn">选择会员</button>
+                                                <button type="button" class="layui-btn layui-btn-normal" id="chosedyn" onclick="chosevip()">选择会员</button>
                                                 <button type="button" class="layui-btn layui-btn-normal" id="ben_find">查询</button>
                                                 <div class="clear"></div>
                                             </div>
@@ -209,7 +214,7 @@
 								<div class="select-box-title">
 									<input type="checkbox" class="checkbox-all" id="checkbox-all1" />
 									<label for="checkbox-all1"></label>
-									<span>列表一</span>
+									<span id="list1"></span>
 								</div>
 								<div class="select-content">
 									<ul class="unselect-ul" id="unselect-ul">
@@ -270,7 +275,7 @@
 								<div class="select-box-title">
 									<input type="checkbox" class="checkbox-all" id="checkbox-all2" />
 									<label for="checkbox-all2"></label>
-									<span>列表二</span>
+									<span id="list2"></span>
 								</div>
 								<div class="select-content">
 									<ul class="selected-ul" id="selected-ul">
@@ -295,7 +300,7 @@
 						</div>
 					<!--  -->
 					<div class="findfile_an">
-							<button type="button" class="layui-btn layui-btn-primary" id="jiujiqd">确定</button>
+							<button type="button" class="layui-btn layui-btn-normal" id="jiujiqd">确定操作</button>
 							<button type="button" class="layui-btn layui-btn-primary" onclick="close1()">关闭</button>
 					</div>
 				</div>
@@ -348,18 +353,74 @@
 //$("#jjjId option[value='"+idinfo+"']").attr("selected","selected");
 	})
 	function cndbz(name){
+		if(dyn==idinfo){
+			$('#chosedyn').css("display","inline-block")
+		}
+		if(dyn==9){
+			$('#chosedyn').css("display","none")
+		}
 			var zhiweid=idinfo;
 			var name;
 		var data={
 		name:name,
 			orgIdentityId:zhiweid
 		}
+		console.log("下一数据",data)
 	base.commonAjax('clav/member/getClavMemberList', data, function (data) {
-		console.log(data)
+		//console.log(data)
 		var pagedata = [];
-				console.log(data);
+				//console.log(data);
 				pagedata = data.data;
-				console.log(pagedata)
+				//console.log(pagedata)
+
+				//调用分页
+				layui.use(['laypage', 'layer'], function () {
+					var laypage = layui.laypage
+						, layer = layui.layer;
+
+					laypage.render({
+						elem: 'layui'
+						, count: pagedata.length,
+						layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+						limit: 10,
+						jump: function (obj) {
+							//模拟渲染
+							document.getElementById('tbcc').innerHTML = function () {
+								var arr = []
+									, thisData = pagedata.concat().splice(obj.curr * obj.limit - obj.limit, obj.limit);
+								layui.each(thisData, function (index, item) {
+									arr.push(auto(index, item));
+									//console.log(item);
+								});
+								return arr.join('');
+							}();
+						}
+					});
+				});
+
+	})
+	
+	}
+	function cndbz2(name,orgIdentityId){
+		if(dyn==idinfo){
+			$('#chosedyn').css("display","inline-block")
+		}
+		if(dyn==9){
+			$('#chosedyn').css("display","none")
+		}
+			var zhiweid=orgIdentityId;
+			var name;
+		var data={
+		name:name,
+			orgIdentityId:zhiweid
+		}
+		console.log("下一数据",data)
+	base.commonAjax('clav/member/getClavMemberList', data, function (data) {
+		//console.log(data)
+		var pagedata = [];
+				//console.log(data);
+				pagedata = data.data;
+				//console.log(pagedata)
 
 				//调用分页
 				layui.use(['laypage', 'layer'], function () {
@@ -417,37 +478,60 @@ cndbz();
 	$(document).on('click','.sm_up', function () { 
 	 var sm_up=$(this).attr('id').replace("sm_up","");
 	 var status=1
+	 var oid=dyn;
 	var data={
 	id:sm_up,
-	status:status
+	status:status,
+	oid:oid
 	}
 	console.log("xxx",data)
 	base.commonAjax('clav/member/memberUpOrDown', data, function (data) {
-		cndbz();
+		console.log('成功')
+		var orgIdentityId=oid;
+		var name;
+		cndbz2(name,orgIdentityId)
+		//location.reload();
 	})
 	})
 	//下移
 	$(document).on('click','.sm_down', function () { 
 			 var sm_down=$(this).attr('id').replace("sm_down","");
 	 var status=2
+	 var oid=dyn;
 	var data={
 	id:sm_down,
-	status:status
+	status:status,
+	oid:oid
 	}
 	base.commonAjax('clav/member/memberUpOrDown', data, function (data) {
-		cndbz();
+		//cndbz();
+		console.log('成功')
+		var orgIdentityId=oid;
+		var name;
+		cndbz2(name,orgIdentityId)
+		//location.reload();
 	})
 	})
 	$(document).on('click','#ben_find', function () { 
 	var name;
-	if($("#vipnumber43").val()!=''){
+	if((dyn==idinfo)&&($("#vipnumber43").val()!='')){
 		name=$("#vipnumber43").val();
+		cndbz(name);
 	}
-	cndbz(name);
+	if((dyn==idinfo)&&($("#vipnumber43").val()=='')){		
+		cndbz();
+	}
+	//cndbz(name);
 	if(dyn!=idinfo){
 	//document.getElementById('tbcc').empty();
+	if(dyn==9){
+			$('#chosedyn').css("display","none")
+		}
+		if(dyn!=9){
+			$('#chosedyn').css("display","inline-block")
+		}
 	if($("#vipnumber43").val()!=''){
-		name2=$("#vipnumber43").val();
+		name=$("#vipnumber43").val();
 	}
 	
 			var ddyn=dyn;
@@ -456,7 +540,8 @@ cndbz();
 			orgIdentityId:ddyn,
 			name:name
 		}
-			console.log("ddd",data)
+			//console.log("ddd",data)
+			document.getElementById('tbcc').innerHTML='';
 	base.commonAjax('clav/member/getClavMemberList', data, function (data) {
 		
 		var pagedata = [];
@@ -527,12 +612,16 @@ function chosevip(){
 		for(var i=0;i<data.data.length;i++){
 			$("#unselect-ul").append(
 				'<li>'+
-					'<input type="checkbox" class="checkboxs zzc_left"  id="tyue-checkbox-blue1" zzc="'+data.data[i].id+'"/>'+
+					'<input type="checkbox" class="checkboxs zzc_right"  id="tyue-checkbox-blue1" value="'+data.data[i].id+'"/>'+
 					'<label for="tyue-checkbox-blue1"></label>'+
 					'<span>'+data.data[i].name+'</span>'+
 				'</li>'
 			)
 		}
+		$("#list1").empty();
+		$("#list1").append(
+					'<span>'+data.data.length+'项</span>'
+			)
 	})
 	var data2={
 		orgIdentityId:orgIdentityId
@@ -542,22 +631,43 @@ function chosevip(){
 		for(var i=0;i<data.data.length;i++){
 			$("#selected-ul").append(
 				'<li>'+
-					'<input type="checkbox" class="checkboxs zzc_right"  id="tyue-checkbox-blue1" zzc="'+data.data[i].id+'"/>'+
+					'<input type="checkbox" class="checkboxs zzc_right"  id="tyue-checkbox-blue1" value="'+data.data[i].id+'"/>'+
 					'<label for="tyue-checkbox-blue1"></label>'+
 					'<span>'+data.data[i].name+'</span>'+
 				'</li>'
 			)
 		}
+		$("#list2").empty();
+		$("#list2").append(
+			'<span>'+data.data.length+'项</span>'
+			)
 	})
 }
 
-chosevip();
+
 $(document).on('click','#jiujiqd', function () {
 
-var a=[]
-a=document.getElementsByClassName("zzc_right").attr("zzc");
-console.log("676",a)
+var arr=[]
+var aq=document.getElementById("selected-ul")
+var oobb=aq.getElementsByClassName("zzc_right");
+for(var i=0;i<oobb.length;i++){
+	arr[i]=oobb[i].value;
+}
+var ids=arr.join();
+console.log(ids)
+var data={
+	ids:ids,
+	id:dyn
+}
+console.log("操作后",data)
+base.commonAjax('clav/orgIdentity/chooseMember', data, function (data) {
+if(data.code==1){
+	$(".cover4").css( "display", "none");
+	alert("操作成功");
+	cndbz();
+}
 
+})
  })
 </script>
 </body>
