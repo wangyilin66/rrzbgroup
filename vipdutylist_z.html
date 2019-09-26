@@ -535,9 +535,12 @@ function chosevip(){
 	var data={
 		id:id
 	}
+	//console.log("jiu",data)
 	base.commonAjax('clav/orgIdentity/getNotThisIdentityMember', data, function (data) {
-		console.log("左边",data)
-		for(var i=0;i<data.data.length;i++){
+		//console.log("左边",data)
+		$("#unselect-ul").empty();
+		if(data.code==1){
+			for(var i=0;i<data.data.length;i++){
 			$("#unselect-ul").append(
 				'<li>'+
 					'<input type="checkbox" class="checkboxs zzc_right"  id="tyue-checkbox-blue1" value="'+data.data[i].id+'"/>'+
@@ -550,12 +553,16 @@ function chosevip(){
 		$("#list1").append(
 					'<span>'+data.data.length+'项</span>'
 			)
+		}
+
 	})
 	var data2={
 		orgIdentityId:orgIdentityId
 	}
 	base.commonAjax('clav/member/getClavMemberList', data2, function (data) {
-		console.log("右边",data)
+		//console.log("右边",data)
+		$("#selected-ul").empty();
+	
 		for(var i=0;i<data.data.length;i++){
 			$("#selected-ul").append(
 				'<li>'+
@@ -569,6 +576,7 @@ function chosevip(){
 		$("#list2").append(
 			'<span>'+data.data.length+'项</span>'
 			)
+	
 	})
 }
 
@@ -581,8 +589,13 @@ var oobb=aq.getElementsByClassName("zzc_right");
 for(var i=0;i<oobb.length;i++){
 	arr[i]=oobb[i].value;
 }
-var ids=arr.join();
-console.log(ids)
+var ids;
+if(arr.length<=0){
+	ids=-1;
+}if((arr.length>0)){
+	ids=arr.join();
+}
+console.log('传',ids)
 var data={
 	ids:ids,
 	id:dyn
@@ -592,7 +605,10 @@ base.commonAjax('clav/orgIdentity/chooseMember', data, function (data) {
 if(data.code==1){
 	$(".cover4").css( "display", "none");
 	alert("操作成功");
-	cndbz();
+	var name;
+	var orgIdentityId=dyn;
+	//cndbz();
+	cndbz2(name,orgIdentityId)
 }
 
 })

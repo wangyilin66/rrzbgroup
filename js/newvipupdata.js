@@ -128,8 +128,8 @@ function updateinfo(idinfo){
         $('#sfnumber').val(data.data[0].idNumber);
         $('#tec').val(data.data[0].phone);
         $('#politicsStatusId').val(data.data[0].politicsStatusId);
-        //$('#mz3').val(data.data[0].nation);
-        $("#mz3 option[value='"+data.data[0].nation+"']").attr("selected","selected");
+        $('#mz3').val(data.data[0].nation);
+        //$("#mz3 option[value='"+data.data[0].nation+"']").attr("selected","selected");
         $('#username2').val(data.data[0].penName);
         $('#jg').val(data.data[0].nativePlace);
         // $('#show').arr("src",data.data[0].avatar)
@@ -149,7 +149,7 @@ function updateinfo(idinfo){
         $('#experience').val(data.data[0].workExperience);form.render();
         $('#tjtype').val(data.data[0].recommendType);form.render();
         //$('#tjcompany').val(data.data[0].relationshipGroup);form.render();
-        console.log('会员info',$('#mz3').val(data.data[0].nation))
+        console.log('会员info',data.data[0].relationshipGroup)
         //$('#tjlx').val(data.data[0].linkman);form.render();
         
         $('#lxpeople').val(data.data[0].linkman);form.render();
