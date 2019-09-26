@@ -231,7 +231,10 @@ function goupdate() {
 
 
 
+function down() {
 
+        window.open('http://39.98.186.243/clav/testWord/exportMillCertificate2');
+  }
 
 
 //提交

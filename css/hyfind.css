@@ -180,7 +180,8 @@ td{
     border-radius: 5px;
 }
 #layui{
-    padding-left: 480px;
+   display: flex;
+   justify-content: space-around;
 }
 #layui .layui-laypage-btn{
     margin-top: 0;

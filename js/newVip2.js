@@ -344,30 +344,7 @@ function tijiao() {
         }else{
                 $('.w_gyhd').text('');     
         }
-        if( $('#tjtype').val()==''){
-                okflag = false;
-                $('.w_lx').text('请选择推荐类型')          
-        }else{
-                $('.w_lx').text('');     
-        }
-        if( $('#tjcompany').val()==''){
-                okflag = false;
-                $('.w_tjdw').text('请选择推荐单位/人')              
-        }else{
-                $('.w_tjdw').text('');     
-        }
-        if( $('#lxpeople').val()==''){
-                okflag = false;
-                $('.w_lxr').text('请填写联系人')          
-        }else{
-                $('.w_lxr').text('');     
-        }
-        if( $('#sjh').val()==''){
-                okflag = false;
-                $('.w_sjh').text('请填写手机号')          
-        }else{
-                $('.w_sjh').text('');   
-       }
+
        if(okflag){
                goupdate();
        }else{

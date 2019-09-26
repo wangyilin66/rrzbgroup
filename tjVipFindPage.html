@@ -53,7 +53,7 @@
          flex-wrap: 600;
          line-height: 30px;
         }
-        .nameinp{
+        .nameinp,.nubmerinp{
             width: 286px;
             height: 32px;
             border:0;
@@ -89,7 +89,23 @@
 			line-height: 30px;
 			background: #fff;
 			padding: 0 8px;
-		}
+        }
+        #layui{
+
+            margin-top: 15px;
+            margin-left: 0 !important;
+
+        }
+        .obg{
+            color: orange;
+        }
+        .bbg{
+            color: skyblue;
+        }
+        .rbg{
+            color: red;
+        }
+
 	</style>
 </head>
 
@@ -114,15 +130,15 @@
                      </div>
                      <div class="n_l_cont">
                             <p>会员编号：</p>
-                            <input class="nameinp" type="text"/>
+                            <input class="nubmerinp" type="text"/>
                         </div>
                         <div class="n_l_cont">
                                 <p>推荐单位/人：</p>
                                 <!-- <input class="nameinp" type="text"/> -->
                                 <select class="tjdwinp" lay-filter="tjdwinp"   lay-search="">
                                 <option value="">请选择</option>
-                                <option value="0">某单位</option>
-                                <option value="1">某人</option>
+                                <!-- <option value="0">某单位</option>
+                                <option value="1">某人</option> -->
                             </select>
                             </div>
                             </div>
@@ -146,9 +162,10 @@
                                         <p>状态：</p>
                                         <select class="ztinp"  lay-filter="ztinp"  lay-search="">
                                                 <option value="">请选择</option>
-                                                <option value="0">审核中</option>
-                                                <option value="1">通过</option>
-                                                <option value="1">不通过</option>
+                                                <option value="4">调整中</option>
+                                                <option value="5">理事通过</option>
+                                                <option value="6">理事不通过</option>
+                                                <option value="7">审核中</option>
                                             </select>
                                 </div>
 
@@ -206,6 +223,9 @@
 	<script src="./js/common.js"></script>
 	<script src="./js/commonheader.js"></script>
 	<script>
+        let zt,tj;
+        var data = {
+        };
 		$('.headerpage').html(commHeader.header);
 		$(".tatou").css({ "background-color": "#059afe", "color": "white" });
 		// layui.use('laypage', function () {
@@ -220,8 +240,84 @@
 		// });
 
 
-        var data = {
+        $('.chaxun').on('click',function(){
+        let data = {
         }
+        let nameinp = $('.nameinp').val();
+        let numberinp = $('.nubmerinp').val();
+        let sinp = $('#time1').val();
+        let einp = $('#time2').val();
+        console.log(tj,zt,nameinp,numberinp,sinp,einp);
+        if(tj){
+            data.relationshipGroup = tj;
+        }
+        if(zt){
+            data.auditStatus = zt;
+        }
+        if(nameinp != ''){
+            data.name = nameinp;
+        }
+        if(numberinp != ''){
+            data.memberNo = numberinp;
+        }
+        if(sinp != ''){
+            data.sTime = sinp;
+        }
+        if(einp != ''){
+            data.eTime = einp;
+        }
+    
+        console.log(data);
+        // let dat = {
+        //   name : nameinp,
+        //   memberNo:numberinp,
+        //   relationshipGroup:tj,
+        //   sTime:sinp,
+        //   eTime:einp,
+        //   auditStatus:zt
+        // };
+        base.commonAjax('clav/lishiReplace/getLiShiMemberList', data, function (data) {
+             console.log(data.data);
+            let ll = data.data.length;
+         if(data.code == 1){
+          
+         if(ll != 0){
+            var pagedata = [];
+				console.log(data);
+				pagedata = data.data;
+				console.log(pagedata);
+
+				//调用分页
+				layui.use(['laypage', 'layer'], function () {
+					var laypage = layui.laypage
+						, layer = layui.layer;
+
+					laypage.render({
+						elem: 'layui'
+						, count: pagedata.length,
+						layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+						limit: 10,
+						jump: function (obj) {
+							//模拟渲染
+							document.getElementById('tb').innerHTML = function () {
+								var arr = []
+									, thisData = pagedata.concat().splice(obj.curr * obj.limit - obj.limit, obj.limit);
+								layui.each(thisData, function (index, item) {
+									arr.push(auto(item));
+									//console.log(item);
+								});
+								return arr.join('');
+							}();
+						}
+					});
+				});
+         }
+         }else{
+             console.log('查询接口出错');
+         }
+
+        });
+    });
         function changepic(obj) {
             //console.log(obj.files[0]);//这里可以获取上传文件的name
             var newsrc = getObjectURL(obj.files[0]);
@@ -242,30 +338,51 @@
         }
 
 
-			//调用分页
-			// layui.use(['laypage', 'layer'], function () {
-			// 	var laypage = layui.laypage
-			// 		, layer = layui.layer;
+        
 
-			// 	laypage.render({
-			// 		elem: 'layui'
-			// 		, count: pagedata.length,
-			// 		layout: ['count', 'prev', 'page', 'next', 'limit','skip'],
-			// 		limit: 10,
-			// 		jump: function (obj) {
-			// 			//模拟渲染
-			// 			document.getElementById('tb').innerHTML = function () {
-			// 				var arr = []
-			// 					, thisData = pagedata.concat().splice(obj.curr * obj.limit - obj.limit, obj.limit);
-			// 				layui.each(thisData, function (index, item) {
-			// 					arr.push(auto(item));
-			// 					//console.log(item);
-			// 				});
-			// 				return arr.join('');
-			// 			}();
-			// 		}
-			// 	});
-			// });
+        base.commonAjax('clav/lishiReplace/getRecommendUnitOrPeopleList', data, function (res) {
+           console.log(res);
+           if(res.code == 1){
+            res.data.map((item,ind) => {
+                $('.tjdwinp').append('<option value="'+ind+'">'+item+'</option>');
+            })
+           }else{
+               console.log('推荐单位/人列表获取失败');
+           }
+        }); 
+
+			//调用分页
+			base.commonAjax('clav/lishiReplace/getLiShiMemberList', data, function (data) {
+				var pagedata = [];
+				console.log(data);
+				pagedata = data.data;
+				console.log(pagedata);
+
+				//调用分页
+				layui.use(['laypage', 'layer'], function () {
+					var laypage = layui.laypage
+						, layer = layui.layer;
+
+					laypage.render({
+						elem: 'layui'
+						, count: pagedata.length,
+						layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+						limit: 10,
+						jump: function (obj) {
+							//模拟渲染
+							document.getElementById('tb').innerHTML = function () {
+								var arr = []
+									, thisData = pagedata.concat().splice(obj.curr * obj.limit - obj.limit, obj.limit);
+								layui.each(thisData, function (index, item) {
+									arr.push(auto(item));
+									//console.log(item);
+								});
+								return arr.join('');
+							}();
+						}
+					});
+				});
+			});
 	
 	$('.zb').on('click',function () { 
 
@@ -290,65 +407,90 @@
 
         });
 
-     });
+    });
 
-     $('.ls').on('click',function () { 
-        var data = {
-            timeType:1
-        }
-        base.commonAjax('clav/scheduleTime/isScheduleTime', data, function (res) {
-        console.log(res);
+        $('.ls').on('click', function () {
+            var data = {
+                timeType: 1
+            }
+            base.commonAjax('clav/scheduleTime/isScheduleTime', data, function (res) {
+                console.log(res);
 
-        if(res.code == 1){
-         if(res.isInfo == 1){
-             alert('申报时间未开始');
-         }else if(res.isInfo == 2){
-            alert('申报已结束');
-         }else{
-            window.location.href = "removeUserPage_w.html";
-         }
-        }else{
-            console.log('增补权限获取失败');
-        }
-        
+                if (res.code == 1) {
+                    if (res.isInfo == 1) {
+                        alert('申报时间未开始');
+                    } else if (res.isInfo == 2) {
+                        alert('申报已结束');
+                    } else {
+                        window.location.href = "removeUserPage_w.html";
+                    }
+                } else {
+                    console.log('增补权限获取失败');
+                }
 
+            });
         });
-      });
 
 	layui.use('form', function(){
           var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
         form.on('select(tjdwinp)', function (data) {
-           
             form.render('select');
         });
-	})
-
+	});
 
 	function auto(obj){
+        console.log(obj);
+        let str = '';
+        let str2 = '';
+        if(obj.auditStatus == 4){
+            str = '<span class="obg">调整中</span>';
+            str2 = '<button class="layui-btn">修改</button>';
+        }else if(obj.auditStatus == 5){
+            str = '<span class="bbg">理事通过</span>';
+            str2 = '<button class="layui-btn">修改</button><button class="layui-btn layui-btn-normal">查看</button>'
+        }else if(obj.auditStatus == 6){
+            str = '<span class="rbg">理事不通过</span>';
+            str2 = '<button class="layui-btn layui-btn-danger">删除</button>';
+
+        }else if(obj.auditStatus == 7){
+            str == '<span class="obg">审核中</span>';
+            str2 = '<button class="layui-btn layui-btn-normal">查看</button>';
+        }
 		return '<tr>' +
-				'<td style="width: 50px">' +
-				'<input type="checkbox" name="" title="" lay-skin="primary">' +
-				'</td>' +
 				'<td>' + 123 + '</td>' +
 				'<td>' + obj.memberNo + '</td>' +
 				'<td>' + obj.name + '</td>' +
 				'<td>' + obj.createDate + '</td>' +
-				'<td>' + obj.recommendType + '</td>' +
-				'<td>' + obj.orgIdentityId + '</td>' +
-				'<td>' + obj.artTypeId + '</td>' +
-				'<td>' + obj.location + '</td>' +
-				'<td>' +
-				'<button class="layui-btn">编辑</button>' +
-				'<button class="layui-btn layui-btn-normal">查看</button>' +
-				'<button class="layui-btn layui-btn-normal">导出</button>' +
-				'<button class="layui-btn layui-btn-warm">移除</button>' +
-				'<button class="layui-btn layui-btn-danger">重置密码</button>' +
+				'<td>' + obj.relationshipGroup + '</td>' +
+				'<td>' + obj.orgIdentityStr + '</td>' +
+				'<td>' + obj.artStr + '</td>' +
+				'<td>' + str + '</td>' +
+				'<td>' +str2 +
+				// '<button class="layui-btn">编辑</button>' +
+				// '<button class="layui-btn layui-btn-normal">查看</button>' +
+				// '<button class="layui-btn layui-btn-normal">导出</button>' +
+				// '<button class="layui-btn layui-btn-warm">移除</button>' +
+				// '<button class="layui-btn layui-btn-danger">重置密码</button>' +
 				'</td>' +
 				'</tr>'
 	}
 
 
 
+
+    layui.use('form', function () {
+        var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+        form.on('select(tjdwinp)', function (data) {
+           // tj = data.value;
+           tj=data.elem[data.elem.selectedIndex].text;
+            form.render('select');
+        });
+        form.on('select(ztinp)', function (data) {
+            zt = data.value;
+            //mz3=data.elem[data.elem.selectedIndex].text;
+            form.render('select');
+        })
+    });
 
 
 
