@@ -8,6 +8,9 @@
 	<link rel="stylesheet" href="./css/hyfind.css">
 	<link rel="stylesheet" href="./css/header.css">
 	<style>
+        .zyzgl{
+            border-bottom: 5px solid #93D1FF;
+        }
         .tatou{
             margin-top: 30px !important;
         }
@@ -23,7 +26,7 @@
         top:30px;
         display: flex;
         }
-        .n_l_butbox>div{
+        .n_l_butbox>div, .n_l_butbox>button{
             width: 102px;
             height: 32px;
             text-align: center;
@@ -32,6 +35,7 @@
             color: #fff;
             margin-left: 15px;
             border-radius: 6px;
+            border:0;
             cursor:pointer;
         }
         .clearinp{
@@ -173,7 +177,7 @@
                                 <div class="zb">增补会员单位</div>
                                 <div class="ls">理事调整</div>
                                 <div class="chaxun">查询</div>
-                                <div class="clearinp">清空条件</div>
+                                <button type="reset" class="clearinp">清空条件</button>
                                 </div>
                             
                             </div>
@@ -223,7 +227,7 @@
 	<script src="./js/common.js"></script>
 	<script src="./js/commonheader.js"></script>
 	<script>
-        let zt,tj;
+        let zt,tj,listdate;
         var data = {
         };
 		$('.headerpage').html(commHeader.header);
@@ -239,6 +243,17 @@
 		// 	});
 		// });
 
+
+        $('.clearinp').on('click',function(){
+            tj = false;
+            zt = false;
+            $('.nameinp').val('');
+            $('.nubmerinp').val('');
+            $('#time1').val('');
+            $('#time2').val('');
+            $('.ztinp').val('');
+            $('.tjdwinp').val('');
+        });
 
         $('.chaxun').on('click',function(){
         let data = {
@@ -286,7 +301,7 @@
 				console.log(data);
 				pagedata = data.data;
 				console.log(pagedata);
-
+                listdate = pagedata;
 				//调用分页
 				layui.use(['laypage', 'layer'], function () {
 					var laypage = layui.laypage
@@ -303,7 +318,7 @@
 								var arr = []
 									, thisData = pagedata.concat().splice(obj.curr * obj.limit - obj.limit, obj.limit);
 								layui.each(thisData, function (index, item) {
-									arr.push(auto(item));
+									arr.push(auto(item,index));
 									//console.log(item);
 								});
 								return arr.join('');
@@ -356,7 +371,8 @@
 				var pagedata = [];
 				console.log(data);
 				pagedata = data.data;
-				console.log(pagedata);
+                console.log(pagedata);
+                listdate = pagedata;
 
 				//调用分页
 				layui.use(['laypage', 'layer'], function () {
@@ -374,7 +390,7 @@
 								var arr = []
 									, thisData = pagedata.concat().splice(obj.curr * obj.limit - obj.limit, obj.limit);
 								layui.each(thisData, function (index, item) {
-									arr.push(auto(item));
+									arr.push(auto(item,index));
 									//console.log(item);
 								});
 								return arr.join('');
@@ -438,7 +454,21 @@
         });
 	});
 
-	function auto(obj){
+    function removevip(ind) { 
+         console.log(listdate[ind]);
+         let data = {
+             id:listdate[ind].id
+         }
+         base.commonAjax('clav/lishiReplace/deleteNewLiShi', data, function (res) {
+            if(res.code == 1){
+                history.go(0);
+            }else{
+            alert('删除失败');
+            }
+         });
+     }
+
+	function auto(obj,ind){
         console.log(obj);
         let str = '';
         let str2 = '';
@@ -450,14 +480,14 @@
             str2 = '<button class="layui-btn">修改</button><button class="layui-btn layui-btn-normal">查看</button>'
         }else if(obj.auditStatus == 6){
             str = '<span class="rbg">理事不通过</span>';
-            str2 = '<button class="layui-btn layui-btn-danger">删除</button>';
+            str2 = '<button class="layui-btn layui-btn-danger"  onclick="removevip('+ind+')">删除</button>';
 
         }else if(obj.auditStatus == 7){
             str == '<span class="obg">审核中</span>';
             str2 = '<button class="layui-btn layui-btn-normal">查看</button>';
         }
 		return '<tr>' +
-				'<td>' + 123 + '</td>' +
+				'<td>' + (ind+1) + '</td>' +
 				'<td>' + obj.memberNo + '</td>' +
 				'<td>' + obj.name + '</td>' +
 				'<td>' + obj.createDate + '</td>' +

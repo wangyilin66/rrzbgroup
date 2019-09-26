@@ -2,78 +2,87 @@
 <html>
 
 <head>
-	<meta charset="utf-8" />
-	<title>理事调整</title>
-	<link rel="stylesheet" href="./layui/css/layui.css">
-	<link rel="stylesheet" href="./css/hyfind.css">
+    <meta charset="utf-8" />
+    <title>理事调整</title>
+    <link rel="stylesheet" href="./layui/css/layui.css">
+    <link rel="stylesheet" href="./css/hyfind.css">
     <link rel="stylesheet" href="./css/header.css">
     <style>
-        .content{
+        .content {
             height: auto;
             box-sizing: border-box;
         }
-        .content_nav{
+
+        .content_nav {
             width: 90%;
             position: relative;
             box-sizing: border-box;
         }
 
-        .c_cont{
-          margin-top: 30px;
-          width: 100%;
-          /* padding-left: 100px; */
-          display: flex;
-          box-sizing: border-box;
-          }
+        .c_cont {
+            margin-top: 30px;
+            width: 100%;
+            /* padding-left: 100px; */
+            display: flex;
+            box-sizing: border-box;
+        }
 
-        .lis{
+        .lis {
             box-sizing: border-box;
             margin-left: 140px;
-         
+
         }
-        .lis>p{
+
+        .lis>p {
             font-size: 14px;
             float: left;
             line-height: 32px;
         }
-        .mq{
+
+        .mq {
             font-size: 18px;
-         font-weight: 800;
+            font-weight: 800;
         }
-        .lis_r{
+
+        .lis_r {
             float: left;
             width: 200px;
             margin-left: 20px;
             box-sizing: border-box;
         }
-        #test8{
+
+        #test8 {
             width: 300px;
             height: 32px;
         }
-        .textinp{
-        width: 300px;
-        height: 30px;
-        border: 0;
-        padding-left: 8px;
-        box-sizing: border-box;
-        border-radius: 6px;
+
+        .textinp {
+            width: 300px;
+            height: 30px;
+            border: 0;
+            padding-left: 8px;
+            box-sizing: border-box;
+            border-radius: 6px;
         }
-        #areabox{
+
+        #areabox {
             width: 500px;
             height: 50px;
-            border:0;
+            border: 0;
             resize: none;
             padding-left: 8px;
             padding-top: 4px;
             box-sizing: border-box;
         }
-        .butbox{
-           width: 137px;
-           height: 28px;
+
+        .butbox {
+            width: 137px;
+            height: 28px;
             display: flex;
             margin: 0 auto;
         }
-        .jumpnext{
+
+        .jumpnext {
             width: 74px;
             height: 28px;
             background: #3196FE;
@@ -81,10 +90,11 @@
             text-align: center;
             line-height: 28px;
             font-weight: 600;
-            color:#fff;
-            cursor:pointer;
+            color: #fff;
+            cursor: pointer;
         }
-        .beback{
+
+        .beback {
             width: 47px;
             height: 28px;
             background: #3196FE;
@@ -93,25 +103,33 @@
             text-align: center;
             line-height: 28px;
             font-weight: 600;
-            color:#fff;
-            cursor:pointer;
+            color: #fff;
+            cursor: pointer;
         }
-        .cont_b{
+
+        .cont_b {
             width: 100%;
             margin-top: 168px;
         }
+
+        /* .chide {
+            display: none;
+        } */
+         .zyzgl{
+        border-bottom: 5px solid #93D1FF;
+    }
     </style>
 </head>
 
 <body>
-	<!-- 头部 -->
-	<div class="headerpage">
-      
-        </div>
-	<!-- 内容 -->
-	<div class="hytitle">
+    <!-- 头部 -->
+    <div class="headerpage">
 
-	</div>
+    </div>
+    <!-- 内容 -->
+    <div class="hytitle">
+
+    </div>
     <div class="content">
         <div class="content_nav">
             <div class="content_navl"><span><i
@@ -119,26 +137,26 @@
             </div>
             <div class="content_navi">
                 <form class="layui-form" action="">
-            
+
                     <div class="c_cont">
                         <div class="lis">
                             <p class="mq">免去理事姓名：</p>
                             <div class="lis_r">
-                                <select class="inp" id="nameinp" lay-verify="required" lay-search="">
+                                <select class="inp" id="nameinp"  lay-filter="mqlsinp" lay-verify="required" lay-search="">
                                     <option value="">请选择</option>
-                                    <option value="1">layer</option>
-                                    <option value="2">form</option>
+                                    <!-- <option value="1">layer</option>
+                                    <option value="2">form</option> -->
                                 </select>
                             </div>
                         </div>
                     </div>
-            
-                    <div class="c_cont">
+
+                    <div class="c_cont chide">
                         <div class="lis">
                             <p>性别：</p>
                             <div class="lis_r">
-                                <select class="inp" id="sexinp" lay-verify="required" lay-search="">
-                                    <option value="">男</option>
+                                <select class="inp" id="sexinp"  lay-filter="sexinp" lay-verify="required" lay-search="">
+                                    <option value="0">男</option>
                                     <option value="1">女</option>
                                 </select>
                             </div>
@@ -147,38 +165,39 @@
                             <p>出生年月：</p>
                             <div class="lis_r">
                                 <!-- <input type="text" class="layui-input" id="test8"> -->
-                                <input type="text" class="textinp" name="date" id="time1" lay-verify="date" placeholder="请选择时间">
+                                <input type="text" class="textinp" name="date" id="time1" lay-verify="date"
+                                    placeholder="请选择时间">
                             </div>
                         </div>
                         <div class="lis">
                             <p>联系方式：</p>
                             <div class="lis_r">
-                                    <input type="text" class="textinp">
+                                <input type="text" class="textinp">
                             </div>
                         </div>
                     </div>
-                    <div class="c_cont">
-                            <div class="lis">
-                                    <p>职务：</p>
-                                    <div class="lis_r">
-                                       <textarea name=""id="areabox" placeholder="职务" id="" cols="30" rows="10"></textarea>
-                                    </div>
-                                </div>
+                    <div class="c_cont chide">
+                        <div class="lis">
+                            <p>职务：</p>
+                            <div class="lis_r">
+                                <textarea name="" id="areabox" placeholder="职务" id="" cols="30" rows="10"></textarea>
+                            </div>
+                        </div>
                     </div>
                 </form>
-           <div class="cont_b">
-                <div class="butbox">
+                <div class="cont_b">
+                    <div class="butbox">
                         <div class="jumpnext">下一步</div>
                         <div class="beback">返回</div>
                     </div>
-           </div>
+                </div>
             </div>
 
-		</div>
-	</div>
+        </div>
+    </div>
 
 
-  
+
     <script src="./layui/layui.js"></script>
     <script src="./js/layuicommon.js"></script>
     <script src="./js/jquery.min.js"></script>
@@ -186,8 +205,14 @@
     <script src="./js/common.js"></script>
     <script src="./js/hyfind.js"></script>
     <script src="./js/commonheader.js"></script>
-	<script>
-		$('.headerpage').html(commHeader.header);
+    <script>
+        $('.chide').hide();
+        let mqls,sex;
+        let data = {
+
+        };
+        let objdata,ajaxdata;
+        $('.headerpage').html(commHeader.header);
         layui.use('laydate', function () {
             var laydate = layui.laydate;
 
@@ -196,13 +221,48 @@
                 elem: '#test1' //指定元素
             });
         });
-        
-        $('.jumpnext').on('click',function () {
+
+        $('.jumpnext').on('click', function () {
             window.location.href = "addUserPage_w.html";
-          })
-        $('.beback').on('click',function(){
-          window.history.back();
+        })
+        $('.beback').on('click', function () {
+            window.history.back();
         });
+
+
+        
+        base.commonAjax('clav/lishiReplace/getLiShiList', data, function (res) {
+            console.log(res);
+            if(res.code == 1){
+                ajaxdata = res.data;
+             res.data.map((item,ind) => {
+               $('#nameinp').append(' <option value="'+ind+'">'+item.name+'</option>');
+             });
+            }else{
+                console.log("理事列表获取失败");
+            }
+        });
+
+
+            layui.use('form', function () {
+        var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+        form.on('select(mqlsinp)', function (data) {
+           // tj = data.value;
+           mqls=data.elem[data.elem.selectedIndex].text;
+           //console.log(data.value);
+           objdata = ajaxdata[Number(data.value)];
+           sessionStorage.setItem('idNumber',objdata.idNumber);
+           sessionStorage.setItem('nameid',objdata.name);
+           console.log(objdata);
+           $('.chide').show();
+            form.render('select');
+        });
+        form.on('select(sexinp)', function (data) {
+            sex = data.value;
+            //mz3=data.elem[data.elem.selectedIndex].text;
+            form.render('select');
+        })
+    });
 
     </script>
 </body>

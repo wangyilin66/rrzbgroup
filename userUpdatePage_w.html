@@ -2,79 +2,88 @@
 <html>
 
 <head>
-	<meta charset="utf-8" />
-	<title>理事调整</title>
-	<link rel="stylesheet" href="./layui/css/layui.css">
-	<link rel="stylesheet" href="./css/hyfind.css">
+    <meta charset="utf-8" />
+    <title>理事调整</title>
+    <link rel="stylesheet" href="./layui/css/layui.css">
+    <link rel="stylesheet" href="./css/hyfind.css">
     <link rel="stylesheet" href="./css/header.css">
     <style>
-        .content{
+        .content {
             height: auto;
         }
-        .content_nav{
+
+        .content_nav {
             width: 80%;
             position: relative;
-                height: 365px;
+            height: 365px;
             background: #ECEFF4;
         }
-        .content_navi{
-        
-        }
-        .c_cont{
-          margin-top: 30px;
-          margin-bottom: 34px;
-          width: 100%;
-          /* padding-left: 100px; */
-          display: flex;
-          }
 
-        .lis{
+        .content_navi {}
+
+        .c_cont {
+            margin-top: 30px;
+            margin-bottom: 34px;
+            width: 100%;
+            /* padding-left: 100px; */
+            display: flex;
+        }
+
+        .lis {
             box-sizing: border-box;
             margin-left: 140px;
-         
+
         }
-        .lis>p{
+
+        .lis>p {
             font-size: 14px;
             float: left;
             line-height: 32px;
         }
-        .mq{
+
+        .mq {
             font-size: 18px;
-         font-weight: 800;
+            font-weight: 800;
         }
-        .lis_r{
+
+        .lis_r {
             float: left;
             width: 200px;
             margin-left: 20px;
             box-sizing: border-box;
         }
-        #test1{
+
+        #test1 {
             width: 300px;
             height: 32px;
         }
-        .textinp{
-        width: 300px;
-        height: 30px;
-        border: 0;
-        padding-left: 8px;
-        box-sizing: border-box;
+
+        .textinp {
+            width: 300px;
+            height: 30px;
+            border: 0;
+            padding-left: 8px;
+            box-sizing: border-box;
         }
-        #areabox{
+
+        #areabox {
             width: 500px;
             height: 50px;
-            border:0;
+            border: 0;
             resize: none;
             padding-left: 8px;
             padding-top: 4px;
             box-sizing: border-box;
         }
-        .butbox{
+
+        .butbox {
             width: 76px;
-           height: 28px;
+            height: 28px;
             display: flex;
             margin: 0 auto;
         }
-        .beback{
+
+        .tijiao {
             width: 76px;
             height: 28px;
             background: #3196FE;
@@ -82,14 +91,16 @@
             text-align: center;
             line-height: 28px;
             font-weight: 600;
-            color:#fff;
-            cursor:pointer;
+            color: #fff;
+            cursor: pointer;
         }
-        .cont_b{
+
+        .cont_b {
             width: 100%;
             margin-top: 34px;
         }
-        .c_n_cont{
+
+        .c_n_cont {
             height: 206px;
             width: 100%;
             background: #fff;
@@ -97,119 +108,131 @@
             padding-top: 42px;
             box-sizing: border-box;
         }
-        .c_n_c_li{
+
+        .c_n_c_li {
             width: 100%;
             height: 30px;
         }
-        .c_n_c_li2{
+
+        .c_n_c_li2 {
             width: 100%;
             padding-left: 33px;
             box-sizing: border-box;
             margin-top: 20px;
         }
-       .c_l_left{
-           float: left;
-           display: flex;
-           margin-left: 23px;
-           line-height: 30px;
-       }
-       .sp{
-           color: red;
-           margin-right: 4px;
-       }
-       .pp{
-           font-size: 14px;
-           margin-right: 8px;
-       }
-       .c_l_inp{
-           width: 218px;
-           height: 30px;
-           border: 2px solid #E4E4E4;
-           color: #E4E4E4;
-       }
-       #upfile{
-           width: 34px;
-           height: 30px;
-           z-index: 9;
-           opacity: 0;
-           cursor:pointer;
-       }
-       .layui-icon-upload{
-           width: 34px;
-           height: 30px;
-           background: #EEEDEB;
-           border: 2px solid #E4E4E4;
-           border-left: 0;
-           text-align: center;
-           line-height: 30px;
-           font-size: 18px;
-           margin-left: -34px;
-           z-index: 1;
-          
-       }
-       .c_l_right{
-           float: right;
-           display: flex;
-           margin-right: 43px;
-       }
-       .c_l_right>div{
-           width: 68px;
-           height: 28px;
-           background: #0081FF;
-           text-align: center;
-           line-height: 28px;
-           color: #fff;
-           font-size: 14px;
-           border-radius: 4px;
-       }
-       .dy{
-           margin-left: 30px;
-       }
+
+        .c_l_left {
+            float: left;
+            display: flex;
+            margin-left: 23px;
+            line-height: 30px;
+        }
+
+        .sp {
+            color: red;
+            margin-right: 4px;
+        }
+
+        .pp {
+            font-size: 14px;
+            margin-right: 8px;
+        }
+
+        .c_l_inp {
+            width: 218px;
+            height: 30px;
+            border: 2px solid #E4E4E4;
+            color: #000;
+        }
+
+        #upfile {
+            width: 34px;
+            height: 30px;
+            z-index: 9;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .layui-icon-upload {
+            width: 34px;
+            height: 30px;
+            background: #EEEDEB;
+            border: 2px solid #E4E4E4;
+            border-left: 0;
+            text-align: center;
+            line-height: 30px;
+            font-size: 18px;
+            margin-left: -34px;
+            z-index: 1;
+
+        }
+
+        .c_l_right {
+            float: right;
+            display: flex;
+            margin-right: 43px;
+        }
+
+        .c_l_right>div {
+            width: 68px;
+            height: 28px;
+            background: #0081FF;
+            text-align: center;
+            line-height: 28px;
+            color: #fff;
+            font-size: 14px;
+            border-radius: 4px;
+        }
+
+        .dy {
+            margin-left: 30px;
+        }
     </style>
 </head>
 
 <body>
-	<!-- 头部 -->
-	<div class="headerpage">
-      
-        </div>
-	<!-- 内容 -->
-	<div class="hytitle">
-		<div class="hytitle_font"></div>
-	</div>
+    <!-- 头部 -->
+    <div class="headerpage">
+
+    </div>
+    <!-- 内容 -->
+    <div class="hytitle">
+        <div class="hytitle_font"></div>
+    </div>
     <div class="content">
         <div class="content_nav">
-            <div class="content_navl"><span><i class="layui-icon layui-icon-home"></i>首页&nbsp;&nbsp;</span>/<span>&nbsp;志愿者管理&nbsp;&nbsp;</span>/&nbsp;理事调整
+            <div class="content_navl"><span><i
+                        class="layui-icon layui-icon-home"></i>首页&nbsp;&nbsp;</span>/<span>&nbsp;志愿者管理&nbsp;&nbsp;</span>/&nbsp;理事调整
             </div>
             <div class="content_navi">
-            <div class="c_n_cont">
-              <div class="c_n_c_li">
-                  <div class="c_l_left">
-                      <p class="pp"><span class="sp">*</span>请上传签字盖章后的登记表扫描件：</p>
-                      <input type="text" class="c_l_inp" placeholder="点击选择文件"/>
-                      <input type="file" id='upfile'/>
-                      <i class="layui-icon layui-icon-upload"></i>  
-                     
-                  </div>
+                <div class="c_n_cont">
+                    <div class="c_n_c_li">
+                        <div class="c_l_left">
+                            <p class="pp"><span class="sp">*</span>请上传签字盖章后的登记表扫描件：</p>
+                            <input type="text" class="c_l_inp filename" placeholder="点击选择文件" />
+                            <input type="file" id='file'   onchange="zzchangepic(this)" />
+                            <i class="layui-icon layui-icon-upload"></i>
 
-                  <div class="c_l_right">
-                      <div class="xg">修改</div>
-                      <div class="dy">打印</div>
-                  </div>
-              </div>
-              <div class="c_n_c_li2">
-                  （上传格式为图片或PDF文件，图片最多上传三张。）
-              </div>
-            </div>
-           <div class="cont_b">
-                <div class="butbox">
-                        <div class="beback">提交</div>
+                        </div>
+
+                        <div class="c_l_right">
+                            <div class="xg">修改</div>
+                            <div class="dy">打印</div>
+                        </div>
                     </div>
-           </div>
+                    <div class="c_n_c_li2">
+                        （上传格式为图片或PDF文件，图片最多上传三张。）
+                    </div>
+                </div>
+                <div class="cont_b">
+                    <div class="butbox">
+                        <div class="tijiao">提交</div>
+                    </div>
+                </div>
             </div>
 
-		</div>
-	</div>
+        </div>
+    </div>
 
 
     <script src="./layui/layui.js"></script>
@@ -219,8 +242,9 @@
     <script src="./js/common.js"></script>
     <script src="./js/hyfind.js"></script>
     <script src="./js/commonheader.js"></script>
-	<script>
-		$('.headerpage').html(commHeader.header);
+    <script>
+        let zz = null;
+        $('.headerpage').html(commHeader.header);
         layui.use('laydate', function () {
             var laydate = layui.laydate;
 
@@ -229,13 +253,95 @@
                 elem: '#test1' //指定元素
             });
         });
-        
-        $('.jumpnext').on('click',function () {
+
+
+        function zzchangepic(obj) {
+                //console.log(obj.files[0]);//这里可以获取上传文件的name
+                var newsrc = getObjectURL(obj.files[0]);
+                zz = newsrc;
+                $('.filename').val(newsrc);
+            }
+
+            //建立一個可存取到該file的url
+            function getObjectURL(file) {
+                var url = null;
+                // 下面函数执行的效果是一样的，只是需要针对不同的浏览器执行不同的 js 函数而已
+                if (window.createObjectURL != undefined) { // basic
+                    url = window.createObjectURL(file);
+                } else if (window.URL != undefined) { // mozilla(firefox)
+                    url = window.URL.createObjectURL(file);
+                } else if (window.webkitURL != undefined) { // webkit or chrome
+                    url = window.webkitURL.createObjectURL(file);
+                }
+                return url;
+            }
+
+            //获取URL数据  
+    function getQueryString() {
+        var url = location.search; //获取url中"?"符后的字串
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+                    var str = url.substr(1);
+                    strs = str.split("&");
+                    for (var i = 0; i < strs.length; i++) {
+                        theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+                    }
+                }
+                return theRequest;
+            }
+
+        $('.jumpnext').on('click', function () {
             window.location.href = "addUserPage.html";
-          })
-        $('.beback').on('click',function(){
-          window.history.back();
+        })
+        $('.beback').on('click', function () {
+            window.history.back();
         });
+        $('.xg').on('click', function () {
+            //window.location.href = "applyFormPage_w.html";
+            window.close();
+        });
+        //打印
+        $('.dy').on('click', function () {
+
+            let idinfo = getQueryString("id").id;
+            window.open('http://39.98.186.243/clav/testWord/exportMillCertificate2?id=' + idinfo);
+        });
+
+
+                $('.tijiao').on('click', function () {
+                    if (zz == null) {
+                        alert('请上传文件');
+                    } else {
+                        var file = $("#file")[0].files[0];
+                        var formData = new FormData();
+                        formData.append("file", file);
+                        $.ajax({
+                            type: "post",
+                            url: base.baseurl + 'clav/upload/uploadFile',
+                            data: formData,
+                            cache: false,
+                            processData: false,
+                            contentType: false,
+                            success: function (data, textStatus, jqXHR) {
+                                var data = {
+                                    id: getQueryString("id").id,
+                                     file: data.data[0].url,
+                                }
+                                base.commonAjax('clav/lishiReplace/updateNewLiShi', data, function (data) {
+                                    console.log(data);
+                                    if (data.code == 1) {
+                                        alert('提交成功');
+                                        window.close();
+                                    } else {
+                                        alert('提交失败');
+                                    }
+                                });
+                            }
+                        });
+                    }
+
+                });
+
 
     </script>
 </body>

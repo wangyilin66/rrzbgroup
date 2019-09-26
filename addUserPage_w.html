@@ -41,15 +41,14 @@
            
         </div>
     <!-- 内容 -->
-    <div class="hytitle">
-    </div>
+
     <div class="content">
-        <div class="content_nav">
-            <div class="c_n_title"><a href="userUpdatePage_w.html">下载申请表</a></div>
-            <div class="content_navl"><span><i
-                        class="layui-icon layui-icon-home"></i>首页&nbsp;&nbsp;</span>/<span>&nbsp;志愿者管理&nbsp;&nbsp;</span>/&nbsp;理事调整
-            </div>
-            <form class="layui-form" action="">
+            <div class="content_nav">
+                <div class="content_navl"><span><i
+                            class="layui-icon layui-icon-home"></i>首页&nbsp;&nbsp;</span>/<span>&nbsp;志愿者管理&nbsp;&nbsp;</span>/&nbsp;理事调整
+                </div>
+                <div class="c_n_title" onclick="down()">下载申请表</div>
+                <form class="layui-form" action="">
                     <div class="grinfo">
                         <div class="grinfot">个人基本认证信息</div>
                         <div class="grinfoc">
@@ -62,7 +61,7 @@
                                                     <label class="layui-form-label"><span>*</span>姓名：</label>
                                                     <div class="layui-input-block">
                                                         <input type="text" name="title" lay-verify="title" id="username"
-                                                            autocomplete="off" placeholder="姓名" class="layui-input">
+                                                            autocomplete="off" placeholder="姓名" class="layui-input inpList">
                                                             <div class="warn w_xm"></div>
                                                     </div>
                                                 </div>
@@ -70,7 +69,7 @@
                                                     <label class="layui-form-label"><span>*</span>身份证号：</label>
                                                     <div class="layui-input-block">
                                                         <input type="text" name="title" lay-verify="title" id="sfnumber"
-                                                            autocomplete="off" placeholder="身份证号" class="layui-input">
+                                                            autocomplete="off" placeholder="身份证号" class="layui-input inpList">
                                                             <div class="warn w_sf"></div>
                                                     </div>
                                                 </div>
@@ -79,7 +78,7 @@
                                                     <div class="layui-input-block">
                                                         <input type="text" name="title" lay-verify="title" id="sex"
                                                             onclick="sexfind()" autocomplete="off" readonly="readonly"
-                                                            placeholder="（读取身份证号）" class="layui-input">
+                                                            placeholder="（读取身份证号）" class="layui-input inpList">
                                                             <div class="warn w_xb"></div>
                                                     </div>
                                                 </div>
@@ -87,14 +86,14 @@
                                                     <label class="layui-form-label"><span>*</span>手机号码：</label>
                                                     <div class="layui-input-block">
                                                         <input type="text" name="title" lay-verify="title" id="tec"
-                                                            autocomplete="off" placeholder="手机号码" class="layui-input">
+                                                            autocomplete="off" placeholder="手机号码" class="layui-input inpList">
                                                             <div class="warn w_sj"></div>
                                                     </div>
                                                 </div>
                                                 <div>
                                                     <label class="layui-form-label"><span>*</span>政治面貌：</label>
                                                     <div class="layui-input-inline zzmm2">
-                                                        <select name="hy" lay-verify="required" lay-search=""
+                                                        <select name="hy" lay-verify="required" lay-search="" class="inpList"
                                                             id="politicsStatusId" lay-filter="politicsStatusIdd">
                                                             <option value="">请选择</option>
                                                             <!-- <option value="1">layer</option>
@@ -320,7 +319,7 @@
                                                     <div class="layui-input-block">
                                                         <input type="text" name="title" lay-verify="title" id="qtwork"
                                                             autocomplete="off" placeholder="请输入其他主要社会职务"
-                                                            class="layui-input">
+                                                            class="layui-input inp">
                                                     </div>
                                                 </div>
                                             </div>
@@ -380,9 +379,9 @@
                                             <div class="layui-col-md4">
                                                 <div class="grid-demo grid-demo-bg1">
                                                     <div class="layui-form-item tec">
-                                                        <label class="layui-form-label"><span>*</span>主要从事的艺术门类：</label>
+                                                        <label class="layui-form-label">主要从事的艺术门类：</label>
                                                         <div class="layui-input-inline">
-                                                            <select name="hy" lay-verify="required" lay-search="" id="ysml2" lay-filter="ysml">
+                                                            <select name="hy" lay-verify="required" lay-search="" id="ysml2" lay-filter="ysml2">
                                                                 <option value="">请选择</option>
                                                                 <!-- <option value="1">layer</option>
                                                                 <option value="2">form</option> -->
@@ -432,22 +431,24 @@
     
                                             <label class="layui-form-label"><span>*</span>推荐类型：</label>
                                             <div class="layui-input-inline tjlx">
-                                                <select name="hy" lay-verify="required" lay-search="" id="tjtype">
+                                                <!-- <select name="hy" lay-verify="required" lay-search="" id="tjtype">
                                                     <option value="">请选择</option>
                                                     <option value="1">layer</option>
                                                     <option value="2">form</option>
-                                                </select>
+                                                </select> -->
+                                                <input type="text"class="layui-input" id="tjtype">
                                                 <div class="warn w_lx"></div>
                                             </div>
+                                            <div id="test2"></div>
     
                                         </div>
                                         <div class="layui-col-md4">
                                             <label class="layui-form-label"><span>*</span>推荐单位/人：</label>
                                             <div class="layui-input-inline tjr">
-                                                <select name="hy" lay-verify="required" lay-search="" id="tjcompany">
+                                                <select name="hy" lay-verify="required" lay-search="" id="tjcompany" lay-filter="tjcompany"> 
                                                     <option value="">请选择</option>
-                                                    <option value="1">layer</option>
-                                                    <option value="2">form</option>
+                                                    <!-- <option value="1">layer</option>
+                                                    <option value="2">form</option> -->
                                                 </select>
                                                 <div class="warn w_tjdw"></div>
                                             </div>
@@ -487,22 +488,36 @@
                         </div>
                     </div>
                     <div class="anniu">
-                        <button type="button" class="layui-btn layui-btn-normal" onclick="tijiao()">提交</button>
-                        <button type="button" class="layui-btn layui-btn-primary">取消</button>
+                        <button type="button" class="layui-btn layui-btn-normal" onclick="tijiao()">保存草稿</button>
+                        <button type="reset" class="layui-btn layui-btn-primary"onclick="back()" >取消</button>
                     </div>
                 </form>
+            </div>
         </div>
-    </div>
     <script src="./layui/layui.js"></script>
     <script src="./js/layuicommon.js"></script>
     <script src="./js/jquery.min.js"></script>
     <script src="./js/common.js"></script>
     <script src="./js/header.js"></script>
-    <script src="./js/newvip.js"></script>
+    <script src="./js/newvip4.js"></script>
 	<script src="./js/commonheader.js"></script>
 	<script>
 		$('.headerpage').html(commHeader.header);
-              let treedata = [];
+        let treedata = [];
+        let treedata2 = [];
+        let treelocaldata = [];
+
+
+
+        let idnumber = sessionStorage.getItem('idNumber');
+        let idname = sessionStorage.getItem('nameid');
+
+        
+        base.commonAjax('clav/lishiReplace/theClavMemberIsExit', {idNumber:idnumber,name:idname}, function (res) {
+             console.log(res);
+        });
+
+
         function changepic(obj) {
             //console.log(obj.files[0]);//这里可以获取上传文件的name
             var newsrc = getObjectURL(obj.files[0]);
@@ -542,6 +557,24 @@
                     obj.children.push(objc);
                 });
                 treedata.push(obj);
+            });
+        }
+        //获取推荐类型
+        function wtf2(data) {
+            data.map((v, i) => {
+                let obj = {};
+                obj.title = v.name;
+                obj.id = i;
+                obj.children = [];
+                v.childList.map((val, ind) => {
+                    console.log(val);
+                    let objc = {};
+                    objc.title = val.name;
+                    objc.id = i+'-'+ind;
+                    objc.children = [];
+                    obj.children.push(objc);
+                });
+                treedata2.push(obj);
             });
         }
         var data = {
@@ -584,6 +617,75 @@
                 });
             }
         });
+        //推荐类型
+        $('#test2').css("visibility","hidden");
+        base.commonAjax('clav/recommendUnit/getRecommendType', data, function (data) {
+            if (data.code == 1) {
+                //console.log("z", data);
+                treelocaldata = data.data;
+                wtf2(data.data);
+               // console.log(treedata)
+                layui.use('tree', function () {
+                    var tree = layui.tree;
+
+                    //渲染
+                    var inst1 = tree.render({
+                        elem: '#test2'  //绑定元素
+                        ,click: function(obj){
+                           // console.log(obj);
+                       // console.log(obj.data); //得到当前点击的节点数据
+                       // console.log(obj.elem); //得到当前节点元素 
+                        // console.log($('.layui-tree-set').attr("data-id"));
+                      //  console.log(obj.data.id); //得到当前点击的节点数据
+                        let str = obj.data.id;
+                       // console.log(str.indexOf('-')>-1);
+                         if(str.indexOf('-')>-1 && str.indexOf('-')){
+                            let arr = str.split('-');
+                            if(arr.length == 2){
+                                console.log(treelocaldata[Number(arr[0])].childList[Number(arr[1])]);
+                                let ids = treelocaldata[Number(arr[0])].childList[Number(arr[1])].id;
+                                //console.log("推荐",arr);
+                        //console.log(treedata2[arr[0]].title);
+                       // console.log(treedata[arr[0]].title);
+                       // console.log(obj.data.title);
+                        var tjplace2 = obj.data.title;
+                                    //+treedata2[arr[0]].title;
+                                    //console.log("地区",place);
+                                    $('#tjtype').val(tjplace2);
+                                    $('#test2').css("visibility", "hidden");
+                                    var data = {
+                                        id: ids
+                                    }
+                                    base.commonAjax('clav/recommendUnit/getRecommendUnitOrPeople', data, function (res) {
+                                        //console.log(res);
+                                        layui.use('form', function () {
+                                            var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+                                            for (var i = 0; i < res.data.length; i++) {
+                                                $('#tjcompany').append(
+                                                    '<option value="' + res.data[i].id + '">' + res.data[i].name + '</option>'
+                                                );
+                                            }
+                                            form.render();
+                                        });
+                                    })
+                                }
+                            }
+                        }
+                        , data: treedata2
+                    });
+
+                });
+            }
+        });
+
+
+        function back() { 
+            history.back();
+         }
+
+        $('#tjtype').on('click',function () { 
+            $('#test2').css("visibility","visible");
+         })
         $('#szd').click(function(){
             $('#test1').css("visibility","visible");
         })
@@ -619,11 +721,21 @@
            //ysml=data.elem[data.elem.selectedIndex].text;
            form.render('select');
        })
+       form.on('select(ysml2)',function(data){
+           ysml2=data.value;
+           //ysml=data.elem[data.elem.selectedIndex].text;
+           form.render('select');
+       })
+       form.on('select(tjcompany)',function(data){
+          //tjcompany=data.value;
+          tjcompany=data.elem[data.elem.selectedIndex].text;
+           form.render('select');
+       })
     });
     $(".jiah").on('click', function () {
-        $(".ewai").css("display",'block');
-    
+        $(".ewai").css('display','block')
     })
+
     </script>
 </body>
 
