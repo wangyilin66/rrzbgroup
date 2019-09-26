@@ -185,6 +185,7 @@
                                 <ul class="inp_box">
                                     <li>
                                         <p><span>*</span>身份证姓名：</p><input placeholder="请输入身份证姓名" class="inps sfzxminp" />
+                                        <h6 class="sfznm"></h6>
                                     </li>
                                     <li>
                                         <p><span>*</span>身份证号码：</p><input placeholder="请输入身份证号码" class="inps sfzhminp" />
@@ -261,7 +262,20 @@
             }
 
         });
+    function isChn(str) {
+        var reg = /^[/u4E00-/u9FA5]+$/;
+        if (!reg.test(str)) {
+           // alert("不全是中文");
+            return false;
+        } else {
+            //alert("全是中文");
+            return true;
+        }
+    }
 
+        $('.sfzxminp').on('keyup',function () { 
+          console.log(isChn($(this).val()));
+         });
         $('.phoneinp').on('keyup', function () {
 
             let len = $(this).val();
