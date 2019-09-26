@@ -14,7 +14,7 @@
 <body>
 	<!-- 头部 -->
 	<div class="headerpage">
-		<div class="layui-container-fluid">
+		<!-- <div class="layui-container-fluid">
 			<div class="layui-fluid">
 				<div class="layui-row layui-col-space5">
 					<div class="layui-col-md5" style="padding-right: 0px;">
@@ -30,8 +30,6 @@
 							<li class="layui-nav-item">
 								<a href="javascript:;">志愿者管理</a>
 								<dl class="layui-nav-child">
-									
-										<!-- <dd><a href="addvipPage_w.html">增补会员单位</a></dd> -->
 										<dd><a href="./tjVipFindPage.html">推荐会员查询</a></dd>
 										<dd><a href="addVipPage1_w.html">添加文艺志愿者1</a></dd>
 										<dd><a href="addVipPage2_w.html">添加文艺志愿者2</a></dd>
@@ -88,7 +86,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 	</div>
 	<!-- 内容 -->
 	<div class="hytitle">
@@ -265,7 +263,9 @@
 	<script src="./js/header.js"></script>
 	<script src="./js/common.js"></script>
 	<script src="./js/hyfind.js"></script>
+	<script src="./js/commonheader.js"></script>
 	<script>
+		$('.headerpage').html(commHeader.header);
 		$('#test1').mouseleave(function(){
 			$('#test1').css("visibility", "hidden");
 			})

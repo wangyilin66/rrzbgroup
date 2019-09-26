@@ -21,3 +21,6 @@ body{
 .content_navl > span{
     cursor:pointer;
 }
+.content_navl{
+    margin-bottom: 20px;
+}

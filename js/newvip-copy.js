@@ -178,7 +178,7 @@ function goupdate() {
                                         specificAreas=artTypeId21+'-'+specificAreas21;
                                 }                             
                                 var data = {
-                                        orgIdentityId:orgIdentityId,
+                                        // orgIdentityId:orgIdentityId,
                                         name: name,
                                         nation: nation,
                                         gender: gender,

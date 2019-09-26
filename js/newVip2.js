@@ -163,11 +163,11 @@ function goupdate (params) {
                                 var specificAreas21 = $('#genre').val();//具体领域
                                 var specificAreas22 = $('#genre2').val();//具体领域2
                                 var activityExperience = $('#experience2').val();//文艺或公益经历
-                                var recommendType = $('#tjtype').val();//推荐类型
-                                var relationshipGroup = tjcompany;//关联组织
-                                var linkman = $('#lxpeople').val();//联系人
-                                var linkmanPhone = $('#sjh').val();//联系人电话
-                                var orgIdentityId=9
+                                // var recommendType = $('#tjtype').val();//推荐类型
+                                // var relationshipGroup = tjcompany;//关联组织
+                                // var linkman = $('#lxpeople').val();//联系人
+                                // var linkmanPhone = $('#sjh').val();//联系人电话
+                                var orgIdentityId=9;
                                 //var artTypeId=artTypeId+'-'+specificAreas;
                                 //var specific_areas;
                                 if($('#ysml2').val()!=''){
@@ -178,7 +178,7 @@ function goupdate (params) {
                                         specificAreas=artTypeId21+'-'+specificAreas21;
                                 }                             
                                 var data = {
-                                        orgIdentityId:orgIdentityId,
+                                        // orgIdentityId:orgIdentityId,
                                         name: name,
                                         nation: nation,
                                         gender: gender,
