@@ -557,6 +557,15 @@
 				eTime = timechecked3;
 				//console.log(recommendType)
 			}
+			if(($('#time1').val() != '')&&($('#time2').val() != '')){
+				if(bjtime3<bjtime4){
+				 alert("结束时间不能小于开始时间")
+				 return false;
+			 }
+			}
+			// if(bjtime2<bjtime1){
+			// 	alert("结束时间不能小于开始时间")
+			// }
 			//location=$("#szd").val();
 			//console.log(category)
 			//artTypeId=category

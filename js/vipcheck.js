@@ -339,10 +339,10 @@ $(document).on('click','.find', function () {
                 '<div class="wj">申请书.doc</div>'+
                 '</a>'+
                 '<a href="'+data.data.associationRule+'" >'+
-                '<div class="wj">协会章程.doc</div>'+
+                '<div class="wj">协会章程.pdf</div>'+
                 '</a>'+
                 '<a href="'+data.data.unitSituation+'" >'+
-                '<div class="wj" >单位情况介绍.pdf</div>'+
+                '<div class="wj" >单位情况介绍.doc</div>'+
                 '</a>'+
                 '<a href="'+data.data.aptitudeProve+'">'+
                 '<div class="wj">资质证明.pdf</div>'+

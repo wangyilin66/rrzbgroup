@@ -7,8 +7,31 @@
 	<link rel="stylesheet" href="./layui/css/layui.css">
 	<link rel="stylesheet" href="./css/vipdutylist.css">
 	<link rel="stylesheet" href="./css/header.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
-
+<style>
+.cover4{
+    width: 100%;
+    height:100%;
+    background-color: rgba(143, 144, 148,0.3);
+    position: absolute;
+    z-index: 999;
+	top: 2px;
+	display: none
+} 
+.tcc_content{
+    width: 635px;
+    height: 350px;
+    background-color: #fff;
+    margin: auto;
+    margin-top: 12%;
+}
+.tcc_title{
+    padding-top: 10px;
+    padding-left: 12px;
+    font-size: 16px;
+}
+</style>
 <body>
 		<!-- 头部 -->
 		<div class="headerpage">
@@ -106,7 +129,7 @@
 										<label for="">当前职位：
 											<div>
                                                 <select name="hy" lay-verify="required" lay-search=""
-                                                id="politicsStatusId" lay-filter="politicsStatusIdd">
+                                                id="jjjId" lay-filter="jjjId">
                                                 <option value="">请选择</option>
                                                 <!-- <option value="1">layer</option>
                                                 <option value="2">form</option> -->
@@ -119,17 +142,20 @@
 									<div class="grid-demo">
 										<label for="">会员姓名：
 											<div>
-												<input type="text" placeholder="会员姓名" id="vipnumber">
+												<input type="text" placeholder="会员姓名" id="vipnumber43">
 											</div>
 										</label>
 									</div>
 								</div>	
+								<div class="layui-col-md3">
+								<div class="yinc"style="width:10px;height:10px;"></div>
+								</div>
                                 <div class="layui-col-md3 layui-col-md-offset3">
                                         <div class="hy_btn">
-                                                <button type="button" class="layui-btn layui-btn-normal" id="btnclear"style="background-color: grey;">清空条件</button>
+                                                <button type="reset" class="layui-btn layui-btn-normal" id="btnclear"style="background-color: grey;">清空条件</button>
                                                 <button type="button" class="layui-btn layui-btn-normal">通讯录导出</button>
-                                                <button type="button" class="layui-btn layui-btn-normal">选择会员</button>
-                                                <button type="button" class="layui-btn layui-btn-normal" onclick="">查询</button>
+                                                <button type="button" class="layui-btn layui-btn-normal" id="chosedyn">选择会员</button>
+                                                <button type="button" class="layui-btn layui-btn-normal" id="ben_find">查询</button>
                                                 <div class="clear"></div>
                                             </div>
                                 </div>		
@@ -168,24 +194,128 @@
 					</tbody>
 				</table>
 				<div>
-
 					<div id="layui"></div>
-					<div></div>
-					<div></div>
 				</div>
 			</div>
 		</div>
 	</div>
-
+	<div class="cover4">
+		<div class="tcc_content">
+				<div class="tcc_title">选择会员</div>
+				<div class="findfile li_file" style="height: 267px;">
+					<!--  -->
+					<div class="selection-container">
+							<div class="select-box left">
+								<div class="select-box-title">
+									<input type="checkbox" class="checkbox-all" id="checkbox-all1" />
+									<label for="checkbox-all1"></label>
+									<span>列表一</span>
+								</div>
+								<div class="select-content">
+									<ul class="unselect-ul" id="unselect-ul">
+										<!-- <li>
+											<input type="checkbox" class="checkboxs"  id="tyue-checkbox-blue1" />
+											<label for="tyue-checkbox-blue1"></label>
+											<span>备选项1</span>
+										</li>
+										<li>
+											<input type="checkbox" class="checkboxs" id="tyue-checkbox-blue2" />
+											<label for="tyue-checkbox-blue2"></label>
+											<span>备选项2</span>
+										</li>
+										<li>
+											<input type="checkbox" class="checkboxs" id="tyue-checkbox-blue3" />
+											<label for="tyue-checkbox-blue3"></label>
+											<span>备选项3</span>
+										</li>
+										<li>
+											<input type="checkbox" class="checkboxs" id="tyue-checkbox-blue4" />
+											<label for="tyue-checkbox-blue4"></label>
+											<span>备选项4</span>
+										</li>
+										<li>
+											<input type="checkbox" class="checkboxs" id="tyue-checkbox-blue5" />
+											<label for="tyue-checkbox-blue5"></label>
+											<span>备选项5</span>
+										</li>
+										<li>
+											<input type="checkbox" class="checkboxs" id="tyue-checkbox-blue6" />
+											<label for="tyue-checkbox-blue6"></label>
+											<span>备选项6</span>
+										</li>
+										<li>
+											<input type="checkbox" class="checkboxs" id="tyue-checkbox-blue7" />
+											<label for="tyue-checkbox-blue7"></label>
+											<span>备选项7</span>
+										</li>
+										<li>
+											<input type="checkbox" class="checkboxs" id="tyue-checkbox-blue8" />
+											<label for="tyue-checkbox-blue8"></label>
+											<span>备选项8</span>
+										</li> -->
+									</ul>
+								</div>
+							</div>
+							<div class="arrows-box">
+								<div class="arrow-btns">
+									<button class="arrow-btn right">
+										&#8250;
+									</button>
+									<button class="arrow-btn left">
+										&#8249;
+									</button>
+								</div>
+							</div>
+							<div class="select-box right">
+								<div class="select-box-title">
+									<input type="checkbox" class="checkbox-all" id="checkbox-all2" />
+									<label for="checkbox-all2"></label>
+									<span>列表二</span>
+								</div>
+								<div class="select-content">
+									<ul class="selected-ul" id="selected-ul">
+										<!-- <li>
+											<input type="checkbox" class="checkboxs" id="tyue-checkbox-blue9" />
+											<label for="tyue-checkbox-blue9"></label>
+											<span>备选项9</span>
+										</li>
+										<li>
+											<input type="checkbox" class="checkboxs" id="tyue-checkbox-blue10" />
+											<label for="tyue-checkbox-blue10"></label>
+											<span>备选项10</span>
+										</li>
+										<li>
+											<input type="checkbox" class="checkboxs" id="tyue-checkbox-blue11" />
+											<label for="tyue-checkbox-blue11"></label>
+											<span>备选项11</span>
+										</li> -->
+									</ul>
+								</div>
+							</div>
+						</div>
+					<!--  -->
+					<div class="findfile_an">
+							<button type="button" class="layui-btn layui-btn-primary" id="jiujiqd">确定</button>
+							<button type="button" class="layui-btn layui-btn-primary" onclick="close1()">关闭</button>
+					</div>
+				</div>
+			</div>
+	</div>
 
 	<script src="./layui/layui.js"></script>
 	<script src="./js/layuicommon.js"></script>
 	<script src="./js/jquery.min.js"></script>
 	<script src="./js/header.js"></script>
 	<script src="./js/common.js"></script>
+	<script src="js/index.js"></script>
 	<script>
 		$(".tatou").css({ "background-color": "#059afe", "color": "white" });
-
+		function close1() {
+			$(".cover4").css( "display", "none");		
+		}
+		$(document).on('click','#chosedyn', function () { 
+			$(".cover4").css( "display", "inline-block");	
+		})
       //获取URL数据  
       function getQueryString() {
         var url = location.search; //获取url中"?"符后的字串
@@ -200,8 +330,28 @@
         return theRequest;
 }
 	idinfo=getQueryString("id").id;
-	var zhiweid=idinfo;
+	//console.log(idinfo)
+	dyn=idinfo;
+
+	//$('#yinc').text(idinfo)
+	
+	//console.log()
+	//
+	layui.use('form', function(){
+      var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+    form.on('select(jjjId)',function(data){
+            dyn=data.value;
+           //mz3=data.elem[data.elem.selectedIndex].text;
+           console.log(dyn)
+           form.render('select');
+	})
+//$("#jjjId option[value='"+idinfo+"']").attr("selected","selected");
+	})
+	function cndbz(name){
+			var zhiweid=idinfo;
+			var name;
 		var data={
+		name:name,
 			orgIdentityId:zhiweid
 		}
 	base.commonAjax('clav/member/getClavMemberList', data, function (data) {
@@ -223,7 +373,7 @@
 						limit: 10,
 						jump: function (obj) {
 							//模拟渲染
-							document.getElementById('tb').innerHTML = function () {
+							document.getElementById('tbcc').innerHTML = function () {
 								var arr = []
 									, thisData = pagedata.concat().splice(obj.curr * obj.limit - obj.limit, obj.limit);
 								layui.each(thisData, function (index, item) {
@@ -237,29 +387,179 @@
 				});
 
 	})
+	
+	}
+cndbz();
 	function auto(index, obj) {
 			return  '<tr>'+
                             '<td>'+
                                 '<input type="checkbox" name="" title="" lay-skin="primary">'+
                             '</td>'+
                             '<td>123123123123</td>'+
-                            '<td>055245</td>'+
-                            '<td>张三</td>'+
-                            '<td>2018-02-12</td>'+
-                            '<td>中国文艺志愿者</td>'+
-							'<td>'+
-								席位制理事
-                                +'<i class="layui-icon layui-icon-edit"></i>'+
+                            '<td>'+obj.memberNo+'</td>'+
+                            '<td>'+obj.name+'</td>'+
+                            '<td>'+(obj.createDate).split(/\s+/)[0] +'</td>'+
+                            '<td>'+obj.unitAndDuty+'</td>'+
+							'<td>'+obj.orgIdentityStr+
+
+								
+                                '<i class="layui-icon layui-icon-edit"></i>'+
                            '</td>'+
-                            '<td>音乐，戏剧，电影</td>'+
-                            '<td>北京</td>'+
+                            '<td>'+obj.artStr+'</td>'+
+                            '<td>'+obj.location+'</td>'+
                             '<td>'+
-                                    '<button type="button" class="layui-btn layui-btn-normal">上移</button>'+
-                                '<button type="button" class="layui-btn layui-btn-normal">下移</button>'+
+                                '<button id="' + 'sm_up' + obj.id + '" type="button" class="layui-btn layui-btn-normal sm_up">上移</button>'+
+                                '<button id="' + 'sm_down' + obj.id + '" type="button" class="layui-btn layui-btn-normal sm_down">下移</button>'+
                             '</td>'+
                         '</tr>'
 		}
-	</script>
+	//上移
+	$(document).on('click','.sm_up', function () { 
+	 var sm_up=$(this).attr('id').replace("sm_up","");
+	 var status=1
+	var data={
+	id:sm_up,
+	status:status
+	}
+	console.log("xxx",data)
+	base.commonAjax('clav/member/memberUpOrDown', data, function (data) {
+		cndbz();
+	})
+	})
+	//下移
+	$(document).on('click','.sm_down', function () { 
+			 var sm_down=$(this).attr('id').replace("sm_down","");
+	 var status=2
+	var data={
+	id:sm_down,
+	status:status
+	}
+	base.commonAjax('clav/member/memberUpOrDown', data, function (data) {
+		cndbz();
+	})
+	})
+	$(document).on('click','#ben_find', function () { 
+	var name;
+	if($("#vipnumber43").val()!=''){
+		name=$("#vipnumber43").val();
+	}
+	cndbz(name);
+	if(dyn!=idinfo){
+	//document.getElementById('tbcc').empty();
+	if($("#vipnumber43").val()!=''){
+		name2=$("#vipnumber43").val();
+	}
+	
+			var ddyn=dyn;
+			var name;
+		var data={
+			orgIdentityId:ddyn,
+			name:name
+		}
+			console.log("ddd",data)
+	base.commonAjax('clav/member/getClavMemberList', data, function (data) {
+		
+		var pagedata = [];
+			
+				pagedata = data.data;
+			
+
+				//调用分页
+				layui.use(['laypage', 'layer'], function () {
+					var laypage = layui.laypage
+						, layer = layui.layer;
+
+					laypage.render({
+						elem: 'layui'
+						, count: pagedata.length,
+						layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+						limit: 10,
+						jump: function (obj) {
+							//模拟渲染
+							document.getElementById('tbcc').innerHTML = function () {
+								var arr = []
+									, thisData = pagedata.concat().splice(obj.curr * obj.limit - obj.limit, obj.limit);
+								layui.each(thisData, function (index, item) {
+									arr.push(auto(index, item));
+									//console.log(item);
+								});
+								return arr.join('');
+							}();
+						}
+					});
+				});
+
+	})
+	}
+	
+
+	})
+	
+	
+	layui.use('form', function(){
+          var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+                var data = {
+                }
+                base.commonAjax('clav/orgIdentity/getClavOrgIdentList', data, function (data) {
+                        if (data.code == 1) {
+                                //console.log(data);      
+                                for (var i = 0; i < data.data.length; i++) {
+                                        $('#jjjId').append(
+                                                '<option value="' + data.data[i].id + '">' + data.data[i].orgIdentity + '</option>'
+                                        );
+                                }
+                                form.render();
+                        }
+                });
+
+})
+	
+
+
+function chosevip(){
+	var id=dyn;
+	var orgIdentityId=dyn;
+	var data={
+		id:id
+	}
+	base.commonAjax('clav/orgIdentity/getNotThisIdentityMember', data, function (data) {
+		console.log("左边",data)
+		for(var i=0;i<data.data.length;i++){
+			$("#unselect-ul").append(
+				'<li>'+
+					'<input type="checkbox" class="checkboxs zzc_left"  id="tyue-checkbox-blue1" zzc="'+data.data[i].id+'"/>'+
+					'<label for="tyue-checkbox-blue1"></label>'+
+					'<span>'+data.data[i].name+'</span>'+
+				'</li>'
+			)
+		}
+	})
+	var data2={
+		orgIdentityId:orgIdentityId
+	}
+	base.commonAjax('clav/member/getClavMemberList', data2, function (data) {
+		console.log("右边",data)
+		for(var i=0;i<data.data.length;i++){
+			$("#selected-ul").append(
+				'<li>'+
+					'<input type="checkbox" class="checkboxs zzc_right"  id="tyue-checkbox-blue1" zzc="'+data.data[i].id+'"/>'+
+					'<label for="tyue-checkbox-blue1"></label>'+
+					'<span>'+data.data[i].name+'</span>'+
+				'</li>'
+			)
+		}
+	})
+}
+
+chosevip();
+$(document).on('click','#jiujiqd', function () {
+
+var a=[]
+a=document.getElementsByClassName("zzc_right").attr("zzc");
+console.log("676",a)
+
+ })
+</script>
 </body>
 
 </html>
