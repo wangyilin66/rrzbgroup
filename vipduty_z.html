@@ -174,7 +174,7 @@
 					'<td>' + obj.count + '</td>'+	
 					'<td>'+	                            
 						'<button id="' + 'duty_updata' + obj.id + '" type="button" class="layui-btn duty_updata">编辑</button>'+	
-						'<button id="' + 'duty_move' + obj.id + '" type="button" class="layui-btn layui-btn-danger duty_move">删除</button>'+	
+						'<a><button id="' + 'duty_move' + obj.id + '" type="button" class="layui-btn layui-btn-danger duty_move">删除</button></a>'+	
 						'<a href="./vipdutylist_z.html?id='+obj.id+'"><button id="' + 'duty_find' + obj.id + '" type="button" class="layui-btn layui-btn-normal duty_find" >查看列表</button></a>'+	
 					'</td>'+	
 				'</tr>'
@@ -225,6 +225,7 @@
              console.log(data)
              base.commonAjax('clav/orgIdentity/deleteClavOrgIdentity', data, function (data) {
                  if (data.code == 1) {
+					 alert("删除成功")
                      vipdutygl();
                  }
              })   

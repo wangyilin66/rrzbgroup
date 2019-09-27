@@ -299,8 +299,8 @@ function auto2(index,obj){
                 '<td>' + obj.nduty + '</td>'+
                 '<td>'+
                     '<button id="' + 'li_find' + obj.id + '"class="layui-btn lis_find">查看</button>'+
-                    '<button id="' + 'li_tong' + obj.id + '"class="layui-btn layui-btn-normal lis_tongg">通过</button>'+
-                    '<button id="' + 'li_no' + obj.id + '"class="layui-btn layui-btn-danger lis_notongg">不通过</button>'+
+                    '<a><button id="' + 'li_tong' + obj.id + '"class="layui-btn layui-btn-normal lis_tongg">通过</button></a>'+
+                    '<a><button id="' + 'li_no' + obj.id + '"class="layui-btn layui-btn-danger lis_notongg">不通过</button></a>'+
                 '</td>'+
             '</tr>'
 }
@@ -318,8 +318,8 @@ function auto3(index,obj){
             '<td>' + obj.relationshipGroup + '</td>'+
             '<td>'+
                 '<button id="' + 'vipb_find' + obj.id + '" class="layui-btn vipb_find">查看</button>'+
-                '<button id="' + 'vipb_tg' + obj.id + '"class="layui-btn layui-btn-normal vipb_tg">通过</button>'+
-                '<button id="' + 'vipb_remove' + obj.id + '"class="layui-btn layui-btn-warm vipb_remove">转人才库</button>'+
+                '<a><button id="' + 'vipb_tg' + obj.id + '"class="layui-btn layui-btn-normal vipb_tg">通过</button></a>'+
+                '<a><button id="' + 'vipb_remove' + obj.id + '"class="layui-btn layui-btn-warm vipb_remove">转人才库</button></a>'+
             '</td>'+
         '</tr>'
 }

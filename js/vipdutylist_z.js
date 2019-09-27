@@ -20,30 +20,32 @@ id:cusedit
 //console.log(data)
 base.commonAjax('clav/orgIdentity/getClavOrgIdentityList', data, function (data) {	
 //console.log("dddddd",data)
-var d=data.data[0].id;
+ var d=data.data[0].id;
 $('#jjyn').val(d);
 form.render();
     //确定按钮
     $(document).on('click','#csyqd', function () {
-        if(mz3===undefined){
-            alert('已经是了')
-            return false;
-        } 
-        console.log('xc',cusedit2)
-        console.log('ss',mz3)
-        var zhangq=cusedit2;
-        var dujuyu=mz3;
-        var data={
-            id:zhangq,
-            orgIdentityId:dujuyu
+        if($('#jjyn').val()==d){
+            alert('已经是当前职位')
+        } if($('#jjyn').val()!=d){
+            console.log($('#jjyn').val())
+            console.log('xc',cusedit2)
+            console.log('ss',mz3)
+            var zhangq=cusedit2;
+            var dujuyu=mz3;
+            var data={
+                id:zhangq,
+                orgIdentityId:dujuyu
+            }
+            base.commonAjax('clav/member/updateClavMember', data, function (data) {
+                alert("成功修改")
+                $(".cover5").css( "display", "none");
+                var orgIdentityId=dyn;
+                var name;
+                cndbz2(name,orgIdentityId)	
+            })
         }
-        base.commonAjax('clav/member/updateClavMember', data, function (data) {
-            alert("成功修改")
-            $(".cover5").css( "display", "none");
-            var orgIdentityId=dyn;
-            var name;
-            cndbz2(name,orgIdentityId)	
-        })
+ 
     })
 })
 })
@@ -223,7 +225,7 @@ function auto(index, obj) {
                     '<td>'+obj.location+'</td>'+
                     '<td>'+
                         '<button id="' + 'sm_up' + obj.id + '" type="button" class="layui-btn layui-btn-normal sm_up">上移</button>'+
-                        '<button id="' + 'sm_down' + obj.id + '" type="button" class="layui-btn layui-btn-normal sm_down">下移</button>'+
+                        '<a><button id="' + 'sm_down' + obj.id + '" type="button" class="layui-btn layui-btn-normal sm_down">下移</button></a>'+
                     '</td>'+
                 '</tr>'
 }
