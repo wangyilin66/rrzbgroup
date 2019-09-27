@@ -122,6 +122,18 @@
 	   .findres{
 		   padding:0 !important;
 	   }
+	   .shz{
+		   color: orange;
+	   }
+	   .tg{
+		   color: skyblue;
+	   }
+	   .btg{
+		   color: red;
+	   }
+	   .zyzgl{
+        border-bottom: 5px solid #93D1FF;
+    }
 	</style>
 </head>
 
@@ -202,15 +214,15 @@
 					<thead>
 						<tr class="tatou">
 
-							<th>平台编号</th>
-							<th>会员编号</th>
-							<th>会员姓名</th>
-							<th>入会日期</th>
-							<th>推荐单位</th>
-							<th>组织身份</th>
+							<th>序号</th>
+							<th>申报时间</th>
+							<th>申报单位名称</th>
+							<th>申报状态</th>
+							<th>操作</th>
+							<!-- <th>组织身份</th>
 							<th>艺术门类</th>
 							<th>地域</th>
-							<th>操作</th>
+							<th>操作</th> -->
 						</tr>
 					</thead>
 					<tbody id='tb'>
@@ -254,7 +266,7 @@
 	var data = {
 
 	}
-
+    let listdate;
 
 	let sqs = null,zc = null,js = null,zz = null;
 
@@ -419,19 +431,19 @@
 				} else {
 					alert("请填写单位名称。");
 				}
-			}, 2000);
+			}, 1000);
 
 		
 		})
 
 		
 
-		base.commonAjax('clav/member/getClavMemberList', data, function (data) {
+		base.commonAjax('clav/memberUnit/getClavMemberUnitList', data, function (data) {
 			var pagedata = [];
 			console.log(data);
 			pagedata = data.data;
 			//console.log(pagedata)
-
+            listdate = pagedata;
 			//调用分页
 			layui.use(['laypage', 'layer'], function () {
 				var laypage = layui.laypage
@@ -441,14 +453,14 @@
 					elem: 'layui'
 					, count: pagedata.length,
 					layout: ['count', 'prev', 'page', 'next', 'skip'],
-					limit: 5,
+					limit: 3,
 					jump: function (obj) {
 						//模拟渲染
 						document.getElementById('tb').innerHTML = function () {
 							var arr = []
 								, thisData = pagedata.concat().splice(obj.curr * obj.limit - obj.limit, obj.limit);
 							layui.each(thisData, function (index, item) {
-								arr.push(auto(item));
+								arr.push(auto(item,index));
 								console.log(item);
 							});
 							return arr.join('');
@@ -458,29 +470,73 @@
 			});
 		});
 
+	function fwdown(filename) {
+		var eleLink = document.createElement('a');
+		eleLink.href = filename;
+		eleLink.style.display = 'none';
+		document.body.appendChild(eleLink);
+		eleLink.click();
+		document.body.removeChild(eleLink);
+	}
 
+	function show(ind) {
+		let str = listdate[ind];
+		fwdown(str.applicationBook);
+		setTimeout(() => {
+			fwdown(str.aptitudeProve);
+		}, 500);
+		setTimeout(() => {
+			fwdown(str.associationRule);
+		}, 1000);
+		setTimeout(() => {
+			fwdown(str.unitSituation);
+		}, 2000);
+		
+		
+		//window.open(str.applicationBook,'_blank');
+		// setTimeout(() => {
+		// 	show2(ind);
+		// }, 100);
+	
+	}
+	function showfile(ind) { 
+		var eleLink = document.createElement('a');
+		eleLink.href = listdate[ind].reply;
+		eleLink.style.display = 'none';
+		document.body.appendChild(eleLink);
+		eleLink.click();
+		document.body.removeChild(eleLink);
+	 }
 
-	function auto(obj){
+	 function showtext(ind) {
+        alert(listdate[ind].reply);
+	   }
+
+	function auto(obj, ind) {
+		let str;
+		let str2;
+		if(status == 1){
+		 str = '<td><span class="tg">通过</span></td>' ;
+		 str2 = '<button class="layui-btn" onclick="showfile('+ind+')">下载批复</button>';
+		}else if (status == 0){
+		str = '<td><span class="shz">审核中</span></td>' ;
+		str2 = '<button class="layui-btn layui-btn-normal" onclick="show('+ind+')">查看</button>';
+		}else if(status == 2){
+			str = '<td><span class="btg">不通过</span></td>' ;
+			str2 = '<button class="layui-btn layui-btn-danger" onclick="showtext('+ind+')">查看回复</button><button class="layui-btn layui-btn-warm" onclick="show('+ind+')" >修改</button>';
+		}
+
 		return '<tr>' +
-				'<td>' + 123 + '</td>' +
-				'<td>' + obj.memberNo + '</td>' +
-				'<td>' + obj.name + '</td>' +
-				'<td>' + obj.createDate + '</td>' +
-				'<td>' + obj.recommendType + '</td>' +
-				'<td>' + obj.orgIdentityId + '</td>' +
-				'<td>' + obj.artTypeId + '</td>' +
-				'<td>' + obj.location + '</td>' +
-				'<td>' +
-				'<button class="layui-btn">编辑</button>' +
-				'<button class="layui-btn layui-btn-normal">查看</button>' +
-				'<button class="layui-btn layui-btn-normal">导出</button>' +
-				'<button class="layui-btn layui-btn-warm">移除</button>' +
-				'<button class="layui-btn layui-btn-danger">重置密码</button>' +
+				'<td>' + (ind+1) + '</td>' +
+				'<td>' + obj.createTime + '</td>'+
+				'<td>' + obj.unitName + '</td>' +
+				str +
+				'<td>' + str2+
 				'</td>' +
 				'</tr>'
 	}
 
-
+   
 
 
 
