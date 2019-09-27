@@ -299,8 +299,8 @@ function auto2(index,obj){
                 '<td>' + obj.nduty + '</td>'+
                 '<td>'+
                     '<button id="' + 'li_find' + obj.id + '"class="layui-btn lis_find">查看</button>'+
-                    '<button id="' + 'li_tong' + obj.id + '"class="layui-btn layui-btn-normal lis_tongg">通过</button>'+
-                    '<button id="' + 'li_no' + obj.id + '"class="layui-btn layui-btn-danger lis_notongg">不通过</button>'+
+                    '<a><button id="' + 'li_tong' + obj.id + '"class="layui-btn layui-btn-normal lis_tongg">通过</button></a>'+
+                    '<a><button id="' + 'li_no' + obj.id + '"class="layui-btn layui-btn-danger lis_notongg">不通过</button></a>'+
                 '</td>'+
             '</tr>'
 }
@@ -318,8 +318,8 @@ function auto3(index,obj){
             '<td>' + obj.relationshipGroup + '</td>'+
             '<td>'+
                 '<button id="' + 'vipb_find' + obj.id + '" class="layui-btn vipb_find">查看</button>'+
-                '<button id="' + 'vipb_tg' + obj.id + '"class="layui-btn layui-btn-normal vipb_tg">通过</button>'+
-                '<button id="' + 'vipb_remove' + obj.id + '"class="layui-btn layui-btn-warm vipb_remove">转人才库</button>'+
+                '<a><button id="' + 'vipb_tg' + obj.id + '"class="layui-btn layui-btn-normal vipb_tg">通过</button></a>'+
+                '<a><button id="' + 'vipb_remove' + obj.id + '"class="layui-btn layui-btn-warm vipb_remove">转人才库</button></a>'+
             '</td>'+
         '</tr>'
 }
@@ -335,16 +335,16 @@ $(document).on('click','.find', function () {
             console.log(data)
             $(".findfile").empty();
             $('.findfile').append(
-                '<a href="'+data.data.applicationBook+'" >'+
+                '<a href="'+data.data.applicationBook+'" download="">'+
                 '<div class="wj">申请书.doc</div>'+
                 '</a>'+
-                '<a href="'+data.data.associationRule+'" >'+
+                '<a href="'+data.data.associationRule+'" download="">'+
                 '<div class="wj">协会章程.pdf</div>'+
                 '</a>'+
-                '<a href="'+data.data.unitSituation+'" >'+
+                '<a href="'+data.data.unitSituation+'" download="">'+
                 '<div class="wj" >单位情况介绍.doc</div>'+
                 '</a>'+
-                '<a href="'+data.data.aptitudeProve+'">'+
+                '<a href="'+data.data.aptitudeProve+'" download="">'+
                 '<div class="wj">资质证明.pdf</div>'+
                 '</a>'
             );                   
@@ -424,7 +424,7 @@ $(document).on('click','.vipb_find', function () {
             console.log(data)
             $(".vipb_file").empty();
             $('.vipb_file').append(
-                '<a href="'+data.data.uploadFile+'" >'+
+                '<a href="'+data.data.uploadFile+'"download="" >'+
                 '<div class="wj">会员上传文件</div>'+
                 '</a>'
             );                   

@@ -8,85 +8,18 @@
 	<link rel="stylesheet" href="./css/hyfind.css">
 	<link rel="stylesheet" href="./css/header.css">
 	<style>
+		.hygl{
+			border-bottom: 5px solid #93D1FF;
+		}
+		html,body{
+			height: 100%;
+		}
 	</style>
 </head>
 
 <body>
 	<!-- 头部 -->
 	<div class="headerpage">
-		<!-- <div class="layui-container-fluid">
-			<div class="layui-fluid">
-				<div class="layui-row layui-col-space5">
-					<div class="layui-col-md5" style="padding-right: 0px;">
-						<div class="wltop">
-							<div class="logo">
-								<img src="./img/admin_logo.png" alt="">
-							</div>
-						</div>
-					</div>
-					<div class="layui-col-md7" style="padding-left: 0px;">
-						<ul class="layui-nav layui-bg-blue tou">
-							<li class="layui-nav-item layui-this"><a href="">首页</a></li>
-							<li class="layui-nav-item">
-								<a href="javascript:;">志愿者管理</a>
-								<dl class="layui-nav-child">
-										<dd><a href="./tjVipFindPage.html">推荐会员查询</a></dd>
-										<dd><a href="addVipPage1_w.html">添加文艺志愿者1</a></dd>
-										<dd><a href="addVipPage2_w.html">添加文艺志愿者2</a></dd>
-								</dl>
-							</li>
-							<li class="layui-nav-item">
-								<a href="javascript:;">组织管理</a>
-								<dl class="layui-nav-child">
-									<dd><a href="">移动模块</a></dd>
-									<dd><a href="">后台模版</a></dd>
-									<dd><a href="">电商平台</a></dd>
-								</dl>
-							</li>
-							<li class="layui-nav-item">
-								<a href="javascript:;">活动管理</a>
-								<dl class="layui-nav-child">
-									<dd><a href="">移动模块</a></dd>
-									<dd><a href="">后台模版</a></dd>
-									<dd><a href="">电商平台</a></dd>
-								</dl>
-							</li>
-							<li class="layui-nav-item">
-								<a href="javascript:;">会员管理</a>
-								<dl class="layui-nav-child">
-									<dd><a href="vipfind_z.html">会员查询</a></dd>
-									<dd><a href="./vipcheck_z.html">审核管理</a></dd>
-									<dd><a href="./recommendedUnits_z.html">推荐单位管理</a></dd>
-								
-									<dd><a href="./vipduty_z.html">会员职位管理</a></dd>
-									<dd><a href="./InvitationCode_z.html">邀请码管理</a></dd>
-									<dd><a href="managementPage_w.html">通知管理</a></dd>
-									<dd><a href="dataFind_w.html">会员信息统计</a></dd>
-									<dd><a href="">会费管理</a></dd>
-								</dl>
-							</li>
-							<li class="layui-nav-item">
-								<a href="javascript:;">系统管理</a>
-								<dl class="layui-nav-child">
-									<dd><a href="">移动模块</a></dd>
-									<dd><a href="">后台模版</a></dd>
-									<dd><a href="">电商平台</a></dd>
-								</dl>
-							</li>
-							<li class="layui-nav-item">
-								<a href="javascript:;">统计报表</a>
-								<dl class="layui-nav-child">
-									<dd><a href="">移动模块</a></dd>
-									<dd><a href="">后台模版</a></dd>
-									<dd><a href="">电商平台</a></dd>
-								</dl>
-							</li>
-							<li class="layui-nav-item"><a href="">系统管理员</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div> -->
 	</div>
 	<!-- 内容 -->
 	<div class="hytitle">
@@ -143,7 +76,7 @@
 											<div>
 												<div class="layui-input-block">
 													<input type="text" name="title" lay-verify="title" id="szd"
-														autocomplete="off" placeholder="现所在地" class="layui-input">
+														autocomplete="off" placeholder="现所在地" class="layui-input" style="border-radius: 6px;">
 												</div>
 												<div id="test1"></div>
 											</div>
@@ -590,10 +523,10 @@
 				'<td>' + obj.location + '</td>' +
 				'<td>' +
 				'<button id="' + 'hy_edit' + obj.id + '"class="layui-btn hy_edit">编辑</button>' +
-				'<button id="' + 'hy_find' + obj.id + '"class="layui-btn layui-btn-normal hy_find">查看</button>' +
-				'<button id="' + 'hy_daochu' + obj.id + '"class="layui-btn layui-btn-normal hy_daochu">导出</button>' +
-				'<button id="' + 'hy_move' + obj.id + '"class="layui-btn layui-btn-warm hy_move">移除</button>' +
-				'<button id="' + 'hy_repass' + obj.id + '"class="layui-btn layui-btn-danger hy_repass">重置密码</button>' +
+				'<a><button id="' + 'hy_find' + obj.id + '"class="layui-btn layui-btn-normal hy_find">查看</button></a>' +
+				'<a><button id="' + 'hy_daochu' + obj.id + '"class="layui-btn layui-btn-normal hy_daochu">导出</button></a>' +
+				'<a><button id="' + 'hy_move' + obj.id + '"class="layui-btn layui-btn-warm hy_move">移除</button></a>' +
+				'<a><button id="' + 'hy_repass' + obj.id + '"class="layui-btn layui-btn-danger hy_repass">重置密码</button></a>' +
 				'</td>' +
 				'</tr>'
 		}
@@ -670,27 +603,7 @@
 
 		})
 
-// 		$('#z2').on('click', function (){
-// 	if(bjtime2<bjtime1){
-// 		alert("结束时间不能小于开始时间")
-// 	}
-// 	else{
-// 		startTime=timechecked;
-//     endTime=timechecked2;
-//     timeType=1;
-//     var data={
-//         startTime:startTime,
-//         endTime:endTime,
-//         timeType:timeType
-//     }
-// 	console.log(data)
-//     base.commonAjax('clav/scheduleTime/updateScheduleTime', data, function (data) {
-//         if(data.code==1){
-//             alert("设置成功")
-//         }
-//     })
-// 	}
-// })
+		
 	</script>
 </body>
 
