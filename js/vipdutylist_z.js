@@ -7,49 +7,7 @@ $(document).on('click','#chosedyn', function () {
     $(".cover4").css( "display", "inline-block");	
 })
 
-layui.use('form', function(){
-  var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
-$(document).on('click','.cusedit', function () {
-//console.log($(this).attr('id').replace("find",""));
-$(".cover5").css("display", "inline-block");
-var cusedit=$(this).attr('id').replace("cus","");
-var cusedit2=$(this).attr('zzc').replace("zzc","");
-var data={
-id:cusedit
-}
-//console.log(data)
-base.commonAjax('clav/orgIdentity/getClavOrgIdentityList', data, function (data) {	
-//console.log("dddddd",data)
- var d=data.data[0].id;
-$('#jjyn').val(d);
-form.render();
-    //确定按钮
-    $(document).on('click','#csyqd', function () {
-        if($('#jjyn').val()==d){
-            alert('已经是当前职位')
-        } if($('#jjyn').val()!=d){
-            console.log($('#jjyn').val())
-            console.log('xc',cusedit2)
-            console.log('ss',mz3)
-            var zhangq=cusedit2;
-            var dujuyu=mz3;
-            var data={
-                id:zhangq,
-                orgIdentityId:dujuyu
-            }
-            base.commonAjax('clav/member/updateClavMember', data, function (data) {
-                alert("成功修改")
-                $(".cover5").css( "display", "none");
-                var orgIdentityId=dyn;
-                var name;
-                cndbz2(name,orgIdentityId)	
-            })
-        }
- 
-    })
-})
-})
-})
+
 
 //////////////////////////////////////////////////////////
 layui.use('form', function(){
@@ -169,7 +127,7 @@ var data={
 name:name,
     orgIdentityId:zhiweid
 }
-console.log("下一数据",data)
+//console.log("下一数据",data)
 base.commonAjax('clav/member/getClavMemberList', data, function (data) {
 //console.log(data)
 var pagedata = [];
@@ -206,6 +164,41 @@ var pagedata = [];
 
 }
 cndbz();
+var zhangq='';
+var dujuyu='';
+var d='';
+function changedate(ind,oid){
+    //console.log(ind)//id
+   // console.log(oid)//组织身份id
+    zhangq=ind;
+    d=oid;
+    layui.use('form', function(){
+          var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+        $(".cover5").css("display", "inline-block");
+        $('#jjyn').val(oid);
+        form.render();
+    })
+}
+function csyqd(){
+    if($('#jjyn').val()==d){
+        alert('已经是当前职位')
+    } else{
+         dujuyu=mz3;
+        var data={
+            id:zhangq,
+            orgIdentityId:dujuyu
+        }
+        //console.log('data')
+        base.commonAjax('clav/member/updateClavMember', data, function (data) {
+            
+            $(".cover5").css( "display", "none");
+            alert("成功修改")
+            var orgIdentityId=dyn;
+            var name;               
+            cndbz2(name,orgIdentityId)	               
+        })
+    }
+}
 function auto(index, obj) {
     return  '<tr>'+
                     '<td>'+
@@ -216,10 +209,10 @@ function auto(index, obj) {
                     '<td>'+obj.name+'</td>'+
                     '<td>'+(obj.createDate).split(/\s+/)[0] +'</td>'+
                     '<td>'+obj.unitAndDuty+'</td>'+
-                    '<td>'+obj.orgIdentityStr+
+                    '<td  style=" cursor: pointer;"onclick="changedate('+obj.id+','+obj.orgIdentityId+')">'+obj.orgIdentityStr+
 
                         
-                        '<i class="layui-icon layui-icon-edit cusedit" id="' + 'cus' + obj.orgIdentityId + '" zzc="' + 'zzc' + obj.id + '"></i>'+
+                        '<i class="layui-icon layui-icon-edit cusedit" style="color:#059afe;" id="' + 'cus' + obj.orgIdentityId + '" zzc="' + 'zzc' + obj.id + '"></i>'+
                    '</td>'+
                     '<td>'+obj.artStr+'</td>'+
                     '<td>'+obj.location+'</td>'+
@@ -440,3 +433,5 @@ cndbz2(name,orgIdentityId)
 
 })
 })
+
+
