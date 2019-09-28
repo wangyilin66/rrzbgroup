@@ -5,6 +5,7 @@ var data = {
 }
 base.commonAjax('clav/politicsStatus/getClavPoliticsStatusList', data, function (data) {
         if (data.code == 1) {
+                zzmmdata = data.data;
                 for (var i = 0; i < data.data.length; i++) {
                         $('#politicsStatusId').append(
                                 '<option value="' + data.data[i].id + '">' + data.data[i].politicsStatus + '</option>'
@@ -17,6 +18,7 @@ base.commonAjax('clav/politicsStatus/getClavPoliticsStatusList', data, function 
 
 base.commonAjax('clav/nation/getClavNationList', data, function (data) {
         if (data.code == 1) {
+                mzdata = data.data;
                 for (var i = 0; i < data.data.length; i++) {
                         $('#mz3').append(
                                 '<option value="' + data.data[i].id + '">' + data.data[i].nation + '</option>'
@@ -29,7 +31,9 @@ base.commonAjax('clav/nation/getClavNationList', data, function (data) {
 //籍贯
 
 base.commonAjax('clav/area/getProvinceList', data, function (data) {
+           console.log(data);
         if (data.code == 1) {
+                jgdata = data.data;
                 for (var i = 0; i < data.data.length; i++) {
                         $('#jg').append(
                                 '<option value="' + data.data[i].id + '">' + data.data[i].areaName + '</option>'
@@ -44,6 +48,7 @@ base.commonAjax('clav/area/getProvinceList', data, function (data) {
 
 base.commonAjax('clav/educationLevel/getClavEducationLevelList', data, function (data) {
         if (data.code == 1) {
+                whcddata = data.data;
                 for (var i = 0; i < data.data.length; i++) {
                         $('#whcd').append(
                                 '<option value="' + data.data[i].id + '">' + data.data[i].educationLevel + '</option>'
@@ -59,6 +64,7 @@ base.commonAjax('clav/artType/getClavArtTypeList', data, function (data) {
         if (data.code == 1) {
                 let str = '';
                 let str2 = '';
+                ysmldata = data.data;
                 for (var i = 0; i < data.data.length; i++) {
                         // $('#ysml').append(
                         str += '<option value="' + data.data[i].id + '">' + data.data[i].artType + '</option>';
@@ -74,6 +80,7 @@ base.commonAjax('clav/artType/getClavArtTypeList', data, function (data) {
 base.commonAjax('clav/professionalTitle/getClavProfessionalTitleList', data, function (data) {
         if (data.code == 1) {
                 let str2 = '';
+                zyzcdata = data.data;
                 for (var i = 0; i < data.data.length; i++) {
                         str2 += '<option value="' + data.data[i].id + '">' + data.data[i].professionalTitle + '</option>';
                 }
@@ -114,122 +121,237 @@ function birthfind() {
         });
 }
 
-function goupdate() { 
-        var file = $("#file")[0].files[0];
-        var formData = new FormData();
-        formData.append("file", file);
-        $.ajax({
-                type: "post",
-                url: base.baseurl + 'clav/upload/uploadFile',
-                data: formData,
-                cache: false,
-                processData: false,
-                contentType: false,
-                success: function (data, textStatus, jqXHR) {
-                        if (data.code == 1) {
-                                //	console.log("上传图片成功")
-                                //console.log(data.data[0].url)
-                                var name = $('#username').val();//姓名
-                                var nation = mz3;//民族
-                                if($('#sex').val()=='男'){
-                                        var gender = 1
-                                };//性别
-                                if($('#sex').val()=='女'){
-                                        var gender = 2
-                                };//性别
-                                var birthday = $('#sr').val();//出生日期
-                                var idNumber = $('#sfnumber').val();//身份证号
-                                var nativePlace = jg;//籍贯
-                                var politicsStatusId = politicsStatusIdd;//政治面貌
-                                var isNewGroup = $('input[name="sex"]:checked').attr("data");//是否新文艺群体
-                                var phone = $('#tec').val();//手机号
-                                var avatar = data.data[0].url;//头像
-                                var penName = $('#username2').val();//笔名
-                                var location = $('#szd').val();//所在地
-                                var postalAddress = $('#place').val();//通讯地址
-                                var postcode = $('#placenum').val();//邮编
-                                var officePhone = $('#bgtec').val();//办公电话
-                                var email = $('#email').val();//邮箱
-                                var wechatNumber = $('#weixinnum').val();//微信号
-                                var educationLevelId = whcd;//文化程度
-                                var professionalTitleId = zyzc;//专业职称
-                                var unitAndDuty = $('#work').val();//工作单位
-                                var workExperience = $('#experience').val();//工作经历
-                                var graduateSchool = $('#school').val();//毕业院校
-                                var associationDuty = $('#qgwork').val();//全国职务
-                                var socialDuty = $('#qtwork').val();//其他职务
-                                var artTypeId21 = ysml;//艺术门类
-                                var artTypeId22 = ysml2;//艺术门类
-                                var specificAreas21 = $('#genre').val();//具体领域
-                                var specificAreas22 = $('#genre2').val();//具体领域2
-                                var activityExperience = $('#experience2').val();//文艺或公益经历
-                                var recommendType = $('#tjtype').val();//推荐类型
-                                var relationshipGroup = tjcompany;//关联组织
-                                var linkman = $('#lxpeople').val();//联系人
-                                var linkmanPhone = $('#sjh').val();//联系人电话
-                                var orgIdentityId=9;
-                                //var artTypeId=artTypeId+'-'+specificAreas;
-                                //var specific_areas;
-                                if($('#ysml2').val()!=''){
-                                        artTypeId=artTypeId21+','+artTypeId22+',';
-                                        specificAreas=artTypeId21+'-'+specificAreas21+','+artTypeId22+'-'+specificAreas22;
-                                }if($('#ysml2').val()==''){
-                                        artTypeId=artTypeId21+',';
-                                        specificAreas=artTypeId21+'-'+specificAreas21;
-                                }                             
-                                var data = {
-                                        name: name,
-                                        nation: nation,
-                                        gender: gender,
-                                        birthday: birthday,
-                                        idNumber: idNumber,
-                                        nativePlace: nativePlace,
-                                        politicsStatusId: politicsStatusId,
-                                        isNewGroup: isNewGroup,
-                                        phone: phone,
-                                        avatar: avatar,
-                                        penName: penName,
-                                        location: location,
-                                        postalAddress: postalAddress,
-                                        postcode: postcode,
-                                        officePhone: officePhone,
-                                        email: email,
-                                        wechatNumber: wechatNumber,
-                                        educationLevelId: educationLevelId,
-                                        professionalTitleId: professionalTitleId,
-                                        unitAndDuty: unitAndDuty,
-                                        workExperience: workExperience,
-                                        graduateSchool: graduateSchool,
-                                        associationDuty: associationDuty,
-                                        socialDuty: socialDuty,
-                                        artTypeId: artTypeId,
-                                        specificAreas: specificAreas,
-                                        // art_type_id:art_type_id,
-                                        // specific_areas:specific_areas,
-                                        activityExperience: activityExperience,
-                                        recommendType: recommendType,
-                                        relationshipGroup: relationshipGroup,
-                                        linkman: linkman,
-                                        linkmanPhone: linkmanPhone
-                                }
-                                console.log(data);
-                                base.commonAjax('clav/member/addRedClavMember', data, function (data) {
-                                        if (data.code == 1) {
-                                                console.log('成功');
-                                                alert('注册成功。');
-                                                // history.go(0);
-                                                window.open("applyUpdatePage_w.html?id="+data.theId);
-                                        }
-                                        else{
-                                                alert(data.message)
-                                        }
-                                })
+function goupdate() {
+        if($('#file').val() == ''){
+                        //	console.log("上传图片成功")
+                        //console.log(data.data[0].url)
+                        var name = $('#username').val();//姓名
+                        var nation = mz3;//民族
+                        if($('#sex').val()=='男'){
+                                var gender = 1
+                        };//性别
+                        if($('#sex').val()=='女'){
+                                var gender = 2
+                        };//性别
+                        var birthday = $('#sr').val();//出生日期
+                        var idNumber = $('#sfnumber').val();//身份证号
+                        var nativePlace = jg;//籍贯
+                        var politicsStatusId = politicsStatusIdd;//政治面貌
+                        var isNewGroup = $('input[name="sex"]:checked').attr("data");//是否新文艺群体
+                        var phone = $('#tec').val();//手机号
+                        var avatar = picurl;//头像
+                        var penName = $('#username2').val();//笔名
+                        var location = $('#szd').val();//所在地
+                        var postalAddress = $('#place').val();//通讯地址
+                        var postcode = $('#placenum').val();//邮编
+                        var officePhone = $('#bgtec').val();//办公电话
+                        var email = $('#email').val();//邮箱
+                        var wechatNumber = $('#weixinnum').val();//微信号
+                        var educationLevelId = whcd;//文化程度
+                        var professionalTitleId = zyzc;//专业职称
+                        var unitAndDuty = $('#work').val();//工作单位
+                        var workExperience = $('#experience').val();//工作经历
+                        var graduateSchool = $('#school').val();//毕业院校
+                        var associationDuty = $('#qgwork').val();//全国职务
+                        var socialDuty = $('#qtwork').val();//其他职务
+                        var artTypeId21 = ysml;//艺术门类
+                        var artTypeId22 = ysml2;//艺术门类
+                        var specificAreas21 = $('#genre').val();//具体领域
+                        var specificAreas22 = $('#genre2').val();//具体领域2
+                        var activityExperience = $('#experience2').val();//文艺或公益经历
+                        var recommendType = $('#tjtype').val();//推荐类型
+                        var relationshipGroup = tjcompany;//关联组织
+                        var linkman = $('#lxpeople').val();//联系人
+                        var linkmanPhone = $('#sjh').val();//联系人电话
+                        var orgIdentityId=9;
+                        //var artTypeId=artTypeId+'-'+specificAreas;
+                        //var specific_areas;
+                        if($('#ysml2').val()!=''){
+                                artTypeId=artTypeId21+','+artTypeId22+',';
+                                specificAreas=artTypeId21+'-'+specificAreas21+','+artTypeId22+'-'+specificAreas22;
+                        }if($('#ysml2').val()==''){
+                                artTypeId=artTypeId21+',';
+                                specificAreas=artTypeId21+'-'+specificAreas21;
+                        }                             
+                        var data = {
+                                name: name,
+                                nation: nation,
+                                gender: gender,
+                                birthday: birthday,
+                                idNumber: idNumber,
+                                nativePlace: nativePlace,
+                                politicsStatusId: politicsStatusId,
+                                isNewGroup: isNewGroup,
+                                phone: phone,
+                                avatar: avatar,
+                                penName: penName,
+                                location: location,
+                                postalAddress: postalAddress,
+                                postcode: postcode,
+                                officePhone: officePhone,
+                                email: email,
+                                wechatNumber: wechatNumber,
+                                educationLevelId: educationLevelId,
+                                professionalTitleId: professionalTitleId,
+                                unitAndDuty: unitAndDuty,
+                                workExperience: workExperience,
+                                graduateSchool: graduateSchool,
+                                associationDuty: associationDuty,
+                                socialDuty: socialDuty,
+                                artTypeId: artTypeId,
+                                specificAreas: specificAreas,
+                                // art_type_id:art_type_id,
+                                // specific_areas:specific_areas,
+                                activityExperience: activityExperience,
+                                recommendType: recommendType,
+                                relationshipGroup: relationshipGroup,
+                                linkman: linkman,
+                                linkmanPhone: linkmanPhone
                         }
-                }
-        })
+                        console.log(data);
+                        base.commonAjax('clav/member/addRedClavMember', data, function (data) {
+                                if (data.code == 1) {
+                                        console.log(data);
+                                        console.log('成功');
+                                        alert('注册成功。');
+                                        // history.go(0);
+                                        window.location.href = "applyUpdatePage_w.html?id="+data.theId;
+                                        //window.open("applyUpdatePage_w.html?id="+data.theId);
+                                }
+                                else{
+                                        alert(data.message)
+                                }
+                        })
+                
+
+
+//====================================
+        } else{
+
+                var file = $("#file")[0].files[0];
+                var formData = new FormData();
+                formData.append("file", file);
+                $.ajax({
+                        type: "post",
+                        url: base.baseurl + 'clav/upload/uploadFile',
+                        data: formData,
+                        cache: false,
+                        processData: false,
+                        contentType: false,
+                        success: function (data, textStatus, jqXHR) {
+                                if (data.code == 1) {
+                                        //	console.log("上传图片成功")
+                                        //console.log(data.data[0].url)
+                                        var name = $('#username').val();//姓名
+                                        var nation = mz3;//民族
+                                        if($('#sex').val()=='男'){
+                                                var gender = 1
+                                        };//性别
+                                        if($('#sex').val()=='女'){
+                                                var gender = 2
+                                        };//性别
+                                        var birthday = $('#sr').val();//出生日期
+                                        var idNumber = $('#sfnumber').val();//身份证号
+                                        var nativePlace = jg;//籍贯
+                                        var politicsStatusId = politicsStatusIdd;//政治面貌
+                                        var isNewGroup = $('input[name="sex"]:checked').attr("data");//是否新文艺群体
+                                        var phone = $('#tec').val();//手机号
+                                        var avatar = data.data[0].url;//头像
+                                        var penName = $('#username2').val();//笔名
+                                        var location = $('#szd').val();//所在地
+                                        var postalAddress = $('#place').val();//通讯地址
+                                        var postcode = $('#placenum').val();//邮编
+                                        var officePhone = $('#bgtec').val();//办公电话
+                                        var email = $('#email').val();//邮箱
+                                        var wechatNumber = $('#weixinnum').val();//微信号
+                                        var educationLevelId = whcd;//文化程度
+                                        var professionalTitleId = zyzc;//专业职称
+                                        var unitAndDuty = $('#work').val();//工作单位
+                                        var workExperience = $('#experience').val();//工作经历
+                                        var graduateSchool = $('#school').val();//毕业院校
+                                        var associationDuty = $('#qgwork').val();//全国职务
+                                        var socialDuty = $('#qtwork').val();//其他职务
+                                        var artTypeId21 = ysml;//艺术门类
+                                        var artTypeId22 = ysml2;//艺术门类
+                                        var specificAreas21 = $('#genre').val();//具体领域
+                                        var specificAreas22 = $('#genre2').val();//具体领域2
+                                        var activityExperience = $('#experience2').val();//文艺或公益经历
+                                        var recommendType = $('#tjtype').val();//推荐类型
+                                        var relationshipGroup = tjcompany;//关联组织
+                                        var linkman = $('#lxpeople').val();//联系人
+                                        var linkmanPhone = $('#sjh').val();//联系人电话
+                                        var orgIdentityId=9;
+                                        //var artTypeId=artTypeId+'-'+specificAreas;
+                                        //var specific_areas;
+                                        if($('#ysml2').val()!=''){
+                                                artTypeId=artTypeId21+','+artTypeId22+',';
+                                                specificAreas=artTypeId21+'-'+specificAreas21+','+artTypeId22+'-'+specificAreas22;
+                                        }if($('#ysml2').val()==''){
+                                                artTypeId=artTypeId21+',';
+                                                specificAreas=artTypeId21+'-'+specificAreas21;
+                                        }                             
+                                        var data = {
+                                                name: name,
+                                                nation: nation,
+                                                gender: gender,
+                                                birthday: birthday,
+                                                idNumber: idNumber,
+                                                nativePlace: nativePlace,
+                                                politicsStatusId: politicsStatusId,
+                                                isNewGroup: isNewGroup,
+                                                phone: phone,
+                                                avatar: avatar,
+                                                penName: penName,
+                                                location: location,
+                                                postalAddress: postalAddress,
+                                                postcode: postcode,
+                                                officePhone: officePhone,
+                                                email: email,
+                                                wechatNumber: wechatNumber,
+                                                educationLevelId: educationLevelId,
+                                                professionalTitleId: professionalTitleId,
+                                                unitAndDuty: unitAndDuty,
+                                                workExperience: workExperience,
+                                                graduateSchool: graduateSchool,
+                                                associationDuty: associationDuty,
+                                                socialDuty: socialDuty,
+                                                artTypeId: artTypeId,
+                                                specificAreas: specificAreas,
+                                                // art_type_id:art_type_id,
+                                                // specific_areas:specific_areas,
+                                                activityExperience: activityExperience,
+                                                recommendType: recommendType,
+                                                relationshipGroup: relationshipGroup,
+                                                linkman: linkman,
+                                                linkmanPhone: linkmanPhone
+                                        }
+                                        console.log(data);
+                                        base.commonAjax('clav/member/addRedClavMember', data, function (data) {
+                                                if (data.code == 1) {
+                                                        console.log(data);
+                                                        console.log('成功');
+                                                        alert('注册成功。');
+                                                        // history.go(0);
+                                                        //window.location.href = "applyUpdatePage_w.html?id="+data.theId;
+                                                        //window.open("applyUpdatePage_w.html?id="+data.theId);
+                                                }
+                                                else{
+                                                        alert(data.message)
+                                                }
+                                        })
+                                }
+                        }
+                })
+
+//=================
+        }
+
  }
 
-
+ $(".jiah").on('click', function () {
+        $(".ewai").css('display','block')
+        $(".jiah").css('display','none')
+    })
 
 function down() {
 
@@ -241,10 +363,14 @@ function down() {
 function tijiao() {
         console.log(tjcompany);
         let okflag = true;
-   
+        console.log(getQueryString('id').id);
         if( $('#file').val()==''){
-                okflag = false;
-                $('.w_tx').text('请上传头像')          
+                if(getQueryString('id').id){
+
+                }else{
+                        okflag = false;
+                        $('.w_tx').text('请上传头像')          
+                } 
         }else{
                 $('.w_tx').text('');     
         }

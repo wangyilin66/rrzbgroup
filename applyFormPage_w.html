@@ -21,7 +21,7 @@
     }
 
     .pop_up{
-        position: absolute;
+        position: fixed;
         left: 0;
         top:0;
         width: 100%;
@@ -353,6 +353,20 @@
 .layui-icon-add-circle{
     color:  #DB2033 !important;
 }
+
+.u_c_tit{
+    margin-left: 20px;
+}
+
+.u_c_li{
+    position: relative;
+}
+.yuedu{
+    position: absolute;
+    left: 0;
+    top:-2px;
+}
+
     </style>
     <title>Document</title>
 </head>
@@ -483,9 +497,9 @@
                                                 <div class="layui-form-item xinwenti">
                                                     <label class="layui-form-label"><span>*</span>新文艺群体:</label>
                                                     <div class="layui-input-block">
-                                                        <input type="radio" name="sex" value="是" title="是" data="1"
+                                                        <input type="radio" class="wy1" name="sex" value="是" title="是" data="1"
                                                             checked="">
-                                                        <input type="radio" name="sex" value="否" title="否" data="2">
+                                                        <input type="radio" class="wy2" name="sex" value="否" title="否" data="2">
                                                     </div>
                                                 </div>
     
@@ -844,7 +858,7 @@
                <li><a href="./staic/中国文艺志愿者协会章程.docx">中国文艺志愿者协会章程.docx</a></li>
                <li><a href="./staic/中国文艺志愿者协会个人会员入会细则.doc">中国文艺志愿者协会个人会员入会细则.doc</a></li>
                <li><a href="./staic/中国文艺志愿者协会入会申请表.docx">中国文艺志愿者协会入会申请表.docx</a></li>
-               <li><input type="checkbox" class="yuedu"/><span>我已经阅读以上中国文艺志愿者协会章程和入会准则</span></li>
+               <li class="u_c_li"><input type="checkbox" class="yuedu"/><span class="u_c_tit">我已经阅读以上中国文艺志愿者协会章程和入会准则</span></li>
            </ul>
          </div>
          <div class="p_u_footer">
@@ -862,20 +876,130 @@
     <script src="./js/layuicommon.js"></script>
     <script src="./js/newvip3.js"></script>
     <script type="text/javascript">
-
+        let picflag = false;
         let zzmminp,mzinp,jginp,whcdinp,zyzcinp,ysmlinp,tydwinp,tylxdinp;
         let height = $('body').height();
         $('.pop_up').css('height', height + 200);
         // $('.pop_up').hide();
 
  
+            //获取URL数据  
+    function getQueryString() {
+
+        var url = location.search; //获取url中"?"符后的字串
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+                    var str = url.substr(1);
+                    strs = str.split("&");
+                    for (var i = 0; i < strs.length; i++) {
+                        theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+                    }
+                }
+                return theRequest;
+            }
+
+        let idss = getQueryString('id').id;
+          if(idss){
+
+            layui.use('form', function(){
+      var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+              $('.pop_up').hide();
+              let myid = getQueryString('id').id;
+              base.commonAjax('clav/member/getClavMemberList', {id:myid}, function (res) {
+                console.log(res.data[0]);
+                let obj =   res.data[0];
+                $('#username').val(obj.name);
+                $('#sfnumber').val(obj.idNumber);
+                $('#sex').val(obj.gender == 1 ? '男': '女');
+                $('#tec').val(obj.phone);
+                $('#politicsStatusId').val(obj.politicsStatusId);form.render();
+                politicsStatusIdd = obj.politicsStatusId;
+                $('#mz3').val(obj.nation);form.render();
+                mz3=obj.nation;
+                $('#username2').val(obj.penName);
+                $('#sr').val(obj.birthday);
+                $('#jg').val(Number(obj.nativePlace)); form.render();
+                jg = obj.nativePlace;
+                  var radio = document.getElementsByName("sex");
+                  if (obj.isNewGroup == 1) {
+                      $(radio[0].click());
+                  }
+                  if (obj.isNewGroup == 2) {
+                      $(radio[1].click());
+                  }
+                   //console.log($('#file').val());
+                   document.getElementById('show').src = obj.avatar;
+                   picurl = obj.avatar;
+                $('#szd').val(obj.location);
+                $('#bgtec').val(obj.officePhone);
+                $('#place').val(obj.postalAddress);
+                $('#email').val(obj.email);
+                $('#placenum').val(obj.postcode);
+                $('#weixinnum').val(obj.wechatNumber);
+                $('#whcd').val(obj.educationLevelId);form.render();
+                whcd=obj.educationLevelId;
+                $('#zyzc').val(obj.professionalTitleId);form.render();
+                zyzc=obj.professionalTitleId;
+                
+                $('#school').val(obj.graduateSchool);
+                $('#work').val(obj.unitAndDuty);
+                $('#qgwork').val(obj.associationDuty);
+                $('#qtwork').val(obj.socialDuty);
+                $('#experience').val(obj.workExperience);
+                // $('#ysml').val(obj.workExperience);
+                 let ysarr = obj.artTypeId.split(',');  
+                 ysml = Number(ysarr[0]);
+                $('#ysml').val(Number(ysarr[0]));form.render();
+                if(ysarr[1]){
+                    ysml2 = Number(ysarr[0]);
+                $('#ysml2').val(Number(ysarr[0]));form.render();
+                }
+                let lyarr = obj.specificAreas.split(',');
+                // console.log(lyarr[0])
+                // console.log(lyarr[0].indexOf('-'))
+                // console.log(lyarr[0].substring(lyarr[0].indexOf('-')+1));
+                $('#genre').val(lyarr[0].substring(lyarr[0].indexOf('-')+1));
+               if(lyarr[1]){
+                $('#genre2').val(lyarr[1].substring(lyarr[1].indexOf('-')+1));
+               }
+               $('#experience2').val(obj.activityExperience);
+               //recommendType
+               console.log(treelocaldata);
+               let tid = obj.tjTypeId;
+               $('#tjtype').val(obj.recommendType);
+                  console.log(tid);
+                  if (tid) {
+                      base.commonAjax('clav/recommendUnit/getRecommendUnitOrPeople', {id:tid}, function (res) {
+                          //console.log(res);
+                          layui.use('form', function () {
+                              var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+                              for (var i = 0; i < res.data.length; i++) {
+                                  $('#tjcompany').append(
+                                      '<option value="' + res.data[i].id + '">' + res.data[i].name + '</option>'
+                                  );
+                              }
+                              form.render();
+                          });
+                        });
+                      }
+
+                     setTimeout(() => {
+                        $('#tjcompany').val(obj.tjUnitId);form.render();
+                     }, 1000);
+                      tjcompany = obj.relationshipGroup;
+                      $('#lxpeople').val(obj.linkman);
+                      $('#sjh').val(obj.linkmanPhone);
+                    
+             });
+
+            });
+          }
     //=============================================================
 
 
 
     let treedata = [];
         let treedata2 = [];
-        let treelocaldata = [];
         function changepic(obj) {
             //console.log(obj.files[0]);//这里可以获取上传文件的name
             var newsrc = getObjectURL(obj.files[0]);
@@ -1088,121 +1212,121 @@
         $(".ewai").css('display','block')
     })
 
-    $('.inpList').on('keydown',function() {
-                var i = $(this).index();
-                console.log('a')				
-                // $('.inpList').eq(i)+$('.warn').text('');			
-        if( $('#file').val()==''){
-                $('.w_tx').text('请上传头像');       
-        }else{
-            $('.w_tx').text('');
-        }
-        if( $('#username').val()==''){
-                $('.w_xm').text('请填写姓名')              
-        }else{
-            $('.w_xm').text('')   
-        }
-        if( $('#sfnumber').val()==''){
-                $('.w_sf').text('请填写身份证号')          
-        }else{
-            $('.w_sf').text('')   
-        }
-        if( $('#sex').val()==''){
-                $('.w_xb').text('请获取性别')              
-        }else{
-            $('.w_xb').text('')   
-        }
-        if( $('#tec').val()==''){
-                $('.w_sj').text('请填写手机号码')          
-        }else{
-            $('.w_sj').text('')   
-        }
-        if( $('#politicsStatusId').val()==''){
-                $('.w_zz').text('请选择政治面貌')              
-        }else{
-            $('.w_zz').text('')   
-        }
-        if( $('#mz3').val()==''){
-                $('.w_mz').text('请选择民族')              
-        }else{
-            $('.w_mz').text('')   
-        }
-        if( $('#sr').val()==''){
-                $('.w_sr').text('请获取出生日期')          
-        }else{
-            $('.w_sr').text('')   
-        }
-        if( $('#jg').val()==''){
-                $('.w_jg').text('请选择籍贯')              
-        }else{
-            $('.w_jg').text('')   
-        }
-        if( $('#szd').val()==''){
-                $('.w_sz').text('请填写现所在地')          
-        }else{
-            $('.w_sz').text('')   
-        }
-        if( $('#place').val()==''){
-                $('.w_tx2').text('请填写通讯地址')              
-        }else{
-            $('.w_tx2').text('')   
-        }
-        if( $('#placenum').val()==''){
-                $('.w_yb').text('请填写通讯邮编')          
-        }else{
-            $('.w_yb').text('')   
-        }
-        if( $('#whcd').val()==''){
-                $('.w_wh').text('请选择文化程度')              
-        }else{
-            $('.w_wh').text('')   
-        }
-        if( $('#zyzc').val()==''){
-                $('.w_zc').text('请选择专业职称')              
-        }else{
-            $('.w_zc').text('')   
-        }
-        if( $('#work').val()==''){
-                $('.w_gzdw').text('请填写工作单位及职务')          
-        }else{
-            $('.w_gzdw').text('')   
-        }
-        if( $('#experience').val()==''){
-                $('.w_jl').text('请填写工作经历（艺术简历）')              
-        }else{
-            $('.w_jl').text('')   
-        }
-        if( $('#ysml').val()==''){
-                $('.w_yis').text('请选择主要从事的艺术门类')          
-        }else{
-            $('.w_yis').text('')   
-        }
-        if( $('#experience2').val()==''){
-                $('.w_gyhd').text('请填写文艺志愿服务或公益活动经历')              
-        }else{
-            $('.w_gyhd').text('')   
-        }
-        if( $('#tjtype').val()==''){
-                $('.w_lx').text('请选择推荐类型')          
-        }else{
-            $('.w_lx').text('')   
-        }
-        if( $('#tjcompany').val()==''){
-                $('.w_tjdw').text('请选择推荐单位/人')              
-        }else{
-            $('.w_tjdw').text('')   
-        }
-        if( $('#lxpeople').val()==''){
-                $('.w_lxr').text('请填写联系人')          
-        }else{
-            $('.w_lxr').text('')   
-        }
-        if( $('#sjh').val()==''){
-                $('.w_sjh').text('请填写手机号')          
-        }  else{
-            $('.w_sjh').text('')   
-        }
-			});
+    // $('.inpList').on('keydown',function() {
+    //             var i = $(this).index();
+    //             console.log('a')				
+    //             // $('.inpList').eq(i)+$('.warn').text('');			
+    //     if( $('#file').val()==''){
+    //             $('.w_tx').text('请上传头像');       
+    //     }else{
+    //         $('.w_tx').text('');
+    //     }
+    //     if( $('#username').val()==''){
+    //             $('.w_xm').text('请填写姓名')              
+    //     }else{
+    //         $('.w_xm').text('')   
+    //     }
+    //     if( $('#sfnumber').val()==''){
+    //             $('.w_sf').text('请填写身份证号')          
+    //     }else{
+    //         $('.w_sf').text('')   
+    //     }
+    //     if( $('#sex').val()==''){
+    //             $('.w_xb').text('请获取性别')              
+    //     }else{
+    //         $('.w_xb').text('')   
+    //     }
+    //     if( $('#tec').val()==''){
+    //             $('.w_sj').text('请填写手机号码')          
+    //     }else{
+    //         $('.w_sj').text('')   
+    //     }
+    //     if( $('#politicsStatusId').val()==''){
+    //             $('.w_zz').text('请选择政治面貌')              
+    //     }else{
+    //         $('.w_zz').text('')   
+    //     }
+    //     if( $('#mz3').val()==''){
+    //             $('.w_mz').text('请选择民族')              
+    //     }else{
+    //         $('.w_mz').text('')   
+    //     }
+    //     if( $('#sr').val()==''){
+    //             $('.w_sr').text('请获取出生日期')          
+    //     }else{
+    //         $('.w_sr').text('')   
+    //     }
+    //     if( $('#jg').val()==''){
+    //             $('.w_jg').text('请选择籍贯')              
+    //     }else{
+    //         $('.w_jg').text('')   
+    //     }
+    //     if( $('#szd').val()==''){
+    //             $('.w_sz').text('请填写现所在地')          
+    //     }else{
+    //         $('.w_sz').text('')   
+    //     }
+    //     if( $('#place').val()==''){
+    //             $('.w_tx2').text('请填写通讯地址')              
+    //     }else{
+    //         $('.w_tx2').text('')   
+    //     }
+    //     if( $('#placenum').val()==''){
+    //             $('.w_yb').text('请填写通讯邮编')          
+    //     }else{
+    //         $('.w_yb').text('')   
+    //     }
+    //     if( $('#whcd').val()==''){
+    //             $('.w_wh').text('请选择文化程度')              
+    //     }else{
+    //         $('.w_wh').text('')   
+    //     }
+    //     if( $('#zyzc').val()==''){
+    //             $('.w_zc').text('请选择专业职称')              
+    //     }else{
+    //         $('.w_zc').text('')   
+    //     }
+    //     if( $('#work').val()==''){
+    //             $('.w_gzdw').text('请填写工作单位及职务')          
+    //     }else{
+    //         $('.w_gzdw').text('')   
+    //     }
+    //     if( $('#experience').val()==''){
+    //             $('.w_jl').text('请填写工作经历（艺术简历）')              
+    //     }else{
+    //         $('.w_jl').text('')   
+    //     }
+    //     if( $('#ysml').val()==''){
+    //             $('.w_yis').text('请选择主要从事的艺术门类')          
+    //     }else{
+    //         $('.w_yis').text('')   
+    //     }
+    //     if( $('#experience2').val()==''){
+    //             $('.w_gyhd').text('请填写文艺志愿服务或公益活动经历')              
+    //     }else{
+    //         $('.w_gyhd').text('')   
+    //     }
+    //     if( $('#tjtype').val()==''){
+    //             $('.w_lx').text('请选择推荐类型')          
+    //     }else{
+    //         $('.w_lx').text('')   
+    //     }
+    //     if( $('#tjcompany').val()==''){
+    //             $('.w_tjdw').text('请选择推荐单位/人')              
+    //     }else{
+    //         $('.w_tjdw').text('')   
+    //     }
+    //     if( $('#lxpeople').val()==''){
+    //             $('.w_lxr').text('请填写联系人')          
+    //     }else{
+    //         $('.w_lxr').text('')   
+    //     }
+    //     if( $('#sjh').val()==''){
+    //             $('.w_sjh').text('请填写手机号')          
+    //     }  else{
+    //         $('.w_sjh').text('')   
+    //     }
+	// 		});
 
 
 

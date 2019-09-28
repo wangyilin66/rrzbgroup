@@ -18,7 +18,9 @@
             height: 365px;
             background: #ECEFF4;
         }
-
+        .zyzgl{
+        border-bottom: 5px solid #93D1FF;
+    }
         .content_navi {}
 
         .c_cont {
@@ -187,6 +189,14 @@
         .dy {
             margin-left: 30px;
         }
+        #file{
+            width: 30px;
+            height: 30px;
+            overflow: hidden;
+            z-index: 999;
+            opacity: 0;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -302,7 +312,6 @@
         });
         //打印
         $('.dy').on('click', function () {
-
             let idinfo = getQueryString("id").id;
             window.open('http://39.98.186.243/clav/testWord/exportMillCertificate2?id=' + idinfo);
         });

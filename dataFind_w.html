@@ -8,6 +8,9 @@
 	<link rel="stylesheet" href="./css/hyfind.css">
 	<link rel="stylesheet" href="./css/header.css">
 	<style>
+		.hygl{
+            border-bottom: 5px solid #93D1FF;
+        }
 		.content_nav {
 			width: 80%;
 			padding-bottom: 30px;
@@ -183,7 +186,7 @@
 						<div class="n_l_cont n_l_cont1">
 							<p>性别：</p>
 
-							<select name="hy" lay-verify="xbinp" id="xbinp">
+							<select name="hy" lay-filter="xbinp"  id="xbinp">
 								<option value="">请选择</option>
 								<option value="1">男</option>
 								<option value="2">女</option>
@@ -194,13 +197,13 @@
 							<p>年龄：</p>
 							<div class="inpbox">
 								<div class="ib_cont">
-									<select name="hy" lay-verify="nlinp1" id="nlinp1">
+									<select name="hy" lay-filter="nlinp1" id="nlinp1">
 										<option value="">0</option>
 									</select>
 								</div>
 								<div class="i_b_tit">至</div>
 								<div class="ib_cont">
-									<select name="hy" lay-verify="nlinp2" id="nlinp2">
+									<select name="hy" lay-filter="nlinp2" id="nlinp2">
 										<option value="">100</option>
 									</select>
 								</div>
@@ -210,7 +213,7 @@
 						<div class="n_l_cont">
 							<p>民族：</p>
 
-							<select name="hy" lay-verify="mzinp" id="mzinp">
+							<select name="hy" lay-filter="mzinp" id="mzinp">
 								<option value="">请选择</option>
 							</select>
 
@@ -219,7 +222,7 @@
 						<div class="n_l_cont">
 							<p>籍贯：</p>
 
-							<select name="hy" lay-verify="jginp" id="jginp">
+							<select name="hy" lay-filter="jginp" id="jginp">
 								<option value="">请选择</option>
 							</select>
 
@@ -236,21 +239,21 @@
 						<div class="n_l_cont">
 							<p>文化程度：</p>
 
-							<select name="hy" lay-verify="whcdinp" id="whcdinp">
+							<select name="hy" lay-filter="whcdinp" id="whcdinp">
 								<option value="">请选择</option>
 							</select>
 						</div>
 						<div class="n_l_cont">
 							<p>政治面貌：</p>
 
-							<select name="hy" lay-verify="mminp" id="mminp">
+							<select name="hy" lay-filter="mminp" id="mminp">
 								<option value="">请选择</option>
 							</select>
 						</div>
 						<div class="n_l_cont">
 							<p>新文艺群体：</p>
 
-							<select name="hy" lay-verify="wyqtinp" id="wyqtinp">
+							<select name="hy" lay-filter="wyqtinp" id="wyqtinp">
 								<option value="">请选择</option>
 								<option value="1">是</option>
 								<option value="2">否</option>
@@ -261,43 +264,39 @@
 							<div class="n_l_cont n_l_cont1">
 								<p>艺术门类：</p>
 	
-								<select name="hy" lay-verify="ysmlinp" id="ysmlinp">
+								<select name="hy" lay-filter="ysmlinp" id="ysmlinp">
 										<option value="">请选择</option>
 									</select>
 							</div>
 							<div class="n_l_cont">
 								<p>推荐单位/人：</p>
 	
-								<select name="hy" lay-verify="tjdwinp" id="tjdwinp">
+								<select name="hy" lay-filter="tjdwinp" id="tjdwinp">
 									<option value="">请选择</option>
 								</select>
 							</div>
 							<div class="n_l_cont">
 								<p>组织身份：</p>
 	
-								<select name="hy" lay-verify="zzsfinp" id="zzsfinp">
+								<select name="hy" lay-filter="zzsfinp" id="zzsfinp">
 									<option value="">请选择</option>
 								</select>
 							</div>
 						</div>
-
 						<div class="c_n_lis">
-								<div class="n_l_cont n_l_cont1">
-									<p>入会时间：</p>
-		
-									<div class="l_c_box">
-											<i class="layui-icon layui-icon-table"></i>  
-											<input type="text" name="date" id="time1" lay-verify="date"
-											style="width:122px;display: inline-block" placeholder="开始时间"
-											autocomplete="off" class="layui-input">
-											<div class="c_b_tits">至</div> 
-											<input type="text" name="date" id="time2" lay-verify="date"
-												style="width:122px;display: inline-block" placeholder="结束时间"
-												autocomplete="off" class="layui-input">
-												<i class="layui-icon layui-icon-refresh-3"></i>  
-											
-									</div>
+							<div class="n_l_cont n_l_cont1">
+								<p>入会时间：</p>
+
+								<div class="l_c_box">
+									<i class="layui-icon layui-icon-table"></i>
+									<input type="text" name="date" id="time1" lay-verify="date" style="width:122px;display: inline-block"
+										placeholder="开始时间" autocomplete="off" class="layui-input">
+									<div class="c_b_tits">至</div>
+									<input type="text" name="date" id="time2" lay-verify="date" style="width:122px;display: inline-block"
+										placeholder="结束时间" autocomplete="off" class="layui-input">
+									<i class="layui-icon layui-icon-refresh-3"></i>
 								</div>
+							</div>
 
 								<div class="n_l_but">
 								<div class="chaxun">查询</div>
@@ -320,17 +319,18 @@
 					</colgroup>
 					<thead>
 						<tr class="tatou">
-							<th style="width: 50px">
-								<input type="checkbox" name="" title="" lay-skin="primary">
+							<th>
+								<input type="radio" />
 							</th>
 							<th>平台编号</th>
 							<th>会员编号</th>
 							<th>会员姓名</th>
 							<th>入会日期</th>
-							<th>推荐单位</th>
+							<th>推荐单位/人</th>
 							<th>组织身份</th>
 							<th>艺术门类</th>
-							<th>地域</th>
+							<th>具体领域</th>
+							<th>现所在地</th>
 							<th>操作</th>
 						</tr>
 					</thead>
@@ -350,7 +350,7 @@
 
 
 	<script src="./layui/layui.js"></script>
-	<script src="./js/layuicommon.js"></script>
+	<script src="./js/layuicommon2.js"></script>
 	<script src="./js/jquery.min.js"></script>
 	<script src="./js/header.js"></script>
 	<script src="./js/common.js"></script>
@@ -358,6 +358,9 @@
 
 	<script src="./js/commonheader.js"></script>
 	<script>
+
+    let xbinp,nlinp1,nlinp2,mzinp,jginp,whcdinp,mminp,wyqtinp,ysmlinp,tjdwinp,zzsfinp;
+
 		$('.headerpage').html(commHeader.header);
 		var data = {
 
@@ -384,52 +387,7 @@
 
 
 
-		layui.use('form', function () {
-			var form = layui.form;
-			//民族
-			base.commonAjax('clav/nation/getClavNationList', data, function (res) {
-				if (res.code == 1) {
-					//console.log(res.data);
-					res.data.map(item => {
-						$('#mzinp').append('<option value="' + item.id + '">' + item.nation + '</option>');
-					});
-					form.render();
-				}
-			});
-			//籍贯
-			base.commonAjax('clav/area/getProvinceList', data, function (res) {
-				if (res.code == 1) {
-					//console.log(res.data);
-					res.data.map(item => {
-						$('#jginp').append('<option value="' + item.id + '">' + item.areaName + '</option>');
-					});
-					form.render();
-				}
-			});
-			//面貌
-			base.commonAjax('clav/politicsStatus/getClavPoliticsStatusList', data, function (res) {
-				if (res.code == 1) {
-					//console.log(res.data);
-					res.data.map(item => {
-						$('#mminp').append('<option value="' + item.id + '">' + item.politicsStatus + '</option>');
-					});
-					form.render();
-				}
-			});
-
-			        //艺术门类
-					base.commonAjax('clav/artType/getClavArtTypeList', data, function (res) {
-                if (res.code == 1) {
-                    console.log(res.data);
-                    res.data.map(item => {
-                        $('#ysmlinp').append('<option value="' + item.id + '">' + item.artType + '</option>');
-                    });
-                    form.render();
-                }
-            });
-
-		});
-
+	
 
 
 
@@ -498,8 +456,43 @@
 			$('#test3').css("visibility", "visible");
 		});
 
+		
+			base.commonAjax('clav/educationLevel/getClavEducationLevelList', data, function (res) {
+				//console.log(res);
+				if (res.code == 1) {
+					res.data.map(item => {
+						$('#whcdinp').append('<option value="' + item.id + '">' + item.educationLevel + '</option>');
+					});
+				} else {
+					console.log('文化程度列表获取失败');
+				}
 
-		base.commonAjax('clav/member/getClavMemberList', data, function (data) {
+			});
+			base.commonAjax('clav/orgIdentity/getClavOrgIdentList', data, function (res) {
+				//console.log(res);
+				if (res.code == 1) {
+					res.data.map(item => {
+						$('#zzsfinp').append('<option value="' + item.id + '">' + item.orgIdentity + '</option>');
+					});
+				} else {
+					console.log('组织身份列表获取失败');
+				}
+
+			});
+
+			base.commonAjax('clav/recommendUnit/selectByLabelType', {labelType:3}, function (res) {
+				//console.log(res);
+				if (res.code == 1) {
+					res.data.map(item => {
+						$('#tjdwinp').append('<option value="' + item.id + '">' + item.name + '</option>');
+					});
+				} else {
+					console.log('推荐单位/人列表获取失败');
+				}
+
+			});
+
+		base.commonAjax('clav/member/getClavMemberList3', data, function (data) {
 			var pagedata = [];
 			console.log(data);
 			pagedata = data.data;
@@ -507,6 +500,7 @@
 
 			//调用分页
 			layui.use(['laypage', 'layer'], function () {
+
 				var laypage = layui.laypage
 					, layer = layui.layer;
 
@@ -521,7 +515,7 @@
 							var arr = []
 								, thisData = pagedata.concat().splice(obj.curr * obj.limit - obj.limit, obj.limit);
 							layui.each(thisData, function (index, item) {
-								arr.push(auto(item));
+								arr.push(auto(item,index));
 								console.log(item);
 							});
 							return arr.join('');
@@ -533,28 +527,226 @@
 
 
 
-		function auto(obj) {
+		function auto(obj,ind) {
 			return '<tr>' +
 				'<td style="width: 50px">' +
-				'<input type="checkbox" name="" title="" lay-skin="primary">' +
+				'<input type="radio" />' +
 				'</td>' +
-				'<td>' + 123 + '</td>' +
+				'<td>' + (ind+1) + '</td>' +
 				'<td>' + obj.memberNo + '</td>' +
 				'<td>' + obj.name + '</td>' +
 				'<td>' + obj.createDate + '</td>' +
 				'<td>' + obj.recommendType + '</td>' +
 				'<td>' + obj.orgIdentityId + '</td>' +
 				'<td>' + obj.artTypeId + '</td>' +
+				'<td>' + obj.specificAreas + '</td>' +
 				'<td>' + obj.location + '</td>' +
 				'<td>' +
 				'<button class="layui-btn">查看</button>' +
 				'<button class="layui-btn layui-btn-normal">导出</button>' +
 				'</td>' +
 				'</tr>'
-		}
+		};
+
+
+       $('.chaxun').on('click',function () { 
+		let data = {
+
+		};
+		 if(xbinp){
+			 data.gender = xbinp;
+		 }
+		 if(nlinp1){
+			data.minAge = nlinp1; 
+		 }
+		 if(nlinp2){
+			data.maxAge = nlinp2; 
+		 }
+		 if(mzinp){
+			data.nation = mzinp; 
+		 }
+		 if(jginp){
+			data.nativePlace = jginp; 
+		 }
+		 if(whcdinp){
+			data.educationLevelId = whcdinp; 
+		 }
+		 if(mminp){
+			data.politicsStatusId = mminp; 
+		 }
+		 if(wyqtinp){
+			data.isNewGroup = wyqtinp; 
+		 }
+		 if(ysmlinp){
+			data.artTypeId = ysmlinp; 
+		 }
+		 if(tjdwinp){
+			data.relationshipGroup = tjdwinp; 
+		 }
+		 if(zzsfinp){
+			data.orgIdentityId = zzsfinp; 
+		 }
+		 if($('#xszdinp').val() != ''){
+			 data.location = $('#xszdinp').val();
+		 }
+		 if($('#time1').val() != ''){
+			 data.sTime = $('#time1').val();
+		 }
+		 if($('#time2').val() != ''){
+			 data.eTime = $('#time2').val();
+		 }
+		 
+          console.log(data);
+		 base.commonAjax('clav/member/getClavMemberList3', data, function (data) {
+			var pagedata = [];
+			console.log(data);
+			pagedata = data.data;
+			//console.log(pagedata)
+
+			//调用分页
+			layui.use(['laypage', 'layer'], function () {
+
+				var laypage = layui.laypage
+					, layer = layui.layer;
+
+				laypage.render({
+					elem: 'layui'
+					, count: pagedata.length,
+					layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+					limit: 2,
+					jump: function (obj) {
+						//模拟渲染
+						document.getElementById('tb').innerHTML = function () {
+							var arr = []
+								, thisData = pagedata.concat().splice(obj.curr * obj.limit - obj.limit, obj.limit);
+							layui.each(thisData, function (index, item) {
+								arr.push(auto(item,index));
+								console.log(item);
+							});
+							return arr.join('');
+						}();
+					}
+				});
+			});
+		});
 
 
 
+	    });
+
+			//民族
+			base.commonAjax('clav/nation/getClavNationList', data, function (res) {
+				if (res.code == 1) {
+					//console.log(res.data);
+					res.data.map(item => {
+						$('#mzinp').append('<option value="' + item.id + '">' + item.nation + '</option>');
+					});
+				
+				}
+			});
+			//籍贯
+			base.commonAjax('clav/area/getProvinceList', data, function (res) {
+				if (res.code == 1) {
+					//console.log(res.data);
+					res.data.map(item => {
+						$('#jginp').append('<option value="' + item.id + '">' + item.areaName + '</option>');
+					});
+				
+				}
+			});
+			//面貌
+			base.commonAjax('clav/politicsStatus/getClavPoliticsStatusList', data, function (res) {
+				if (res.code == 1) {
+					//console.log(res.data);
+					res.data.map(item => {
+						$('#mminp').append('<option value="' + item.id + '">' + item.politicsStatus + '</option>');
+					});
+				
+				}
+			});
+
+			        //艺术门类
+					base.commonAjax('clav/artType/getClavArtTypeList', data, function (res) {
+                if (res.code == 1) {
+                    console.log(res.data);
+                    res.data.map(item => {
+                        $('#ysmlinp').append('<option value="' + item.id + '">' + item.artType + '</option>');
+                    });
+                  
+                }
+            });
+
+		
+
+
+		layui.use('form', function(){
+          var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+       form.on('select(xbinp)',function(data){
+			xbinp=data.value;
+			//console.log(123);
+           //xbinp=data.elem[data.elem.selectedIndex].text;
+           form.render('select');
+       })
+       form.on('select(nlinp1)',function(data){
+		//jg=data.value;
+		//console.log(123);
+		nlinp1=data.elem[data.elem.selectedIndex].text;
+           form.render('select');
+       })
+       form.on('select(nlinp2)',function(data){
+		//politicsStatusIdd=data.value;
+		//console.log(123);
+		nlinp2=data.elem[data.elem.selectedIndex].text;
+           form.render('select');
+       })
+       form.on('select(mzinp)',function(data){
+		mzinp=data.value;
+		//console.log(123);
+           //whcd=data.elem[data.elem.selectedIndex].text;
+           form.render('select');
+       })
+       form.on('select(jginp)',function(data){
+		jginp=data.value;
+		//console.log(123);
+		//jginp=data.elem[data.elem.selectedIndex].text;
+           form.render('select');
+       })
+       form.on('select(whcdinp)',function(data){
+		 whcdinp=data.value;
+		// console.log(123);
+           //ysml=data.elem[data.elem.selectedIndex].text;
+           form.render('select');
+       })
+       form.on('select(mminp)',function(data){
+		mminp=data.value;
+           //ysml=data.elem[data.elem.selectedIndex].text;
+           form.render('select');
+       })
+       form.on('select(wyqtinp)',function(data){
+		wyqtinp=data.value;
+          //tjcompany=data.elem[data.elem.selectedIndex].text;
+           form.render('select');
+	   })
+	   form.on('select(ysmlinp)',function(data){
+		ysmlinp=data.value;
+          //tjcompany=data.elem[data.elem.selectedIndex].text;
+           form.render('select');
+	   })
+	   form.on('select(tjdwinp)',function(data){
+		//tjdwinp=data.value;
+		tjdwinp=data.elem[data.elem.selectedIndex].text;
+           form.render('select');
+	   })
+	   form.on('select(zzsfinp)',function(data){
+		zzsfinp=data.value;
+		//zzsfinp=data.elem[data.elem.selectedIndex].text;
+           form.render('select');
+       })
+    });
+
+	$('.qingkong').on('click',function () { 
+		history.go(0);
+	 });
 
 		$('#szd').click(function () {
 			$('#test1').css("visibility", "visible");
@@ -564,15 +756,63 @@
 			//$('#arttype,#zzsf').empty();
 			//form.render("select");
 		})
-		layui.use('form', function () {
-			var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
-			form.on('#btnclear', function (elem) {
-				//执行清空
-				$("#arttype").empty();
-				form.render();
-			});
+		// layui.use('form', function () {
+		// 	var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+		// 	form.on('#btnclear', function (elem) {
+		// 		//执行清空
+		// 		$("#arttype").empty();
+		// 		form.render();
+		// 	});
 
-		})
+		// })
+				//日期
+				layui.use('laydate', function () {
+			var laydate = layui.laydate;
+			//日期
+			laydate.render({
+				elem: '#date'
+			});
+			laydate.render({
+				elem: '#date1'
+			});
+			function useLayDateMultiple(cls) {
+				layui.use('laydate', function () {
+					var laydate = layui.laydate;
+
+					lay('#' + cls).each(function () {
+						laydate.render({
+							elem: this
+							, trigger: 'click'
+							, format: 'yyyy/MM/dd HH:mm:ss'
+							, done: function (value, datetime, endDate) {
+								timechecked4 = value;
+								bjtime4 = timechecked4.split(/\s+/)[0].replace(/\//g, "");
+								console.log(bjtime4);
+							}
+						});
+					});
+				});
+			}
+
+			function useLayDateMultiple2(cls) {
+				layui.use('laydate', function () {
+					var laydate = layui.laydate;
+					lay('#' + cls).each(function () {
+						laydate.render({
+							elem: this,
+							trigger: 'click'
+							, format: 'yyyy/MM/dd HH:mm:ss'
+							, done: function (value, datetime, endDate) {
+								timechecked3 = value;
+								bjtime3 = timechecked3.split(/\s+/)[0].replace(/\//g, "");
+								console.log(bjtime3);
+							}
+						});
+					});
+				});
+			}
+			useLayDateMultiple('time1'); useLayDateMultiple2('time2');
+		});
 	</script>
 </body>
 

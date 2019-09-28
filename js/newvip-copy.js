@@ -231,6 +231,11 @@ function goupdate() {
         })
  }
 
+ $(".jiah").on('click', function () {
+        $(".ewai").css('display','block')
+        $(".jiah").css('display','none')
+    })
+
 
 //提交
 function tijiao() {
