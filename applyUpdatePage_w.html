@@ -246,7 +246,8 @@
 
             $('.xg').on('click', function () {
                 //window.location.href = "applyFormPage_w.html";
-                window.close();
+                //window.close();
+                history.go(-1);
             });
 
             //打印
@@ -300,7 +301,7 @@ $('.tijiao').on('click',function () {
                      console.log(data);
                      if(data.code == 1){
                          alert('提交成功');
-                         window.close();
+                        // window.close();
                      }else{
                         alert('提交失败');
                      }

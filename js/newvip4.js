@@ -26,6 +26,11 @@ base.commonAjax('clav/nation/getClavNationList', data, function (data) {
     }
 });
 
+$(".jiah").on('click', function () {
+        $(".ewai").css('display','block')
+        $(".jiah").css('display','none')
+    })
+
 //籍贯
 
 base.commonAjax('clav/area/getProvinceList', data, function (data) {
