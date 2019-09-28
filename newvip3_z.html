@@ -647,9 +647,7 @@ span{
                                         //console.log(res);
                                         layui.use('form', function () {
                                             var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
-                                            $('#tjcompany').empty();
                                             for (var i = 0; i < res.data.length; i++) {
-                                                
                                                 $('#tjcompany').append(
                                                     '<option value="' + res.data[i].id + '">' + res.data[i].name + '</option>'
                                                 );

@@ -51,7 +51,6 @@
 	.tuijian123 {
 		height: 29px;
 		width: 290px;
-		cursor: pointer;
 		border: solid rgba(195, 197, 201, 0.3);
 		padding-left: 9px;
 		margin-top: 6px;
@@ -490,7 +489,10 @@ base.commonAjax('clav/recommendUnit/getRecommendType', data, function (data) {
 										base.commonAjax('clav/recommendUnit/addRecommendUnit', data, function (data) {
 											if(data.code==1){
 												$(".cover10").css("display", "none");	
-												tuijiandanwiesh();											
+												tuijiandanwiesh();
+												$('#ccname').val('')
+												$('#wwcc').val('')
+												$('#ccglzz').val('')								
 											}
 										})
 
