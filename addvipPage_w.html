@@ -411,7 +411,7 @@
 			}
 				
 			setTimeout(() => {
-				if (dwname != null && sqs2 != null && zc2 != null && js2 != null && zz2 != null) {
+				if (dwname != '' && sqs2 != null && zc2 != null && js2 != null && zz2 != null) {
 					let data = {
 						unitName: dwname,
 						applicationBook: sqs2,
@@ -423,6 +423,7 @@
 						console.log(res);
 						if(res.code == 1){
 							alert('上传成功');
+							history.go(0);
 						}else{
 							alert('上传失败');
 						}
@@ -515,13 +516,14 @@
 	function auto(obj, ind) {
 		let str;
 		let str2;
-		if(status == 1){
+		console.log(obj);
+		if(obj.status == 1){
 		 str = '<td><span class="tg">通过</span></td>' ;
 		 str2 = '<button class="layui-btn" onclick="showfile('+ind+')">下载批复</button>';
-		}else if (status == 0){
+		}else if (obj.status == 0){
 		str = '<td><span class="shz">审核中</span></td>' ;
 		str2 = '<button class="layui-btn layui-btn-normal" onclick="show('+ind+')">查看</button>';
-		}else if(status == 2){
+		}else if(obj.status == 2){
 			str = '<td><span class="btg">不通过</span></td>' ;
 			str2 = '<button class="layui-btn layui-btn-danger" onclick="showtext('+ind+')">查看回复</button><button class="layui-btn layui-btn-warm" onclick="show('+ind+')" >修改</button>';
 		}

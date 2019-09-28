@@ -90,7 +90,7 @@
                                                             <div class="warn w_sj"></div>
                                                     </div>
                                                 </div>
-                                                <div>
+                                                <div class="flex_box">
                                                     <label class="layui-form-label"><span>*</span>政治面貌：</label>
                                                     <div class="layui-input-inline zzmm2">
                                                         <select name="hy" lay-verify="required" lay-search="" class="inpList"
@@ -106,10 +106,10 @@
                                         </div>
                                         <div class="layui-col-md4">
                                             <div class="grid-demo">
-                                                <div class="mz">
+                                                <div class="mz flex_box">
                                                     <label class="layui-form-label"><span>*</span>民族：</label>
                                                     <div class="layui-input-inline mz2">
-                                                        <select name="hy" lay-verify="required" lay-search="" lay-filter="mz3" id="mz3">
+                                                        <select name="hy" lay-verify="required" lay-search="" class="inpList" lay-filter="mz3" id="mz3">
                                                             <option value="">请选择</option>
                                                             <!-- <option value="1">layer</option>
                                                             <option value="2">form</option> -->
@@ -121,7 +121,7 @@
                                                     <label class="layui-form-label">艺名（笔名）：</label>
                                                     <div class="layui-input-block">
                                                         <input type="text" name="title" lay-verify="title" id="username2"
-                                                            autocomplete="off" placeholder="艺名（笔名）" class="layui-input">
+                                                            autocomplete="off" placeholder="艺名（笔名）" class="layui-input inpList">
                                                     </div>
                                                 </div>
                                                 <div class="layui-form-item">
@@ -129,14 +129,14 @@
                                                     <div class="layui-input-block">
                                                         <input type="text" name="title" lay-verify="title" id="sr"
                                                             onclick="birthfind()" autocomplete="off" readonly="readonly"
-                                                            placeholder="（读取身份证号）" class="layui-input">
+                                                            placeholder="（读取身份证号）" class="layui-input inpList">
                                                             <div class="warn w_sr"></div>
                                                     </div>
                                                 </div>
-                                                <div>
+                                                <div  class="flex_box">
                                                     <label class="layui-form-label"><span>*</span>籍贯：</label>
                                                     <div class="layui-input-inline jg2">
-                                                        <select name="hy" lay-verify="required" lay-search="" id="jg" lay-filter="jg">
+                                                        <select name="hy" lay-verify="required" class="inpList" lay-search="" id="jg" lay-filter="jg">
                                                             <option value="">请选择</option>
                                                             <!-- <option value="1">layer</option>
                                                             <option value="2">form</option> -->
@@ -147,9 +147,9 @@
                                                 <div class="layui-form-item xinwenti">
                                                     <label class="layui-form-label"><span>*</span>新文艺群体:</label>
                                                     <div class="layui-input-block">
-                                                        <input type="radio" name="sex" value="是" title="是" data="1"
+                                                        <input type="radio"  class="wy1" name="sex" value="是" title="是" data="1"
                                                             checked="">
-                                                        <input type="radio" name="sex" value="否" title="否" data="2">
+                                                        <input type="radio" class="wy2" name="sex" value="否" title="否" data="2">
                                                     </div>
                                                 </div>
     
@@ -186,7 +186,7 @@
                                                     <label class="layui-form-label"><span>*</span>现所在地:</label>
                                                     <div class="layui-input-block">
                                                         <input type="text" name="title" lay-verify="title" id="szd"
-                                                            autocomplete="off" placeholder="现所在地" class="layui-input">
+                                                            autocomplete="off" placeholder="现所在地" class="layui-input inpList">
                                                             <div class="warn w_sz"></div>
                                                     </div>
                                                     <div id="test1"></div>
@@ -195,7 +195,7 @@
                                                     <label class="layui-form-label">办公电话:</label>
                                                     <div class="layui-input-block">
                                                         <input type="text" name="title" lay-verify="title" id="bgtec"
-                                                            autocomplete="off" placeholder="办公电话" class="layui-input">
+                                                            autocomplete="off" placeholder="办公电话" class="layui-input inpList">
                                                     </div>
                                                 </div>
                                             </div>
@@ -206,7 +206,7 @@
                                                     <label class="layui-form-label"><span>*</span>通讯地址：</label>
                                                     <div class="layui-input-block" >
                                                         <input type="text" name="title" lay-verify="title" id="place"
-                                                            autocomplete="off" placeholder="通讯地址" class="layui-input" >
+                                                            autocomplete="off" placeholder="通讯地址" class="layui-input inpList" >
                                                             <div class="warn w_tx2"></div>
                                                     </div>
                                                 </div>
@@ -214,7 +214,7 @@
                                                     <label class="layui-form-label">电子邮箱：</label>
                                                     <div class="layui-input-block" >
                                                         <input type="text" name="title" lay-verify="title" id="email"
-                                                            autocomplete="off" placeholder="电子邮箱" class="layui-input" >
+                                                            autocomplete="off" placeholder="电子邮箱" class="layui-input inpList" >
                                                     </div>
                                                 </div>
                                             </div>
@@ -225,7 +225,7 @@
                                                     <label class="layui-form-label"><span>*</span>通讯邮编：</label>
                                                     <div class="layui-input-block" style="width: 155px;">
                                                         <input type="text" name="title" lay-verify="title" id="placenum"
-                                                            autocomplete="off" placeholder="通讯邮编" class="layui-input">
+                                                            autocomplete="off" placeholder="通讯邮编" class="layui-input inpList">
                                                             <div class="warn w_yb"></div>
                                                     </div>
                                                 </div>
@@ -233,7 +233,7 @@
                                                     <label class="layui-form-label">微信号：</label>
                                                     <div class="layui-input-block"style="width: 155px;">
                                                         <input type="text" name="title" lay-verify="title" id="weixinnum"
-                                                            autocomplete="off" placeholder="微信号" class="layui-input">
+                                                            autocomplete="off" placeholder="微信号" class="layui-input inpList">
                                                     </div>
                                                 </div>
                                             </div>
@@ -254,7 +254,7 @@
                                                 <div class="grid-demo">
                                                     <label class="layui-form-label"><span>*</span>文化程度:</label>
                                                     <div class="layui-input-inline diqu">
-                                                        <select name="quiz1" id="whcd" lay-filter="whcd">
+                                                        <select name="quiz1" id="whcd" lay-filter="whcd" class="inpList">
                                                             <option value="">请选择</option>
                                                             <!-- <option value="浙江" selected="">浙江省</option>
                                                             <option value="你的工号">江西省</option>
@@ -271,7 +271,7 @@
                                                 <div class="grid-demo">
                                                     <label class="layui-form-label"><span>*</span>专业职称:</label>
                                                     <div class="layui-input-inline diqu">
-                                                        <select name="quiz1" id="zyzc" lay-filter="zyzc">
+                                                        <select name="quiz1" id="zyzc" lay-filter="zyzc" class="inpList">
                                                             <option value="">请选择</option>
                                                             <!-- <option value="浙江" selected="">浙江省</option>
                                                             <option value="你的工号">江西省</option>
@@ -289,7 +289,7 @@
                                                     <label class="layui-form-label">毕业院校</label>
                                                     <div class="layui-input-block">
                                                         <input type="text" name="title" lay-verify="title" id="school"
-                                                            autocomplete="off" placeholder="毕业院校" class="layui-input"
+                                                            autocomplete="off" placeholder="毕业院校" class="layui-input inpList"
                                                             style="width:183px;">
                                                     </div>
                                                 </div>
@@ -302,7 +302,7 @@
                                                     <label class="layui-form-label"><span>*</span>工作单位及职务:</label>
                                                     <div class="layui-input-block">
                                                         <input type="text" name="title" lay-verify="title" id="work"
-                                                            autocomplete="off" placeholder="请输入工作单位及职务" class="layui-input">
+                                                            autocomplete="off" placeholder="请输入工作单位及职务" class="layui-input inpList">
                                                             <div class="warn w_gzdw"></div>
                                                     </div>
                                                 </div>
@@ -311,7 +311,7 @@
                                                     <div class="layui-input-block">
                                                         <input type="text" name="title" lay-verify="title" id="qgwork"
                                                             autocomplete="off" placeholder="请输入全国文艺家协会职务（含中国作协和中国评协）"
-                                                            class="layui-input">
+                                                            class="layui-input inpList">
                                                     </div>
                                                 </div>
                                                 <div class="layui-form-item tec">
@@ -319,7 +319,7 @@
                                                     <div class="layui-input-block">
                                                         <input type="text" name="title" lay-verify="title" id="qtwork"
                                                             autocomplete="off" placeholder="请输入其他主要社会职务"
-                                                            class="layui-input inp">
+                                                            class="layui-input inp inpList">
                                                     </div>
                                                 </div>
                                             </div>
@@ -330,7 +330,7 @@
                                                     <label class="layui-form-label"><span>*</span>工作经历（艺术简历）:</label>
                                                     <div class="layui-input-block">
                                                         <textarea placeholder="请输入工作经历（艺术简历），300字以内" id="experience"
-                                                            class="layui-textarea"></textarea>
+                                                            class="layui-textarea inpList"></textarea>
                                                             <div class="warn w_jl"></div>
                                                     </div>
                                                 </div>
@@ -352,7 +352,7 @@
                                                 <div class="layui-form-item tec">
                                                     <label class="layui-form-label"><span>*</span>主要从事的艺术门类：</label>
                                                     <div class="layui-input-inline">
-                                                        <select name="hy" lay-verify="required" lay-search="" id="ysml" lay-filter="ysml">
+                                                        <select name="hy" lay-verify="required" class="inpList" lay-search="" id="ysml" lay-filter="ysml">
                                                             <option value="">请选择</option>
                                                             <!-- <option value="1">layer</option>
                                                             <option value="2">form</option> -->
@@ -368,7 +368,7 @@
                                                     <label class="layui-form-label">具体领域：</label>
                                                     <div class="layui-input-block">
                                                         <input type="text" name="title" lay-verify="title" id="genre"
-                                                            autocomplete="off" placeholder="具体领域：" class="layui-input"
+                                                            autocomplete="off" placeholder="具体领域：" class="layui-input inpList"
                                                             style="width:190px;">
                                                             <i class="layui-icon layui-icon-add-circle jiah" style="float: right;font-size: 30px; color: #059afe;"></i>
                                                     </div>                                               
@@ -381,7 +381,7 @@
                                                     <div class="layui-form-item tec">
                                                         <label class="layui-form-label">主要从事的艺术门类：</label>
                                                         <div class="layui-input-inline">
-                                                            <select name="hy" lay-verify="required" lay-search="" id="ysml2" lay-filter="ysml2">
+                                                            <select name="hy" lay-verify="required" class="inpList" lay-search="" id="ysml2" lay-filter="ysml2">
                                                                 <option value="">请选择</option>
                                                                 <!-- <option value="1">layer</option>
                                                                 <option value="2">form</option> -->
@@ -397,7 +397,7 @@
                                                         <label class="layui-form-label">具体领域：</label>
                                                         <div class="layui-input-block">
                                                             <input type="text" name="title" lay-verify="title" id="genre2"
-                                                                autocomplete="off" placeholder="具体领域：" class="layui-input"
+                                                                autocomplete="off" placeholder="具体领域：" class="layui-input inpList"
                                                                 style="width:190px;">
                                                         </div>                                               
                                                     </div>
@@ -410,7 +410,7 @@
                                                     <label class="layui-form-label"><span>*</span>文艺志愿服务或公益活动经历：</label>
                                                     <div class="layui-input-block">
                                                         <textarea placeholder="请输入文艺志愿服务或公益活动经历，300字以内" id="experience2"
-                                                            class="layui-textarea"></textarea>
+                                                            class="layui-textarea inpList"></textarea>
                                                             <div class="warn w_gyhd"></div>
                                                     </div>
                                                 </div>
@@ -427,33 +427,33 @@
                             <div class="layui-container-fluid">
                                 <div class="layui-fluid">
                                     <div class="layui-row layui-col-space5">
-                                        <div class="layui-col-md4">
-    
-                                            <label class="layui-form-label"><span>*</span>推荐类型：</label>
-                                            <div class="layui-input-inline tjlx">
-                                                <!-- <select name="hy" lay-verify="required" lay-search="" id="tjtype">
-                                                    <option value="">请选择</option>
-                                                    <option value="1">layer</option>
-                                                    <option value="2">form</option>
-                                                </select> -->
-                                                <input type="text"class="layui-input" id="tjtype">
-                                                <div class="warn w_lx"></div>
-                                            </div>
-                                            <div id="test2"></div>
-    
-                                        </div>
-                                        <div class="layui-col-md4">
-                                            <label class="layui-form-label"><span>*</span>推荐单位/人：</label>
-                                            <div class="layui-input-inline tjr">
-                                                <select name="hy" lay-verify="required" lay-search="" id="tjcompany" lay-filter="tjcompany"> 
-                                                    <option value="">请选择</option>
-                                                    <!-- <option value="1">layer</option>
-                                                    <option value="2">form</option> -->
-                                                </select>
-                                                <div class="warn w_tjdw"></div>
-                                            </div>
-    
-                                        </div>
+                                            <div class="layui-col-md4">
+
+                                                    <label class="layui-form-label"><span>*</span>推荐类型：</label>
+                                                    <div class="layui-input-inline tjlx">
+                                                        <!-- <select name="hy" lay-verify="required" lay-search="" id="tjtype">
+                                                            <option value="">请选择</option>
+                                                            <option value="1">layer</option>
+                                                            <option value="2">form</option>
+                                                        </select> -->
+                                                        <input type="text"class="layui-input inpList" id="tjtype">
+                                                        <div class="warn w_lx"></div>
+                                                    </div>
+                                                    <div id="test2"></div>
+            
+                                                </div>
+                                                <div class="layui-col-md4">
+                                                    <label class="layui-form-label"><span>*</span>推荐单位/人：</label>
+                                                    <div class="layui-input-inline tjr">
+                                                        <select name="hy" lay-verify="required" class="inpList" lay-search="" id="tjcompany" lay-filter="tjcompany"> 
+                                                            <option value="">请选择</option>
+                                                            <!-- <option value="1">layer</option>
+                                                            <option value="2">form</option> -->
+                                                        </select>
+                                                        <div class="warn w_tjdw"></div>
+                                                    </div>
+            
+                                                </div>
                                         <div class="layui-col-md12">
                                             <div class="layui-col-md4">
                                                 <div class="grid-demo grid-demo-bg1">
@@ -462,7 +462,7 @@
                                                         <div class="layui-input-block">
                                                             <input type="text" name="title" lay-verify="title"
                                                                 id="lxpeople" autocomplete="off" placeholder="联系人"
-                                                                class="layui-input" style="width:254px;">
+                                                                class="layui-input inpList" style="width:254px;">
                                                                 <div class="warn w_lxr"></div>
                                                         </div>
                                                     </div>
@@ -474,7 +474,7 @@
                                                         <label class="layui-form-label"><span>*</span>手机号：</label>
                                                         <div class="layui-input-block">
                                                             <input type="text" name="title" lay-verify="title" id="sjh"
-                                                                autocomplete="off" placeholder="手机号" class="layui-input"
+                                                                autocomplete="off" placeholder="手机号" class="layui-input inpList"
                                                                 style="width:254px;">
                                                                 <div class="warn w_sjh"></div>
                                                         </div>
@@ -489,7 +489,7 @@
                     </div>
                     <div class="anniu">
                         <button type="button" class="layui-btn layui-btn-normal" onclick="tijiao()">保存草稿</button>
-                        <button type="reset" class="layui-btn layui-btn-primary"onclick="back()" >取消</button>
+                        <button type="reset" class="layui-btn layui-btn-primary reback">退回</button>
                     </div>
                 </form>
             </div>
@@ -513,10 +513,121 @@
         let idname = sessionStorage.getItem('nameid');
 
         
-        base.commonAjax('clav/lishiReplace/theClavMemberIsExit', {idNumber:idnumber,name:idname}, function (res) {
-             console.log(res);
-        });
+       //获取URL数据  
+       function getQueryString() {
 
+var url = location.search; //获取url中"?"符后的字串
+var theRequest = new Object();
+if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for (var i = 0; i < strs.length; i++) {
+                theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+            }
+        }
+        return theRequest;
+    }
+
+let idss = getQueryString('id').id;
+  if(idss){
+    layui.use('form', function(){
+  var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+      $('.pop_up').hide();
+      let myid = getQueryString('id').id;
+      
+      setTimeout(() => {
+        base.commonAjax('clav/member/getClavMemberList', {id:myid}, function (res) {
+        console.log(res.data[0]);
+        let obj =   res.data[0];
+        $('#username').val(obj.name);
+        $('#sfnumber').val(obj.idNumber);
+        $('#sex').val(obj.gender == 1 ? '男': '女');
+        $('#tec').val(obj.phone);
+        $('#politicsStatusId').val(obj.politicsStatusId);
+        politicsStatusIdd = obj.politicsStatusId;
+        $('#mz3').val(obj.nation);
+        mz3=obj.nation;
+        $('#username2').val(obj.penName);
+        $('#sr').val(obj.birthday);
+        $('#jg').val(Number(obj.nativePlace)); 
+        jg = obj.nativePlace;
+          var radio = document.getElementsByName("sex");
+          if (obj.isNewGroup == 1) {
+              $(radio[0].click());
+          }
+          if (obj.isNewGroup == 2) {
+              $(radio[1].click());
+          }
+           //console.log($('#file').val());
+           document.getElementById('show').src = obj.avatar;
+           picurl = obj.avatar;
+        $('#szd').val(obj.location);
+        $('#bgtec').val(obj.officePhone);
+        $('#place').val(obj.postalAddress);
+        $('#email').val(obj.email);
+        $('#placenum').val(obj.postcode);
+        $('#weixinnum').val(obj.wechatNumber);
+        $('#whcd').val(obj.educationLevelId);;
+        whcd=obj.educationLevelId;
+        $('#zyzc').val(obj.professionalTitleId);
+        zyzc=obj.professionalTitleId;
+        
+        $('#school').val(obj.graduateSchool);
+        $('#work').val(obj.unitAndDuty);
+        $('#qgwork').val(obj.associationDuty);
+        $('#qtwork').val(obj.socialDuty);
+        $('#experience').val(obj.workExperience);
+        // $('#ysml').val(obj.workExperience);
+         let ysarr = obj.artTypeId.split(',');  
+         ysml = Number(ysarr[0]);
+        $('#ysml').val(Number(ysarr[0]));
+        if(ysarr[1]){
+            ysml2 = Number(ysarr[0]);
+        $('#ysml2').val(Number(ysarr[0]));
+        }
+        let lyarr = obj.specificAreas.split(',');
+        // console.log(lyarr[0])
+        // console.log(lyarr[0].indexOf('-'))
+        // console.log(lyarr[0].substring(lyarr[0].indexOf('-')+1));
+        $('#genre').val(lyarr[0].substring(lyarr[0].indexOf('-')+1));
+       if(lyarr[1]){
+        $('#genre2').val(lyarr[1].substring(lyarr[1].indexOf('-')+1));
+       }
+       $('#experience2').val(obj.activityExperience);
+       //recommendType
+       console.log(treelocaldata);
+       let tid = obj.tjTypeId;
+       $('#tjtype').val(obj.recommendType);
+          console.log(tid);
+          if (tid) {
+              base.commonAjax('clav/recommendUnit/getRecommendUnitOrPeople', {id:tid}, function (res) {
+                  //console.log(res);
+                  layui.use('form', function () {
+                      var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+                      for (var i = 0; i < res.data.length; i++) {
+                          $('#tjcompany').append(
+                              '<option value="' + res.data[i].id + '">' + res.data[i].name + '</option>'
+                          );
+                      }
+                       form.render();
+                  });
+                });
+              }
+             
+             setTimeout(() => {
+                $('#tjcompany').val(obj.tjUnitId);form.render();
+             }, 1000);
+              tjcompany = obj.relationshipGroup;
+              $('#lxpeople').val(obj.linkman);
+              $('#sjh').val(obj.linkmanPhone);
+            
+     });
+      }, 1000);
+
+    });
+  }
+
+  //========================================================================
 
         function changepic(obj) {
             //console.log(obj.files[0]);//这里可以获取上传文件的name
@@ -536,7 +647,9 @@
             }
             return url;
         }
-
+        $('.reback').on('click',function(){
+            history.go(-1);
+        })
         function wtf(data) {
             data.map((v, i) => {
                 let obj = {};
