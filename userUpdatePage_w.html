@@ -307,8 +307,9 @@
             window.history.back();
         });
         $('.xg').on('click', function () {
-            //window.location.href = "applyFormPage_w.html";
-            window.close();
+            let ids = getQueryString('id').id;
+            window.location.href = "applyFormPage_w.html?id="+ids;
+            //window.close();
         });
         //打印
         $('.dy').on('click', function () {
@@ -340,7 +341,8 @@
                                     console.log(data);
                                     if (data.code == 1) {
                                         alert('提交成功');
-                                        window.close();
+                                      
+                                        window.location.href = "vipcheck_z.html";
                                     } else {
                                         alert('提交失败');
                                     }

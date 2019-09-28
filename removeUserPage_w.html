@@ -184,6 +184,23 @@
                             </div>
                         </div>
                     </div>
+                    <div class="c_cont chide">
+                        <div class="lis">
+                            <p class="mq">新增理事姓名：</p>
+                            <div class="lis_r">
+                                <input type="text" class="textinp" id="newnameinp">
+                            </div>
+                        </div>
+   
+                    </div>
+                    <div class="c_cont chide">
+                    <div class="lis">
+                        <p>身份证号：</p>
+                        <div class="lis_r">
+                            <input type="text" class="textinp" id="newsfz">
+                        </div>
+                    </div>
+                </div>
                 </form>
                 <div class="cont_b">
                     <div class="butbox">
@@ -223,7 +240,25 @@
         });
 
         $('.jumpnext').on('click', function () {
-            window.location.href = "addUserPage_w.html";
+            if($('#newnameinp').val() != '' && $('#newsfz').val() != ''){
+                base.commonAjax('clav/lishiReplace/theClavMemberIsExit', {idNumber:$('#newsfz').val(),name:$('#newnameinp').val()}, function (res) {
+               console.log(res);
+               if(res.code == 1){
+                  if(res.isExit == 1){
+                    window.location.href = "addUserPage_w.html?id="+res.data.id;
+                  }else{
+                      sessionStorage.setItem('sfzid',$('#newsfz').val());
+                      sessionStorage.setItem('sfzname',$('#newnameinp').val());
+                  }
+               }
+                });
+
+               // window.location.href = "addUserPage_w.html";
+
+            }else{
+                alert('请填写新增姓名和身份证号')
+            }
+           
         })
         $('.beback').on('click', function () {
             window.history.back();
@@ -251,8 +286,7 @@
            mqls=data.elem[data.elem.selectedIndex].text;
            //console.log(data.value);
            objdata = ajaxdata[Number(data.value)];
-           sessionStorage.setItem('idNumber',objdata.idNumber);
-           sessionStorage.setItem('nameid',objdata.name);
+
            console.log(objdata);
            $('.chide').show();
             form.render('select');
