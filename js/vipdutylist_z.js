@@ -365,7 +365,7 @@ if(data.code==1){
         '<li>'+
             '<input type="checkbox" class="checkboxs zzc_right"  id="tyue-checkbox-blue1" value="'+data.data[i].id+'"/>'+
             '<label for="tyue-checkbox-blue1"></label>'+
-            '<span>'+data.data[i].name+'</span>'+
+            '<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+data.data[i].name+'</span>'+
         '</li>'
     )
 }
@@ -388,7 +388,7 @@ for(var i=0;i<data.data.length;i++){
         '<li>'+
             '<input type="checkbox" class="checkboxs zzc_right"  id="tyue-checkbox-blue1" value="'+data.data[i].id+'"/>'+
             '<label for="tyue-checkbox-blue1"></label>'+
-            '<span>'+data.data[i].name+'</span>'+
+            '<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+data.data[i].name+'</span>'+
         '</li>'
     )
 }
@@ -424,7 +424,7 @@ console.log("操作后",data)
 base.commonAjax('clav/orgIdentity/chooseMember', data, function (data) {
 if(data.code==1){
 $(".cover4").css( "display", "none");
-alert("操作成功");
+alert("确认成功");
 var name;
 var orgIdentityId=dyn;
 //cndbz();

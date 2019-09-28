@@ -356,37 +356,42 @@ $(document).on('click','.but', function () {
     //console.log (butid)
     $(".cover1").css("display", "inline-block");
     $("#titg").on('click', function () {
-        var file = $("#upLoad")[0].files[0];
-        var formData = new FormData();
-        formData.append("file", file);
-        $.ajax({
-            type: "post",
-            url: base.baseurl + 'clav/upload/uploadFile',
-            data: formData,
-            cache: false,
-            processData: false,
-            contentType: false,
-            success: function (data, textStatus, jqXHR) {
-                if (data.code == 1) {
-                    //console.log(data);
-                    var yesid = butid;
-                    var status = 1;
-                    var reply = data.data[0].url;
-                    var data = {
-                        id: yesid,
-                        status: status,
-                        reply: reply
-                    }
-                    // console.log(data)
-                    base.commonAjax('clav/memberUnit/updateClavMemberUnit', data, function (data) {
-                        if (data.code == 1) {
-                            $(".cover1,.cover2").css("display", "none");
-                            huiyuancheck();
+        if($("#upLoad").val()==''){
+            alert("请选择上传文件")
+            return false;
+        }else{
+            var file = $("#upLoad")[0].files[0];
+            var formData = new FormData();
+            formData.append("file", file);
+            $.ajax({
+                type: "post",
+                url: base.baseurl + 'clav/upload/uploadFile',
+                data: formData,
+                cache: false,
+                processData: false,
+                contentType: false,
+                success: function (data, textStatus, jqXHR) {
+                    if (data.code == 1) {
+                        //console.log(data);
+                        var yesid = butid;
+                        var status = 1;
+                        var reply = data.data[0].url;
+                        var data = {
+                            id: yesid,
+                            status: status,
+                            reply: reply
                         }
-                    })
+                        // console.log(data)
+                        base.commonAjax('clav/memberUnit/updateClavMemberUnit', data, function (data) {
+                            if (data.code == 1) {
+                                $(".cover1,.cover2").css("display", "none");
+                                huiyuancheck();
+                            }
+                        })
+                    }
                 }
-            }
-        })
+            })
+        }
     })
 })
 $(document).on('click','.no', function () {
@@ -394,21 +399,26 @@ $(document).on('click','.no', function () {
          var no2id=$(this).attr('id').replace("no","");
          $(".cover2").css("display", "inline-block");
          $("#tibtg").on('click', function () {
-             var noid = no2id;
-             var status = 2;
-             var reply = $("#reply").val();
-             var data = {
-                 id: noid,
-                 status: status,
-                 reply: reply
-             }
-             console.log(data)
-             base.commonAjax('clav/memberUnit/updateClavMemberUnit', data, function (data) {
-                 if (data.code == 1) {
-                     $(".cover1,.cover2").css("display", "none");
-                     huiyuancheck();
-                 }
-             })
+            if ($("#reply").val()=='') {
+                alert("请输入回复理由")
+                return false
+            } else {
+                var noid = no2id;
+                var status = 2;
+                var reply = $("#reply").val();
+                var data = {
+                    id: noid,
+                    status: status,
+                    reply: reply
+                }
+                console.log(data)
+                base.commonAjax('clav/memberUnit/updateClavMemberUnit', data, function (data) {
+                    if (data.code == 1) {
+                        $(".cover1,.cover2").css("display", "none");
+                        huiyuancheck();
+                    }
+                })
+            }
      
          })
 })

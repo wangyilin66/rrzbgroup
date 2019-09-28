@@ -14,6 +14,9 @@
 		html,body{
 			height: 100%;
 		}
+		.hytitle{
+			display: block
+		}
 	</style>
 </head>
 
@@ -98,7 +101,7 @@
 														<input type="text" name="date" id="time2" lay-verify="date"
 															style="width:122px;display: inline-block" placeholder="结束时间"
 															autocomplete="off" class="layui-input">
-														<div class="date_font date_tubiao2"><i
+														<div class="date_font date_tubiao2" onclick="z_qk()"><i
 																class="layui-icon layui-icon-refresh-1"></i></div>
 													</div>
 												</div>
@@ -603,7 +606,10 @@
 
 		})
 
-		
+		function z_qk(){
+			$('#time1').val('');
+			$('#time2').val('');
+		}
 	</script>
 </body>
 
