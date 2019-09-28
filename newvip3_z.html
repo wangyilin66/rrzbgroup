@@ -32,6 +32,14 @@ span{
     right: 6px;
     top: 3px;
 }
+.onlylook{
+    width: 100%;
+    height: 1802px;
+    position: absolute;
+    background-color: grey;
+    top: 106px;
+    opacity: 0;
+}
 </style>
 <body>
     	<!-- 头部 -->
@@ -487,11 +495,13 @@ span{
                     </div>
                 </div>
                 <div class="anniu">
-                    <button type="button" class="layui-btn layui-btn-normal" onclick="tijiao()">提交</button>
-                    <button type="reset" class="layui-btn layui-btn-primary">取消</button>
+                    
                 </div>
             </form>
         </div>
+    </div>
+    <div class="onlylook">
+
     </div>
     <script src="./layui/layui.js"></script>
     <script src="./js/layuicommon.js"></script>
@@ -524,6 +534,131 @@ span{
             return url;
         }
 
+      //获取URL数据  
+      function getQueryString() {
+        var url = location.search; //获取url中"?"符后的字串
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for (var i = 0; i < strs.length; i++) {
+                theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+            }
+        }
+        return theRequest;
+}
+
+//====================================================================
+
+
+
+
+
+let idss = getQueryString('id').id;
+          if(idss){
+
+            layui.use('form', function(){
+      var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+              $('.pop_up').hide();
+              let myid = getQueryString('id').id;
+               
+              setTimeout(() => {
+                base.commonAjax('clav/member/getClavMemberList', {id:myid}, function (res) {
+                console.log(res.data[0]);
+                let obj =   res.data[0];
+                $('#username').val(obj.name);
+                $('#sfnumber').val(obj.idNumber);
+                $('#sex').val(obj.gender == 1 ? '男': '女');
+                $('#tec').val(obj.phone);
+                $('#politicsStatusId').val(obj.politicsStatusId);
+                politicsStatusIdd = obj.politicsStatusId;
+                $('#mz3').val(obj.nation);
+                mz3=obj.nation;
+                $('#username2').val(obj.penName);
+                $('#sr').val(obj.birthday);
+                $('#jg').val(Number(obj.nativePlace));
+                jg = obj.nativePlace;
+                  var radio = document.getElementsByName("sex");
+                  if (obj.isNewGroup == 1) {
+                      $(radio[0].click());
+                  }
+                  if (obj.isNewGroup == 2) {
+                      $(radio[1].click());
+                  }
+                   //console.log($('#file').val());
+                   document.getElementById('show').src = obj.avatar;
+                   picurl = obj.avatar;
+                $('#szd').val(obj.location);
+                $('#bgtec').val(obj.officePhone);
+                $('#place').val(obj.postalAddress);
+                $('#email').val(obj.email);
+                $('#placenum').val(obj.postcode);
+                $('#weixinnum').val(obj.wechatNumber);
+                $('#whcd').val(obj.educationLevelId);
+                whcd=obj.educationLevelId;
+                $('#zyzc').val(obj.professionalTitleId);
+                zyzc=obj.professionalTitleId;
+                
+                $('#school').val(obj.graduateSchool);
+                $('#work').val(obj.unitAndDuty);
+                $('#qgwork').val(obj.associationDuty);
+                $('#qtwork').val(obj.socialDuty);
+                $('#experience').val(obj.workExperience);
+                // $('#ysml').val(obj.workExperience);
+                 let ysarr = obj.artTypeId.split(',');  
+                 ysml = Number(ysarr[0]);
+                $('#ysml').val(Number(ysarr[0]));
+                if(ysarr[1]){
+                    ysml2 = Number(ysarr[0]);
+                $('#ysml2').val(Number(ysarr[0]));
+                }
+                let lyarr = obj.specificAreas.split(',');
+                // console.log(lyarr[0])
+                // console.log(lyarr[0].indexOf('-'))
+                // console.log(lyarr[0].substring(lyarr[0].indexOf('-')+1));
+                $('#genre').val(lyarr[0].substring(lyarr[0].indexOf('-')+1));
+               if(lyarr[1]){
+                $('#genre2').val(lyarr[1].substring(lyarr[1].indexOf('-')+1));
+               }
+               $('#experience2').val(obj.activityExperience);
+               //recommendType
+               console.log(treelocaldata);
+               let tid = obj.tjTypeId;
+               $('#tjtype').val(obj.recommendType);
+                  console.log(tid);
+                  if (tid) {
+                      base.commonAjax('clav/recommendUnit/getRecommendUnitOrPeople', {id:tid}, function (res) {
+                          //console.log(res);
+                          layui.use('form', function () {
+                              var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+                              for (var i = 0; i < res.data.length; i++) {
+                                  $('#tjcompany').append(
+                                      '<option value="' + res.data[i].id + '">' + res.data[i].name + '</option>'
+                                  );
+                              }
+                              form.render()
+                          });
+                        });
+                      }
+
+                     setTimeout(() => {
+                        $('#tjcompany').val(obj.tjUnitId);form.render();
+                     }, 1000);
+                      tjcompany = obj.relationshipGroup;
+                      $('#lxpeople').val(obj.linkman);
+                      $('#sjh').val(obj.linkmanPhone);
+                    
+             });
+              }, 1000);
+
+            });
+          }
+
+
+
+
+
+//===============================================================
         function wtf(data) {
             data.map((v, i) => {
                 let obj = {};
@@ -647,7 +782,9 @@ span{
                                         //console.log(res);
                                         layui.use('form', function () {
                                             var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+                                            $('#tjcompany').empty();
                                             for (var i = 0; i < res.data.length; i++) {
+                                                
                                                 $('#tjcompany').append(
                                                     '<option value="' + res.data[i].id + '">' + res.data[i].name + '</option>'
                                                 );

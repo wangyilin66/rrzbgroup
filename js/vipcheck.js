@@ -282,7 +282,7 @@ function auto(index,obj){
             '<a>'+
             '<button id="' + 'no' + obj.id + '" type="button" class="layui-btn layui-btn-danger no">不通过</button>' +
             '</a>'+
-            '<a href="http://39.98.186.243/clav/memberUnit/downloadRAR?id='+obj.id+'" download="">'+
+            '<a href="http://39.98.186.243/clav/memberUnit/downloadRAR?ids='+obj.id+'" download="">'+
             '<button id="' + 'download' + obj.id + '" type="button" class="layui-btn layui-btn-warm">下载</button>' +
             '</a>'+
             '</td>' +
@@ -386,6 +386,7 @@ $(document).on('click','.but', function () {
                             if (data.code == 1) {
                                 $(".cover1,.cover2").css("display", "none");
                                 huiyuancheck();
+                                alert('操作成功');
                             }
                         })
                     }
@@ -416,6 +417,7 @@ $(document).on('click','.no', function () {
                     if (data.code == 1) {
                         $(".cover1,.cover2").css("display", "none");
                         huiyuancheck();
+                        alert('操作成功');
                     }
                 })
             }
@@ -454,6 +456,7 @@ $(document).on('click','.vipb_tg', function () {
             if (data.code == 1) {
                 vipdutyshenh();   
                 $(".cover1,.cover2,.cover3,.cover4,.cover5,.cover6,.cover7,.cover8").css( "display", "none");	
+                alert('操作成功')
             }
         })
     })
@@ -470,7 +473,8 @@ $(document).on('click','.vipb_remove', function () {
         base.commonAjax('clav/member/yichuClavMember', data, function (data) {
             if (data.code == 1) {
                 vipdutyshenh();   
-                $(".cover1,.cover2,.cover3,.cover4,.cover5,.cover6,.cover7,.cover8,.cover9").css( "display", "none");	
+                $(".cover1,.cover2,.cover3,.cover4,.cover5,.cover6,.cover7,.cover8,.cover9").css( "display", "none");
+                alert('操作成功')	
             }
         })
     })

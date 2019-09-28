@@ -377,5 +377,121 @@ function tijiao() {
        }else{
                console.log('信息错误')
        }
+
+         $('.inpList').on('keydown blur',function() {
+                var i = $(this).index();
+                console.log('a')				
+                // $('.inpList').eq(i)+$('.warn').text('');			
+        if( $('#file').val()==''){
+                $('.w_tx').text('请上传头像');       
+        }else{
+            $('.w_tx').text('');
+        }
+        if( $('#username').val()==''){
+                $('.w_xm').text('请填写姓名')              
+        }else{
+            $('.w_xm').text('')   
+        }
+        if( $('#sfnumber').val()==''){
+                $('.w_sf').text('请填写身份证号')          
+        }else{
+            $('.w_sf').text('')   
+        }
+        if( $('#sex').val()==''){
+                $('.w_xb').text('请获取性别')              
+        }else{
+            $('.w_xb').text('')   
+        }
+        if( $('#tec').val()==''){
+                $('.w_sj').text('请填写手机号码')          
+        }else{
+            $('.w_sj').text('')   
+        }
+        if( $('#politicsStatusId').val()==''){
+                $('.w_zz').text('请选择政治面貌')              
+        }else{
+            $('.w_zz').text('')   
+        }
+        if( $('#mz3').val()==''){
+                $('.w_mz').text('请选择民族')              
+        }else{
+            $('.w_mz').text('')   
+        }
+        if( $('#sr').val()==''){
+                $('.w_sr').text('请获取出生日期')          
+        }else{
+            $('.w_sr').text('')   
+        }
+        if( $('#jg').val()==''){
+                $('.w_jg').text('请选择籍贯')              
+        }else{
+            $('.w_jg').text('')   
+        }
+        if( $('#szd').val()==''){
+                $('.w_sz').text('请填写现所在地')          
+        }else{
+            $('.w_sz').text('')   
+        }
+        if( $('#place').val()==''){
+                $('.w_tx2').text('请填写通讯地址')              
+        }else{
+            $('.w_tx2').text('')   
+        }
+        if( $('#placenum').val()==''){
+                $('.w_yb').text('请填写通讯邮编')          
+        }else{
+            $('.w_yb').text('')   
+        }
+        if( $('#whcd').val()==''){
+                $('.w_wh').text('请选择文化程度')              
+        }else{
+            $('.w_wh').text('')   
+        }
+        if( $('#zyzc').val()==''){
+                $('.w_zc').text('请选择专业职称')              
+        }else{
+            $('.w_zc').text('')   
+        }
+        if( $('#work').val()==''){
+                $('.w_gzdw').text('请填写工作单位及职务')          
+        }else{
+            $('.w_gzdw').text('')   
+        }
+        if( $('#experience').val()==''){
+                $('.w_jl').text('请填写工作经历（艺术简历）')              
+        }else{
+            $('.w_jl').text('')   
+        }
+        if( $('#ysml').val()==''){
+                $('.w_yis').text('请选择主要从事的艺术门类')          
+        }else{
+            $('.w_yis').text('')   
+        }
+        if( $('#experience2').val()==''){
+                $('.w_gyhd').text('请填写文艺志愿服务或公益活动经历')              
+        }else{
+            $('.w_gyhd').text('')   
+        }
+        if( $('#tjtype').val()==''){
+                $('.w_lx').text('请选择推荐类型')          
+        }else{
+            $('.w_lx').text('')   
+        }
+        if( $('#tjcompany').val()==''){
+                $('.w_tjdw').text('请选择推荐单位/人')              
+        }else{
+            $('.w_tjdw').text('')   
+        }
+        if( $('#lxpeople').val()==''){
+                $('.w_lxr').text('请填写联系人')          
+        }else{
+            $('.w_lxr').text('')   
+        }
+        if( $('#sjh').val()==''){
+                $('.w_sjh').text('请填写手机号')          
+        }  else{
+            $('.w_sjh').text('')   
+        }
+			});
        
 }  

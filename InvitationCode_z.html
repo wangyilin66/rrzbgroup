@@ -7,6 +7,14 @@
     <link rel="stylesheet" href="./layui/css/layui.css">
     <link rel="stylesheet" href="./css/InvitationCode.css">
     <link rel="stylesheet" href="./css/header.css">
+    <style>
+    .content{
+    background-color:#eceff4;
+    height:auto;
+    padding-bottom: 50px;
+}
+
+</style>
 </head>
 
 <body>
@@ -38,7 +46,7 @@
                                     <div class="grid-demo grid-demo-bg1">
                                         <label for="">发展年份：
                                             <div>
-                                                <select id="yishu" name="modules" lay-verify="required" lay-search="">
+                                                <select id="nianfen" name="modules" lay-verify="required" lay-search="">
                                                     <option value="">请选择</option>
                                                     <!-- <option value="1">layer</option>
 													<option value="2">form</option>
@@ -122,13 +130,13 @@
                             <th>推荐类型</th>
                             <th>单位类型</th>
                             <th>单位名称</th>
-                            <th>发展名额数（共计236个）</th>
+                            <th id="table_count"></th>
                             <th>分配时间</th>
                             <th>操作</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
+                    <tbody id="codefenpei_z">
+                        <!-- <tr>
                             <td>12313</td>
                             <td>会员单位推荐</td>
                             <td>全国文艺家协会</td>
@@ -139,23 +147,11 @@
                                 <button class="layui-btn">修改</button>
                                 <button class="layui-btn layui-btn-danger">删除</button>
                             </td>
-                        </tr>
-                        <tr>
-                            <td>12313</td>
-                            <td>会员单位推荐</td>
-                            <td>全国文艺家协会</td>
-                            <td>中国影协</td>
-                            <td>7</td>
-                            <td>2018-05-23 14：23：56</td>
-                            <td>
-                                <button class="layui-btn">修改</button>
-                                <button class="layui-btn layui-btn-danger">删除</button>
-                            </td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 </table>
                 <div>
-                    <div id="shuju1"></div>
+                    <div id="shuju1" style="display: flex;justify-content: space-around;"></div>
                     <div></div>
                     <div></div>
                 </div>

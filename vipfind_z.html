@@ -551,11 +551,20 @@
 				if (data.code == 1) {
 					console.log("会员文件", data)
 					$(".hy_file").empty();
-					$('.hy_file').append(
+					if(data.data.uploadFile!=null){
+						$('.hy_file').append(
 						'<a href="' + data.data.uploadFile + '" download="">' +
 						'<div class="wj">会员上传文件</div>' +
 						'</a>'
 					);
+					}else{
+						$('.hy_file').append(
+						'<a href="newvip3_z.html?id='+hy_find+'" download="">' +
+						'<div class="wj">会员上传文件</div>' +
+						'</a>'
+					);
+					}
+					
 				}
 			})
 		})

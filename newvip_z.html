@@ -107,7 +107,7 @@ span{
                                             <div class="mz">
                                                 <label class="layui-form-label"><span>*</span>民族:</label>
                                                 <div class="layui-input-inline mz2">
-                                                    <select name="hy" lay-verify="required" lay-search="" lay-filter="mz3" id="mz3">
+                                                    <select name="hy" lay-verify="required" lay-search="" lay-filter="mz3" class="inpList" id="mz3">
                                                         <option value="">请选择</option>
                                                         <!-- <option value="1">layer</option>
                                                         <option value="2">form</option> -->
@@ -119,7 +119,7 @@ span{
                                                 <label class="layui-form-label">艺名(笔名):</label>
                                                 <div class="layui-input-block">
                                                     <input type="text" name="title" lay-verify="title" id="username2" style="border-radius: 6px;"
-                                                        autocomplete="off" placeholder="艺名（笔名）" class="layui-input">
+                                                        autocomplete="off" placeholder="艺名（笔名）" class="layui-input ">
                                                 </div>
                                             </div>
                                             <div class="layui-form-item">
@@ -127,14 +127,14 @@ span{
                                                 <div class="layui-input-block">
                                                     <input type="text" name="title" lay-verify="title" id="sr"
                                                         onclick="birthfind()" autocomplete="off" readonly="readonly" style="border-radius: 6px;"
-                                                        placeholder="（读取身份证号）" class="layui-input">
+                                                        placeholder="（读取身份证号）" class="layui-input inpList">
                                                         <div class="warn w_sr"></div>
                                                 </div>
                                             </div>
                                             <div>
                                                 <label class="layui-form-label"><span>*</span>籍贯:</label>
                                                 <div class="layui-input-inline jg2">
-                                                    <select name="hy" lay-verify="required" lay-search="" id="jg" lay-filter="jg">
+                                                    <select name="hy" lay-verify="required" lay-search="" id="jg"class="inpList" lay-filter="jg">
                                                         <option value="">请选择</option>
                                                         <!-- <option value="1">layer</option>
                                                         <option value="2">form</option> -->
@@ -161,8 +161,8 @@ span{
                                             <div style="position: relative"><span>*</span>点击上传个人近期白底免冠照
                                                 <div class="warn w_tx"></div>
                                                 <div class="file">
-                                                    <input type="file" name="file" id="file" class=""
-                                                        onchange="changepic(this)">
+                                                    <input type="file" name="file" id="file" class="inpList"
+                                                        onchange="changepic(this)" >
                                                 </div>
                                             </div>
                                         </div>
@@ -184,7 +184,7 @@ span{
                                                 <label class="layui-form-label"><span>*</span>现所在地:</label>
                                                 <div class="layui-input-block">
                                                     <input type="text" name="title" lay-verify="title" id="szd" readonly="readonly" style="border-radius: 6px;"
-                                                        autocomplete="off" placeholder="现所在地" class="layui-input">
+                                                        autocomplete="off" placeholder="现所在地" class="layui-input inpList">
                                                         <div class="warn w_sz"></div>
                                                 </div>
                                                 <div id="test1"></div>
@@ -193,7 +193,7 @@ span{
                                                 <label class="layui-form-label">办公电话:</label>
                                                 <div class="layui-input-block">
                                                     <input type="text" name="title" lay-verify="title" id="bgtec" style="border-radius: 6px;"
-                                                        autocomplete="off" placeholder="办公电话" class="layui-input">
+                                                        autocomplete="off" placeholder="办公电话" class="layui-input ">
                                                 </div>
                                             </div>
                                         </div>
@@ -201,11 +201,11 @@ span{
                                     <div class="layui-col-md6">
                                         <div class="grid-demo">
                                             <div class="layui-form-item">
-                                                <label class="layui-form-label" style=""><span>*</span>通讯地址:<div class="ttb"style="position:absolute;z-index:999">
+                                                <label class="layui-form-label"><span>*</span>通讯地址:<div class="ttb"style="position:absolute;z-index:999">
                                                     <img style="width: 32px;"src="./img/house.png" alt=""></i></div>  </label>
                                                 <div class="layui-input-block" >
                                                     <input type="text" name="title" lay-verify="title" id="place"
-                                                        autocomplete="off" placeholder="通讯地址" class="layui-input"style="border-radius: 6px;width:90%;position: relative;padding-left: 37px;" >
+                                                        autocomplete="off" placeholder="通讯地址" class="layui-input inpList"style="border-radius: 6px;width:90%;position: relative;padding-left: 37px;" >
                                                         <div class="warn w_tx2"></div>
                                                 </div>
                                             </div>
@@ -224,7 +224,7 @@ span{
                                                 <label class="layui-form-label"><span>*</span>通讯邮编:</label>
                                                 <div class="layui-input-block" style="width: 155px;">
                                                     <input type="text" name="title" lay-verify="title" id="placenum" style="border-radius: 6px;"
-                                                        autocomplete="off" placeholder="通讯邮编" class="layui-input">
+                                                        autocomplete="off" placeholder="通讯邮编" class="layui-input inpList">
                                                         <div class="warn w_yb"></div>
                                                 </div>
                                             </div>
@@ -253,7 +253,7 @@ span{
                                             <div class="grid-demo">
                                                 <label class="layui-form-label"><span>*</span>文化程度:</label>
                                                 <div class="layui-input-inline diqu">
-                                                    <select name="quiz1" id="whcd" lay-filter="whcd">
+                                                    <select name="quiz1" id="whcd" lay-filter="whcd" class="inpList">
                                                         <option value="">请选择</option>
                                                         <!-- <option value="浙江" selected="">浙江省</option>
                                                         <option value="你的工号">江西省</option>
@@ -270,7 +270,7 @@ span{
                                             <div class="grid-demo">
                                                 <label class="layui-form-label"><span>*</span>专业职称:</label>
                                                 <div class="layui-input-inline diqu">
-                                                    <select name="quiz1" id="zyzc" lay-filter="zyzc">
+                                                    <select name="quiz1" id="zyzc" lay-filter="zyzc" class="inpList">
                                                         <option value="">请选择</option>
                                                         <!-- <option value="浙江" selected="">浙江省</option>
                                                         <option value="你的工号">江西省</option>
@@ -301,7 +301,7 @@ span{
                                                 <label class="layui-form-label"><span>*</span>工作单位及职务:</label>
                                                 <div class="layui-input-block">
                                                     <input type="text" name="title" lay-verify="title" id="work" style="border-radius: 6px;width: 498px;"
-                                                        autocomplete="off" placeholder="请输入工作单位及职务" class="layui-input">
+                                                        autocomplete="off" placeholder="请输入工作单位及职务" class="layui-input inpList">
                                                         <div class="warn w_gzdw"></div>
                                                 </div>
                                             </div>
@@ -329,7 +329,7 @@ span{
                                                 <label class="layui-form-label"><span>*</span>工作经历(艺术简历):</label>
                                                 <div class="layui-input-block">
                                                     <textarea placeholder="请输入工作经历（艺术简历），300字以内" id="experience" style="border-radius: 6px;"
-                                                        class="layui-textarea"></textarea>
+                                                        class="layui-textarea inpList"></textarea>
                                                         <div class="warn w_jl"></div>
                                                 </div>
                                             </div>
@@ -351,7 +351,7 @@ span{
                                             <div class="layui-form-item tec">
                                                 <label class="layui-form-label"><span>*</span>主要从事的艺术门类:</label>
                                                 <div class="layui-input-inline">
-                                                    <select name="hy" lay-verify="required" lay-search="" id="ysml" lay-filter="ysml">
+                                                    <select name="hy" lay-verify="required" class="inpList" lay-search="" id="ysml" lay-filter="ysml">
                                                         <option value="">请选择</option>
                                                         <!-- <option value="1">layer</option>
                                                         <option value="2">form</option> -->
@@ -409,7 +409,7 @@ span{
                                                 <label class="layui-form-label"><span>*</span>文艺志愿服务或公益活动经历:</label>
                                                 <div class="layui-input-block">
                                                     <textarea placeholder="请输入文艺志愿服务或公益活动经历，300字以内" id="experience2" style="border-radius: 6px;"
-                                                        class="layui-textarea"></textarea>
+                                                        class="layui-textarea inpList"></textarea>
                                                         <div class="warn w_gyhd"></div>
                                                 </div>
                                             </div>
@@ -435,7 +435,7 @@ span{
                                                 <option value="1">layer</option>
                                                 <option value="2">form</option>
                                             </select> -->
-                                            <input type="text"class="layui-input" id="tjtype" readonly="readonly" style="cursor: pointer;border-radius: 6px;">
+                                            <input type="text"class="layui-input inpList" id="tjtype" readonly="readonly" style="cursor: pointer;border-radius: 6px;">
                                             <div class="warn w_lx"></div>
                                         </div>
                                         <div id="test2"></div>
@@ -444,7 +444,7 @@ span{
                                     <div class="layui-col-md4">
                                         <label class="layui-form-label" style="width: 91px;"><span>*</span>推荐单位/人:</label>
                                         <div class="layui-input-inline tjr">
-                                            <select name="hy" lay-verify="required" lay-search="" id="tjcompany" lay-filter="tjcompany"> 
+                                            <select name="hy" lay-verify="required" class="inpList" lay-search="" id="tjcompany" lay-filter="tjcompany"> 
                                                 <option value="">请选择</option>
                                                 <!-- <option value="1">layer</option>
                                                 <option value="2">form</option> -->
@@ -461,7 +461,7 @@ span{
                                                     <div class="layui-input-block">
                                                         <input type="text" name="title" lay-verify="title" style="border-radius: 6px;width: 254px;" 
                                                             id="lxpeople" autocomplete="off" placeholder="联系人"
-                                                            class="layui-input" style="width:254px;">
+                                                            class="layui-input inpList" style="width:254px;">
                                                             <div class="warn w_lxr"></div>
                                                     </div>
                                                 </div>
@@ -473,7 +473,7 @@ span{
                                                     <label class="layui-form-label"><span>*</span>手机号:</label>
                                                     <div class="layui-input-block">
                                                         <input type="text" name="title" lay-verify="title" id="sjh" style="border-radius: 6px;padding-left: 15px;"
-                                                            autocomplete="off" placeholder="手机号" class="layui-input"
+                                                            autocomplete="off" placeholder="手机号" class="layui-input inpList"
                                                             style="width:254px;">
                                                             <div class="warn w_sjh"></div>
                                                     </div>
