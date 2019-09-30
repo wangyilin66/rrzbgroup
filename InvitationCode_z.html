@@ -178,7 +178,7 @@
                             <div class="layui-row">
                                 <div class="layui-col-sm3 layui-col-md-offset9">
                                     <div class="hy_btn">
-                                        <button type="button" class="layui-btn layui-btn-normal">一键生成</button>
+                                        <button type="button" class="layui-btn layui-btn-normal"onclick="yijiansc()">一键生成</button>
                                         <div class="clear"></div>
                                     </div>
                                 </div>
@@ -219,7 +219,7 @@
             </div>
             <div class="yqm_btn">
                 <button type="button" class="layui-btn layui-btn-normal">完成并下载</button>
-                <button type="button" class="layui-btn layui-btn-danger">全部邀请码重新生成</button>
+                <button type="button" class="layui-btn layui-btn-danger"id="yjsc_z">全部邀请码重新生成</button>
             </div>
             </form>
         </div>
@@ -237,7 +237,7 @@
                                     <div class="grid-demo grid-demo-bg1">
                                         <label for="">发展年份：
                                             <div style="display: inline-block">
-                                                <select id="nianfen2" name="modules" lay-verify="required" lay-search="" lay-filter="fznf_z2">
+                                                <select id="nianfen2" name="modules" lay-verify="required" lay-search="" lay-filter="fznf_z2" id="fznf_z2">
                                                     <option value="">请选择</option>
                                                     <!-- <option value="1">layer</option>
                                                                     <option value="2">form</option>
@@ -263,7 +263,7 @@
                                 </div>
                                 <div class="layui-col-sm3 layui-col-md-offset3">
                                     <div class="hy_btn">
-                                        <button type="button" class="layui-btn layui-btn-normal">查询</button>
+                                        <button type="button" class="layui-btn layui-btn-normal" onclick="zuzycf()">查询</button>
                                         <button type="button" class="layui-btn layui-btn-normal">一键申领并传播</button>
                                         <div class="clear"></div>
                                     </div>
@@ -572,7 +572,40 @@
 			</div>
 		</div>
 	</div>
-
+    <div class="cover4">
+		<div class="tcc_content">
+			<div class="tcc_title">温馨提示</div>
+			<div class="findfile2 hnzw2">
+				<div style="margin-top: 67px;">邀请码重新生成将把所有邀请码标记为不可用，如邀请码已经发送出去，<br>请慎用。</div>
+			</div>
+			<div class="findfile_an">
+					<button type="button" class="layui-btn layui-btn-normal" id=""onclick="">确定</button>
+				<button type="button" class="layui-btn layui-btn-primary" onclick="close1()">关闭</button>
+			</div>
+		</div>
+    </div>
+    <div class="cover6">
+		<div class="tcc_content">
+			<div class="tcc_title">邀请码详情</div>
+            <div class="findfile codeinfo_z" style="height:205px;margin-top: 8px;border: solid rgba(195, 197, 201, 0.3);padding-left: 76px;overflow: auto;border-width: 1px;">
+                <!-- <div style="display: inline-block;font-size: 16px;padding-top: 10px;width: 45%">1qweqeqeq2</div> -->
+            </div>
+            <div>
+                <button  style="float: right;margin-right: 10px;margin-top: 9px;"class="layui-btn layui-btn-primary"onclick="close1()">关闭</button>
+            </div>
+		</div>
+    </div>
+    <div class="cover7">
+		<div class="tcc_content">
+			<div class="tcc_title">邀请码详情</div>
+            <div class="findfile codeinfo_z2" style="height:205px;margin-top: 8px;border: solid rgba(195, 197, 201, 0.3);padding-left: 76px;overflow: auto;border-width: 1px;">
+                <!-- <div style="display: inline-block;font-size: 16px;padding-top: 10px;width: 45%">1qweqeqeq2</div> -->
+            </div>
+            <div>
+                <button  style="float: right;margin-right: 10px;margin-top: 9px;"class="layui-btn layui-btn-primary"onclick="close1()">关闭</button>
+            </div>
+		</div>
+	</div>
     <script src="./layui/layui.js"></script>
     <script src="./js/layuicommon2.js"></script>
     <script src="./js/jquery.min.js"></script>
@@ -584,11 +617,14 @@
         let treedata = [];
         let ind1;
         function close1() {
-			$(".cover5").css( "display", "none");
+			$(".cover5,.cover4,.cover6,.cover7").css( "display", "none");
         }
         function chuxian(){
             $("#test1").css( "visibility", "visible");	
         }
+        $('#yjsc_z').click(function(){
+            $('.cover4').css( "display", "block");
+        })
         $('#qkqk').click(function(){
             $('#time1').val('');
             $('#time2').val('');
@@ -712,7 +748,14 @@
         }
     })
    }
-   
+   layui.use('form', function () {
+			var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+			form.on('select(fznf_z2)', function (data) {
+				category_z = data.value;
+				//yishu = data.elem[data.elem.selectedIndex].text;
+				form.render('select');
+			})
+		})
    </script>
 </body>
 

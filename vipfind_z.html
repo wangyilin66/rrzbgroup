@@ -528,8 +528,8 @@
 				'<button id="' + 'hy_edit' + obj.id + '"class="layui-btn hy_edit">编辑</button>' +
 				'<a><button id="' + 'hy_find' + obj.id + '"class="layui-btn layui-btn-normal hy_find">查看</button></a>' +
 				'<a><button id="' + 'hy_daochu' + obj.id + '"class="layui-btn layui-btn-normal hy_daochu">导出</button></a>' +
-				'<a><button id="' + 'hy_move' + obj.id + '"class="layui-btn layui-btn-warm hy_move">移除</button></a>' +
-				'<a><button id="' + 'hy_repass' + obj.id + '"class="layui-btn layui-btn-danger hy_repass">重置密码</button></a>' +
+				'<a><button id="' + 'hy_move' + obj.id + '"class="layui-btn layui-btn-warm hy_move" onclick="remove_z(' + obj.id + ')">移除</button></a>' +
+				'<a><button id="' + 'hy_repass' + obj.id + '"class="layui-btn layui-btn-danger hy_repass" onclick="repass_z(' + obj.id + ')">重置密码</button></a>' +
 				'</td>' +
 				'</tr>'
 		}
@@ -569,9 +569,22 @@
 			})
 		})
 		// 会员查询 按钮移除
-		$(document).on('click', '.hy_move', function () {
-			// console.log(id);
-			var hy_move = $(this).attr('id').replace("hy_move", "");
+		// $(document).on('click', '.hy_move', function () {
+		// 	// console.log(id);
+		// 	var hy_move = $(this).attr('id').replace("hy_move", "");
+		// 	var data = {
+		// 		id: hy_move
+		// 	}
+		// 	console.log("yichu", data)
+		// 	base.commonAjax('clav/member/yichuClavMember', data, function (data) {
+		// 		if (data.code == 1) {
+		// 			findvip();
+		// 		}
+		// 	})
+		// })
+		// 会员查询 按钮移除
+		function remove_z(reid){
+			var hy_move =reid;
 			var data = {
 				id: hy_move
 			}
@@ -579,13 +592,30 @@
 			base.commonAjax('clav/member/yichuClavMember', data, function (data) {
 				if (data.code == 1) {
 					findvip();
+					alert('删除成功')
+				}
+				else{
+					alert(data.message)
 				}
 			})
-		})
+		}
 		// 会员查询 重置密码
-		$(document).on('click', '.hy_repass', function () {
-			// console.log(id);
-			var hy_repass = $(this).attr('id').replace("hy_repass", "");
+		// $(document).on('click', '.hy_repass', function () {
+		// 	// console.log(id);
+		// 	var hy_repass = $(this).attr('id').replace("hy_repass", "");
+		// 	var data = {
+		// 		id: hy_repass
+		// 	}
+		// 	base.commonAjax('clav/member/resetClavMember', data, function (data) {
+		// 		if (data.code == 1) {
+		// 			alert("重置密码为：" + data.data)
+		// 			//console.log(data)
+		// 		}
+		// 	})
+		// })
+		// 会员查询 重置密码
+		function repass_z(rpid){
+			var hy_repass=rpid;
 			var data = {
 				id: hy_repass
 			}
@@ -593,10 +623,11 @@
 				if (data.code == 1) {
 					alert("重置密码为：" + data.data)
 					//console.log(data)
+				}else{
+					alert(data.message)
 				}
 			})
-		})
-
+		}
 		$('#szd').click(function () {
 			$('#test1').css("visibility", "visible");
 		})

@@ -149,8 +149,8 @@ daweimingcheng();
 				'<td>' + msg + '<td>' +
 				'<button id="' + 'cnm_up' + obj.id + '"class="layui-btn cnm_up">上移</button>' +
 				'<a><button id="' + 'cnm_down' + obj.id + '"class="layui-btn cnm_down">下移</button></a>' +
-				'<a><button id="' + 'cnm_update' + obj.id + '"class="layui-btn layui-btn-normal cnm_update">编辑</button></a>' +
-				'<a><button id="' + 'cnm_move' + obj.id + '"class="layui-btn layui-btn-danger cnm_move">删除</button></a>' +
+				'<a><button id="' + 'cnm_update' + obj.id + '"class="layui-btn layui-btn-normal cnm_update" onclick="cnz_update('+obj.id+')">编辑</button></a>' +
+				'<a><button id="' + 'cnm_move' + obj.id + '"class="layui-btn layui-btn-danger cnm_move" onclick="cnm_m('+obj.id+')">删除</button></a>' +
 				'</td>' +
 				'</tr>'
 
