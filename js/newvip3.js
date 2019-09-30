@@ -219,7 +219,7 @@ function goupdate() {
                                         //window.open("applyUpdatePage_w.html?id="+data.theId);
                                 }
                                 else{
-                                        alert(data.message)
+                                        alert(data.message);
                                 }
                         })
                 

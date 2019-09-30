@@ -531,6 +531,7 @@
 	<script src="./js/commonheader.js"></script>
 	<script>
 		$('.headerpage').html(commHeader.header);
+		$('.pop_up').hide();
 		var data = {
 
 		};
@@ -670,13 +671,21 @@
 				'<td>' + obj.artTypeId + '</td>' +
 				'<td>' + obj.location + '</td>' +
 				'<td>' +
-				'<button class="layui-btn layui-btn-normal">重发</button>' +
+				'<button class="layui-btn layui-btn-normal" onclick="showpop()">重发</button>' +
 				'<button class="layui-btn">编辑</button>' +
                 '<button class="layui-btn layui-btn-danger">删除</button>'
                 +
 				'</td>' +
 				'</tr>'
-		}
+		};
+
+		$('.xinzheng').on('click',function () { 
+			$('.pop_up').show();
+		 });
+
+		 function showpop() { 
+			$('.pop_up').show();
+		  };
 
 
 		layui.use('form', function () {
