@@ -19,13 +19,14 @@ input{
 }
 .ttb{
     position: absolute;
-    border: solid rgba(195, 197, 201, 0.3);
+    /* border: solid rgba(195, 197, 201, 0.3); */
     border-width: 1px;
     top: 0px;
     border-radius: 6px;
     height: 30px;
-    line-height: 32px;
+    line-height: 30px;
     left: 109px;
+    padding-left: 6px;
 }
 span{
     position: relative;
@@ -161,7 +162,7 @@ span{
                                             <div style="position: relative"><span>*</span>点击上传个人近期白底免冠照
                                                 <div class="warn w_tx"></div>
                                                 <div class="file">
-                                                    <input type="file" name="file" id="file" class="inpList"
+                                                    <input type="file" name="file" id="file" class="inpList" accept="image/*"
                                                         onchange="changepic(this)" >
                                                 </div>
                                             </div>
@@ -202,7 +203,7 @@ span{
                                         <div class="grid-demo">
                                             <div class="layui-form-item">
                                                 <label class="layui-form-label"><span>*</span>通讯地址:<div class="ttb"style="position:absolute;z-index:999">
-                                                    <img style="width: 32px;"src="./img/house.png" alt=""></i></div>  </label>
+                                                    <img style="width: 28px;"src="./img/house.png" alt=""></i></div>  </label>
                                                 <div class="layui-input-block" >
                                                     <input type="text" name="title" lay-verify="title" id="place"
                                                         autocomplete="off" placeholder="通讯地址" class="layui-input inpList"style="border-radius: 6px;width:90%;position: relative;padding-left: 37px;" >

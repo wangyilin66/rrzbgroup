@@ -13,7 +13,20 @@
     height:auto;
     padding-bottom: 50px;
 }
-
+#test1{
+    height: 102px;
+    overflow: auto;
+    width: 303px;
+    position: absolute;
+    left: 3px;
+    top: 63px;
+    background-color: white;
+    z-index: 999;
+    border: solid rgba(222,225,230,0.3);
+    visibility: hidden;
+    border-radius: 6px;
+    visibility:hidden;
+}
 </style>
 </head>
 
@@ -46,7 +59,7 @@
                                     <div class="grid-demo grid-demo-bg1">
                                         <label for="">发展年份：
                                             <div>
-                                                <select id="nianfen" name="modules" lay-verify="required" lay-search="">
+                                                <select id="nianfen" name="modules" lay-verify="required" lay-search="" lay-filter="fznf_z">
                                                     <option value="">请选择</option>
                                                     <!-- <option value="1">layer</option>
 													<option value="2">form</option>
@@ -70,8 +83,8 @@
                                                     <input type="text" name="date" id="time2" lay-verify="date"
                                                         style="width:122px;display: inline-block" placeholder="结束时间"
                                                         autocomplete="off" class="layui-input">
-                                                    <div class="date_font date_tubiao2"><i
-                                                            class="layui-icon layui-icon-refresh-1"></i></div>
+                                                    <div class="date_font date_tubiao2" id="qkqk"><i
+                                                            class="layui-icon layui-icon-refresh-1" ></i></div>
                                                 </div>
                                             </div>
                                         </label>
@@ -82,30 +95,25 @@
                                         <div class="grid-demo">
                                             <label for="">推荐单位/人：
                                                 <div>
-                                                    <select id="yishu" name="modules" lay-verify="required"
-                                                        lay-search="">
-                                                        <option value="">请选择</option>
-                                                        <!-- <option value="1">layer</option>
-                                                            <option value="2">form</option>
-                                                            <option value="3">layim</option> -->
-                                                    </select>
+                                                    <input type="text" placeholder="请选择" readonly="readonly" style="border-radius: 6px;" id='sanjit' onclick="chuxian()">
                                                 </div>
                                             </label>
                                         </div>
                                     </div>
+                                    <div id="test1"></div>
                                     <div class="layui-col-sm3">
                                         <div class="grid-demo">
                                             <label for="">发展名额数：
                                                 <div>
-                                                    <input type="text" placeholder="发展名额数" style="border-radius: 6px;">
+                                                    <input type="text" placeholder="发展名额数" style="border-radius: 6px;" id="fzmees_z">
                                                 </div>
                                             </label>
                                         </div>
                                     </div>
                                     <div class="layui-col-sm3 layui-col-md-offset3">
                                         <div class="hy_btn">
-                                            <button type="button" class="layui-btn layui-btn-danger">清空</button>
-                                            <button type="button" class="layui-btn layui-btn-normal">确认分配</button>
+                                            <button type="reset" class="layui-btn layui-btn-danger">清空</button>
+                                            <button type="button" class="layui-btn layui-btn-normal" onclick="qrfp_z()">确认分配</button>
                                             <div class="clear"></div>
                                         </div>
                                     </div>
@@ -202,31 +210,11 @@
                             <th>邀请码</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td style="width: 50px">
-                                <input type="checkbox" name="" title="" lay-skin="primary">
-                            </td>
-                            <td>12313</td>
-                            <td>会员单位推荐</td>
-                            <td>全国文艺家协会</td>
-                            <td>中国影协</td>
-                            <td style="color: skyblue">查看详情</td>
-                        </tr>
-                        <tr>
-                            <td style="width: 50px">
-                                <input type="checkbox" name="" title="" lay-skin="primary">
-                            </td>
-                            <td>12313</td>
-                            <td>会员单位推荐</td>
-                            <td>全国文艺家协会</td>
-                            <td>中国影协</td>
-                            <td style="color: skyblue">查看详情</td>
-                        </tr>
+                    <tbody id="sccode_z">                       
                     </tbody>
                 </table>
                 <div>
-                    <div id="shuju2"></div>
+                    <div id="shuju2" style="display: flex;justify-content: space-around;"></div>
                 </div>
             </div>
             <div class="yqm_btn">
@@ -249,12 +237,12 @@
                                     <div class="grid-demo grid-demo-bg1">
                                         <label for="">发展年份：
                                             <div style="display: inline-block">
-                                                <select id="yishu" name="modules" lay-verify="required" lay-search="">
+                                                <select id="nianfen2" name="modules" lay-verify="required" lay-search="" lay-filter="fznf_z2">
                                                     <option value="">请选择</option>
                                                     <!-- <option value="1">layer</option>
                                                                     <option value="2">form</option>
                                                                     <option value="3">layim</option> -->
-                                                </select>
+                                                </select> 
                                             </div>
                                         </label>
                                     </div>
@@ -302,33 +290,12 @@
                             <th>操作</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>12313</td>
-                            <td>2018</td>
-                            <td>全国文艺家协会</td>
-                            <td>7</td>
-                            <td style="color: skyblue">以申领</td>
-                            <td>
-                                <button type="button" class="layui-btn layui-btn-normal">查看</button>
-                                <button type="button" class="layui-btn layui-btn-warm">导出</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>12313</td>
-                            <td>2019</td>
-                            <td>全国文艺家协会</td>
-                            <td>8</td>
-                            <td style="color: skyblue">以申领</td>
-                            <td>
-                                <button type="button" class="layui-btn layui-btn-normal">查看</button>
-                                <button type="button" class="layui-btn layui-btn-warm">导出</button>
-                            </td>
-                        </tr>
+                    <tbody id="zzyqmsq_z">
+                        
                     </tbody>
                 </table>
                 <div>
-                    <div id="shuju3"></div>
+                    <div id="shuju3" style="display: flex;justify-content: space-around;"></div>
                 </div>
             </div>
             </form>
@@ -593,7 +560,18 @@
                 </form>
             </div>
     </div>
-
+    <div class="cover5">
+		<div class="tcc_content">
+			<div class="tcc_title">修改分配情况</div>
+			<div class="findfile hnzw">
+				发展名额数：<input type="text" id="fzmes_z">
+			</div>
+			<div class="findfile_an">
+					<button type="button" class="layui-btn layui-btn-normal" id="fzmesqd_z"onclick="fzmesqd_z()">确定</button>
+				<button type="button" class="layui-btn layui-btn-primary" onclick="close1()">关闭</button>
+			</div>
+		</div>
+	</div>
 
     <script src="./layui/layui.js"></script>
     <script src="./js/layuicommon2.js"></script>
@@ -603,6 +581,18 @@
     <script src="./js/commonheader.js"></script>
     <script src="./js/InvitationCode_z.js"></script>
 	<script>
+        let treedata = [];
+        let ind1;
+        function close1() {
+			$(".cover5").css( "display", "none");
+        }
+        function chuxian(){
+            $("#test1").css( "visibility", "visible");	
+        }
+        $('#qkqk').click(function(){
+            $('#time1').val('');
+            $('#time2').val('');
+        })
 		$('.headerpage').html(commHeader.header);
         $('.content_nav').eq(0).show().siblings().hide();
         $(".tatou").css({ "background-color": "#059afe", "color": "white" });
@@ -612,19 +602,118 @@
             $('.hytitle_font').eq(i).css("border-bottom", "solid");
             $('.content_nav').eq(i).show().siblings().hide();
         });
-        layui.use('laypage', function () {
-            var laypage = layui.laypage;
+        $('#test1').mouseleave(function(){
+			$('#test1').css("visibility", "hidden");
+		})
+        var data = {
+        }
+        base.commonAjax('clav/recommendUnit/getAllUnitList', data, function (data) {
+            if (data.code == 1) {
+                //console.log("z", data);
+                treelocaldata = data.data;
+                wtf(data.data);
+               // console.log(treedata)
+                layui.use('tree', function () {
+                    var tree = layui.tree;
 
-            //执行一个laypage实例
-            laypage.render({
-                elem: 'shuju' //注意，这里的 test1 是 ID，不用加 # 号
-                , count: 5 //数据总数，从服务端得到
-                , limit: 1
-            });
+                    //渲染
+                    var inst1 = tree.render({
+                        elem: '#test1'  //绑定元素
+                        ,click: function(obj){
+                       // console.log(obj.data); //得到当前点击的节点数据
+                       // console.log(obj.elem); //得到当前节点元素 
+                        // console.log($('.layui-tree-set').attr("data-id"));
+                      //  console.log(obj.data.id); //得到当前点击的节点数据
+                        let str = obj.data.id;
+                       // let strss = str.indexOf('-');
+                        if(String(str).indexOf('-') != -1){
+							 
+                             let arr = str.split('-');
+                             if(arr.length == 2){
+                                 console.log(treelocaldata[Number(arr[0])].childList[Number(arr[1])]);
+                                 ind1 = treelocaldata[Number(arr[0])].childList[Number(arr[1])].id;
+                                 title1 = treelocaldata[Number(arr[0])].childList[Number(arr[1])].name;
+                                //console.log(ind1,title1)
+                                $('#sanjit').val(title1);
+                                $('#test1').css("visibility","hidden");
+                                 }
+                                 if(arr.length == 3){
+                                 console.log(treelocaldata[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])]);
+                                 ind1 = treelocaldata[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])].id;
+                                 title1 = treelocaldata[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])].name;
+                                //console.log(ind1,title1)
+                                $('#sanjit').val(title1);
+                                $('#test1').css("visibility","hidden");
+                                 }
+                             } else {
+                                 let arr = str;
+                                 console.log(arr);
+                                 console.log(treelocaldata[arr]);
+                                 ind1 = treelocaldata[arr].id;
+                                 title1 = treelocaldata[arr].name;
+                                 //console.log(title1)
+                                 $('#sanjit').val(title1);
+                                 $('#test1').css("visibility","hidden");
+                             }
+                    }
+                        , data:treedata
+                    });
+                    
+                });
+            }
         });
-
-
-    </script>
+        function wtf(data) {
+            data.map((v, i) => {
+                let obj = {};
+                obj.title = v.name;
+                obj.id = i;
+                obj.children = [];
+                v.childList.map((val, ind) => {
+                    let objc = {};
+                    objc.title = val.name;
+                    objc.id = i+'-'+ind;
+                    objc.children = [];
+                    val.childList.map((vv, ii) => {
+                        let objcc = {};
+                        objcc.title = vv.name;
+                        objcc.id = i+'-'+ind + '-' + ii;
+                        objc.children.push(objcc);
+                    })
+                    obj.children.push(objc);
+                });
+                treedata.push(obj);
+            });
+        }
+        layui.use('form', function(){
+          var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+       form.on('select(fznf_z)',function(data){
+        fznf_z=data.value;
+           //mz3=data.elem[data.elem.selectedIndex].text;
+           form.render('select');
+       })
+    })
+   function qrfp_z(){
+    //console.log("提交",ind1)
+    var startTime=$('#time1').val();
+    var endTime=$('#time2').val();
+    var placeCount=$('#fzmees_z').val();
+    var data={
+        startTime:startTime,
+        endTime:endTime,
+        year:fznf_z,
+        units:ind1,
+        placeCount:placeCount
+    }
+    //console.log("提交",data)
+    base.commonAjax('clav/allotInfo/addDevelopPlace', data, function (data) {
+        if(data.code==1){
+            alert('分配成功')
+            codelist_z();
+        }
+    })
+   }
+   
+   </script>
 </body>
 
 </html>
