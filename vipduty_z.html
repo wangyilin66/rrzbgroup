@@ -82,7 +82,7 @@
 			会内职务：<input type="text" id="newzhiwei">
 		</div>
 		<div class="findfile_an">
-				<button type="button" class="layui-btn layui-btn-normal" id="hnzw_add">确定</button>
+				<button type="button" class="layui-btn layui-btn-normal" id="hnzw_add" onclick="hnzw_add()">确定</button>
 			<button type="button" class="layui-btn layui-btn-primary" onclick="close1()">关闭</button>
 		</div>
 	</div>
@@ -112,11 +112,28 @@
 		function close1() {
 			$(".cover4,.cover5").css("display", "none");
 		}
-		 $(document).on('click','#hnzw_add1', function () {
-			$(".cover4").css("display", "inline-block");		
-			
-			$(document).on('click','#hnzw_add', function () {
-				var orgIdentity=$("#newzhiwei").val()
+		$('#hnzw_add1').on('click', function (){
+		 //$(document).on('click','#hnzw_add1', function () {
+			$(".cover4").css("display", "inline-block");
+			$("#newzhiwei").val('')	
+			// $('#hnzw_add').on('click', function (){
+			// //$(document).on('click','#hnzw_add', function () {
+			// 	 orgIdentity=$("#newzhiwei").val()
+			// var data={
+			// 	orgIdentity:orgIdentity
+			// }
+			// console.log('职位',data)
+			// base.commonAjax('clav/orgIdentity/addClavOrgIdentity', data, function (data) {				
+			// 	if(data.code==1){
+			// 		$(".cover4").css("display", "none");					
+			// 		vipdutygl();
+			// 	}
+			// })
+			// })
+		 })
+		 //新增职位
+		 function hnzw_add(){
+			var orgIdentity=$("#newzhiwei").val()
 			var data={
 				orgIdentity:orgIdentity
 			}
@@ -125,10 +142,12 @@
 				if(data.code==1){
 					$(".cover4").css("display", "none");					
 					vipdutygl();
+					alert('操作成功')
+				}else{
+					alert(data.message)
 				}
 			})
-			})
-		 })
+		 }
 		function vipdutygl(orgIdentity){
 			var orgIdentity;
 		var data={
@@ -173,8 +192,8 @@
 					'<td>' + obj.orgIdentity + '</td>'+								
 					'<td>' + obj.count + '</td>'+	
 					'<td>'+	                            
-						'<button id="' + 'duty_updata' + obj.id + '" type="button" class="layui-btn duty_updata">编辑</button>'+	
-						'<a><button id="' + 'duty_move' + obj.id + '" type="button" class="layui-btn layui-btn-danger duty_move">删除</button></a>'+	
+						'<button id="' + 'duty_updata' + obj.id + '" type="button" class="layui-btn duty_updata" onclick="dup('+obj.id+')">编辑</button>'+	
+						'<a><button id="' + 'duty_move' + obj.id + '" type="button" class="layui-btn layui-btn-danger duty_move" onclick="drm('+obj.id+')">删除</button></a>'+	
 						'<a href="./vipdutylist_z.html?id='+obj.id+'"><button id="' + 'duty_find' + obj.id + '" type="button" class="layui-btn layui-btn-normal duty_find" >查看列表</button></a>'+	
 					'</td>'+	
 				'</tr>'
@@ -188,37 +207,76 @@
 			vipdutygl(orgIdentity)
 		}
 		//更新会员职位名称
-		$(document).on('click','.duty_updata', function () {
-         // console.log(id);
-         var duty_updata=$(this).attr('id').replace("duty_updata","");
-		 $(".cover5").css("display", "inline-block");
-		 var data={
-			 id:duty_updata
-		 }
-		 base.commonAjax('clav/orgIdentity/getClavOrgIdentityList', data, function (data) {
-			console.log("xuo",data.data[0].orgIdentity)
-			$('#zhiweiname').val(data.data[0].orgIdentity);
-		 })
-         $("#zwname_add").on('click', function () {
-             var orgIdentity = $('#zhiweiname').val()
-             var id = duty_updata;
-             var data = {
-				orgIdentity: orgIdentity,
-				id: id,
-             }
-             console.log(data)
-             base.commonAjax('clav/orgIdentity/updateClavOrgIdentity', data, function (data) {
-                 if (data.code == 1) {
-                     $(".cover5").css("display", "none");
-                     vipdutygl();
-                 }
-             })   
-         })
-		})
+		// $(document).on('click','.duty_updata', function () {
+        //  // console.log(id);
+        //  var duty_updata=$(this).attr('id').replace("duty_updata","");
+		//  $(".cover5").css("display", "inline-block");
+		//  var data={
+		// 	 id:duty_updata
+		//  }
+		//  base.commonAjax('clav/orgIdentity/getClavOrgIdentityList', data, function (data) {
+		// 	console.log("xuo",data.data[0].orgIdentity)
+		// 	$('#zhiweiname').val(data.data[0].orgIdentity);
+		//  })
+        //  $("#zwname_add").on('click', function () {
+        //      var orgIdentity = $('#zhiweiname').val()
+        //      var id = duty_updata;
+        //      var data = {
+		// 		orgIdentity: orgIdentity,
+		// 		id: id,
+        //      }
+        //      console.log(data)
+        //      base.commonAjax('clav/orgIdentity/updateClavOrgIdentity', data, function (data) {
+        //          if (data.code == 1) {
+        //              $(".cover5").css("display", "none");
+        //              vipdutygl();
+        //          }
+        //      })   
+        //  })
+		// })
+		function dup(douyuid){
+			 duty_updata=douyuid;
+			$(".cover5").css("display", "inline-block");
+			var data={
+				id:duty_updata
+			}
+			base.commonAjax('clav/orgIdentity/getClavOrgIdentityList', data, function (data) {
+				console.log("xuo",data.data[0].orgIdentity)
+				$('#zhiweiname').val(data.data[0].orgIdentity);
+			})
+			$("#zwname_add").on('click', function () {
+				var orgIdentity = $('#zhiweiname').val()
+				var id = duty_updata;
+				var data = {
+					orgIdentity: orgIdentity,
+					id: id,
+				}
+				console.log(data)
+				base.commonAjax('clav/orgIdentity/updateClavOrgIdentity', data, function (data) {
+					if (data.code == 1) {
+						$(".cover5").css("display", "none");
+						vipdutygl();
+					}
+				})   
+			})
+		}
 		//删除
-		$(document).on('click','.duty_move', function () {
-         // console.log(id);
-         var duty_move=$(this).attr('id').replace("duty_move","");
+		// $(document).on('click','.duty_move', function () {
+        //  // console.log(id);
+        //  var duty_move=$(this).attr('id').replace("duty_move","");
+		//  var data={
+		// 	 id:duty_move
+		//  }
+        //      console.log(data)
+        //      base.commonAjax('clav/orgIdentity/deleteClavOrgIdentity', data, function (data) {
+        //          if (data.code == 1) {
+		// 			 alert("删除成功")
+        //              vipdutygl();
+        //          }
+        //      })   
+		//  })
+		 function drm(douyurid){
+			 duty_move=douyurid;
 		 var data={
 			 id:duty_move
 		 }
@@ -227,9 +285,11 @@
                  if (data.code == 1) {
 					 alert("删除成功")
                      vipdutygl();
-                 }
-             })   
-         })
+				 }else{
+					alert(data.message)
+				 }
+             })
+		 }
 	</script>
 </body>
 

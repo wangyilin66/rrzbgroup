@@ -40,6 +40,13 @@ span{
     top: 106px;
     opacity: 0;
 }
+.zcxg span{
+    right: 0px;
+    top: 0px;
+}
+.layui-form-label {
+    padding: 6px 15px;
+}
 </style>
 <body>
     	<!-- 头部 -->
@@ -51,7 +58,7 @@ span{
 
     <div class="content">
         <div class="content_nav">
-            <div class="content_navl"><span><i
+            <div class="content_navl zcxg"><span><i
                         class="layui-icon layui-icon-home"></i>首页&nbsp;&nbsp;</span>/<span>&nbsp;会员管理&nbsp;&nbsp;</span>/&nbsp;添加会员
             </div>
             <form class="layui-form" action="">
@@ -123,14 +130,14 @@ span{
                                                     <div class="warn w_mz"></div>
                                                 </div>
                                             </div>
-                                            <div class="layui-form-item">
+                                            <div class="layui-form-item" style="margin-top: 5px;">
                                                 <label class="layui-form-label">艺名(笔名):</label>
                                                 <div class="layui-input-block">
                                                     <input type="text" name="title" lay-verify="title" id="username2" style="border-radius: 6px;"
                                                         autocomplete="off" placeholder="艺名（笔名）" class="layui-input">
                                                 </div>
                                             </div>
-                                            <div class="layui-form-item">
+                                            <div class="layui-form-item" style="margin-top: 5px;">
                                                 <label class="layui-form-label"><span>*</span>出生日期:</label>
                                                 <div class="layui-input-block">
                                                     <input type="text" name="title" lay-verify="title" id="sr"
@@ -150,8 +157,8 @@ span{
                                                     <div class="warn w_jg"></div>
                                                 </div>
                                             </div>
-                                            <div class="layui-form-item xinwenti">
-                                                <label class="layui-form-label"><span>*</span>新文艺群体:</label>
+                                            <div class="layui-form-item xinwenti"style="margin-top: 2px;">
+                                                <label class="layui-form-label" style="padding-top: 10px;"><span>*</span>新文艺群体:</label>
                                                 <div class="layui-input-block">
                                                     <input type="radio" name="sex" value="是" title="是" data="1"
                                                         checked="">
@@ -377,12 +384,12 @@ span{
                                                     <input type="text" name="title" lay-verify="title" id="genre" style="border-radius: 6px;width: 190px;"
                                                         autocomplete="off" placeholder="具体领域：" class="layui-input"
                                                         style="width:190px;">
-                                                        <i class="layui-icon layui-icon-add-circle jiah" style="float: right;font-size: 30px; color: #059afe;"></i>
+                                                        <!-- <i class="layui-icon layui-icon-add-circle jiah" style="float: right;font-size: 30px; color: #059afe;"></i> -->
                                                 </div>                                               
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="layui-col-md12  ewai" style="display: none;">
+                                    <div class="layui-col-md12  ewai" >
                                         <div class="layui-col-md4">
                                             <div class="grid-demo grid-demo-bg1">
                                                 <div class="layui-form-item tec">
@@ -609,8 +616,8 @@ let idss = getQueryString('id').id;
                  ysml = Number(ysarr[0]);
                 $('#ysml').val(Number(ysarr[0]));
                 if(ysarr[1]){
-                    ysml2 = Number(ysarr[0]);
-                $('#ysml2').val(Number(ysarr[0]));
+                    ysml2 = Number(ysarr[1]);
+                $('#ysml2').val(Number(ysarr[1]));
                 }
                 let lyarr = obj.specificAreas.split(',');
                 // console.log(lyarr[0])

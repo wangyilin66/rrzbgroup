@@ -212,7 +212,7 @@ td{
     z-index: 101;
     /* opacity: 0; */
 }
-.cover5{
+.cover5,.cover4,.cover6,.cover7{
     width: 100%;
     height:100%;
     background-color: rgba(143, 144, 148,0.3);
@@ -220,6 +220,14 @@ td{
     z-index: 999;
     top: 2px;
     display:none;    
+}
+.cover66{
+    width: 100%;
+    height:100%;
+    background-color: rgba(143, 144, 148,0.3);
+    position: fixed;
+    z-index: 999;
+    top: 2px;   
 }
 .tcc_content{
     width: 600px;
@@ -236,6 +244,9 @@ td{
 .findfile{
     height: 190px;
 }
+.findfile2{
+    height: 156px;
+}
 .findfile_an{
     float: right;
     position: relative;
@@ -245,6 +256,10 @@ td{
     line-height: 216px;
     padding-left: 80px;
     font-size: 22px;
+}
+.hnzw2{
+    padding-left: 53px;
+    font-size: 16px;
 }
 #shuju2 .layui-laypage-btn{
     margin-top: 0px;

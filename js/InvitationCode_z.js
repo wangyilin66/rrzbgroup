@@ -163,9 +163,10 @@ function remove_z(nid){
 }
 ////////////////////////////////////////////////////////////////////////
 //邀请码生产
-function codemake_z() {
+function codemake_z(fenpeiTime) {
+	var fenpeiTime;
 	var data = {
-
+		fenpeiTime:fenpeiTime
 	}
 	base.commonAjax('clav/allotInfo/getAllotInfoList', data, function (data) {
 		var pagedata = [];
@@ -207,18 +208,47 @@ function auto2(index, obj) {
 			'<td>' + obj.tjType + '</td>'+
 			'<td>' + obj.dwType + '</td>'+
 			'<td>' + obj.dwName + '</td>'+
-			'<td style="color: skyblue" onclick="lookinfo()">查看详情</td>'+
+			'<td style="color: skyblue;cursor: pointer;"><div onclick="lookinfo(' + obj.id + ')">查看详情</div></td>'+
+			// '<td>'+  
+			// 	'<button onclick="lookinfo(' + obj.id + ')">查看详情</button>'+
+			// '</td>'+
 		'</tr>'
 }
+function yijiansc(){
+	base.commonAjax('clav/allotInfo/createInviteCode', data, function (data) {
+		if (data.code==1) {
+			alert('操作成功')
+			$('.cover4').css( "display", "none");
+		} else {
+			alert(data.code)
+		}
+	})
+}
+function lookinfo(infoid){
+ var ifid=infoid;
+ var data = {
+	 id:ifid
+}
+console.log(data)
+base.commonAjax('clav/allotInfo/chakanInviteCode', data, function (data) {
+		//console.log("查看详情",data)	
+		$('.cover6').css( "display", "block");
+		$('.codeinfo_z').empty();
+		for(var i=0;i<data.data.length;i++){
+			$('.codeinfo_z').append(
+				'<div style="display: inline-block;font-size: 16px;padding-top: 10px;width: 45%">'+data.data[i].inviteCode+'</div>'
+			)
+		}
+})
+}
 ////////////////////////////////////////////////////////////////////////
-//邀请码生产
+//组织邀请码申请
 function zzcode_z() {
 	var data = {
-
 	}
 	base.commonAjax('clav/allotInfo/getAllotInfoList', data, function (data) {
 		var pagedata = [];
-		//console.log("sd",data.totalCount);
+		console.log("sd",data);
 		pagedata = data.data;
 		//调用分页
 		layui.use(['laypage', 'layer'], function () {
@@ -250,13 +280,37 @@ zzcode_z();
 function auto3(index, obj) {
 	return '<tr>'+
 			'<td>' + (index + 1) + '</td>'+
-			'<td>' + obj.fenpeiTime + '</td>'+
+			'<td>' + (obj.fenpeiTime).substr(0,4) + '</td>'+
 			'<td>' + obj.dwName + '</td>'+
 			'<td>' + obj.placeCount + '</td>'+
 			'<td style="color: skyblue">以申领</td>'+
 			'<td>'+
-				'<button type="button" class="layui-btn layui-btn-normal">查看</button>'+
+				'<button type="button" class="layui-btn layui-btn-normal" onclick="zzcode_zz(' + obj.id + ')">查看</button>'+
 				'<button style="margin-left: 7px;" type="button" class="layui-btn layui-btn-warm">导出</button>'+
 			'</td>'+
 		'</tr>'
 }
+function zzcode_zz(zzid){
+	var zfid=zzid;
+	var data={
+		zfid:zfid
+	}
+	base.commonAjax('clav/allotInfo/chakanInviteCode', data, function (data) {
+			$('.cover7').css( "display", "block");
+			$('.codeinfo_z2').empty();
+			for(var i=0;i<data.data.length;i++){
+				$('.codeinfo_z2').append(
+					'<div style="display: inline-block;font-size: 16px;padding-top: 10px;width: 45%">'+data.data[i].inviteCode+'</div>'
+				)
+			}
+	})
+}
+//查询
+function zuzycf(){
+	if(($('#fznf_z2').val())!=''){
+		var fenpeiTime=category_z;
+	}
+	codemake_z(fenpeiTime);
+}
+
+
