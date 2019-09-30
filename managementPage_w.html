@@ -73,8 +73,31 @@
             width: 100%;
             background: rgba(0, 0, 0,0.3);
 			z-index: 999;
-			display: none;
+			
 		}
+		
+		.show_list_box{
+			width: 685px;
+            height: 700px;
+            margin-left: -343px;
+            background: #fff;
+            position: absolute;
+            left: 50%;
+			display: none; 
+			top:100px;
+		 }
+
+		 .send_message_box{
+            width: 685px;
+            height: 700px;
+            margin-left: -343px;
+            background: #fff;
+            position: absolute;
+            left: 50%;
+			top:100px;
+			 display: none; 
+        }
+
 		.textare_box{
 			width: 685px;
             height: 500px;
@@ -83,7 +106,7 @@
             position: absolute;
             left: 50%;
 			top:200px;
-			display: none;
+			 /* display: none;  */
 		}
 		.textare_box > p{
             font-size: 16px;
@@ -124,15 +147,6 @@
 			margin-left: 10px;
 		}
 
-		 .show_list_box{
-			width: 685px;
-            height: 700px;
-            margin-left: -343px;
-            background: #fff;
-            position: absolute;
-            left: 50%;
-			top:100px;
-		 }
 		 .show_list_box > p{
             font-size: 16px;
             padding-left: 10px;
@@ -177,16 +191,7 @@
 			margin-left: 15px;
 			cursor:pointer;
 		}
-        .send_message_box{
-            width: 685px;
-            height: 700px;
-            margin-left: -343px;
-            background: #fff;
-            position: absolute;
-            left: 50%;
-			top:100px;
-			display: none;
-        }
+
         .send_message_box > p{
             font-size: 16px;
             padding-left: 10px;
@@ -298,7 +303,7 @@
 		}
 		#layui{
 			display: flex;
-			justify-content: space-between;
+			justify-content: space-around;
 		}
 
         #zwinp{

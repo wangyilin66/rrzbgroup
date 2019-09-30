@@ -219,6 +219,7 @@
                       </div>
                   </div>
                   <p class="s_tit">（上传格式为图片或PDF文件，图片最多上传三张。）</p>
+
                   <div class="tijiao">提交</div>
                 </div>
             </div>
@@ -226,6 +227,7 @@
 </div>
 <script type="text/javascript" src='./js/common.js'></script>
 <script type="text/javascript" src='./js/jquery.min.js'></script>
+<script type="text/javascript" src='./layui/layui.js'></script>
 <script type="text/javascript">
 
     let zz = null;
@@ -245,9 +247,11 @@
             }
 
             $('.xg').on('click', function () {
+                let id = getQueryString('id').id;
                 //window.location.href = "applyFormPage_w.html";
+                window.location.href = "applyFormPage_w.html?id="+id;
                 //window.close();
-                history.go(-1);
+               //history.go(-1);
             });
 
             //打印
@@ -313,8 +317,6 @@ $('.tijiao').on('click',function () {
 
  });
            
-
-
 
         </script>
 </body>
