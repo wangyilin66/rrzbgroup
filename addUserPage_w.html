@@ -32,6 +32,9 @@
     .content_navl{
         margin-bottom: 20px;
     }
+    .layui-form-label {
+    padding: 6px 15px;
+}
     </style>
 </head>
 
@@ -117,14 +120,14 @@
                                                         <div class="warn w_mz"></div>
                                                     </div>
                                                 </div>
-                                                <div class="layui-form-item">
-                                                    <label class="layui-form-label">艺名（笔名）：</label>
+                                                <div class="layui-form-item" style="margin-top: 5px;">
+                                                    <label class="layui-form-label">艺名(笔名)：</label>
                                                     <div class="layui-input-block">
                                                         <input type="text" name="title" lay-verify="title" id="username2"
                                                             autocomplete="off" placeholder="艺名（笔名）" class="layui-input inpList">
                                                     </div>
                                                 </div>
-                                                <div class="layui-form-item">
+                                                <div class="layui-form-item" style="margin-top: 5px;">
                                                     <label class="layui-form-label"><span>*</span>出生日期：</label>
                                                     <div class="layui-input-block">
                                                         <input type="text" name="title" lay-verify="title" id="sr"
@@ -144,8 +147,8 @@
                                                         <div class="warn w_jg"></div>
                                                     </div>
                                                 </div>
-                                                <div class="layui-form-item xinwenti">
-                                                    <label class="layui-form-label"><span>*</span>新文艺群体:</label>
+                                                <div class="layui-form-item xinwenti" style="margin-top: 2px;">
+                                                    <label class="layui-form-label" style="padding-top: 10px;"><span>*</span>新文艺群体:</label>
                                                     <div class="layui-input-block">
                                                         <input type="radio"  class="wy1" name="sex" value="是" title="是" data="1"
                                                             checked="">
@@ -157,13 +160,13 @@
                                         </div>
                                         <div class="layui-col-md4 headp">
                                             <div class="grid-demo grid-demo-bg1">
-                                                <div class="headimg">
+                                                <div class="headimg" style="padding: 4px;">
                                                     <img src="./img/head.png" alt="" id="show">
                                                 </div>
                                                 <div style="position: relative"><span>*</span>点击上传个人近期白底免冠照
                                                     <div class="warn w_tx"></div>
                                                     <div class="file">
-                                                        <input type="file" name="file" id="file" class=""
+                                                        <input type="file" name="file" id="file" class="" accept="image/*"
                                                             onchange="changepic(this)">
                                                     </div>
                                                 </div>

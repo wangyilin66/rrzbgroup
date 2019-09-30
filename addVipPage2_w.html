@@ -32,6 +32,9 @@ input{
     right: 6px;
     top: 3px;
 } */
+.layui-form-label {
+    padding: 6px 15px;
+}
 </style>
 <body>
     	<!-- 头部 -->
@@ -115,14 +118,14 @@ input{
                                                     <div class="warn w_mz"></div>
                                                 </div>
                                             </div>
-                                            <div class="layui-form-item">
+                                            <div class="layui-form-item" style="margin-top: 5px;">
                                                 <label class="layui-form-label">艺名(笔名):</label>
                                                 <div class="layui-input-block">
                                                     <input type="text" name="title" lay-verify="title" id="username2" style="border-radius: 6px;"
                                                         autocomplete="off" placeholder="艺名（笔名）" class="layui-input inpList">
                                                 </div>
                                             </div>
-                                            <div class="layui-form-item">
+                                            <div class="layui-form-item" style="margin-top: 5px;">
                                                 <label class="layui-form-label"><span>*</span>出生日期:</label>
                                                 <div class="layui-input-block">
                                                     <input type="text" name="title" lay-verify="title" id="sr"
@@ -142,8 +145,8 @@ input{
                                                     <div class="warn w_jg"></div>
                                                 </div>
                                             </div>
-                                            <div class="layui-form-item xinwenti">
-                                                <label class="layui-form-label"><span>*</span>新文艺群体:</label>
+                                            <div class="layui-form-item xinwenti" style="margin-top: 2px;">
+                                                <label class="layui-form-label" style="padding-top: 10px;"><span>*</span>新文艺群体:</label>
                                                 <div class="layui-input-block">
                                                     <input type="radio" name="sex" value="是" title="是" class="inpList" data="1"
                                                         checked="">
