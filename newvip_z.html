@@ -496,7 +496,7 @@ span{
                 </div>
                 <div class="anniu">
                     <button type="button" class="layui-btn layui-btn-normal" onclick="tijiao()">提交</button>
-                    <button type="reset" class="layui-btn layui-btn-primary">取消</button>
+                    <button type="reset" class="layui-btn layui-btn-primary" onclick="qux()">取消</button>
                 </div>
             </form>
         </div>
@@ -725,7 +725,9 @@ span{
         $(".ewai").css('display','block')
         $(".jiah").css('display','none')
     })
-
+    function qux(){
+        window.location.href="./vipfind_z.html";
+    }
     </script>
 </body>
 

@@ -100,6 +100,9 @@ function sexfind() {
                 if (data.code == 1) {
                         $('#sex').val('' + data.gender + '');
                 }
+                else{
+                        alert(data.message)
+                }
         });
 }
 function birthfind() {
@@ -110,6 +113,9 @@ function birthfind() {
         base.commonAjax('clav/idNumber/checkIdNumberAndReturnInfo', data, function (data) {
                 if (data.code == 1) {
                         $('#sr').val('' + data.birthDay + '');
+                }
+                else{
+                        alert(data.message)
                 }
         });
 }
@@ -217,7 +223,7 @@ function goupdate() {
                                 base.commonAjax('clav/member/addClavMember', data, function (data) {
                                         if (data.code == 1) {
                                                 console.log('成功');
-                                                alert('注册成功。');
+                                                alert('添加成功。');
                                                 // history.go(0);
                                                 window.location.href='./vipfind_z.html'
                                         }

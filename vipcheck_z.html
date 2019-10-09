@@ -78,7 +78,7 @@
 			</div>
 			
 			<div class="findres">
-				<button type="button" class="layui-btn layui-btn-normal">批量导出</button>
+				<button type="button" class="layui-btn layui-btn-normal" onclick="jqchk()">批量导出</button>
 				<table class="layui-table" lay-skin="line">
 					<colgroup>
 						<col width="150">
@@ -88,9 +88,9 @@
 					<thead>
 						<tr class="tatou">
 							<th style="width: 50px">
-								<input type="checkbox" name="" title="" lay-skin="primary" class="table_button" lay-filter="table111">
-								<div class="tableyuan"></div>
-								<div class="tableyuan2"></div>
+								<input type="checkbox" name="" title="" lay-skin="primary" class="table_button" lay-filter="table111" id="checkAll">
+								<!-- <div class="tableyuan"></div> -->
+								<!-- <div class="tableyuan2"></div> -->
 							</th>
 							<th>平台编号</th>
 							<th>单位类型</th>
@@ -497,6 +497,37 @@ $('#qqkk').on('click',function(){
 			a = false;
 			b = false;
 		 });
+
+
+		 $("#checkAll").click(function(){
+			   $("input[type='checkbox']").prop("checked",$("#checkAll").is(':checked'));
+		})
+		function jqchk(){ //jquery获取复选框值
+		    var chk_value =[];
+		    $('input[class="s"]:checked').each(function(){
+		    chk_value.push($(this).val());
+		    });
+		    if(chk_value==''){
+		    	alert('请选择')
+		    	return false;
+		    }
+			 console.log("选中的值",chk_value)
+			 var a=(chk_value).join();
+			 var data={
+				 ids:a
+			 }
+			 console.log(data)
+			 console.log(typeof(data))
+			 base.commonAjax('clav/exportExcel/downloadsExcelDown', data, function (data) {
+				// console.log(data)
+				// if(data.code==1){
+				// 	console.log(data)
+				// 	alert('操作成功')
+				// }else{
+				// 	alert('操作失败')
+				// }
+			 })
+		}
 	</script>
 </body>
 

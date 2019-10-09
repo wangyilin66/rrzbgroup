@@ -174,7 +174,7 @@ $(document).on('click', '.lis_find', function () {
             // console.log(data)
             $(".li_file").empty();
             $('.li_file').append(
-                '<a href="' + data.data.remarks1 + '" download="">' +
+                '<a href="' + data.data.remarks1 + '" download="理事申请上传文件">' +
                 '<div class="wj sli_downloadfile">理事申请上传文件</div>' +
                 '</a>'
             );
@@ -356,7 +356,7 @@ function auto2(index, obj) {
 function auto3(index, obj) {
     return '<tr>' +
         '<td style="width: 50px">' +
-        '<input type="checkbox" name="" title="" lay-skin="primary">' +
+        '<input type="checkbox" name="" title="" lay-skin="primary" class="s" value="'+ obj.id+'">' +
         '</td>' +
         '<td>' + (index + 1) + '</td>' +
         '<td>' + obj.createBy + '</td>' +
@@ -384,17 +384,17 @@ $(document).on('click', '.find', function () {
             console.log(data)
             $(".findfile").empty();
             $('.findfile').append(
-                '<a href="' + data.data.applicationBook + '" download="">' +
-                '<div class="wj">申请书.doc</div>' +
+                '<a href="' + data.data.applicationBook + '" download="申请书">' +
+                '<div class="wj">申请书</div>' +
                 '</a>' +
-                '<a href="' + data.data.associationRule + '" download="">' +
-                '<div class="wj">协会章程.pdf</div>' +
+                '<a href="' + data.data.associationRule + '" download="协会章程">' +
+                '<div class="wj">协会章程</div>' +
                 '</a>' +
-                '<a href="' + data.data.unitSituation + '" download="">' +
-                '<div class="wj" >单位情况介绍.doc</div>' +
+                '<a href="' + data.data.unitSituation + '" download="单位情况介绍">' +
+                '<div class="wj" >单位情况介绍</div>' +
                 '</a>' +
-                '<a href="' + data.data.aptitudeProve + '" download="">' +
-                '<div class="wj">资质证明.pdf</div>' +
+                '<a href="' + data.data.aptitudeProve + '" download="资质证明">' +
+                '<div class="wj">资质证明</div>' +
                 '</a>'
             );
         }
@@ -568,7 +568,7 @@ $(document).on('click', '.vipb_find', function () {
             console.log(data)
             $(".vipb_file").empty();
             $('.vipb_file').append(
-                '<a href="' + data.data.uploadFile + '"download="" >' +
+                '<a href="' + data.data.uploadFile + '"download="会员上传文件" >' +
                 '<div class="wj">会员上传文件</div>' +
                 '</a>'
             );

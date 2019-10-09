@@ -142,14 +142,14 @@
 			<div class="hy_btn">
 				<button type="reset" class="layui-btn layui-btn-normal" id="btnclear"
 					style="background-color: grey;">清空条件</button>
-				<button type="button" class="layui-btn layui-btn-normal">通讯录导出</button>
+				<button type="button" class="layui-btn layui-btn-normal" onclick="tec()">通讯录导出</button>
 				<a href="./newvip_z.html"><button type="button" class="layui-btn layui-btn-normal">新增</button></a>
 				<button type="button" class="layui-btn layui-btn-normal" id="tjfind">查询</button>
 				<div class="clear"></div>
 			</div>
 			</form>
 			<div class="findres">
-				<button type="button" class="layui-btn layui-btn-normal">批量导出</button>
+				<button type="button" class="layui-btn layui-btn-normal" onclick="jqchk()">批量导出</button>
 				<table class="layui-table" lay-skin="line">
 					<colgroup>
 						<col width="150">
@@ -159,7 +159,7 @@
 					<thead>
 						<tr class="tatou">
 							<th style="width: 50px">
-								<input type="checkbox" name="" title="" lay-skin="primary">
+								<input type="checkbox" name="" title="" lay-skin="primary" id="checkAll">
 							</th>
 							<th>平台编号</th>
 							<th>会员编号</th>
@@ -304,9 +304,9 @@
 			}
 			base.commonAjax('clav/member/getClavMemberList2', data, function (data) {
 				var pagedata = [];
-				console.log(data);
+				//console.log(data);
 				pagedata = data.data;
-				console.log(pagedata)
+				//console.log(pagedata)
 
 				//调用分页
 				layui.use(['laypage', 'layer'], function () {
@@ -514,7 +514,7 @@
 		function auto(index, obj) {
 			return '<tr>' +
 				'<td style="width: 50px">' +
-				'<input type="checkbox" name="" title="" lay-skin="primary">' +
+				'<input type="checkbox" name="" title="" lay-skin="primary" class="s" value="' + obj.id + '">' +
 				'</td>' +
 				'<td>' + (index + 1) + '</td>' +
 				'<td>' + obj.memberNo + '</td>' +
@@ -553,13 +553,13 @@
 					$(".hy_file").empty();
 					if(data.data.uploadFile!=null){
 						$('.hy_file').append(
-						'<a href="' + data.data.uploadFile + '" download="">' +
+						'<a href="' + data.data.uploadFile + '" download="会员上传文件">' +
 						'<div class="wj">会员上传文件</div>' +
 						'</a>'
 					);
 					}else{
 						$('.hy_file').append(
-						'<a href="newvip3_z.html?id='+hy_find+'" download="">' +
+						'<a href="newvip3_z.html?id='+hy_find+'">' +
 						'<div class="wj">会员上传文件</div>' +
 						'</a>'
 					);
@@ -649,6 +649,34 @@
 		function z_qk(){
 			$('#time1').val('');
 			$('#time2').val('');
+		}
+
+		$("#checkAll").click(function(){
+			   $("input[type='checkbox']").prop("checked",$("#checkAll").is(':checked'));
+		})
+		function jqchk(){ //jquery获取复选框值
+		    var chk_value =[];
+		    $('input[class="s"]:checked').each(function(){
+		    chk_value.push($(this).val());
+		    });
+		    if(chk_value==''){
+		    	alert('请选择')
+		    	return false;
+		    }
+		 	console.log("选中的值",chk_value)
+		}
+		function tec(){
+			var data={
+
+			}
+			base.commonAjax('clav/count/getLocalArtCount', data, function (data) {
+				if(data.code==1){
+					alert('操作成功')
+				}
+				else{
+					alert(data.message)
+				}
+			})
 		}
 	</script>
 </body>
