@@ -19,7 +19,7 @@ input{
 }
 .ttb{
     position: absolute;
-    border: solid rgba(195, 197, 201, 0.3);
+    /* border: solid rgba(195, 197, 201, 0.3); */
     border-width: 1px;
     top: 0px;
     border-radius: 6px;
@@ -27,13 +27,17 @@ input{
     line-height: 32px;
     left: 109px;
 }
-/* span{
+span{
     position: relative;
     right: 6px;
     top: 3px;
-} */
+}
 .layui-form-label {
     padding: 6px 15px;
+}
+.zcxg span{
+    right: 0px;
+    top: 0px;
 }
 </style>
 <body>
@@ -46,7 +50,7 @@ input{
 
     <div class="content">
         <div class="content_nav">
-            <div class="content_navl"><span><i
+            <div class="content_navl zcxg"><span><i
                         class="layui-icon layui-icon-home"></i>首页&nbsp;&nbsp;</span>/<span>&nbsp;志愿者管理&nbsp;&nbsp;</span>/&nbsp;添加文艺志愿者2
             </div>
             <form class="layui-form" action="">
@@ -164,7 +168,7 @@ input{
                                             <div style="position: relative"><span>*</span>点击上传个人近期白底免冠照
                                                 <div class="warn w_tx"></div>
                                                 <div class="file">
-                                                    <input type="file" name="file" id="file" class="inpList"
+                                                    <input type="file" name="file" id="file" class="inpList" accept="image/*"
                                                         onchange="changepic(this)">
                                                 </div>
                                             </div>
@@ -204,11 +208,11 @@ input{
                                     <div class="layui-col-md6">
                                         <div class="grid-demo">
                                             <div class="layui-form-item">
-                                                <label class="layui-form-label" style="padding-right: 40px;"><span>*</span>通讯地址:<div class="ttb"style="position:absolute;">
-                                                    <img style="width: 32px;"src="./img/house.png" alt=""></i></div>  </label>
+                                                <label class="layui-form-label" ><span>*</span>通讯地址:<div class="ttb"style="position:absolute;z-index:999;left: 121px;">
+                                                    <img style="width: 28px;"src="./img/house.png" alt=""></i></div>  </label>
                                                 <div class="layui-input-block" >
                                                     <input type="text" name="title" lay-verify="title" id="place"
-                                                        autocomplete="off" placeholder="通讯地址" class="layui-input inpList"style="border-radius: 6px;width:90%;position: relative;left:9px;" >
+                                                        autocomplete="off" placeholder="通讯地址" class="layui-input inpList"style="border-radius: 6px;width:90%;position: relative;left:9px;padding-left: 38px;" >
                                                         <div class="warn w_tx2"></div>
                                                 </div>
                                             </div>
@@ -438,7 +442,7 @@ input{
                                                 <option value="1">layer</option>
                                                 <option value="2">form</option>
                                             </select> -->
-                                            <input type="text"class="layui-input inpList" id="tjtype" readonly="readonly" style="cursor: pointer;border-radius: 6px;">
+                                            <input type="text"class="layui-input inpList"placeholder="请选择" id="tjtype" readonly="readonly" style="cursor: pointer;border-radius: 6px;">
                                             <div class="warn w_lx"></div>
                                         </div>
                                         <div id="test2"></div>

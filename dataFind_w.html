@@ -177,7 +177,7 @@
 	<div class="content">
 		<div class="content_nav">
 			<div class="content_navl"><span><i
-						class="layui-icon layui-icon-home"></i>首页&nbsp;&nbsp;</span>/<span>&nbsp;会员管理&nbsp;&nbsp;</span>/&nbsp;会员信息统计
+						class="layui-icon layui-icon-home"></i>首页&nbsp;&nbsp;</span>/<span>&nbsp;<a href="./vipfind_z.html" style="color:#5d8bc8;">会员管理</a>&nbsp;&nbsp;</span>/&nbsp;会员信息统计
 			</div>
 			<div class="content_navi">
 				<form class="layui-form" action="">
@@ -508,7 +508,7 @@
 					elem: 'layui'
 					, count: pagedata.length,
 					layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
-					limit: 2,
+					limit: 10,
 					jump: function (obj) {
 						//模拟渲染
 						document.getElementById('tb').innerHTML = function () {
