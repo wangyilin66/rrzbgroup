@@ -1,3 +1,436 @@
+@media(min-width: 1px){
+    .hytitle{
+        height: 30px;
+    }
+    .content{
+        background-color:#eceff4;
+        height: 2005px;
+    }
+    .content_nav{
+        width: 90%;
+        height: 800px;
+        margin: auto;
+    }
+    .content_navl{
+        width: 300px;
+        font-weight: 800;
+        font-size: 15px;
+        margin-left: 5px;
+        color: gray;
+        padding-top: 20px;
+    }
+    .content_navl span{
+        width: 300px;
+        color: #5d8bc8;
+    }
+    .grinfo{
+        height: auto;
+        margin-bottom: 35px;
+    }
+    .warn{
+     color: red  
+    }    
+    .qtinfo{
+        height: auto;
+        margin-bottom: 35px;
+    }
+    #test1{
+        height: 128px;
+        overflow: auto;
+        width: 343px;
+        position: absolute;
+        left: 111px;
+        background-color: white;
+        z-index: 999;
+        border: solid rgba(222,225,230,0.3);
+        visibility: hidden;
+    }
+    .gzinfo{
+        height: auto;
+        margin-bottom: 35px;
+    }
+    .zyinfo{
+        height: auto;
+        margin-bottom: 35px;
+    }
+    .tjinfo{
+        height: auto;
+        margin-bottom: 35px;
+    }
+    .grinfoc, .qtinfoc,.gzinfoc,.zyinfoc,.tjinfoc{
+        background-color: white;
+        padding-top: 23px;
+        padding-bottom: 21px;
+    }
+    .grinfot,.qtinfot,.gzinfot,.zyinfot,.tjinfot{
+        background-color:#059afe;
+        color: white;
+        height: 50px;
+        line-height: 50px;
+        font-size: 16px;
+        padding-left: 14px;
+    }
+    .headimg{
+        width: 218px;
+        height: 218px;
+        border: solid rgba(224,227,236,0.3);
+    }
+    .headimg img{
+        border-radius: 50%;
+        width: 218px;
+        height: 218px;
+    }
+    .mz{
+        padding-bottom: 14px;
+    }
+    .xinwenti{
+        padding-top: 12px;
+    }
+    .headp{
+        padding-left: 50px;
+    }
+    .diqu{
+        width: 113px;
+    }
+    .tec{
+        padding-top: 15px;
+    }
+    .anniu{
+        width: 200px;
+        margin: auto;
+    }
+    span{
+        color: red;
+    }
+    .file{
+        position: absolute;
+        bottom: 21px;
+    }
+    #file{
+        width: 218px;
+        height:218px;
+        opacity: 0;
+    }
+    #sr,#szd,.jiah{
+        cursor: pointer;
+    }
+    #sex{
+        cursor: pointer;
+    }
+    .zzmm2,.mz2,.jg2{
+        width:265px;
+    }
+    .tjlx,.tjr{
+        width: 254px;
+    }
+    .jiah{
+        position: absolute;
+        top: 0;
+        right: 2px;
+    }
+    .layui-col-md4{
+        position: relative;
+    }
+    #test2{
+        position: absolute;
+        left:110px;
+        top:34px;
+        z-index: 999;
+        background: #fff;
+        height: 150px;
+        overflow-y: scroll;
+        width: 254px;
+    }
+    }
+@media(min-width: 1200px){
+.hytitle{
+    height: 30px;
+}
+.content{
+    background-color:#eceff4;
+    height: 2005px;
+}
+.content_nav{
+    width: 90%;
+    height: 800px;
+    margin: auto;
+}
+.content_navl{
+    width: 300px;
+    font-weight: 800;
+    font-size: 15px;
+    margin-left: 5px;
+    color: gray;
+    padding-top: 20px;
+}
+.content_navl span{
+    width: 300px;
+    color: #5d8bc8;
+}
+.grinfo{
+    height: auto;
+    margin-bottom: 35px;
+}
+.warn{
+ color: red  
+}    
+.qtinfo{
+    height: auto;
+    margin-bottom: 35px;
+}
+#test1{
+    height: 128px;
+    overflow: auto;
+    width: 343px;
+    position: absolute;
+    left: 111px;
+    background-color: white;
+    z-index: 999;
+    border: solid rgba(222,225,230,0.3);
+    visibility: hidden;
+}
+.gzinfo{
+    height: auto;
+    margin-bottom: 35px;
+}
+.zyinfo{
+    height: auto;
+    margin-bottom: 35px;
+}
+.tjinfo{
+    height: auto;
+    margin-bottom: 35px;
+}
+.grinfoc, .qtinfoc,.gzinfoc,.zyinfoc,.tjinfoc{
+    background-color: white;
+    padding-top: 23px;
+    padding-bottom: 21px;
+}
+.grinfot,.qtinfot,.gzinfot,.zyinfot,.tjinfot{
+    background-color:#059afe;
+    color: white;
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+    padding-left: 14px;
+}
+.headimg{
+    width: 218px;
+    height: 218px;
+    border: solid rgba(224,227,236,0.3);
+}
+.headimg img{
+    border-radius: 50%;
+    width: 218px;
+    height: 218px;
+}
+.mz{
+    padding-bottom: 14px;
+}
+.xinwenti{
+    padding-top: 12px;
+}
+.headp{
+    padding-left: 50px;
+}
+.diqu{
+    width: 113px;
+}
+.tec{
+    padding-top: 15px;
+}
+.anniu{
+    width: 200px;
+    margin: auto;
+}
+span{
+    color: red;
+}
+.file{
+    position: absolute;
+    bottom: 21px;
+}
+#file{
+    width: 218px;
+    height:218px;
+    opacity: 0;
+}
+#sr,#szd,.jiah{
+    cursor: pointer;
+}
+#sex{
+    cursor: pointer;
+}
+.zzmm2,.mz2,.jg2{
+    width:265px;
+}
+.tjlx,.tjr{
+    width: 254px;
+}
+.jiah{
+    position: absolute;
+    top: 0;
+    right: 2px;
+}
+.layui-col-md4{
+    position: relative;
+}
+#test2{
+    position: absolute;
+    left:110px;
+    top:34px;
+    z-index: 999;
+    background: #fff;
+    height: 150px;
+    overflow-y: scroll;
+    width: 254px;
+}
+}
+@media(min-width: 1374px){
+    .hytitle{
+        height: 30px;
+    }
+    .content{
+        background-color:#eceff4;
+        height: 2005px;
+    }
+    .content_nav{
+        width: 80%;
+        height: 800px;
+        margin: auto;
+    }
+    .content_navl{
+        width: 300px;
+        font-weight: 800;
+        font-size: 15px;
+        margin-left: 5px;
+        color: gray;
+        padding-top: 20px;
+    }
+    .content_navl span{
+        width: 300px;
+        color: #5d8bc8;
+    }
+    .grinfo{
+        height: auto;
+        margin-bottom: 35px;
+    }
+    .warn{
+     color: red  
+    }    
+    .qtinfo{
+        height: auto;
+        margin-bottom: 35px;
+    }
+    #test1{
+        height: 128px;
+        overflow: auto;
+        width: 343px;
+        position: absolute;
+        left: 111px;
+        background-color: white;
+        z-index: 999;
+        border: solid rgba(222,225,230,0.3);
+        visibility: hidden;
+    }
+    .gzinfo{
+        height: auto;
+        margin-bottom: 35px;
+    }
+    .zyinfo{
+        height: auto;
+        margin-bottom: 35px;
+    }
+    .tjinfo{
+        height: auto;
+        margin-bottom: 35px;
+    }
+    .grinfoc, .qtinfoc,.gzinfoc,.zyinfoc,.tjinfoc{
+        background-color: white;
+        padding-top: 23px;
+        padding-bottom: 21px;
+    }
+    .grinfot,.qtinfot,.gzinfot,.zyinfot,.tjinfot{
+        background-color:#059afe;
+        color: white;
+        height: 50px;
+        line-height: 50px;
+        font-size: 16px;
+        padding-left: 14px;
+    }
+    .headimg{
+        width: 218px;
+        height: 218px;
+        border: solid rgba(224,227,236,0.3);
+    }
+    .headimg img{
+        border-radius: 50%;
+        width: 218px;
+        height: 218px;
+    }
+    .mz{
+        padding-bottom: 14px;
+    }
+    .xinwenti{
+        padding-top: 12px;
+    }
+    .headp{
+        padding-left: 50px;
+    }
+    .diqu{
+        width: 113px;
+    }
+    .tec{
+        padding-top: 15px;
+    }
+    .anniu{
+        width: 200px;
+        margin: auto;
+    }
+    span{
+        color: red;
+    }
+    .file{
+        position: absolute;
+        bottom: 21px;
+    }
+    #file{
+        width: 218px;
+        height:218px;
+        opacity: 0;
+    }
+    #sr,#szd,.jiah{
+        cursor: pointer;
+    }
+    #sex{
+        cursor: pointer;
+    }
+    .zzmm2,.mz2,.jg2{
+        width:265px;
+    }
+    .tjlx,.tjr{
+        width: 254px;
+    }
+    .jiah{
+        position: absolute;
+        top: 0;
+        right: 2px;
+    }
+    .layui-col-md4{
+        position: relative;
+    }
+    #test2{
+        position: absolute;
+        left:110px;
+        top:34px;
+        z-index: 999;
+        background: #fff;
+        height: 150px;
+        overflow-y: scroll;
+        width: 254px;
+    }
+}
+@media(min-width: 1792px){
 .hytitle{
     height: 30px;
 }
@@ -139,4 +572,5 @@ span{
     height: 150px;
     overflow-y: scroll;
     width: 254px;
+}
 }

@@ -200,7 +200,7 @@
 					<div style="display: inline-block">所属推荐类型：</div>
 					<div style="display: inline-block">
 						<input id="wwcc" name="modules" readonly="readonly" lay-verify="required" class="layui-input"
-							lay-search="">
+							lay-search="" style="cursor: pointer;">
 
 						<!-- <option value="1">layer</option>
 						<option value="2">form</option>
@@ -211,7 +211,7 @@
 				</div>
 				<div class="cnm">
 					<div style="display: inline-block">关联组织：</div>
-					<div style="display: inline-block">
+					<div style="display: inline-block" >
 						<select id="ccglzz" name="modules" lay-verify="required" lay-search="" lay-filter="ccglzz">
 							<option value="">请选择</option>
 							<!-- <option value="1">layer</option>
@@ -256,6 +256,9 @@
 	<script src="./js/commonheader.js"></script>
 	<script>
 		$('.headerpage').html(commHeader.header);
+		$('#test2').mouseleave(function(){
+			$('#test2').css("visibility", "hidden");
+		})
 		recttype = '';
 		recdtype = '';
 		let ind1;
