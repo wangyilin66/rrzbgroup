@@ -7,7 +7,11 @@
 	<link rel="stylesheet" href="./layui/css/layui.css">
 	<link rel="stylesheet" href="./css/hyfind.css">
 	<link rel="stylesheet" href="./css/header.css">
+	<link rel="stylesheet" href="./css/yyui.css">
 	<style>
+				#lvip{
+			border-bottom: 5px solid rgba(147, 209, 255,1);
+		}
 		.content_nav {
 			width: 80%;
 			padding-bottom: 260px;
@@ -348,9 +352,10 @@
 
 <body>
 	<!-- 头部 -->
-	<div class="headerpage">
+	<!-- <div class="headerpage">
 		
-		</div>
+		</div> -->
+		<header></header>
 	<!-- 内容 -->
 	<div class="hytitle">
 		<div class="hytitle_font2"></div>
@@ -495,15 +500,12 @@
 							<th style="width: 50px">
 								<input type="radio" name="" title="" lay-skin="primary">
 							</th>
-							<th>平台编号</th>
-							<th>会员编号</th>
-							<th>会员姓名</th>
-							<th>入会日期</th>
-							<th>推荐单位</th>
-							<th>组织身份</th>
-							<th>艺术门类</th>
-							<th>地域</th>
+							<th>标题</th>
+							<th>发布时间</th>
+							<th>发布途径</th>
+							<th>发送结果</th>
 							<th>操作</th>
+
 						</tr>
 					</thead>
 					<tbody id='tb'>
@@ -530,7 +532,9 @@
 
 	<script src="./js/commonheader.js"></script>
 	<script>
-		$('.headerpage').html(commHeader.header);
+		//$('.headerpage').html(commHeader.header);
+				// 引的头部
+				$('header').load('./headerys.html');
 		$('.pop_up').hide();
 		var data = {
 
@@ -625,7 +629,7 @@
 			return '<tr><td><input type="radio" class="tbut m_b_c'+ind+'" title=""></td><td>'+ obj.zw+'</td><td>'+obj.c+'</td></tr>';
 		}
 
-		base.commonAjax('clav/member/getClavMemberList', data, function (data) {
+		base.commonAjax('clav/systemNotice/getClavSystemNoticeList', data, function (data) {
 			var pagedata = [];
 			console.log(data);
 			pagedata = data.data;
@@ -655,21 +659,35 @@
 					}
 				});
 			});
+
+
 		});
 
 		function auto(obj) {
+			let str = '';
+			let str2 = '';
+			if(obj.sendType == 1){
+				str = '站内信';
+			}else if(obj.sendType == 2){
+				str = '短信';
+			}else if(obj.sendType == 3){
+				str = '邮件'
+			};
+
+			if(obj.Status == 1){
+				str2 = '发送失败';
+			}else{
+				str2 = '发送成功';
+			}
+
 			return '<tr>' +
 				'<td style="width: 50px">' +
-				'<input type="checkbox" name="" title="" lay-skin="primary">' +
+				'<input type="radio" >' +
 				'</td>' +
-				'<td>' + 123 + '</td>' +
-				'<td>' + obj.memberNo + '</td>' +
-				'<td>' + obj.name + '</td>' +
-				'<td>' + obj.createDate + '</td>' +
-				'<td>' + obj.recommendType + '</td>' +
-				'<td>' + obj.orgIdentityId + '</td>' +
-				'<td>' + obj.artTypeId + '</td>' +
-				'<td>' + obj.location + '</td>' +
+				'<td>' + obj.title + '</td>' +
+				'<td>' + obj.createTime + '</td>' +
+				'<td>' + str + '</td>' +
+				'<td>' + str2 + '</td>' +
 				'<td>' +
 				'<button class="layui-btn layui-btn-normal" onclick="showpop()">重发</button>' +
 				'<button class="layui-btn">编辑</button>' +
@@ -687,6 +705,10 @@
 			$('.pop_up').show();
 		  };
 
+
+        $('.close_box').on('click',function () { 
+			$('.pop_up').hide();
+		 })
 
 		layui.use('form', function () {
 			var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
