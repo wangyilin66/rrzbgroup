@@ -49,7 +49,7 @@
 
 		layui.use('form', function(){
 			  var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
-	
+			
 			//年份
 					var data = {
 					}
@@ -68,7 +68,20 @@
 									form.render();
 							}
 					});
-	
+					labelType=3;
+					var data2={
+						labelType:labelType
+					}
+					base.commonAjax('clav/recommendUnit/selectByLabelType', data2, function (data) {
+						if (data.code == 1) {
+							for (var i = 0; i < data.data.length; i++) {
+								$('#dscode').append(
+										'<option value="' + data.data[i].id + '">' + data.data[i].name + '</option>'
+								);
+						}
+						form.render();
+						}
+					})
 	})
 //分配列表
 function codelist_z() {
@@ -243,8 +256,12 @@ base.commonAjax('clav/allotInfo/chakanInviteCode', data, function (data) {
 }
 ////////////////////////////////////////////////////////////////////////
 //组织邀请码申请
-function zzcode_z() {
+function zzcode_z(remarks1,unitId) {
+	var remarks1;
+	var unitId;
 	var data = {
+		remarks1:remarks1,
+		unitId:unitId
 	}
 	base.commonAjax('clav/allotInfo/getAllotInfoList', data, function (data) {
 		var pagedata = [];
@@ -280,7 +297,7 @@ zzcode_z();
 function auto3(index, obj) {
 	return '<tr>'+
 			'<td>' + (index + 1) + '</td>'+
-			'<td>' + (obj.fenpeiTime).substr(0,4) + '</td>'+
+			'<td>' + (obj.remarks1)+ '</td>'+
 			'<td>' + obj.dwName + '</td>'+
 			'<td>' + obj.placeCount + '</td>'+
 			'<td style="color: skyblue">以申领</td>'+
@@ -307,10 +324,13 @@ function zzcode_zz(zzid){
 }
 //查询
 function zuzycf(){
-	if(($('#fznf_z2').val())!=''){
-		var fenpeiTime=category_z;
+	if(($('#nianfen2').val())!=''){
+		var remarks1=category_z;
 	}
-	codemake_z(fenpeiTime);
+	if(($('#dscode').val())!=''){
+		var unitId=dscode;
+	}
+	zzcode_z(remarks1,unitId);
 }
 
 

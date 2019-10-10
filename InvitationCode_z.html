@@ -239,7 +239,7 @@
                                     <div class="grid-demo grid-demo-bg1">
                                         <label for="">发展年份：
                                             <div style="display: inline-block">
-                                                <select id="nianfen2" name="modules" lay-verify="required" lay-search="" lay-filter="fznf_z2" id="fznf_z2">
+                                                <select id="nianfen2" name="modules" lay-verify="required" lay-search="" lay-filter="fznf_z2" >
                                                     <option value="">请选择</option>
                                                     <!-- <option value="1">layer</option>
                                                                     <option value="2">form</option>
@@ -253,7 +253,7 @@
                                     <div class="grid-demo grid-demo-bg1">
                                         <label for="">申领推荐单位/人：
                                             <div style="display: inline-block">
-                                                <select id="yishu" name="modules" lay-verify="required" lay-search="">
+                                                <select id="dscode" name="modules" lay-verify="required" lay-search="" lay-filter="dscode">
                                                     <option value="">请选择</option>
                                                     <!-- <option value="1">layer</option>
                                                                         <option value="2">form</option>
@@ -760,7 +760,12 @@
 				category_z = data.value;
 				//yishu = data.elem[data.elem.selectedIndex].text;
 				form.render('select');
-			})
+            })
+            form.on('select(dscode)', function (data) {
+				dscode = data.value;
+				//dscode = data.elem[data.elem.selectedIndex].text;
+				form.render('select');
+            })
 		})
    </script>
 </body>
