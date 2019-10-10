@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./layui/css/layui.css">
     <link rel="stylesheet" href="./css/newfind.css">
     <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/yyui.css">
 </head>
 <style>
 #test1 {
@@ -44,12 +45,13 @@ span{
     padding-top:0px;
     margin-top: 13px;
 }
+#lvip{
+			border-bottom: 5px solid rgba(147, 209, 255,1);
+		}
 </style>
 <body>
-    	<!-- 头部 -->
-	<div class="headerpage">
-
-    </div>
+ <!-- 头部 -->
+ <header></header>
 
     <!-- 内容 -->
 
@@ -513,7 +515,8 @@ span{
     <script src="./js/newvipupdata.js"></script>
     <script src="./js/commonheader.js"></script>
 	<script>
-		$('.headerpage').html(commHeader.header);
+		// 引的头部
+        $('header').load('./headerys.html');
         let treedata = [];
         let treedata2 = [];
         let treelocaldata = [];
@@ -564,7 +567,7 @@ let idss = getQueryString('id').id;
               $('.pop_up').hide();
               let myid = getQueryString('id').id;
                
-              setTimeout(() => {
+              setTimeout(function()  {
                 base.commonAjax('clav/member/getClavMemberList', {id:myid}, function (res) {
                 console.log(res.data[0]);
                 let obj =   res.data[0];
@@ -643,7 +646,7 @@ let idss = getQueryString('id').id;
                         });
                       }
 
-                     setTimeout(() => {
+                     setTimeout(function() {
                         $('#tjcompany').val(obj.tjUnitId);form.render();
                      }, 1000);
                       tjcompany = obj.relationshipGroup;
@@ -662,17 +665,17 @@ let idss = getQueryString('id').id;
 
 //===============================================================
         function wtf(data) {
-            data.map((v, i) => {
+            data.map(function(v, i)  {
                 let obj = {};
                 obj.title = v.areaName;
                 obj.id = i;
                 obj.children = [];
-                v.childList.map((val, ind) => {
+                v.childList.map(function(val, ind)  {
                     let objc = {};
                     objc.title = val.areaName;
                     objc.id = i+'-'+ind;
                     objc.children = [];
-                    val.childList.map((vv, ii) => {
+                    val.childList.map(function(vv, ii)  {
                         let objcc = {};
                         objcc.title = vv.areaName;
                         objcc.id = i+'-'+ind + '-' + ii;
@@ -685,12 +688,12 @@ let idss = getQueryString('id').id;
         }
         //获取推荐类型
         function wtf2(data) {
-            data.map((v, i) => {
+            data.map(function(v, i)  {
                 let obj = {};
                 obj.title = v.name;
                 obj.id = i;
                 obj.children = [];
-                v.childList.map((val, ind) => {
+                v.childList.map(function(val, ind)  {
                     console.log(val);
                     let objc = {};
                     objc.title = val.name;

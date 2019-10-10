@@ -1,0 +1,43 @@
+/* css style ,made by zgy 2018.06 */
+/*全局设置*/
+
+  
+
+/*下面是个性定义****************************************************************************/
+
+
+.yyui_menu1 {
+    height: 89px;
+    line-height: 35px;
+    font-size: 15px;
+    background-color: #1e9fff;
+    /* width: 45%; */
+    padding-left: 24px;
+			}
+	 
+	.yyui_menu1 li { 
+		float: right;
+	position: relative;
+	
+    right: 300px;
+    top: 30px;
+	
+	} /*这一级是导航*/
+	.yyui_menu1 li a { display:block; line-height:35px; text-decoration:none; padding:0px 20px; color:white;   }
+	.yyui_menu1 li a:hover {  background:#1e9fff; }
+	.yyui_menu1 li ul { position:absolute; float:left; width:128px; border:1px solid #D2D2D2; display:none; background-color:#FFFfff; z-index:9999;} /*这是第二级菜单*/
+	.yyui_menu1 li ul a { width:99px;text-decoration:none; color:#333333;padding-left: 9px;}
+	.yyui_menu1 li ul a:hover { background:#f2f2f2;}
+	
+.one li{
+	right: 0px;
+    top: 0px;
+}
+.yyui_menu1>li {
+	height: 59px;
+	border-bottom: 5px solid rgba(147, 209, 255,0);
+	
+}
+.one{
+	top:62px;
+}

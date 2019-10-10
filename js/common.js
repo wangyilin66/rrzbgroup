@@ -106,6 +106,41 @@ var base = {
             }
         });
     },
+    formAjaxzzc: function (thisurl, thisdata, funcName) {
+        //引用ajax的方法
+        $.ajax({
+            url: this.baseurl + thisurl, //获取数据的url
+            dateType: "json", //参数返回的类型
+            type: "POST", //参数传送的方式
+            data: thisdata,
+
+            traditional: true,
+            async: true,
+            success: function (data) {
+               
+                //请求成功后的回调函数
+                if (typeof data == "string") {
+                    // var a = document.createElement("a");
+
+           
+          
+                    // a.href = window.URL.createObjectURL(data);
+          
+                    // a.click();
+          
+                    // return;
+                }
+                if (typeof eval(funcName) == "function") {
+                    eval(funcName)(data);
+                    return true;
+                }
+                layui.use('element', function() {
+                    var element = layui.element;
+                    element.init();
+                });
+            }
+        });
+    },
     formAjax: function (thisurl, thisdata, obj, funcName) {
         $.ajax({
             url: this.baseurl + thisurl, //获取数据的url
@@ -500,39 +535,39 @@ function oneChecked(inputEle_all, inputEle_one) {
 
 
 //xitong
-var sessioncyy = JSON.parse(localStorage.getItem("sessioncyy"));
+// var sessioncyy = JSON.parse(localStorage.getItem("sessioncyy"));
 
-if (sessioncyy) {
-    var token = sessioncyy.token;
-}
-var commm = {
-    baseurl: base.baseurl,
-    commonAuth: function (thisurl, thisdata, funcName) {
-        //引用ajax的方法
-        $.ajax({
-            type: "POST", //参数传送的方式
-            url: this.baseurl + thisurl, //获取数据的url
-            dateType: "json", //参数返回的类型
-            data: thisdata,
-            traditional: true,
-            async: true,
-            headers: {
-                'Authorization': token
-            },
-            success: function (data) {
-                //请求成功后的回调函数
-                if (typeof data == "string") {
-                    data = $.parseJSON(data);
-                }
-                if (typeof eval(funcName) == "function") {
-                    eval(funcName)(data);
-                    return true;
-                }
-            }
-        });
-    },
+// if (sessioncyy) {
+//     var token = sessioncyy.token;
+// }
+// var commm = {
+//     baseurl: base.baseurl,
+//     commonAuth: function (thisurl, thisdata, funcName) {
+//         //引用ajax的方法
+//         $.ajax({
+//             type: "POST", //参数传送的方式
+//             url: this.baseurl + thisurl, //获取数据的url
+//             dateType: "json", //参数返回的类型
+//             data: thisdata,
+//             traditional: true,
+//             async: true,
+//             headers: {
+//                 'Authorization': token
+//             },
+//             success: function (data) {
+//                 //请求成功后的回调函数
+//                 if (typeof data == "string") {
+//                     data = $.parseJSON(data);
+//                 }
+//                 if (typeof eval(funcName) == "function") {
+//                     eval(funcName)(data);
+//                     return true;
+//                 }
+//             }
+//         });
+//     },
 
-}
+// }
 
 var sUserAgent = navigator.userAgent;
 if (sUserAgent.indexOf('Android') > -1 || sUserAgent.indexOf('iPhone') > -1 || sUserAgent.indexOf('iPad') > -1 || sUserAgent.indexOf('iPod') > -1 || sUserAgent.indexOf('Symbian') > -1) {

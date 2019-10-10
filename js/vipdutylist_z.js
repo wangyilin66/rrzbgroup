@@ -1,4 +1,4 @@
-$('.headerpage').html(commHeader.header);
+// $('.headerpage').html(commHeader.header);
 $(".tatou").css({ "background-color": "#059afe", "color": "white" });
 function close1() {
     $(".cover4,.cover5").css( "display", "none");		

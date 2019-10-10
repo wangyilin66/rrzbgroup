@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./layui/css/layui.css">
     <link rel="stylesheet" href="./css/InvitationCode.css">
     <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/yyui.css">
     <style>
     .content{
     background-color:#eceff4;
@@ -27,18 +28,19 @@
     border-radius: 6px;
     visibility:hidden;
 }
+#lvip{
+			border-bottom: 5px solid rgba(147, 209, 255,1);
+		}
 </style>
 </head>
 
 <body>
-  	<!-- 头部 -->
-	<div class="headerpage">
-          
-        </div>
+ <!-- 头部 -->
+ <header></header>
     <!-- 内容 -->
     <div class="hytitle">
         <div class="hytitle_font" style="border-bottom: solid">发展名额分配</div>
-        <div class="hytitle_font">邀请码生产</div>
+        <div class="hytitle_font">邀请码生成</div>
         <div class="hytitle_font">组织邀请码申请</div>
         <div class="hytitle_font">邀请码补领</div>
         <div class="hytitle_font">邀请码状况跟踪管控</div>
@@ -611,7 +613,7 @@
     <script src="./js/jquery.min.js"></script>
     <script src="./js/header.js"></script>
     <script src="./js/common.js"></script>
-    <script src="./js/commonheader.js"></script>
+    <!-- <script src="./js/commonheader.js"></script> -->
     <script src="./js/InvitationCode_z.js"></script>
 	<script>
         let treedata = [];
@@ -632,7 +634,8 @@
             $('#time1').val('');
             $('#time2').val('');
         })
-		$('.headerpage').html(commHeader.header);
+		// 引的头部
+        $('header').load('./headerys.html');
         $('.content_nav').eq(0).show().siblings().hide();
         $(".tatou").css({ "background-color": "#059afe", "color": "white" });
         $('.hytitle_font').click(function () {
@@ -702,17 +705,17 @@
             }
         });
         function wtf(data) {
-            data.map((v, i) => {
+            data.map(function(v, i) {
                 let obj = {};
                 obj.title = v.name;
                 obj.id = i;
                 obj.children = [];
-                v.childList.map((val, ind) => {
+                v.childList.map(function(val, ind) {
                     let objc = {};
                     objc.title = val.name;
                     objc.id = i+'-'+ind;
                     objc.children = [];
-                    val.childList.map((vv, ii) => {
+                    val.childList.map(function(vv, ii) {
                         let objcc = {};
                         objcc.title = vv.name;
                         objcc.id = i+'-'+ind + '-' + ii;

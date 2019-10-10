@@ -7,13 +7,17 @@
 	<link rel="stylesheet" href="./layui/css/layui.css">
 	<link rel="stylesheet" href="./css/recommendedUnits.css">
 	<link rel="stylesheet" href="./css/header.css">
+	<link rel="stylesheet" href="./css/yyui.css">
+	<style>
+		#lvip{
+			border-bottom: 5px solid rgba(147, 209, 255,1);
+		}
+	</style>
 </head>
 
 <body>
 	<!-- 头部 -->
-	<div class="headerpage">
-	
-		</div>
+	<header></header>
 	<!-- 内容 -->
 	<div class="hytitle">
         <div class="hytitle_font" style="border-bottom: solid">本协会的会员</div>
@@ -104,9 +108,10 @@
 	<script src="./js/jquery.min.js"></script>
 	<script src="./js/header.js"></script>
 	<script src="./js/common.js"></script>
-	<script src="./js/commonheader.js"></script>
+	<!-- <script src="./js/commonheader.js"></script> -->
 	<script>
-		$('.headerpage').html(commHeader.header);
+			// 引的头部
+			        $('header').load('./headerys.html');
 		$(".tatou").css({ "background-color": "#059afe", "color": "white" });
 		
 		function close1() {

@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="./layui/css/layui.css">
 	<link rel="stylesheet" href="./css/hyfind.css">
 	<link rel="stylesheet" href="./css/header.css">
+	<link rel="stylesheet" href="./css/yyui.css">
 	<style>
 		.hygl{
 			border-bottom: 5px solid #93D1FF;
@@ -17,13 +18,17 @@
 		.hytitle{
 			display: block
 		}
+		#lvip{
+			border-bottom: 5px solid rgba(147, 209, 255,1);
+		}
 	</style>
 </head>
 
 <body>
 	<!-- 头部 -->
-	<div class="headerpage">
-	</div>
+	<!-- <div class="headerpage">
+	</div> -->
+	<header></header>
 	<!-- 内容 -->
 	<div class="hytitle">
 		<div class="hytitle_font">本协会的会员</div>
@@ -199,9 +204,10 @@
 	<script src="./js/header.js"></script>
 	<script src="./js/common.js"></script>
 	<script src="./js/hyfind.js"></script>
-	<script src="./js/commonheader.js"></script>
+	<!-- <script src="./js/commonheader.js"></script> -->
 	<script>
-		$('.headerpage').html(commHeader.header);
+		// 引的头部
+		 $('header').load('./headerys.html');
 		$('#test1').mouseleave(function(){
 			$('#test1').css("visibility", "hidden");
 		})
@@ -221,17 +227,17 @@
 		// });
 		let treedata = [];
 		function wtf(data) {
-			data.map((v, i) => {
+			data.map(function(v, i){
 				let obj = {};
 				obj.title = v.areaName;
 				obj.id = i;
 				obj.children = [];
-				v.childList.map((val, ind) => {
+				v.childList.map(function(val, ind){
 					let objc = {};
 					objc.title = val.areaName;
 					objc.id = i + '-' + ind;
 					objc.children = [];
-					val.childList.map((vv, ii) => {
+					val.childList.map(function(vv, ii){
 						let objcc = {};
 						objcc.title = vv.areaName;
 						objcc.id = i + '-' + ind + '-' + ii;

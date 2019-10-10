@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="./css/vipdutylist.css">
 	<link rel="stylesheet" href="./css/header.css">
 	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" href="./css/yyui.css">
 </head>
 <style>
 .shaos_content{
@@ -51,12 +52,14 @@
 .findfile{
 	height: 258px;
 }
+#lvip{
+	border-bottom: 5px solid rgba(147, 209, 255,1);
+}
 </style>
 <body>
 		<!-- 头部 -->
-		<div class="headerpage">
-
-			</div>
+		<!-- <div class="headerpage"></div> -->
+		<header></header>
 	<!-- 内容 -->
 	<div class="hytitle">
 		<div class="hytitle_font">本协会的会员</div>
@@ -237,9 +240,11 @@
 	<script src="./js/header.js"></script>
 	<script src="./js/common.js"></script>
 	<script src="js/index.js"></script>
-	<script src="./js/commonheader.js"></script>
+	<!-- <script src="./js/commonheader.js"></script> -->
 	<script src="./js/vipdutylist_z.js"></script>
 	<script>
+		// 引的头部
+		$('header').load('./headerys.html');
 	        layui.use('form', function(){
   var form = layui.form; 
         form.on('select(jjyn)',function(data){

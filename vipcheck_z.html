@@ -7,13 +7,16 @@
 	<link rel="stylesheet" href="./layui/css/layui.css">
 	<link rel="stylesheet" href="./css/vipcheck.css">
 	<link rel="stylesheet" href="./css/header.css">
+	<link rel="stylesheet" href="./css/yyui.css">
+	<style>
+		#lvip{
+			border-bottom: 5px solid rgba(147, 209, 255,1);
+		}
+	</style>
 </head>
-
 <body>
     	<!-- 头部 -->
-		<div class="headerpage">
-		
-		</div>
+		<header></header>
 	<!-- 内容 -->
 	<div class="hytitle">
         <div class="hytitle_font" style="border-bottom: solid">会员审核</div>
@@ -377,9 +380,11 @@
 	<script src="./js/header.js"></script>
 	<script src="./js/common.js"></script>
 	<script src="./js/vipcheck.js"></script>
-	<script src="./js/commonheader.js"></script>
+	<!-- <script src="./js/commonheader.js"></script> -->
 	<script>
-		$('.headerpage').html(commHeader.header);
+		// $('.headerpage').html(commHeader.header);
+		// 引的头部
+		        $('header').load('./headerys.html');
 		$('.content_nav').eq(0).show().siblings().hide();
 		$(".tatou").css({ "background-color": "#059afe", "color": "white" });
 		function close1() {
@@ -518,7 +523,7 @@ $('#qqkk').on('click',function(){
 			 }
 			 console.log(data)
 			 console.log(typeof(data))
-			 base.commonAjax('clav/exportExcel/downloadsExcelDown', data, function (data) {
+			 base.formAjaxzzc('clav/exportExcel/downloadsExcelDown', data, function (data) {
 				// console.log(data)
 				// if(data.code==1){
 				// 	console.log(data)
