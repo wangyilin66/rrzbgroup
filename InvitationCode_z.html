@@ -31,6 +31,22 @@
 #lvip{
 			border-bottom: 5px solid rgba(147, 209, 255,1);
 		}
+        .bluebg{
+            color: skyblue;
+        }
+        .orbg{
+            color: orange;
+        }
+        .redbg{
+            color: red;
+        }
+        .blackbg{
+            color: #000;
+        }
+        #shuju5,#shuju6{
+            display: flex;
+            justify-content: space-around;
+        }
 </style>
 </head>
 
@@ -316,7 +332,7 @@
                                     <div class="grid-demo grid-demo-bg1">
                                         <label for="">发展年份：
                                             <div>
-                                                <select id="yishu" name="modules" lay-verify="required" lay-search="">
+                                                <select id="fznfinp" name="modules" lay-verify="required" lay-search="" lay-filter="fznfinp">
                                                     <option value="">请选择</option>
                                                     <!-- <option value="1">layer</option>
                                                                         <option value="2">form</option>
@@ -330,7 +346,7 @@
                                     <div class="grid-demo grid-demo-bg1">
                                         <label for="">补领推荐单位/人：
                                             <div>
-                                                <select id="yishu" name="modules" lay-verify="required" lay-search="">
+                                                <select id="bltj" name="modules" lay-verify="required" lay-search="" lay-filter="bltj">
                                                     <option value="">请选择</option>
                                                     <!-- <option value="1">layer</option>
                                                                             <option value="2">form</option>
@@ -345,14 +361,14 @@
                                                 <div class="grid-demo grid-demo-bg1">
                                                         <label for="">补领邀请码：
                                                             <div style="display: inline-block">
-                                                                <input type="text" style="width: 36px;margin-right: 15px;margin-top: 19px;">个
+                                                                <input id='yqmnum' type="text" style="width: 36px;margin-right: 15px;margin-top: 19px;">个
                                                             </div>
                                                         </label>
                                                     </div>
                                         </div> 
                                 <div class="layui-col-sm3 layui-col-md-offset6">
                                     <div class="hy_btn">
-                                        <button type="button" class="layui-btn layui-btn-normal">确认补领</button>
+                                        <button type="button" id='blbut' class="layui-btn layui-btn-normal">确认补领</button>
                                         <button type="button" class="layui-btn layui-btn-normal">导出</button>
                                         <div class="clear"></div>
                                     </div>
@@ -362,8 +378,8 @@
                         </div>
                     </div>
             </div>
-            <div class="findres">
-                <div class="bl_code">W12345678915</div>
+            <div class="findres" id="codelist">
+                <!-- <div class="bl_code">W12345678915</div> -->
                
             </div>
             </form>
@@ -382,7 +398,7 @@
                                         <div class="grid-demo grid-demo-bg1">
                                             <label for="">推荐单位/人：
                                                 <div>
-                                                    <select id="yishu" name="modules" lay-verify="required" lay-search="">
+                                                    <select id="gztjdw" name="modules" lay-verify="required" lay-search=""  lay-filter="gztjdw">
                                                         <option value="">请选择</option>
                                                         <!-- <option value="1">layer</option>
                                                                         <option value="2">form</option>
@@ -396,7 +412,7 @@
                                             <div class="grid-demo grid-demo-bg1">
                                                 <label for="">邀请码：
                                                     <div>
-                                                        <input type="text" placeholder="邀请码" style="border-radius: 6px;">
+                                                        <input type="text" id='gzinp2' placeholder="邀请码" style="border-radius: 6px;">
                                                     </div>
                                                 </label>
                                             </div>
@@ -405,8 +421,12 @@
                                         <div class="grid-demo grid-demo-bg1">
                                             <label for="">状态：
                                                 <div >
-                                                    <select id="yishu" name="modules" lay-verify="required" lay-search="">
+                                                    <select id="yishu" name="modules" lay-verify="required" lay-search="" lay-filter="gzzt">
                                                         <option value="">请选择</option>
+                                                        <option value="1">以申领</option>
+                                                        <option value="2">以使用</option>
+                                                        <option value="3">已失效</option>
+                                                        <option value="4">已通过</option>
                                                         <!-- <option value="1">layer</option>
                                                                             <option value="2">form</option>
                                                                             <option value="3">layim</option> -->
@@ -417,7 +437,7 @@
                                     </div>
                                     <div class="layui-col-sm3">
                                         <div class="hy_btn">
-                                            <button type="button" class="layui-btn layui-btn-normal">查询</button>
+                                            <button type="button" id="gzgkbut" class="layui-btn layui-btn-normal">查询</button>
                                             <div class="clear"></div>
                                         </div>
                                     </div>
@@ -443,8 +463,8 @@
                                 <th>状态</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
+                        <tbody  id='tbb'>
+                            <!-- <tr>
                                 <td>1</td>
                                 <td>会员单位推荐</td>
                                 <td>全国文艺家协会</td>
@@ -461,7 +481,7 @@
                                 <td>7</td>
                                 <td>W15675493535</td>
                                 <td style="color: skyblue">已申领</td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
                     <div>
@@ -484,7 +504,7 @@
                                         <div class="grid-demo grid-demo-bg1">
                                             <label for="">发展年份：
                                                 <div style="display: inline-block">
-                                                    <select id="yishu" name="modules" lay-verify="required" lay-search="">
+                                                    <select id="ztyearinp" name="modules" lay-verify="required" lay-search=""  lay-filter="ztyearinp">
                                                         <option value="">请选择</option>
                                                         <!-- <option value="1">layer</option>
                                                                         <option value="2">form</option>
@@ -498,7 +518,7 @@
                                         <div class="grid-demo grid-demo-bg1">
                                             <label for="">推荐单位：
                                                 <div style="display: inline-block">
-                                                    <select id="yishu" name="modules" lay-verify="required" lay-search="">
+                                                    <select id="zttjdwinp" name="modules" lay-verify="required" lay-search=""  lay-filter="zttjdwinp">
                                                         <option value="">请选择</option>
                                                         <!-- <option value="1">layer</option>
                                                                             <option value="2">form</option>
@@ -510,7 +530,7 @@
                                     </div>
                                     <div class="layui-col-sm3 layui-col-md-offset3">
                                         <div class="hy_btn">
-                                            <button type="button" class="layui-btn layui-btn-normal">查询</button>
+                                            <button type="button" id="yqztbut" class="layui-btn layui-btn-normal">查询</button>
                                             <div class="clear"></div>
                                         </div>
                                     </div>
@@ -534,8 +554,8 @@
                                 <th>完成比例</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
+                        <tbody id='zttbody'>
+                            <!-- <tr>
                                 <td>中国剧协</td>
                                 <td>20</td>
                                 <td>8</td>
@@ -548,7 +568,7 @@
                                 <td>8</td>
                                 <td>7</td>
                                 <td>30%</td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
                     <div>
@@ -613,6 +633,7 @@
     <script src="./js/InvitationCode_z.js"></script>
 	<script>
         let treedata = [];
+        let fznfinp,bltj,gztjdw,gzzt,ztyearinp,zttjdwinp;
         let ind1;
         function close1() {
 			$(".cover5,.cover4,.cover6,.cover7").css( "display", "none");
@@ -785,7 +806,314 @@
     //     });
 
 
+    layui.use('form', function(){
+			  var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+			
+			//年份
+					var data = {
+					}
+					base.commonAjax('clav/allotInfo/getYearList', data, function (data) {
+						//console.log(data.data[0])
+							if (data.code == 1) {
+									//console.log(data);      
+									for (var i = 0; i < data.data.length; i++) {
+											$('#fznfinp').append(
+													'<option value="' + data.data[i] + '">' + data.data[i] + '</option>'
+                                            );
+											$('#ztyearinp').append(
+													'<option value="' + data.data[i] + '">' + data.data[i] + '</option>'
+                                            );
+                              
 
+									}
+									form.render();
+							}
+                    });
+                    labelType=3;
+					var data2={
+						labelType:labelType
+					}
+					base.commonAjax('clav/recommendUnit/selectByLabelType', data2, function (data) {
+						if (data.code == 1) {
+							for (var i = 0; i < data.data.length; i++) {
+								$('#bltj').append(
+										'<option value="' + data.data[i].id + '">' + data.data[i].name + '</option>'
+								);
+								$('#gztjdw').append(
+										'<option value="' + data.data[i].id + '">' + data.data[i].name + '</option>'
+								);
+						
+								$('#zttjdwinp').append(
+										'<option value="' + data.data[i].id + '">' + data.data[i].name + '</option>'
+								);
+						
+						}
+						form.render();
+						}
+					})
+
+    });
+    
+        $('#blbut').on('click', function () {
+            console.log(fznfinp);
+            console.log(bltj);
+            console.log($('#yqmnum').val());
+            let vals = $('#yqmnum').val();
+            if (fznfinp && bltj && vals != '') {
+                let data2 = {
+                    year:fznfinp,
+                    units:bltj,
+                    placeCount:vals
+                }
+                base.commonAjax('clav/allotInfo/addInviteReplaceInfo', data2, function (data) {
+                    console.log(data);
+                    if (data.code == 1) {
+                     data.data.map(function (v,i) {
+                     $('#codelist').append('<div class="bl_code">'+v.inviteCode+'</div>')
+                       });
+                    }else{
+                        alert('补领信息填写错误，请填写或选择正确的格式');
+                    }
+                })
+            }
+        });
+
+    $('#gzgkbut').on('click', function () {
+        console.log(gztjdw);
+        console.log(gzzt);
+        console.log($('#gzinp2').val());
+        let data = {
+            inviteCode:$('#gzinp2').val(),
+            unitId:gztjdw,
+            status:gzzt,
+        }
+
+        base.commonAjax('clav/allotInfo/getInviteCodeList', data, function (data) {
+         console.log(data);
+      
+                var pagedata = [];
+			console.log(data);
+			pagedata = data.data;
+			//console.log(pagedata)
+
+			//调用分页
+			layui.use(['laypage', 'layer'], function () {
+				var laypage = layui.laypage
+					, layer = layui.layer;
+
+				laypage.render({
+					elem: 'shuju5'
+					, count: pagedata.length,
+					layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+					limit: 2,
+					jump: function (obj) {
+						//模拟渲染
+						document.getElementById('tbb').innerHTML = function () {
+							var arr = []
+								, thisData = pagedata.concat().splice(obj.curr * obj.limit - obj.limit, obj.limit);
+							layui.each(thisData, function (index, item) {
+								arr.push(auto5(item,index));
+								console.log(item);
+							});
+							return arr.join('');
+						}();
+					}
+				});
+			});
+            
+
+
+		});
+
+
+        
+
+    });
+//邀请码状态跟踪管控
+    base.commonAjax('clav/allotInfo/getInviteCodeList', data, function (data) {
+         console.log(data);
+      
+                var pagedata = [];
+			console.log(data);
+			pagedata = data.data;
+			//console.log(pagedata)
+
+			//调用分页
+			layui.use(['laypage', 'layer'], function () {
+				var laypage = layui.laypage
+					, layer = layui.layer;
+
+				laypage.render({
+					elem: 'shuju5'
+					, count: pagedata.length,
+					layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+					limit: 2,
+					jump: function (obj) {
+						//模拟渲染
+						document.getElementById('tbb').innerHTML = function () {
+							var arr = []
+								, thisData = pagedata.concat().splice(obj.curr * obj.limit - obj.limit, obj.limit);
+							layui.each(thisData, function (index, item) {
+								arr.push(auto5(item,index));
+								console.log(item);
+							});
+							return arr.join('');
+						}();
+					}
+				});
+			});
+            
+        });
+        
+        //会员邀请码状态跟踪
+        base.commonAjax('clav/allotInfo/getStatusGenZongList', {}, function (data) {
+         console.log(data);
+      
+                var pagedata = [];
+			console.log(data);
+			pagedata = data.data;
+			//console.log(pagedata)
+
+			//调用分页
+			layui.use(['laypage', 'layer'], function () {
+				var laypage = layui.laypage
+					, layer = layui.layer;
+
+				laypage.render({
+					elem: 'shuju6'
+					, count: pagedata.length,
+					layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+					limit: 2,
+					jump: function (obj) {
+						//模拟渲染
+						document.getElementById('zttbody').innerHTML = function () {
+							var arr = []
+								, thisData = pagedata.concat().splice(obj.curr * obj.limit - obj.limit, obj.limit);
+							layui.each(thisData, function (index, item) {
+								arr.push(auto6(item,index));
+								console.log(item);
+							});
+							return arr.join('');
+						}();
+					}
+				});
+			});
+
+        });
+        
+        $('#yqztbut').on('click',function () { 
+            let data = {
+                remarks1:ztyearinp,
+                unitId:zttjdwinp
+            };
+
+        console.log(data);
+            base.commonAjax('clav/allotInfo/getStatusGenZongList', data, function (data) {
+         console.log(data);
+      
+                var pagedata = [];
+			console.log(data);
+			pagedata = data.data;
+			//console.log(pagedata)
+
+			//调用分页
+			layui.use(['laypage', 'layer'], function () {
+				var laypage = layui.laypage
+					, layer = layui.layer;
+
+				laypage.render({
+					elem: 'shuju6'
+					, count: pagedata.length,
+					layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+					limit: 2,
+					jump: function (obj) {
+						//模拟渲染
+						document.getElementById('zttbody').innerHTML = function () {
+							var arr = []
+								, thisData = pagedata.concat().splice(obj.curr * obj.limit - obj.limit, obj.limit);
+							layui.each(thisData, function (index, item) {
+								arr.push(auto6(item,index));
+								console.log(item);
+							});
+							return arr.join('');
+						}();
+					}
+				});
+			});
+
+        });
+
+         })
+
+
+    function auto5(obj,ind) {
+			let str = '';
+			let str2 = '';
+
+
+			if(obj.status == 1){
+                str2 = '已申领';
+                str='bluebg';
+            }
+			if(obj.status == 2){
+                str2 = '已使用';
+                str='orbg';
+            }
+			if(obj.status == 3){
+                str2 = '已失效';
+                str='redbg';
+            }
+			if(obj.status == 4){
+                str2 = '已通过';
+                str='blackbg';
+            }
+            
+
+			return '<tr>' +
+				'<td>' + (ind+1) + '</td>' +
+				'<td>' + obj.tjType + '</td>' +
+				'<td>' + obj.dwType + '</td>' +
+				'<td>' + obj.dwName + '</td>' +
+				'<td>' + obj.placeCount + '</td>' +
+				'<td>' + obj.inviteCode + '</td>' +
+                '<td class="'+str+'">' + str2 + '</td>' +
+				'</tr>'
+        };
+
+
+        function auto6(obj,ind) {
+			let str = '';
+			let str2 = '';
+
+
+			if(obj.status == 1){
+                str2 = '已申领';
+                str='bluebg';
+            }
+			if(obj.status == 2){
+                str2 = '已使用';
+                str='orbg';
+            }
+			if(obj.status == 3){
+                str2 = '已失效';
+                str='redbg';
+            }
+			if(obj.status == 4){
+                str2 = '已通过';
+                str='blackbg';
+            }
+            
+
+			return '<tr>' +
+				'<td>' + obj.name + '</td>' +
+				'<td>' + obj.placeCount + '</td>' +
+				'<td>' + obj.remainCount + '</td>' +
+				'<td>' + obj.accessCount + '</td>' +
+				'<td>' + obj.finishBiLi + '</td>'  +
+				'</tr>'
+        };
+
+        
    layui.use('form', function () {
 			var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
 			form.on('select(fznf_z2)', function (data) {
@@ -795,6 +1123,36 @@
             })
             form.on('select(dscode)', function (data) {
 				dscode = data.value;
+				//dscode = data.elem[data.elem.selectedIndex].text;
+				form.render('select');
+            })
+            form.on('select(fznfinp)', function (data) {
+				fznfinp = data.value;
+				//dscode = data.elem[data.elem.selectedIndex].text;
+				form.render('select');
+            })
+            form.on('select(bltj)', function (data) {
+				bltj = data.value;
+				//dscode = data.elem[data.elem.selectedIndex].text;
+				form.render('select');
+            })
+            form.on('select(gztjdw)', function (data) {
+				gztjdw = data.value;
+				//dscode = data.elem[data.elem.selectedIndex].text;
+				form.render('select');
+            })
+            form.on('select(gzzt)', function (data) {
+				gzzt = data.value;
+				//dscode = data.elem[data.elem.selectedIndex].text;
+				form.render('select');
+            })
+            form.on('select(ztyearinp)', function (data) {
+				ztyearinp = data.value;
+				//dscode = data.elem[data.elem.selectedIndex].text;
+				form.render('select');
+            })
+            form.on('select(zttjdwinp)', function (data) {
+				zttjdwinp = data.value;
 				//dscode = data.elem[data.elem.selectedIndex].text;
 				form.render('select');
             })
