@@ -364,7 +364,7 @@
         base.commonAjax('clav/lishiReplace/getRecommendUnitOrPeopleList', data, function (res) {
            console.log(res);
            if(res.code == 1){
-            res.data.map((item,ind) => {
+            res.data.map(function(item,ind){
                 $('.tjdwinp').append('<option value="'+ind+'">'+item+'</option>');
             })
            }else{

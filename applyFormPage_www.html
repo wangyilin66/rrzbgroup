@@ -519,17 +519,17 @@
         }
 
         function wtf(data) {
-            data.map((v, i) => {
+            data.map(function(v, i){
                 let obj = {};
                 obj.title = v.areaName;
                 obj.id = i;
                 obj.children = [];
-                v.childList.map((val, ind) => {
+                v.childList.map(function(val, ind){
                     let objc = {};
                     objc.title = val.areaName;
                     objc.id = i+'-'+ind;
                     objc.children = [];
-                    val.childList.map((vv, ii) => {
+                    val.childList.map(function(vv, ii){
                         let objcc = {};
                         objcc.title = vv.areaName;
                         objcc.id = i+'-'+ind + '-' + ii;
@@ -542,12 +542,12 @@
         }
         //获取推荐类型
         function wtf2(data) {
-            data.map((v, i) => {
+            data.map(function(v, i){
                 let obj = {};
                 obj.title = v.name;
                 obj.id = i;
                 obj.children = [];
-                v.childList.map((val, ind) => {
+                v.childList.map(function(val, ind){
                     console.log(val);
                     let objc = {};
                     objc.title = val.name;

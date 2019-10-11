@@ -402,17 +402,17 @@
 
 
 		function wtf(data) {
-			data.map((v, i) => {
+			data.map(function(v, i){
 				let obj = {};
 				obj.title = v.areaName;
 				obj.id = i;
 				obj.children = [];
-				v.childList.map((val, ind) => {
+				v.childList.map(function(val, ind){
 					let objc = {};
 					objc.title = val.areaName;
 					objc.id = i + '-' + ind;
 					objc.children = [];
-					val.childList.map((vv, ii) => {
+					val.childList.map(function(vv, ii){
 						let objcc = {};
 						objcc.title = vv.areaName;
 						objcc.id = i + '-' + ind + '-' + ii;
@@ -470,7 +470,7 @@
 			base.commonAjax('clav/educationLevel/getClavEducationLevelList', data, function (res) {
 				//console.log(res);
 				if (res.code == 1) {
-					res.data.map(item => {
+					res.data.map( function(item){
 						$('#whcdinp').append('<option value="' + item.id + '">' + item.educationLevel + '</option>');
 					});
 				} else {
@@ -481,7 +481,7 @@
 			base.commonAjax('clav/orgIdentity/getClavOrgIdentList', data, function (res) {
 				//console.log(res);
 				if (res.code == 1) {
-					res.data.map(item => {
+					res.data.map(function(item){
 						$('#zzsfinp').append('<option value="' + item.id + '">' + item.orgIdentity + '</option>');
 					});
 				} else {
@@ -493,7 +493,7 @@
 			base.commonAjax('clav/recommendUnit/selectByLabelType', {labelType:3}, function (res) {
 				//console.log(res);
 				if (res.code == 1) {
-					res.data.map(item => {
+					res.data.map(function(item) {
 						$('#tjdwinp').append('<option value="' + item.id + '">' + item.name + '</option>');
 					});
 				} else {
@@ -648,7 +648,7 @@
 			base.commonAjax('clav/nation/getClavNationList', data, function (res) {
 				if (res.code == 1) {
 					//console.log(res.data);
-					res.data.map(item => {
+					res.data.map(function(item) {
 						$('#mzinp').append('<option value="' + item.id + '">' + item.nation + '</option>');
 					});
 				
@@ -658,7 +658,7 @@
 			base.commonAjax('clav/area/getProvinceList', data, function (res) {
 				if (res.code == 1) {
 					//console.log(res.data);
-					res.data.map(item => {
+					res.data.map(function(item){
 						$('#jginp').append('<option value="' + item.id + '">' + item.areaName + '</option>');
 					});
 				
@@ -668,7 +668,7 @@
 			base.commonAjax('clav/politicsStatus/getClavPoliticsStatusList', data, function (res) {
 				if (res.code == 1) {
 					//console.log(res.data);
-					res.data.map(item => {
+					res.data.map(function(item){
 						$('#mminp').append('<option value="' + item.id + '">' + item.politicsStatus + '</option>');
 					});
 				
@@ -679,7 +679,7 @@
 					base.commonAjax('clav/artType/getClavArtTypeList', data, function (res) {
                 if (res.code == 1) {
                     console.log(res.data);
-                    res.data.map(item => {
+                    res.data.map(function(item) {
                         $('#ysmlinp').append('<option value="' + item.id + '">' + item.artType + '</option>');
                     });
                   

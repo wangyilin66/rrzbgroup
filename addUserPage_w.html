@@ -547,7 +547,7 @@ let idss = getQueryString('id').id;
       $('.pop_up').hide();
       let myid = getQueryString('id').id;
       
-      setTimeout(() => {
+      setTimeout(function(){
         base.commonAjax('clav/member/getClavMemberList', {id:myid}, function (res) {
         console.log(res.data[0]);
         let obj =   res.data[0];
@@ -626,7 +626,7 @@ let idss = getQueryString('id').id;
                 });
               }
              
-             setTimeout(() => {
+             setTimeout(function() {
                 $('#tjcompany').val(obj.tjUnitId);form.render();
              }, 1000);
               tjcompany = obj.relationshipGroup;
@@ -663,17 +663,17 @@ let idss = getQueryString('id').id;
             history.go(-1);
         })
         function wtf(data) {
-            data.map((v, i) => {
+            data.map(function(v, i) {
                 let obj = {};
                 obj.title = v.areaName;
                 obj.id = i;
                 obj.children = [];
-                v.childList.map((val, ind) => {
+                v.childList.map(function(val, ind){
                     let objc = {};
                     objc.title = val.areaName;
                     objc.id = i+'-'+ind;
                     objc.children = [];
-                    val.childList.map((vv, ii) => {
+                    val.childList.map(function(vv, ii){
                         let objcc = {};
                         objcc.title = vv.areaName;
                         objcc.id = i+'-'+ind + '-' + ii;
@@ -686,12 +686,12 @@ let idss = getQueryString('id').id;
         }
         //获取推荐类型
         function wtf2(data) {
-            data.map((v, i) => {
+            data.map(function(v, i){
                 let obj = {};
                 obj.title = v.name;
                 obj.id = i;
                 obj.children = [];
-                v.childList.map((val, ind) => {
+                v.childList.map(function(val, ind){
                     console.log(val);
                     let objc = {};
                     objc.title = val.name;

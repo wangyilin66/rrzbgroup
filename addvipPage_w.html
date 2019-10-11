@@ -417,7 +417,7 @@
 					});
 			}
 				
-			setTimeout(() => {
+			setTimeout(function(){
 				if (dwname != '' && sqs2 != null && zc2 != null && js2 != null && zz2 != null) {
 					let data = {
 						unitName: dwname,
@@ -490,19 +490,19 @@
 	function show(ind) {
 		let str = listdate[ind];
 		fwdown(str.applicationBook);
-		setTimeout(() => {
+		setTimeout(function(){
 			fwdown(str.aptitudeProve);
 		}, 500);
-		setTimeout(() => {
+		setTimeout(function(){
 			fwdown(str.associationRule);
 		}, 1000);
-		setTimeout(() => {
+		setTimeout(function(){
 			fwdown(str.unitSituation);
 		}, 2000);
 		
 		
 		//window.open(str.applicationBook,'_blank');
-		// setTimeout(() => {
+		// setTimeout(function() {
 		// 	show2(ind);
 		// }, 100);
 	
