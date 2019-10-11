@@ -364,51 +364,43 @@
 	<div class="mapdiv">
 
 
-    </div>
-    <div class="pop_up">
+	</div>
+	<div class="pop_up">
 	
-          <div class="send_message_box">
-           <p>发送选择</p>
-           <div class="m_b_but">
-               <div class="geren m_b_tab">个人</div>
-               <div class="zhiwei">职位</div>
-           </div>
-           <div class="m_b_inpbox">
-               <span>推荐会员内职位：</span>
-               <input id='zwinp' type="text"/>
-           </div>
-           <div class="m_b_inpbox m_b_inpbox2">
-                <span>搜索会员职位：</span>
-                <input id='zwinp' type="text"/>
-            </div>
+		<div class="send_message_box">
+			<p>发送选择</p>
+			<div class="m_b_but">
+				<div class="geren m_b_tab">个人</div>
+				<div class="zhiwei">职位</div>
+			</div>
+			<div class="m_b_inpbox">
+				<span>推荐会员内职位：</span>
+				<input id='hyzwinp' type="text" />
+			</div>
+			<div class="m_b_inpbox m_b_inpbox2">
+				<span>搜索会内职位：</span>
+				<input id='hnzwinp' type="text" />
+			</div>
+	
+			<table class="layui-table" lay-skin="line">
+	
+				<thead class="th">
 
-           <table class="layui-table" lay-skin="line">
-				
-                <thead>
-                    <tr class="tatou">
-                        <th style="width: 50px">
-                            <input type="radio" name="" title="" class="popallchecked">
-                            <span>全选</span>
-                        </th>
-                        <th>会内职务</th>
-                        <th>人数</th>
-                    </tr>
-                </thead>
-                <tbody id='zwbody'>
-                 <tr>
-                     <td><input type="checkbox" name="" title="" lay-skin="primary"></td>
-                     <td>主席</td>
-                     <td>100</td>
-                    </tr>
-                </tbody>
-            </table>
-            <div id="m_b_pagebox"></div>
-            <div class="m_b_bot_box">
+				</thead>
+				<tbody id='zwbody'>
+					<tr>
+						<td><input type="checkbox" name="" title="" lay-skin="primary"></td>
+						<td>主席</td>
+						<td>100</td>
+					</tr>
+				</tbody>
+			</table>
+			<div id="m_b_pagebox"></div>
+			<div class="m_b_bot_box">
 				<div class="b_b_xuanze">选择</div>
 				<div class="b_b_quxiao">取消</div>
 			</div>
-			</div>
-			
+		</div>
 			<div class="textare_box">
 				<p>发送通知</p>
 				<div class="top_box">
@@ -425,11 +417,11 @@
 				<div class="bot_box">
 					<span class="b_b_tit">* 群发只能使用站内信和短信</span>
 					<div class="b_b_cont">
-							<input type="checkbox" class="znxbut" />
+							<input type="radio" name="cc" class="znxbut" />
 							<span>站内信</span>
-							<input type="checkbox" class="yjbut" />
+							<input type="radio" name="cc" class="yjbut" />
 							<span>邮件</span>
-							<input type="checkbox" class="dxbut" />
+							<input type="radio" name="cc" class="dxbut" />
 							<span>短信</span>
 					</div>
 				</div>
@@ -473,8 +465,12 @@
                         </div>
                         <div class="n_l_cont n_l_cont2">
                             <p class="pp">发布途径：</p>
-                            <select name="hy" lay-verify="fbtjinp" id="fbtjinp">
+                            <select name="hy" id="fbtjinp"  lay-filter="fbtjinp">
                                 <option value="">请选择(站内信,短信,微信)</option>
+                                <option value="1">站内信</option>
+                                <option value="2">短信</option>
+                                <option value="3">微信</option>
+                          
                             </select>
                         </div>
                         <div class="n_l_butbox">
@@ -492,7 +488,7 @@
 			</div>
 
 			<div class="findres">
-				<button type="button" class="layui-btn layui-btn-danger">批量删除</button>
+				<button type="button" id="removeallr" class="layui-btn layui-btn-danger">批量删除</button>
 				<table class="layui-table" lay-skin="line">
 				
 					<thead>
@@ -531,18 +527,31 @@
 	<script src="./js/hyfind.js"></script>
 
 	<script src="./js/commonheader.js"></script>
-	<script>
-		//$('.headerpage').html(commHeader.header);
-				// 引的头部
-				let listdatas;
-				$('header').load('./headerys.html');
-		$('.pop_up').hide();
-		var data = {
 
-		};
+	<script>
+			//$('.headerpage').html(commHeader.header);
+			// 引的头部
+			let listdatas;
+			$('header').load('./headerys.html');
+			$('.pop_up').hide();
+			
+			$('.th').html('<tr class="tatou">' +
+					'<th style="width: 50px">' +
+					'<input type="radio" name="" title="" class="popallchecked">' +
+					'<span>全选</span>' +
+					'</th>' +
+					'<th>姓名</th>' +
+					'<th>入会日期</th>' +
+					'<th>手机号码</th>' +
+					'</tr>');
+			var data = {
+
+		    };
 		let popallflag = false;
-		let treedata = [];
+		let popallflag2 = false;
+		let treedata = [],fbtjinp,hylist,zwlist;
 		let jg;
+		let tabType = 'gr';
         let height = $('body').height();
         $('.pop_up').css('height', height+300);
 		$(".tatou").css({ "background-color": "#059afe", "color": "white" });
@@ -581,8 +590,62 @@
 		});
 
 		$('.allradio').on('click',function () { 
+           
+			if(!popallflag2){
+				listdatas.map(function(item, ind) {
+					//console.log($('m_b_c'+ind).is(':checked'));
+					$('.radio' + ind).prop('checked',true);
+
+				});
+				$('.allradio').prop('checked',true);
+				popallflag2 = true;
+			}else{
+				listdatas.map(function(item, ind)  {
+					//console.log($('m_b_c'+ind).is(':checked'));
+					$('.radio' + ind).prop('checked',false);
+
+				});
+				$('.allradio').prop('checked',false);
+				popallflag2 = false;
+			}
 
 		 });
+
+
+		 $('#removeallr').on('click',function () { 
+			 let str = '';
+			listdatas.map(function(item, ind) {
+					//console.log($('m_b_c'+ind).is(':checked'));
+					if($('.radio' + ind).is(':checked') == true){
+                     str += item.id+',';
+					}
+
+			});
+
+			 base.commonAjax('clav/systemNotice/deleteClavSystemNotice', { ids: str }, function (data) {
+				 console.log(data);
+				 if (data.code == 1) {
+					 alert('删除通知成功。');
+					 history.go(0);
+				 } else {
+					 alert('删除通知失败。');
+				 }
+			 })
+
+		 });
+
+				function chongfa(ind) {
+					//console.log(listdatas[ind]);
+					base.commonAjax('clav/systemNotice/resetSend', { ids: listdatas[ind].receiveIds, nid:listdatas[ind].id}, function (data) {
+						console.log(data);
+						if (data.code == 1) {
+							alert('重发成功。');
+							//history.go(0);
+						} else {
+							alert('重发失败。');
+						}
+					})
+				}
 
 			$('.popallchecked').on('click', function () {
 
@@ -606,6 +669,18 @@
 
 			});
 
+			
+		function showflagradio(ind) { 
+		   
+			console.log($('.m_b_c'+ind).is(':checked'));
+			// if($('.m_b_c'+ind).is(':checked') != true){
+			// 	$('.m_b_c' + ind).prop('checked',false);
+			// }else{
+			// 	$('.m_b_c' + ind).prop('checked',true);
+			// }
+
+		 }
+
 			function removeRadio(ind) {
 			 //console.log(listdatas[ind]);
 	
@@ -618,23 +693,32 @@
 			alert('删除通知失败。');
 		   }
 		})
-			  }
+				}
 
-			//调用分页
-			layui.use(['laypage', 'layer'], function () {
+
+			
+		base.commonAjax('clav/member/getClavMemberList',{}, function (data) {
+			var pagedata = [];
+			console.log(data);
+			pagedata = data.data;
+			hylist = data.data;
+			//console.log(pagedata)
+
+		//调用分页
+		layui.use(['laypage', 'layer'], function () {
 				var laypage = layui.laypage
 					, layer = layui.layer;
 
 				laypage.render({
 					elem: 'm_b_pagebox'
-					, count: objdata.length,
+					, count: pagedata.length,
 					layout: ['count', 'prev', 'page', 'next', 'skip'],
 					limit: 9,
 					jump: function (obj) {
 						//模拟渲染
 						document.getElementById('zwbody').innerHTML = function () {
 							var arr = []
-								, thisData = objdata.concat().splice(obj.curr * obj.limit - obj.limit, obj.limit);
+								, thisData = pagedata.concat().splice(obj.curr * obj.limit - obj.limit, obj.limit);
 							layui.each(thisData, function (index, item) {
 								arr.push(auto2(item,index));
 								console.log(item);
@@ -644,9 +728,132 @@
 					}
 				});
 			});
+
+		});
+
+
+		$('.zhiwei').on('click',function () { 
+
+
+			$(this).addClass('m_b_tab');
+			$('.geren').removeClass('m_b_tab');
+			tabType = 'zw';
+			$('.m_b_inpbox').hide();
+			$('.m_b_inpbox2').show();
+	
+			$('.th').html('<tr class="tatou">' +
+					'<th style="width: 50px">' +
+					'<input type="radio" name="" title="" class="popallchecked">' +
+					'<span>全选</span>' +
+					'</th>' +
+					'<th>会内职务</th>' +
+					'<th>人数</th>' +
+					'</tr>');
+					$(".tatou").css({ "background-color": "#059afe", "color": "white" });
+			base.commonAjax('clav/orgIdentity/getClavOrgIdentityList',{}, function (data) {
+			var pagedata = [];
+			console.log(data);
+			pagedata = data.data;
+			zwlist = data.data;
+			//console.log(pagedata)
+
+		//调用分页
+		layui.use(['laypage', 'layer'], function () {
+				var laypage = layui.laypage
+					, layer = layui.layer;
+
+				laypage.render({
+					elem: 'm_b_pagebox'
+					, count: pagedata.length,
+					layout: ['count', 'prev', 'page', 'next', 'skip'],
+					limit: 9,
+					jump: function (obj) {
+						//模拟渲染
+						document.getElementById('zwbody').innerHTML = function () {
+							var arr = []
+								, thisData = pagedata.concat().splice(obj.curr * obj.limit - obj.limit, obj.limit);
+							layui.each(thisData, function (index, item) {
+								arr.push(auto3(item,index));
+								console.log(item);
+							});
+							return arr.join('');
+						}();
+					}
+				});
+			});
+
+		});
+
+		 });
+		
+		$('.geren').on('click',function () { 
+
+			$(this).addClass('m_b_tab');
+			$('.zhiwei').removeClass('m_b_tab');
+			tabType = 'gr';
+
+			$('.m_b_inpbox').show();
+			$('.m_b_inpbox2').hide();
+			$('.th').html('<tr class="tatou">' +
+					'<th style="width: 50px">' +
+					'<input type="radio" name="" title="" class="popallchecked">' +
+					'<span>全选</span>' +
+					'</th>' +
+					'<th>姓名</th>' +
+					'<th>入会日期</th>' +
+					'<th>手机号码</th>' +
+					'</tr>');
+			$(".tatou").css({ "background-color": "#059afe", "color": "white" });
+
+
+						
+		base.commonAjax('clav/member/getClavMemberList',{}, function (data) {
+			var pagedata = [];
+			console.log(data);
+			pagedata = data.data;
+			hylist = data.data;
+			//console.log(pagedata)
+
+		//调用分页
+		layui.use(['laypage', 'layer'], function () {
+				var laypage = layui.laypage
+					, layer = layui.layer;
+
+				laypage.render({
+					elem: 'm_b_pagebox'
+					, count: pagedata.length,
+					layout: ['count', 'prev', 'page', 'next', 'skip'],
+					limit: 9,
+					jump: function (obj) {
+						//模拟渲染
+						document.getElementById('zwbody').innerHTML = function () {
+							var arr = []
+								, thisData = pagedata.concat().splice(obj.curr * obj.limit - obj.limit, obj.limit);
+							layui.each(thisData, function (index, item) {
+								arr.push(auto2(item,index));
+								console.log(item);
+							});
+							return arr.join('');
+						}();
+					}
+				});
+			});
+
+		});
+
+		 });
+
+	
             function auto2(obj,ind) {
-			return '<tr><td><input type="radio" class="tbut m_b_c'+ind+'" title=""></td><td>'+ obj.zw+'</td><td>'+obj.c+'</td></tr>';
+			return '<tr><td><input type="radio" class="tbut m_b_c'+ind+'"  onclick="showflagradio('+ind+')" title=""></td><td>'+ obj.name+'</td><td>'+obj.createDate+'</td><td>'+obj.phone+'</td></tr>';
+
 		}
+
+            function auto3(obj,ind) {
+			return '<tr><td><input type="radio" class="tbut m_b_c2'+ind+'" title=""></td><td>'+ obj.orgIdentity+'</td><td>'+obj.count+'</td></tr>';
+
+		}
+
 
 		base.commonAjax('clav/systemNotice/getClavSystemNoticeList', data, function (data) {
 			var pagedata = [];
@@ -709,7 +916,7 @@
 				'<td>' + str + '</td>' +
 				'<td>' + str2 + '</td>' +
 				'<td>' +
-				'<button class="layui-btn layui-btn-normal" onclick="showpop()">重发</button>' +
+				'<button class="layui-btn layui-btn-normal" onclick="chongfa('+ind+')">重发</button>' +
 				'<button class="layui-btn">编辑</button>' +
                 '<button class="layui-btn layui-btn-danger"  onclick="removeRadio('+ind+')">删除</button>'
                 +
@@ -724,19 +931,79 @@
 		 function showpop() { 
 			$('.pop_up').show();
 		  };
-
+      
 
         $('.close_box').on('click',function () { 
 			$('.pop_up').hide();
+		 })
+        $('.to_list').on('click',function () { 
+			$('.send_message_box').show();
+			$('.textare_box').hide();
+		 })
+        $('.b_b_quxiao').on('click',function () { 
+			$('.send_message_box').hide();
+			$('.textare_box').show();
+		 })
+
+
+        $('.chaxun').on('click',function () { 
+			console.log($('.btinp').val());
+			console.log(fbtjinp);
+			let data  = {
+				title:$('.btinp').val(),
+				sendType:fbtjinp,
+			}
+
+			base.commonAjax('clav/systemNotice/getClavSystemNoticeList', data, function (data) {
+			var pagedata = [];
+			console.log(data);
+			pagedata = data.data;
+			listdatas = data.data;
+			//console.log(pagedata)
+
+			//调用分页
+			layui.use(['laypage', 'layer'], function () {
+				var laypage = layui.laypage
+					, layer = layui.layer;
+
+				laypage.render({
+					elem: 'layui'
+					, count: pagedata.length,
+					layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+					limit: 2,
+					jump: function (obj) {
+						//模拟渲染
+						document.getElementById('tb').innerHTML = function () {
+							var arr = []
+								, thisData = pagedata.concat().splice(obj.curr * obj.limit - obj.limit, obj.limit);
+							layui.each(thisData, function (index, item) {
+								arr.push(auto(item,index));
+								console.log(item);
+							});
+							return arr.join('');
+						}();
+					}
+				});
+			});
+
+
+		});
+
+
 		 })
 
 		layui.use('form', function () {
 			var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
 			form.on('select(jginp)', function (data) {
             jginp = data.elem[data.elem.selectedIndex].text;
-            form.render('select');
-        });
-
+			form.render('select');
+		});
+		
+		form.on('select(fbtjinp)', function (data) {
+		     	fbtjinp = data.value;
+				//yishu = data.elem[data.elem.selectedIndex].text;
+				form.render('select');
+            })
 		})
 	</script>
 </body>
