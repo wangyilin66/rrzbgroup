@@ -109,21 +109,21 @@
                                     </div>
                                 </div>
                                 <div class="layui-col-sm12">
-                                    <div class="layui-col-sm3">
+                                    <div class="layui-col-sm3" style="margin-top: 2px;">
                                         <div class="grid-demo">
                                             <label for="">推荐单位/人：
                                                 <div>
-                                                    <input type="text" placeholder="请选择" readonly="readonly" style="border-radius: 6px;" id='sanjit' onclick="chuxian()">
+                                                    <input type="text" placeholder="请选择" readonly="readonly" style="width:290px;border-radius: 6px;" id='sanjit' onclick="chuxian()">
                                                 </div>
                                             </label>
                                         </div>
                                     </div>
                                     <div id="test1"></div>
-                                    <div class="layui-col-sm3">
+                                    <div class="layui-col-sm3" style="margin-top: 2px;">
                                         <div class="grid-demo">
                                             <label for="">发展名额数：
                                                 <div>
-                                                    <input type="text" placeholder="发展名额数" style="border-radius: 6px;" id="fzmees_z">
+                                                    <input type="text" placeholder="发展名额数" style="cursor:auto;border-radius: 6px;" id="fzmees_z">
                                                 </div>
                                             </label>
                                         </div>
@@ -282,7 +282,7 @@
                                 <div class="layui-col-sm3 layui-col-md-offset3">
                                     <div class="hy_btn">
                                         <button type="button" class="layui-btn layui-btn-normal" onclick="zuzycf()">查询</button>
-                                        <button type="button" class="layui-btn layui-btn-normal">一键申领并传播</button>
+                                        <a href="http://39.98.186.243/clav/inviteCodeWord/getWord" download=""><button type="button" class="layui-btn layui-btn-normal">一键申领并传播</button></a>
                                         <div class="clear"></div>
                                     </div>
                                 </div>
@@ -357,7 +357,7 @@
                                     </div>
                                 </div>
                                 <div class="layui-col-sm12">
-                                        <div class="layui-col-sm3">
+                                        <div class="layui-col-sm3" style="margin-top: 2px;">
                                                 <div class="grid-demo grid-demo-bg1">
                                                         <label for="">补领邀请码：
                                                             <div style="display: inline-block">
@@ -578,6 +578,18 @@
                 </form>
             </div>
     </div>
+    <div class="cover11">
+		<div class="tcc_content">
+			<div class="tcc_title">分配信息</div>
+			<div class="findfile2 hnzw2">
+				<div style="margin-top: 67px;" id="nfpinfo"></div>
+			</div>
+			<div class="findfile_an">
+					<button type="button" class="layui-btn layui-btn-normal" id=""onclick="close1()">确定</button>
+				<button type="button" class="layui-btn layui-btn-primary" onclick="close1()">关闭</button>
+			</div>
+		</div>
+    </div>
     <div class="cover5">
 		<div class="tcc_content">
 			<div class="tcc_title">修改分配情况</div>
@@ -636,7 +648,7 @@
         let fznfinp,bltj,gztjdw,gzzt,ztyearinp,zttjdwinp;
         let ind1;
         function close1() {
-			$(".cover5,.cover4,.cover6,.cover7").css( "display", "none");
+			$(".cover5,.cover4,.cover6,.cover7,.cover11").css( "display", "none");
         }
         function chuxian(){
             $("#test1").css( "visibility", "visible");	
@@ -766,7 +778,12 @@
     //console.log("提交",data)
     base.commonAjax('clav/allotInfo/addDevelopPlace', data, function (data) {
         if(data.code==1){
-            alert('分配成功')
+//          alert('分配成功')
+			$('.cover11').css( "display", "block");
+			$('#nfpinfo').empty();
+			$('#nfpinfo').append(
+				'本次规划推荐单位/人'+data.tjCount+',共发展名额'+data.meCount+'个。'
+			)
             codelist_z();
         }
     })
