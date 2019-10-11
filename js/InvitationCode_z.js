@@ -183,6 +183,8 @@ function codemake_z(fenpeiTime) {
 	}
 	base.commonAjax('clav/allotInfo/getAllotInfoList', data, function (data) {
 		console.log('sc',data.isResetShow)
+		$('#newsc').empty();
+		$('#newsc2').empty();
 		if ((data.isResetShow)==0) {
 			$('#newsc').append(
 				'<button type="button" class="layui-btn layui-btn-normal"id="yjsc_z" onclick="newyjsc()">一键生成</button>'+
@@ -275,6 +277,7 @@ function newyjsc(){
 		if (data.code==1) {
 			alert('操作成功')
 			$('#newsc').empty();
+			$('#newsc2').empty();
 			$('#newsc2').append(
 				'<button type="button" class="layui-btn layui-btn-normal">完成并下载</button>'+
                 '<button type="button" class="layui-btn layui-btn-danger"id="yjsc_z2">全部邀请码重新生成</button>'
