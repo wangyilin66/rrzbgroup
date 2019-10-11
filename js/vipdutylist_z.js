@@ -202,7 +202,7 @@ function csyqd(){
 function auto(index, obj) {
     return  '<tr>'+
                     '<td>'+
-                        '<input type="checkbox" name="" title="" lay-skin="primary">'+
+                        '<input type="checkbox" name="" title="" lay-skin="primary" class="s" value="'+ obj.id+'">'+
                     '</td>'+
                     '<td>123123123123</td>'+
                     '<td>'+obj.memberNo+'</td>'+
