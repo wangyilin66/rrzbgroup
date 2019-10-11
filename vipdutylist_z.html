@@ -115,7 +115,7 @@
 			</div>
 			
 			<div class="findres">
-				<button type="button" class="layui-btn layui-btn-normal">批量导出</button>
+				<button type="button" class="layui-btn layui-btn-normal" onclick="jqchk()">批量导出</button>
 				<table class="layui-table" lay-skin="line">
 					<colgroup>
 						<col width="150">
@@ -125,7 +125,7 @@
 					<thead>
 						<tr class="tatou">
 							<th style="width: 50px">
-								<input type="checkbox" name="" title="" lay-skin="primary">
+								<input type="checkbox" name="" title="" lay-skin="primary" id="checkAll"> 
 							</th>
 							<th>平台编号</th>
 							<th>会员编号</th>
@@ -253,6 +253,43 @@
             form.render('select');
         })
     })
+	        
+	 $("#checkAll").click(function(){
+			   $("input[type='checkbox']").prop("checked",$("#checkAll").is(':checked'));
+		})       
+	function jqchk(){ //jquery获取复选框值
+		    var chk_value =[];
+		    $('input[class="s"]:checked').each(function(){
+		    chk_value.push($(this).val());
+		    });
+		    if(chk_value==''){
+		    	alert('请选择')
+		    	return false;
+		    }
+			 console.log("选中的值",chk_value)
+			 var a=(chk_value).join();
+			 var data={
+				 ids:a
+			 }
+					let url = 'http://39.98.186.243/clav/exportExcel/downloadsExcelDown?ids='+chk_value+''
+      if (this.isIE()) { // IE
+        window.open(url, '_blank')
+      } else {
+        let a = document.createElement('a') // 创建a标签
+        let e = document.createEvent('MouseEvents') // 创建鼠标事件对象
+        e.initEvent('click', false, false) // 初始化事件对象
+        a.href = url // 设置下载地址
+        a.download = '' // 设置下载文件名
+        a.dispatchEvent(e)
+      }		
+	}   
+	function isIE () {
+      if (!!window.ActiveXObject || 'ActiveXObject' in window) {
+        return true
+      } else {
+        return false
+      }
+    }        
 </script>
 </body>
 

@@ -316,7 +316,7 @@ huiyuancheck();
 function auto(index, obj) {
     return '<tr>' +
         '<td style="width: 50px">' +
-        '<input type="checkbox" name="" title="" lay-skin="primary">' +
+        '<input type="checkbox" name="" class="ss"title="" lay-skin="primary" value="'+ obj.id+'">' +
         '</td>' +
         '<td>' + (index + 1) + '</td>' +
         '<td>' + (obj.createTime).split(/\s+/)[0] + '</td>' +
