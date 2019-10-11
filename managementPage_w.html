@@ -549,9 +549,10 @@
 		    };
 		let popallflag = false;
 		let popallflag2 = false;
-		let treedata = [],fbtjinp,hylist,zwlist;
+		let treedata = [],fbtjinp,hylist,zwlist,sendhylist=[],sendzwlist=[];
 		let jg;
 		let tabType = 'gr';
+		let allgr,allzw;
         let height = $('body').height();
         $('.pop_up').css('height', height+300);
 		$(".tatou").css({ "background-color": "#059afe", "color": "white" });
@@ -579,15 +580,148 @@
 			});
 
         $('.b_b_xuanze').on('click',function () { 
-
-			objdata.map(function(item,ind) {
-
-            //console.log($('m_b_c'+ind).is(':checked'));
-	
-			console.log($('.m_b_c'+ind).is(':checked'));
-	
-		   });
+	  
+			if(tabType == 'gr'){
+            if($('.popallchecked').is(':checked') == true){
+				allgr = true;
+				$('.send_message_box').hide();
+			    $('.textare_box').show();
+			}else{
+				hylist.map(function (v,i) {  
+                 if($('.m_b_c'+i).is(':checked') == true){
+					sendhylist.push(v);
+				 }
+				});
+			   if(sendhylist.length == 0){
+				   alert('请选择至少一人发送');
+			   }else{
+				$('.send_message_box').hide();
+			    $('.textare_box').show();
+			   }
+			}
+			}else{
+				if($('.popallchecked').is(':checked') == true){
+				allgr = true;
+				$('.send_message_box').hide();
+			    $('.textare_box').show();
+			}else{
+				zwlist.map(function (v,i) {  
+                 if($('.m_b_c'+i).is(':checked') == true){
+					sendzwlist.push(v);
+				 }
+				});
+			   if(sendzwlist.length == 0){
+				   alert('请选择至少一个职位发送');
+			   }else{
+				$('.send_message_box').hide();
+			    $('.textare_box').show();
+			   }
+			}
+			}
+		
 		});
+
+
+		$('.send_mess').on('click',function () { 
+		let titinp = $('.tit_text').val();
+		let areinp = $('#tit_are').val();
+		let allc = $('.send_all').is(':checked');
+		let znx = $('.znxbut').is(':checked');
+		let yj = $('.yjbut').is(':checked');
+		let dx = $('.dxbut').is(':checked');
+		console.log(titinp,areinp,allc,znx,yj,dx);
+		if(znx != true && yj != true && dx != true){
+			alert('请选择发送途径');
+			return;
+		}
+		if(titinp == ''){
+			alert('请输入通知标题');
+			return;
+		}
+		if(allc != true && sendhylist.length == 0 &&sendzwlist.length == 0 ){
+		 alert('请选择发送人或职位');
+		 return;
+		}
+
+
+		if(allc){
+		let indd;
+		if(znx){
+			indd=1;
+		}
+		if(yj){
+			indd=3;
+		}
+		if(dx){
+			indd=2;
+		}
+		let data = {
+			title:titinp,
+			detail:areinp,
+			receiveType:1,
+			sendType:indd
+		};
+		
+		base.commonAjax('clav/systemNotice/addClavSystemNotice', data, function (data) {
+              console.log(data);
+              if(data.code == 1){
+				  alert('发送成功');
+				  history.go(0);
+			  }
+		});
+
+		}else{
+			let indd;
+		if(znx){
+			indd=1;
+		}
+		if(yj){
+			indd=3;
+		}
+		if(dx){
+			indd=2;
+		}
+          let data = {
+			title:titinp,
+			detail:areinp,
+			sendType:indd,
+		  };
+		  if(tabType == 'gr'){
+			data.receiveType = 2;
+			if(sendhylist.length == 0){
+				alert("请选择发送人或职位");
+			}else{
+				let str = '';
+				sendhylist.map(function (v,i) { 
+					str += v.id+',';
+				 });
+				 data.receiveIds = str;
+			}
+		  }else{
+			data.receiveType = 3;
+			if(sendzwlist.length == 0){
+				alert("请选择发送人或职位");
+			}else{
+				let str = '';
+				sendzwlist.map(function (v,i) { 
+					str += v.id+',';
+				 });
+				 data.receiveIds = str;
+			}
+		  }
+
+          console.log(data);
+		base.commonAjax('clav/systemNotice/addClavSystemNotice', data, function (data) {
+              console.log(data);
+              if(data.code == 1){
+				  alert('发送成功');
+				  history.go(0);
+			  }
+		});
+
+		}
+		
+		 });
 
 		$('.allradio').on('click',function () { 
            
@@ -750,12 +884,38 @@
 					'<th>人数</th>' +
 					'</tr>');
 					$(".tatou").css({ "background-color": "#059afe", "color": "white" });
+
+
+			$('.popallchecked').on('click', function () {
+
+				if (!popallflag) {
+					objdata.map(function (item, ind) {
+						//console.log($('m_b_c'+ind).is(':checked'));
+						$('.m_b_c' + ind).prop('checked', true);
+
+					});
+					$('.popallchecked').prop('checked', true);
+					popallflag = true;
+				} else {
+					objdata.map(function (item, ind) {
+						//console.log($('m_b_c'+ind).is(':checked'));
+						$('.m_b_c' + ind).prop('checked', false);
+
+					});
+					$('.popallchecked').prop('checked', false);
+					popallflag = false;
+				}
+
+			});
+
+
 			base.commonAjax('clav/orgIdentity/getClavOrgIdentityList',{}, function (data) {
 			var pagedata = [];
 			console.log(data);
 			pagedata = data.data;
 			zwlist = data.data;
 			//console.log(pagedata)
+
 
 		//调用分页
 		layui.use(['laypage', 'layer'], function () {
@@ -786,6 +946,7 @@
 
 		 });
 		
+
 		$('.geren').on('click',function () { 
 
 			$(this).addClass('m_b_tab');
@@ -805,6 +966,27 @@
 					'</tr>');
 			$(".tatou").css({ "background-color": "#059afe", "color": "white" });
 
+			$('.popallchecked').on('click', function () {
+
+			if(!popallflag){
+				objdata.map(function(item, ind) {
+					//console.log($('m_b_c'+ind).is(':checked'));
+					$('.m_b_c' + ind).prop('checked',true);
+
+				});
+				$('.popallchecked').prop('checked',true);
+				popallflag = true;
+			}else{
+				objdata.map(function(item, ind)  {
+					//console.log($('m_b_c'+ind).is(':checked'));
+					$('.m_b_c' + ind).prop('checked',false);
+
+				});
+				$('.popallchecked').prop('checked',false);
+				popallflag = false;
+			}
+
+			});
 
 						
 		base.commonAjax('clav/member/getClavMemberList',{}, function (data) {
@@ -850,7 +1032,7 @@
 		}
 
             function auto3(obj,ind) {
-			return '<tr><td><input type="radio" class="tbut m_b_c2'+ind+'" title=""></td><td>'+ obj.orgIdentity+'</td><td>'+obj.count+'</td></tr>';
+			return '<tr><td><input type="radio" class="tbut m_b_c'+ind+'" title=""></td><td>'+ obj.orgIdentity+'</td><td>'+obj.count+'</td></tr>';
 
 		}
 
@@ -917,7 +1099,7 @@
 				'<td>' + str2 + '</td>' +
 				'<td>' +
 				'<button class="layui-btn layui-btn-normal" onclick="chongfa('+ind+')">重发</button>' +
-				'<button class="layui-btn">编辑</button>' +
+				'<button class="layui-btn"  onclick="bianji('+ind+')" >编辑</button>' +
                 '<button class="layui-btn layui-btn-danger"  onclick="removeRadio('+ind+')">删除</button>'
                 +
 				'</td>' +
@@ -928,13 +1110,41 @@
 			$('.pop_up').show();
 		 });
 
+
+		 function bianji(ind) { 
+			 let obj = listdatas[ind];
+			 console.log(obj);
+			 $('.tit_text').val(obj.title);
+			 $('#tit_are').val(obj.detail);
+			 if(obj.sendType == 1){
+				 $('.znxbut').prop('checked',true);
+			 }
+			 if(obj.sendType == 2){
+				 $('.dxbut').prop('checked',true);
+			 }
+			 if(obj.sendType == 3){
+				 $('.yjbut').prop('checked',true);
+			 }
+			 if(obj.receiveType == 1){
+				$('.send_all').prop('checked',true);
+			 }
+			 $('.pop_up').show();
+
+		  };
+
 		 function showpop() { 
 			$('.pop_up').show();
 		  };
-      
+        
 
         $('.close_box').on('click',function () { 
 			$('.pop_up').hide();
+			$('.tit_text').val('');
+			 $('#tit_are').val('');
+			 $('.znxbut').prop('checked',false);
+			 $('.dxbut').prop('checked',false);
+			 $('.yjbut').prop('checked',false);
+			 $('.send_all').prop('checked',false);
 		 })
         $('.to_list').on('click',function () { 
 			$('.send_message_box').show();

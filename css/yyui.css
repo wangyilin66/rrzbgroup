@@ -12,10 +12,19 @@
     font-size: 15px;
     background-color: #1e9fff;
     /* width: 45%; */
-    padding-left: 24px;
+	padding-left: 24px;
+	position: relative;
 			}
 	 
-	.yyui_menu1 li { 
+			.y_m_cont{
+				width: auto;
+				height: auto;
+				 position: absolute;
+				 right:100px;
+				 top:0;
+			}
+
+	.y_m_cont li { 
 		float: right;
 	position: relative;
 	
@@ -23,17 +32,17 @@
     top: 30px;
 	
 	} /*这一级是导航*/
-	.yyui_menu1 li a { display:block; line-height:35px; text-decoration:none; padding:0px 20px; color:white;   }
-	.yyui_menu1 li a:hover {  background:#1e9fff; }
-	.yyui_menu1 li ul { position:absolute; float:left; width:125px; border:1px solid #D2D2D2; display:none; background-color:#FFFfff; z-index:9999;} /*这是第二级菜单*/
-	.yyui_menu1 li ul a { width:114px;text-decoration:none; color:#333333;padding-left: 9px;padding-right: 2px;}
-	.yyui_menu1 li ul a:hover { background:#f2f2f2;}
+	.y_m_cont li a { display:block; line-height:35px; text-decoration:none; padding:0px 20px; color:white;   }
+	.y_m_cont li a:hover {  background:#1e9fff; }
+	.y_m_cont li ul { position:absolute; float:left; width:128px; border:1px solid #D2D2D2; display:none; background-color:#FFFfff; z-index:9999;} /*这是第二级菜单*/
+	.y_m_cont li ul a { width:99px;text-decoration:none; color:#333333;padding-left: 9px;}
+	.y_m_cont li ul a:hover { background:#f2f2f2;}
 	
 .one li{
 	right: 0px;
     top: 0px;
 }
-.yyui_menu1>li {
+.y_m_cont>li {
 	height: 59px;
 	border-bottom: 5px solid rgba(147, 209, 255,0);
 	
