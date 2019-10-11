@@ -28,8 +28,8 @@
 	} /*这一级是导航*/
 	.yyui_menu1 li a { display:block; line-height:35px; text-decoration:none; padding:0px 20px; color:white;   }
 	.yyui_menu1 li a:hover {  background:#1e9fff; }
-	.yyui_menu1 li ul { position:absolute; float:left; width:128px; border:1px solid #D2D2D2; display:none; background-color:#FFFfff; z-index:9999;} /*这是第二级菜单*/
-	.yyui_menu1 li ul a { width:99px;text-decoration:none; color:#333333;padding-left: 9px;}
+	.yyui_menu1 li ul { position:absolute; float:left; width:126px; border:1px solid #D2D2D2; display:none; background-color:#FFFfff; z-index:9999;} /*这是第二级菜单*/
+	.yyui_menu1 li ul a { width:114px;text-decoration:none; color:#333333;padding-left: 4px;padding-right: 6px;}
 	.yyui_menu1 li ul a:hover { background:#f2f2f2;}
 	
 .one li{
