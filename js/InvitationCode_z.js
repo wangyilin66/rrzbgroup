@@ -182,6 +182,20 @@ function codemake_z(fenpeiTime) {
 		fenpeiTime:fenpeiTime
 	}
 	base.commonAjax('clav/allotInfo/getAllotInfoList', data, function (data) {
+		console.log('sc',data.isResetShow)
+		$('#newsc').empty();
+		$('#newsc2').empty();
+		if ((data.isResetShow)==0) {
+			$('#newsc').append(
+				'<button type="button" class="layui-btn layui-btn-normal"id="yjsc_z" onclick="newyjsc()">一键生成</button>'+
+                '<div class="clear"></div>'
+			)
+		} else{
+			$('#newsc2').append(
+				'<button type="button" class="layui-btn layui-btn-normal">完成并下载</button>'+
+                '<button type="button" class="layui-btn layui-btn-danger"id="yjsc_z2">全部邀请码重新生成</button>'
+			)
+		}
 		var pagedata = [];
 		//console.log("sd",data.totalCount);
 		pagedata = data.data;
@@ -221,7 +235,7 @@ function auto2(index, obj) {
 			'<td>' + obj.tjType + '</td>'+
 			'<td>' + obj.dwType + '</td>'+
 			'<td>' + obj.dwName + '</td>'+
-			'<td style="color: skyblue;cursor: pointer;"><div onclick="lookinfo(' + obj.id + ')">查看详情</div></td>'+
+			'<td style="color: skyblue;cursor: pointer;"><div onclick="lookinfo(' + obj.unitId + ')">查看详情</div></td>'+
 			// '<td>'+  
 			// 	'<button onclick="lookinfo(' + obj.id + ')">查看详情</button>'+
 			// '</td>'+
@@ -253,6 +267,25 @@ base.commonAjax('clav/allotInfo/chakanInviteCode', data, function (data) {
 			)
 		}
 })
+}
+
+function newyjsc(){
+	var data={
+		
+	}
+	base.commonAjax('clav/allotInfo/createInviteCode2', data, function (data) {
+		if (data.code==1) {
+			alert('操作成功')
+			$('#newsc').empty();
+			$('#newsc2').empty();
+			$('#newsc2').append(
+				'<button type="button" class="layui-btn layui-btn-normal">完成并下载</button>'+
+                '<button type="button" class="layui-btn layui-btn-danger"id="yjsc_z2">全部邀请码重新生成</button>'
+			)
+		} else{
+			alert(data.message)
+		}
+	})
 }
 ////////////////////////////////////////////////////////////////////////
 //组织邀请码申请
@@ -295,12 +328,18 @@ function zzcode_z(remarks1,unitId) {
 }
 zzcode_z();
 function auto3(index, obj) {
+	var msg;
+			if (obj.status == 1) {
+				msg = '已申领'
+			} else {
+				msg = '未申领'
+			}
 	return '<tr>'+
 			'<td>' + (index + 1) + '</td>'+
 			'<td>' + (obj.remarks1)+ '</td>'+
 			'<td>' + obj.dwName + '</td>'+
 			'<td>' + obj.placeCount + '</td>'+
-			'<td style="color: skyblue">以申领</td>'+
+			'<td style="color: skyblue">'+msg+'</td>'+
 			'<td>'+
 				'<button type="button" class="layui-btn layui-btn-normal" onclick="zzcode_zz(' + obj.id + ')">查看</button>'+
 				'<button style="margin-left: 7px;" type="button" class="layui-btn layui-btn-warm">导出</button>'+

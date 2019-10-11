@@ -277,7 +277,7 @@
             console.log(res);
             if(res.code == 1){
                 ajaxdata = res.data;
-             res.data.map((item,ind) => {
+             res.data.map(function(item,ind){
                $('#nameinp').append(' <option value="'+ind+'">'+item.name+'</option>');
              });
             }else{

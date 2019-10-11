@@ -195,9 +195,9 @@
                         <div class="layui-fluid">
                             <div class="layui-row">
                                 <div class="layui-col-sm3 layui-col-md-offset9">
-                                    <div class="hy_btn">
-                                        <button type="button" class="layui-btn layui-btn-normal"id="yjsc_z">一键生成</button>
-                                        <div class="clear"></div>
+                                    <div class="hy_btn" id="newsc">
+                                        <!--<button type="button" class="layui-btn layui-btn-normal"id="yjsc_z" onclick="newyjsc()">一键生成</button>
+                                        <div class="clear"></div>-->
                                     </div>
                                 </div>
 
@@ -235,9 +235,9 @@
                     <div id="shuju2" style="display: flex;justify-content: space-around;"></div>
                 </div>
             </div>
-            <div class="yqm_btn">
-                <button type="button" class="layui-btn layui-btn-normal">完成并下载</button>
-                <button type="button" class="layui-btn layui-btn-danger"id="yjsc_z2">全部邀请码重新生成</button>
+            <div class="yqm_btn" id="newsc2">
+                <!--<button type="button" class="layui-btn layui-btn-normal">完成并下载</button>
+                <button type="button" class="layui-btn layui-btn-danger"id="yjsc_z2">全部邀请码重新生成</button>-->
             </div>
             </form>
         </div>
@@ -641,9 +641,9 @@
         function chuxian(){
             $("#test1").css( "visibility", "visible");	
         }
-        $('#yjsc_z').click(function(){
-            $('.cover4').css( "display", "block");
-        })
+//      $('#yjsc_z').click(function(){
+//          $('.cover4').css( "display", "block");
+//      })
         $('#yjsc_z2').click(function(){
             $('.cover4').css( "display", "block");
         })
