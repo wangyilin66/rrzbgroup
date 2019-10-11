@@ -498,7 +498,7 @@
 					<thead>
 						<tr class="tatou">
 							<th style="width: 50px">
-								<input type="radio" name="" title="" lay-skin="primary">
+								<input type="radio" name="" title="" class="allradio">
 							</th>
 							<th>标题</th>
 							<th>发布时间</th>
@@ -534,6 +534,7 @@
 	<script>
 		//$('.headerpage').html(commHeader.header);
 				// 引的头部
+				let listdatas;
 				$('header').load('./headerys.html');
 		$('.pop_up').hide();
 		var data = {
@@ -570,7 +571,7 @@
 
         $('.b_b_xuanze').on('click',function () { 
 
-			objdata.map((item,ind) => {
+			objdata.map(function(item,ind) {
 
             //console.log($('m_b_c'+ind).is(':checked'));
 	
@@ -579,10 +580,14 @@
 		   });
 		});
 
+		$('.allradio').on('click',function () { 
+
+		 });
+
 			$('.popallchecked').on('click', function () {
 
 			if(!popallflag){
-				objdata.map((item, ind) => {
+				objdata.map(function(item, ind) {
 					//console.log($('m_b_c'+ind).is(':checked'));
 					$('.m_b_c' + ind).prop('checked',true);
 
@@ -590,7 +595,7 @@
 				$('.popallchecked').prop('checked',true);
 				popallflag = true;
 			}else{
-				objdata.map((item, ind) => {
+				objdata.map(function(item, ind)  {
 					//console.log($('m_b_c'+ind).is(':checked'));
 					$('.m_b_c' + ind).prop('checked',false);
 
@@ -599,7 +604,21 @@
 				popallflag = false;
 			}
 
-			})
+			});
+
+			function removeRadio(ind) {
+			 //console.log(listdatas[ind]);
+	
+		base.commonAjax('clav/systemNotice/deleteClavSystemNotice', {ids:listdatas[ind].id}, function (data) {
+		   console.log(data);
+		   if(data.code == 1){
+			   alert('删除通知成功。');
+               history.go(0);
+		   }else{
+			alert('删除通知失败。');
+		   }
+		})
+			  }
 
 			//调用分页
 			layui.use(['laypage', 'layer'], function () {
@@ -633,6 +652,7 @@
 			var pagedata = [];
 			console.log(data);
 			pagedata = data.data;
+			listdatas = data.data;
 			//console.log(pagedata)
 
 			//调用分页
@@ -651,7 +671,7 @@
 							var arr = []
 								, thisData = pagedata.concat().splice(obj.curr * obj.limit - obj.limit, obj.limit);
 							layui.each(thisData, function (index, item) {
-								arr.push(auto(item));
+								arr.push(auto(item,index));
 								console.log(item);
 							});
 							return arr.join('');
@@ -663,7 +683,7 @@
 
 		});
 
-		function auto(obj) {
+		function auto(obj,ind) {
 			let str = '';
 			let str2 = '';
 			if(obj.sendType == 1){
@@ -682,7 +702,7 @@
 
 			return '<tr>' +
 				'<td style="width: 50px">' +
-				'<input type="radio" >' +
+				'<input class="radio'+ind+'" type="radio" >' +
 				'</td>' +
 				'<td>' + obj.title + '</td>' +
 				'<td>' + obj.createTime + '</td>' +
@@ -691,7 +711,7 @@
 				'<td>' +
 				'<button class="layui-btn layui-btn-normal" onclick="showpop()">重发</button>' +
 				'<button class="layui-btn">编辑</button>' +
-                '<button class="layui-btn layui-btn-danger">删除</button>'
+                '<button class="layui-btn layui-btn-danger"  onclick="removeRadio('+ind+')">删除</button>'
                 +
 				'</td>' +
 				'</tr>'
