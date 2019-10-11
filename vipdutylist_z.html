@@ -102,7 +102,7 @@
                                 <div class="layui-col-md3 layui-col-md-offset3">
                                         <div class="hy_btn">
                                                 <button type="reset" class="layui-btn layui-btn-normal" id="btnclear"style="background-color: grey;">清空条件</button>
-                                                <button type="button" class="layui-btn layui-btn-normal">通讯录导出</button>
+                                                <button type="button" class="layui-btn layui-btn-normal"onclick="tec()">通讯录导出</button>
                                                 <button type="button" class="layui-btn layui-btn-normal" id="chosedyn" onclick="chosevip()">选择会员</button>
                                                 <button type="button" class="layui-btn layui-btn-normal" id="ben_find">查询</button>
                                                 <div class="clear"></div>
@@ -282,14 +282,28 @@
         a.download = '' // 设置下载文件名
         a.dispatchEvent(e)
       }		
-	}   
+	}
 	function isIE () {
       if (!!window.ActiveXObject || 'ActiveXObject' in window) {
         return true
       } else {
         return false
       }
-    }        
+    }  
+    
+    		function tec(){		
+			let url = 'http://39.98.186.243/clav/exportExcel/downloadsExcelDown?ids='+sdtxdc+''
+      if (this.isIE()) { // IE
+        window.open(url, '_blank')
+      } else {
+        let a = document.createElement('a') // 创建a标签
+        let e = document.createEvent('MouseEvents') // 创建鼠标事件对象
+        e.initEvent('click', false, false) // 初始化事件对象
+        a.href = url // 设置下载地址
+        a.download = '' // 设置下载文件名
+        a.dispatchEvent(e)
+      }
+		}
 </script>
 </body>
 
