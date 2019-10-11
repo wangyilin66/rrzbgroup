@@ -309,8 +309,16 @@
 				eTime:eTime
 			}
 			base.commonAjax('clav/member/getClavMemberList2', data, function (data) {
+				
+				//console.log('数据id',data);
+				var txdc=[];
+				for (var z=0;z<data.data.length;z++) {
+					txdc.push(data.data[z].id)
+					//console.log("1")
+				}
+				sjtxdc=txdc.join();
+				//console.log("ID",sjtxdc)
 				var pagedata = [];
-				//console.log(data);
 				pagedata = data.data;
 				//console.log(pagedata)
 
@@ -511,7 +519,7 @@
 			//location=$("#szd").val();
 			//console.log(category)
 			//artTypeId=category
-			console.log("xxx",orgIdentityId)
+			//console.log("xxx",orgIdentityId)
 			findvip(name, memberNo, artTypeId, location, recommendType,orgIdentityId,sTime,eTime);
 		})
 		function tjfind() {
@@ -555,7 +563,7 @@
 			}
 			base.commonAjax('clav/member/chakanClavMember', data, function (data) {
 				if (data.code == 1) {
-					console.log("会员文件", data)
+					//console.log("会员文件", data)
 					$(".hy_file").empty();
 					if(data.data.uploadFile!=null){
 						$('.hy_file').append(
@@ -594,7 +602,7 @@
 			var data = {
 				id: hy_move
 			}
-			console.log("yichu", data)
+			//console.log("yichu", data)
 			base.commonAjax('clav/member/yichuClavMember', data, function (data) {
 				if (data.code == 1) {
 					findvip();
@@ -692,18 +700,18 @@
 		      }
 		    }
 			
-		function tec(){
-			var data={
-
-			}
-			base.commonAjax('clav/count/getLocalArtCount', data, function (data) {
-				if(data.code==1){
-					alert('操作成功')
-				}
-				else{
-					alert(data.message)
-				}
-			})
+		function tec(){		
+			let url = 'http://39.98.186.243/clav/exportExcel/downloadsExcelDown?ids='+sjtxdc+''
+      if (this.isIE()) { // IE
+        window.open(url, '_blank')
+      } else {
+        let a = document.createElement('a') // 创建a标签
+        let e = document.createEvent('MouseEvents') // 创建鼠标事件对象
+        e.initEvent('click', false, false) // 初始化事件对象
+        a.href = url // 设置下载地址
+        a.download = '' // 设置下载文件名
+        a.dispatchEvent(e)
+      }
 		}
 	</script>
 </body>

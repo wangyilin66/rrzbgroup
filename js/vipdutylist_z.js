@@ -80,7 +80,12 @@ name:name,
 }
 console.log("下一数据",data)
 base.commonAjax('clav/member/getClavMemberList', data, function (data) {
-//console.log(data)
+				var dtxdc=[];
+				for (var z=0;z<data.data.length;z++) {
+					dtxdc.push(data.data[z].id)
+				}
+				sdtxdc=dtxdc.join();
+console.log('需要',sdtxdc)
 var pagedata = [];
         //console.log(data);
         pagedata = data.data;
@@ -129,7 +134,7 @@ name:name,
 }
 //console.log("下一数据",data)
 base.commonAjax('clav/member/getClavMemberList', data, function (data) {
-//console.log(data)
+console.log('yn',data)
 var pagedata = [];
         //console.log(data);
         pagedata = data.data;
@@ -291,6 +296,12 @@ var data={
     //console.log("ddd",data)
     document.getElementById('tbcc').innerHTML='';
 base.commonAjax('clav/member/getClavMemberList', data, function (data) {
+
+				var dtxdc2=[];
+				for (var z=0;z<data.data.length;z++) {
+					dtxdc2.push(data.data[z].id)
+				}
+				sdtxdc=dtxdc2.join();
 
 var pagedata = [];
     
