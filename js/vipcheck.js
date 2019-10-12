@@ -19,7 +19,7 @@ layui.use('form', function () {
     //单位类型
     function daweileixing() {
         var data = {
-            labelType: 1
+            labelType: 2
         }
         base.commonAjax('clav/recommendUnit/selectByLabelType', data, function (data) {
             if (data.code == 1) {
@@ -36,7 +36,7 @@ layui.use('form', function () {
     //单位名称
     function daweimingcheng() {
         var data = {
-            labelType: 2
+            labelType: 3
         }
         base.commonAjax('clav/recommendUnit/selectByLabelType', data, function (data) {
             if (data.code == 1) {

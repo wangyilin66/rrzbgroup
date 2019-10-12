@@ -13,7 +13,7 @@
 </head>
 <style>
 #test1 {
-    width: 264px;
+    width: 167px;
 }
 input{
     border-radius: 6px;
@@ -817,6 +817,9 @@ let idss = getQueryString('id').id;
         $('#szd').click(function(){
             $('#test1').css("visibility","visible");
         })
+        $('#test1').mouseleave(function(){
+			$('#test1').css("visibility", "hidden");
+		})
         layui.use('form', function(){
           var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
        form.on('select(mz3)',function(data){

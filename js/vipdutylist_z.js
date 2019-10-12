@@ -361,10 +361,16 @@ layui.use('form', function(){
 
 
 function chosevip(){
+	$('#seale').val('');
+	$('#seari').val('');
 var id=dyn;
 var orgIdentityId=dyn;
-var data={
-id:id
+
+//左边
+function left(name){
+	var data={
+id:id,
+name:name
 }
 //console.log("jiu",data)
 base.commonAjax('clav/orgIdentity/getNotThisIdentityMember', data, function (data) {
@@ -387,8 +393,13 @@ $("#list1").append(
 }
 
 })
-var data2={
-orgIdentityId:orgIdentityId
+}
+left();
+//右边
+function right(name){
+	var data2={
+orgIdentityId:orgIdentityId,
+name:name
 }
 base.commonAjax('clav/member/getClavMemberList', data2, function (data) {
 //console.log("右边",data)
@@ -410,7 +421,72 @@ $("#list2").append(
 
 })
 }
+right();
 
+}
+function sealeft(){
+	var name;
+	if($('#seale').val()!=''){
+		name=$('#seale').val()
+	}	
+	var id=dyn;
+		var data={
+id:id,
+name:name
+}
+console.log("jiu",data)
+base.commonAjax('clav/orgIdentity/getNotThisIdentityMember', data, function (data) {
+console.log("左边",data)
+$("#unselect-ul").empty();
+if(data.code==1){
+    for(var i=0;i<data.data.length;i++){
+    $("#unselect-ul").append(
+        '<li>'+
+            '<input type="checkbox" class="checkboxs zzc_right"  id="tyue-checkbox-blue1" value="'+data.data[i].id+'"/>'+
+            '<label for="tyue-checkbox-blue1"></label>'+
+            '<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+data.data[i].name+'</span>'+
+        '</li>'
+    )
+}
+$("#list1").empty();
+$("#list1").append(
+            '<span>'+data.data.length+'项</span>'
+    )
+}
+
+})
+	
+}
+function searight(){
+	var name
+	if($('#seari').val()!=''){
+		name=$('#seari').val()
+	}	
+	var orgIdentityId=dyn;
+		var data2={
+orgIdentityId:orgIdentityId,
+name:name
+}
+base.commonAjax('clav/member/getClavMemberList', data2, function (data) {
+//console.log("右边",data)
+$("#selected-ul").empty();
+
+for(var i=0;i<data.data.length;i++){
+    $("#selected-ul").append(
+        '<li>'+
+            '<input type="checkbox" class="checkboxs zzc_right"  id="tyue-checkbox-blue1" value="'+data.data[i].id+'"/>'+
+            '<label for="tyue-checkbox-blue1"></label>'+
+            '<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+data.data[i].name+'</span>'+
+        '</li>'
+    )
+}
+$("#list2").empty();
+$("#list2").append(
+    '<span>'+data.data.length+'项</span>'
+    )
+
+})
+}
 
 $(document).on('click','#jiujiqd', function () {
 

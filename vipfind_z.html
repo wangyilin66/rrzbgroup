@@ -84,7 +84,8 @@
 											<div>
 												<div class="layui-input-block">
 													<input type="text" name="title" lay-verify="title" id="szd"
-														autocomplete="off" placeholder="现所在地" class="layui-input" style="border-radius: 6px;">
+														autocomplete="off" placeholder="现所在地" class="layui-input" style="border-radius: 6px;position: relative;">
+												<img src="img/sanjiao.png" style="width: 26px;position: absolute;top: 2px;left: 268px;"/>
 												</div>
 												<div id="test1"></div>
 											</div>
@@ -170,7 +171,7 @@
 							<th>会员编号</th>
 							<th>会员姓名</th>
 							<th>入会日期</th>
-							<th>推荐单位</th>
+							<th>推荐单位/人</th>
 							<th>组织身份</th>
 							<th>艺术门类</th>
 							<th>地域</th>
@@ -534,7 +535,7 @@
 				'<td>' + obj.memberNo + '</td>' +
 				'<td>' + obj.name + '</td>' +
 				'<td>' + (obj.createDate).split(/\s+/)[0] + '</td>' +
-				'<td>' + obj.recommendType + '</td>' +
+				'<td>' + obj.relationshipGroup + '</td>' +
 				'<td>' + obj.orgIdentityStr + '</td>' +
 				'<td>' + obj.artStr + '</td>' +
 				'<td>' + obj.location + '</td>' +
@@ -563,18 +564,18 @@
 			}
 			base.commonAjax('clav/member/chakanClavMember', data, function (data) {
 				if (data.code == 1) {
-					//console.log("会员文件", data)
+					console.log("会员文件", data)
 					$(".hy_file").empty();
 					if(data.data.uploadFile!=null){
 						$('.hy_file').append(
-						'<a href="' + data.data.uploadFile + '" download="会员上传文件">' +
-						'<div class="wj">会员上传文件</div>' +
+						'<a href="' + data.data.uploadFile + '" download="会员上传文件.pdf">' +
+						'<div class="wj">'+data.data.name+''+''+data.data.memberNo+'</div>' +
 						'</a>'
 					);
 					}else{
 						$('.hy_file').append(
 						'<a href="newvip3_z.html?id='+hy_find+'">' +
-						'<div class="wj">会员上传文件</div>' +
+						'<div class="wj">'+data.data.name+''+''+data.data.memberNo+'</div>' +
 						'</a>'
 					);
 					}
