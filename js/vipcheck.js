@@ -565,11 +565,11 @@ $(document).on('click', '.vipb_find', function () {
     }
     base.commonAjax('clav/member/chakanClavMember', data, function (data) {
         if (data.code == 1) {
-            console.log(data)
+            //console.log('会员审核',data)
             $(".vipb_file").empty();
             $('.vipb_file').append(
-                '<a href="' + data.data.uploadFile + '"download="会员上传文件" >' +
-                '<div class="wj">会员上传文件</div>' +
+                '<a href="' + data.data.uploadFile + '"download="'+data.data.name+''+data.data.memberNo+'" >' +
+                '<div class="wj">'+data.data.name+''+data.data.memberNo+'</div>' +
                 '</a>'
             );
         }

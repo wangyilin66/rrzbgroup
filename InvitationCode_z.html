@@ -28,6 +28,17 @@
     border-radius: 6px;
     visibility:hidden;
 }
+#dscode{
+	height: 32px;
+    cursor: pointer;
+    border: none;
+    padding-left: 9px;
+    box-shadow: 0px 1px 3px #888888;
+    margin-top: 6px;
+    margin-top: 3px;
+    border-radius: 6px;
+    width: 224px;
+}
 #lvip{
 			border-bottom: 5px solid rgba(147, 209, 255,1);
 		}
@@ -271,16 +282,12 @@
                                 </div>
                                 <div class="layui-col-sm3">
                                     <div class="grid-demo grid-demo-bg1">
-                                        <label for="">申领推荐单位/人：
-                                            <div style="display: inline-block">
-                                                <select id="dscode" name="modules" lay-verify="required" lay-search="" lay-filter="dscode">
-                                                    <option value="">请选择</option>
-                                                    <!-- <option value="1">layer</option>
-                                                                        <option value="2">form</option>
-                                                                        <option value="3">layim</option> -->
-                                                </select>
-                                            </div>
-                                        </label>
+                                        <label for="">申领推荐单位/人：</label>
+                                        <input type="text" placeholder="请选择" id='dscode' readonly="readonly" style="cursor: pointer;" onclick="chuxian2()">                                       
+                                    	<img src="img/sanjiao.png" style="width: 26px;position: absolute;top: 30px;left: 322px;"/>
+                                    </div>
+                                    <div id="test2">
+                                    	
                                     </div>
                                 </div>
                                 <div class="layui-col-sm3 layui-col-md-offset3">
@@ -658,6 +665,9 @@
         function chuxian(){
             $("#test1").css( "visibility", "visible");	
         }
+        function chuxian2(){
+            $("#test2").css( "visibility", "visible");	
+        }
 //      $('#yjsc_z').click(function(){
 //          $('.cover4').css( "display", "block");
 //      })
@@ -680,6 +690,9 @@
         });
         $('#test1').mouseleave(function(){
 			$('#test1').css("visibility", "hidden");
+		})
+        $('#test2').mouseleave(function(){
+			$('#test2').css("visibility", "hidden");
 		})
         var data = {
         }
@@ -1142,12 +1155,7 @@
 				category_z = data.value;
 				//yishu = data.elem[data.elem.selectedIndex].text;
 				form.render('select');
-            })
-            form.on('select(dscode)', function (data) {
-				dscode = data.value;
-				//dscode = data.elem[data.elem.selectedIndex].text;
-				form.render('select');
-            })
+           })
             form.on('select(fznfinp)', function (data) {
 				fznfinp = data.value;
 				//dscode = data.elem[data.elem.selectedIndex].text;

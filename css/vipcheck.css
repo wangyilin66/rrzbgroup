@@ -23,6 +23,8 @@
     background-color:#eceff4;
     height:auto;
     padding-bottom: 50px;
+        min-width: 1770px;
+    overflow-x: auto;
 }
 .content_nav{
     width: 90%;

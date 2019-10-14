@@ -244,7 +244,7 @@ function goupdate() {
 function tijiao() {
         console.log(tjcompany);
         let okflag = true;
-   
+   		var myreg = /^1(3|4|5|6|7|8|9)\d{9}$/;
         if( $('#file').val()==''){
                 okflag = false;
                 $('.w_tx').text('请上传头像')          
@@ -272,6 +272,12 @@ function tijiao() {
         if( $('#tec').val()==''){
                 okflag = false;
                 $('.w_sj').text('请填写手机号码')          
+        }else{
+                $('.w_sj').text('');     
+        }
+        if(!myreg.test($('#tec').val())){
+                okflag = false;
+                $('.w_sj').text('请填写正确手机号码')          
         }else{
                 $('.w_sj').text('');     
         }
@@ -374,6 +380,12 @@ function tijiao() {
         if( $('#sjh').val()==''){
                 okflag = false;
                 $('.w_sjh').text('请填写手机号')          
+        }else{
+                $('.w_sjh').text('');   
+       }
+        if(!myreg.test($('#sjh').val())){
+                okflag = false;
+                $('.w_sjh').text('请填写正确的手机号')          
         }else{
                 $('.w_sjh').text('');   
        }

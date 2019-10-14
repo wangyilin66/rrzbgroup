@@ -6,7 +6,7 @@
     var data = {
         labelType:1
     }
-    base.commonAjax('clav/recommendUnit/selectByLabelType', data, function (data) {
+    base.commonAjax('clav/recommendUnit/getNoPeopleList', data, function (data) {
             if (data.code == 1) {
                     //console.log(data);      
                     for (var i = 0; i < data.data.length; i++) {
@@ -19,14 +19,14 @@
     });
 })
 }
-//单位名称
+//单位类型
 function daweimingcheng(){
     layui.use('form', function(){
   var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
     var data = {
         labelType:2
     }
-    base.commonAjax('clav/recommendUnit/selectByLabelType', data, function (data) {
+    base.commonAjax('clav/recommendUnit/getNoPeopleList2', data, function (data) {
             if (data.code == 1) {
                     //console.log(data);      
                     for (var i = 0; i < data.data.length; i++) {
@@ -39,9 +39,29 @@ function daweimingcheng(){
     });
 })
 }
+//单位名称
+function daweimingcheng2(){
+    layui.use('form', function(){
+  var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+    var data = {
+        labelType:3
+    }
+    base.commonAjax('clav/recommendUnit/getNoPeopleList3', data, function (data) {
+            if (data.code == 1) {
+                    //console.log(data);      
+                    for (var i = 0; i < data.data.length; i++) {
+                            $('#wjcname').append(
+                                    '<option value="' + data.data[i].id + '">' + data.data[i].name + '</option>'
+                            );
+                    }
+                    form.render();
+            }
+    });
+})
+}
 daweileixing();
 daweimingcheng();
-        
+ daweimingcheng2();       
         
         //查询
          // $(document).on('click', '#cnmfind', function () {	
@@ -50,11 +70,10 @@ daweimingcheng();
 			var recommendType;
 			var unitType;
 			if($('#wjcname').val()!=''){
-				 name=$('#wjcname').val();
+				 name=wjcnamena;
 			//console.log(name)
 			}
 			if(recttype!=''){
-				console.log('xixi')
 				var a=recttype;
 				 recommendType=a;
 			}
