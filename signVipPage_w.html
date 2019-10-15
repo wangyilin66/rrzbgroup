@@ -206,6 +206,7 @@
                                     <li>
                                         <p><span>*</span>验证码：</p><input type="text" placeholder="请输入验证码" class="inps yzminp" />
                                          <div class="yzmbut">获取验证码</div>
+                                         <h6 class="yzmtit"></h6>
                                     </li>
                                 </ul>
                               <div class="bot_click_box">
@@ -219,7 +220,7 @@
 <script type="text/javascript" src='./js/common.js'></script>
 <script type="text/javascript" src='./js/jquery.min.js'></script>
 <script type="text/javascript">
-    let passwordinp,sfzF = false,pswF = false,phoneF = false;
+    let passwordinp,sfzF = false,pswF = false,pswF1 = false,phoneF = false,yzmF = false;
 
         $('.sfzhminp').on('keyup', function () {
 
@@ -237,13 +238,33 @@
         $('.pswinp').on('keyup', function () {
 
             let len = $(this).val().length;
-            console.log(len);
+            let intext = $(this).val();
+            let pasflag = false;
+       //     console.log(len);
             if (len < 6) {
                 $('.pswtit1').text("密码长度过短");
+                pswF1 = false;
             } else if (len > 16) {
                 $('.pswtit1').text("密码长度过长");
+                pswF1 = false;
             } else {
                 $('.pswtit1').text("");
+            }
+            for(var i = 0;i<len;i++){
+                //console.log(intext[i]);
+                if(!isNaN(intext[i])){
+                
+                }else{
+                    pasflag = true;
+                }
+
+            }
+            console.log(pasflag);
+            if(pasflag){
+                pswF1 = true;
+                console.log(pswF1);
+            }else{
+                $('.pswtit1').text("密码不可以是纯数字");
             }
             passwordinp = $(this).val();
         });
@@ -262,20 +283,20 @@
             }
 
         });
-    function isChn(str) {
-        var reg = /^[/u4E00-/u9FA5]+$/;
-        if (!reg.test(str)) {
-           // alert("不全是中文");
-            return false;
-        } else {
-            //alert("全是中文");
-            return true;
-        }
-    }
+    // function isChn(str) {
+    //     var reg = /^[/u4E00-/u9FA5]+$/;
+    //     if (!reg.test(str)) {
+    //         alert("不全是中文");
+    //         return false;
+    //     } else {
+    //         alert("全是中文");
+    //         return true;
+    //     }
+    // }
 
-        $('.sfzxminp').on('keyup',function () { 
-          console.log(isChn($(this).val()));
-         });
+    //     $('.sfzxminp').on('keyup',function () { 
+    //       console.log(isChn($(this).val()));
+    //      });
         $('.phoneinp').on('keyup', function () {
 
             let len = $(this).val();
@@ -296,13 +317,35 @@
             }
             return false;
         }
+
+        $('.yzmbut').on('click',function () { 
+
+            let len = $('.phoneinp').val();
+            if(phone(len)){
+                $('.yzmtit').val('');
+
+                base.commonAjax('clav/phonecode/register', {phone:len}, function (res) {
+                    if(res.code == 1){
+                         alert('验证码发送成功');
+                         yzmF = true;
+                    }
+                });
+
+            }else{
+           $('.yzmtit').val('请输入正确的手机号后，再获取邀请码');
+           yzmF = false;
+            }
+
+         });
+
         $('.zhuce').on('click', function () {
-             if(sfzF && pswF && phoneF){
+             if(sfzF && pswF && phoneF && yzmF && pswF1){
                  let data = {
                      name : $('.sfzxminp').val(),
                      idNumber:$('.sfzhminp').val(),
                      password:$('.psw2minp').val(),
-                     phone:$('.phoneinp').val()
+                     phone:$('.phoneinp').val(),
+                    code:$('.yzminp').val()
                  };
                  console.log(data);
                 base.commonAjax('clav/sysUser/registerByIdNumber', data, function (res) {

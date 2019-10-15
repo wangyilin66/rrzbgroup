@@ -63,6 +63,7 @@
 			justify-content:space-between;
 			line-height: 32px;
 			margin-top: 20px;
+			position: relative;
 		}
 		.dwtitle{
 			width: 270px;
@@ -82,9 +83,11 @@
 		}
 		.c_l_right{
 			display: flex;
+		
 		}
 		.c_l_left{
 			display: flex;
+			margin-top: -48px;
 		}
 		.c_l_inp{
 			width: 230px;
@@ -137,7 +140,50 @@
 	   }
 	   .zyzgl{
         border-bottom: 5px solid #93D1FF;
-    }
+	}
+	.popbox{
+		width: 600px;
+		height: 350px;
+		border:1px solid #ccc;
+		background: #fff;
+		position: fixed;
+		top:50%;
+		left: 50%;
+		margin-top: -175px;
+		margin-left: -300px;
+		z-index: 99;
+		display: none;
+	}
+	.popbox > h4{
+		width: 100%;
+		border-bottom: 1px solid #ccc;
+		text-align: center;
+		line-height: 50px;
+		height: 50px;
+		box-sizing: border-box;
+		font-size: 18px;
+	}
+	.popbox > p{
+		width: 100%;
+		height: 250px;
+		overflow-y: scroll;
+
+		padding-left: 10px;
+		box-sizing: border-box;
+		line-height: 36px;
+		font-size: 16px;
+	}
+	.popbox > div{
+		width: 70px;
+		height: 35px;
+		background: #999;
+		color: #fff;
+		text-align: center;
+		line-height: 35px;
+		font-size: 16px;
+		margin: 0 auto;
+		cursor:pointer;
+	}
 	</style>
 </head>
 
@@ -148,7 +194,11 @@
 		</div> -->
 		<header></header>
 	<!-- 内容 -->
-
+    <div class="popbox">
+		<h4>回复内容</h4>
+		<p class="poptit">撒的撒多撒大声地撒的撒的</p>
+		<div class="cpop">关闭</div>
+	</div>
 	<div class="content">
 		<div class="content_nav">
 			<div class="content_navl"><span><i class="layui-icon layui-icon-home"></i>首页&nbsp;&nbsp;</span>/<span>&nbsp;志愿者管理&nbsp;&nbsp;</span>/&nbsp;增补会员单位</div>
@@ -166,6 +216,15 @@
 				 </ul>
 				</div>
 				<form class="layui-form" action="">
+						<div class="cont_li">
+								<div class="c_l_left">
+										
+								</div>
+								<div class="c_l_right">
+									<p class="pp"><span class="sp">*</span>联系人手机号：</p>
+									<input type="text" class="dwtitle lxrphone" placeholder="请填写联系人手机号"/>
+								</div>
+							</div>
                 <div class="cont_li">
 					<div class="c_l_left">
 							<p class="pp"><span class="sp">*</span>申报单位名称：</p>
@@ -315,6 +374,18 @@
             }
             return url;
 		}
+
+		function phone(TEL) {
+            var strTemp = /^1[3|4|5|6|7|8|9][0-9]{9}$/;
+            if (strTemp.test(TEL)) {
+                return true;
+            }
+            return false;
+        }
+ 
+ $('.cpop').on('click',function () { 
+	 $('.popbox').slideUp();
+  })
 		
 		$('.upload').on('click',function () { 
 			let sqs2 = null,zc2 = null,js2 = null,zz2 = null,dwname;
@@ -419,6 +490,7 @@
 				
 			setTimeout(function(){
 				if (dwname != '' && sqs2 != null && zc2 != null && js2 != null && zz2 != null) {
+					
 					let data = {
 						unitName: dwname,
 						applicationBook: sqs2,
@@ -426,6 +498,19 @@
 						aptitudeProve: zz2,
 						associationRule: zc2,
 					}
+					let lxrph = $('.lxrphone').val();
+					if(lxrph == ''){
+						alert('请填写联系人手机号');
+						return;
+					}else{
+						if(phone(lxrph)){
+						data.remarks1 = lxrph;
+					}else{
+						alert('请填写正确的联系人手机号');
+						return;
+					}
+					}
+
 					base.commonAjax('clav/memberUnit/addClavMemberUnit', data, function (res) {
 						console.log(res);
 						if(res.code == 1){
@@ -489,15 +574,28 @@
 
 	function show(ind) {
 		let str = listdate[ind];
+          console.log(str);
+		if(str.applicationBook){
 		fwdown(str.applicationBook);
+		}
+	
+
 		setTimeout(function(){
+			if(str.aptitudeProve){
 			fwdown(str.aptitudeProve);
+			}
+			
 		}, 500);
 		setTimeout(function(){
-			fwdown(str.associationRule);
+			if(str.associationRule){
+				fwdown(str.associationRule);
+			}
+			
 		}, 1000);
 		setTimeout(function(){
-			fwdown(str.unitSituation);
+			if(str.unitSituation){
+				fwdown(str.unitSituation);
+			}
 		}, 2000);
 		
 		
@@ -517,8 +615,14 @@
 	 }
 
 	 function showtext(ind) {
-        alert(listdate[ind].reply);
+
+        //alert(listdate[ind].reply);
+        $('.poptit').text(listdate[ind].reply);
+		$('.popbox').slideDown();
 	   }
+
+
+
 
 	function auto(obj, ind) {
 		let str;
