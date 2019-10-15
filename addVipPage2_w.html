@@ -146,11 +146,14 @@ span{
                                             <div>
                                                 <label class="layui-form-label"><span>*</span>籍贯:</label>
                                                 <div class="layui-input-inline jg2">
-                                                    <select name="hy" lay-verify="required" lay-search="" id="jg" lay-filter="jg" class="inpList">
-                                                        <option value="">请选择</option>
-                                                        <!-- <option value="1">layer</option>
-                                                        <option value="2">form</option> -->
+                                                    <!--<select name="hy" lay-verify="required" lay-search="" id="jg" lay-filter="jg" class="inpList">
+                                                        <option value="">请选择</option>                   
                                                     </select>
+                                                    <div class="warn w_jg"></div>-->
+                                                     <input type="text" name="title" lay-verify="title" id="jg" readonly="readonly" style="border-radius: 6px;cursor: pointer;position: relative;"
+                                                        autocomplete="off" placeholder="请选择" class="layui-input ">
+                                                        <img src="img/sanjiao.png" style="width: 26px;position: absolute;top: 2px;left: 235px;"/>
+                                                    <div id="test3"></div>
                                                     <div class="warn w_jg"></div>
                                                 </div>
                                             </div>
@@ -282,12 +285,14 @@ span{
                                             <div class="grid-demo">
                                                 <label class="layui-form-label"><span>*</span>专业职称:</label>
                                                 <div class="layui-input-inline diqu">
-                                                    <select name="quiz1" id="zyzc" lay-filter="zyzc" class="inpList">
+                                                    <!--<select name="quiz1" id="zyzc" lay-filter="zyzc" class="inpList">
                                                         <option value="">请选择</option>
-                                                        <!-- <option value="浙江" selected="">浙江省</option>
-                                                        <option value="你的工号">江西省</option>
-                                                        <option value="你最喜欢的老师">福建省</option> -->
                                                     </select>
+                                                    <div class="warn w_zc"></div>-->
+                                                    <input type="text" name="title" lay-verify="title" id="zyzc" readonly="readonly" style="width:180px;border-radius: 6px;cursor: pointer;position: relative;"
+                                                        autocomplete="off" placeholder="请选择" class="layui-input ">
+                                                        <img src="img/sanjiao.png" style="width: 26px;position: absolute;top: 2px;left: 140px;"/>
+                                                    <div id="test4"></div>
                                                     <div class="warn w_zc"></div>
                                                 </div>
 
@@ -519,6 +524,8 @@ span{
 		$('header').load('./headerys.html');
         let treedata = [];
         let treedata2 = [];
+        let treedata3 = [];
+        let treedata4 = [];
         let treelocaldata = [];
         function changepic(obj) {
             //console.log(obj.files[0]);//这里可以获取上传文件的name
@@ -577,6 +584,45 @@ span{
                     obj.children.push(objc);
                 });
                 treedata2.push(obj);
+            });
+        }
+                function wtf3(data) {
+            data.map(function(v, i){
+                let obj = {};
+                obj.title = v.areaName;
+                obj.id = i;
+                obj.children = [];
+                v.childList.map(function(val, ind)  {
+                	//console.log(val);
+                    let objc = {};
+                    objc.title = val.areaName;
+                    objc.id = i+'-'+ind;
+                    objc.children = [];
+                    obj.children.push(objc);
+                });
+                treedata3.push(obj);
+            });
+        }
+        //获取职称
+        function wtf4(data) {
+            data.map(function(v, i){
+            	//console.log(v)
+                let obj = {};
+                
+                obj.title = v.professionalTitle;
+                obj.id = i;
+                obj.children = [];
+                //console.log('确定',v.childList)
+                	v.childList.map(function(val, ind)  {
+                    let objc = {};
+                    //obj.id=val.id;
+                    objc.iid=val.id;
+                    objc.title = val.professionalTitle;
+                    objc.id = i+'-'+ind;
+                    objc.children = [];
+                    obj.children.push(objc);
+                });              
+                treedata4.push(obj);
             });
         }
         var data = {
@@ -679,6 +725,87 @@ span{
                 });
             }
         });
+               //籍贯
+       base.commonAjax('clav/area/getSecondAddressList', data, function (data) {
+            if (data.code == 1) {
+                //console.log("z", data);
+                wtf3(data.data);
+               // console.log(treedata)
+                layui.use('tree', function () {
+                    var tree = layui.tree;
+
+                    //渲染
+                    var inst1 = tree.render({
+                        elem: '#test3'  //绑定元素
+                        ,click: function(obj){
+                       // console.log(obj.data); //得到当前点击的节点数据
+                       // console.log(obj.elem); //得到当前节点元素 
+                        // console.log($('.layui-tree-set').attr("data-id"));
+                      //  console.log(obj.data.id); //得到当前点击的节点数据
+                        let str = obj.data.id;
+                       // console.log(str.indexOf('-')>-1);
+                         if(str.indexOf('-')>-1 && str.indexOf('-')){
+                            let arr = str.split('-');
+                            if(arr.length == 2){
+                               // console.log(arr);
+                        //console.log(treedata3[arr[0]].title);
+                       // console.log(treedata[arr[0]].title);
+                       // console.log(obj.data.title);
+                        var jgplace=treedata3[arr[0]].title+"-"+obj.data.title;
+                        console.log("地区",jgplace);
+                        $('#jg').val(jgplace);
+                        $('#test3').css("visibility","hidden");
+                            }
+                         }
+                    }
+                        , data:treedata3
+                    });
+                    
+                });
+            }
+        });
+        //职称
+        //$('#test4').css("visibility","hidden");
+       base.commonAjax('clav/professionalTitle/getClavProfessionalTitleList', data, function (data) {
+            if (data.code == 1) {
+                //console.log("z", data);
+                wtf4(data.data);
+               // console.log(treedata)
+                layui.use('tree', function () {
+                    var tree = layui.tree;
+
+                    //渲染
+                    var inst1 = tree.render({
+                        elem: '#test4'  //绑定元素
+                        ,click: function(obj){
+                       // console.log(obj.data); //得到当前点击的节点数据
+                       // console.log(obj.elem); //得到当前节点元素 
+                        // console.log($('.layui-tree-set').attr("data-id"));
+                      //  console.log(obj.data.id); //得到当前点击的节点数据
+                        let str = obj.data.id;
+                       // console.log(str.indexOf('-')>-1);
+                         if(str.indexOf('-')>-1 && str.indexOf('-')){
+                            let arr = str.split('-');
+                            if(arr.length == 2){
+                               // console.log(arr);
+                        //console.log(treedata4[arr[0]].title);
+                       // console.log(treedata[arr[0]].title);
+                       //console.log(obj.data.iid);
+                       newiid=obj.data.iid;
+                        //console.log(obj.data.title);
+                        var workzc=obj.data.title;
+                        //console.log("地区",jgplace);
+                        $('#zyzc').val(workzc);
+                        $('#test4').css("visibility","hidden");
+                            }
+                         }
+                    }
+                        , data:treedata4
+                    });
+                    
+                });
+            }
+        });
         $('#tjtype').on('click',function () { 
             $('#test2').css("visibility","visible");
          })
@@ -688,6 +815,18 @@ span{
         $('#test1').mouseleave(function(){
 			$('#test1').css("visibility", "hidden");
 		})
+        $('#jg').click(function(){
+            $('#test3').css("visibility","visible");
+        })
+        $('#test3').mouseleave(function(){
+			$('#test3').css("visibility", "hidden");
+		})
+        $('#zyzc').click(function(){
+            $('#test4').css("visibility","visible");
+        })
+        $('#test4').mouseleave(function(){
+			$('#test4').css("visibility", "hidden");
+		})
         layui.use('form', function(){
           var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
        form.on('select(mz3)',function(data){
@@ -695,11 +834,11 @@ span{
            //mz3=data.elem[data.elem.selectedIndex].text;
            form.render('select');
        })
-       form.on('select(jg)',function(data){
-        jg=data.value;
-           //jg=data.elem[data.elem.selectedIndex].text;
-           form.render('select');
-       })
+//     form.on('select(jg)',function(data){
+//      jg=data.value;
+//         //jg=data.elem[data.elem.selectedIndex].text;
+//         form.render('select');
+//     })
        form.on('select(politicsStatusIdd)',function(data){
         politicsStatusIdd=data.value;
            //politicsStatusIdd=data.elem[data.elem.selectedIndex].text;
@@ -710,11 +849,11 @@ span{
            //whcd=data.elem[data.elem.selectedIndex].text;
            form.render('select');
        })
-       form.on('select(zyzc)',function(data){
-        zyzc=data.value;
-           //zyzc=data.elem[data.elem.selectedIndex].text;
-           form.render('select');
-       })
+//     form.on('select(zyzc)',function(data){
+//      zyzc=data.value;
+//         //zyzc=data.elem[data.elem.selectedIndex].text;
+//         form.render('select');
+//     })
        form.on('select(ysml)',function(data){
            ysml=data.value;
            //ysml=data.elem[data.elem.selectedIndex].text;

@@ -106,7 +106,7 @@ daweimingcheng();
 		
         })
         
-        		//会员审核
+        		//推荐单位管理
 		function tuijiandanwiesh(name,recommendType,unitType) {
 			var orgIdentityId = 11;
 			var auditStatus = 1;
@@ -121,7 +121,7 @@ daweimingcheng();
 				unitType:unitType
 			}
 			base.commonAjax('clav/recommendUnit/getRecommendUnitList', data, function (data) {
-				//console.log("理事",data)
+				console.log("单位",data)
 				var pagedata = [];
 				// 
 				pagedata = data.data;

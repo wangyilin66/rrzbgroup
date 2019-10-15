@@ -151,11 +151,14 @@ span{
                                             <div>
                                                 <label class="layui-form-label"><span>*</span>籍贯:</label>
                                                 <div class="layui-input-inline jg2">
-                                                    <select name="hy" lay-verify="required" lay-search="" id="jg" lay-filter="jg">
+                                                    <!--<select name="hy" lay-verify="required" lay-search="" id="jg" lay-filter="jg">
                                                         <option value="">请选择</option>
-                                                        <!-- <option value="1">layer</option>
-                                                        <option value="2">form</option> -->
                                                     </select>
+                                                    <div class="warn w_jg"></div>-->
+                                                    <input type="text" name="title" lay-verify="title" id="jg" readonly="readonly" style="border-radius: 6px;cursor: pointer;position: relative;"
+                                                        autocomplete="off" placeholder="请选择" class="layui-input ">
+                                                        <img src="img/sanjiao.png" style="width: 26px;position: absolute;top: 2px;left: 235px;"/>
+                                                    <div id="test3"></div>
                                                     <div class="warn w_jg"></div>
                                                 </div>
                                             </div>
@@ -287,12 +290,14 @@ span{
                                             <div class="grid-demo">
                                                 <label class="layui-form-label"><span>*</span>专业职称:</label>
                                                 <div class="layui-input-inline diqu">
-                                                    <select name="quiz1" id="zyzc" lay-filter="zyzc">
-                                                        <option value="">请选择</option>
-                                                        <!-- <option value="浙江" selected="">浙江省</option>
-                                                        <option value="你的工号">江西省</option>
-                                                        <option value="你最喜欢的老师">福建省</option> -->
-                                                    </select>
+                                                    <!--<select name="quiz1" id="zyzc" lay-filter="zyzc">
+                                                        <option value="">请选择</option>                                                    
+                                                    </select>-->
+                                                    <input type="text" name="title" lay-verify="title" id="zyzc" readonly="readonly" style="width:180px;border-radius: 6px;cursor: pointer;position: relative;"
+                                                        autocomplete="off" placeholder="请选择" class="layui-input ">
+                                                        <img src="img/sanjiao.png" style="width: 26px;position: absolute;top: 2px;left: 140px;"/>
+                                                    <div id="test4"></div>
+                                                    <div class="warn w_zc"></div>
                                                     <div class="warn w_zc"></div>
                                                 </div>
 
@@ -586,7 +591,7 @@ let idss = getQueryString('id').id;
                 mz3=obj.nation;
                 $('#username2').val(obj.penName);
                 $('#sr').val(obj.birthday);
-                $('#jg').val(Number(obj.nativePlace));
+                $('#jg').val(obj.nativePlace);
                 jg = obj.nativePlace;
                   var radio = document.getElementsByName("sex");
                   if (obj.isNewGroup == 1) {
@@ -606,8 +611,8 @@ let idss = getQueryString('id').id;
                 $('#weixinnum').val(obj.wechatNumber);
                 $('#whcd').val(obj.educationLevelId);
                 whcd=obj.educationLevelId;
-                $('#zyzc').val(obj.professionalTitleId);
-                zyzc=obj.professionalTitleId;
+                $('#zyzc').val(obj.professionalTitleStr);
+                newiid=obj.professionalTitleId;
                 
                 $('#school').val(obj.graduateSchool);
                 $('#work').val(obj.unitAndDuty);
