@@ -650,3 +650,33 @@ function vipb_r(rbid){
         })
     })
 }
+function dns(){
+	var data={
+		
+	}
+	base.commonAjax('clav/lishiReplace/isHaveLiShiReplace', data, function (data) {
+	if(data.code==1){
+		let url = 'http://39.98.186.243/clav/testWord/exportMillCertificate'
+      if (this.isIE()) { // IE
+        window.open(url, '_blank')
+      } else {
+        let a = document.createElement('a') // 创建a标签
+        let e = document.createEvent('MouseEvents') // 创建鼠标事件对象
+        e.initEvent('click', false, false) // 初始化事件对象
+        a.href = url // 设置下载地址
+        a.download = '' // 设置下载文件名
+        a.dispatchEvent(e)
+      }
+	}else{
+		alert(data.message)
+	}
+	
+	})
+}
+function isIE () {
+		      if (!!window.ActiveXObject || 'ActiveXObject' in window) {
+		        return true
+		      } else {
+		        return false
+		      }
+		    }
