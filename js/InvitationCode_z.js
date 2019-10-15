@@ -87,7 +87,7 @@
 				obj.id = i;
 				obj.children = [];
 				v.childList.map(function(val, ind){
-					console.log(val);
+					//console.log(val);
 					let objc = {};
 					objc.title = val.name;
 					objc.id = i + '-' + ind;
@@ -201,7 +201,7 @@ function codelist_z() {
 		var pagedata = [];
 		//console.log("sd",data.totalCount);
 		pagedata = data.data;
-		console.log(data)
+		//console.log(data)
 		$('#table_count').empty();
 		$('#table_count').append(
 			'发展名额数(共计'+data.totalCount+'个)'
@@ -291,7 +291,7 @@ function codemake_z(fenpeiTime) {
 		fenpeiTime:fenpeiTime
 	}
 	base.commonAjax('clav/allotInfo/getAllotInfoList', data, function (data) {
-		console.log('sc',data.isResetShow)
+		//console.log('sc',data.isResetShow)
 		$('#newsc').empty();
 		$('#newsc2').empty();
 		if ((data.isResetShow)==0) {
@@ -301,7 +301,7 @@ function codemake_z(fenpeiTime) {
 			)
 		} else{
 			$('#newsc2').append(
-				'<button type="button" class="layui-btn layui-btn-normal">完成并下载</button>'+
+				'<a href="http://39.98.186.243/clav/inviteCodeWord/getWord2" download=""><button type="button" class="layui-btn layui-btn-normal">完成并下载</button></a>'+
                 '<button type="button" class="layui-btn layui-btn-danger"id="yjsc_z2">全部邀请码重新生成</button>'
 			)
 		}
@@ -407,7 +407,7 @@ function zzcode_z(remarks1,tjId) {
 	}
 	base.commonAjax('clav/allotInfo/getAllotInfoList', data, function (data) {
 		var pagedata = [];
-		console.log("sd",data);
+		//console.log("sd",data);
 		pagedata = data.data;
 		//调用分页
 		layui.use(['laypage', 'layer'], function () {
@@ -480,5 +480,47 @@ function zuzycf(){
 	}
 	zzcode_z(remarks1,tjId);
 }
-
-
+//完成分配
+function successfp(){
+	var data={
+		
+	}
+	base.commonAjax('clav/allotInfo/fenpeiFinish', data, function (data) {
+		if(data.code==1){
+			alert('操作成功');
+		}else{
+			alert(data.message);
+		}
+	})
+}
+//一键申领并传播
+function yiicb(){
+	var data={
+		
+	}
+	base.commonAjax('clav/allotInfo/isHaveInviteCode', data, function (data) {
+	if(data.code==1){
+		let url = 'http://39.98.186.243/clav/inviteCodeWord/getWord'
+      if (this.isIE()) { // IE
+        window.open(url, '_blank')
+      } else {
+        let a = document.createElement('a') // 创建a标签
+        let e = document.createEvent('MouseEvents') // 创建鼠标事件对象
+        e.initEvent('click', false, false) // 初始化事件对象
+        a.href = url // 设置下载地址
+        a.download = '' // 设置下载文件名
+        a.dispatchEvent(e)
+      }
+	}else{
+		alert(data.message)
+	}
+	
+	})
+}
+		function isIE () {
+		      if (!!window.ActiveXObject || 'ActiveXObject' in window) {
+		        return true
+		      } else {
+		        return false
+		      }
+		    }
