@@ -17,10 +17,10 @@
 #test1{
     height: 102px;
     overflow: auto;
-    width: 303px;
+    width: 295px;
     position: absolute;
     left: 3px;
-    top: 63px;
+    top: 85px;
     background-color: white;
     z-index: 999;
     border: solid rgba(222,225,230,0.3);
@@ -795,6 +795,7 @@
     }
     //console.log("提交",data)
     base.commonAjax('clav/allotInfo/addDevelopPlace', data, function (data) {
+    	//console.log('邀请码',data)
         if(data.code==1){
 //          alert('分配成功')
 			$('.cover11').css( "display", "block");
@@ -803,6 +804,9 @@
 				'本次规划推荐单位/人'+data.tjCount+',共发展名额'+data.meCount+'个。'
 			)
             codelist_z();
+        }
+        else{
+        	alert(data.message);
         }
     })
    }

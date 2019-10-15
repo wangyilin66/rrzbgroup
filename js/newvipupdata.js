@@ -28,16 +28,16 @@ base.commonAjax('clav/nation/getClavNationList', data, function (data) {
 
 //籍贯
 
-base.commonAjax('clav/area/getProvinceList', data, function (data) {
-    if (data.code == 1) {
-            for (var i = 0; i < data.data.length; i++) {
-                    $('#jg').append(
-                            '<option value="' + data.data[i].id + '">' + data.data[i].areaName + '</option>'
-                    );
-            }
-            form.render();
-    }
-});
+//base.commonAjax('clav/area/getProvinceList', data, function (data) {
+//  if (data.code == 1) {
+//          for (var i = 0; i < data.data.length; i++) {
+//                  $('#jg').append(
+//                          '<option value="' + data.data[i].id + '">' + data.data[i].areaName + '</option>'
+//                  );
+//          }
+//          form.render();
+//  }
+//});
 
 
 //文化程度
@@ -71,16 +71,16 @@ base.commonAjax('clav/artType/getClavArtTypeList', data, function (data) {
 });
 
 //专业职称
-base.commonAjax('clav/professionalTitle/getClavProfessionalTitleList', data, function (data) {
-    if (data.code == 1) {
-            let str2 = '';
-            for (var i = 0; i < data.data.length; i++) {
-                    str2 += '<option value="' + data.data[i].id + '">' + data.data[i].professionalTitle + '</option>';
-            }
-            $('#zyzc').append(str2);
-            form.render();
-    }
-});
+//base.commonAjax('clav/professionalTitle/getClavProfessionalTitleList', data, function (data) {
+//  if (data.code == 1) {
+//          let str2 = '';
+//          for (var i = 0; i < data.data.length; i++) {
+//                  str2 += '<option value="' + data.data[i].id + '">' + data.data[i].professionalTitle + '</option>';
+//          }
+//          $('#zyzc').append(str2);
+//          form.render();
+//  }
+//});
 
       
       //……
@@ -534,7 +534,7 @@ function goupdate() {
                         };//性别
                         var birthday = $('#sr').val();//出生日期
                         var idNumber = $('#sfnumber').val();//身份证号
-                        var nativePlace = jg;//籍贯
+                        var nativePlace = $('#jg').val();//籍贯
                         var politicsStatusId = politicsStatusIdd;//政治面貌
                         var isNewGroup = $('input[name="sex"]:checked').attr("data");//是否新文艺群体
                         var phone = $('#tec').val();//手机号
@@ -547,7 +547,7 @@ function goupdate() {
                         var email = $('#email').val();//邮箱
                         var wechatNumber = $('#weixinnum').val();//微信号
                         var educationLevelId = whcd;//文化程度
-                        var professionalTitleId = zyzc;//专业职称
+                        var professionalTitleId = newiid;//专业职称
                         var unitAndDuty = $('#work').val();//工作单位
                         var workExperience = $('#experience').val();//工作经历
                         var graduateSchool = $('#school').val();//毕业院校
@@ -666,7 +666,7 @@ function goupdate() {
                                         var email = $('#email').val();//邮箱
                                         var wechatNumber = $('#weixinnum').val();//微信号
                                         var educationLevelId = whcd;//文化程度
-                                        var professionalTitleId = zyzc;//专业职称
+                                        var professionalTitleId = newiid;//专业职称
                                         var unitAndDuty = $('#work').val();//工作单位
                                         var workExperience = $('#experience').val();//工作经历
                                         var graduateSchool = $('#school').val();//毕业院校
@@ -755,9 +755,10 @@ function goupdate() {
 
 
 function tijiao() {
-        console.log(tjcompany);
+       // console.log(tjcompany);
         let okflag = true;
-        console.log(getQueryString('id').id);
+        var myreg = /^1(3|4|5|6|7|8|9)\d{9}$/;
+        //console.log(getQueryString('id').id);
         if( $('#file').val()==''){
                 if(getQueryString('id').id){
 
@@ -789,6 +790,12 @@ function tijiao() {
         if( $('#tec').val()==''){
                 okflag = false;
                 $('.w_sj').text('请填写手机号码')          
+        }else{
+                $('.w_sj').text('');     
+        }
+        if(!myreg.test($('#tec').val())){
+                okflag = false;
+                $('.w_sj').text('请填写正确手机号码')          
         }else{
                 $('.w_sj').text('');     
         }
@@ -891,6 +898,12 @@ function tijiao() {
         if( $('#sjh').val()==''){
                 okflag = false;
                 $('.w_sjh').text('请填写手机号')          
+        }else{
+                $('.w_sjh').text('');   
+       }
+        if(!myreg.test($('#sjh').val())){
+                okflag = false;
+                $('.w_sjh').text('请填写正确的手机号')          
         }else{
                 $('.w_sjh').text('');   
        }
