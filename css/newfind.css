@@ -45,6 +45,28 @@
         border: solid rgba(222,225,230,0.3);
         visibility: hidden;
     }
+    #test4{
+		height: 128px;
+	    overflow: auto;
+	    width: 174px;
+	    position: absolute;
+	    left: 1px;
+	    background-color: white;
+	    z-index: 999;
+	    border: solid rgba(222,225,230,0.3);
+	    visibility: hidden;
+    }
+	#test3{
+        height: 132px;
+	    overflow: auto;
+	    width: 258px;
+	    position: absolute;
+	    left: 1px;
+	    background-color: white;
+	    z-index: 999;
+	    border: solid rgba(222,225,230,0.3);
+	    visibility: hidden;
+    }
     .gzinfo{
         height: auto;
         margin-bottom: 35px;
@@ -189,6 +211,28 @@
     border: solid rgba(222,225,230,0.3);
     visibility: hidden;
 }
+#test4{
+		height: 128px;
+	    overflow: auto;
+	    width: 174px;
+	    position: absolute;
+	    left: 1px;
+	    background-color: white;
+	    z-index: 999;
+	    border: solid rgba(222,225,230,0.3);
+	    visibility: hidden;
+    }
+#test3{
+        height: 132px;
+	    overflow: auto;
+	    width: 258px;
+	    position: absolute;
+	    left: 1px;
+	    background-color: white;
+	    z-index: 999;
+	    border: solid rgba(222,225,230,0.3);
+	    visibility: hidden;
+    }
 .gzinfo{
     height: auto;
     margin-bottom: 35px;
@@ -332,6 +376,28 @@ span{
         z-index: 999;
         border: solid rgba(222,225,230,0.3);
         visibility: hidden;
+    }
+    #test4{
+		height: 128px;
+	    overflow: auto;
+	    width: 174px;
+	    position: absolute;
+	    left: 1px;
+	    background-color: white;
+	    z-index: 999;
+	    border: solid rgba(222,225,230,0.3);
+	    visibility: hidden;
+    }
+    #test3{
+        height: 132px;
+	    overflow: auto;
+	    width: 258px;
+	    position: absolute;
+	    left: 1px;
+	    background-color: white;
+	    z-index: 999;
+	    border: solid rgba(222,225,230,0.3);
+	    visibility: hidden;
     }
     .gzinfo{
         height: auto;
@@ -477,6 +543,28 @@ span{
     border: solid rgba(222,225,230,0.3);
     visibility: hidden;
 }
+#test4{
+		height: 128px;
+	    overflow: auto;
+	    width: 174px;
+	    position: absolute;
+	    left: 1px;
+	    background-color: white;
+	    z-index: 999;
+	    border: solid rgba(222,225,230,0.3);
+	    visibility: hidden;
+    }
+#test3{
+        height: 132px;
+	    overflow: auto;
+	    width: 258px;
+	    position: absolute;
+	    left: 1px;
+	    background-color: white;
+	    z-index: 999;
+	    border: solid rgba(222,225,230,0.3);
+	    visibility: hidden;
+    }
 .gzinfo{
     height: auto;
     margin-bottom: 35px;

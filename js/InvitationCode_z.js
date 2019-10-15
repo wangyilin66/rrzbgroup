@@ -1,3 +1,112 @@
+		//推荐单位
+		let treedata2 = [];
+		let treelocaldata = [];
+		var data = {
+		}
+		base.commonAjax('clav/recommendUnit/getAllUnitList', data, function (data) {
+			if (data.code == 1) {
+				//console.log("z", data);
+				treelocaldata = data.data;
+				wtf2(data.data);
+				// console.log(treedata)
+				layui.use('tree', function () {
+					var tree = layui.tree;
+					//渲染
+					var inst1 = tree.render({
+						elem: '#test2'  //绑定元素
+						, click: function (obj) {
+							// console.log(obj);
+							// console.log(obj.data); //得到当前点击的节点数据
+							// console.log(obj.elem); //得到当前节点元素 
+							// console.log($('.layui-tree-set').attr("data-id"));
+							//  console.log(obj.data.id); //得到当前点击的节点数据
+							let str = obj.data.id;
+							console.log(String(str).indexOf('-'));
+							// console.log(str.indexOf('-')>-1);
+
+							if (String(str).indexOf('-') != -1) {
+
+								let arr = str.split('-');
+								if (arr.length == 2) {
+									console.log(treelocaldata[Number(arr[0])].childList[Number(arr[1])]);
+									recommendType14 = treelocaldata[Number(arr[0])].childList[Number(arr[1])].id;
+
+									//console.log("推荐",ind1);
+									//console.log(treedata2[arr[0]].title);
+									// console.log(treedata[arr[0]].title);
+									// console.log(obj.data.title);
+									var tjplace2 = obj.data.title;
+									//+treedata2[arr[0]].title;
+									//console.log("地区",place);
+									$('#dscode').val(tjplace2);
+									$('#test2').css("visibility", "hidden");
+								}
+								if (arr.length == 3) {
+									//console.log(treelocaldata[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])].name);
+									//ind1 = treelocaldata[Number(arr[0])].childList[Number(arr[1])].id;
+
+									//console.log("推荐",arr);
+									//console.log(treedata2[arr[0]].title);
+									// console.log(treedata[arr[0]].title);
+									// console.log(obj.data.title);
+									var tjplace3 = treelocaldata[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])].name;
+									recommendType14=treelocaldata[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])].id;
+									//+treedata2[arr[0]].title;
+									//console.log("地区",place);
+									$('#dscode').val(tjplace3);
+									$('#test2').css("visibility", "hidden");
+								}			
+							} else {
+								let arr = str;
+								console.log(arr);
+								console.log(treelocaldata[arr]);
+								recommendType14 = treelocaldata[arr].id;
+
+								//console.log("推荐",arr);
+								//console.log(treedata2[arr[0]].title);
+								// console.log(treedata[arr[0]].title);
+								// console.log(obj.data.title);
+								var tjplace2 = obj.data.title;
+								//+treedata2[arr[0]].title;
+								//console.log("地区",place);
+								$('#dscode').val(tjplace2);
+								$('#test2').css("visibility", "hidden");
+
+							}
+						}
+						, data: treedata2
+					});
+
+				});
+			}
+		});
+				function wtf2(data) {
+			data.map(function(v, i){
+				let obj = {};
+				obj.title = v.name;
+				obj.id = i;
+				obj.children = [];
+				v.childList.map(function(val, ind){
+					console.log(val);
+					let objc = {};
+					objc.title = val.name;
+					objc.id = i + '-' + ind;
+					objc.children = [];
+					val.childList.map(function(al, nd){
+						let objcc = {};
+						objcc.title = al.name;
+						objcc.id = i + '-' + ind+ '-' + nd;
+						objcc.children = [];
+						objc.children.push(objcc);
+					})
+					obj.children.push(objc);
+				});
+				treedata2.push(obj);
+			});
+		}
+//=====================
+		
+		
 		//日期
 		layui.use('laydate', function () {
 			var laydate = layui.laydate;
@@ -68,20 +177,20 @@
 									form.render();
 							}
 					});
-					labelType=3;
-					var data2={
-						labelType:labelType
-					}
-					base.commonAjax('clav/recommendUnit/selectByLabelType', data2, function (data) {
-						if (data.code == 1) {
-							for (var i = 0; i < data.data.length; i++) {
-								$('#dscode').append(
-										'<option value="' + data.data[i].id + '">' + data.data[i].name + '</option>'
-								);
-						}
-						form.render();
-						}
-					})
+//					labelType=3;
+//					var data2={
+//						labelType:labelType
+//					}
+//					base.commonAjax('clav/recommendUnit/selectByLabelType', data2, function (data) {
+//						if (data.code == 1) {
+//							for (var i = 0; i < data.data.length; i++) {
+//								$('#dscode').append(
+//										'<option value="' + data.data[i].id + '">' + data.data[i].name + '</option>'
+//								);
+//						}
+//						form.render();
+//						}
+//					})
 	})
 //分配列表
 function codelist_z() {
@@ -289,12 +398,12 @@ function newyjsc(){
 }
 ////////////////////////////////////////////////////////////////////////
 //组织邀请码申请
-function zzcode_z(remarks1,unitId) {
+function zzcode_z(remarks1,tjId) {
 	var remarks1;
-	var unitId;
+	var tjId;
 	var data = {
 		remarks1:remarks1,
-		unitId:unitId
+		tjId:tjId
 	}
 	base.commonAjax('clav/allotInfo/getAllotInfoList', data, function (data) {
 		var pagedata = [];
@@ -367,9 +476,9 @@ function zuzycf(){
 		var remarks1=category_z;
 	}
 	if(($('#dscode').val())!=''){
-		var unitId=dscode;
+		var tjId=recommendType14;
 	}
-	zzcode_z(remarks1,unitId);
+	zzcode_z(remarks1,tjId);
 }
 
 

@@ -19,7 +19,7 @@ layui.use('form', function () {
     //单位类型
     function daweileixing() {
         var data = {
-            labelType: 1
+            labelType: 2
         }
         base.commonAjax('clav/recommendUnit/selectByLabelType', data, function (data) {
             if (data.code == 1) {
@@ -36,7 +36,7 @@ layui.use('form', function () {
     //单位名称
     function daweimingcheng() {
         var data = {
-            labelType: 2
+            labelType: 3
         }
         base.commonAjax('clav/recommendUnit/selectByLabelType', data, function (data) {
             if (data.code == 1) {
@@ -565,11 +565,11 @@ $(document).on('click', '.vipb_find', function () {
     }
     base.commonAjax('clav/member/chakanClavMember', data, function (data) {
         if (data.code == 1) {
-            console.log(data)
+            //console.log('会员审核',data)
             $(".vipb_file").empty();
             $('.vipb_file').append(
-                '<a href="' + data.data.uploadFile + '"download="会员上传文件" >' +
-                '<div class="wj">会员上传文件</div>' +
+                '<a href="' + data.data.uploadFile + '"download="'+data.data.name+''+data.data.memberNo+'" >' +
+                '<div class="wj">'+data.data.name+''+data.data.memberNo+'</div>' +
                 '</a>'
             );
         }

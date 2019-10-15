@@ -31,6 +31,8 @@
     background-color:#eceff4;
     height:auto;
     padding-bottom: 50px;
+    min-width: 1770px;
+    overflow-x: auto;
 }
 .content_nav{
     width: 90%;
@@ -101,6 +103,18 @@ label input{
     width: 301px;
     position: absolute;
     left: 1px;
+    background-color: white;
+    z-index: 999;
+    border: solid rgba(222,225,230,0.3);
+    visibility: hidden;
+}
+#test2 {
+	height: 107px;
+    overflow: auto;
+    width: 308px;
+    position: absolute;
+    left: 3px;
+    top: 83px;
     background-color: white;
     z-index: 999;
     border: solid rgba(222,225,230,0.3);

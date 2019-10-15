@@ -141,8 +141,12 @@
 									<div class="grid-demo">
 										<label for="">单位名称：
 											<div>
-												<input type="text" placeholder="单位名称" id="wjcname"
-													style="border-radius:6px;height:32px;">
+												<!--<input type="text" placeholder="单位名称" id="wjcname"
+													style="border-radius:6px;height:32px;">-->
+													<select id="wjcname" name="modules" lay-verify="required"
+													lay-search="" lay-filter="wjcname">
+													<option value="">请选择</option>
+												</select>
 											</div>
 										</label>
 									</div>
@@ -268,18 +272,20 @@
 			var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
 			form.on('select(rec_ttype)', function (data) {
 				//recttype=data.value;
-
 				recttype = data.elem[data.elem.selectedIndex].text;
-				console.log(recttype)
+				//console.log(recttype)
 				form.render('select');
 			})
 			form.on('select(rec_dtype)', function (data) {
 				//recdtype=data.value;
-
 				recdtype = data.elem[data.elem.selectedIndex].text;
 				form.render('select');
 			})
-
+			form.on('select(wjcname)', function (data) {
+				//recttype=data.value;
+				wjcnamena = data.elem[data.elem.selectedIndex].text;				
+				form.render('select');
+			})
 		})
 
 

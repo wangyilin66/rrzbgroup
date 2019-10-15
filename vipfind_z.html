@@ -83,8 +83,9 @@
 										<label for="">地域：
 											<div>
 												<div class="layui-input-block">
-													<input type="text" name="title" lay-verify="title" id="szd"
-														autocomplete="off" placeholder="现所在地" class="layui-input" style="border-radius: 6px;">
+													<input type="text" name="title" lay-verify="title" id="szd" 
+														 readonly="readonly" autocomplete="off" placeholder="现所在地" class="layui-input" style="border-radius: 6px;position: relative;cursor: pointer;">
+												<img src="img/sanjiao.png" style="width: 26px;position: absolute;top: 2px;left: 268px;"/>
 												</div>
 												<div id="test1"></div>
 											</div>
@@ -117,9 +118,13 @@
 										<div class="grid-demo">
 											<label for="">推荐单位：
 												<div>
-													<input type="text" placeholder="推荐单位" id="tjdw" style="cursor:auto">
+													<input type="text" placeholder="推荐单位" id="tjdw" readonly="readonly" style="cursor:pointer">
+													<img src="img/sanjiao.png" style="width: 26px;position: absolute;top: 52px;left: 282px;"/>
 												</div>
 											</label>
+										</div>
+										<div id="test2">
+											
 										</div>
 									</div>
 									<div class="layui-col-md4">
@@ -166,11 +171,11 @@
 							<th style="width: 50px">
 								<input type="checkbox" name="" title="" lay-skin="primary" id="checkAll">
 							</th>
-							<th>平台编号</th>
+							<th id="ptnum">平台编号</th>
 							<th>会员编号</th>
 							<th>会员姓名</th>
 							<th>入会日期</th>
-							<th>推荐单位</th>
+							<th>推荐单位/人</th>
 							<th>组织身份</th>
 							<th>艺术门类</th>
 							<th>地域</th>
@@ -210,6 +215,9 @@
 		 $('header').load('./headerys.html');
 		$('#test1').mouseleave(function(){
 			$('#test1').css("visibility", "hidden");
+		})
+		$('#test2').mouseleave(function(){
+			$('#test2').css("visibility", "hidden");
 		})
 		$(".tatou").css({ "background-color": "#059afe", "color": "white" });
 		function close1() {
@@ -289,6 +297,113 @@
 			}
 		});
 
+//推荐单位
+		let treedata2 = [];
+		let treelocaldata = [];
+		var data = {
+		}
+		base.commonAjax('clav/recommendUnit/getAllUnitList', data, function (data) {
+			if (data.code == 1) {
+				//console.log("z", data);
+				treelocaldata = data.data;
+				wtf2(data.data);
+				// console.log(treedata)
+				layui.use('tree', function () {
+					var tree = layui.tree;
+					//渲染
+					var inst1 = tree.render({
+						elem: '#test2'  //绑定元素
+						, click: function (obj) {
+							// console.log(obj);
+							// console.log(obj.data); //得到当前点击的节点数据
+							// console.log(obj.elem); //得到当前节点元素 
+							// console.log($('.layui-tree-set').attr("data-id"));
+							//  console.log(obj.data.id); //得到当前点击的节点数据
+							let str = obj.data.id;
+							console.log(String(str).indexOf('-'));
+							// console.log(str.indexOf('-')>-1);
+
+							if (String(str).indexOf('-') != -1) {
+
+								let arr = str.split('-');
+								if (arr.length == 2) {
+									console.log(treelocaldata[Number(arr[0])].childList[Number(arr[1])]);
+									recommendType14 = treelocaldata[Number(arr[0])].childList[Number(arr[1])].id;
+
+									//console.log("推荐",ind1);
+									//console.log(treedata2[arr[0]].title);
+									// console.log(treedata[arr[0]].title);
+									// console.log(obj.data.title);
+									var tjplace2 = obj.data.title;
+									//+treedata2[arr[0]].title;
+									//console.log("地区",place);
+									$('#tjdw').val(tjplace2);
+									$('#test2').css("visibility", "hidden");
+								}
+								if (arr.length == 3) {
+									//console.log(treelocaldata[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])].name);
+									//ind1 = treelocaldata[Number(arr[0])].childList[Number(arr[1])].id;
+
+									//console.log("推荐",arr);
+									//console.log(treedata2[arr[0]].title);
+									// console.log(treedata[arr[0]].title);
+									// console.log(obj.data.title);
+									var tjplace3 = treelocaldata[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])].name;
+									recommendType14=treelocaldata[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])].id;
+									//+treedata2[arr[0]].title;
+									//console.log("地区",place);
+									$('#tjdw').val(tjplace3);
+									$('#test2').css("visibility", "hidden");
+								}			
+							} else {
+								let arr = str;
+								console.log(arr);
+								console.log(treelocaldata[arr]);
+								recommendType14 = treelocaldata[arr].id;
+
+								//console.log("推荐",arr);
+								//console.log(treedata2[arr[0]].title);
+								// console.log(treedata[arr[0]].title);
+								// console.log(obj.data.title);
+								var tjplace2 = obj.data.title;
+								//+treedata2[arr[0]].title;
+								//console.log("地区",place);
+								$('#tjdw').val(tjplace2);
+								$('#test2').css("visibility", "hidden");
+
+							}
+						}
+						, data: treedata2
+					});
+
+				});
+			}
+		});
+				function wtf2(data) {
+			data.map(function(v, i){
+				let obj = {};
+				obj.title = v.name;
+				obj.id = i;
+				obj.children = [];
+				v.childList.map(function(val, ind){
+					console.log(val);
+					let objc = {};
+					objc.title = val.name;
+					objc.id = i + '-' + ind;
+					objc.children = [];
+					val.childList.map(function(al, nd){
+						let objcc = {};
+						objcc.title = al.name;
+						objcc.id = i + '-' + ind+ '-' + nd;
+						objcc.children = [];
+						objc.children.push(objcc);
+					})
+					obj.children.push(objc);
+				});
+				treedata2.push(obj);
+			});
+		}
+//=====================
 		function findvip(name, memberNo, artTypeId, location,recommendType,orgIdentityId,sTime,eTime) {
 			var name;
 			var memberNo;
@@ -308,7 +423,7 @@
 				sTime:sTime,
 				eTime:eTime
 			}
-			base.commonAjax('clav/member/getClavMemberList2', data, function (data) {
+			base.commonAjax('clav/member/getClavMemberList4', data, function (data) {
 				
 				//console.log('数据id',data);
 				var txdc=[];
@@ -492,7 +607,7 @@
 				location = $("#szd").val();
 			}
 			if ($("#tjdw").val() != '') {
-				recommendType = $("#tjdw").val();
+				recommendType = recommendType14;
 				//console.log(recommendType)
 			}
 			if ($("#zzsf").val() != '') {
@@ -534,7 +649,7 @@
 				'<td>' + obj.memberNo + '</td>' +
 				'<td>' + obj.name + '</td>' +
 				'<td>' + (obj.createDate).split(/\s+/)[0] + '</td>' +
-				'<td>' + obj.recommendType + '</td>' +
+				'<td>' + obj.relationshipGroup + '</td>' +
 				'<td>' + obj.orgIdentityStr + '</td>' +
 				'<td>' + obj.artStr + '</td>' +
 				'<td>' + obj.location + '</td>' +
@@ -563,18 +678,18 @@
 			}
 			base.commonAjax('clav/member/chakanClavMember', data, function (data) {
 				if (data.code == 1) {
-					//console.log("会员文件", data)
+					console.log("会员文件", data)
 					$(".hy_file").empty();
 					if(data.data.uploadFile!=null){
 						$('.hy_file').append(
-						'<a href="' + data.data.uploadFile + '" download="会员上传文件">' +
-						'<div class="wj">会员上传文件</div>' +
+						'<a href="' + data.data.uploadFile + '" download="'+data.data.name+''+''+data.data.memberNo+'.pdf">' +
+						'<div class="wj">'+data.data.name+''+''+data.data.memberNo+'</div>' +
 						'</a>'
 					);
 					}else{
 						$('.hy_file').append(
 						'<a href="newvip3_z.html?id='+hy_find+'">' +
-						'<div class="wj">会员上传文件</div>' +
+						'<div class="wj">'+data.data.name+''+''+data.data.memberNo+'</div>' +
 						'</a>'
 					);
 					}
@@ -644,6 +759,9 @@
 		}
 		$('#szd').click(function () {
 			$('#test1').css("visibility", "visible");
+		})
+		$('#tjdw').click(function () {
+			$('#test2').css("visibility", "visible");
 		})
 		$('#btnclear').click(function () {
 			$('#vipname,#vipnumber,#arttype,#szd,#time1,#time2,#tjdw,#zzsf').val('');
