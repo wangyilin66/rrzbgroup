@@ -576,28 +576,26 @@
 		let str = listdate[ind];
           console.log(str);
 		if(str.applicationBook){
-		fwdown(str.applicationBook);
+	        	fwdown(str.applicationBook);
 		}
-	
 
 		setTimeout(function(){
 			if(str.aptitudeProve){
-			fwdown(str.aptitudeProve);
+			    fwdown(str.aptitudeProve);
 			}
-			
 		}, 500);
+
 		setTimeout(function(){
 			if(str.associationRule){
 				fwdown(str.associationRule);
 			}
-			
 		}, 1000);
+
 		setTimeout(function(){
 			if(str.unitSituation){
 				fwdown(str.unitSituation);
 			}
 		}, 2000);
-		
 		
 		//window.open(str.applicationBook,'_blank');
 		// setTimeout(function() {

@@ -483,16 +483,26 @@ $('#ctimebox').on('click',function () {
          });
      }
 
+     function xgbut(ind) { 
+         console.log(listdate[ind]);
+         window.location.href = "newvip2_z.html?id="+listdate[ind].id;
+      }
+
+     function xgbut2(ind) { 
+         console.log(listdate[ind]);
+         window.location.href = "newvip3_z.html?id="+listdate[ind].id;
+      }
+
 	function auto(obj,ind){
         console.log(obj);
         let str = '';
         let str2 = '';
         if(obj.auditStatus == 4){
             str = '<span class="obg">调整中</span>';
-            str2 = '<button class="layui-btn">修改</button>';
+            str2 = '<button class="layui-btn"  onclick="xgbut('+ind+')">修改</button>';
         }else if(obj.auditStatus == 5){
             str = '<span class="bbg">理事通过</span>';
-            str2 = '<button class="layui-btn">修改</button><button class="layui-btn layui-btn-normal">查看</button>'
+            str2 = '<button class="layui-btn" onclick="xgbut('+ind+')">修改</button><button class="layui-btn layui-btn-normal"   onclick="xgbut2('+ind+')">查看</button>'
         }else if(obj.auditStatus == 6){
             str = '<span class="rbg">理事不通过</span>';
             str2 = '<button class="layui-btn layui-btn-danger"  onclick="removevip('+ind+')">删除</button>';
