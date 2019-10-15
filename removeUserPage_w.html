@@ -161,8 +161,8 @@
                             <p>性别：</p>
                             <div class="lis_r">
                                 <select class="inp" id="sexinp"  lay-filter="sexinp" lay-verify="required" lay-search="">
-                                    <option value="0">男</option>
-                                    <option value="1">女</option>
+                                    <option value="1">男</option>
+                                    <option value="2">女</option>
                                 </select>
                             </div>
                         </div>
@@ -177,7 +177,7 @@
                         <div class="lis">
                             <p>联系方式：</p>
                             <div class="lis_r">
-                                <input type="text" class="textinp">
+                                <input type="text" id="phoneinp" class="textinp">
                             </div>
                         </div>
                     </div>
@@ -229,7 +229,7 @@
     <script src="./js/commonheader.js"></script>
     <script>
         $('.chide').hide();
-        let mqls,sex;
+        let mqls,sex,userId;
         let data = {
 
         };
@@ -237,6 +237,7 @@
         //$('.headerpage').html(commHeader.header);
         		// 引的头部
 		$('header').load('./headerys.html');
+
         layui.use('laydate', function () {
             var laydate = layui.laydate;
 
@@ -252,10 +253,12 @@
                console.log(res);
                if(res.code == 1){
                   if(res.isExit == 1){
-                    window.location.href = "addUserPage_w.html?id="+res.data.id;
-                  }else{
-                      sessionStorage.setItem('sfzid',$('#newsfz').val());
+                    sessionStorage.setItem('sfzid',$('#newsfz').val());
                       sessionStorage.setItem('sfzname',$('#newnameinp').val());
+                    window.location.href = "addUserPage_w.html?id="+res.data.id+'&rid='+userId;
+                  }else{
+                    //   sessionStorage.setItem('sfzid',$('#newsfz').val());
+                    //   sessionStorage.setItem('sfzname',$('#newnameinp').val());
                   }
                }
                 });
@@ -277,6 +280,7 @@
             console.log(res);
             if(res.code == 1){
                 ajaxdata = res.data;
+                console.log(ajaxdata);
              res.data.map(function(item,ind){
                $('#nameinp').append(' <option value="'+ind+'">'+item.name+'</option>');
              });
@@ -284,6 +288,49 @@
                 console.log("理事列表获取失败");
             }
         });
+
+        
+        //获取URL数据  
+        function getQueryString() {
+
+            var url = location.search; //获取url中"?"符后的字串
+            var theRequest = new Object();
+            if (url.indexOf("?") != -1) {
+                var str = url.substr(1);
+                strs = str.split("&");
+                for (var i = 0; i < strs.length; i++) {
+                    theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+                }
+            }
+            return theRequest;
+        }
+
+            setTimeout(function () {
+                let idss = getQueryString('id').id;
+                console.log(idss);
+                if (idss) {
+                    ajaxdata.map(function (v, inds) {
+                        if (v.id == idss) {
+                            layui.use('form', function () {
+                                var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+                                let idnumber = sessionStorage.getItem('sfzid');
+                                let idname = sessionStorage.getItem('sfzname');
+                                console.log(idname,idnumber);
+                                $('.chide').show();
+                                $('#sexinp').val(v.gender);
+                                //console.log(inds);
+                                $('#nameinp').val(inds);
+                                $('#time1').val(v.birthday);
+                                $('#phoneinp').val(v.phone);
+                                $('#areabox').val(v.unitAndDuty);
+                                $('#newnameinp').val(idname);
+                                $('#newsfz').val(idnumber);
+                                form.render('select');
+                            });
+                        }
+                    });
+                }
+            }, 500);
 
 
             layui.use('form', function () {
@@ -293,8 +340,12 @@
            mqls=data.elem[data.elem.selectedIndex].text;
            //console.log(data.value);
            objdata = ajaxdata[Number(data.value)];
-
+           $('#sexinp').val(objdata.gender);
+           $('#time1').val(objdata.birthday);
+           $('#phoneinp').val(objdata.phone);
+           $('#areabox').val(objdata.unitAndDuty);
            console.log(objdata);
+           userId = objdata.id;
            $('.chide').show();
             form.render('select');
         });

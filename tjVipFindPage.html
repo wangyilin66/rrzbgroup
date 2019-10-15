@@ -113,6 +113,9 @@
         .rbg{
             color: red;
         }
+        .layui-btn{
+            margin-left: 5px !important;
+        }
 
 	</style>
 </head>
@@ -162,7 +165,7 @@
                                         <div class="c_b_tits">至</div>
                                         <input type="text" name="date" id="time2" lay-verify="date" style="width:122px;display: inline-block"
                                             placeholder="结束时间" autocomplete="off" class="layui-input">
-                                        <i class="layui-icon layui-icon-refresh-3"></i>
+                                        <i class="layui-icon layui-icon-refresh-3" id='ctimebox'></i>
                             
                                     </div>
                                 </div>
@@ -226,11 +229,12 @@
 
 
 	<script src="./layui/layui.js"></script>
-	<script src="./js/layuicommon.js"></script>
+	<!-- <script src="./js/layuicommon.js"></script> -->
 	<script src="./js/jquery.min.js"></script>
 	<script src="./js/header.js"></script>
 	<script src="./js/common.js"></script>
-	<script src="./js/commonheader.js"></script>
+    <script src="./js/commonheader.js"></script>
+    <script src="./js/layuicommon2.js"></script> 
 	<script>
         let zt,tj,listdate;
         var data = {
@@ -453,6 +457,11 @@
             });
         });
 
+$('#ctimebox').on('click',function () { 
+    $('#time1').val('');
+    $('#time2').val('');
+ })
+
 	layui.use('form', function(){
           var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
         form.on('select(tjdwinp)', function (data) {
@@ -474,16 +483,26 @@
          });
      }
 
+     function xgbut(ind) { 
+         console.log(listdate[ind]);
+         window.location.href = "newvip2_z.html?id="+listdate[ind].id;
+      }
+
+     function xgbut2(ind) { 
+         console.log(listdate[ind]);
+         window.location.href = "newvip3_z.html?id="+listdate[ind].id;
+      }
+
 	function auto(obj,ind){
         console.log(obj);
         let str = '';
         let str2 = '';
         if(obj.auditStatus == 4){
             str = '<span class="obg">调整中</span>';
-            str2 = '<button class="layui-btn">修改</button>';
+            str2 = '<button class="layui-btn"  onclick="xgbut('+ind+')">修改</button>';
         }else if(obj.auditStatus == 5){
             str = '<span class="bbg">理事通过</span>';
-            str2 = '<button class="layui-btn">修改</button><button class="layui-btn layui-btn-normal">查看</button>'
+            str2 = '<button class="layui-btn" onclick="xgbut('+ind+')">修改</button><button class="layui-btn layui-btn-normal"   onclick="xgbut2('+ind+')">查看</button>'
         }else if(obj.auditStatus == 6){
             str = '<span class="rbg">理事不通过</span>';
             str2 = '<button class="layui-btn layui-btn-danger"  onclick="removevip('+ind+')">删除</button>';
@@ -511,7 +530,54 @@
 				'</tr>'
 	}
 
+    layui.use('laydate', function(){
+   var laydate = layui.laydate;
+   //日期
+   laydate.render({
+   elem: '#date'
+    });
+    laydate.render({
+   elem: '#date1' 
+    });
+function useLayDateMultiple(cls) {
+      layui.use('laydate', function() {
+   var laydate = layui.laydate;
 
+      lay('#' + cls).each(function() {
+      laydate.render({
+   elem : this
+   ,trigger : 'click'
+   ,format: 'yyyy/MM/dd HH:mm:ss'
+      ,done: function(value, datetime, endDate){
+   timechecked=value;
+   bjtime1=timechecked.split(/\s+/)[0].replace(/\//g, "");
+        console.log(bjtime1);
+   }
+      });
+      });
+      });
+}
+   
+function useLayDateMultiple2(cls) {
+      layui.use('laydate', function() {
+      var laydate = layui.laydate;
+      lay('#' + cls).each(function() {
+      laydate.render({
+      elem : this,
+   trigger : 'click'
+   ,format: 'yyyy/MM/dd HH:mm:ss'
+      ,done: function(value, datetime, endDate){
+   timechecked2=value;
+   bjtime2=timechecked2.split(/\s+/)[0].replace(/\//g, "");
+        console.log(bjtime2);
+      }
+      });
+      });
+      });
+   }   
+useLayDateMultiple('time1'); useLayDateMultiple2('time2');
+
+ });
 
 
     layui.use('form', function () {

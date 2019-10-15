@@ -300,7 +300,7 @@
 									<div class="c_b_tits">至</div>
 									<input type="text" name="date" id="time2" lay-verify="date" style="width:122px;display: inline-block"
 										placeholder="结束时间" autocomplete="off" class="layui-input">
-									<i class="layui-icon layui-icon-refresh-3"></i>
+									<i class="layui-icon layui-icon-refresh-3" id="ctimebox"></i>
 								</div>
 							</div>
 
@@ -687,7 +687,10 @@
             });
 
 		
-
+       $('#ctimebox').on('click',function () { 
+		$('#time1').val('');
+		$('#time2').val('');
+	    })
 
 		layui.use('form', function(){
           var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功

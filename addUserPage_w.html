@@ -668,6 +668,9 @@ let idss = getQueryString('id').id;
         }
         $('.reback').on('click',function(){
             history.go(-1);
+            let idss2 = getQueryString('rid').rid;
+            window.location.href = "removeUserPage_w.html?id="+idss2;
+            
         })
         function wtf(data) {
             data.map(function(v, i) {

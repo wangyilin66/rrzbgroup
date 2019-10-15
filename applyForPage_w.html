@@ -177,7 +177,7 @@ font-weight: 600;
                         <span class="text">记住我（公共场合慎用）</span>
                     </div>
                     <div class="l_c_r">
-                        <a href="#">忘记密码？</a>
+                        <a href="./forgetpassword_w.html">忘记密码？</a>
                     </div>
                 </div>
                 <div class="login">
@@ -212,6 +212,20 @@ font-weight: 600;
         $('.zuce').on('click', function () {
             window.location.href = "signVipPage_w.html";
         });
+            //获取URL数据  
+    function getQueryString() {
+        var url = location.search; //获取url中"?"符后的字串
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+                    var str = url.substr(1);
+                    strs = str.split("&");
+                    for (var i = 0; i < strs.length; i++) {
+                        theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+                    }
+                }
+                return theRequest;
+            }
+
 
         $('.login').on('click', function () {
             let name = $('.name').val();
@@ -239,7 +253,8 @@ font-weight: 600;
                     if(data.isFinishTable == 2){
                         window.location.href = "applyFormPage_w.html";
                     }else{
-                        window.location.href = "applyUpdatePage_w.html";
+                        let id = data.data[0].id;
+                         window.location.href = "applyUpdatePage_w.html?id="+id;
                     }
                 }else{
                    alert('账号或密码错误');
