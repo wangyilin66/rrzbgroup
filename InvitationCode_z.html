@@ -224,7 +224,7 @@
             </div>
 
             <div class="findres">
-                <button type="button" class="layui-btn layui-btn-normal">批量导出</button>
+                <button type="button" class="layui-btn layui-btn-normal" style="visibility: hidden;">批量导出</button>
                 <table class="layui-table" lay-skin="line">
                     <colgroup>
                         <col width="150">
@@ -233,9 +233,9 @@
                     </colgroup>
                     <thead>
                         <tr class="tatou">
-                            <th style="width: 50px">
+                            <!--<th style="width: 50px">
                                 <input type="checkbox" name="" title="" lay-skin="primary" id="checkAll">
-                            </th>
+                            </th>-->
                             <th>序号</th>
                             <th>推荐类型</th>
                             <th>单位类型</th>
@@ -304,7 +304,7 @@
                     </div>
             </div>
             <div class="findres">
-                <button type="button" class="layui-btn layui-btn-normal">批量导出</button>
+                <button type="button" class="layui-btn layui-btn-normal" style="visibility: hidden;">批量导出</button>
                 <table class="layui-table" lay-skin="line">
                     <colgroup>
                         <col width="150">
@@ -562,7 +562,7 @@
                         <thead>
                             <tr class="tatou">
                                 <th>单位名称</th>
-                                <th>发展目标/th>
+                                <th>发展目标</th>
                                 <th>剩余名额</th>
                                 <th>审核通过</th>
                                 <th>完成比例</th>
@@ -674,6 +674,7 @@
 //          $('.cover4').css( "display", "block");
 //      })
         $('#yjsc_z2').click(function(){
+        	console.log("aa")
             $('.cover4').css( "display", "block");
         })
         $('#qkqk').click(function(){

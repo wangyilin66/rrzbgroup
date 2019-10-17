@@ -301,8 +301,8 @@ function codemake_z(fenpeiTime) {
 			)
 		} else{
 			$('#newsc2').append(
-				'<a href="http://39.98.186.243/clav/inviteCodeWord/getWord2" download=""><button type="button"style="margin-right: 26px;" class="layui-btn layui-btn-normal">完成并下载</button></a>'+
-                '<button type="button" class="layui-btn layui-btn-danger"id="yjsc_z2">全部邀请码重新生成</button>'
+				'<a href="http://39.98.186.243/clav/inviteCodeWord/getWord2" download=""><button type="button" class="layui-btn layui-btn-normal">完成并下载</button></a>'+
+                '&nbsp;&nbsp;<button type="button" class="layui-btn layui-btn-danger"id="yjsc_z2">全部邀请码重新生成</button>'
 			)
 		}
 		var pagedata = [];
@@ -337,9 +337,9 @@ function codemake_z(fenpeiTime) {
 codemake_z();
 function auto2(index, obj) {
 	return '<tr>'+
-			'<td style="width: 50px">'+
-				'<input type="checkbox" name="" class="zzc" title="" lay-skin="primary">'+
-			'</td>'+
+//			'<td style="width: 50px">'+
+//				'<input type="checkbox" name="" class="zzc" title="" lay-skin="primary">'+
+//			'</td>'+
 			'<td>' + (index + 1) + '</td>'+
 			'<td>' + obj.tjType + '</td>'+
 			'<td>' + obj.dwType + '</td>'+
@@ -407,7 +407,7 @@ function zzcode_z(remarks1,tjId) {
 	}
 	base.commonAjax('clav/allotInfo/getAllotInfoList', data, function (data) {
 		var pagedata = [];
-		//console.log("sd",data);
+		console.log("sd",data);
 		pagedata = data.data;
 		//调用分页
 		layui.use(['laypage', 'layer'], function () {
@@ -421,6 +421,7 @@ function zzcode_z(remarks1,tjId) {
 				limit: 10,
 				jump: function (obj) {
 					//模拟渲染
+					
 					document.getElementById('zzyqmsq_z').innerHTML = function () {
 						var arr = []
 							, thisData = pagedata.concat().splice(obj.curr * obj.limit - obj.limit, obj.limit);
@@ -451,7 +452,7 @@ function auto3(index, obj) {
 			'<td style="color: skyblue">'+msg+'</td>'+
 			'<td>'+
 				'<button type="button" class="layui-btn layui-btn-normal" onclick="zzcode_zz(' + obj.id + ')">查看</button>'+
-				'<a href="http://39.98.186.243/clav/exportExcel/downloadsExcelDown3?ids='+obj.id+'" download=""><button style="margin-left: 7px;" type="button" class="layui-btn layui-btn-warm">导出</button></a>'+
+				'<button style="margin-left: 7px;" type="button" class="layui-btn layui-btn-warm" onclick="lvyn(' + obj.id + ')">导出</button>'+
 			'</td>'+
 		'</tr>'
 }
@@ -511,45 +512,40 @@ function yiicb(){
         a.download = '' // 设置下载文件名
         a.dispatchEvent(e)
       }
+      setTimeout(function() {
+                       zzcode_z();
+                     }, 500);
 	}else{
 		alert(data.message)
 	}
 	
 	})
 }
-//批量导出
-		$("#checkAll").click(function(){
-			   $("input[type='checkbox']").prop("checked",$("#checkAll").is(':checked'));
-		})
-		function jtydc(){ //jquery获取复选框值
-		    var chk_value =[];
-		    $('input[class="zzc"]:checked').each(function(){
-		    chk_value.push($(this).val());
-		    });
-		    if(chk_value==''){
-		    	alert('请选择')
-		    	return false;
-		    }
-		 	console.log("选中的值",chk_value)
-		 	
-//		let url = 'http://39.98.186.243/clav/exportExcel/downloadsExcelDown?ids='+chk_value+''
+	//组织邀请码单个导出
+		function lvyn(ynnid){
+			let url = 'http://39.98.186.243/clav/exportExcel/downloadsExcelDown3?ids='+ynnid+''
       if (this.isIE()) { // IE
-        window.open(url, '_blank')
+        window.open(url, '_blank');
       } else {
         let a = document.createElement('a') // 创建a标签
         let e = document.createEvent('MouseEvents') // 创建鼠标事件对象
         e.initEvent('click', false, false) // 初始化事件对象
         a.href = url // 设置下载地址
         a.download = '' // 设置下载文件名
-        a.dispatchEvent(e)
+        a.dispatchEvent(e);
+        setTimeout(function() {
+                       zzcode_z();
+                     }, 500);
+		
       }
-		 	
+       
 		}
-
-		function isIE () {
+	function isIE () {
 		      if (!!window.ActiveXObject || 'ActiveXObject' in window) {
 		        return true
 		      } else {
 		        return false
 		      }
 		    }
+		
+		
