@@ -234,7 +234,7 @@
                     <thead>
                         <tr class="tatou">
                             <th style="width: 50px">
-                                <input type="checkbox" name="" title="" lay-skin="primary">
+                                <input type="checkbox" name="" title="" lay-skin="primary" id="checkAll">
                             </th>
                             <th>序号</th>
                             <th>推荐类型</th>
@@ -784,6 +784,25 @@
        })
     })
    function qrfp_z(){
+   	if($('#nianfen').val()==''){
+   		alert('请选择年份')
+   		return false;
+   	}if($('#time1').val()==''){
+   		alert('填写入会日期')
+   		return false;
+   	}
+   	if($('#time2').val()==''){
+   		alert('填写入会日期')
+   		return false;
+   	}
+   	if(($('#fzmees_z').val())==''){
+   		alert('填发展名额数')
+   		return false;
+   	}
+   	if($('#sanjit').val()==''){
+   		alert('请选择推荐单位/人')
+   		return false;
+   	}
     //console.log("提交",ind1)
     var startTime=$('#time1').val();
     var endTime=$('#time2').val();

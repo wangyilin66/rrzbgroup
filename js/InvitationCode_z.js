@@ -301,7 +301,7 @@ function codemake_z(fenpeiTime) {
 			)
 		} else{
 			$('#newsc2').append(
-				'<a href="http://39.98.186.243/clav/inviteCodeWord/getWord2" download=""><button type="button" class="layui-btn layui-btn-normal">完成并下载</button></a>'+
+				'<a href="http://39.98.186.243/clav/inviteCodeWord/getWord2" download=""><button type="button"style="margin-right: 26px;" class="layui-btn layui-btn-normal">完成并下载</button></a>'+
                 '<button type="button" class="layui-btn layui-btn-danger"id="yjsc_z2">全部邀请码重新生成</button>'
 			)
 		}
@@ -338,7 +338,7 @@ codemake_z();
 function auto2(index, obj) {
 	return '<tr>'+
 			'<td style="width: 50px">'+
-				'<input type="checkbox" name="" title="" lay-skin="primary">'+
+				'<input type="checkbox" name="" class="zzc" title="" lay-skin="primary">'+
 			'</td>'+
 			'<td>' + (index + 1) + '</td>'+
 			'<td>' + obj.tjType + '</td>'+
@@ -438,7 +438,7 @@ function zzcode_z(remarks1,tjId) {
 zzcode_z();
 function auto3(index, obj) {
 	var msg;
-			if (obj.status == 1) {
+			if (obj.type == 1) {
 				msg = '已申领'
 			} else {
 				msg = '未申领'
@@ -451,7 +451,7 @@ function auto3(index, obj) {
 			'<td style="color: skyblue">'+msg+'</td>'+
 			'<td>'+
 				'<button type="button" class="layui-btn layui-btn-normal" onclick="zzcode_zz(' + obj.id + ')">查看</button>'+
-				'<button style="margin-left: 7px;" type="button" class="layui-btn layui-btn-warm">导出</button>'+
+				'<a href="http://39.98.186.243/clav/exportExcel/downloadsExcelDown3?ids='+obj.id+'" download=""><button style="margin-left: 7px;" type="button" class="layui-btn layui-btn-warm">导出</button></a>'+
 			'</td>'+
 		'</tr>'
 }
@@ -517,6 +517,35 @@ function yiicb(){
 	
 	})
 }
+//批量导出
+		$("#checkAll").click(function(){
+			   $("input[type='checkbox']").prop("checked",$("#checkAll").is(':checked'));
+		})
+		function jtydc(){ //jquery获取复选框值
+		    var chk_value =[];
+		    $('input[class="zzc"]:checked').each(function(){
+		    chk_value.push($(this).val());
+		    });
+		    if(chk_value==''){
+		    	alert('请选择')
+		    	return false;
+		    }
+		 	console.log("选中的值",chk_value)
+		 	
+//		let url = 'http://39.98.186.243/clav/exportExcel/downloadsExcelDown?ids='+chk_value+''
+      if (this.isIE()) { // IE
+        window.open(url, '_blank')
+      } else {
+        let a = document.createElement('a') // 创建a标签
+        let e = document.createEvent('MouseEvents') // 创建鼠标事件对象
+        e.initEvent('click', false, false) // 初始化事件对象
+        a.href = url // 设置下载地址
+        a.download = '' // 设置下载文件名
+        a.dispatchEvent(e)
+      }
+		 	
+		}
+
 		function isIE () {
 		      if (!!window.ActiveXObject || 'ActiveXObject' in window) {
 		        return true
