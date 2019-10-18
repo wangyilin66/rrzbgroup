@@ -923,6 +923,29 @@ function jiuchux(){
             console.log(bltj);
             console.log($('#yqmnum').val());
             let vals = $('#yqmnum').val();
+            if(!fznfinp){
+                layui.use('layer', function () {
+                            var layer = layui.layer;
+                            layer.msg('请选择发展年份');
+                        });
+                        return;
+            }
+            if(bltj){
+                layui.use('layer', function () {
+                            var layer = layui.layer;
+                            layer.msg('请选择推荐单位/人');
+                        });
+                        return;
+            }
+
+            if( vals == ''){
+                layui.use('layer', function () {
+                            var layer = layui.layer;
+                            layer.msg('请输入邀请码个数');
+                        });
+                        return;
+            }
+
             if (fznfinp && bltj && vals != '') {
                 let data2 = {
                     year:fznfinp,
