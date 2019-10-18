@@ -381,34 +381,34 @@
         });
 
 
-                $('.tijiao').on('click', function () {
-                    let filestr = '';
-                    if (zz == null) {
-                        alert('请选择或上传正确的文件');
-                    } else {
-                        filearr.map(function (v, i) {
-                            if (v) {
-                                var file = $("#file" + i)[0].files[0];
-                                var formData = new FormData();
-                                formData.append("file", file);
+    $('.tijiao').on('click', function () {
+        let filestr = '';
+        if (zz == null) {
+            alert('请选择或上传正确的文件');
+        } else {
+            filearr.map(function (v, i) {
+                if (v) {
+                    var file = $("#file" + i)[0].files[0];
+                    var formData = new FormData();
+                    formData.append("file", file);
 
-                        $.ajax({
-                            type: "post",
-                            url: base.baseurl + 'clav/upload/uploadFile',
-                            data: formData,
-                            cache: false,
-                            processData: false,
-                            contentType: false,
-                            success: function (data, textStatus, jqXHR) {
-                                // var data = {
-                                //     id: getQueryString("id").id,
-                                //      file: data.data[0].url,
-                                // }
-                                filestr += data.data[0].url+',';
-                            }
-                        });
-                            }
-                        });
+                    $.ajax({
+                        type: "post",
+                        url: base.baseurl + 'clav/upload/uploadFile',
+                        data: formData,
+                        cache: false,
+                        processData: false,
+                        contentType: false,
+                        success: function (data, textStatus, jqXHR) {
+                            // var data = {
+                            //     id: getQueryString("id").id,
+                            //      file: data.data[0].url,
+                            // }
+                            filestr += data.data[0].url + ',';
+                        }
+                    });
+                }
+            });
 
 
                         var file = $("#file")[0].files[0];
