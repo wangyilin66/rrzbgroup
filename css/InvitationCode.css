@@ -1,0 +1,282 @@
+.hytitle{
+    height: 30px;
+    padding-left: 100px;
+    padding-top: 20px;
+}
+.hytitle_font{
+    width: 150px;
+    height: 15px;
+    color: #5d8bc8;
+    margin-top: 12px;
+    text-align: center;
+    line-height: 8px;
+    font-weight: 800;
+    font-size: 16px;
+    display: inline-block;
+    margin-left: 21px;
+    cursor: pointer;
+}
+.content_navi{
+    margin-top: 60px;
+}
+.content{
+    background-color:#eceff4;
+    height: 100%
+}
+.content_nav{
+    width: 90%;
+    margin: auto;
+}
+.content_navl{
+    width: 300px;
+    font-weight: 800;
+    font-size: 15px;
+    margin-left: 5px;
+    color: gray;
+    padding-top: 20px;
+}
+.content_navl span{
+    width: 300px;
+    color: #5d8bc8;
+}
+.layui-input, .layui-textarea {
+    display: block;
+    width: 300px;
+    padding-left: 10px;
+}
+.layui-input-block {
+     margin-left: 0;
+     min-height: 0;
+}
+.grid-demo{
+    padding-left: 117px;
+}
+label input{
+    height: 32px;
+    width: 300px;
+    cursor: pointer;
+    border: none;
+    padding-left: 9px;
+    box-shadow: 0px 1px 3px #888888;
+    margin-top: 6px;
+}
+.date_font{
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background-color: #fff;
+    line-height: 32px;
+    text-align: center;
+    box-shadow: 0px 1px 3px #888888;
+    color: grey;
+}
+.date_tubiao{
+    position: relative;
+    top: 1px;
+    margin-right: -3px;
+}
+.date_tubiao2{
+    position: relative;
+    top: 1px;
+    margin-left: -2px;
+    cursor: pointer;
+}
+label{
+    font-size: 14px;
+    font-weight: 550;
+}
+.diqu{
+    width: 136px;
+}
+.diqu input{
+    width:140px;
+    box-shadow: 2px 2px 5px #888888;
+}
+.grid-demo {
+    padding-left: 4px;
+    margin-top: 25px;
+}
+.layui-form-select{
+    width: 300px;
+}
+.diqu .layui-form-select{
+    width: 144px;
+}
+.date_font{
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background-color: white;
+}
+.hy_btn{
+    margin-top: 45px;
+}
+.hy_btn button{
+    float: right;
+    margin-right: 5px;
+    margin-left: 1px;
+}
+@media screen and (min-width: 768px){
+.layui-col-sm3 {
+    width: 25%;
+    margin-top: -20px;
+}
+}
+.clear{
+    clear:both;
+}
+.layui-btn+.layui-btn{
+    margin-left: 0px;
+}
+.findres2{
+    width: 100%;
+    height: auto;
+    background-color: white;
+    margin-top: 35px;
+    padding-top: 35px;
+    padding-bottom: 55px;
+    padding-left: 13px;
+    padding-right: 13px;
+}
+.findres{
+    width: 100%;
+    height: auto;
+    background-color: white;
+    margin-top: 35px;
+    padding-bottom: 55px;
+    padding-left: 13px;
+    padding-right: 13px;
+}
+.bl_code{
+    width: 19%;
+    display: inline-block;
+    text-align: center;
+    font-size: 19px;
+    margin-top: 31px;
+}
+.yqm_btn{
+    width: 300px;
+    margin: auto;
+    margin-top: 34px;
+}
+.lisfindres{
+    padding-top: 34px;
+}
+td{
+    text-align: center;
+}
+.layui-table th {
+    text-align: center;
+    font-weight: 400;
+}
+.findres button{
+    margin-left: 10px;
+    margin-top: 10px;
+}
+#shuju{
+    margin: auto;
+    width: 400px;
+}
+.layui-btn{
+    border-radius: 5px;
+}
+.datesz{
+    margin-right: 21px;
+}
+.quer{
+    margin-left: 38px;
+}
+.tableyuan{
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #fff;
+    position: absolute;
+    top: 10px;
+    left: 66px;
+    z-index: 100;
+}
+.tableyuan2{
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #fff;
+    position: absolute;
+    top: 10px;
+    left: 66px;
+    background-image: url(../img/tableck.png);
+    z-index: 99;
+}
+.table_button{
+    position: relative;
+    z-index: 101;
+    /* opacity: 0; */
+}
+.cover5,.cover4,.cover6,.cover7,.cover11{
+    width: 100%;
+    height:100%;
+    background-color: rgba(143, 144, 148,0.3);
+    position: fixed;
+    z-index: 999;
+    top: 2px;
+    display:none;    
+}
+.cover66{
+    width: 100%;
+    height:100%;
+    background-color: rgba(143, 144, 148,0.3);
+    position: fixed;
+    z-index: 999;
+    top: 2px;   
+}
+.tcc_content{
+    width: 600px;
+    height: 300px;
+    background-color: #fff;
+    margin: auto;
+    margin-top: 12%;
+}
+.tcc_title{
+    padding-top: 10px;
+    padding-left: 12px;
+    font-size: 16px;
+}
+.findfile{
+    height: 190px;
+}
+.findfile2{
+    height: 156px;
+}
+.findfile_an{
+    float: right;
+    position: relative;
+    right: 14px;
+}
+.hnzw {
+    line-height: 216px;
+    padding-left: 80px;
+    font-size: 22px;
+}
+.hnzw2{
+    padding-left: 53px;
+    font-size: 16px;
+}
+#shuju2 .layui-laypage-btn{
+    margin-top: 0px;
+}
+#shuju3 .layui-laypage-btn{
+    margin-top: 0px;
+}
+#test2{
+     height: 80px;
+    overflow: auto;
+    width: 229px;
+    position: absolute;
+    left: 123px;
+    top: 61px;
+    background-color: white;
+    z-index: 999;
+    border: solid rgba(222,225,230,0.3);
+    visibility: hidden;
+    border-radius: 6px;
+}
