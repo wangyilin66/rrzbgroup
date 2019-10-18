@@ -255,8 +255,9 @@ function update_z(nid){
    var data={
 	   id:fpid
    }
+   console.log("传id",data)
    base.commonAjax('clav/allotInfo/getAllotInfoList', data, function (data) {
-		   console.log(data.data[0].placeCount)
+		   console.log(data)
 		   $('#fzmes_z').val(data.data[0].placeCount)
    })
 }
@@ -302,7 +303,7 @@ function codemake_z(fenpeiTime) {
 		} else{
 			$('#newsc2').append(
 				'<a href="http://39.98.186.243/clav/inviteCodeWord/getWord2" download=""><button type="button" class="layui-btn layui-btn-normal">完成并下载</button></a>'+
-                '&nbsp;&nbsp;<button type="button" class="layui-btn layui-btn-danger"id="yjsc_z2">全部邀请码重新生成</button>'
+                '&nbsp;&nbsp;<button type="button" class="layui-btn layui-btn-danger"id="yjsc_z2" onclick="jiuchux()">全部邀请码重新生成</button>'
 			)
 		}
 		var pagedata = [];
@@ -389,7 +390,7 @@ function newyjsc(){
 			$('#newsc2').empty();
 			$('#newsc2').append(
 				'<button type="button" class="layui-btn layui-btn-normal">完成并下载</button>'+
-                '<button type="button" class="layui-btn layui-btn-danger"id="yjsc_z2">全部邀请码重新生成</button>'
+                '&nbsp;&nbsp;<button type="button" class="layui-btn layui-btn-danger"id="yjsc_z2" onclick="jiuchux()">全部邀请码重新生成</button>'
 			)
 		} else{
 			alert(data.message)
