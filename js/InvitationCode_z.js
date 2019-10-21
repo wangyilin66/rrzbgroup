@@ -271,6 +271,7 @@ function fzmesqd_z(){
 			alert('修改成功')
 			$(".cover5").css( "display", "none");
 			codelist_z();
+			codemake_z();
 	})
 }
 //分配列表的删除
