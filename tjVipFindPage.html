@@ -61,6 +61,13 @@
          flex-wrap: 600;
          line-height: 30px;
         }
+        .n_l_cont > input{
+            box-shadow: 0px 1px 3px #888888;
+        }
+        .layui-input{
+            box-shadow: 0px 1px 3px #888888;
+            box-sizing: border-box !important;
+        }
         .nameinp,.nubmerinp{
             width: 286px;
             height: 32px;
@@ -72,9 +79,12 @@
 			width: 272px;
 			display: flex;
 		}
+        .l_c_box > i{
+            box-shadow: 0px 1px 3px #888888;
+        }
 		.layui-icon-table,.layui-icon-refresh-3{
-			width: 30px !important;
-			height: 28px;
+			width: 32px !important;
+			height: 30px !important;
 			display: block;
 			text-align: center;
 			font-size: 20px;
@@ -87,16 +97,20 @@
 		.layui-icon-refresh-3{
 		font-size: 16px;
 		padding: 0 6px;
+        width: 32px !important;
+        height: 30px !important;
 		}
 		.c_b_tits{
 			display: block;
-			width: 30px;
-			height: 27px;
-			margin-top: 1px;
+			width: 32px;
+			height: 32px;
+			margin-top: 2px;
 			text-align: center;
-			line-height: 30px;
+			line-height: 32px;
 			background: #fff;
 			padding: 0 8px;
+            box-shadow: 0px 1px 3px #888888;
+           margin: 0 2px;
         }
         #layui{
 
@@ -115,6 +129,9 @@
         }
         .layui-btn{
             margin-left: 5px !important;
+        }
+        .timeinps{
+            box-shadow: 0;
         }
 
 	</style>
@@ -161,10 +178,10 @@
                                     <div class="l_c_box">
                                         <i class="layui-icon layui-icon-table"></i>
                                         <input type="text" name="date" id="time1" lay-verify="date" style="width:122px;display: inline-block"
-                                            placeholder="开始时间" autocomplete="off" class="layui-input">
+                                            placeholder="开始时间" autocomplete="off" class="layui-input timeinps">
                                         <div class="c_b_tits">至</div>
                                         <input type="text" name="date" id="time2" lay-verify="date" style="width:122px;display: inline-block"
-                                            placeholder="结束时间" autocomplete="off" class="layui-input">
+                                            placeholder="结束时间" autocomplete="off" class="layui-input timeinps">
                                         <i class="layui-icon layui-icon-refresh-3" id='ctimebox'></i>
                             
                                     </div>
