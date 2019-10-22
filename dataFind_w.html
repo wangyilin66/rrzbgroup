@@ -173,7 +173,7 @@
 			<header></header>
 	<!-- 内容 -->
 	<div class="hytitle">
-		<div class="hytitle_font2">统计结果展示</div>
+		<div class="hytitle_font2 tomap">统计结果展示</div>
 		<div class="hytitle_font">会员数据查询</div>
 	</div>
 	<div class="mapdiv">
@@ -370,7 +370,9 @@
 		//$('.headerpage').html(commHeader.header);
 		// 引的头部
 		$('header').load('./headerys.html');
-
+		$('.tomap').on('click',function () { 
+            window.location.href = "mapPage_w.html";
+         });
 
 		var data = {
 
