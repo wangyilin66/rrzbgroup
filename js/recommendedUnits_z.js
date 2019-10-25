@@ -166,10 +166,10 @@ daweimingcheng();
 				'<td>' + obj.unitType + '</td>' +
 				'<td>' + obj.name + '</td>' +
 				'<td>' + msg + '<td>' +
-				'<button id="' + 'cnm_up' + obj.id + '"class="layui-btn cnm_up">上移</button>' +
-				'<a><button id="' + 'cnm_down' + obj.id + '"class="layui-btn cnm_down">下移</button></a>' +
-				'<a><button id="' + 'cnm_update' + obj.id + '"class="layui-btn layui-btn-normal cnm_update" onclick="cnz_update('+obj.id+')">编辑</button></a>' +
-				'<a><button id="' + 'cnm_move' + obj.id + '"class="layui-btn layui-btn-danger cnm_move" onclick="cnm_m('+obj.id+')">删除</button></a>' +
+				'<button id="' + 'cnm_up' + obj.id + '"class="layui-btn cnm_up"style="width:50px;height:20px;line-height:20px;padding-left: 10px;margin-top: 0px;">上移</button>' +
+				'<a><button id="' + 'cnm_down' + obj.id + '"class="layui-btn cnm_down"style="width:50px;height:20px;line-height:20px;padding-left: 10px;margin-top: 0px;">下移</button></a>' +
+				'<a><button id="' + 'cnm_update' + obj.id + '"class="layui-btn layui-btn-normal cnm_update" onclick="cnz_update('+obj.id+')"style="width:50px;height:20px;line-height:20px;padding-left: 10px;margin-top: 0px;">编辑</button></a>' +
+				'<a><button id="' + 'cnm_move' + obj.id + '"class="layui-btn layui-btn-danger cnm_move" onclick="cnm_m('+obj.id+')"style="width:50px;height:20px;line-height:20px;padding-left: 10px;margin-top: 0px;">删除</button></a>' +
 				'</td>' +
 				'</tr>'
 

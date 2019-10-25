@@ -17,7 +17,7 @@
 #test1{
     height: 102px;
     overflow: auto;
-    width: 295px;
+    width: 238px;
     position: absolute;
     left: 3px;
     top: 85px;
@@ -58,6 +58,9 @@
             display: flex;
             justify-content: space-around;
         }
+        .layui-form-select .layui-input {
+        	width: 240px;
+        }
 </style>
 </head>
 
@@ -84,7 +87,7 @@
                     <div class="layui-container-fluid">
                         <div class="layui-fluid">
                             <div class="layui-row">
-                                <div class="layui-col-sm3">
+                                <div class="layui-col-md3">
                                     <div class="grid-demo grid-demo-bg1">
                                         <label for="">发展年份：
                                             <div>
@@ -98,7 +101,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="layui-col-sm3">
+                                <div class="layui-col-md5">
                                     <div class="grid-demo grid-demo-bg1">
                                         <label for="">入会日期：
                                             <div>
@@ -119,18 +122,19 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="layui-col-sm12">
+                                <div class="layui-col-md12">
                                     <div class="layui-col-sm3" style="margin-top: 2px;">
                                         <div class="grid-demo">
                                             <label for="">推荐单位/人：
                                                 <div>
-                                                    <input type="text" placeholder="请选择" readonly="readonly" style="width:290px;border-radius: 6px;" id='sanjit' onclick="chuxian()">
+                                                    <input type="text" placeholder="请选择" readonly="readonly" style="position: relative;width:232px;border-radius: 6px;" id='sanjit' onclick="chuxian()">
+                                                	<img src="img/sanjiao.png" style="width: 26px;position: absolute;top: 50px;left: 207px;"/>
                                                 </div>
                                             </label>
                                         </div>
                                     </div>
                                     <div id="test1"></div>
-                                    <div class="layui-col-sm3" style="margin-top: 2px;">
+                                    <div class="layui-col-md3" style="margin-top: 2px;">
                                         <div class="grid-demo">
                                             <label for="">发展名额数：
                                                 <div>
@@ -139,7 +143,7 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="layui-col-sm3 layui-col-md-offset3">
+                                    <div class="layui-col-md3 layui-col-md-offset3">
                                         <div class="hy_btn">
                                             <button type="reset" class="layui-btn layui-btn-danger">清空</button>
                                             <button type="button" class="layui-btn layui-btn-normal" onclick="qrfp_z()">确认分配</button>
@@ -283,8 +287,8 @@
                                 <div class="layui-col-sm3">
                                     <div class="grid-demo grid-demo-bg1">
                                         <label for="">申领推荐单位/人：</label>
-                                        <input type="text" placeholder="请选择" id='dscode' readonly="readonly" style="cursor: pointer;" onclick="chuxian2()">                                       
-                                    	<img src="img/sanjiao.png" style="width: 26px;position: absolute;top: 30px;left: 322px;"/>
+                                        <input type="text" placeholder="请选择" id='dscode' readonly="readonly" style="cursor: pointer;margin-top: 5px;" onclick="chuxian2()">                                       
+                                    	<img src="img/sanjiao.png" style="width: 26px;position: absolute;top: 49px;left: 199px;"/>
                                     </div>
                                     <div id="test2">
                                     	

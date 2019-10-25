@@ -54,7 +54,7 @@
             margin-right: 50px;
         }
         .n_l_cont2{
-            margin-left:22px;
+            margin-left:42px;
         }
         .n_l_cont > p{
          font-size: 14px;
@@ -69,7 +69,7 @@
             box-sizing: border-box !important;
         }
         .nameinp,.nubmerinp{
-            width: 286px;
+            width: 240px;
             height: 32px;
             border:0;
             border-radius: 6px;
@@ -133,7 +133,11 @@
         .timeinps{
             box-shadow: 0;
         }
+		.findres {
+			    padding-top: 27px;
+    margin-top: 45px;
 
+		}
 	</style>
 </head>
 
@@ -155,11 +159,11 @@
                  <div class="c_n_lis">
                      <div class="n_l_cont">
                          <p>会员姓名：</p>
-                         <input class="nameinp" type="text"/>
+                         <input class="nameinp" type="text" placeholder="会员姓名"/>
                      </div>
                      <div class="n_l_cont">
                             <p>会员编号：</p>
-                            <input class="nubmerinp" type="text"/>
+                            <input class="nubmerinp" type="text" placeholder="会员编号"/>
                         </div>
                         <div class="n_l_cont">
                                 <p>推荐单位/人：</p>
@@ -213,8 +217,8 @@
 			
 				<table class="layui-table" lay-skin="line">
 					<colgroup>
-						<col width="150">
-						<col width="200">
+						<col width="100">
+						<col width="100">
 						<col>
 					</colgroup>
 					<thead>
@@ -516,17 +520,17 @@ $('#ctimebox').on('click',function () {
         let str2 = '';
         if(obj.auditStatus == 4){
             str = '<span class="obg">调整中</span>';
-            str2 = '<button class="layui-btn"  onclick="xgbut('+ind+')">修改</button>';
+            str2 = '<button style="width:50px;height:20px;line-height: 20px;margin-top:0px;padding-left:10px;" class="layui-btn"  onclick="xgbut('+ind+')">修改</button>';
         }else if(obj.auditStatus == 5){
             str = '<span class="bbg">理事通过</span>';
-            str2 = '<button class="layui-btn" onclick="xgbut('+ind+')">修改</button><button class="layui-btn layui-btn-normal"   onclick="xgbut2('+ind+')">查看</button>'
+            str2 = '<button style="width:50px;height:20px;line-height: 20px;margin-top:0px;padding-left:10px;"class="layui-btn" onclick="xgbut('+ind+')">修改</button><button style="width:50px;height:20px;line-height: 20px;margin-top:0px;padding-left:10px;" class="layui-btn layui-btn-normal"   onclick="xgbut2('+ind+')">查看</button>'
         }else if(obj.auditStatus == 6){
             str = '<span class="rbg">理事不通过</span>';
-            str2 = '<button class="layui-btn layui-btn-danger"  onclick="removevip('+ind+')">删除</button>';
+            str2 = '<button style="width:50px;height:20px;line-height: 20px;margin-top:0px;padding-left:10px;" class="layui-btn layui-btn-danger"  onclick="removevip('+ind+')">删除</button>';
 
         }else if(obj.auditStatus == 7){
             str == '<span class="obg">审核中</span>';
-            str2 = '<button class="layui-btn layui-btn-normal">查看</button>';
+            str2 = '<button style="width:50px;height:20px;line-height: 20px;margin-top:0px;padding-left:10px;" class="layui-btn layui-btn-normal">查看</button>';
         }
 		return '<tr>' +
 				'<td>' + (ind+1) + '</td>' +

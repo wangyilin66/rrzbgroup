@@ -57,7 +57,9 @@
 				<table class="layui-table" lay-skin="line" lay-filter="test">
 					<colgroup>
 						<col width="150">
-						<col width="200">
+						<col width="100">
+						<col width="50">
+						<col width="350">
 						<col>
 					</colgroup>
 					<thead>
@@ -197,9 +199,9 @@
 					'<td>' + obj.orgIdentity + '</td>'+								
 					'<td>' + obj.count + '</td>'+	
 					'<td>'+	                            
-						'<button id="' + 'duty_updata' + obj.id + '" type="button" class="layui-btn duty_updata" onclick="dup('+obj.id+')">编辑</button>'+	
-						'<a><button id="' + 'duty_move' + obj.id + '" type="button" class="layui-btn layui-btn-danger duty_move" onclick="drm('+obj.id+')">删除</button></a>'+	
-						'<a href="./vipdutylist_z.html?id='+obj.id+'"><button id="' + 'duty_find' + obj.id + '" type="button" class="layui-btn layui-btn-normal duty_find" >查看列表</button></a>'+	
+						'<button id="' + 'duty_updata' + obj.id + '" type="button" class="layui-btn duty_updata" onclick="dup('+obj.id+')" style="width:50px;height:20px;line-height:20px;padding-left:11px;margin-top: 0px;">编辑</button>'+	
+						'<a><button id="' + 'duty_move' + obj.id + '" type="button" class="layui-btn layui-btn-danger duty_move" onclick="drm('+obj.id+')"style="width:50px;height:20px;line-height:20px;padding-left:11px;margin-top: 0px;">删除</button></a>'+	
+						'<a href="./vipdutylist_z.html?id='+obj.id+'"><button id="' + 'duty_find' + obj.id + '" type="button" class="layui-btn layui-btn-normal duty_find" style="width:77px;height:20px;line-height:20px;padding-left:11px;margin-top: 0px;">查看列表</button></a>'+	
 					'</td>'+	
 				'</tr>'
 		}

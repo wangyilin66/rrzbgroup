@@ -85,7 +85,7 @@
 												<div class="layui-input-block">
 													<input type="text" name="title" lay-verify="title" id="szd" 
 														 readonly="readonly" autocomplete="off" placeholder="现所在地" class="layui-input" style="border-radius: 6px;position: relative;cursor: pointer;">
-												<img src="img/sanjiao.png" style="width: 26px;position: absolute;top: 2px;left: 268px;"/>
+												<img src="img/sanjiao.png" style="width: 26px;position: absolute;top: 2px;left: 207px;"/>
 												</div>
 												<div id="test1"></div>
 											</div>
@@ -114,12 +114,12 @@
 											</label>
 										</div>
 									</div>
-									<div class="layui-col-md4">
+									<div class="layui-col-md3">
 										<div class="grid-demo">
 											<label for="">推荐单位：
 												<div>
 													<input type="text" placeholder="推荐单位" id="tjdw" readonly="readonly" style="cursor:pointer">
-													<img src="img/sanjiao.png" style="width: 26px;position: absolute;top: 52px;left: 282px;"/>
+													<img src="img/sanjiao.png" style="width: 26px;position: absolute;top: 52px;left: 217px;"/>
 												</div>
 											</label>
 										</div>
@@ -160,15 +160,23 @@
 			</form>
 			<div class="findres">
 				<button type="button" class="layui-btn layui-btn-normal" onclick="jqchk()">批量导出</button>
-				<table class="layui-table" lay-skin="line">
+				<table class="layui-table"  style="table-layout:fixed;"lay-skin="line">
 					<colgroup>
-						<col width="150">
-						<col width="200">
+						<col width="20">
+						<col width="88">
+						<col width="118">
+						<col width="87">
+						<col width="87">
+						<col width="112">
+						<col width="128">
+						<col width="99">
+						<col width="58">
+						<col width="350">
 						<col>
 					</colgroup>
 					<thead>
 						<tr class="tatou">
-							<th style="width: 50px">
+							<th>
 								<input type="checkbox" name="" title="" lay-skin="primary" id="checkAll">
 							</th>
 							<th id="ptnum">平台编号</th>
@@ -641,6 +649,8 @@
 
 		}
 		function auto(index, obj) {
+			var lc=(obj.location).split('-');
+			//console.log(lc)
 			return '<tr>' +
 				'<td style="width: 50px">' +
 				'<input type="checkbox" name="" title="" lay-skin="primary" class="s" value="' + obj.id + '">' +
@@ -652,13 +662,13 @@
 				'<td>' + obj.relationshipGroup + '</td>' +
 				'<td>' + obj.orgIdentityStr + '</td>' +
 				'<td>' + obj.artStr + '</td>' +
-				'<td>' + obj.location + '</td>' +
+				'<td>' + (lc[0]) + '</td>' +
 				'<td>' +
-				'<button id="' + 'hy_edit' + obj.id + '"class="layui-btn hy_edit">编辑</button>' +
-				'<a><button id="' + 'hy_find' + obj.id + '"class="layui-btn layui-btn-normal hy_find">查看</button></a>' +
-				'<a href=http://39.98.186.243/clav/exportExcel/downloadsExcelDown?ids='+obj.id+' download=""><button id="' + 'hy_daochu' + obj.id + '"class="layui-btn layui-btn-normal hy_daochu">导出</button></a>' +
-				'<a><button id="' + 'hy_move' + obj.id + '"class="layui-btn layui-btn-warm hy_move" onclick="remove_z(' + obj.id + ')">移除</button></a>' +
-				'<a><button id="' + 'hy_repass' + obj.id + '"class="layui-btn layui-btn-danger hy_repass" onclick="repass_z(' + obj.id + ')">重置密码</button></a>' +
+				'<button id="' + 'hy_edit' + obj.id + '"class="layui-btn hy_edit" style="width:50px;height:20px;line-height: 20px;padding-left: 11px;">编辑</button>' +
+				'<a><button id="' + 'hy_find' + obj.id + '"class="layui-btn layui-btn-normal hy_find" style="width:50px;height:20px;line-height: 20px;padding-left: 11px;">查看</button></a>' +
+				'<a href=http://39.98.186.243/clav/exportExcel/downloadsExcelDown?ids='+obj.id+' download=""><button id="' + 'hy_daochu' + obj.id + '"class="layui-btn layui-btn-normal hy_daochu" style="width:50px;height:20px;line-height: 20px;padding-left: 11px;">导出</button></a>' +
+				'<a><button id="' + 'hy_move' + obj.id + '"class="layui-btn layui-btn-warm hy_move" onclick="remove_z(' + obj.id + ')" style="width:50px;height:20px;line-height: 20px;padding-left: 11px;">移除</button></a>' +
+				'<a><button id="' + 'hy_repass' + obj.id + '"class="layui-btn layui-btn-danger hy_repass" onclick="repass_z(' + obj.id + ')"style="width:60px;height:22px;line-height: 20px;padding-left: 2px;">重置密码</button></a>' +
 				'</td>' +
 				'</tr>'
 		}

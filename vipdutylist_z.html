@@ -70,6 +70,9 @@
 #lvip{
 	border-bottom: 5px solid rgba(147, 209, 255,1);
 }
+.layui-form-select .layui-input {
+	width: 240px;
+}
 </style>
 <body>
 		<!-- 头部 -->
@@ -114,7 +117,7 @@
 								<div class="layui-col-md3">
 								<div class="yinc"style="width:10px;height:10px;"></div>
 								</div>
-                                <div class="layui-col-md3 layui-col-md-offset3">
+                                <div class="layui-col-md12">
                                         <div class="hy_btn">
                                                 <button type="reset" class="layui-btn layui-btn-normal" id="btnclear"style="background-color: grey;">清空条件</button>
                                                 <button type="button" class="layui-btn layui-btn-normal"onclick="tec()">通讯录导出</button>
@@ -133,8 +136,8 @@
 				<button type="button" class="layui-btn layui-btn-normal" onclick="jqchk()">批量导出</button>
 				<table class="layui-table" lay-skin="line">
 					<colgroup>
-						<col width="150">
-						<col width="200">
+						<col width="50">
+						<col width="100">
 						<col>
 					</colgroup>
 					<thead>

@@ -222,8 +222,8 @@ function auto(index, obj) {
                     '<td>'+obj.artStr+'</td>'+
                     '<td>'+obj.location+'</td>'+
                     '<td>'+
-                        '<button id="' + 'sm_up' + obj.id + '" type="button" class="layui-btn layui-btn-normal sm_up">上移</button>'+
-                        '<a><button id="' + 'sm_down' + obj.id + '" type="button" class="layui-btn layui-btn-normal sm_down">下移</button></a>'+
+                        '<button id="' + 'sm_up' + obj.id + '" type="button" class="layui-btn layui-btn-normal sm_up" style="width:50px;height:20px;line-height:20px;margin-top:0px;padding-left: 10px;">上移</button>'+
+                        '<a><button id="' + 'sm_down' + obj.id + '" type="button" class="layui-btn layui-btn-normal sm_down"style="width:50px;height:20px;line-height:20px;margin-top:0px;padding-left: 10px;">下移</button></a>'+
                     '</td>'+
                 '</tr>'
 }

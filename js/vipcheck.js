@@ -323,16 +323,16 @@ function auto(index, obj) {
         '<td>' + obj.unitName + '</td>' +
         '<td>' +
 
-        '<button id="' + 'find' + obj.id + '"  type="button" class="layui-btn find">查看</button>' +
+        '<button id="' + 'find' + obj.id + '"  type="button" class="layui-btn find"style="width:50px;height:20px;line-height:20px;padding-left: 10px;margin-top: 0px;">查看</button>' +
 
         '<a>' +
-        '<button id="' + 'but' + obj.id + '" type="button" class="layui-btn layui-btn-normal but" onclick="but_z('+obj.id+')">通过</button>' +
+        '<button id="' + 'but' + obj.id + '" type="button" class="layui-btn layui-btn-normal but" onclick="but_z('+obj.id+')"style="width:50px;height:20px;line-height:20px;padding-left: 10px;margin-top: 0px;">通过</button>' +
         '</a>' +
         '<a>' +
-        '<button id="' + 'no' + obj.id + '" type="button" class="layui-btn layui-btn-danger no" onclick="no_z('+obj.id+')">不通过</button>' +
+        '<button id="' + 'no' + obj.id + '" type="button" class="layui-btn layui-btn-danger no" onclick="no_z('+obj.id+')"style="width:61px;height:20px;line-height:20px;padding-left: 10px;margin-top: 0px;">不通过</button>' +
         '</a>' +
         '<a href="http://39.98.186.243/clav/memberUnit/downloadRAR?ids=' + obj.id + '" download="">' +
-        '<button id="' + 'download' + obj.id + '" type="button" class="layui-btn layui-btn-warm">下载</button>' +
+        '<button id="' + 'download' + obj.id + '" type="button" class="layui-btn layui-btn-warm"style="width:50px;height:20px;line-height:20px;padding-left: 10px;margin-top: 0px;">下载</button>' +
         '</a>' +
         '</td>' +
         '</tr>'
@@ -347,9 +347,9 @@ function auto2(index, obj) {
         '<td>' + obj.nname + '</td>' +
         '<td>' + obj.nduty + '</td>' +
         '<td>' +
-        '<button id="' + 'li_find' + obj.id + '"class="layui-btn lis_find">查看</button>' +
-        '<a><button id="' + 'li_tong' + obj.id + '"class="layui-btn layui-btn-normal lis_tongg" onclick="li_tong('+obj.id+')">通过</button></a>' +
-        '<a><button id="' + 'li_no' + obj.id + '"class="layui-btn layui-btn-danger lis_notongg" onclick="li_no('+obj.id+')">不通过</button></a>' +
+        '<button id="' + 'li_find' + obj.id + '"class="layui-btn lis_find"style="width:50px;height:20px;line-height:20px;padding-left: 10px;margin-top: 0px;">查看</button>' +
+        '<a><button id="' + 'li_tong' + obj.id + '"class="layui-btn layui-btn-normal lis_tongg" onclick="li_tong('+obj.id+')"style="width:50px;height:20px;line-height:20px;padding-left: 10px;margin-top: 0px;">通过</button></a>' +
+        '<a><button id="' + 'li_no' + obj.id + '"class="layui-btn layui-btn-danger lis_notongg" onclick="li_no('+obj.id+')"style="width:61px;height:20px;line-height:20px;padding-left: 10px;margin-top: 0px;">不通过</button></a>' +
         '</td>' +
         '</tr>'
 }
@@ -366,9 +366,9 @@ function auto3(index, obj) {
         '<td>' + obj.artStr + '</td>' +
         '<td>' + obj.relationshipGroup + '</td>' +
         '<td>' +
-        '<button id="' + 'vipb_find' + obj.id + '" class="layui-btn vipb_find">查看</button>' +
-        '<a><button id="' + 'vipb_tg' + obj.id + '"class="layui-btn layui-btn-normal vipb_tg" onclick="vipb_tg('+ obj.id+')">通过</button></a>' +
-        '<a><button id="' + 'vipb_remove' + obj.id + '"class="layui-btn layui-btn-warm vipb_remove" onclick="vipb_r('+ obj.id+')">转人才库</button></a>' +
+        '<button id="' + 'vipb_find' + obj.id + '" class="layui-btn vipb_find" style="width:50px;height:20px;line-height:20px;padding-left: 10px;margin-top: 0px;">查看</button>' +
+        '<a><button id="' + 'vipb_tg' + obj.id + '"class="layui-btn layui-btn-normal vipb_tg" onclick="vipb_tg('+ obj.id+')"style="width:50px;height:20px;line-height:20px;padding-left: 10px;margin-top: 0px;">通过</button></a>' +
+        '<a><button id="' + 'vipb_remove' + obj.id + '"class="layui-btn layui-btn-warm vipb_remove" onclick="vipb_r('+ obj.id+')"style="width:72px;height:20px;line-height:20px;padding-left: 10px;margin-top: 0px;">转人才库</button></a>' +
         '</td>' +
         '</tr>'
 }

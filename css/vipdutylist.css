@@ -1,6 +1,6 @@
 .hytitle{
     height: 30px;
-    padding-left: 100px;
+    padding-left: 386px;
     padding-top: 20px;
 }
 .hytitle_font{
@@ -20,7 +20,7 @@
     padding-bottom: 43px;
 }
 .content_nav{
-    width: 90%;
+    width: 60%;
     margin: auto;
 }
 .content_navl{
@@ -49,7 +49,7 @@
 }
 label input{
     height: 38px;
-    width: 300px;
+    width: 240px;
     cursor: pointer;
     border: none;
     padding-left: 9px;
@@ -108,7 +108,7 @@ label{
     margin-top: 25px;
 }
 .layui-form-select{
-    width: 300px;
+    width: 240px;
 }
 .diqu .layui-form-select{
     width: 144px;
@@ -168,7 +168,8 @@ td{
     border-radius: 5px;
 }
 #layui{
-    padding-left: 480px;
+    display: flex;
+    justify-content: center;
 }
 #layui .layui-laypage-btn{
     margin-top: 0;

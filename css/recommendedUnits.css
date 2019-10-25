@@ -1,6 +1,6 @@
 .hytitle{
     height: 30px;
-    padding-left: 100px;
+    padding-left: 345px;
     padding-top: 20px;
 }
 .hytitle_font{
@@ -26,7 +26,7 @@
     overflow-x: auto;
 }
 .content_nav{
-    width: 90%;
+    width: 62%;
     margin: auto;
 }
 .content_navl{
@@ -99,7 +99,7 @@ label{
     margin-top: 25px;
 }
 .layui-form-select{
-    width: 300px;
+    width: 240px;
 }
 .diqu .layui-form-select{
     width: 144px;

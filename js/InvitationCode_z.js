@@ -242,8 +242,8 @@ function auto(index, obj) {
 			'<td>' + obj.placeCount + '</td>'+
 			'<td>' + (obj.fenpeiTime).split(/\s+/)[0] + '</td>'+
 			'<td>'+
-				'<button id="update'+ obj.id+'"class="layui-btn update_z" onclick=update_z('+obj.id+')>修改</button>'+
-				'<button style="margin-left: 7px;" id="remove'+ obj.id+'"class="layui-btn layui-btn-danger update_mv" onclick=remove_z('+obj.id+')>删除</button>'+
+				'<button id="update'+ obj.id+'"class="layui-btn update_z" onclick=update_z('+obj.id+') style="width:50px;height:20px;line-height:20px;margin-top:0px;padding-left:11px;">修改</button>'+
+				'<button style="margin-left: 7px;width:50px;height:20px;line-height:20px;margin-top:0px;padding-left:11px;" id="remove'+ obj.id+'"class="layui-btn layui-btn-danger update_mv" onclick=remove_z('+obj.id+')>删除</button>'+
 			'</td>'+
 		'</tr>'
 }
@@ -453,8 +453,8 @@ function auto3(index, obj) {
 			'<td>' + obj.placeCount + '</td>'+
 			'<td style="color: skyblue">'+msg+'</td>'+
 			'<td>'+
-				'<button type="button" class="layui-btn layui-btn-normal" onclick="zzcode_zz(' + obj.id + ')">查看</button>'+
-				'<button style="margin-left: 7px;" type="button" class="layui-btn layui-btn-warm" onclick="lvyn(' + obj.id + ')">导出</button>'+
+				'<button type="button" style="width:50px;height:20px;line-height:20px;margin-top:0px;padding-left:11px;"class="layui-btn layui-btn-normal" onclick="zzcode_zz(' + obj.id + ')">查看</button>'+
+				'<button style="margin-left: 7px;width:50px;height:20px;line-height:20px;margin-top:0px;padding-left:11px;" type="button" class="layui-btn layui-btn-warm" onclick="lvyn(' + obj.id + ')">导出</button>'+
 			'</td>'+
 		'</tr>'
 }
