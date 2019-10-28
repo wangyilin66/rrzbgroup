@@ -21,6 +21,10 @@
 		#lvip{
 			border-bottom: 5px solid rgba(147, 209, 255,1);
 		}
+		.findres {
+padding-left: 25px;
+    padding-right: 25px;
+		}
 	</style>
 </head>
 
@@ -664,11 +668,11 @@
 				'<td>' + obj.artStr + '</td>' +
 				'<td>' + (lc[0]) + '</td>' +
 				'<td>' +
-				'<button id="' + 'hy_edit' + obj.id + '"class="layui-btn hy_edit" style="width:50px;height:20px;line-height: 20px;padding-left: 11px;">编辑</button>' +
-				'<a><button id="' + 'hy_find' + obj.id + '"class="layui-btn layui-btn-normal hy_find" style="width:50px;height:20px;line-height: 20px;padding-left: 11px;">查看</button></a>' +
-				'<a href=http://39.98.186.243/clav/exportExcel/downloadsExcelDown?ids='+obj.id+' download=""><button id="' + 'hy_daochu' + obj.id + '"class="layui-btn layui-btn-normal hy_daochu" style="width:50px;height:20px;line-height: 20px;padding-left: 11px;">导出</button></a>' +
-				'<a><button id="' + 'hy_move' + obj.id + '"class="layui-btn layui-btn-warm hy_move" onclick="remove_z(' + obj.id + ')" style="width:50px;height:20px;line-height: 20px;padding-left: 11px;">移除</button></a>' +
-				'<a><button id="' + 'hy_repass' + obj.id + '"class="layui-btn layui-btn-danger hy_repass" onclick="repass_z(' + obj.id + ')"style="width:60px;height:22px;line-height: 20px;padding-left: 2px;">重置密码</button></a>' +
+				'<button id="' + 'hy_edit' + obj.id + '"class="layui-btn hy_edit" style="width:50px;height:20px;line-height: 20px;padding-left: 11px;margin-top: 0px;">编辑</button>' +
+				'<a><button id="' + 'hy_find' + obj.id + '"class="layui-btn layui-btn-normal hy_find" style="width:50px;height:20px;line-height: 20px;padding-left: 11px;margin-top: 0px;">查看</button></a>' +
+				'<a href=http://39.98.186.243/clav/exportExcel/downloadsExcelDown?ids='+obj.id+' download=""><button id="' + 'hy_daochu' + obj.id + '"class="layui-btn layui-btn-normal hy_daochu" style="width:50px;height:20px;line-height: 20px;padding-left: 11px;margin-top: 0px;">导出</button></a>' +
+				'<a><button id="' + 'hy_move' + obj.id + '"class="layui-btn layui-btn-warm hy_move" onclick="remove_z(' + obj.id + ')" style="width:50px;height:20px;line-height: 20px;padding-left: 11px;margin-top: 0px;">移除</button></a>' +
+				'<a><button id="' + 'hy_repass' + obj.id + '"class="layui-btn layui-btn-danger hy_repass" onclick="repass_z(' + obj.id + ')"style="width:60px;height:22px;line-height: 20px;padding-left: 2px;margin-top: 0px;">重置密码</button></a>' +
 				'</td>' +
 				'</tr>'
 		}
