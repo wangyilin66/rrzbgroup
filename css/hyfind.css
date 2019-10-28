@@ -1,9 +1,11 @@
 .hytitle{
-    height: 30px;
-    padding-left: 316px;
+    height: 37px;
+    /* padding-left: 16%; */
     padding-top: 20px;
     display: flex;
-      margin-bottom: 7px;
+    /* margin-bottom: 7px; */
+    width: 1200px;
+    margin: auto;
 }
 .hytitle_font{
     width: 126px;
@@ -15,7 +17,6 @@
     line-height: 8px;
     font-weight: 800;
     font-size: 16px;
-    margin-left: 50px;
 }
 .hytitle_font2{
     width: 126px;

@@ -1,9 +1,12 @@
 .hytitle{
-    height: 30px;
-    padding-left: 363px;
+
+        height: 37px;
+    /* padding-left: 16%; */
     padding-top: 20px;
-    margin-bottom: 7px;
     display: flex;
+    /* margin-bottom: 7px; */
+    width: 1200px;
+    margin: auto;
 }
 .hytitle_font{
     width: 150px;
@@ -15,7 +18,6 @@
     font-weight: 800;
     font-size: 16px;
     display: inline-block;
-    margin-left: 21px;
     cursor: pointer;
 }
 .content_navi{
