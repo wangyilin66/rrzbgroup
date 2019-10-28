@@ -321,18 +321,21 @@
         $('.yzmbut').on('click',function () { 
 
             let len = $('.phoneinp').val();
-            if(phone(len)){
+            let sfz = $('.sfzhminp').val();
+            if(phone(len) && sfzF == true){
                 $('.yzmtit').val('');
-
-                base.commonAjax('clav/phonecode/register', {phone:len}, function (res) {
+                base.commonAjax('clav/phonecode/register', {phone:len,idNumber:sfz}, function (res) {
                     if(res.code == 1){
                          alert('验证码发送成功');
                          yzmF = true;
+                    }else{
+                        alert(res.message);
                     }
+
                 });
 
             }else{
-           $('.yzmtit').val('请输入正确的手机号后，再获取邀请码');
+           $('.yzmtit').val('请输入正确的手机号和身份证后，再获取邀请码');
            yzmF = false;
             }
 
