@@ -2,10 +2,11 @@
     height: 30px;
     padding-left: 364px;
     padding-top: 20px;
+      margin-bottom: 7px;
 }
 .hytitle_font{
     width: 97px;
-    height: 15px;
+    height: 22px;
     color: #5d8bc8;
     margin-top: 12px;
     text-align: center;
@@ -23,11 +24,10 @@
     background-color:#eceff4;
     height:auto;
     padding-bottom: 50px;
-        min-width: 1770px;
-    overflow-x: auto;
 }
 .content_nav{
-    width: 60%;
+    width: 1200px;
+    min-width: 1200px;
     margin: auto;
 }
 .content_navl{

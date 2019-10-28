@@ -3,10 +3,11 @@
     padding-left: 316px;
     padding-top: 20px;
     display: flex;
+      margin-bottom: 7px;
 }
 .hytitle_font{
     width: 126px;
-    height: 15px;
+    height: 22px;
     border-bottom: solid; 
     color: #5d8bc8;
     margin-top: 12px;
@@ -31,11 +32,10 @@
     background-color:#eceff4;
     height:auto;
     padding-bottom: 50px;
-    min-width: 1770px;
-    overflow-x: auto;
 }
 .content_nav{
-    width: 62%;
+    width: 1200px;
+    min-width: 1200px;
     margin: auto;
 }
 .content_navl{

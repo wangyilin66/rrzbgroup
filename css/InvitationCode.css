@@ -2,10 +2,12 @@
     height: 30px;
     padding-left: 363px;
     padding-top: 20px;
+    margin-bottom: 7px;
+    display: flex;
 }
 .hytitle_font{
     width: 150px;
-    height: 15px;
+    height: 22px;
     color: #5d8bc8;
     margin-top: 12px;
     text-align: center;
@@ -24,7 +26,8 @@
     height: 100%
 }
 .content_nav{
-    width: 60%;
+        width: 1200px;
+    min-width: 1200px;
     margin: auto;
 }
 .content_navl{

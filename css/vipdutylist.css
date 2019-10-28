@@ -20,7 +20,8 @@
     padding-bottom: 43px;
 }
 .content_nav{
-    width: 60%;
+        width: 1200px;
+    min-width: 1200px;
     margin: auto;
 }
 .content_navl{
