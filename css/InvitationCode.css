@@ -1,22 +1,25 @@
 .hytitle{
     height: 30px;
-    padding-left: 363px;
     padding-top: 20px;
     margin-bottom: 7px;
     display: flex;
 }
 .hytitle_font{
     width: 150px;
-    height: 22px;
+    height: 32px;
     color: #5d8bc8;
-    margin-top: 12px;
+    margin-top: 2px;
     text-align: center;
-    line-height: 8px;
+    line-height: 22px;
+    /* padding-bottom: 10px; */
     font-weight: 800;
     font-size: 16px;
     display: inline-block;
     margin-left: 21px;
     cursor: pointer;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
 }
 .content_navi{
     margin-top: 60px;
