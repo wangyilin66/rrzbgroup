@@ -322,8 +322,13 @@
 
             let len = $('.phoneinp').val();
             let sfz = $('.sfzhminp').val();
-            if(phone(len) && sfzF == true){
-                $('.yzmtit').val('');
+         
+            if(phone(len)){
+               if(sfzF == false){
+                $('.yzmtit').text('请输入正确的身份证号后，再发送验证码');
+                return;
+               }
+                $('.yzmtit').text('');
                 base.commonAjax('clav/phonecode/register', {phone:len,idNumber:sfz}, function (res) {
                     if(res.code == 1){
                          alert('验证码发送成功');
@@ -335,7 +340,8 @@
                 });
 
             }else{
-           $('.yzmtit').val('请输入正确的手机号和身份证后，再获取邀请码');
+               
+           $('.yzmtit').text('请输入正确的手机号后，再获取邀请码');
            yzmF = false;
             }
 
