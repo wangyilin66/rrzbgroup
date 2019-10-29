@@ -63,8 +63,10 @@ label input{
     padding-left: 9px;
     box-shadow: 0px 1px 3px #888888;
     margin-top: 6px;
-    border-radius: 6px;
+    border-radius: 4px;
     height: 32px;
+    box-shadow: 0px -1px 15px 0px rgba(210,214,222,1);
+    border: 1px solid rgba(210,214,222,1); 
 }
 .date_tubiao{
     position: relative;
@@ -151,7 +153,7 @@ td{
     width: 540px;
 }
 .layui-btn{
-    border-radius: 5px;
+    border-radius: 4px;
 }
 .datesz{
     margin-right: 21px;
@@ -244,7 +246,8 @@ td{
     right: 14px;
 }
 #shuju3,#shuju2{
-    padding-left: 480px;
+	display: flex;
+    justify-content: center;
 }
 #shuju3 .layui-laypage-btn {
     margin-top: 0;

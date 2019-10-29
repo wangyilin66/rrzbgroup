@@ -29,23 +29,27 @@
     visibility:hidden;
 }
 #dscode{
-	height: 32px;
+	height: 30px;
     cursor: pointer;
     border: none;
     padding-left: 9px;
     box-shadow: 0px 1px 3px #888888;
     margin-top: 6px;
     margin-top: 3px;
-    border-radius: 6px;
+    border-radius: 4px;
     width: 224px;
+    box-shadow: 0px -1px 15px 0px rgba(210,214,222,1);
+    border: 1px solid rgba(210,214,222,1);
 }
 #test22{
     background: #fff;
     width: 241px;
     position: absolute;
-    left: 0;
+    left: 2px;
     top:38px;
     z-index: 999;
+    height: 102px;
+    overflow: auto;
 }
 #lvip{
 			border-bottom: 5px solid rgba(147, 209, 255,1);
@@ -68,6 +72,8 @@
         }
         .layui-form-select .layui-input {
         	width: 240px;
+        	box-shadow: 0px -1px 15px 0px rgba(210,214,222,1);
+border: 1px solid rgba(210,214,222,1); 
         }
 </style>
 </head>
@@ -135,7 +141,7 @@
                                         <div class="grid-demo">
                                             <label for="">推荐单位/人：
                                                 <div>
-                                                    <input type="text" placeholder="请选择" readonly="readonly" style="position: relative;width:232px;border-radius: 6px;" id='sanjit' onclick="chuxian()">
+                                                    <input type="text" placeholder="请选择" readonly="readonly" style="position: relative;width:232px;height:30px;border-radius: 4px;" id='sanjit' onclick="chuxian()">
                                                 	<img src="img/sanjiao.png" style="width: 26px;position: absolute;top: 50px;left: 207px;"/>
                                                 </div>
                                             </label>
@@ -146,7 +152,7 @@
                                         <div class="grid-demo">
                                             <label for="">发展名额数：
                                                 <div>
-                                                    <input type="text" placeholder="发展名额数" style="cursor:auto;border-radius: 6px;" id="fzmees_z">
+                                                    <input type="text" placeholder="发展名额数" style="cursor:auto;border-radius: 4px;height:30px;" id="fzmees_z">
                                                 </div>
                                             </label>
                                         </div>
@@ -296,7 +302,7 @@
                                     <div class="grid-demo grid-demo-bg1">
                                         <label for="">申领推荐单位/人：</label>
                                         <input type="text" placeholder="请选择" id='dscode' readonly="readonly" style="cursor: pointer;margin-top: 5px;" onclick="chuxian2()">                                       
-                                    	<img src="img/sanjiao.png" style="width: 26px;position: absolute;top: 49px;left: 199px;"/>
+                                    	<img src="img/sanjiao.png" style="width: 26px;position: absolute;top: 50px;left: 199px;"/>
                                     </div>
                                     <div id="test2">
                                     	
@@ -353,7 +359,7 @@
                     <div class="layui-container-fluid">
                         <div class="layui-fluid">
                             <div class="layui-row">
-                                <div class="layui-col-sm3">
+                                <div class="layui-col-md3">
                                     <div class="grid-demo grid-demo-bg1">
                                         <label for="">发展年份：
                                             <div>
@@ -367,11 +373,11 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="layui-col-sm3">
+                                <div class="layui-col-md3">
                                     <div class="grid-demo grid-demo-bg1">
                                         <label for="">补领推荐单位/人：
                                             <div style="position: relative;">
-                                                <input type="text" placeholder="请选择" id="bltjdw" readonly="readonly" style="position: relative;width:232px;border-radius: 6px;">
+                                                <input type="text" placeholder="请选择" id="bltjdw" readonly="readonly" style="position: relative;width:232px;border-radius: 4px;">
                                                 <img src="img/sanjiao.png" style="width: 26px;position: absolute;top: 8px;left: 205px;"/>
                                                 <div id="test22">
 											
@@ -381,7 +387,7 @@
                                     </div>
                                    
                                 </div>
-                                <div class="layui-col-sm12">
+                                <div class="layui-col-md12">
                                         <div class="layui-col-sm3" style="margin-top: 2px;">
                                                 <div class="grid-demo grid-demo-bg1">
                                                         <label for="">补领邀请码：
@@ -391,7 +397,7 @@
                                                         </label>
                                                     </div>
                                         </div> 
-                                <div class="layui-col-sm3 layui-col-md-offset6">
+                                <div class="layui-col-md3 layui-col-md-offset6">
                                     <div class="hy_btn">
                                     	<button type="button" class="layui-btn layui-btn-normal">导出</button>
                                         <button type="button" id='blbut' class="layui-btn layui-btn-normal">确认补领</button>
@@ -420,7 +426,7 @@
                         <div class="layui-container-fluid">
                             <div class="layui-fluid">
                                 <div class="layui-row">
-                                    <div class="layui-col-sm3">
+                                    <div class="layui-col-md3">
                                         <div class="grid-demo grid-demo-bg1">
                                             <label for="">推荐单位/人：
                                                 <div>
@@ -434,7 +440,7 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="layui-col-sm3">
+                                    <div class="layui-col-md3">
                                             <div class="grid-demo grid-demo-bg1">
                                                 <label for="">邀请码：
                                                     <div>
@@ -443,7 +449,7 @@
                                                 </label>
                                             </div>
                                         </div>
-                                    <div class="layui-col-sm3">
+                                    <div class="layui-col-md3">
                                         <div class="grid-demo grid-demo-bg1">
                                             <label for="">状态：
                                                 <div >
@@ -461,7 +467,7 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="layui-col-sm3">
+                                    <div class="layui-col-md3">
                                         <div class="hy_btn">
                                             <button type="button" id="gzgkbut" class="layui-btn layui-btn-normal">查询</button>
                                             <div class="clear"></div>

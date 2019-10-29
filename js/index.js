@@ -31,6 +31,10 @@ $(function(){
 				}
 				stopFunc(e);
 			});
+			//
+			
+			
+			//
 			$('.select-content').on('click','li',function(){
 				$(this).children('.checkboxs').click();
 				btn_status();

@@ -546,7 +546,7 @@
 					elem: 'layui'
 					, count: pagedata.length,
 					layout: ['count', 'prev', 'page', 'next', 'skip'],
-					limit: 3,
+					limit: 10,
 					jump: function (obj) {
 						//模拟渲染
 						document.getElementById('tb').innerHTML = function () {
@@ -621,17 +621,17 @@
 
 
 
-
+//<button style="width:50px;height:20px;line-height: 20px;padding-left: 11px;margin-top: 0px;border-radius: 4px;" class="layui-btn layui-btn-warm" onclick="show('+ind+')" >修改</button>  之前的修改按钮
 	function auto(obj, ind) {
 		let str;
 		let str2;
 		console.log(obj);
 		if(obj.status == 1){
 		 str = '<td><span class="tg">通过</span></td>' ;
-		 str2 = '<button class="layui-btn" onclick="showfile('+ind+')">下载批复</button>';
+		 str2 = '<button class="layui-btn"style="width:80px;height:20px;line-height: 20px;padding-left: 11px;margin-top: 0px;border-radius: 4px;" onclick="showfile('+ind+')">下载批复</button>';
 		}else if (obj.status == 0){
 		str = '<td><span class="shz">审核中</span></td>' ;
-		str2 = '<button class="layui-btn layui-btn-normal" onclick="show('+ind+')">查看</button>';
+		str2 = '<button style="width:50px;height:20px;line-height: 20px;padding-left: 11px;margin-top: 0px;border-radius: 4px;" class="layui-btn layui-btn-normal" onclick="show('+ind+')">查看</button>';
 		}else if(obj.status == 2){
 			str = '<td><span class="btg">不通过</span></td>' ;
 			str2 = '<button class="layui-btn layui-btn-danger" onclick="showtext('+ind+')">查看回复</button>';

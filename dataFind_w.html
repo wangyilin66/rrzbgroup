@@ -162,6 +162,13 @@
 			background: #9E9E9E;
 			margin-left: 24px;
 		}
+		.layui-table td, .layui-table th {
+    position: relative;
+    padding: 5px 1px;
+    min-height: 20px;
+    line-height: 20px;
+    font-size: 14px;
+}
 	</style>
 </head>
 
@@ -318,10 +325,19 @@
 			</div>
 			<div class="findres">
 				<button type="button" class="layui-btn layui-btn-normal">批量导出</button>
-				<table class="layui-table" lay-skin="line">
+				<table class="layui-table" lay-skin="line" lay-even="">
 					<colgroup>
-						<col width="50">
-						<col width="90">
+						<col width="10">
+						<col width="68">
+						<col width="78">
+						<col width="87">
+						<col width="87">
+						<col width="112">
+						<col width="98">
+						<col width="99">
+						<col width="138">
+						<col width="58">
+						<col width="138">
 						<col>
 					</colgroup>
 					<thead>
@@ -553,8 +569,8 @@
 				'<td>' + obj.name + '</td>' +
 				'<td>' + (obj.createDate).split(/\s+/)[0] + '</td>' +
 				'<td>' + obj.recommendType + '</td>' +
-				'<td>' + obj.orgIdentityId + '</td>' +
-				'<td>' + obj.artTypeId + '</td>' +
+				'<td>' + obj.orgIdentityStr + '</td>' +
+				'<td>' + obj.artStr + '</td>' +
 				'<td>' + obj.specificAreas + '</td>' +
 				'<td>' + (lc[0]) + '</td>' +
 				'<td>' +
