@@ -621,7 +621,7 @@
 
 
 
-
+//<button style="width:50px;height:20px;line-height: 20px;padding-left: 11px;margin-top: 0px;border-radius: 4px;" class="layui-btn layui-btn-warm" onclick="show('+ind+')" >修改</button>  之前的修改按钮
 	function auto(obj, ind) {
 		let str;
 		let str2;
@@ -634,7 +634,7 @@
 		str2 = '<button style="width:50px;height:20px;line-height: 20px;padding-left: 11px;margin-top: 0px;border-radius: 4px;" class="layui-btn layui-btn-normal" onclick="show('+ind+')">查看</button>';
 		}else if(obj.status == 2){
 			str = '<td><span class="btg">不通过</span></td>' ;
-			str2 = '<button style="width:80px;height:20px;line-height: 20px;padding-left: 11px;margin-top: 0px;border-radius: 4px;margin-right: 4px;" class="layui-btn layui-btn-danger" onclick="showtext('+ind+')">查看回复</button><button style="width:50px;height:20px;line-height: 20px;padding-left: 11px;margin-top: 0px;border-radius: 4px;" class="layui-btn layui-btn-warm" onclick="show('+ind+')" >修改</button>';
+			str2 = '<button style="width:80px;height:20px;line-height: 20px;padding-left: 11px;margin-top: 0px;border-radius: 4px;margin-right: 4px;" class="layui-btn layui-btn-danger" onclick="showtext('+ind+')">查看回复</button>';
 		}
 
 		return '<tr>' +
