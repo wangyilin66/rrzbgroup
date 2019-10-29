@@ -175,6 +175,7 @@
 	.select-box span {
 		padding-left: 0px; 
 		z-index: 999;
+		position: relative;
 	}
 	.select-box input[type='checkbox'] {
 		position: absolute;

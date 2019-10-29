@@ -382,7 +382,7 @@ if(data.code==1){
         '<li>'+
             '<input type="checkbox" class="checkboxs zzc_right"  id="tyue-checkbox-blue1" value="'+data.data[i].id+'"/>'+
             '<label for="tyue-checkbox-blue1"></label>'+
-            '<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+data.data[i].name+'</span>'+
+            '<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>'+data.data[i].name+'</span></span>'+
         '</li>'
     )
 }

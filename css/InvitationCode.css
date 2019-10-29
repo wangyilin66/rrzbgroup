@@ -3,6 +3,7 @@
     /* padding-left: 16%; */
     padding-top: 20px;
     display: flex;
+    justify-content: space-between;
     /* margin-bottom: 7px; */
     width: 1200px;
     margin: auto;
@@ -143,6 +144,7 @@ label{
     height: auto;
     background-color: white;
     margin-top: 35px;
+    box-sizing: border-box;
     padding-top: 35px;
     padding-bottom: 55px;
     padding-left: 13px;
