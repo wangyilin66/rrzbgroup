@@ -88,7 +88,7 @@ padding-left: 25px;
 											<div>
 												<div class="layui-input-block">
 													<input type="text" name="title" lay-verify="title" id="szd" 
-														 readonly="readonly" autocomplete="off" placeholder="现所在地" class="layui-input" style="border-radius: 6px;position: relative;cursor: pointer;">
+														 readonly="readonly" autocomplete="off" placeholder="现所在地" class="layui-input" style="border-radius: 6px;position: relative;cursor: pointer;border: 1px solid rgba(210,214,222,1);box-shadow: 0px -1px 15px 0px rgba(210,214,222,1);">
 												<img src="img/sanjiao.png" style="width: 26px;position: absolute;top: 2px;left: 207px;"/>
 												</div>
 												<div id="test1"></div>
@@ -105,11 +105,11 @@ padding-left: 25px;
 														<div class="date_font date_tubiao"><i
 																class="layui-icon layui-icon-date"></i></div>
 														<input type="text" name="date" id="time1" lay-verify="date"
-															style="width:122px;display: inline-block" placeholder="开始时间"
+															style="width:122px;border: 1px solid rgba(210,214,222,1);box-shadow: 0px -1px 15px 0px rgba(210,214,222,1);display: inline-block" placeholder="开始时间"
 															autocomplete="off" class="layui-input">
 														<div class="date_font z_tubiao">至</div>
 														<input type="text" name="date" id="time2" lay-verify="date"
-															style="width:122px;display: inline-block" placeholder="结束时间"
+															style="width:122px;border: 1px solid rgba(210,214,222,1);box-shadow: 0px -1px 15px 0px rgba(210,214,222,1);display: inline-block" placeholder="结束时间"
 															autocomplete="off" class="layui-input">
 														<div class="date_font date_tubiao2" onclick="z_qk()"><i
 																class="layui-icon layui-icon-refresh-1"></i></div>
@@ -653,8 +653,10 @@ padding-left: 25px;
 
 		}
 		function auto(index, obj) {
-			var lc=(obj.location).split('-');
-			//console.log(lc)
+			if((obj.location).indexOf('-')>-1){
+				var lc=(obj.location).split('-');
+			console.log(lc)
+			}
 			return '<tr>' +
 				'<td style="width: 50px">' +
 				'<input type="checkbox" name="" title="" lay-skin="primary" class="s" value="' + obj.id + '">' +
@@ -668,11 +670,11 @@ padding-left: 25px;
 				'<td>' + obj.artStr + '</td>' +
 				'<td>' + (lc[0]) + '</td>' +
 				'<td>' +
-				'<button id="' + 'hy_edit' + obj.id + '"class="layui-btn hy_edit" style="width:50px;height:20px;line-height: 20px;padding-left: 11px;margin-top: 0px;">编辑</button>' +
-				'<a><button id="' + 'hy_find' + obj.id + '"class="layui-btn layui-btn-normal hy_find" style="width:50px;height:20px;line-height: 20px;padding-left: 11px;margin-top: 0px;">查看</button></a>' +
-				'<a href=http://39.98.186.243/clav/exportExcel/downloadsExcelDown?ids='+obj.id+' download=""><button id="' + 'hy_daochu' + obj.id + '"class="layui-btn layui-btn-normal hy_daochu" style="width:50px;height:20px;line-height: 20px;padding-left: 11px;margin-top: 0px;">导出</button></a>' +
-				'<a><button id="' + 'hy_move' + obj.id + '"class="layui-btn layui-btn-warm hy_move" onclick="remove_z(' + obj.id + ')" style="width:50px;height:20px;line-height: 20px;padding-left: 11px;margin-top: 0px;">移除</button></a>' +
-				'<a><button id="' + 'hy_repass' + obj.id + '"class="layui-btn layui-btn-danger hy_repass" onclick="repass_z(' + obj.id + ')"style="width:60px;height:22px;line-height: 20px;padding-left: 2px;margin-top: 0px;">重置密码</button></a>' +
+				'<button id="' + 'hy_edit' + obj.id + '"class="layui-btn hy_edit" style="width:50px;height:20px;line-height: 20px;padding-left: 11px;margin-top: 0px;border-radius: 4px;">编辑</button>' +
+				'<a><button id="' + 'hy_find' + obj.id + '"class="layui-btn layui-btn-normal hy_find" style="width:50px;height:20px;line-height: 20px;padding-left: 11px;margin-top: 0px;border-radius: 4px;">查看</button></a>' +
+				'<a href=http://39.98.186.243/clav/exportExcel/downloadsExcelDown?ids='+obj.id+' download=""><button id="' + 'hy_daochu' + obj.id + '"class="layui-btn layui-btn-normal hy_daochu" style="width:50px;height:20px;line-height: 20px;padding-left: 11px;margin-top: 0px;border-radius: 4px;">导出</button></a>' +
+				'<a><button id="' + 'hy_move' + obj.id + '"class="layui-btn layui-btn-warm hy_move" onclick="remove_z(' + obj.id + ')" style="width:50px;height:20px;line-height: 20px;padding-left: 11px;margin-top: 0px;border-radius: 4px;">移除</button></a>' +
+				'<a><button id="' + 'hy_repass' + obj.id + '"class="layui-btn layui-btn-danger hy_repass" onclick="repass_z(' + obj.id + ')"style="width:60px;height:22px;line-height: 20px;padding-left: 2px;margin-top: 0px;border-radius: 4px;">重置密码</button></a>' +
 				'</td>' +
 				'</tr>'
 		}
