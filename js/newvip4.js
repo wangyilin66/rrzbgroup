@@ -147,7 +147,7 @@ function goupdate() {
                         var email = $('#email').val();//邮箱
                         var wechatNumber = $('#weixinnum').val();//微信号
                         var educationLevelId = whcd;//文化程度
-                        var professionalTitleId = newiid;//专业职称
+                        var professionalTitleId = $('#zyzc').val();//专业职称
                         var unitAndDuty = $('#work').val();//工作单位
                         var workExperience = $('#experience').val();//工作经历
                         var graduateSchool = $('#school').val();//毕业院校

@@ -524,6 +524,8 @@
         $('header').load('./headerys.html');
         let treedata = [];
         let treedata2 = [];
+        let treedata3 = [];
+        let treedata4 = [];
         let treelocaldata = [];
 
 
@@ -568,7 +570,7 @@ let idss = getQueryString('id').id;
         mz3=obj.nation;
         $('#username2').val(obj.penName);
         $('#sr').val(obj.birthday);
-        $('#jg').val(Number(obj.nativePlace)); 
+        $('#jg').val(obj.nativePlace); 
         jg = obj.nativePlace;
           var radio = document.getElementsByName("sex");
           if (obj.isNewGroup == 1) {
@@ -590,7 +592,7 @@ let idss = getQueryString('id').id;
         whcd=obj.educationLevelId;
         $('#zyzc').val(obj.professionalTitleId);
         zyzc=obj.professionalTitleId;
-        
+    
         $('#school').val(obj.graduateSchool);
         $('#work').val(obj.unitAndDuty);
         $('#qgwork').val(obj.associationDuty);
@@ -647,7 +649,7 @@ let idss = getQueryString('id').id;
   }
 
   //========================================================================
-
+      
         function changepic(obj) {
             //console.log(obj.files[0]);//这里可以获取上传文件的name
             var newsrc = getObjectURL(obj.files[0]);

@@ -280,7 +280,7 @@
 
 							<th>序号</th>
 							<th>申报时间</th>
-							<th>申报单位名称</th>
+							<th>联系人手机号</th>
 							<th>申报状态</th>
 							<th>操作</th>
 							<!-- <th>组织身份</th>
@@ -634,7 +634,8 @@
 		str2 = '<button style="width:50px;height:20px;line-height: 20px;padding-left: 11px;margin-top: 0px;border-radius: 4px;" class="layui-btn layui-btn-normal" onclick="show('+ind+')">查看</button>';
 		}else if(obj.status == 2){
 			str = '<td><span class="btg">不通过</span></td>' ;
-			str2 = '<button style="width:80px;height:20px;line-height: 20px;padding-left: 11px;margin-top: 0px;border-radius: 4px;margin-right: 4px;" class="layui-btn layui-btn-danger" onclick="showtext('+ind+')">查看回复</button>';
+			str2 = '<button class="layui-btn layui-btn-danger" onclick="showtext('+ind+')">查看回复</button>';
+			//<button class="layui-btn layui-btn-warm" onclick="show('+ind+')" >修改</button>
 		}
 
 		return '<tr>' +
@@ -646,12 +647,6 @@
 				'</td>' +
 				'</tr>'
 	}
-
-   
-
-
-
-
 
 	</script>
 </body>
