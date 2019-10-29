@@ -39,6 +39,14 @@
     border-radius: 6px;
     width: 224px;
 }
+#test22{
+    background: #fff;
+    width: 241px;
+    position: absolute;
+    left: 0;
+    top:38px;
+    z-index: 999;
+}
 #lvip{
 			border-bottom: 5px solid rgba(147, 209, 255,1);
 		}
@@ -350,7 +358,7 @@
                                         <label for="">发展年份：
                                             <div>
                                                 <select id="fznfinp" name="modules" lay-verify="required" lay-search="" lay-filter="fznfinp">
-                                                    <option value="">请选择</option>
+                                                    <option value="0">请选择</option>
                                                     <!-- <option value="1">layer</option>
                                                                         <option value="2">form</option>
                                                                         <option value="3">layim</option> -->
@@ -362,16 +370,16 @@
                                 <div class="layui-col-sm3">
                                     <div class="grid-demo grid-demo-bg1">
                                         <label for="">补领推荐单位/人：
-                                            <div>
-                                                <select id="bltj" name="modules" lay-verify="required" lay-search="" lay-filter="bltj">
-                                                    <option value="">请选择</option>
-                                                    <!-- <option value="1">layer</option>
-                                                                            <option value="2">form</option>
-                                                                            <option value="3">layim</option> -->
-                                                </select>
+                                            <div style="position: relative;">
+                                                <input type="text" placeholder="请选择" id="bltjdw" readonly="readonly" style="position: relative;width:232px;border-radius: 6px;">
+                                                <img src="img/sanjiao.png" style="width: 26px;position: absolute;top: 8px;left: 205px;"/>
+                                                <div id="test22">
+											
+                                                </div>
                                             </div>
                                         </label>
                                     </div>
+                                   
                                 </div>
                                 <div class="layui-col-sm12">
                                         <div class="layui-col-sm3" style="margin-top: 2px;">
@@ -663,6 +671,7 @@
     <script src="./js/InvitationCode_z.js"></script>
 	<script>
         let treedata = [];
+  
         let fznfinp,bltj,gztjdw,gzzt,ztyearinp,zttjdwinp;
         let ind1;
         function close1() {
@@ -924,8 +933,10 @@ function jiuchux(){
     });
     
         $('#blbut').on('click', function () {
+            let bltjdwinp = $('#bltjdw').val();
+            let bltjdwflag = false;
             console.log(fznfinp);
-            console.log(bltj);
+            // console.log(bltj);
             console.log($('#yqmnum').val());
             let vals = $('#yqmnum').val();
             if(!fznfinp){
@@ -935,36 +946,43 @@ function jiuchux(){
                         });
                         return;
             }
-            if(!bltj){
+            if(bltjdwinp == ''){
                 layui.use('layer', function () {
-                            var layer = layui.layer;
-                            layer.msg('请选择推荐单位/人');
-                        });
-                        return;
+                        var layer = layui.layer;
+                        layer.msg('请选择推荐单位/人');
+                    });
+                    return;
             }
-
+            bltjdwflag = true;
             if( vals == ''){
-                layui.use('layer', function () {
-                            var layer = layui.layer;
-                            layer.msg('请输入邀请码个数');
-                        });
-                        return;
+            layui.use('layer', function () {
+                        var layer = layui.layer;
+                        layer.msg('请输入邀请码个数');
+                    });
+                    return;
             }
 
-            if (fznfinp && bltj && vals != '') {
+            if (fznfinp && bltjdwflag && vals != '') {
                 let data2 = {
                     year:fznfinp,
-                    units:bltj,
+                    units:recommendType14,
                     placeCount:vals
                 }
                 base.commonAjax('clav/allotInfo/addInviteReplaceInfo', data2, function (data) {
                     console.log(data);
                     if (data.code == 1) {
                      data.data.map(function (v,i) {
-                     $('#codelist').append('<div class="bl_code">'+v.inviteCode+'</div>')
+                     $('#codelist').append('<div class="bl_code">'+v+'</div>')
                        });
+                       $('#bltjdw').val('');
+                       $('#yqmnum').val('');
+                       $('#fznfinp').val(0);
+                        layui.use('form', function () {
+                            var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+                            form.render();
+                        });
                     }else{
-                        alert('补领信息填写错误，请填写或选择正确的格式');
+                        alert(data.message);
                     }
                 })
             }
@@ -973,11 +991,13 @@ function jiuchux(){
     $('#gzgkbut').on('click', function () {
         console.log(gztjdw);
         console.log(gzzt);
-        console.log($('#gzinp2').val());
+        let yqmcode = $('#gzinp2').val();
         let data = {
-            inviteCode:$('#gzinp2').val(),
             unitId:gztjdw,
             status:gzzt,
+        }
+        if(yqmcode != ''){
+            data.inviteCode = yqmcode;
         }
 
         base.commonAjax('clav/allotInfo/getInviteCodeList', data, function (data) {
@@ -1206,6 +1226,131 @@ function jiuchux(){
         };
 
         
+
+//=======================================
+
+
+//推荐单位
+    
+		let treelocaldata2 = [];
+		var data = {
+		}
+		base.commonAjax('clav/recommendUnit/getAllUnitList', data, function (data) {
+			if (data.code == 1) {
+				//console.log("z", data);
+				treelocaldata2 = data.data;
+				wtf2(data.data);
+				// console.log(treedata)
+				layui.use('tree', function () {
+					var tree = layui.tree;
+					//渲染
+					var inst1 = tree.render({
+						elem: '#test22'  //绑定元素
+						, click: function (obj) {
+							// console.log(obj);
+							// console.log(obj.data); //得到当前点击的节点数据
+							// console.log(obj.elem); //得到当前节点元素 
+							// console.log($('.layui-tree-set').attr("data-id"));
+							//  console.log(obj.data.id); //得到当前点击的节点数据
+							let str = obj.data.id;
+							console.log(String(str).indexOf('-'));
+							// console.log(str.indexOf('-')>-1);
+
+							if (String(str).indexOf('-') != -1) {
+
+								let arr = str.split('-');
+								if (arr.length == 2) {
+									console.log(treelocaldata2[Number(arr[0])].childList[Number(arr[1])]);
+									recommendType14 = treelocaldata2[Number(arr[0])].childList[Number(arr[1])].id;
+
+									//console.log("推荐",ind1);
+									//console.log(treedata2[arr[0]].title);
+									// console.log(treedata[arr[0]].title);
+									// console.log(obj.data.title);
+									var tjplace2 = obj.data.title;
+									//+treedata2[arr[0]].title;
+									//console.log("地区",place);
+									$('#bltjdw').val(tjplace2);
+									$('#test22').css("visibility", "hidden");
+								}
+								if (arr.length == 3) {
+									//console.log(treelocaldata[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])].name);
+									//ind1 = treelocaldata[Number(arr[0])].childList[Number(arr[1])].id;
+
+									//console.log("推荐",arr);
+									//console.log(treedata2[arr[0]].title);
+									// console.log(treedata[arr[0]].title);
+									// console.log(obj.data.title);
+									var tjplace3 = treelocaldata2[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])].name;
+									recommendType14=treelocaldata2[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])].id;
+									//+treedata2[arr[0]].title;
+									//console.log("地区",place);
+									$('#bltjdw').val(tjplace3);
+									$('#test22').css("visibility", "hidden");
+								}			
+							} else {
+								let arr = str;
+								console.log(arr);
+								console.log(treelocaldata2[arr]);
+								recommendType14 = treelocaldata2[arr].id;
+
+								//console.log("推荐",arr);
+								//console.log(treedata2[arr[0]].title);
+								// console.log(treedata[arr[0]].title);
+								// console.log(obj.data.title);
+								var tjplace2 = obj.data.title;
+								//+treedata2[arr[0]].title;
+								//console.log("地区",place);
+								$('#bltjdw').val(tjplace2);
+								$('#test22').css("visibility", "hidden");
+
+							}
+						}
+						, data: treedata2
+					});
+
+				});
+			}
+		});
+        $('#bltjdw').on('click',function () { 
+            $('#test22').css("visibility", "visible");
+         });
+         $('#test22').mouseleave(function(){
+			$('#test22').css("visibility", "hidden");
+		});
+        $('#test22').css("visibility", "hidden");
+				function wtf2(data) {
+			data.map(function(v, i){
+				let obj = {};
+				obj.title = v.name;
+				obj.id = i;
+				obj.children = [];
+				v.childList.map(function(val, ind){
+					//console.log(val);
+					let objc = {};
+					objc.title = val.name;
+					objc.id = i + '-' + ind;
+					objc.children = [];
+					val.childList.map(function(al, nd){
+						let objcc = {};
+						objcc.title = al.name;
+						objcc.id = i + '-' + ind+ '-' + nd;
+						objcc.children = [];
+						objc.children.push(objcc);
+					})
+					obj.children.push(objc);
+				});
+				treedata2.push(obj);
+			});
+		}
+
+
+
+//===========================================
+
+
+
+
    layui.use('form', function () {
 			var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
 			form.on('select(fznf_z2)', function (data) {
