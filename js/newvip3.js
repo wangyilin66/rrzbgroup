@@ -532,6 +532,7 @@ layui.use('form', function(){
     
     function goupdate() {
             if($('#file').val() == ''){
+                //     alert('123')
                             //	console.log("上传图片成功")
                             //console.log(data.data[0].url)
                             var nnb=idss;
@@ -740,11 +741,11 @@ layui.use('form', function(){
                                                     linkmanPhone: linkmanPhone
                                             }
                                             console.log(data);
-                                            base.commonAjax('clav/member/updateClavMember', data, function (data) {
+                                            base.commonAjax('clav/member/addRedClavMember', data, function (data) {
                                                     if (data.code == 1) {
                                                             console.log(data);
                                                             console.log('成功');
-                                                            alert('修改成功');
+                                                            alert('保存成功');
                                                             window.location.href = "applyUpdatePage_w.html?id="+data.theId;
 
                                                             //window.location.href = 'vipfind_z.html';
