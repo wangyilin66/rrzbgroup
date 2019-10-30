@@ -31,22 +31,24 @@
 			height: auto;
 		}
 		.tit{
-			margin-left: 30px;
+		   margin: 0 auto;
+		   width: 1000px;
 			margin-top: 28px;
 			font-size: 20px;
 			color: #408BE2;
 			font-weight: 600;
 		}
 		.textbox{
-			width: 79.4%;
+			width: 1000px;
 			height: 160px;
 			background: #0081FF;
 			color: #fff;
 			border-radius: 16px;
-			margin-left: 28px;
+	       margin:0 auto;
 			margin-top: 16px;
 			box-sizing: border-box;
 			padding-top: 2px;
+			
 		}
 
 		.textbox > ul > li{
@@ -54,11 +56,15 @@
 			margin-left: 20px;
 			margin-top: 4px;
 		}
+		.layui-form{
+			width: 1200px;
+			margin:0 auto;
+		}
 		.cont_li{
 			width: 100%;
 			box-sizing: border-box;
 			padding-left: 28px;
-			padding-right: 96px;
+			padding-right: 56px;
 			display: flex;
 			justify-content:space-between;
 			line-height: 32px;
@@ -280,7 +286,7 @@
 
 							<th>序号</th>
 							<th>申报时间</th>
-							<th>联系人手机号</th>
+							<th>申报单位名称</th>
 							<th>申报状态</th>
 							<th>操作</th>
 							<!-- <th>组织身份</th>
@@ -393,6 +399,7 @@
 			console.log(dwname);
            if(sqs == null){
 			   alert('请上传申请书');
+			   return;
 			} else {
 				var file = $("#sqinp")[0].files[0];
 				var formData = new FormData();
@@ -417,6 +424,7 @@
 			}
 			if (zc == null) {
 				alert('请上传协会章程');
+				return;
 			}else {
 				var file = $("#zcinp")[0].files[0];
 				var formData = new FormData();
@@ -441,6 +449,7 @@
 			}
 			if (js == null) {
 				alert('请上传单位情况介绍');
+				return;
 			}else {
 				var file = $("#jsinp")[0].files[0];
 				var formData = new FormData();
@@ -465,6 +474,7 @@
 			}
 			if (zz == null) {
 				alert('请上传资质证明');
+				return;
 			}else {
 				var file = $("#zzinp")[0].files[0];
 				var formData = new FormData();
@@ -563,37 +573,48 @@
 			});
 		});
 
-	function fwdown(filename) {
+	function fwdown(filename,name) {
+		console.log(name);
+		// return;
 		var eleLink = document.createElement('a');
 		eleLink.href = filename;
+		eleLink.download = name;
 		eleLink.style.display = 'none';
 		document.body.appendChild(eleLink);
 		eleLink.click();
 		document.body.removeChild(eleLink);
+		// let iframe = document.createElement("iframe");
+        //         iframe.style.display = "none"; // 防止影响页面
+        //         iframe.style.height = 0; // 防止影响页面
+        //         iframe.src = filename;
+        //         document.body.appendChild(iframe); // 这一行必须，iframe挂在到dom树上才会发请求
+        //         setTimeout(()=>{
+        //             iframe.remove();
+        //         },1000);
 	}
 
 	function show(ind) {
 		let str = listdate[ind];
           console.log(str);
 		if(str.applicationBook){
-	        	fwdown(str.applicationBook);
+	        	fwdown(str.applicationBook,'申请书');
 		}
 
 		setTimeout(function(){
 			if(str.aptitudeProve){
-			    fwdown(str.aptitudeProve);
+			    fwdown(str.aptitudeProve,'资质证明');
 			}
 		}, 500);
 
 		setTimeout(function(){
 			if(str.associationRule){
-				fwdown(str.associationRule);
+				fwdown(str.associationRule,'协会章程');
 			}
 		}, 1000);
 
 		setTimeout(function(){
 			if(str.unitSituation){
-				fwdown(str.unitSituation);
+				fwdown(str.unitSituation,'单位情况介绍');
 			}
 		}, 2000);
 		
@@ -634,7 +655,7 @@
 		str2 = '<button style="width:50px;height:20px;line-height: 20px;padding-left: 11px;margin-top: 0px;border-radius: 4px;" class="layui-btn layui-btn-normal" onclick="show('+ind+')">查看</button>';
 		}else if(obj.status == 2){
 			str = '<td><span class="btg">不通过</span></td>' ;
-			str2 = '<button class="layui-btn layui-btn-danger" onclick="showtext('+ind+')">查看回复</button>';
+			str2 = '<button class="layui-btn layui-btn-danger" style="width:80px;height:20px;line-height: 20px;padding-left: 11px;margin-top: 0px;border-radius: 4px;" onclick="showtext('+ind+')">查看回复</button>';
 			//<button class="layui-btn layui-btn-warm" onclick="show('+ind+')" >修改</button>
 		}
 

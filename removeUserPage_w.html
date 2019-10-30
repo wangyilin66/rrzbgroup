@@ -246,9 +246,30 @@
                 elem: '#test1' //指定元素
             });
         });
+     let sfzF = false;
+        $('#newsfz').on('keyup', function () {
+
+            let len = $(this).val().length;
+            console.log(len);
+            if (len == 15 || len == 18) {
+                $('.sfztit').text('');
+                sfzF = true;
+            } else {
+                $('.sfztit').text('身份证格式错误');
+                sfzF = false;
+            }
+        });
 
         $('.jumpnext').on('click', function () {
             if($('#newnameinp').val() != '' && $('#newsfz').val() != ''){
+                if(!sfzF){
+                    layui.use('layer', function () {
+                            var layer = layui.layer;
+                            layer.msg('请输入正确的身份证号码');
+                           
+                        });
+                        return;
+                }
                 base.commonAjax('clav/lishiReplace/theClavMemberIsExit', {idNumber:$('#newsfz').val(),name:$('#newnameinp').val()}, function (res) {
                console.log(res);
                if(res.code == 1){
@@ -257,8 +278,9 @@
                       sessionStorage.setItem('sfzname',$('#newnameinp').val());
                     window.location.href = "addUserPage_w.html?id="+res.data.id+'&rid='+userId;
                   }else{
-                    //   sessionStorage.setItem('sfzid',$('#newsfz').val());
-                    //   sessionStorage.setItem('sfzname',$('#newnameinp').val());
+                      window.location.href = "addUserPage_w.html";
+                      sessionStorage.setItem('sfzid',$('#newsfz').val());
+                      sessionStorage.setItem('sfzname',$('#newnameinp').val());
                   }
                }
                 });

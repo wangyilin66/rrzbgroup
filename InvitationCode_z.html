@@ -51,6 +51,29 @@
     height: 102px;
     overflow: auto;
 }
+#test33{
+    background: #fff;
+    width: 241px;
+    position: absolute;
+    left: 2px;
+    top:38px;
+    z-index: 999;
+    height: 102px;
+    overflow: auto;
+}
+#test44{
+    background: #fff;
+    width: 241px;
+    position: absolute;
+    left: 2px;
+    top:38px;
+    z-index: 999;
+    height: 102px;
+    overflow: auto;
+}
+.testbox{
+    position: relative;
+}
 #lvip{
 			border-bottom: 5px solid rgba(147, 209, 255,1);
 		}
@@ -429,13 +452,13 @@ border: 1px solid rgba(210,214,222,1);
                                     <div class="layui-col-md3">
                                         <div class="grid-demo grid-demo-bg1">
                                             <label for="">推荐单位/人：
-                                                <div>
-                                                    <select id="gztjdw" name="modules" lay-verify="required" lay-search=""  lay-filter="gztjdw">
-                                                        <option value="">请选择</option>
-                                                        <!-- <option value="1">layer</option>
-                                                                        <option value="2">form</option>
-                                                                        <option value="3">layim</option> -->
-                                                    </select>
+                                                <div class="testbox">
+
+                                                    <input type="text" placeholder="请选择" id="gztjdw" readonly="readonly" style="position: relative;width:232px;border-radius: 4px;">
+                                                    <img src="img/sanjiao.png" style="width: 26px;position: absolute;top: 8px;left: 205px;"/>
+                                                    <div id="test33">
+											
+                                                    </div>
                                                 </div>
                                             </label>
                                         </div>
@@ -549,13 +572,13 @@ border: 1px solid rgba(210,214,222,1);
                                     <div class="layui-col-sm3">
                                         <div class="grid-demo grid-demo-bg1">
                                             <label for="">推荐单位：
-                                                <div style="display: inline-block">
-                                                    <select id="zttjdwinp" name="modules" lay-verify="required" lay-search=""  lay-filter="zttjdwinp">
-                                                        <option value="">请选择</option>
-                                                        <!-- <option value="1">layer</option>
-                                                                            <option value="2">form</option>
-                                                                            <option value="3">layim</option> -->
-                                                    </select>
+                                                <div class="testbox" style="display: inline-block">
+     
+                                                    <input type="text" placeholder="请选择" id="zttjdwinp" readonly="readonly" style="position: relative;width:232px;border-radius: 4px;">
+                                                    <img src="img/sanjiao.png" style="width: 26px;position: absolute;top: 8px;left: 205px;"/>
+                                                    <div id="test44">
+											
+                                                    </div>
                                                 </div>
                                             </label>
                                         </div>
@@ -998,12 +1021,15 @@ function jiuchux(){
         console.log(gztjdw);
         console.log(gzzt);
         let yqmcode = $('#gzinp2').val();
+
         let data = {
-            unitId:gztjdw,
             status:gzzt,
         }
         if(yqmcode != ''){
             data.inviteCode = yqmcode;
+        }
+        if(recommendType33){
+            data.unitId = recommendType33;
         }
 
         base.commonAjax('clav/allotInfo/getInviteCodeList', data, function (data) {
@@ -1122,8 +1148,10 @@ function jiuchux(){
         $('#yqztbut').on('click',function () { 
             let data = {
                 remarks1:ztyearinp,
-                unitId:zttjdwinp
             };
+            if(recommendType44){
+            data.unitId = recommendType44;
+        }
 
         console.log(data);
             base.commonAjax('clav/allotInfo/getStatusGenZongList', data, function (data) {
@@ -1315,16 +1343,175 @@ function jiuchux(){
 						, data: treedata2
 					});
 
-				});
+                });
+                
+				layui.use('tree', function () {
+					var tree = layui.tree;
+					//渲染
+					var inst1 = tree.render({
+						elem: '#test33'  //绑定元素
+						, click: function (obj) {
+							// console.log(obj);
+							// console.log(obj.data); //得到当前点击的节点数据
+							// console.log(obj.elem); //得到当前节点元素 
+							// console.log($('.layui-tree-set').attr("data-id"));
+							//  console.log(obj.data.id); //得到当前点击的节点数据
+							let str = obj.data.id;
+							console.log(String(str).indexOf('-'));
+							// console.log(str.indexOf('-')>-1);
+
+							if (String(str).indexOf('-') != -1) {
+
+								let arr = str.split('-');
+								if (arr.length == 2) {
+									console.log(treelocaldata2[Number(arr[0])].childList[Number(arr[1])]);
+									recommendType33 = treelocaldata2[Number(arr[0])].childList[Number(arr[1])].id;
+
+									//console.log("推荐",ind1);
+									//console.log(treedata2[arr[0]].title);
+									// console.log(treedata[arr[0]].title);
+									// console.log(obj.data.title);
+									var tjplace2 = obj.data.title;
+									//+treedata2[arr[0]].title;
+									//console.log("地区",place);
+									$('#gztjdw').val(tjplace2);
+									$('#test33').css("visibility", "hidden");
+								}
+								if (arr.length == 3) {
+									//console.log(treelocaldata[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])].name);
+									//ind1 = treelocaldata[Number(arr[0])].childList[Number(arr[1])].id;
+
+									//console.log("推荐",arr);
+									//console.log(treedata2[arr[0]].title);
+									// console.log(treedata[arr[0]].title);
+									// console.log(obj.data.title);
+									var tjplace3 = treelocaldata2[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])].name;
+									recommendType33=treelocaldata2[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])].id;
+									//+treedata2[arr[0]].title;
+									//console.log("地区",place);
+									$('#gztjdw').val(tjplace3);
+									$('#test33').css("visibility", "hidden");
+								}			
+							} else {
+								let arr = str;
+								console.log(arr);
+								console.log(treelocaldata2[arr]);
+								recommendType33 = treelocaldata2[arr].id;
+
+								//console.log("推荐",arr);
+								//console.log(treedata2[arr[0]].title);
+								// console.log(treedata[arr[0]].title);
+								// console.log(obj.data.title);
+								var tjplace2 = obj.data.title;
+								//+treedata2[arr[0]].title;
+								//console.log("地区",place);
+								$('#gztjdw').val(tjplace2);
+								$('#test33').css("visibility", "hidden");
+
+							}
+						}
+						, data: treedata2
+					});
+
+                });
+
+
+                layui.use('tree', function () {
+					var tree = layui.tree;
+					//渲染
+					var inst1 = tree.render({
+						elem: '#test44'  //绑定元素
+						, click: function (obj) {
+							// console.log(obj);
+							// console.log(obj.data); //得到当前点击的节点数据
+							// console.log(obj.elem); //得到当前节点元素 
+							// console.log($('.layui-tree-set').attr("data-id"));
+							//  console.log(obj.data.id); //得到当前点击的节点数据
+							let str = obj.data.id;
+							console.log(String(str).indexOf('-'));
+							// console.log(str.indexOf('-')>-1);
+
+							if (String(str).indexOf('-') != -1) {
+
+								let arr = str.split('-');
+								if (arr.length == 2) {
+									console.log(treelocaldata2[Number(arr[0])].childList[Number(arr[1])]);
+									recommendType44 = treelocaldata2[Number(arr[0])].childList[Number(arr[1])].id;
+
+									//console.log("推荐",ind1);
+									//console.log(treedata2[arr[0]].title);
+									// console.log(treedata[arr[0]].title);
+									// console.log(obj.data.title);
+									var tjplace2 = obj.data.title;
+									//+treedata2[arr[0]].title;
+									//console.log("地区",place);
+									$('#zttjdwinp').val(tjplace2);
+									$('#test44').css("visibility", "hidden");
+								}
+								if (arr.length == 3) {
+									//console.log(treelocaldata[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])].name);
+									//ind1 = treelocaldata[Number(arr[0])].childList[Number(arr[1])].id;
+
+									//console.log("推荐",arr);
+									//console.log(treedata2[arr[0]].title);
+									// console.log(treedata[arr[0]].title);
+									// console.log(obj.data.title);
+									var tjplace3 = treelocaldata2[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])].name;
+									recommendType44=treelocaldata2[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])].id;
+									//+treedata2[arr[0]].title;
+									//console.log("地区",place);
+									$('#zttjdwinp').val(tjplace3);
+									$('#test44').css("visibility", "hidden");
+								}			
+							} else {
+								let arr = str;
+								console.log(arr);
+								console.log(treelocaldata2[arr]);
+								recommendType44 = treelocaldata2[arr].id;
+
+								//console.log("推荐",arr);
+								//console.log(treedata2[arr[0]].title);
+								// console.log(treedata[arr[0]].title);
+								// console.log(obj.data.title);
+								var tjplace2 = obj.data.title;
+								//+treedata2[arr[0]].title;
+								//console.log("地区",place);
+								$('#zttjdwinp').val(tjplace2);
+								$('#test44').css("visibility", "hidden");
+
+							}
+						}
+						, data: treedata2
+					});
+
+                });
+
+
+
+
 			}
 		});
         $('#bltjdw').on('click',function () { 
             $('#test22').css("visibility", "visible");
          });
+        $('#gztjdw').on('click',function () { 
+            $('#test33').css("visibility", "visible");
+         });
+        $('#zttjdwinp').on('click',function () { 
+            $('#test44').css("visibility", "visible");
+         });
          $('#test22').mouseleave(function(){
 			$('#test22').css("visibility", "hidden");
 		});
+         $('#test33').mouseleave(function(){
+			$('#test33').css("visibility", "hidden");
+		});
+         $('#test44').mouseleave(function(){
+			$('#test44').css("visibility", "hidden");
+		});
         $('#test22').css("visibility", "hidden");
+        $('#test33').css("visibility", "hidden");
+        $('#test44').css("visibility", "hidden");
 				function wtf2(data) {
 			data.map(function(v, i){
 				let obj = {};
