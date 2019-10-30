@@ -622,6 +622,7 @@ layui.use('form', function(){
                                     linkmanPhone: linkmanPhone
                             }
                             console.log("传的数据",data);
+                            return;
                             base.commonAjax('clav/member/addRedClavMember', data, function (data) {
                                     if (data.code == 1) {
                                             //console.log(data);
@@ -665,7 +666,7 @@ layui.use('form', function(){
                                             };//性别
                                             var birthday = $('#sr').val();//出生日期
                                             var idNumber = $('#sfnumber').val();//身份证号
-                                            var nativePlace = jg;//籍贯
+                                            var nativePlace = $('#jg').val();;//籍贯
                                             var politicsStatusId = politicsStatusIdd;//政治面貌
                                             var isNewGroup = $('input[name="sex"]:checked').attr("data");//是否新文艺群体
                                             var phone = $('#tec').val();//手机号
