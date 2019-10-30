@@ -390,7 +390,7 @@ function newyjsc(){
 			$('#newsc').empty();
 			$('#newsc2').empty();
 			$('#newsc2').append(
-				'<button type="button" class="layui-btn layui-btn-normal">完成并下载</button>'+
+				'<a href="http://39.98.186.243/clav/inviteCodeWord/getWord2" download=""><button type="button" class="layui-btn layui-btn-normal">完成并下载</button></a>'+
                 '&nbsp;&nbsp;<button type="button" class="layui-btn layui-btn-danger"id="yjsc_z2" onclick="jiuchux()">全部邀请码重新生成</button>'
 			)
 		} else{
@@ -453,7 +453,7 @@ function auto3(index, obj) {
 			'<td>' + obj.placeCount + '</td>'+
 			'<td style="color: skyblue">'+msg+'</td>'+
 			'<td>'+
-				'<button type="button" style="width:50px;height:20px;line-height:20px;margin-top:0px;padding-left:11px;"class="layui-btn layui-btn-normal" onclick="zzcode_zz(' + obj.id + ')">查看</button>'+
+				'<button type="button" style="width:50px;height:20px;line-height:20px;margin-top:0px;padding-left:11px;"class="layui-btn layui-btn-normal" onclick="zzcode_zz(' + obj.unitId + ')">查看</button>'+
 				'<button style="margin-left: 7px;width:50px;height:20px;line-height:20px;margin-top:0px;padding-left:11px;" type="button" class="layui-btn layui-btn-warm" onclick="lvyn(' + obj.id + ')">导出</button>'+
 			'</td>'+
 		'</tr>'
@@ -461,7 +461,7 @@ function auto3(index, obj) {
 function zzcode_zz(zzid){
 	var zfid=zzid;
 	var data={
-		zfid:zfid
+		id:zfid
 	}
 	base.commonAjax('clav/allotInfo/chakanInviteCode', data, function (data) {
 			$('.cover7').css( "display", "block");

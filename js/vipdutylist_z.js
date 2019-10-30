@@ -78,14 +78,12 @@ var data={
 name:name,
     orgIdentityId:zhiweid
 }
-console.log("下一数据",data)
 base.commonAjax('clav/member/getClavMemberList', data, function (data) {
 				var dtxdc=[];
 				for (var z=0;z<data.data.length;z++) {
 					dtxdc.push(data.data[z].id)
 				}
 				sdtxdc=dtxdc.join();
-console.log('需要',sdtxdc)
 var pagedata = [];
         //console.log(data);
         pagedata = data.data;
