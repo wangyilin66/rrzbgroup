@@ -326,7 +326,19 @@
             }
         function zzchangepic2(obj,ind) {
                 console.log(obj.files[0]);//这里可以获取上传文件的name
+                var suffixIndex=obj.files[0].name.lastIndexOf(".");  
+              var suffix=obj.files[0].name.substring(suffixIndex+1).toUpperCase();  
+                console.log(suffix);
+                if(suffix!="BMP"&&suffix!="JPG"&&suffix!="JPEG"&&suffix!="PNG"&&suffix!="GIF"&&suffix!="pdf"&&suffix!="PDF"){ 
+                    layui.use('layer', function () {
+                            var layer = layui.layer;
+                            layer.msg('请上传图片');
+                        }); 
+                    return;
+                  }  
+                 
                 var newsrc = getObjectURL(obj.files[0]);
+              
                 //zz = newsrc;
                 filearr[ind] = newsrc;
                 $('#fimg'+ind).attr("src",newsrc);
@@ -377,7 +389,7 @@
         //打印
         $('.dy').on('click', function () {
             let idinfo = getQueryString("id").id;
-            window.open('http://39.98.186.243/clav/testWord/exportMillCertificate2?id=' + idinfo);
+            window.open(base.baseurl+'/clav/testWord/exportMillCertificate2?id=' + idinfo);
         });
 
 

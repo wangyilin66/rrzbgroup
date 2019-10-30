@@ -232,6 +232,7 @@
                         
                         </div>
 <script type="text/javascript" src='./js/common.js'></script>
+<script src="./layui/layui.js"></script>
 <script type="text/javascript" src='./js/jquery.min.js'></script>
 <script type="text/javascript">
     let passwordinp,sfzF = false,pswF = false,pswF1 = false,phoneF = false,yzmF = false;
@@ -345,13 +346,17 @@
                 $('.yzmtit').text('');
                 base.commonAjax('clav/phonecode/register', {phone:len,idNumber:sfz}, function (res) {
                     if(res.code == 1){
-                         alert('验证码发送成功');
+                     
+                         layui.use('layer', function () {
+                            var layer = layui.layer;
+                            layer.msg('验证码发送成功');
+                        });
                          yzmF = true;
                         let active = 60;
                         $('.yzmbut').hide();
                         $('.yzmbut2').show();
                         $('.yzmtit').text('验证码有效时间5分钟，60秒后可重发。');
-                        let aa = setInterval(() => {
+                        let aa = setInterval(function() {
                             $('.yzmbut2').text(--active+'s');
                             console.log(active);
                             if(active == 0){
@@ -362,7 +367,10 @@
                         }, 1000);
 
                     }else{
-                        alert(res.message);
+                        layui.use('layer', function () {
+                            var layer = layui.layer;
+                            layer.msg(res.msg);
+                        });
                     }
 
                 });
@@ -388,9 +396,14 @@
                 base.commonAjax('clav/sysUser/registerByIdNumber', data, function (res) {
                console.log(res);
                if(res.code == 1){
-                   alert('注册成功');
-                   window.location.href = "applyFormPage_w.html";
-                   //window.location.href = "applyForPage_w.html";
+               
+                   layui.use('layer', function () {
+                            var layer = layui.layer;
+                            layer.msg('注册成功');
+                           
+                        });
+                   //window.location.href = "applyFormPage_w.html";
+                   window.location.href = "applyForPage_w.html";
                }else{
                    alert(res.message);
                }

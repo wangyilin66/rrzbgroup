@@ -533,15 +533,34 @@ $('#ctimebox').on('click',function () {
         }else if(obj.auditStatus == 7){
             str == '<span class="obg">审核中</span>';
             str2 = '<button style="width:50px;height:20px;line-height: 20px;margin-top:0px;padding-left:10px;" class="layui-btn layui-btn-normal">查看</button>';
+        } 
+        let memberNo='-',name='-',createDate='-',relationshipGroup='-',orgIdentityStr='-',artStr='-';
+        if(obj.memberNo){
+            memberNo = obj.memberNo;
+        }
+        if(obj.name){
+            name = obj.name;
+        }
+        if(obj.createDate){
+            createDate = obj.createDate;
+        }
+        if(obj.relationshipGroup){
+            relationshipGroup = obj.relationshipGroup;
+        }
+        if(obj.orgIdentityStr){
+            orgIdentityStr = obj.orgIdentityStr;
+        }
+        if(obj.artStr){
+            artStr = obj.artStr;
         }
 		return '<tr>' +
 				'<td>' + (ind+1) + '</td>' +
-				'<td>' + obj.memberNo + '</td>' +
-				'<td>' + obj.name + '</td>' +
-				'<td>' + obj.createDate + '</td>' +
-				'<td>' + obj.relationshipGroup + '</td>' +
-				'<td>' + obj.orgIdentityStr + '</td>' +
-				'<td>' + obj.artStr + '</td>' +
+				'<td>' + memberNo + '</td>' +
+				'<td>' + name + '</td>' +
+				'<td>' + createDate + '</td>' +
+				'<td>' + relationshipGroup + '</td>' +
+				'<td>' + orgIdentityStr + '</td>' +
+				'<td>' + artStr + '</td>' +
 				'<td>' + str + '</td>' +
 				'<td>' +str2 +
 				// '<button class="layui-btn">编辑</button>' +

@@ -56,7 +56,32 @@ var base = {
             }
         });
     },
+    commonAjax2: function (thisurl, thisdata, funcName) {
+        //引用ajax的方法
+        $.ajax({
+            url: this.baseurl + thisurl, //获取数据的url
+            dateType: "json", //参数返回的类型
+            type: "GET", //参数传送的方式
+            data: thisdata,
 
+            traditional: true,
+            async: true,
+            success: function (data) {
+                //请求成功后的回调函数
+                if (typeof data == "string") {
+                    data = $.parseJSON(data);
+                }
+                if (typeof eval(funcName) == "function") {
+                    eval(funcName)(data);
+                    return true;
+                }
+                layui.use('element', function() {
+                    var element = layui.element;
+                    element.init();
+                });
+            }
+        });
+    },
     formAjax1: function (thisurl, thisdata, funcName) {
         //引用ajax的方法
         $.ajax({

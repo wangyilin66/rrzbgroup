@@ -219,7 +219,7 @@ function goupdate (params) {
                                 base.commonAjax('clav/member/addClavMember', data, function (data) {
                                         if (data.code == 1) {
                                                 console.log('成功');
-                                                alert('注册成功。');
+                                                alert('保存成功');
                                                 history.go(0);
                                                 //window.location.href='./vipfind_z.html';
                                         }

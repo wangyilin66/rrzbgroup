@@ -254,20 +254,21 @@ layui.use('form', function(){
         base.commonAjax('clav/idNumber/checkIdNumberAndReturnInfo', data, function (data) {
                 if (data.code == 1) {
                         $('#sex').val('' + data.gender + '');
-                }
-        });
-    }
-    function birthfind() {
-        var idNumber = $('#sfnumber').val();
-        var data = {
-                idNumber: idNumber
-        }
-        base.commonAjax('clav/idNumber/checkIdNumberAndReturnInfo', data, function (data) {
-                if (data.code == 1) {
                         $('#sr').val('' + data.birthDay + '');
                 }
         });
     }
+//     function birthfind() {
+//         var idNumber = $('#sfnumber').val();
+//         var data = {
+//                 idNumber: idNumber
+//         }
+//         base.commonAjax('clav/idNumber/checkIdNumberAndReturnInfo', data, function (data) {
+//                 if (data.code == 1) {
+//                         $('#sr').val('' + data.birthDay + '');
+//                 }
+//         });
+//     }
     
     
     
@@ -744,7 +745,9 @@ layui.use('form', function(){
                                                             console.log(data);
                                                             console.log('成功');
                                                             alert('修改成功');
-                                                            window.location.href = 'vipfind_z.html';
+                                                            window.location.href = "applyUpdatePage_w.html?id="+data.theId;
+
+                                                            //window.location.href = 'vipfind_z.html';
                                                             // history.go(0);
                                                             //window.location.href = "applyUpdatePage_w.html?id="+data.theId;
                                                             //window.open("applyUpdatePage_w.html?id="+data.theId);

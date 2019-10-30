@@ -43,6 +43,11 @@
     .layui-form-label {
     padding: 6px 15px;
 }
+#info_limit,#info_limit2{
+	top:0px;
+	right: 0px;
+	color: rgb(102, 102, 102);
+}
     </style>
 </head>
 
@@ -349,6 +354,8 @@
                                                     <div class="layui-input-block">
                                                         <textarea placeholder="请输入工作经历（艺术简历），300字以内" id="experience"
                                                             class="layui-textarea inpList"></textarea>
+                                                            <font color=#666666>限 300个字符  已输入 <font color="#CC0000"><span id="info_limit">0</span></font> 个字</font>
+
                                                             <div class="warn w_jl"></div>
                                                     </div>
                                                 </div>
@@ -429,6 +436,8 @@
                                                     <div class="layui-input-block">
                                                         <textarea placeholder="请输入文艺志愿服务或公益活动经历，300字以内" id="experience2"
                                                             class="layui-textarea inpList"></textarea>
+                                                            <font color=#666666>限 300个字符  已输入 <font color="#CC0000"><span id="info_limit2">0</span></font> 个字</font>
+
                                                             <div class="warn w_gyhd"></div>
                                                     </div>
                                                 </div>
@@ -1010,6 +1019,45 @@ let idss = getQueryString('id').id;
     $(".jiah").on('click', function () {
         $(".ewai").css('display','block')
     })
+
+             //控制字数
+             var lim = new limit();
+              lim.txtNote = document.getElementById("experience");  
+              lim.txtLimit = document.getElementById("info_limit"); 
+              lim.limitCount = 300;
+              lim.init();
+              function limit(){
+                  var txtNote;//文本框
+                  var txtLimit;//提示字数的input
+                  var limitCount;//限制的字数
+                  this.init = function(){ 
+                      txtNote = this.txtNote;  
+                      txtLimit = this.txtLimit;  
+                      limitCount = this.limitCount;
+                      txtNote.maxLength = limitCount;
+                      txtNote.onkeydown = function(){txtLimit.innerText = txtNote.value.length;};
+                      txtNote.onkeyup = function(){txtLimit.innerText = txtNote.value.length;};
+                  }
+              }
+    			//
+    			 var lim2 = new limit2();
+		          lim2.txtNote2 = document.getElementById("experience2");  
+		          lim2.txtLimit2 = document.getElementById("info_limit2"); 
+		          lim2.limitCount2 = 300;
+		          lim2.init2();
+    			function limit2(){
+                  var txtNote2;//文本框
+                  var txtLimit2;//提示字数的input
+                  var limitCount2;//限制的字数
+                  this.init2 = function(){ 
+                      txtNote2 = this.txtNote2;  
+                      txtLimit2 = this.txtLimit2;  
+                      limitCount2 = this.limitCount2;
+                      txtNote2.maxLength = limitCount2;
+                      txtNote2.onkeydown = function(){txtLimit2.innerText = txtNote2.value.length;};
+                      txtNote2.onkeyup = function(){txtLimit2.innerText = txtNote2.value.length;};
+                  }
+              }
 
     </script>
 </body>

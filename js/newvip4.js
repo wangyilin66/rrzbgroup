@@ -215,7 +215,11 @@ function goupdate() {
                                         console.log('成功');
                                         alert('修改成功。');
                                         // history.go(0);
+
+
                                         window.location.href = "userUpdatePage_w.html?id="+data.theId;
+
+
                                         //window.open("applyUpdatePage_w.html?id="+data.theId);
                                 }
                                 else{
@@ -331,7 +335,6 @@ function goupdate() {
                                                         console.log('成功');
                                                         alert('注册成功。');
                                                         // history.go(0);
-                                                        //window.location.href = "applyUpdatePage_w.html?id="+data.theId;
                                                         window.location.href = "userUpdatePage_w.html?id="+data.theId;
                                                 }
                                                 else{
