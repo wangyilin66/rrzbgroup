@@ -79,7 +79,7 @@ span{
                                                 <label class="layui-form-label"><span>*</span>身份证号:</label>
                                                 <div class="layui-input-block">
                                                     <input type="text" name="title" lay-verify="title" id="sfnumber"
-                                                        autocomplete="off" placeholder="身份证号" class="layui-input inpList" style="border-radius: 6px;">
+                                                        autocomplete="off" placeholder="身份证号" class="layui-input inpList" style="border-radius: 6px;"onblur="sexfind()">
                                                         <div class="warn w_sf"></div>
                                                 </div>
                                             </div>
@@ -87,7 +87,7 @@ span{
                                                 <label class="layui-form-label"><span>*</span>性别:</label>
                                                 <div class="layui-input-block">
                                                     <input type="text" name="title" lay-verify="title" id="sex"
-                                                        onclick="sexfind()" autocomplete="off" readonly="readonly"
+                                                        autocomplete="off" readonly="readonly"
                                                         placeholder="（读取身份证号）" class="layui-input inpList" style="border-radius: 6px;">
                                                         <div class="warn w_xb"></div>
                                                 </div>
@@ -138,7 +138,7 @@ span{
                                                 <label class="layui-form-label"><span>*</span>出生日期:</label>
                                                 <div class="layui-input-block">
                                                     <input type="text" name="title" lay-verify="title" id="sr"
-                                                        onclick="birthfind()" autocomplete="off" readonly="readonly" style="border-radius: 6px;"
+                                                        autocomplete="off" readonly="readonly" style="border-radius: 6px;"
                                                         placeholder="（读取身份证号）" class="layui-input inpList">
                                                         <div class="warn w_sr"></div>
                                                 </div>
@@ -712,6 +712,10 @@ span{
                                         //console.log(res);
                                         layui.use('form', function () {
                                             var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+                                            $('#tjcompany').empty();
+                                             $('#tjcompany').append(
+                                                    '<option value="">请选择</option>'
+                                                );
                                             for (var i = 0; i < res.data.length; i++) {
                                                 $('#tjcompany').append(
                                                     '<option value="' + res.data[i].id + '">' + res.data[i].name + '</option>'

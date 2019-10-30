@@ -99,19 +99,6 @@ function sexfind() {
         base.commonAjax('clav/idNumber/checkIdNumberAndReturnInfo', data, function (data) {
                 if (data.code == 1) {
                         $('#sex').val('' + data.gender + '');
-                }
-                else{
-                        alert(data.message)
-                }
-        });
-}
-function birthfind() {
-        var idNumber = $('#sfnumber').val();
-        var data = {
-                idNumber: idNumber
-        }
-        base.commonAjax('clav/idNumber/checkIdNumberAndReturnInfo', data, function (data) {
-                if (data.code == 1) {
                         $('#sr').val('' + data.birthDay + '');
                 }
                 else{
@@ -119,6 +106,20 @@ function birthfind() {
                 }
         });
 }
+//function birthfind() {
+//      var idNumber = $('#sfnumber').val();
+//      var data = {
+//              idNumber: idNumber
+//      }
+//      base.commonAjax('clav/idNumber/checkIdNumberAndReturnInfo', data, function (data) {
+//              if (data.code == 1) {
+//                      $('#sr').val('' + data.birthDay + '');
+//              }
+//              else{
+//                      alert(data.message)
+//              }
+//      });
+//}
 function goupdate() { 
         var file = $("#file")[0].files[0];
         var formData = new FormData();

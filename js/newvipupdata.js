@@ -254,20 +254,21 @@ function sexfind() {
     base.commonAjax('clav/idNumber/checkIdNumberAndReturnInfo', data, function (data) {
             if (data.code == 1) {
                     $('#sex').val('' + data.gender + '');
-            }
-    });
-}
-function birthfind() {
-    var idNumber = $('#sfnumber').val();
-    var data = {
-            idNumber: idNumber
-    }
-    base.commonAjax('clav/idNumber/checkIdNumberAndReturnInfo', data, function (data) {
-            if (data.code == 1) {
                     $('#sr').val('' + data.birthDay + '');
             }
     });
 }
+//function birthfind() {
+//  var idNumber = $('#sfnumber').val();
+//  var data = {
+//          idNumber: idNumber
+//  }
+//  base.commonAjax('clav/idNumber/checkIdNumberAndReturnInfo', data, function (data) {
+//          if (data.code == 1) {
+//                  $('#sr').val('' + data.birthDay + '');
+//          }
+//  });
+//}
 
 
 

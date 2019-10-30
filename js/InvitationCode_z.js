@@ -7,7 +7,7 @@
 			if (data.code == 1) {
 				//console.log("z", data);
 				treelocaldata = data.data;
-				wtf2(data.data);
+//				wtf3(data.data);
 				// console.log(treedata)
 				layui.use('tree', function () {
 					var tree = layui.tree;
@@ -80,7 +80,7 @@
 				});
 			}
 		});
-				function wtf2(data) {
+				function wtf3(data) {
 			data.map(function(v, i){
 				let obj = {};
 				obj.title = v.name;

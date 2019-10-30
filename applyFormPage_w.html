@@ -1260,6 +1260,9 @@ let idss = getQueryString('id').id;
                                         layui.use('form', function () {
                                             var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
                                             $('#tjcompany').empty();
+                                             $('#tjcompany').append(
+                                                    '<option value="">请选择</option>'
+                                                );
                                             for (var i = 0; i < res.data.length; i++) {
                                                 
                                                 $('#tjcompany').append(
