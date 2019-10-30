@@ -466,10 +466,18 @@ function zzcode_zz(zzid){
 	base.commonAjax('clav/allotInfo/chakanInviteCode', data, function (data) {
 			$('.cover7').css( "display", "block");
 			$('.codeinfo_z2').empty();
+			console.log("aaaaa",data)
 			for(var i=0;i<data.data.length;i++){
-				$('.codeinfo_z2').append(
+				if(data.data[i].remarks2 == 1){
+					$('.codeinfo_z2').append(
+					'<div style="display: inline-block;font-size: 16px;padding-top: 10px;width: 45%">'+data.data[i].inviteCode+'(补领)</div>'
+					)
+				}else{
+					$('.codeinfo_z2').append(
 					'<div style="display: inline-block;font-size: 16px;padding-top: 10px;width: 45%">'+data.data[i].inviteCode+'</div>'
-				)
+					)
+				}
+				
 			}
 	})
 }
