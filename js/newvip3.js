@@ -622,7 +622,7 @@ layui.use('form', function(){
                                     linkmanPhone: linkmanPhone
                             }
                             console.log("传的数据",data);
-                            return;
+                         
                             base.commonAjax('clav/member/addRedClavMember', data, function (data) {
                                     if (data.code == 1) {
                                             //console.log(data);
