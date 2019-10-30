@@ -523,16 +523,14 @@
 			var data = {
 				id: cnm_move
 			}
-			console.log(data)
 			base.commonAjax('clav/recommendUnit/deleteRecommendUnit', data, function (data) {
 				if(data.code==1){
 					tuijiandanwiesh();
-				alert('删除成功')
+				alert('删除成功');
 				}else{
-					alert(data.message)
-				}
-				
-			})
+					alert(data.message);
+				}			
+			})		
 		}
 		//上移动
 		$(document).on('click', '.cnm_up', function () {
