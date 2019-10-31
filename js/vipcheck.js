@@ -360,9 +360,9 @@ function auto3(index, obj) {
         '</td>' +
         '<td>' + (index + 1) + '</td>' +
         '<td>' + obj.createBy + '</td>' +
-        '<td>' + obj.recommendType + '</td>' +
+        '<td style="margin: auto;display: block;height: 10px;text-overflow: ellipsis;overflow: hidden;width: 98px;white-space: nowrap;" title="'+obj.recommendType+'">' + obj.recommendType + '</td>' +
         '<td>' + obj.name + '</td>' +
-        '<td>' + obj.unitAndDuty + '</td>' +
+        '<td title="'+obj.unitAndDuty+'" style="margin: auto;display: block;height: 10px;text-overflow: ellipsis;overflow: hidden;width: 85px;white-space: nowrap;">' + obj.unitAndDuty + '</td>' +
         '<td>' + obj.artStr + '</td>' +
         '<td>' + obj.relationshipGroup + '</td>' +
         '<td>' +

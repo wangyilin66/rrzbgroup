@@ -25,6 +25,9 @@
 padding-left:9px;
     padding-right: 25px;
 		}
+		.layui-table[lay-skin=line] td, .layui-table[lay-skin=line] th {
+    border-width: 0 0 0px;
+}
 	</style>
 </head>
 
@@ -668,7 +671,7 @@ padding-left:9px;
 				'<td>' + obj.relationshipGroup + '</td>' +
 				'<td>' + obj.orgIdentityStr + '</td>' +
 				'<td>' + obj.artStr + '</td>' +
-				'<td>' + (lc[0]) + '</td>' +
+				'<td title="' + (lc[0]) + '" style="margin: auto;display: block;height: 10px;text-overflow: ellipsis;overflow: hidden;width: 42px;white-space: nowrap;">' + (lc[0]) + '</td>' +
 				'<td>' +
 				'<button id="' + 'hy_edit' + obj.id + '"class="layui-btn hy_edit" style="width:50px;height:20px;line-height: 20px;padding-left: 11px;margin-top: 0px;border-radius: 4px;">编辑</button>' +
 				'<a><button id="' + 'hy_find' + obj.id + '"class="layui-btn layui-btn-normal hy_find" style="width:50px;height:20px;line-height: 20px;padding-left: 11px;margin-top: 0px;border-radius: 4px;">查看</button></a>' +
