@@ -151,8 +151,11 @@
 		}
 		.top_box > input{
 			margin-left: 20px;
-			margin-top: 22px;
+			/* margin-top: 20px; */
+			line-height: 60px;
+			height: 60px;
 			cursor:pointer;
+			float: left;
 		}
 		.top_box>span{
 			margin-left: 10px;
@@ -679,6 +682,8 @@
               if(data.code == 1){
 				  alert('发送成功');
 				  history.go(0);
+			  }else{
+				  alert(data.message);
 			  }
 		});
 
