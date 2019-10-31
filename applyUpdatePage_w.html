@@ -344,15 +344,15 @@
                   <div class="c_n_c_li3">
 
                     <div class="lis">
-                            <input type="file" id='file0' onchange="zzchangepic2(this,0)" />
+                            <input onchange="zzchangepic2(this,0)"  type="file" id='file0'/>
                             <img src="./css/timg.jpg" id="fimg0" alt="">
                     </div>
                     <div class="lis">
-                            <input type="file"  id='file1' onchange="zzchangepic2(this,1)" />
+                            <input onchange="zzchangepic2(this,1)"  type="file"  id='file1'/>
                             <img src="./css/timg.jpg" id="fimg1" alt="">
                     </div>
                     <div class="lis">
-                            <input type="file"  id='file2' onchange="zzchangepic2(this,2)" />
+                            <input onchange="zzchangepic2(this,2)"  type="file"  id='file2'/>
                             <img src="./css/timg.jpg" id="fimg2" alt="">
                     </div>
 
@@ -490,7 +490,7 @@
                         formData.append("file", file);
                         console.log(formData);
                     
-                        setTimeout(() => {
+                        setTimeout(function() {
                             $.ajax({
                             type: "post",
                             url: base.baseurl + 'clav/upload/uploadFile',
