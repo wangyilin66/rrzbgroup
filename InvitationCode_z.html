@@ -1112,7 +1112,7 @@ function jiuchux(){
 								, thisData = pagedata.concat().splice(obj.curr * obj.limit - obj.limit, obj.limit);
 							layui.each(thisData, function (index, item) {
 								arr.push(auto5(item,index));
-								console.log(item);
+								//console.log(item);
 							});
 							return arr.join('');
 						}();
@@ -1148,7 +1148,7 @@ function jiuchux(){
 								, thisData = pagedata.concat().splice(obj.curr * obj.limit - obj.limit, obj.limit);
 							layui.each(thisData, function (index, item) {
 								arr.push(auto6(item,index));
-								console.log(item);
+								//console.log(item);
 							});
 							return arr.join('');
 						}();
@@ -1278,7 +1278,9 @@ function jiuchux(){
 
 
 //推荐单位
-    
+    		let treedata3 = [];
+    		let treedata4 = [];
+    		let treedata5 = [];
 		let treelocaldata2 = [];
 		var data = {
 		}
@@ -1286,7 +1288,7 @@ function jiuchux(){
 			if (data.code == 1) {
 				//console.log("z", data);
 				treelocaldata2 = data.data;
-				wtf2(data.data);
+				wtf22(data.data);
 				// console.log(treedata)
 				layui.use('tree', function () {
 					var tree = layui.tree;
@@ -1300,14 +1302,14 @@ function jiuchux(){
 							// console.log($('.layui-tree-set').attr("data-id"));
 							//  console.log(obj.data.id); //得到当前点击的节点数据
 							let str = obj.data.id;
-							console.log(String(str).indexOf('-'));
+							//console.log(String(str).indexOf('-'));
 							// console.log(str.indexOf('-')>-1);
 
 							if (String(str).indexOf('-') != -1) {
 
 								let arr = str.split('-');
 								if (arr.length == 2) {
-									console.log(treelocaldata2[Number(arr[0])].childList[Number(arr[1])]);
+									//console.log(treelocaldata2[Number(arr[0])].childList[Number(arr[1])]);
 									recommendType14 = treelocaldata2[Number(arr[0])].childList[Number(arr[1])].id;
 
 									//console.log("推荐",ind1);
@@ -1337,8 +1339,8 @@ function jiuchux(){
 								}			
 							} else {
 								let arr = str;
-								console.log(arr);
-								console.log(treelocaldata2[arr]);
+								//console.log(arr);
+								//console.log(treelocaldata2[arr]);
 								recommendType14 = treelocaldata2[arr].id;
 
 								//console.log("推荐",arr);
@@ -1353,7 +1355,7 @@ function jiuchux(){
 
 							}
 						}
-						, data: treedata2
+						, data: treedata3
 					});
 
                 });
@@ -1377,7 +1379,7 @@ function jiuchux(){
 
 								let arr = str.split('-');
 								if (arr.length == 2) {
-									console.log(treelocaldata2[Number(arr[0])].childList[Number(arr[1])]);
+									//console.log(treelocaldata2[Number(arr[0])].childList[Number(arr[1])]);
 									recommendType33 = treelocaldata2[Number(arr[0])].childList[Number(arr[1])].id;
 
 									//console.log("推荐",ind1);
@@ -1407,8 +1409,8 @@ function jiuchux(){
 								}			
 							} else {
 								let arr = str;
-								console.log(arr);
-								console.log(treelocaldata2[arr]);
+								//console.log(arr);
+								//console.log(treelocaldata2[arr]);
 								recommendType33 = treelocaldata2[arr].id;
 
 								//console.log("推荐",arr);
@@ -1423,7 +1425,7 @@ function jiuchux(){
 
 							}
 						}
-						, data: treedata2
+						, data: treedata4
 					});
 
                 });
@@ -1494,7 +1496,7 @@ function jiuchux(){
 
 							}
 						}
-						, data: treedata2
+						, data: treedata5
 					});
 
                 });
@@ -1525,7 +1527,7 @@ function jiuchux(){
         $('#test22').css("visibility", "hidden");
         $('#test33').css("visibility", "hidden");
         $('#test44').css("visibility", "hidden");
-				function wtf2(data) {
+				function wtf22(data) {
 			data.map(function(v, i){
 				let obj = {};
 				obj.title = v.name;
@@ -1546,7 +1548,9 @@ function jiuchux(){
 					})
 					obj.children.push(objc);
 				});
-				treedata2.push(obj);
+				treedata3.push(obj);
+				treedata4.push(obj);
+				treedata5.push(obj);
 			});
 		}
 
