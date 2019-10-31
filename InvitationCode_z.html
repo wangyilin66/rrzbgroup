@@ -640,8 +640,8 @@ border: 1px solid rgba(210,214,222,1);
 				<div style="margin-top: 67px;" id="nfpinfo"></div>
 			</div>
 			<div class="findfile_an">
-					<button type="button" class="layui-btn layui-btn-normal" id=""onclick="close1()">确定</button>
-				<button type="button" class="layui-btn layui-btn-primary" onclick="close1()">关闭</button>
+					<button type="button" class="layui-btn layui-btn-normal" id=""onclick="closef1()">确定</button>
+				<button type="button" class="layui-btn layui-btn-primary" onclick="closef1()">关闭</button>
 			</div>
 		</div>
     </div>
@@ -705,6 +705,11 @@ border: 1px solid rgba(210,214,222,1);
         let ind1;
         function close1() {
 			$(".cover5,.cover4,.cover6,.cover7,.cover11").css( "display", "none");
+        }
+        function closef1() {
+        	$(".cover11").css( "display", "none");
+        	 location.reload();	
+        	
         }
         function chuxian(){
             $("#test1").css( "visibility", "visible");	
@@ -870,8 +875,9 @@ function jiuchux(){
 			$('#nfpinfo').append(
 				'本次规划推荐单位/人'+data.tjCount+',共发展名额'+data.meCount+'个。'
 			)
-            codelist_z();
-            codemake_z();
+
+//        codelist_z();
+//        codemake_z();
         }
         else{
         	alert(data.message);
