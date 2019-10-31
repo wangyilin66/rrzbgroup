@@ -174,6 +174,41 @@
     background: #fff;
     border:1px solid #E2E2E2;
 }
+
+.c_n_c_li3 {
+            width: 100%;
+            height: 60px;
+            box-sizing: border-box;
+            margin-top: 40px;
+            padding-left: 50px;
+            position: absolute;
+            top:60px;
+            left: 0;
+        }
+        .c_n_c_li3 .lis{
+        width: 60px;
+        height: 60px;
+        border: 1px solid #E4E4E4;
+        float: left;
+        margin-left: 80px;
+        position: relative;
+        }
+        .c_n_c_li3 .lis > input{
+            width: 100%;
+            height: 100%;
+            z-index: 99;
+            position: absolute;
+            top:0;
+            left:0;
+            opacity: 0;
+        }
+        .c_n_c_li3 .lis > img{
+            width: 100%;
+            height: 100%;
+           
+            z-index: 1;
+        }
+
     </style>
     <title>Document</title>
 </head>
@@ -219,7 +254,22 @@
                       </div>
                   </div>
                   <p class="s_tit">（上传格式为图片或PDF文件，图片最多上传三张。）</p>
+                  <div class="c_n_c_li3">
 
+                    <div class="lis">
+                            <input type="file" id='file0' onchange="zzchangepic2(this,0)" />
+                            <img src="./css/timg.jpg" id="fimg0" alt="">
+                    </div>
+                    <div class="lis">
+                            <input type="file"  id='file1' onchange="zzchangepic2(this,1)" />
+                            <img src="./css/timg.jpg" id="fimg1" alt="">
+                    </div>
+                    <div class="lis">
+                            <input type="file"  id='file2' onchange="zzchangepic2(this,2)" />
+                            <img src="./css/timg.jpg" id="fimg2" alt="">
+                    </div>
+
+                    </div>
                   <div class="tijiao">提交</div>
                 </div>
             </div>
@@ -230,7 +280,7 @@
 <script type="text/javascript" src='./layui/layui.js'></script>
 <script type="text/javascript">
 
-    let zz = null;
+    let zz = null,filearr = [];
 
     //获取URL数据  
     function getQueryString() {
@@ -269,6 +319,32 @@
                 $('.filename').val(newsrc);
             }
 
+
+            function zzchangepic2(obj,ind) {
+                console.log(obj.files[0]);//这里可以获取上传文件的name
+                var suffixIndex=obj.files[0].name.lastIndexOf(".");  
+              var suffix=obj.files[0].name.substring(suffixIndex+1).toUpperCase();  
+                console.log(suffix);
+                if(suffix!="BMP"&&suffix!="JPG"&&suffix!="JPEG"&&suffix!="PNG"&&suffix!="GIF"&&suffix!="pdf"&&suffix!="PDF"){ 
+                    layui.use('layer', function () {
+                            var layer = layui.layer;
+                            layer.msg('请上传图片');
+                        }); 
+                    return;
+                  }  
+                 
+                var newsrc = getObjectURL(obj.files[0]);
+              
+                //zz = newsrc;
+                filearr[ind] = newsrc;
+                $('#fimg'+ind).attr("src",newsrc);
+                //console.log(newsrc);
+             
+                
+            }
+
+
+
             //建立一個可存取到該file的url
             function getObjectURL(file) {
                 var url = null;
@@ -282,41 +358,68 @@
                 }
                 return url;
             }
-$('.tijiao').on('click',function () { 
-      if(zz == null){
-      alert('请上传文件');
-      }else{
-        var file = $("#file")[0].files[0];
-            var formData = new FormData();
-            formData.append("file", file);
-            $.ajax({
-                type: "post",
-                url: base.baseurl + 'clav/upload/uploadFile',
-                data: formData,
-                cache: false,
-                processData: false,
-                contentType: false,
-                success: function (data, textStatus, jqXHR) {
+            $('.tijiao').on('click', function () {
+        let filestr = '';
+        if (zz == null) {
+            alert('请选择或上传正确的文件');
+        } else {
+            filearr.map(function (v, i) {
+                if (v) {
+                    var file = $("#file" + i)[0].files[0];
+                    var formData = new FormData();
+                    formData.append("file", file);
 
-                    var data = {
-                        id : getQueryString("id").id,
-                        uploadFile: data.data[0].url,
-                    }
-                    base.commonAjax('clav/member/updateClavMember', data, function (data) {
-                     console.log(data);
-                     if(data.code == 1){
-                         alert('提交成功');
-                        // window.close();
-                        window.location.href = "applyForPage_w.html";
-                     }else{
-                        alert('提交失败');
-                     }
+                    $.ajax({
+                        type: "post",
+                        url: base.baseurl + 'clav/upload/uploadFile',
+                        data: formData,
+                        cache: false,
+                        processData: false,
+                        contentType: false,
+                        success: function (data, textStatus, jqXHR) {
+                            // var data = {
+                            //     id: getQueryString("id").id,
+                            //      file: data.data[0].url,
+                            // }
+                            filestr += data.data[0].url + ',';
+                        }
                     });
                 }
             });
-      }
+                        var file = $("#file")[0].files[0];
+                        var formData = new FormData();
+                        formData.append("file", file);
+                        console.log(formData);
+                    
+                        setTimeout(() => {
+                            $.ajax({
+                            type: "post",
+                            url: base.baseurl + 'clav/upload/uploadFile',
+                            data: formData,
+                            cache: false,
+                            processData: false,
+                            contentType: false,
+                            success: function (data, textStatus, jqXHR) {
+                                var data = {
+                                    id: getQueryString("id").id,
+                                     file: filestr + data.data[0].url,
+                                }
+                                base.commonAjax('clav/member/updateClavMember', data, function (data) {
+                                    console.log(data);
+                                    if (data.code == 1) {
+                                        alert('提交成功');
+                                      
+                                        //window.location.href = "vipcheck_z.html";
+                                    } else {
+                                        alert('提交失败');
+                                    }
+                                });
+                            }
+                        });
+                        }, 1000);
+                    }
 
- });
+                });
            
 
         </script>
