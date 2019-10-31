@@ -995,8 +995,9 @@ span{
 
 
 let idss = getQueryString('id').id;
+       console.log(idss);
+  
           if(idss){
-
             layui.use('form', function(){
       var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
               $('.pop_up').hide();
@@ -1006,6 +1007,13 @@ let idss = getQueryString('id').id;
                 base.commonAjax('clav/member/getClavMemberList', {id:myid}, function (res) {
                 console.log(res.data[0]);
                 console.log('反填写',res);
+                let artcount=[];
+                let workcount=[];
+                artcount=res.data[0].activityExperience.split("");
+                workcount=res.data[0].workExperience.split("");
+                //console.log('反经历',$('#info_limit2').text())
+                $('#info_limit2').text(artcount.length);
+                $('#info_limit').text(workcount.length);
                 let obj =   res.data[0];
                 $('#username').val(obj.name);
                 $('#sfnumber').val(obj.idNumber);
@@ -1094,9 +1102,13 @@ let idss = getQueryString('id').id;
 
             });
           }else{
+          
               let str = sessionStorage.getItem('loginobj');
               console.log(str);
-              let obj = JSON.parse(str);
+               if(!str){
+               
+               }else{
+                let obj = JSON.parse(str);
             $('#username').val(obj.name);
             $('#sfnumber').val(obj.idNumber);
             var data = {
@@ -1110,6 +1122,8 @@ let idss = getQueryString('id').id;
         });
 
             $('#tec').val(obj.phone);
+               }
+
 
           }
 
