@@ -320,7 +320,7 @@ function auto(index, obj) {
         '</td>' +
         '<td>' + (index + 1) + '</td>' +
         '<td>' + (obj.createTime).split(/\s+/)[0] + '</td>' +
-        '<td>' + obj.unitName + '</td>' +
+        '<td >' + obj.unitName + '</td>' +
         '<td>' +
 
         '<button id="' + 'find' + obj.id + '"  type="button" class="layui-btn find"style="width:50px;height:20px;line-height:20px;padding-left: 10px;margin-top: 0px;">查看</button>' +
@@ -359,12 +359,12 @@ function auto3(index, obj) {
         '<input type="checkbox" name="" title="" lay-skin="primary" class="s" value="'+ obj.id+'">' +
         '</td>' +
         '<td>' + (index + 1) + '</td>' +
-        '<td>' + obj.createBy + '</td>' +
-        '<td style="margin: auto;display: block;height: 10px;text-overflow: ellipsis;overflow: hidden;width: 98px;white-space: nowrap;" title="'+obj.recommendType+'">' + obj.recommendType + '</td>' +
+        '<td style="overflow: hidden;height: 10px;white-space: nowrap;" title="'+obj.recommendType+'">' + obj.recommendType + '</td>' +
+        '<td style="margin: auto;display: block;height: 10px;text-overflow: ellipsis;overflow: hidden;width: 98px;white-space: nowrap;" title="'+obj.relationshipGroup+'">' + obj.recommendType + '</td>' +
         '<td>' + obj.name + '</td>' +
         '<td title="'+obj.unitAndDuty+'" style="margin: auto;display: block;height: 10px;text-overflow: ellipsis;overflow: hidden;width: 85px;white-space: nowrap;">' + obj.unitAndDuty + '</td>' +
         '<td>' + obj.artStr + '</td>' +
-        '<td>' + obj.relationshipGroup + '</td>' +
+        '<td style="    overflow: hidden;height: 10px;display: block;white-space: nowrap;text-overflow: ellipsis;width: 75px;margin: auto;" title="' + obj.relationshipGroup + '">' + obj.relationshipGroup + '</td>' +
         '<td>' +
         '<button id="' + 'vipb_find' + obj.id + '" class="layui-btn vipb_find" style="width:50px;height:20px;line-height:20px;padding-left: 10px;margin-top: 0px;">查看</button>' +
         '<a><button id="' + 'vipb_tg' + obj.id + '"class="layui-btn layui-btn-normal vipb_tg" onclick="vipb_tg('+ obj.id+')"style="width:50px;height:20px;line-height:20px;padding-left: 10px;margin-top: 0px;">通过</button></a>' +
