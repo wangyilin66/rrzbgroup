@@ -702,7 +702,7 @@ border: 1px solid rgba(210,214,222,1);
     <!-- <script src="./js/commonheader.js"></script> -->
     <script src="./js/InvitationCode_z.js"></script>
 	<script>
-        let treedata = [];
+        let treedata = [];let bllist = null;
   
         let fznfinp,bltj,gztjdw,gzzt,ztyearinp,zttjdwinp;
         let ind1;
@@ -972,6 +972,20 @@ function jiuchux(){
 
     
         $('#bldaochu').click(function () {
+            if(!bllist){
+                layui.use('layer', function () {
+                            var layer = layui.layer;
+                            layer.msg('请先补领邀请码');
+                        });
+            }else{
+                let str = '';
+                bllist.map(function(item){
+                 str+=item+',';
+                });
+              console.log(str);
+                window.open('http://39.98.186.243/clav/exportExcel/downloadsExcelDown2?ics='+str);
+      
+            }
 
         });
     
@@ -1013,8 +1027,9 @@ function jiuchux(){
                 }
                 base.commonAjax('clav/allotInfo/addInviteReplaceInfo', data2, function (data) {
                     console.log(data);
+
                     if (data.code == 1) {
-                     
+                     bllist = data.data;
                      data.data.map(function (v,i) {
                      $('#codelist').append('<div class="bl_code">'+v+'</div>')
                        });

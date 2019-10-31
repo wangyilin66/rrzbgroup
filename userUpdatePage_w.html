@@ -336,7 +336,17 @@
                         }); 
                     return;
                   }  
-                 
+
+            if (suffix == "PDF" || suffix == 'pdf') {
+
+                var newsrc = getObjectURL(obj.files[0]);
+
+                //zz = newsrc;
+                filearr[ind] = newsrc;
+                $('#fimg' + ind).attr("src", './image/pbfbg.png');
+                return;
+            }
+
                 var newsrc = getObjectURL(obj.files[0]);
               
                 //zz = newsrc;

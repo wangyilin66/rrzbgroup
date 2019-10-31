@@ -355,7 +355,8 @@
 }
 
 .u_c_tit{
-    margin-left: 20px;
+    /* margin-left: 20px; */
+    padding-left: 24px;
 }
 
 .u_c_li{
@@ -365,6 +366,7 @@
     position: absolute;
     left: 0;
     top:-2px;
+    z-index: 999;
 }
 
 
@@ -942,7 +944,7 @@ span{
         let treedata4 = [];
         let treelocaldata = [];
 
-        $('.u_f_queren').on('click',function (param) { 
+        $('.u_f_queren').click(function (param) { 
         let flag = $('.yuedu').prop('checked');
         if(flag){
             $('.pop_up').slideUp();
