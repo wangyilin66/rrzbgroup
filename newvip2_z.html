@@ -581,8 +581,16 @@ let idss = getQueryString('id').id;
                
               setTimeout(function()  {
                 base.commonAjax('clav/member/getClavMemberList', {id:myid}, function (res) {
-                console.log(res.data[0]);
+                //console.log(res.data[0]);
                 console.log('反填写',res)
+                
+                let artcount=[];
+                let workcount=[];
+                artcount=res.data[0].activityExperience.split("");
+                workcount=res.data[0].workExperience.split("");
+                //console.log('反经历',$('#info_limit2').text())
+                $('#info_limit2').text(artcount.length);
+                $('#info_limit').text(workcount.length);
                 let obj =   res.data[0];
                 $('#username').val(obj.name);
                 $('#sfnumber').val(obj.idNumber);
@@ -707,7 +715,7 @@ let idss = getQueryString('id').id;
                 obj.id = i;
                 obj.children = [];
                 v.childList.map(function(val, ind)  {
-                    console.log(val);
+                    //console.log(val);
                     let objc = {};
                     objc.title = val.name;
                     objc.id = i+'-'+ind;
