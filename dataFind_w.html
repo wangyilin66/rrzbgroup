@@ -616,7 +616,7 @@
 				 }else{
 					 let a = 0;
 					 arr.map(function (item) {
-				    setTimeout(() => {
+				    setTimeout(function(){
 						var eleLink = document.createElement('a');
 						eleLink.href = base.baseurl + '/clav/exportExcel/downloadsExcelDown?ids='+item;
 						eleLink.download = '';

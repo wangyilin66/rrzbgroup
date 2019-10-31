@@ -529,7 +529,7 @@ series: [
         },
         label: {
             normal: {
-                formatter: (params) => {
+                formatter: function(params){
                     console.log(params);
                     return '{b| ' + params.name + '}  ' + '{c|' + params.percent.toFixed(0) + '%}'
                 },
@@ -621,7 +621,7 @@ myChart.setOption(option);
                             },
                             label: {
                                 normal: {
-                                    formatter: (params) => {
+                                    formatter:function (params) {
                                         console.log(params);
                                         return '{b| ' + params.name + '}  ' + '{c|' + params.percent.toFixed(0) + '%}'
                                     },
@@ -714,7 +714,7 @@ myChart.setOption(option);
                             },
                             label: {
                                 normal: {
-                                    formatter: (params) => {
+                                    formatter: function(params) {
                                         console.log(params);
                                         return '{b| ' + params.name + '}  ' + '{c|' + params.percent.toFixed(0) + '%}'
                                     },

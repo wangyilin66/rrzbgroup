@@ -328,9 +328,9 @@
                           <span>*</span>
                           请上传签字盖章后的申请表扫描件:
                           <div class="c_l_inp">
-                              <input type="text" class="filename" placeholder="点击选择文件" name="" id="">
+                              <input type="text" class="filename"  readonly placeholder="点击选择文件" name="" id="">
                               <div class="c_l_click">
-                                   <input type="file" id="file"    onchange="zzchangepic(this)"/>   
+                                   <input type="file" id="file"  onchange="zzchangepic(this)"/>   
                             </div>
                             <i class="layui-icon layui-icon-upload-drag"></i>  
                           </div>
@@ -402,8 +402,17 @@
             function zzchangepic(obj) {
                 //console.log(obj.files[0]);//这里可以获取上传文件的name
                 var newsrc = getObjectURL(obj.files[0]);
-                zz = newsrc;
-                $('.filename').val(newsrc);
+             
+            var suffixIndex=obj.files[0].name.lastIndexOf(".");  
+              var suffix=obj.files[0].name.substring(suffixIndex+1).toUpperCase();  
+                console.log(suffix);
+                if(suffix == "PDF" || suffix == 'pdf'){
+                    zz = newsrc;
+                    $('.filename').val(obj.files[0].name);
+                }else{
+                  alert('单个文件上传，只支持PDF格式。');
+                }
+               
             }
            
             $('.popquxiao').click(function () { 
@@ -457,12 +466,24 @@
                 }
                 return url;
             }
-            $('.tijiao').on('click', function () {
-        let filestr = '';
-        if (zz == null) {
-            alert('请选择或上传正确的文件');
-        } else {
-            filearr.map(function (v, i) {
+
+            function goupdatefun(flag) {
+                let that = this;
+                if(flag == 1){
+                
+                let fileflag = [false,false,false];
+
+                filearr.map(function (item,ind) {
+                    console.log(item);
+                    console.log(Boolean(item));
+                 if(Boolean(item)){
+                    fileflag[ind] = true;
+                 }
+                });
+
+                if(fileflag[0] && fileflag[1] && fileflag[2]){
+
+                filearr.map(function (v, i) {
                 if (v) {
                     var file = $("#file" + i)[0].files[0];
                     var formData = new FormData();
@@ -480,12 +501,63 @@
                             //     id: getQueryString("id").id,
                             //      file: data.data[0].url,
                             // }
-                            filestr += data.data[0].url + ',';
+                            that.filestr += data.data[0].url + ',';
                         }
                     });
                 }
             });
-                        var file = $("#file")[0].files[0];
+                        // var file = $("#file")[0].files[0];
+                        // var formData = new FormData();
+                        // formData.append("file", file);
+                        // console.log(formData);
+                    
+                        setTimeout(function() {
+        
+                                var data = {
+                                    id: getQueryString("id").id,
+                                     file: that.filestr,
+                                }
+                                base.commonAjax('clav/member/updateClavMember', data, function (data) {
+                                    console.log(data);
+                                    if (data.code == 1) {
+                                        // alert('提交成功');
+                                        $('.popbox').slideDown();
+                                        //window.location.href = "vipcheck_z.html";
+                                    } else {
+                                        alert('提交失败');
+                                    }
+                                });
+                     
+                        }, 1000);
+                
+                    }else{
+                        alert('请上传三张图片后再提交');
+                    }
+
+
+//=================================================
+                }else{
+      
+
+
+                    let fileflag = [false,false,false];
+
+filearr.map(function (item,ind) {
+    console.log(item);
+    console.log(Boolean(item));
+if(Boolean(item)){
+    fileflag[ind] = true;
+}
+});
+
+if(fileflag[0] || fileflag[1] || fileflag[2]){
+
+alert('上传单个PDF后，不可再上传图片。请刷新页面后重新上传。');
+
+}else{
+
+
+               var file = $("#file")[0].files[0];
                         var formData = new FormData();
                         formData.append("file", file);
                         console.log(formData);
@@ -501,7 +573,7 @@
                             success: function (data, textStatus, jqXHR) {
                                 var data = {
                                     id: getQueryString("id").id,
-                                     file: filestr + data.data[0].url,
+                                     file: data.data[0].url,
                                 }
                                 base.commonAjax('clav/member/updateClavMember', data, function (data) {
                                     console.log(data);
@@ -516,7 +588,26 @@
                             }
                         });
                         }, 1000);
+
+
                     }
+
+//============================================================
+
+                }
+
+
+
+              }
+
+
+            $('.tijiao').on('click', function () {
+        let filestr = '';
+        if (zz == null) {
+            goupdatefun(1);
+        } else {
+            goupdatefun(2);
+            }
 
                 });
            
