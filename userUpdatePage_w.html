@@ -438,7 +438,7 @@
                         formData.append("file", file);
                         console.log(formData);
                     
-                        setTimeout(() => {
+                        setTimeout(function(){
                             $.ajax({
                             type: "post",
                             url: base.baseurl + 'clav/upload/uploadFile',
