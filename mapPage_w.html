@@ -72,10 +72,18 @@
             font-weight: 600;
             border-bottom: 2px solid #ccc;
         }
-
-        #allmap {
+        #mapbox{
             width: 100%;
             height: 1000px;
+            padding-top: 50px;
+            box-sizing: border-box;
+            background: #fff;
+        }
+
+        #allmap {
+            width: 90%;
+            margin-left: 5%;
+            height: 900px;
             margin-top: 20px;
             background: #fff;
         }
@@ -347,9 +355,12 @@
             <div class="maptit2">
                 每个艺术门类，地区会员数
             </div>
-            <div id="allmap">
+            <div id='mapbox'>
+                <div id="allmap">
 
+                </div>
             </div>
+ 
             <div class="tablebox">
                 <p>各地会员数</p>
                 <div class="tab_tit">
@@ -850,7 +861,8 @@ myChart.setOption(option);
                             type: 'bar',
                             smooth: true,
                             seriesLayoutBy: 'row',
-                            barWidth: 10
+                            barWidth: 10,
+
                         }]
                     };
 
@@ -900,7 +912,7 @@ myChart.setOption(option);
                             normal: {
                                 label: {
                                     show: false
-                                }
+                                },
                             },
                             emphasis: {
                                 label: {

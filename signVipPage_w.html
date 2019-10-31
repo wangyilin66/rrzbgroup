@@ -93,6 +93,9 @@
         cursor:pointer;
         border-radius: 3px;
     }
+    .quxiao > a{
+        color: red;
+    }
     .s_title{
         width: 98%;
         margin-left: 1%;
@@ -225,7 +228,7 @@
                                 </ul>
                               <div class="bot_click_box">
                                <div class="zhuce">注册</div>
-                               <div class="quxiao">取消</div>
+                               <div class="quxiao"><a href="./applyForPage_w.html">取消</a></div>
                               </div>
                             </div>
                         </div>
@@ -237,18 +240,19 @@
 <script type="text/javascript">
     let passwordinp,sfzF = false,pswF = false,pswF1 = false,phoneF = false,yzmF = false;
 
-        $('.sfzhminp').on('keyup', function () {
+    $('.sfzhminp').keyup(function () {
 
-            let len = $(this).val().length;
-            console.log(len);
-            if (len == 15 || len == 18) {
-                $('.sfztit').text('');
-                sfzF = true;
-            } else {
-                $('.sfztit').text('身份证格式错误');
-                sfzF = false;
-            }
-        });
+        let len = $(this).val().length;
+        console.log(len);
+        if (len == 15 || len == 18) {
+            $('.sfztit').text('');
+            sfzF = true;
+        } else {
+            $('.sfztit').text('身份证格式错误');
+            sfzF = false;
+        }
+    })
+  
 
         $('.pswinp').on('keyup', function () {
 
@@ -333,7 +337,7 @@
             return false;
         }
 
-        $('.yzmbut').on('click',function () { 
+        $('.yzmbut').click(function () { 
 
             let len = $('.phoneinp').val();
             let sfz = $('.sfzhminp').val();
@@ -397,13 +401,9 @@
                console.log(res);
                if(res.code == 1){
                
-                   layui.use('layer', function () {
-                            var layer = layui.layer;
-                            layer.msg('注册成功');
-                           
-                        });
+                alert('注册成功');
                    //window.location.href = "applyFormPage_w.html";
-                   setTimeout(() => {
+                   setTimeout(function(){
                     window.location.href = "applyForPage_w.html";
                    }, 1500);
               
@@ -417,9 +417,12 @@
            // window.location.href = "applyFormPage_w.html";
         });
 
-        $('.quxiao').on('click', function () {
-            window.location.href = "applyForPage_w.html";
-        });
+        // $('.quxiao').on('click', function () {
+        //     window.location.href = "applyForPage_w.html";
+        // });
+        // $('.quxiao').click(function () {
+        //     window.location.href = "applyForPage_w.html";
+        // });
 
     </script>
 </body>
