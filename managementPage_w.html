@@ -597,6 +597,7 @@
         $('.b_b_xuanze').on('click',function () { 
 	  
 			if(tabType == 'gr'){
+				sendhylist = [];
             if($('.popallchecked').is(':checked') == true){
 				allgr = true;
 				$('.send_message_box').hide();
@@ -611,10 +612,12 @@
 				   alert('请选择至少一人发送');
 			   }else{
 				$('.send_message_box').hide();
-			    $('.textare_box').show();
+				$('.textare_box').show();
+				console.log(sendhylist);
 			   }
 			}
 			}else{
+				sendzwlist = [];
 				if($('.popallchecked').is(':checked') == true){
 				allgr = true;
 				$('.send_message_box').hide();
@@ -629,7 +632,8 @@
 				   alert('请选择至少一个职位发送');
 			   }else{
 				$('.send_message_box').hide();
-			    $('.textare_box').show();
+				$('.textare_box').show();
+				console.log(sendzwlist);
 			   }
 			}
 			}
@@ -867,11 +871,13 @@
 					limit: 10,
 					jump: function (obj) {
 						//模拟渲染
+						hylist = [];
 						document.getElementById('zwbody').innerHTML = function () {
 							var arr = []
 								, thisData = pagedata.concat().splice(obj.curr * obj.limit - obj.limit, obj.limit);
 							layui.each(thisData, function (index, item) {
 								arr.push(auto2(item,index));
+								hylist.push(item);
 								console.log(item);
 							});
 							return arr.join('');
@@ -946,11 +952,13 @@
 					limit: 10,
 					jump: function (obj) {
 						//模拟渲染
+						zwlist = [];
 						document.getElementById('zwbody').innerHTML = function () {
 							var arr = []
 								, thisData = pagedata.concat().splice(obj.curr * obj.limit - obj.limit, obj.limit);
 							layui.each(thisData, function (index, item) {
 								arr.push(auto3(item,index));
+								zwlist.push(item);
 								console.log(item);
 							});
 							return arr.join('');

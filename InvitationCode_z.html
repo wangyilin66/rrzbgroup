@@ -425,7 +425,7 @@ border: 1px solid rgba(210,214,222,1);
                         
                                 <div class="layui-col-md3">
                                     <div class="hy_btn">
-                                    	<button type="button" class="layui-btn layui-btn-normal">导出</button>
+                                    	<button type="button" id='bldaochu' class="layui-btn layui-btn-normal">导出</button>
                                         <button type="button" id='blbut' class="layui-btn layui-btn-normal">确认补领</button>
                                         <!--<button type="button" class="layui-btn layui-btn-normal">导出</button>-->
                                         <div class="clear"></div>
@@ -963,6 +963,11 @@ function jiuchux(){
 					})
 
     });
+
+    
+        $('#bldaochu').click(function () {
+
+        });
     
         $('#blbut').on('click', function () {
             let bltjdwinp = $('#bltjdw').val();
