@@ -89,6 +89,17 @@
 		border-width: 1px;
 		display: none;
 	}
+	#test251{
+		position: absolute;
+		z-index: 999;
+		background: #fff;
+		height: 194px;
+		overflow-y: scroll;
+		width: 301px;
+		border: solid rgba(195, 197, 201, 0.3);
+		border-width: 1px;
+		
+	}
 		#test3 {
 		position: absolute;
 		z-index: 999;
@@ -246,12 +257,12 @@
 				<div class="cnm">
 					<div style="display: inline-block">关联组织：</div>
 					<div style="display: inline-block" >
-						<select id="ccglzz2" name="modules" lay-verify="required" lay-search="" lay-filter="ccglzz2">
+						<!--<select id="ccglzz2" name="modules" lay-verify="required" lay-search="" lay-filter="ccglzz2">
 							<option value="">请选择</option>
-							<!-- <option value="1">layer</option>
-							<option value="2">form</option>
-							<option value="3">layim</option> -->
-						</select>
+						</select>-->
+						<input id="ccglzz2" name="modules" readonly="readonly" lay-verify="required" class="layui-input"
+							lay-search="" style="cursor: pointer;">
+							<div id="test250"></div>
 					</div>
 				</div>
 				<div class="cnm" style="padding-left:23px;">
@@ -291,12 +302,12 @@
 				<div class="cnm">
 					<div style="display: inline-block">关联组织：</div>
 					<div style="display: inline-block" >
-						<select id="ccglzz" name="modules" lay-verify="required" lay-search="" lay-filter="ccglzz">
+						<!--<select id="ccglzz" name="modules" lay-verify="required" lay-search="" lay-filter="ccglzz">
 							<option value="">请选择</option>
-							<!-- <option value="1">layer</option>
-							<option value="2">form</option>
-							<option value="3">layim</option> -->
-						</select>
+						</select>-->
+						<input id="ccglzz" name="modules" readonly="readonly" lay-verify="required" class="layui-input"
+							lay-search="" style="cursor: pointer;">
+							<div id="test251"></div>
 					</div>
 				</div>
 				<div class="cnm" style="padding-left:23px;">
@@ -377,19 +388,164 @@
 			var data = {
 
 			}
-			layui.use('form', function () {
-				var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
-				base.commonAjax('clav/recommendUnit/getClavOrg', data, function (data) {
-					console.log('cc', data)
-					for (var i = 0; i < data.data.length; i++) {
-						$('#ccglzz').append(
-							'<option value="' + data.data[i].id + '">' + data.data[i].name + '</option>'
-						);						
-					}
-					form.render('select');
+//			layui.use('form', function () {
+//				var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+//				base.commonAjax('clav/recommendUnit/getClavOrg', data, function (data) {
+//					console.log('cc', data)
+//					for (var i = 0; i < data.data.length; i++) {
+//						$('#ccglzz').append(
+//							'<option value="' + data.data[i].id + '">' + data.data[i].name + '</option>'
+//						);						
+//					}
+//					form.render('select');
+//
+//				})
+//			})
+let treedata4 = [];
+let treelocaldata3 = [];
+ function wtf250(data) {
+            data.map(function(v, i){
+            	//console.log(v)
+                let obj = {};
+                obj.id2=v.id;
+                obj.title = v.name;
+                obj.id = i;
+                obj.children = [];
+               
+                	v.childList.map(function(val, ind)  {
+                    let objc = {};
+                    objc.id2=val.id;
+                    objc.title = val.name;
 
-				})
-			})
+                    objc.id = i+'-'+ind;
+                    objc.children = [];
+                    if(!val.childList){
+                    	return;
+                    }
+                    	val.childList.map(function(vala, inda)  {
+                    		
+                    			let objc1 = {};
+			                   objc1.id2=vala.id;
+			                    objc1.title = vala.name;
+			                    objc1.id = i+'-'+ind+'-'+inda;
+			                    objc1.children = [];
+			                    if(!vala.childList){
+                    	return;
+                    	
+                    }
+			                    	vala.childList.map(function(valaa, indb)  {
+						                    let objc2 = {};
+						                  objc2.id2=valaa.id;
+						                    objc2.title = valaa.name;
+						                    objc2.id = i+'-'+ind+'-'+inda+'-'+indb;
+						                    objc2.children = [];
+						                    if(!valaa.childList){
+                    	return;
+                    }
+						                    	valaa.childList.map(function(valaaa, indc)  {
+						                    		
+						                    		let objc3 = {};
+									                    objc3.id2=valaaa.id;
+									                    objc3.title = valaaa.name;
+									                    objc3.id = i+'-'+ind+'-'+inda+'-'+indb+'-'+indc;
+									                    objc3.children = [];
+
+						                    		objc2.children.push(objc3);
+						                    		
+						                    	})					                    
+      										objc1.children.push(objc2);
+      										
+			                    	})
+			                  objc.children.push(objc1);
+			                  console.log("lalallal",objc1)
+                    	}) 
+                    	 
+                    obj.children.push(objc);
+                    
+                });  
+//                  console.log("hehe",obj)                
+                treedata4.push(obj);
+            });
+       }
+       base.commonAjax('clav/recommendUnit/getClavOrg', data, function (data) {
+            if (data.code == 1) {
+                //console.log("z", data);
+                treelocaldata3 = data.data;
+                wtf250(data.data);
+               // console.log(treedata)
+                layui.use('tree', function () {
+                    var tree = layui.tree;
+
+                    //渲染
+                    var inst1 = tree.render({
+                        elem: '#test251'  //绑定元素
+                        ,click: function(obj){
+							// console.log(obj);
+							// console.log(obj.data); //得到当前点击的节点数据
+							// console.log(obj.elem); //得到当前节点元素 
+							// console.log($('.layui-tree-set').attr("data-id"));
+							//  console.log(obj.data.id); //得到当前点击的节点数据
+							let str = obj.data.id;
+							console.log("aaaaaa",obj.data.id);
+							// console.log(str.indexOf('-')>-1);
+                              console.log(obj);
+                               console.log(str);
+							if (String(str).indexOf('-') != -1) {
+
+								let arr = str.split('-');
+								console.log("lalalla",arr)
+								if (arr.length == 2) {
+									console.log(treelocaldata3[Number(arr[0])].childList[Number(arr[1])]);
+									ind1 = treelocaldata3[Number(arr[0])].childList[Number(arr[1])].id;
+									var tjplace2 = obj.data.title;
+									$('#ccglzz').val('');
+									$('#ccglzz').val(treelocaldata3[Number(arr[0])].childList[Number(arr[1])].name)
+								}
+								if (arr.length == 3) {
+									console.log(treelocaldata3[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])]);
+									ind1 = treelocaldata3[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])].id;
+									var tjplace2 = obj.data.title;
+								}
+								if (arr.length == 4) {
+									console.log(treelocaldata3[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])].childList[Number(arr[3])]);
+									ind1 = treelocaldata3[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])].childList[Number(arr[3])].id;
+									var tjplace2 = obj.data.title;
+								}
+								if (arr.length == 5) {
+									console.log(treelocaldata3[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])].childList[Number(arr[3])].childList[Number(arr[4])]);
+									ind1 = treelocaldata3[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])].childList[Number(arr[3])].childList[Number(arr[4])].id;
+									var tjplace2 = obj.data.title;
+								}
+
+							} else {
+								let arr = str;
+
+								ind1 = treelocaldata3[arr].id;
+								//console.log("推荐",arr);
+								//console.log(treedata2[arr[0]].title);
+								// console.log(treedata[arr[0]].title);
+								// console.log(obj.data.title);
+								var tjplace2 = obj.data.title;
+								//+treedata2[arr[0]].title;
+								//console.log("地区",place);	
+								$('#ccglzz').val('');
+								$('#ccglzz').val(obj.data.title)
+								$('#test250').css("display", "none");
+							}
+
+
+                    }
+                        , data:treedata4
+                    });
+                    
+                });
+            }
+        });
+
+
+
+
+
 		}
 		// $(document).on('click', '#cnmadd', function () {
 		// 	$(".cover10").css("display", "inline-block");
