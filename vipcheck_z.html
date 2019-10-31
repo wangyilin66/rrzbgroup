@@ -17,6 +17,12 @@
 			    box-shadow: 0px -1px 15px 0px rgba(210,214,222,1);
     border: 1px solid rgba(210,214,222,1); 
 		}
+		.layui-table td, .layui-table th {
+			padding: 4px 0px;
+		}
+		.layui-table[lay-skin=line] td, .layui-table[lay-skin=line] th {
+    border-width: 0 0 0px;
+}
 	</style>
 </head>
 <body>
@@ -89,8 +95,15 @@
 				<button type="button" class="layui-btn layui-btn-normal" onclick="jqchk()">批量导出</button>
 				<table class="layui-table" lay-skin="line" lay-even="">
 					<colgroup>
-						<col width="150">
+						<col width="20">
+						<col width="40">
+						<col width="80">
 						<col width="100">
+						<col width="40">
+						<col width="80">
+						<col width="100">
+						<col width="80">
+						<col width="150">
 						<col>
 					</colgroup>
 					<thead>
