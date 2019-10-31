@@ -523,20 +523,31 @@
 			var data = {
 				id: cnm_move
 			}
-			console.log(data)
 			base.commonAjax('clav/recommendUnit/deleteRecommendUnit', data, function (data) {
 				if(data.code==1){
 					tuijiandanwiesh();
-				alert('删除成功')
+				alert('删除成功');
 				}else{
-					alert(data.message)
-				}
-				
-			})
+					alert(data.message);
+				}			
+			})		
 		}
 		//上移动
-		$(document).on('click', '.cnm_up', function () {
-			var cnm_up = $(this).attr('id').replace("cnm_up", "");
+//		$(document).on('click', '.cnm_up', function () {
+//			var cnm_up = $(this).attr('id').replace("cnm_up", "");
+//			var status = 1;
+//			var data = {
+//				id: cnm_up,
+//				status: status
+//			}
+//			console.log(data)
+//			base.commonAjax('clav/recommendUnit/upOrDown', data, function (data) {
+//				tuijiandanwiesh();
+//			})
+//		})
+function reup(upid){
+	
+	var cnm_up = upid;
 			var status = 1;
 			var data = {
 				id: cnm_up,
@@ -544,21 +555,42 @@
 			}
 			console.log(data)
 			base.commonAjax('clav/recommendUnit/upOrDown', data, function (data) {
-				tuijiandanwiesh();
+				if (data.code==1) {
+					tuijiandanwiesh();
+				} else{
+					alert(data.message)
+				}
+				
 			})
-		})
+}
 		//下移动
-		$(document).on('click', '.cnm_down', function () {
-			var cnm_down = $(this).attr('id').replace("cnm_down", "");
+//		$(document).on('click', '.cnm_down', function () {
+//			var cnm_down = $(this).attr('id').replace("cnm_down", "");
+//			var status = 2;
+//			var data = {
+//				id: cnm_down,
+//				status: status
+//			}
+//			base.commonAjax('clav/recommendUnit/upOrDown', data, function (data) {
+//				tuijiandanwiesh();
+//			})
+//		})
+function redown(downid){
+	var cnm_down = downid;
 			var status = 2;
 			var data = {
 				id: cnm_down,
 				status: status
 			}
 			base.commonAjax('clav/recommendUnit/upOrDown', data, function (data) {
-				tuijiandanwiesh();
+				if (data.code==1) {
+					tuijiandanwiesh();
+				} else{
+					alert(data.message)
+				}
+
 			})
-		})
+}
 
 
 
@@ -726,7 +758,7 @@
 				obj.id = i;
 				obj.children = [];
 				v.childList.map(function(val, ind){
-					console.log(val);
+					//console.log(val);
 					let objc = {};
 					objc.title = val.name;
 					objc.id = i + '-' + ind;
@@ -743,7 +775,7 @@
 				obj.id = i;
 				obj.children = [];
 				v.childList.map(function(val, ind){
-					console.log(val);
+					//console.log(val);
 					let objc = {};
 					objc.title = val.name;
 					objc.id = i + '-' + ind;

@@ -282,7 +282,11 @@ function remove_z(nid){
     }
     base.commonAjax('clav/allotInfo/deleteAllotInfo', data, function (data) {
 			alert('删除成功')
-			codelist_z();
+//			codelist_z();
+//			codemake_z();
+//			zzcode_z();
+location.reload();
+			
     })
 }
 ////////////////////////////////////////////////////////////////////////
