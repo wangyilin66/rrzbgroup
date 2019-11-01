@@ -332,6 +332,17 @@
     border: 0;
     cursor:pointer;
 }
+.c_click_box> a{
+    width: 100px;
+    height: 32px;
+    background: #D62330;
+    font-size: 14px;
+    color:#fff;
+    text-align: center;
+    line-height: 32px;
+    border: 0;
+    cursor:pointer;
+}
 .bc{
     margin-left: 36px;
 }
@@ -420,6 +431,12 @@ span{
 .jiah{
     right:-80px !important;
 }
+.radiobox1{
+    margin-top: 8px;
+}
+.g_d_2{
+    margin-left: 10px;
+}
 
     </style>
     <title>Document</title>
@@ -447,7 +464,7 @@ span{
 
     <div class="c_tit">会员申请信息</div>
     <div class='c_click_box'>
-        <div class="updown" onclick="down()">下载申请表</div>
+        <a class="updown" href="http://39.98.186.243/clav/testWord/exportMillCertificate2" download=''>下载申请表</a>
         <div class="bc"  onclick="tijiao()">保存草稿</div>
     </div>
 
@@ -509,7 +526,7 @@ span{
                                     </div>
                                 </div>
                                 <div class="layui-col-md4">
-                                    <div class="grid-demo">
+                                    <div class="grid-demo g_d_2">
                                         <div class="mz">
                                             <label class="layui-form-label"><span>*</span>民族:</label>
                                             <div class="layui-input-inline mz2">
@@ -553,7 +570,7 @@ span{
                                         </div>
                                         <div class="layui-form-item xinwenti">
                                             <label class="layui-form-label" style="padding-top: 10px;"><span>*</span>新文艺群体:</label>
-                                            <div class="layui-input-block">
+                                            <div class="layui-input-block radiobox1">
                                                 <input type="radio" name="sex" value="是" title="是" data="1"
                                                     checked="">
                                                 <input type="radio" name="sex" value="否" title="否" data="2">
@@ -565,7 +582,7 @@ span{
                                 <div class="layui-col-md4 headp">
                                     <div class="grid-demo grid-demo-bg1">
                                         <div class="headimg" style="padding: 4px;">
-                                            <img src="./img/head.png" alt="" id="show">
+                                            <img src="./img/head2.png" alt="" id="show">
                                         </div>
                                         <div style="position: relative"><span>*</span>点击上传个人近期白底免冠照
                                             <div class="warn w_tx"></div>

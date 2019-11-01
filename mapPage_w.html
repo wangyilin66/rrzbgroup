@@ -106,6 +106,7 @@
 
         .mapinit>p {
             text-align: center;
+            padding-top: 10px;
             color: #999;
         }
 
@@ -185,6 +186,8 @@
         }
 
         .tab_tit>span {
+            display: block;
+          padding-top: 10px;
             color: #999;
         }
 
@@ -289,7 +292,7 @@
             width: 50%;
             height: 300px;
             margin-top: 100px;
-            border-left: 1px solid #ccc;
+            border-left: 1px solid #ECECEC;
         }
 
         .t_b_c_right>ul {
@@ -306,6 +309,7 @@
         .xbfb_li {
             color: #666;
             margin: 0;
+           padding-bottom: 14px;
         }
 
         .t_b_c_right>ul>li {
@@ -511,10 +515,15 @@ backgroundColor: '#fff',
 grid: {
     left: '20%'
 },
+tooltip: {
+    trigger: 'item',
+    formatter: "{a} <br/>{b}: {c} ({d}%)"
+},
 color: ['#2AC9FD', '#76FBC0', '#35C96E', '#FCC708', '#48B188', '#5957C2', '#4A5D73'],
 series: [
     {
-        color: ['#2AC9FD', '#76FBC0', '#35C96E', '#FCC708', '#48B188', '#5957C2'],
+        name:'新文艺群体：',
+        color: ['#2AC9FD', '#15AF1A', '#35C96E', '#FCC708', '#48B188', '#5957C2'],
         type: 'pie',
         radius: ['62', '100'],
         labelLine: {
@@ -603,9 +612,14 @@ myChart.setOption(option);
                     grid: {
                         left: '20%'
                     },
+                    tooltip: {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b}: {c} ({d}%)"
+                },
                     color: ['#2AC9FD', '#76FBC0', '#35C96E', '#FCC708', '#48B188', '#5957C2', '#4A5D73'],
                     series: [
                         {
+                            name:'会员年龄分布：',
                             color: ['#2AC9FD', '#76FBC0', '#35C96E', '#FCC708', '#48B188', '#5957C2'],
                             type: 'pie',
                             radius: ['62', '100'],
@@ -696,10 +710,15 @@ myChart.setOption(option);
                     grid: {
                         left: '20%'
                     },
+                    tooltip: {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b}: {c} ({d}%)"
+                },
                     color: ['#2AC9FD', '#76FBC0', '#35C96E', '#FCC708', '#48B188', '#5957C2', '#4A5D73'],
                     series: [
-                        {
-                            color: ['#2AC9FD', '#76FBC0', '#35C96E', '#FCC708', '#48B188', '#5957C2'],
+                        {   
+                            name:'会员性别分布：',
+                            color: ['#2AC9FD', '#15AF1A', '#35C96E', '#FCC708', '#48B188', '#5957C2'],
                             type: 'pie',
                             radius: ['62', '100'],
                             labelLine: {

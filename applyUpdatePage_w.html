@@ -424,7 +424,7 @@
                 var suffixIndex=obj.files[0].name.lastIndexOf(".");  
               var suffix=obj.files[0].name.substring(suffixIndex+1).toUpperCase();  
                 console.log(suffix);
-                if(suffix!="BMP"&&suffix!="JPG"&&suffix!="JPEG"&&suffix!="PNG"&&suffix!="GIF"&&suffix!="pdf"&&suffix!="PDF"){ 
+                if(suffix!="BMP"&&suffix!="JPG"&&suffix!="JPEG"&&suffix!="PNG"&&suffix!="GIF"){ 
                     layui.use('layer', function () {
                             var layer = layui.layer;
                             layer.msg('请上传图片');
