@@ -362,6 +362,12 @@
 		.layui-form-select .layui-input {
 			width: 240px;
 		}
+		.textbox{
+			position: absolute;
+			top:430px;
+			left: 46px;
+		}
+
 	</style>
 </head>
 
@@ -429,6 +435,7 @@
 					<input type="text" class="tit_text" />
 				</div>
 				<textarea id="tit_are"></textarea>
+				<div class="textbox"><font color=#666666>限 300个字符  已输入 <font color="#CC0000"><span id="info_limit2">0</span></font> 个字</font></div>
 				<div class="bot_box">
 					<span class="b_b_tit">* 群发只能使用站内信和短信</span>
 					<div class="b_b_cont">
@@ -1225,7 +1232,30 @@
 		});
 
 
-		 })
+		 });
+
+
+		 //
+		 var lim2 = new limit2();
+		          lim2.txtNote2 = document.getElementById("tit_are");  
+		          lim2.txtLimit2 = document.getElementById("info_limit2"); 
+		          lim2.limitCount2 = 300;
+		          lim2.init2();
+    			function limit2(){
+                  var txtNote2;//文本框
+                  var txtLimit2;//提示字数的input
+                  var limitCount2;//限制的字数
+                  this.init2 = function(){ 
+                      txtNote2 = this.txtNote2;  
+                      txtLimit2 = this.txtLimit2;  
+                      limitCount2 = this.limitCount2;
+                      txtNote2.maxLength = limitCount2;
+                      txtNote2.onkeydown = function(){txtLimit2.innerText = txtNote2.value.length;};
+                      txtNote2.onkeyup = function(){txtLimit2.innerText = txtNote2.value.length;};
+                  }
+              }
+
+
 
 		layui.use('form', function () {
 			var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
