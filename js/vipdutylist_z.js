@@ -76,9 +76,10 @@ if(dyn==9){
     var name;
 var data={
 name:name,
-    orgIdentityId:zhiweid
+    oid:zhiweid
 }
-base.commonAjax('clav/member/getClavMemberList', data, function (data) {
+base.commonAjax('clav/member/getRightClavPeopleList', data, function (data) {
+	console.log("tutuut",data)
 				var dtxdc=[];
 				for (var z=0;z<data.data.length;z++) {
 					dtxdc.push(data.data[z].id)
@@ -117,21 +118,21 @@ var pagedata = [];
 })
 
 }
-function cndbz2(name,orgIdentityId){
+function cndbz2(name,oid){
 if(dyn==idinfo){
     $('#chosedyn').css("display","inline-block")
 }
 if(dyn==9){
     $('#chosedyn').css("display","none")
 }
-    var zhiweid=orgIdentityId;
+    var zhiweid=oid;
     var name;
 var data={
 name:name,
-    orgIdentityId:zhiweid
+    oid:zhiweid
 }
 //console.log("下一数据",data)
-base.commonAjax('clav/member/getClavMemberList', data, function (data) {
+base.commonAjax('clav/member/getRightClavPeopleList', data, function (data) {
 console.log('yn',data)
 var pagedata = [];
         //console.log(data);
@@ -189,16 +190,16 @@ function csyqd(){
          dujuyu=mz3;
         var data={
             id:zhangq,
-            orgIdentityId:dujuyu
+            oid:dujuyu
         }
         //console.log('data')
-        base.commonAjax('clav/member/updateClavMember', data, function (data) {
+        base.commonAjax('clav/member/updateClavMember1', data, function (data) {
             
             $(".cover5").css( "display", "none");
             alert("成功修改")
-            var orgIdentityId=dyn;
+            var oid=dyn;
             var name;               
-            cndbz2(name,orgIdentityId)	               
+            cndbz2(name,oid)	               
         })
     }
 }
@@ -208,16 +209,16 @@ function auto(index, obj) {
                         '<input type="checkbox" name="" title="" lay-skin="primary" class="s" value="'+ obj.id+'">'+
                     '</td>'+
                     '<td>123123123123</td>'+
-                    '<td>'+obj.memberNo+'</td>'+
+                    '<td>'+obj.mbNo+'</td>'+
                     '<td>'+obj.name+'</td>'+
-                    '<td>'+(obj.createDate).split(/\s+/)[0] +'</td>'+
-                    '<td>'+obj.unitAndDuty+'</td>'+
-                    '<td  style=" cursor: pointer;"onclick="changedate('+obj.id+','+obj.orgIdentityId+')">'+obj.orgIdentityStr+
+                    '<td>'+(obj.createTime).split(/\s+/)[0] +'</td>'+
+                    '<td>'+obj.unit+'</td>'+
+                    '<td  style=" cursor: pointer;"onclick="changedate(\''+obj.id+'\','+obj.iid+')">'+obj.identity+
 
                         
-                        '<i class="layui-icon layui-icon-edit cusedit" style="color:#059afe;" id="' + 'cus' + obj.orgIdentityId + '" zzc="' + 'zzc' + obj.id + '"></i>'+
+                        '<i class="layui-icon layui-icon-edit cusedit" style="color:#059afe;"  zzc="' + 'zzc' + obj.id + '"></i>'+
                    '</td>'+
-                    '<td>'+obj.artStr+'</td>'+
+                    '<td>'+obj.artType+'</td>'+
                     '<td>'+obj.location+'</td>'+
                     '<td>'+
                         '<button id="' + 'sm_up' + obj.id + '" type="button" class="layui-btn layui-btn-normal sm_up" style="width:50px;height:20px;line-height:20px;margin-top:0px;padding-left: 10px;">上移</button>'+
@@ -240,7 +241,7 @@ base.commonAjax('clav/member/memberUpOrDown', data, function (data) {
 console.log('成功')
 var orgIdentityId=oid;
 var name;
-cndbz2(name,orgIdentityId)
+cndbz2(name,oid)
 //location.reload();
 })
 })
@@ -259,7 +260,7 @@ base.commonAjax('clav/member/memberUpOrDown', data, function (data) {
 console.log('成功')
 var orgIdentityId=oid;
 var name;
-cndbz2(name,orgIdentityId)
+cndbz2(name,oid)
 //location.reload();
 })
 })
@@ -288,12 +289,12 @@ name=$("#vipnumber43").val();
     var ddyn=dyn;
     var name;
 var data={
-    orgIdentityId:ddyn,
+    oid:ddyn,
     name:name
 }
     //console.log("ddd",data)
     document.getElementById('tbcc').innerHTML='';
-base.commonAjax('clav/member/getClavMemberList', data, function (data) {
+base.commonAjax('clav/member/getRightClavPeopleList', data, function (data) {
 
 				var dtxdc2=[];
 				for (var z=0;z<data.data.length;z++) {
@@ -362,16 +363,16 @@ function chosevip(){
 	$('#seale').val('');
 	$('#seari').val('');
 var id=dyn;
-var orgIdentityId=dyn;
+var oid=dyn;
 
 //左边
 function left(name){
 	var data={
-id:id,
+oid:oid,
 name:name
 }
 //console.log("jiu",data)
-base.commonAjax('clav/orgIdentity/getNotThisIdentityMember', data, function (data) {
+base.commonAjax('clav/member/getLeftClavPeopleList', data, function (data) {
 console.log("左边",data)
 $("#unselect-ul").empty();
 if(data.code==1){
@@ -396,10 +397,10 @@ left();
 //右边
 function right(name){
 	var data2={
-orgIdentityId:orgIdentityId,
+oid:oid,
 name:name
 }
-base.commonAjax('clav/member/getClavMemberList', data2, function (data) {
+base.commonAjax('clav/member/getRightClavPeopleList', data2, function (data) {
 //console.log("右边",data)
 $("#selected-ul").empty();
 
@@ -429,11 +430,11 @@ function sealeft(){
 	}	
 	var id=dyn;
 		var data={
-id:id,
+oid:id,
 name:name
 }
 console.log("jiu",data)
-base.commonAjax('clav/orgIdentity/getNotThisIdentityMember', data, function (data) {
+base.commonAjax('clav/member/getLeftClavPeopleList', data, function (data) {
 console.log("左边",data)
 $("#unselect-ul").empty();
 if(data.code==1){
@@ -462,10 +463,10 @@ function searight(){
 	}	
 	var orgIdentityId=dyn;
 		var data2={
-orgIdentityId:orgIdentityId,
+oid:orgIdentityId,
 name:name
 }
-base.commonAjax('clav/member/getClavMemberList', data2, function (data) {
+base.commonAjax('clav/member/getRightClavPeopleList', data2, function (data) {
 //console.log("右边",data)
 $("#selected-ul").empty();
 
@@ -507,14 +508,14 @@ ids:ids,
 id:dyn
 }
 console.log("操作后",data)
-base.commonAjax('clav/orgIdentity/chooseMember', data, function (data) {
+base.commonAjax('clav/orgIdentity/chooseMember1', data, function (data) {
 if(data.code==1){
 $(".cover4").css( "display", "none");
 alert("确认成功");
 var name;
-var orgIdentityId=dyn;
+var oid=dyn;
 //cndbz();
-cndbz2(name,orgIdentityId)
+cndbz2(name,oid)
 }
 
 })
