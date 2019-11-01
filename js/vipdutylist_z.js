@@ -372,7 +372,7 @@ name:name
 }
 //console.log("jiu",data)
 base.commonAjax('clav/orgIdentity/getNotThisIdentityMember', data, function (data) {
-//console.log("左边",data)
+console.log("左边",data)
 $("#unselect-ul").empty();
 if(data.code==1){
     for(var i=0;i<data.data.length;i++){
@@ -494,6 +494,7 @@ var oobb=aq.getElementsByClassName("zzc_right");
 for(var i=0;i<oobb.length;i++){
 arr[i]=oobb[i].value;
 }
+console.log('我想要的',arr);
 var ids;
 if(arr.length<=0){
 ids=-1;

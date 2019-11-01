@@ -89,6 +89,18 @@
 		border-width: 1px;
 		display: none;
 	}
+	#test251,#test250{
+		position: absolute;
+		z-index: 999;
+		background: #fff;
+		height: 94px;
+		overflow-y: scroll;
+		width: 301px;
+		border: solid rgba(195, 197, 201, 0.3);
+		border-width: 1px;
+		display: none;
+		
+	}
 		#test3 {
 		position: absolute;
 		z-index: 999;
@@ -232,9 +244,10 @@
 				</div>
 				<div class="cnm" style="padding-left: 43px;">
 					<div style="display: inline-block">所属推荐类型：</div>
-					<div style="display: inline-block">
+					<div style="display: inline-block;position: relative;">
 						<input id="wwcc2" name="modules" readonly="readonly" lay-verify="required" class="layui-input"
 							lay-search="" style="cursor: pointer;">
+							<img src="img/sanjiao.png" style="width: 26px;position: absolute;top: 2px;left: 254px;"/>
 
 						<!-- <option value="1">layer</option>
 						<option value="2">form</option>
@@ -245,13 +258,14 @@
 				</div>
 				<div class="cnm">
 					<div style="display: inline-block">关联组织：</div>
-					<div style="display: inline-block" >
-						<select id="ccglzz2" name="modules" lay-verify="required" lay-search="" lay-filter="ccglzz2">
+					<div style="display: inline-block;position: relative;" >
+						<!--<select id="ccglzz2" name="modules" lay-verify="required" lay-search="" lay-filter="ccglzz2">
 							<option value="">请选择</option>
-							<!-- <option value="1">layer</option>
-							<option value="2">form</option>
-							<option value="3">layim</option> -->
-						</select>
+						</select>-->
+						<input id="ccglzz2" name="modules" readonly="readonly" lay-verify="required" class="layui-input"
+							lay-search="" style="cursor: pointer;">
+							<img src="img/sanjiao.png" style="width: 26px;position: absolute;top: 2px;left: 254px;"/>
+							<div id="test250"></div>
 					</div>
 				</div>
 				<div class="cnm" style="padding-left:23px;">
@@ -277,10 +291,10 @@
 				</div>
 				<div class="cnm" style="padding-left: 43px;">
 					<div style="display: inline-block">所属推荐类型：</div>
-					<div style="display: inline-block">
+					<div style="display: inline-block;position: relative;">
 						<input id="wwcc" name="modules" readonly="readonly" lay-verify="required" class="layui-input"
 							lay-search="" style="cursor: pointer;">
-
+<img src="img/sanjiao.png" style="width: 26px;position: absolute;top: 2px;left: 254px;"/>
 						<!-- <option value="1">layer</option>
 						<option value="2">form</option>
 						<option value="3">layim</option> -->
@@ -290,13 +304,14 @@
 				</div>
 				<div class="cnm">
 					<div style="display: inline-block">关联组织：</div>
-					<div style="display: inline-block" >
-						<select id="ccglzz" name="modules" lay-verify="required" lay-search="" lay-filter="ccglzz">
+					<div style="display: inline-block;position: relative;" >
+						<!--<select id="ccglzz" name="modules" lay-verify="required" lay-search="" lay-filter="ccglzz">
 							<option value="">请选择</option>
-							<!-- <option value="1">layer</option>
-							<option value="2">form</option>
-							<option value="3">layim</option> -->
-						</select>
+						</select>-->
+						<input id="ccglzz" name="modules" readonly="readonly" lay-verify="required" class="layui-input"
+							lay-search="" style="cursor: pointer;">
+							<img src="img/sanjiao.png" style="width: 26px;position: absolute;top: 2px;left: 254px;"/>
+							<div id="test251"></div>
 					</div>
 				</div>
 				<div class="cnm" style="padding-left:23px;">
@@ -323,6 +338,8 @@
 	<script src="./js/recommendedUnits_z.js"></script>
 	<!-- <script src="./js/commonheader.js"></script> -->
 	<script>
+		let guanlianId;
+		let upglId;
 			// 引的头部
 			$('header').load('./headerys.html');
 		$('#test2').mouseleave(function(){
@@ -330,6 +347,12 @@
 		});
 		$('#test3').mouseleave(function(){
 			$('#test3').css("display", "none");
+		});
+		$('#test251').mouseleave(function(){
+			$('#test251').css("display", "none");
+		});
+		$('#test250').mouseleave(function(){
+			$('#test250').css("display", "none");
 		});
 		let recttype = '';
 		let recdtype = '';
@@ -377,19 +400,174 @@
 			var data = {
 
 			}
-			layui.use('form', function () {
-				var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
-				base.commonAjax('clav/recommendUnit/getClavOrg', data, function (data) {
-					console.log('cc', data)
-					for (var i = 0; i < data.data.length; i++) {
-						$('#ccglzz').append(
-							'<option value="' + data.data[i].id + '">' + data.data[i].name + '</option>'
-						);						
-					}
-					form.render('select');
+//			layui.use('form', function () {
+//				var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+//				base.commonAjax('clav/recommendUnit/getClavOrg', data, function (data) {
+//					console.log('cc', data)
+//					for (var i = 0; i < data.data.length; i++) {
+//						$('#ccglzz').append(
+//							'<option value="' + data.data[i].id + '">' + data.data[i].name + '</option>'
+//						);						
+//					}
+//					form.render('select');
+//
+//				})
+//			})
+let treedata4 = [];
+let treelocaldata3 = [];
 
-				})
-			})
+ function wtf251(data) {
+            data.map(function(v, i){
+            	//console.log(v)
+                let obj = {};
+                obj.id2=v.id;
+                obj.title = v.name;
+                obj.id = i;
+                obj.children = [];
+               
+                	v.childList.map(function(val, ind)  {
+                    let objc = {};
+                    objc.id2=val.id;
+                    objc.title = val.name;
+
+                    objc.id = i+'-'+ind;
+                    objc.children = [];
+                    if(!val.childList){
+                    	return;
+                    }
+                    	val.childList.map(function(vala, inda)  {
+                    		
+                    			let objc1 = {};
+			                   objc1.id2=vala.id;
+			                    objc1.title = vala.name;
+			                    objc1.id = i+'-'+ind+'-'+inda;
+			                    objc1.children = [];
+			                    if(!vala.childList){
+                    	return;
+                    	
+                    }
+			                    	vala.childList.map(function(valaa, indb)  {
+						                    let objc2 = {};
+						                  objc2.id2=valaa.id;
+						                    objc2.title = valaa.name;
+						                    objc2.id = i+'-'+ind+'-'+inda+'-'+indb;
+						                    objc2.children = [];
+						                    if(!valaa.childList){
+                    	return;
+                    }
+						                    	valaa.childList.map(function(valaaa, indc)  {
+						                    		
+						                    		let objc3 = {};
+									                    objc3.id2=valaaa.id;
+									                    objc3.title = valaaa.name;
+									                    objc3.id = i+'-'+ind+'-'+inda+'-'+indb+'-'+indc;
+									                    objc3.children = [];
+
+						                    		objc2.children.push(objc3);
+						                    		
+						                    	})					                    
+      										objc1.children.push(objc2);
+      										
+			                    	})
+			                  objc.children.push(objc1);
+                    	}) 
+                    	 
+                    obj.children.push(objc);
+                    
+                });  
+//                  console.log("hehe",obj)                
+                treedata4.push(obj);
+            });
+       }
+       base.commonAjax('clav/recommendUnit/getClavOrg', data, function (data) {
+            if (data.code == 1) {
+                //console.log("z", data);
+                treelocaldata3 = data.data;
+                wtf251(data.data);
+               // console.log(treedata)
+                layui.use('tree', function () {
+                    var tree = layui.tree;
+
+                    //渲染
+                    var inst1 = tree.render({
+                        elem: '#test251'  //绑定元素
+                        ,click: function(obj){
+							// console.log(obj);
+							// console.log(obj.data); //得到当前点击的节点数据
+							// console.log(obj.elem); //得到当前节点元素 
+							// console.log($('.layui-tree-set').attr("data-id"));
+							//  console.log(obj.data.id); //得到当前点击的节点数据
+							let str = obj.data.id;
+							console.log("aaaaaa",obj.data.id);
+							// console.log(str.indexOf('-')>-1);
+                              console.log(obj);
+                               console.log(str);
+							if (String(str).indexOf('-') != -1) {
+
+								let arr = str.split('-');
+								console.log("lalalla",arr)
+								if (arr.length == 2) {
+									console.log(treelocaldata3[Number(arr[0])].childList[Number(arr[1])]);
+									guanlianId = treelocaldata3[Number(arr[0])].childList[Number(arr[1])].id;
+									var tjplace2 = obj.data.title;
+									$('#ccglzz').val('');
+									$('#ccglzz').val(treelocaldata3[Number(arr[0])].childList[Number(arr[1])].name);
+									$('#test251').css("display", "none");
+								}
+								if (arr.length == 3) {
+									console.log(treelocaldata3[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])]);
+									guanlianId = treelocaldata3[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])].id;
+									var tjplace2 = obj.data.title;
+									$('#ccglzz').val('');
+									$('#ccglzz').val(treelocaldata3[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])].name);
+									$('#test251').css("display", "none");
+								}
+								if (arr.length == 4) {
+									console.log(treelocaldata3[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])].childList[Number(arr[3])]);
+									guanlianId = treelocaldata3[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])].childList[Number(arr[3])].id;
+									var tjplace2 = obj.data.title;
+									$('#ccglzz').val('');
+									$('#ccglzz').val(treelocaldata3[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])].childList[Number(arr[3])].name);
+									$('#test251').css("display", "none");
+								}
+								if (arr.length == 5) {
+									console.log(treelocaldata3[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])].childList[Number(arr[3])].childList[Number(arr[4])]);
+									guanlianId = treelocaldata3[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])].childList[Number(arr[3])].childList[Number(arr[4])].id;
+									var tjplace2 = obj.data.title;
+									$('#ccglzz').val('');
+									$('#ccglzz').val(treelocaldata3[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])].childList[Number(arr[3])].childList[Number(arr[4])].name)
+									$('#test251').css("display", "none");
+								}
+
+							} else {
+								let arr = str;
+
+								guanlianId = treelocaldata3[arr].id;
+								//console.log("推荐",arr);
+								//console.log(treedata2[arr[0]].title);
+								// console.log(treedata[arr[0]].title);
+								// console.log(obj.data.title);
+								var tjplace2 = obj.data.title;
+								//+treedata2[arr[0]].title;
+								//console.log("地区",place);	
+								$('#ccglzz').val('');
+								$('#ccglzz').val(obj.data.title)
+								$('#test251').css("display", "none");
+							}
+
+
+                    }
+                        , data:treedata4
+                    });
+                    
+                });
+            }
+        });
+
+
+
+
+
 		}
 		// $(document).on('click', '#cnmadd', function () {
 		// 	$(".cover10").css("display", "inline-block");
@@ -412,21 +590,173 @@
 		// })
 		//编辑
 		function cnz_update(updateid){
-			$(".cover11").css("display", "inline-block");
 			
+			let treedata250 = [];
+let treelocaldata350 = [];
+			$(".cover11").css("display", "inline-block");
+			var data={
+				
+			}
+		base.commonAjax('clav/recommendUnit/getClavOrg', data, function (data) {
+            if (data.code == 1) {
+                //console.log("z", data);
+                treelocaldata350 = data.data;
+                wtf250(data.data);
+               // console.log(treedata)
+                layui.use('tree', function () {
+                    var tree = layui.tree;
+
+                    //渲染
+                    var inst1 = tree.render({
+                        elem: '#test250'  //绑定元素
+                        ,click: function(obj){
+							// console.log(obj);
+							// console.log(obj.data); //得到当前点击的节点数据
+							// console.log(obj.elem); //得到当前节点元素 
+							// console.log($('.layui-tree-set').attr("data-id"));
+							//  console.log(obj.data.id); //得到当前点击的节点数据
+							let str = obj.data.id;
+							//console.log("aaaaaa",obj.data.id);
+							// console.log(str.indexOf('-')>-1);
+                              //console.log(obj);
+                               //console.log(str);
+							if (String(str).indexOf('-') != -1) {
+
+								let arr = str.split('-');
+								console.log("lalalla",arr)
+								if (arr.length == 2) {
+									//console.log(treelocaldata3[Number(arr[0])].childList[Number(arr[1])]);
+									upglId = treelocaldata350[Number(arr[0])].childList[Number(arr[1])].id;
+									var tjplace2 = obj.data.title;
+									$('#ccglzz2').val('');
+									$('#ccglzz2').val(treelocaldata350[Number(arr[0])].childList[Number(arr[1])].name);
+									$('#test250').css("display", "none");
+								}
+								if (arr.length == 3) {
+									//console.log(treelocaldata3[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])]);
+									upglId = treelocaldata350[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])].id;
+									var tjplace2 = obj.data.title;
+									$('#ccglzz2').val('');
+									$('#ccglzz2').val(treelocaldata350[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])].name);
+									$('#test250').css("display", "none");
+								}
+								if (arr.length == 4) {
+									console.log(treelocaldata350[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])].childList[Number(arr[3])]);
+									upglId = treelocaldata350[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])].childList[Number(arr[3])].id;
+									var tjplace2 = obj.data.title;
+									$('#ccglzz2').val('');
+									$('#ccglzz2').val(treelocaldata350[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])].childList[Number(arr[3])].name);
+									$('#test250').css("display", "none");
+								}
+								if (arr.length == 5) {
+									console.log(treelocaldata350[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])].childList[Number(arr[3])].childList[Number(arr[4])]);
+									upglId = treelocaldata350[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])].childList[Number(arr[3])].childList[Number(arr[4])].id;
+									var tjplace2 = obj.data.title;
+									$('#ccglzz2').val('');
+									$('#ccglzz2').val(treelocaldata350[Number(arr[0])].childList[Number(arr[1])].childList[Number(arr[2])].childList[Number(arr[3])].childList[Number(arr[4])].name)
+									$('#test250').css("display", "none");
+								}
+
+							} else {
+								let arr = str;
+
+								upglId = treelocaldata350[arr].id;
+								//console.log("推荐",arr);
+								//console.log(treedata2[arr[0]].title);
+								// console.log(treedata[arr[0]].title);
+								// console.log(obj.data.title);
+								var tjplace2 = obj.data.title;
+								//+treedata2[arr[0]].title;
+								//console.log("地区",place);	
+								$('#ccglzz2').val('');
+								$('#ccglzz2').val(obj.data.title)
+								$('#test250').css("display", "none");
+							}
+                    }
+                        , data:treedata250
+                    });
+                    
+                });
+            }
+        });
+				
+			
+		 function wtf250(data) {
+            data.map(function(v, i){
+            	//console.log(v)
+                let obj = {};
+                obj.id2=v.id;
+                obj.title = v.name;
+                obj.id = i;
+                obj.children = [];
+               
+                	v.childList.map(function(val, ind)  {
+                    let objc = {};
+                    objc.id2=val.id;
+                    objc.title = val.name;
+
+                    objc.id = i+'-'+ind;
+                    objc.children = [];
+                    if(!val.childList){
+                    	return;
+                    }
+                    	val.childList.map(function(vala, inda)  {
+                    		
+                    			let objc1 = {};
+			                   objc1.id2=vala.id;
+			                    objc1.title = vala.name;
+			                    objc1.id = i+'-'+ind+'-'+inda;
+			                    objc1.children = [];
+			                    if(!vala.childList){
+                    	return;
+                    	
+                    }
+			                    	vala.childList.map(function(valaa, indb)  {
+						                    let objc2 = {};
+						                  objc2.id2=valaa.id;
+						                    objc2.title = valaa.name;
+						                    objc2.id = i+'-'+ind+'-'+inda+'-'+indb;
+						                    objc2.children = [];
+						                    if(!valaa.childList){
+                    	return;
+                    }
+						                    	valaa.childList.map(function(valaaa, indc)  {
+						                    		
+						                    		let objc3 = {};
+									                    objc3.id2=valaaa.id;
+									                    objc3.title = valaaa.name;
+									                    objc3.id = i+'-'+ind+'-'+inda+'-'+indb+'-'+indc;
+									                    objc3.children = [];
+
+						                    		objc2.children.push(objc3);
+						                    		
+						                    	})					                    
+      										objc1.children.push(objc2);
+      										
+			                    	})
+			                  objc.children.push(objc1);
+                    	}) 
+                    	 
+                    obj.children.push(objc);
+                    
+                });  
+//                  console.log("hehe",obj)                
+                treedata250.push(obj);
+            });
+       }	
 			var data2 = {
 			}
 			layui.use('form', function () {
 				var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
-				base.commonAjax('clav/recommendUnit/getClavOrg', data2, function (data) {
-					for (var i = 0; i < data.data.length; i++) {
-						$('#ccglzz2').append(
-							'<option value="' + data.data[i].id + '">' + data.data[i].name + '</option>'
-						);						
-					}
-					form.render('select');
-
-				})
+//				base.commonAjax('clav/recommendUnit/getClavOrg', data2, function (data) {
+//					for (var i = 0; i < data.data.length; i++) {
+//						$('#ccglzz2').append(
+//							'<option value="' + data.data[i].id + '">' + data.data[i].name + '</option>'
+//						);						
+//					}
+//					form.render('select');
+//
+//				})
 			
 			cnm_update=updateid;
 			var data = {
@@ -439,7 +769,7 @@
 				$('#wwcc2').val(data.data[0].unitType);
 				$('#ccglzz2').val(data.data[0].remarks1);
 				ind2=data.data[0].parentId;
-				ccglzz2=data.data[0].remarks1;
+				upglId=data.data[0].remarks1;
 				form.render('select');
 				console.log('状态',data.data[0].status)
 				var radio = document.getElementsByName("sex2");				
@@ -465,7 +795,7 @@
 			var newname = $('#xiugaituijian').val();
 			var status = $('input[name="sex2"]:checked').attr("data");
 			var parentId = ind2;
-			var remarks1=ccglzz2;
+			var remarks1=upglId;
 			var data = {
 						name: newname,
 						id: cnm_update,
@@ -791,13 +1121,17 @@ function redown(downid){
 		$(document).on('click', '#wwcc2', function () {
 			$("#test3").css("display", "inline-block");
 		})
-
-
+		$(document).on('click', '#ccglzz', function () {
+					$("#test251").css("display", "inline-block");
+				})
+$(document).on('click', '#ccglzz2', function () {
+					$("#test250").css("display", "inline-block");
+				})
 
 		$(document).on('click', '#cccnnm', function () {
 			var name = $('#ccname').val();
 			var parentId = ind1;
-			var remarks1 = ccglzz;
+			var remarks1 = guanlianId;
 			var status = $('input[name="sex"]:checked').attr("data");
 			var data = {
 				name: name,
@@ -813,6 +1147,7 @@ function redown(downid){
 					$('#ccname').val('')
 					$('#wwcc').val('')
 					$('#ccglzz').val('')
+					alert("操作成功")
 				} else {
 					alert(data.message)
 				}
