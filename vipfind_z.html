@@ -217,7 +217,25 @@ padding-left:9px;
 			</div>
 		</div>
 	</div>
-
+<div class="cover5">
+		<div class="tcc_content">
+			<div class="tcc_title">操作确认</div>
+			<!--<div class="findfile hy_file">
+				是否移除会员
+			</div>
+			<div class="findfile_ann">
+				<button type="button" class="layui-btn layui-btn-primary" onclick="detr()">确定</button>
+				<button type="button" class="layui-btn layui-btn-primary" onclick="close1()">关闭</button>
+			</div>-->
+			<div class="findfile li_querentg">
+					请您确定是否移除该会员？
+				</div>
+				<div class="findfile_an">
+						<button type="button" class="layui-btn layui-btn-normal" onclick="detr()">确认</button>
+						<button type="button" class="layui-btn layui-btn-primary" onclick="close1()">关闭</button>
+				</div>
+		</div>
+	</div>
 	<script src="./layui/layui.js"></script>
 	<script src="./js/layuicommon2.js"></script>
 	<script src="./js/jquery.min.js"></script>
@@ -227,6 +245,7 @@ padding-left:9px;
 	<!-- <script src="./js/commonheader.js"></script> -->
 	<script>
 		// 引的头部
+		var dds;
 		 $('header').load('./headerys.html');
 		$('#test1').mouseleave(function(){
 			$('#test1').css("visibility", "hidden");
@@ -236,7 +255,7 @@ padding-left:9px;
 		})
 		$(".tatou").css({ "background-color": "#059afe", "color": "white" });
 		function close1() {
-			$(".cover4").css("display", "none");
+			$(".cover4,.cover5").css("display", "none");
 		}
 		// layui.use('laypage', function () {
 		// 	var laypage = layui.laypage;
@@ -676,7 +695,7 @@ padding-left:9px;
 				'<button id="' + 'hy_edit' + obj.id + '"class="layui-btn hy_edit" style="width:50px;height:20px;line-height: 20px;padding-left: 11px;margin-top: 0px;border-radius: 4px;">编辑</button>' +
 				'<a><button id="' + 'hy_find' + obj.id + '"class="layui-btn layui-btn-normal hy_find" style="width:50px;height:20px;line-height: 20px;padding-left: 11px;margin-top: 0px;border-radius: 4px;">查看</button></a>' +
 				'<a href=http://39.98.186.243/clav/exportExcel/downloadsExcelDown?ids='+obj.id+' download=""><button id="' + 'hy_daochu' + obj.id + '"class="layui-btn layui-btn-normal hy_daochu" style="width:50px;height:20px;line-height: 20px;padding-left: 11px;margin-top: 0px;border-radius: 4px;">导出</button></a>' +
-				'<a><button id="' + 'hy_move' + obj.id + '"class="layui-btn layui-btn-warm hy_move" onclick="remove_z(' + obj.id + ')" style="width:50px;height:20px;line-height: 20px;padding-left: 11px;margin-top: 0px;border-radius: 4px;">移除</button></a>' +
+				'<a><button id="' + 'hy_move' + obj.id + '"class="layui-btn layui-btn-warm hy_move" onclick="cccap(' + obj.id + ')" style="width:50px;height:20px;line-height: 20px;padding-left: 11px;margin-top: 0px;border-radius: 4px;">移除</button></a>' +
 				'<a><button id="' + 'hy_repass' + obj.id + '"class="layui-btn layui-btn-danger hy_repass" onclick="repass_z(' + obj.id + ')"style="width:60px;height:22px;line-height: 20px;padding-left: 2px;margin-top: 0px;border-radius: 4px;">重置密码</button></a>' +
 				'</td>' +
 				'</tr>'
@@ -740,7 +759,8 @@ padding-left:9px;
 			base.commonAjax('clav/member/yichuClavMember', data, function (data) {
 				if (data.code == 1) {
 					findvip();
-					alert('删除成功')
+					alert('删除成功');
+					$(".cover5").css("display", "none");
 				}
 				else{
 					alert(data.message)
@@ -850,7 +870,14 @@ padding-left:9px;
         a.dispatchEvent(e)
       }
 		}
-	
+	function cccap(detid){
+		$(".cover5").css("display", "inline-block");
+		dds=detid;
+		console.log('删除的',dds);
+	}
+	function detr () {
+		remove_z(dds);		
+	}
 	</script>
 </body>
 

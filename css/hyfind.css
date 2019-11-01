@@ -206,7 +206,12 @@ td{
 #layui .layui-laypage-btn{
     margin-top: 0;
 }
-.cover4{
+.li_querentg{
+    line-height: 190px;
+    font-size: 18px;
+    text-align: center;
+}
+.cover4,.cover5{
     width: 100%;
     height:100%;
     background-color: rgba(143, 144, 148,0.3);
