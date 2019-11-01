@@ -850,7 +850,8 @@ myChart.setOption(option);
                     console.log(arguments[0]);
 
                     var option = {
-                        tooltip: {},
+                        tooltip: {
+                },
                         dataset: {
                             source: [
                                 ['xAxis', '201701', '201702', '201703', '201704', '201705', '201706', '201707', '201708', '201709', '20170', '201710', '20170', '201801'],
@@ -912,9 +913,9 @@ myChart.setOption(option);
                         //   return [point[0], point[1]];
                         // },
                         formatter: function (params) {
-                            // console.log(params)
+                             console.log(params);
                             if (!isNaN(params.value)) {
-                                return params.name + '：' + params.data['value']
+                                return params.name + '：' + params.data['value'] + '('+ params.data['proportion'] + ')'
                             };
                             setTimeout(function () {
                                 tooltipCharts(params.name);
@@ -1044,7 +1045,7 @@ myChart.setOption(option);
                         formatter: function (params) {
                             //console.log(params);
                             if (!isNaN(params.value)) {
-                                return params.name + '：' + params.data['value']
+                                return params.name + '：' + params.data['value'] + '('+ params.data['proportion'] + ')'
                             }
 
                         },

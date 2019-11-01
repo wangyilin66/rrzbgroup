@@ -437,6 +437,20 @@ span{
 .g_d_2{
     margin-left: 10px;
 }
+.linput{
+    cursor: pointer;
+    border-radius: 6px;
+    display: block;
+    width: 254px;
+    box-sizing: border-box;
+    padding-left: 10px;
+    height: 32px;
+    line-height: 32px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #e6e6e6 !important;
+    background-color: #fff;
+}
 
     </style>
     <title>Document</title>
@@ -863,7 +877,7 @@ span{
                                             <option value="1">layer</option>
                                             <option value="2">form</option>
                                         </select> -->
-                                        <input type="text"class="layui-input" id="tjtype" readonly="readonly" style="cursor: pointer;border-radius: 6px;">
+                                        <input type="text"class="linput" id="tjtype" readonly="readonly" style="cursor: pointer;border-radius: 6px;">
                                         <div class="warn w_lx"></div>
                                     </div>
                                     <div id="test2"></div>
@@ -1431,6 +1445,9 @@ let idss = getQueryString('id').id;
         })
         $('#test3').mouseleave(function(){
 			$('#test3').css("visibility", "hidden");
+		})
+        $('#test2').mouseleave(function(){
+			$('#test2').css("visibility", "hidden");
 		})
         $('#zyzc').click(function(){
             $('#test4').css("visibility","visible");

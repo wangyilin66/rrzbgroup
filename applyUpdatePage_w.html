@@ -573,7 +573,7 @@ alert('上传单个PDF后，不可再上传图片。请刷新页面后重新上�
                             success: function (data, textStatus, jqXHR) {
                                 var data = {
                                     id: getQueryString("id").id,
-                                     file: data.data[0].url,
+                                    uploadFile: data.data[0].url,
                                 }
                                 base.commonAjax('clav/member/updateClavMember', data, function (data) {
                                     console.log(data);
