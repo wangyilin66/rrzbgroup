@@ -48,6 +48,9 @@
 	right: 0px;
 	color: rgb(102, 102, 102);
 }
+.woc{
+    color:#35C96E;
+}
     </style>
 </head>
 
@@ -65,7 +68,7 @@
                 <div class="content_navl"><span><i
                             class="layui-icon layui-icon-home"></i>首页&nbsp;&nbsp;</span>/<span>&nbsp;志愿者管理&nbsp;&nbsp;</span>/&nbsp;理事调整
                 </div>
-                <div class="c_n_title" onclick="down()">下载申请表</div>
+                <a class="c_n_title"  href="http://39.98.186.243/clav/testWord/exportMillCertificate2" download=''>下载申请表</a>
                 <form class="layui-form" action="">
                     <div class="grinfo">
                         <div class="grinfot">个人基本认证信息</div>
@@ -581,7 +584,7 @@ let idss = getQueryString('id').id;
         $('#sfnumber').val(obj.idNumber);
         $('#sex').val(obj.gender == 1 ? '男': '女');
         $('#tec').val(obj.phone);
-        $('#politicsStatusId').val(obj.politicsStatusId);
+        $('#politicsStatusId').val(obj.professionalTitleStr);
         politicsStatusIdd = obj.politicsStatusId;
         $('#mz3').val(obj.nation);
         mz3=obj.nation;
@@ -605,9 +608,9 @@ let idss = getQueryString('id').id;
         $('#email').val(obj.email);
         $('#placenum').val(obj.postcode);
         $('#weixinnum').val(obj.wechatNumber);
-        $('#whcd').val(obj.educationLevelId);;
+        $('#whcd').val(obj.educationLevelId);
         whcd=obj.educationLevelId;
-        $('#zyzc').val(obj.professionalTitleId);
+        $('#zyzc').val(obj.professionalTitleStr);
         zyzc=obj.professionalTitleId;
     
         $('#school').val(obj.graduateSchool);

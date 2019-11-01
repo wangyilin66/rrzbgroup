@@ -101,6 +101,9 @@ border: 1px solid rgba(210,214,222,1);
         .wocao{
             color:#e0ffff;
         }
+        #test33{
+            height: 170px;
+        }
 </style>
 </head>
 
@@ -702,8 +705,8 @@ border: 1px solid rgba(210,214,222,1);
     <!-- <script src="./js/commonheader.js"></script> -->
     <script src="./js/InvitationCode_z.js"></script>
 	<script>
-        let treedata = [];let bllist = null;
-  
+        let treedata = [];let bllist = null,recommendType33 = null;
+        
         let fznfinp,bltj,gztjdw,gzzt,ztyearinp,zttjdwinp;
         let ind1;
         function close1() {
@@ -1056,7 +1059,9 @@ function jiuchux(){
         let yqmcode = $('#gzinp2').val();
 
         let data = {
-            status:gzzt,
+        }
+        if(gzzt){
+            data.status = gzzt;
         }
         if(yqmcode != ''){
             data.inviteCode = yqmcode;
@@ -1066,9 +1071,7 @@ function jiuchux(){
         }
 
         base.commonAjax('clav/allotInfo/getInviteCodeList', data, function (data) {
-         console.log(data);
-      
-                var pagedata = [];
+            var pagedata = [];
 			console.log(data);
 			pagedata = data.data;
 			//console.log(pagedata)

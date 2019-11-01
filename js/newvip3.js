@@ -524,8 +524,15 @@ layui.use('form', function(){
     })
     
     function down() {
-    
-        window.open('http://39.98.186.243/clav/testWord/exportMillCertificate2');
+
+        var eleLink = document.createElement('a');
+        eleLink.href = base.baseUrl + 'clav/testWord/exportMillCertificate2';
+        eleLink.download = name;
+        eleLink.style.display = 'none';
+        document.body.appendChild(eleLink);
+        eleLink.click();
+        document.body.removeChild(eleLink);
+        // window.open('http://39.98.186.243/clav/testWord/exportMillCertificate2');
     };
     
     

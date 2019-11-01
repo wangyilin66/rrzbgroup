@@ -614,19 +614,18 @@
                             layer.msg('请选择最少一个后，再导出');
                         });
 				 }else{
-					 let a = 0;
+					 let a = '';
 					 arr.map(function (item) {
-				    setTimeout(() => {
+				        a += item + ',';
+					   });
+					
 						var eleLink = document.createElement('a');
-						eleLink.href = base.baseurl + '/clav/exportExcel/downloadsExcelDown?ids='+item;
+						eleLink.href = base.baseurl + '/clav/exportExcel/downloadsExcelDown?ids='+a;
 						eleLink.download = '';
 						eleLink.style.display = 'none';
 						document.body.appendChild(eleLink);
 						eleLink.click();
 						document.body.removeChild(eleLink);
-						return true;
-					 }, a+=500);
-					   });
 				 }
 			 }
 		 }
