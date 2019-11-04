@@ -34,7 +34,7 @@
         .hytitle {
             margin-left: 200px;
             cursor: pointer;
-        
+
         }
 
         .hytitle_font2 {
@@ -72,12 +72,14 @@
             font-weight: 600;
             border-bottom: 2px solid #ccc;
         }
-        #mapbox{
+
+        #mapbox {
             width: 100%;
             height: 1000px;
             padding-top: 50px;
             box-sizing: border-box;
             background: #fff;
+            position: relative;
         }
 
         #allmap {
@@ -106,7 +108,7 @@
 
         .mapinit>p {
             text-align: center;
-            padding-top: 10px;
+            padding-top: 20px;
             color: #999;
         }
 
@@ -140,7 +142,7 @@
             width: 40%;
             height: 500px;
             margin-top: 100px;
-            border-left: 1px solid #999;
+            border-left: 1px solid #ECECEC;
         }
 
         .t_right>ul {
@@ -160,12 +162,19 @@
             display: flex;
             justify-content: space-between;
             font-size: 14px;
-            margin-top: 10px;
-
+            margin-top: 15px;
+            
+        }
+        .t_right>ul>li>span{
+            display:block;
+            width: 33%;
+            text-align: center;
         }
 
         .t_r_li {
             color: #999;
+            margin-bottom: 30px;
+            margin-top: 0 !important;
         }
 
         .t_r_cen {
@@ -187,7 +196,7 @@
 
         .tab_tit>span {
             display: block;
-          padding-top: 10px;
+            padding-top: 20px;
             color: #999;
         }
 
@@ -309,7 +318,7 @@
         .xbfb_li {
             color: #666;
             margin: 0;
-           padding-bottom: 14px;
+            padding-bottom: 14px;
         }
 
         .t_b_c_right>ul>li {
@@ -326,6 +335,110 @@
         .t_b_c_right>ul::-webkit-scrollbar {
             display: none
         }
+
+        .t_b_c_ul {
+            position: absolute;
+            top: 420px;
+            width: 50%;
+            left: 10px;
+            box-sizing: border-box;
+            padding-left: 7%;
+            padding-right: 8%;
+            display: flex;
+            justify-content: space-evenly;
+            z-index: 99;
+            flex-wrap: wrap;
+        }
+
+        .sp1 {
+            background: #2AC9FD !important;
+        }
+
+        .sp2 {
+            background: #15AF1A !important;
+        }
+
+        .sp3 {
+            background: #6372CC !important;
+        }
+
+        .sp4 {
+            background: #FCC708 !important;
+        }
+
+        .sp5 {
+            background: #48B188 !important;
+        }
+
+        .sp6 {
+            background: #5957C2 !important;
+        }
+
+        .t_b_c_ul>li {
+            display: flex;
+            line-height: 10px;
+            margin-right: 20px;
+            margin-top: 20px;
+        }
+
+        .t_b_c_ul>li>span {
+            display: block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: red;
+            margin-right: 5px;
+        }
+        .highbox{
+            display: flex;
+            position: absolute;
+            left: 7%;
+            top:740px;
+            z-index: 999;
+        }
+        .highbox > p{
+         line-height: 12px;
+         margin-left: -4px;
+        } 
+        .m_h_san{
+            width:0;
+        height:0;
+        overflow:hidden;
+        font-size: 0;     /*是因为, 虽然宽高度为0, 但在IE6下会具有默认的 */
+        line-height: 20px;  /* 字体大小和行高, 导致盒子呈现被撑开的长矩形 */
+        border-width:12px;
+        border-style:solid;  /*ie6下会出现不透明的兼容问题*/
+        border-color:#215096 transparent transparent transparent;
+        transform:rotate(-50deg);
+        -webkit-transform:rotate(-50deg);  /*兼容-webkit-引擎浏览器*/
+        -moz-transform:rotate(-50deg);     /*兼容-moz-引擎浏览器*/
+        }
+
+        .lowbox{
+            display: flex;
+            position: absolute;
+            left: 7%;
+            top:880px;
+            z-index: 999;
+        }
+        .lowbox > p{
+         line-height: 30px;
+         margin-left: -4px;
+        } 
+        .m_l_san{
+            width:0;
+        height:0;
+        overflow:hidden;
+        font-size: 0;     /*是因为, 虽然宽高度为0, 但在IE6下会具有默认的 */
+        line-height: 20px;  /* 字体大小和行高, 导致盒子呈现被撑开的长矩形 */
+        border-width:12px;
+        border-style:solid;  /*ie6下会出现不透明的兼容问题*/
+        border-color:#edfbfb transparent transparent transparent;
+        transform:rotate(-130deg);
+        -webkit-transform:rotate(-130deg);  /*兼容-webkit-引擎浏览器*/
+        -moz-transform:rotate(-130deg);     /*兼容-moz-引擎浏览器*/
+        }
+
     </style>
 </head>
 
@@ -360,11 +473,19 @@
                 每个艺术门类，地区会员数
             </div>
             <div id='mapbox'>
+                <div class="highbox">
+                    <span class="m_h_san"></span>
+                    <p class="hightit"></p>
+                </div>
+                <div class="lowbox">
+                    <span class="m_l_san"></span>
+                    <p class="lowtit">0</p>
+                </div>
                 <div id="allmap">
 
                 </div>
             </div>
- 
+
             <div class="tablebox">
                 <p>各地会员数</p>
                 <div class="tab_tit">
@@ -421,6 +542,11 @@
             </div>
             <div class="table_box_copy">
                 <p>会员性别分布</p>
+                <ul class="t_b_c_ul t_b_c_xbul">
+                    <!-- <li><span class="sp1"></span><p>女</p></li>
+                <li><span class="sp2"></span><p>女</p></li>
+                <li><span class="sp3"></span><p>女</p></li> -->
+                </ul>
                 <div class="t_b_c_left" id="echart1"></div>
                 <div class="t_b_c_right">
                     <ul class="xbfb">
@@ -431,6 +557,11 @@
 
             <div class="table_box_copy">
                 <p>会员年龄分布</p>
+                <ul class="t_b_c_ul t_b_c_nlul">
+                    <!-- <li><span class="sp1"></span><p>女</p></li>
+                    <li><span class="sp2"></span><p>女</p></li>
+                    <li><span class="sp3"></span><p>女</p></li> -->
+                </ul>
                 <div class="t_b_c_left" id="echart2"></div>
                 <div class="t_b_c_right">
                     <ul class="nlfb">
@@ -441,6 +572,11 @@
 
             <div class="table_box_copy">
                 <p>新文艺群体</p>
+                <ul class="t_b_c_ul t_b_c_wyul">
+                    <!-- <li><span class="sp1"></span><p>女</p></li>
+                    <li><span class="sp2"></span><p>女</p></li>
+                    <li><span class="sp3"></span><p>女</p></li> -->
+                </ul>
                 <div class="t_b_c_left" id="echart3"></div>
                 <div class="t_b_c_right">
                     <ul class="wyqt">
@@ -469,9 +605,9 @@
         //$('.headerpage').html(commHeader.header);
         // 引的头部
         $('header').load('./headerys.html');
-        $('.todata').on('click',function () { 
+        $('.todata').on('click', function () {
             window.location.href = "dataFind_w.html";
-         });
+        });
 
         // var data = {
 
@@ -503,108 +639,18 @@
         base.commonAjax('clav/count/getIsNewGroupCount', {}, function (res) {
             //console.log(res);
             if (res.code == 1) {
+                let arr2 = [];
                 res.data.map(function (v, i) {
 
-$('.wyqt').append('<li><span>' + v.name + '</span><span class="mrl">' + v.value + '</span><span>' + v.proportion + '</span></li>');
-
-})
-var data = { dataAge: res.data };
-
-let option = {
-backgroundColor: '#fff',
-grid: {
-    left: '20%'
-},
-tooltip: {
-    trigger: 'item',
-    formatter: "{a} <br/>{b}: {c} ({d}%)"
-},
-color: ['#2AC9FD', '#76FBC0', '#35C96E', '#FCC708', '#48B188', '#5957C2', '#4A5D73'],
-series: [
-    {
-        name:'新文艺群体：',
-        color: ['#2AC9FD', '#15AF1A', '#35C96E', '#FCC708', '#48B188', '#5957C2'],
-        type: 'pie',
-        radius: ['62', '100'],
-        labelLine: {
-            normal: {
-                length: 25,
-                length2: 120,
-                lineStyle: {
-                    type: 'solid'
-                }
-            }
-
-        },
-        label: {
-            normal: {
-                formatter: function(params){
-                    console.log(params);
-                    return '{b| ' + params.name + '}  ' + '{c|' + params.percent.toFixed(0) + '%}'
-                },
-                borderWidth: 0,
-                borderRadius: 4,
-                padding: [0, -86],
-                height: 70,
-                fontSize: 13,
-                align: 'center',
-                color: '#3494BD',
-                rich: {
-                    b: {
-                        fontSize: 12,
-                        lineHeight: 20,
-                        color: '#41B3DC',
-                        padding: [0, 0, 5, 0]
-                    },
-                    c: {
-                        fontSize: 20,
-                        lineHeight: 20,
-                        color: 'orange'
+                    $('.wyqt').append('<li><span>' + v.name + '</span><span class="mrl">' + v.value + '</span><span>' + v.proportion + '</span></li>');
+                    if (arr2.indexOf(v.name) == -1) {
+                        arr2.push(v.name);
                     }
-
-                }
-            }
-        },
-        data: data.dataAge,
-    },
-    {
-        type: 'pie',
-        radius: ['110', '111'],
-        data: [100],
-        label: {
-            show: false
-        }
-    },
-    {
-        type: 'pie',
-        radius: ['50', '51'],
-        data: [100],
-        label: {
-            show: false
-        }
-    }
-]
-};
-
-//初始化echarts实例
-var myChart = echarts.init(document.getElementById('echart3'));
-
-//使用制定的配置项和数据显示图表
-myChart.setOption(option);
-            } else {
-                console.log('总人数获取失败');
-            }
-
-        });
-
-        base.commonAjax('clav/count/getAgeCount', {}, function (res) {
-            //console.log(res);
-            if (res.code == 1) {
-                res.data.map(function (v, i) {
-
-                    $('.nlfb').append('<li><span>' + v.name + '</span><span class="mrl">' + v.value + '</span><span>' + v.proportion + '</span></li>');
-
-                })
+                });
+                arr2.map(function (item, i) {
+                    console.log(item);
+                    $('.t_b_c_wyul').append(`<li><span class="${'sp' + (i + 1)}"></span><p>${item}</p></li>`);
+                });
                 var data = { dataAge: res.data };
 
                 let option = {
@@ -613,14 +659,14 @@ myChart.setOption(option);
                         left: '20%'
                     },
                     tooltip: {
-                    trigger: 'item',
-                    formatter: "{a} <br/>{b}: {c} ({d}%)"
-                },
+                        trigger: 'item',
+                        formatter: "{a} <br/>{b}: {c} ({d}%)"
+                    },
                     color: ['#2AC9FD', '#76FBC0', '#35C96E', '#FCC708', '#48B188', '#5957C2', '#4A5D73'],
                     series: [
                         {
-                            name:'会员年龄分布：',
-                            color: ['#2AC9FD', '#76FBC0', '#35C96E', '#FCC708', '#48B188', '#5957C2'],
+                            name: '新文艺群体：',
+                            color: ['#2AC9FD', '#15AF1A', '#6372CC', '#FCC708', '#48B188', '#5957C2'],
                             type: 'pie',
                             radius: ['62', '100'],
                             labelLine: {
@@ -635,7 +681,112 @@ myChart.setOption(option);
                             },
                             label: {
                                 normal: {
-                                    formatter:function (params) {
+                                    formatter: function (params) {
+                                        console.log(params);
+                                        return '{b| ' + params.name + '}  ' + '{c|' + params.percent.toFixed(0) + '%}'
+                                    },
+                                    borderWidth: 0,
+                                    borderRadius: 4,
+                                    padding: [0, -86],
+                                    height: 70,
+                                    fontSize: 13,
+                                    align: 'center',
+                                    color: '#3494BD',
+                                    rich: {
+                                        b: {
+                                            fontSize: 12,
+                                            lineHeight: 20,
+                                            color: '#41B3DC',
+                                            padding: [0, 0, 5, 0]
+                                        },
+                                        c: {
+                                            fontSize: 20,
+                                            lineHeight: 20,
+                                            color: 'orange'
+                                        }
+
+                                    }
+                                }
+                            },
+                            data: data.dataAge,
+                        },
+                        {
+                            type: 'pie',
+                            radius: ['110', '111'],
+                            data: [100],
+                            label: {
+                                show: false
+                            }
+                        },
+                        {
+                            type: 'pie',
+                            radius: ['50', '51'],
+                            data: [100],
+                            label: {
+                                show: false
+                            }
+                        }
+                    ]
+                };
+
+                //初始化echarts实例
+                var myChart = echarts.init(document.getElementById('echart3'));
+
+                //使用制定的配置项和数据显示图表
+                myChart.setOption(option);
+            } else {
+                console.log('总人数获取失败');
+            }
+
+        });
+
+        base.commonAjax('clav/count/getAgeCount', {}, function (res) {
+            //console.log(res);
+            if (res.code == 1) {
+                let arr2 = [];
+                res.data.map(function (v, i) {
+
+                    $('.nlfb').append('<li><span>' + v.name + '</span><span class="mrl">' + v.value + '</span><span>' + v.proportion + '</span></li>');
+                    if (arr2.indexOf(v.name) == -1) {
+                        arr2.push(v.name);
+                    }
+                });
+
+                arr2.map(function (item, i) {
+                    console.log(item);
+                    $('.t_b_c_nlul').append(`<li><span class="${'sp' + (i + 1)}"></span><p>${item}</p></li>`);
+                });
+                var data = { dataAge: res.data };
+
+                let option = {
+                    backgroundColor: '#fff',
+                    grid: {
+                        left: '20%'
+                    },
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: "{a} <br/>{b}: {c} ({d}%)"
+                    },
+                    color: ['#2AC9FD', '#76FBC0', '#35C96E', '#FCC708', '#48B188', '#5957C2', '#4A5D73'],
+                    series: [
+                        {
+                            name: '会员年龄分布：',
+                            color: ['#2AC9FD', '#15AF1A', '#6372CC', '#FCC708', '#48B188', '#5957C2'],
+                            type: 'pie',
+                            radius: ['62', '100'],
+                            labelLine: {
+                                normal: {
+                                    length: 25,
+                                    length2: 120,
+                                    lineStyle: {
+                                        type: 'solid'
+                                    }
+                                }
+
+                            },
+                            label: {
+                                normal: {
+                                    formatter: function (params) {
                                         console.log(params);
                                         return '{b| ' + params.name + '}  ' + '{c|' + params.percent.toFixed(0) + '%}'
                                     },
@@ -698,11 +849,22 @@ myChart.setOption(option);
         base.commonAjax('clav/count/getGenderCount', {}, function (res) {
             //console.log(res);
             if (res.code == 1) {
+                let arr2 = [];
                 res.data.map(function (v, i) {
 
                     $('.xbfb').append('<li><span>' + v.name + '</span><span class="mrl">' + v.value + '</span><span>' + v.proportion + '</span></li>');
+                    if (arr2.indexOf(v.name) == -1) {
+                        arr2.push(v.name);
+                    }
 
-                })
+                });
+
+                arr2.map(function (item, i) {
+                    console.log(item);
+                    $('.t_b_c_xbul').append(`<li><span class="${'sp' + (i + 1)}"></span><p>${item}</p></li>`);
+                });
+
+                console.log('姓名：', arr2, arr2.length);
                 var data = { dataAge: res.data };
 
                 let option = {
@@ -711,14 +873,14 @@ myChart.setOption(option);
                         left: '20%'
                     },
                     tooltip: {
-                    trigger: 'item',
-                    formatter: "{a} <br/>{b}: {c} ({d}%)"
-                },
+                        trigger: 'item',
+                        formatter: "{a} <br/>{b}: {c} ({d}%)"
+                    },
                     color: ['#2AC9FD', '#76FBC0', '#35C96E', '#FCC708', '#48B188', '#5957C2', '#4A5D73'],
                     series: [
-                        {   
-                            name:'会员性别分布：',
-                            color: ['#2AC9FD', '#15AF1A', '#35C96E', '#FCC708', '#48B188', '#5957C2'],
+                        {
+                            name: '会员性别分布：',
+                            color: ['#2AC9FD', '#15AF1A', '#6372CC', '#FCC708', '#48B188', '#5957C2'],
                             type: 'pie',
                             radius: ['62', '100'],
                             labelLine: {
@@ -733,7 +895,7 @@ myChart.setOption(option);
                             },
                             label: {
                                 normal: {
-                                    formatter: function(params) {
+                                    formatter: function (params) {
                                         console.log(params);
                                         return '{b| ' + params.name + '}  ' + '{c|' + params.percent.toFixed(0) + '%}'
                                     },
@@ -850,8 +1012,7 @@ myChart.setOption(option);
                     console.log(arguments[0]);
 
                     var option = {
-                        tooltip: {
-                },
+
                         dataset: {
                             source: [
                                 ['xAxis', '201701', '201702', '201703', '201704', '201705', '201706', '201707', '201708', '201709', '20170', '201710', '20170', '201801'],
@@ -887,7 +1048,7 @@ myChart.setOption(option);
                     };
 
                 }
-                option = {
+               var option = {
                     visualMap: {
                         min: 0,
                         max: maxlen,
@@ -913,9 +1074,9 @@ myChart.setOption(option);
                         //   return [point[0], point[1]];
                         // },
                         formatter: function (params) {
-                             console.log(params);
+                            console.log(params);
                             if (!isNaN(params.value)) {
-                                return params.name + '：' + params.data['value'] + '('+ params.data['proportion'] + ')'
+                                return params.name + '：' + params.data['value'] + '(' + params.data['proportion'] + ')'
                             };
                             setTimeout(function () {
                                 tooltipCharts(params.name);
@@ -923,6 +1084,20 @@ myChart.setOption(option);
                             // return tipHtml;
                         }
                     },
+                    // geo: {
+                    
+                    //     //这里是鼠标滑过地图
+                    //     itemStyle: {
+                    //         normal: {
+                    //     borderWidth: 0, // 区域边框宽度
+                    //     //borderColor: 'rgba(37, 88, 184, 0.8)', // 区域边框颜色
+                    //      areaColor: '#ECF7FD' // 区域颜色
+                    //  },
+                    //            emphasis: {
+                    //             areaColor: '#FFB02E'
+                    //         }
+                    //     },
+                    // },
                     series: [{
                         name: 'iphone4',
                         type: 'map',
@@ -930,6 +1105,8 @@ myChart.setOption(option);
                         roam: false,
                         itemStyle: {
                             normal: {
+                                borderWidth: 0,
+                                areaColor: '#E9F4FA',
                                 label: {
                                     show: false
                                 },
@@ -1016,12 +1193,18 @@ myChart.setOption(option);
 
 
         base.commonAjax('clav/count/getLocalCount', {}, function (res) {
-            //console.log(res);
+            console.log(res);
             if (res.code == 1) {
                 var data = res.data;
-
                 var yData = [];
-
+                let number2 = 0;
+                data.map(function (item,ind) { 
+                  if(item.count > number2){
+                      number2 = item.count;
+                  }
+                 });
+                //console.log('最大值',number2);
+                 $('.hightit').text(number2);
                 data.sort(function (o1, o2) {
                     if (isNaN(o1.value) || o1.value == null) return -1;
                     if (isNaN(o2.value) || o2.value == null) return 1;
@@ -1045,14 +1228,14 @@ myChart.setOption(option);
                         formatter: function (params) {
                             //console.log(params);
                             if (!isNaN(params.value)) {
-                                return params.name + '：' + params.data['value'] + '('+ params.data['proportion'] + ')'
+                                return params.name + '：' + params.data['value'] + '(' + params.data['proportion'] + ')'
                             }
 
                         },
                     },
                     visualMap: {
                         type: 'continuous',
-                        text: ['', ''],
+                        text: [`高`, `低`],
                         showLabel: true,
                         seriesIndex: [0],
                         min: 0,
@@ -1064,15 +1247,18 @@ myChart.setOption(option);
                             color: '#000'
                         },
                         bottom: '50px',
-                        left: '50px',
+                        left: '0px',
                         //bottom:'bottom'
                     },
-                    grid: {
-                        right: 10,
-                        top: 80,
-                        bottom: 30,
-                        width: '20%'
-                    },
+                    // grid: {
+                   
+                    //     right: 10,
+                    //     top: 80,
+                    //     bottom: 30,
+                    //     width: '20%',
+                        
+                    // },
+
                     xAxis: {
                         type: 'value',
                         scale: true,
@@ -1116,26 +1302,36 @@ myChart.setOption(option);
                                 color: '#999'
                             }
                         },
-                        data: yData
+                        // data: yData
                     },
                     geo: {
                         roam: true,
                         map: 'china',
-                        left: 'left',
-                        right: '300',
+                        left: '100',
+                        right: '100',
                         layoutSize: '80%',
                         label: {
+                            show:true,
+                            color:'#988D7B',
                             emphasis: {
-                                show: false
+                                show: true
                             }
                         },
+                        //这里是鼠标滑过地图
                         itemStyle: {
-                            emphasis: {
+                            normal: {
+                        borderWidth: 0, // 区域边框宽度
+                        //borderColor: 'rgba(37, 88, 184, 0.8)', // 区域边框颜色
+                         areaColor: '#DEFDFF' // 区域颜色
+                     },
+                               emphasis: {
                                 areaColor: '#fff464'
                             }
                         },
+                        
                         regions: [{
                             name: '南海诸岛',
+                            
                             value: 0,
                             itemStyle: {
                                 normal: {
@@ -1156,7 +1352,8 @@ myChart.setOption(option);
                             show: false,
                         },
                         data: data
-                    }, {
+                    },
+                     {
                         name: 'barSer',
                         type: 'bar',
                         roam: false,
@@ -1178,13 +1375,14 @@ myChart.setOption(option);
                                 offset: [0, 10]
                             },
                             emphasis: {
-                                show: true,
+                                show: false,
                                 position: 'right',
                                 offset: [10, 0]
                             }
                         },
-                        data: data
-                    }]
+                        // data: data
+                    }
+                    ]
                 };
 
                 //初始化echarts实例

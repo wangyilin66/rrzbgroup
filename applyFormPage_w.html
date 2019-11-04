@@ -28,7 +28,6 @@
         height: 100%;
         background: rgba(0, 0, 0,0.3);
         box-sizing: border-box;
-      
     }
     .p_u_box{
         width: 417px;
@@ -451,6 +450,9 @@ span{
     border-color: #e6e6e6 !important;
     background-color: #fff;
 }
+
+
+
 
     </style>
     <title>Document</title>
@@ -975,10 +977,13 @@ span{
         let treedata3 = [];
         let treedata4 = [];
         let treelocaldata = [];
-
+        $('body').css('overflow-y',"hidden");
+      
         $('.u_f_queren').click(function (param) { 
         let flag = $('.yuedu').prop('checked');
         if(flag){
+            $('body').css('overflow-y',"scroll");
+        
             $('.pop_up').slideUp();
            
         }else{
