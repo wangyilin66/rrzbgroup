@@ -602,10 +602,22 @@
 			});
 
         $('.b_b_xuanze').on('click',function () { 
-	  
+			if(tabType == 'gr'){
+				hylist.map(function (v,i) {  
+					$('.m_b_c'+i).prop('checked',false);
+				});
+			}else{
+				zwlist.map(function (v,i) {  
+					$('.m_b_c'+i).prop('checked',false);
+				});
+			}
+
 			if(tabType == 'gr'){
 				sendhylist = [];
             if($('.popallchecked').is(':checked') == true){
+				hylist.map(function(v,i) {
+					sendhylist.push(v);
+				})
 				allgr = true;
 				$('.send_message_box').hide();
 			    $('.textare_box').show();
@@ -626,7 +638,10 @@
 			}else{
 				sendzwlist = [];
 				if($('.popallchecked').is(':checked') == true){
-				allgr = true;
+					zwlist.map(function(v,i) {
+				   sendzwlist.push(v);
+				})
+				allzw = true;
 				$('.send_message_box').hide();
 			    $('.textare_box').show();
 			}else{
@@ -691,6 +706,7 @@
 		base.commonAjax('clav/systemNotice/addClavSystemNotice', data, function (data) {
               console.log(data);
               if(data.code == 1){
+
 				  alert('发送成功');
 				  history.go(0);
 			  }else{
@@ -1183,6 +1199,18 @@
 			$('.textare_box').hide();
 		 })
         $('.b_b_quxiao').on('click',function () { 
+			if(tabType == 'gr'){
+				hylist.map(function (v,i) {  
+					$('.m_b_c'+i).prop('checked',false);
+				});
+			}else{
+				zwlist.map(function (v,i) {  
+					$('.m_b_c'+i).prop('checked',false);
+				});
+			}
+            $('.popallchecked').prop('checked',false);
+	
+			
 			$('.send_message_box').hide();
 			$('.textare_box').show();
 		 })

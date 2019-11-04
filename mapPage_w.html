@@ -56,6 +56,7 @@
             background: #fff;
             padding-left: 20px;
             box-sizing: border-box;
+            box-shadow:0px 1px 15px 0px rgba(0, 0, 0, 0.1);
 
         }
 
@@ -71,6 +72,7 @@
             box-sizing: border-box;
             font-weight: 600;
             border-bottom: 2px solid #ccc;
+            box-shadow:0px 1px 15px 0px rgba(0, 0, 0, 0.1);
         }
 
         #mapbox {
@@ -80,6 +82,7 @@
             box-sizing: border-box;
             background: #fff;
             position: relative;
+            box-shadow:0px 1px 15px 0px rgba(0, 0, 0, 0.1);
         }
 
         #allmap {
@@ -119,6 +122,10 @@
             position: relative;
             display: flex;
             padding-top: 50px;
+            box-shadow:0px 1px 15px 0px rgba(0, 0, 0, 0.1);
+        }
+        .tablebox2{
+            box-shadow:0px 1px 15px 0px rgba(0, 0, 0, 0.1);
         }
 
         .tablebox>p {
@@ -234,6 +241,7 @@
 
         .tb_tr>th {
             background: #EFF3F6;
+            height: 30px;
         }
 
         .t2_lis {
@@ -277,6 +285,7 @@
             box-sizing: border-box;
             display: flex;
             position: relative;
+            box-shadow:0px 1px 15px 0px rgba(0, 0, 0, 0.1);
         }
 
         .table_box_copy>p {
@@ -395,6 +404,9 @@
             left: 7%;
             top:740px;
             z-index: 999;
+            width: 60px;
+            height: 20px;
+            background: #fff;
         }
         .highbox > p{
          line-height: 12px;
@@ -438,7 +450,38 @@
         -webkit-transform:rotate(-130deg);  /*兼容-webkit-引擎浏览器*/
         -moz-transform:rotate(-130deg);     /*兼容-moz-引擎浏览器*/
         }
-
+        .tdbg{
+            background: #EFF3F6;
+        }
+        .tbody  td{
+            height: 30px;
+        }
+        #detailbox{
+            width: 340px;
+            height: 210px;
+            border-radius: 10px;
+        }
+        .yslistbox{
+            position: absolute;
+            top:60px;
+            left: 5%;
+            z-index: 999;
+        }
+        .m_y_li{
+            display: flex;
+            margin-bottom: 18px;
+        }
+        .m_y_li > span{
+            display: block;
+             width: 20px;
+             height: 12px;
+             border-radius: 2px;
+             margin-right: 5px;
+        }
+        .m_y_li > p{
+            font-size: 14px;
+            line-height: 12px;
+        }
     </style>
 </head>
 
@@ -473,6 +516,9 @@
                 每个艺术门类，地区会员数
             </div>
             <div id='mapbox'>
+                <div class="yslistbox">
+                    <!-- <div class="m_y_li"><span ></span><p>艺术</p></div> -->
+                </div>
                 <div class="highbox">
                     <span class="m_h_san"></span>
                     <p class="hightit"></p>
@@ -520,7 +566,7 @@
                         </div>
                     </div>
                     </div> -->
-                <table class="layui-table">
+                <table class="layui-table" id="tabletest">
                     <colgroup>
                         <col width="150">
                         <col width="200">
@@ -528,10 +574,8 @@
                     </colgroup>
                     <thead>
                         <tr class="tb_tr">
-                            <th>推荐类型</th>
-                            <th>推荐单位/人</th>
-
-
+                            <th colspan="2">推荐单位</th>
+                          
                         </tr>
                     </thead>
                     <tbody class="tbody">
@@ -969,18 +1013,46 @@
 
         });
 
+        function mergeCell(table1, startRow, endRow, col) {
+   var tb = document.getElementById(table1);
+
+   if (!tb || !tb.rows || tb.rows.length <= 0) {
+    return;
+   }
+   if (col >= tb.rows[0].cells.length || (startRow >= endRow && endRow != 0)) {
+    return;
+   }
+   if (endRow == 0) {
+    endRow = tb.rows.length - 1;
+   }
+   //console.log(startRow)
+   //console.log(endRow)
+   for (var i = startRow; i < endRow; i++) {
+    if (tb.rows[startRow].cells[col].innerHTML == tb.rows[i + 1].cells[col].innerHTML) { //如果相等就合并单元格,合并之后跳过下一行
+     tb.rows[i + 1].removeChild(tb.rows[i + 1].cells[col]);
+     tb.rows[startRow].cells[col].rowSpan = (tb.rows[startRow].cells[col].rowSpan) + 1;
+     //console.log(1)
+    } else {
+     mergeCell(table1, i + 1, endRow, col);
+     //console.log(1)
+     break;
+    }
+   }
+  }
+
         base.commonAjax('clav/count/getTJunitCount', {}, function (res) {
             //console.log(res);
             if (res.code == 1) {
                 let datas = res.data;
                 datas.map(function (v, i) {
                     let str = '<tr>';
-                    str += '<td>' + v.firstName + '</td><td>' + v.secondName + '</td><td>' + v.num1 + '</td><td>' + v.num2 + '</td><td>' + v.num3 + '</td><td>' + v.num4 + '</td><td>' + v.num5 + '</td><td>' + v.totalNum + '</td>';
+                    str += '<td class="tdbg">' + v.firstName + '</td><td>' + v.secondName + '</td><td>' + v.num1 + '</td><td class="tdbg">' + v.num2 + '</td><td>' + v.num3 + '</td><td class="tdbg">' + v.num4 + '</td><td>' + v.num5 + '</td><td class="tdbg">' + v.totalNum + '</td>';
                     str += '</tr>';
                     $('.tbody').append(str);
                 });
-
-
+                //tabletest
+                mergeCell('tabletest', 0, 0, 0);
+            //    mergeCell('tabletest', 0, 0, 0);
             } else {
                 console.log('推荐单位列表获取失败');
             }
@@ -992,6 +1064,7 @@
             //console.log(res);
             if (res.code == 1) {
                 maxlen = res.data.count;
+                $('.hightit').text(maxlen);
             } else {
                 console.log('最大地区人数获取失败');
             }
@@ -1049,18 +1122,36 @@
 
                 }
                var option = {
-                    visualMap: {
+                // visualMap: {
+                //         min: 0,
+                //         max: maxlen,
+                //         left: '250px',
+                //         bottom: '50px',
+                //         text: ['高', '低'],
+                //         calculable: false,
+                //         orient: 'horizontal',
+                //         inRange: {
+                //             color: ['#e0ffff', '#006edd'],
+                //             symbolSize: [30, 100]
+                //         }
+                //     },
+                visualMap: {
+                        type: 'continuous',
+                        text: ['高', '低'],
+                        showLabel: true,
+                        seriesIndex: [0],
                         min: 0,
                         max: maxlen,
-                        left: '250px',
-                        bottom: '50px',
-                        text: ['高', '低'],
-                        calculable: false,
                         orient: 'horizontal',
                         inRange: {
                             color: ['#e0ffff', '#006edd'],
-                            symbolSize: [30, 100]
-                        }
+                        },
+                        textStyle: {
+                            color: '#000'
+                        },
+                        left: '250px',
+                       bottom: '50px',
+                     
                     },
                     tooltip: {
                         padding: 0,
@@ -1198,13 +1289,7 @@
                 var data = res.data;
                 var yData = [];
                 let number2 = 0;
-                data.map(function (item,ind) { 
-                  if(item.count > number2){
-                      number2 = item.count;
-                  }
-                 });
-                //console.log('最大值',number2);
-                 $('.hightit').text(number2);
+
                 data.sort(function (o1, o2) {
                     if (isNaN(o1.value) || o1.value == null) return -1;
                     if (isNaN(o2.value) || o2.value == null) return 1;
@@ -1226,9 +1311,115 @@
                     tooltip: {
                         show: true,
                         formatter: function (params) {
-                            //console.log(params);
+                            console.log(params);
                             if (!isNaN(params.value)) {
-                                return params.name + '：' + params.data['value'] + '(' + params.data['proportion'] + ')'
+                                $('.yslistbox').html('');
+                                params.data.childList.map(function(v,i) {
+                                        console.log(v);
+                                        $('.yslistbox').append(`<div class="m_y_li"><span style="background:${v.sexi};"></span><p>${v.artType}</p></di`);
+                                    });
+                                setTimeout(() => {
+                                    var data2 = [];
+                                    params.data.childList.map(function (v,i) {
+                                        if(v.value != 0){
+                                            data2.push(v);
+                                        }else{
+                                            data2.push({value:null});
+                                        }
+                                      })
+                                    // data2 = params.data.childList;
+                                    console.log(data2);
+                                    console.log(params.data.childList);
+                                    option = {
+                                    backgroundColor: 'rgba(0,0,0,0.2)',
+                                    grid: {
+                                        left: '20%',
+                                        // top:'20%',
+                                        // bottom:'20%'
+                                    },
+                                    color: ['#FF7F50', '#87CEFA', '#DA70D6', '#32CD32', '#6495ED', '#FF69B4', '#BA55D3','#CD5C5C','#FFA500','#40E0D0','#1E90FF','#FF6347','#7B68EE','#00FA9A','#FFD700','#6699FF',],
+                                    series: [
+
+                                        {
+                                            color: ['#FF7F50', '#87CEFA', '#DA70D6', '#32CD32', '#6495ED', '#FF69B4', '#BA55D3','#CD5C5C','#FFA500','#40E0D0','#1E90FF','#FF6347','#7B68EE','#00FA9A','#FFD700','#6699FF',],
+                                            type: 'pie',
+                                            radius: ['40', '50'],
+                                            labelLine: {
+                                                normal: {
+                                                    length: 25,
+                                                    length2: 120,
+                                                    lineStyle: {
+                                                        type: 'solid'
+                                                    }
+                                                }
+
+                                            },
+
+                                            label: {
+                                                normal: {
+                                                    formatter: (params) => {
+                                                        console.log(params);
+                                                        return '{b| '+params.name+'}  ' + '{a|'+params.data.count+'}' + '{c|'+params.data.proportion+'}'
+                                                    },
+                                                    borderWidth: 0,
+                                                    borderRadius: 4,
+                                                    padding: [0, -125],
+                                                    height: 50,
+                                                    fontSize: 13,
+                                                    align: 'center',
+                                                    color: '#3494BD',
+                                                    rich: {
+                                                        b: {
+                                                            fontSize: 12,
+                                                            lineHeight: 20,
+                                                            color: '#41B3DC',
+                                                            padding: [0, 0, 0, 0]
+                                                        },
+                                                        a: {
+                                                            fontSize: 14,
+                                                            lineHeight: 20,
+                                                            color: '#41B3DC',
+                                                            padding: [0, 5, 0, 0]
+                                                        },
+                                                        c: {
+                                                            fontSize: 16,
+                                                            lineHeight: 20,
+                                                            color: 'orange'
+                                                        }
+
+                                                    }
+                                                }
+                                            },
+                                            data: data2,
+                                        },
+                                        {
+                                            type: 'pie',
+                                            radius: ['32', '42'],
+                                            data: [100],
+                                            label: {
+                                                show: false
+                                            }
+                                        },
+                                        {
+                                            type: 'pie',
+                                            radius: ['34', '44'],
+                                            data: [100],
+                                            label: {
+                                                show: false
+                                            }
+                                        }
+                                    ]
+                                };
+                                //初始化echarts实例
+                                var myChart = echarts.init(document.getElementById('detailbox'));
+
+                                //使用制定的配置项和数据显示图表
+                                myChart.setOption(option);
+                                }, 500);
+
+                                //return params.name + '：' + params.data['value'] + '(' + params.data['proportion'] + ')'
+                                return '<div id="detailbox"></div>';
+    
                             }
 
                         },
@@ -1244,7 +1435,8 @@
                             color: ['#edfbfb', '#b7d6f3', '#40a9ed', '#3598c1', '#215096',]
                         },
                         textStyle: {
-                            color: '#000'
+                            color: '#000',
+                            fontSize:'18px'
                         },
                         bottom: '50px',
                         left: '0px',
