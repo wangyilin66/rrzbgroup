@@ -469,6 +469,7 @@
 
             function goupdatefun(flag) {
                 let that = this;
+                let filestr = '';
                 if(flag == 1){
                 
                 let fileflag = [false,false,false];
@@ -482,7 +483,7 @@
                 });
 
                 if(fileflag[0] && fileflag[1] && fileflag[2]){
-
+                  console.log('字符串',filestr);
                 filearr.map(function (v, i) {
                 if (v) {
                     var file = $("#file" + i)[0].files[0];
@@ -501,7 +502,7 @@
                             //     id: getQueryString("id").id,
                             //      file: data.data[0].url,
                             // }
-                            that.filestr += data.data[0].url + ',';
+                          filestr += data.data[0].url + ',';
                         }
                     });
                 }
@@ -515,12 +516,14 @@
         
                                 var data = {
                                     id: getQueryString("id").id,
-                                     file: that.filestr,
+                                    uploadFile: filestr,
                                 }
                                 base.commonAjax('clav/member/updateClavMember', data, function (data) {
                                     console.log(data);
                                     if (data.code == 1) {
                                         // alert('提交成功');
+                                     
+                                      
                                         $('.popbox').slideDown();
                                         //window.location.href = "vipcheck_z.html";
                                     } else {
@@ -602,7 +605,7 @@ alert('上传单个PDF后，不可再上传图片。请刷新页面后重新上�
 
 
             $('.tijiao').on('click', function () {
-        let filestr = '';
+        //  filestr = '';
         if (zz == null) {
             goupdatefun(1);
         } else {

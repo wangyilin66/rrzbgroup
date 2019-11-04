@@ -428,8 +428,7 @@
                }
                 $('.yzmtit').text('');
                 base.commonAjax('clav/phonecode/register', {phone:len,idNumber:sfz}, function (res) {
-                    if(res.code == 1){
-                     
+                    if(res.code == 1){     
                          layui.use('layer', function () {
                             var layer = layui.layer;
                             layer.msg('验证码发送成功');

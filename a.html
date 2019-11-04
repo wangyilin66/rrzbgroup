@@ -1,400 +1,2363 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href='./css/common.css'><link>
+    <meta charset="utf-8" />
+    <title>会员查询</title>
     <link rel="stylesheet" href="./layui/css/layui.css">
-    <link rel="stylesheet" href='./css/commonHeader.css'><link>
-    <title>会员申请</title>
+    <link rel="stylesheet" href="./css/hyfind.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/yyui.css">
     <style>
-        .wraper {
-            position: relative;
-            width: 100%;
-            box-sizing: border-box;
-    
+        #lvip {
+            border-bottom: 5px solid rgba(147, 209, 255, 1);
         }
-    
-        body{
+
+        .hygl {
+            border-bottom: 5px solid #93D1FF;
+                
+        }
+
+        .content_nav {
+            width: 80%;
+            padding-bottom: 30px;
+            position: relative;
+        }
+
+        body {
+            /* overflow: hidden !important; */
+        }
+
+        .content {
+            height: auto;
+        }
+
+        .hytitle {
+            margin-left: 200px;
+            cursor: pointer;
+
+        }
+
+        .hytitle_font2 {
+            color: #5d8bc8 !important;
+            border-bottom: solid !important;
+        }
+
+        .hytitle_font {
+            color: #999 !important;
+            border-bottom: 0 !important;
+        }
+
+        .maptit {
+            color: #898989;
+            width: 100%;
+            line-height: 40px;
+            height: 40px;
+            margin-bottom: 8px;
             background: #fff;
-        background: url('./image//bodyBg22.jpg') top center no-repeat;
-    }
-    .headerbg{
-        position: absolute;
-        width: 312px;
-        height: 78px;
-        top:-82px;
-        left: 30px;
-        background: url('./image/headerlogo.png')100% 100% no-repeat;
-    }
+            padding-left: 20px;
+            box-sizing: border-box;
 
-        .w_top {
-            width: 980px;
-            margin: 0 auto;
-            margin-top: 82px;
-            position: relative;
         }
 
-        .content{
-        margin-top: 90px;
-        width: 980px;
-        height: auto;
-        margin: 0 auto;
-        border:1px solid #999;
-        border-radius: 6px;
-        margin-top: 12px;
-        background: #fff;
-        border-bottom: 0;
-    }
-    .content .c_tit{
-        width: 100%;
-        font-size: 24px;
-        font-weight: 900;
-        text-align: center;
-        margin-top: 16px;
-        margin-bottom: 40px;
-    }
-    .select{
-        width: 980px;
-        height: 320px;
-        background: #fff;
-        box-sizing: border-box;
-        position: relative;
-    }
-
-    .ll span{
-    color: red;
-    margin-right: 4px;
-    }
-    .ll{
-        font-size: 14px;
-        font-weight: 700;
-        margin-left: 40px;
-    }
-    .s_cont{
-        width: 100%;
-    }
-    .s_cont .s_c_l{
-        float: left;
-        display: flex;
-        line-height: 32px;
-    }
-.c_l_inp{
-    width: 267px;
-    height: 32px;
-    display: flex;
-    margin-left: 20px;
-    position: relative;
-}
-.c_l_inp>input{
-    width: 226px;
-    height: 32px;
-    border:1px solid #E2E2E2;
-    border-right: 0;
-    padding-left: 5px;
-    box-sizing: border-box;
-}
-.c_l_click{
-    width: 30px;
-    height: 30px;
-    border:1px solid #E2E2E2;
-    cursor:pointer;
-    overflow: hidden;
-    position: relative;
-    z-index: 99;
-    cursor:pointer;
-    opacity: 0;
-}
-.s_c_r{
-    float: right;
-    width: 193px;
-    height: 30px;
-    margin-right: 65px;
-    display: flex;
-    justify-content: space-between;
-}
-.s_c_r>div{
-    width: 76px;
-    height: 30px;
-    background: #D72233;
-    border-radius: 4px;
-    font-size: 14px;
-    line-height: 30px;
-    color: #fff;
-    text-align:center;
-    cursor:pointer;
-}
-.dy{
-
-}
-.s_tit{
-    position: absolute;
-    width: 100%;
-    font-size: 14px;
-    padding-left: 40px;
-    box-sizing: border-box;
-  left: 0;
-  top: 46px;
-}
-.tijiao{
-    width: 76px;
-    height: 30px;
-    background: #D72233;
-    border-radius: 4px;
-    font-size: 14px;
-    line-height: 30px;
-    color: #fff;
-    text-align:center;
-    cursor:pointer;
-    position: absolute;
-    top: 210px;
-    left: 50%;
-    margin-left: -38px;
-}
-#files{
-    opacity: 0;
-    z-index: 99;
-    position: absolute;
-    left: 0;
-    top:0;
-    cursor:pointer;
-}
-.layui-icon-upload-drag{
-    width: 30px; 
-    height: 30px;
-    text-align: center;
-    line-height: 30px;
-    font-size: 20px;
-    z-index: 1;
-    cursor:pointer;
-    position: absolute;
-    right: 10px;
-    top:0;
-    background: #fff;
-    border:1px solid #E2E2E2;
-}
-
-.c_n_c_li3 {
+        .maptit2 {
+            color: #868583;
             width: 100%;
-            height: 60px;
+            line-height: 50px;
+            font-size: 16px;
+            height: 50px;
+            margin-bottom: 4px;
+            background: #fff;
+            padding-left: 20px;
             box-sizing: border-box;
-            margin-top: 40px;
-            padding-left: 50px;
+            font-weight: 600;
+            border-bottom: 2px solid #ccc;
+        }
+
+        #mapbox {
+            width: 100%;
+            height: 1000px;
+            padding-top: 50px;
+            box-sizing: border-box;
+            background: #fff;
+        }
+
+        #allmap {
+            width: 90%;
+            margin-left: 5%;
+            height: 900px;
+            margin-top: 20px;
+            background: #fff;
+        }
+
+        .anchorBL {
+            display: none;
+        }
+
+        .mapinit {
             position: absolute;
-            top:60px;
+            left: 50%;
+            top: 200px;
+            z-index: 999;
+            transform: translateX(-50%);
+        }
+
+        .mapinit>h2 {
+            font-weight: 700;
+        }
+
+        .mapinit>p {
+            text-align: center;
+            padding-top: 20px;
+            color: #999;
+        }
+
+        .tablebox {
+            margin-top: 10px;
+            background: #fff;
+            width: 100%;
+            position: relative;
+            display: flex;
+            padding-top: 50px;
+        }
+
+        .tablebox>p {
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            border-bottom: 1px solid #ccc;
+            box-sizing: border-box;
+            padding-left: 20px;
+            position: absolute;
+            top: 0;
             left: 0;
         }
-        .c_n_c_li3 .lis{
-        width: 60px;
-        height: 60px;
-        border: 1px solid #E4E4E4;
-        float: left;
-        margin-left: 80px;
-        position: relative;
+
+        #allmap2 {
+            width: 60%;
+            height: 700px;
         }
-        .c_n_c_li3 .lis > input{
+
+        .t_right {
+            width: 40%;
+            height: 500px;
+            margin-top: 100px;
+            border-left: 1px solid #ECECEC;
+        }
+
+        .t_right>ul {
+            width: 70%;
+            height: 80%;
+            margin: 5% 0 0 10%;
+
+            overflow-y: scroll;
+        }
+
+        .t_right>ul::-webkit-scrollbar {
+            display: none
+        }
+
+        .t_right>ul>li {
             width: 100%;
-            height: 100%;
-            z-index: 99;
-            position: absolute;
-            top:0;
-            left:0;
-            opacity: 0;
-        }
-        .c_n_c_li3 .lis > img{
-            width: 100%;
-            height: 100%;
-           
-            z-index: 1;
-        }
-
-    </style>
-    <title>Document</title>
-</head>
-<body>
-
-<div class="wraper">
-        <div class="w_top">
-                <div class="headerbg"></div>
-                <div class="header">
-                        <div>首页</div>
-                        <div>要闻资讯</div>
-                        <div>精彩视频</div>
-                        <div>品牌活动</div>
-                        <div>各地联动</div>
-                        <div>志愿者协</div>
-                        <div>名家公益</div>
-                        <div>志愿之星</div>
-                        <div>互动交流</div>
-                        <div>资料下载</div>
-                        </div>
-        </div>
-        <div class="content">
-
-                <div class="c_tit">会员申请信息</div>
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            margin-top: 15px;
             
-                <div class="select">
-          
-                  <div class="s_cont">
-                      <div class="s_c_l ll">
-                          <span>*</span>
-                          请上传签字盖章后的申请表扫描件:
-                          <div class="c_l_inp">
-                              <input type="text" class="filename" placeholder="点击选择文件" name="" id="">
-                              <div class="c_l_click">
-                                   <input type="file" id="file"    onchange="zzchangepic(this)"/>   
-                            </div>
-                            <i class="layui-icon layui-icon-upload-drag"></i>  
-                          </div>
-                      </div>
-                      <div class="s_c_r">
-                      <div class="xg">修改</div>
-                      <div class="dy">打印</div>
-                      </div>
-                  </div>
-                  <p class="s_tit">（上传格式为图片或PDF文件，图片最多上传三张。）</p>
-                  <div class="c_n_c_li3">
+        }
+        .t_right>ul>li>span{
+            display:block;
+            width: 33%;
+            text-align: center;
+        }
 
-                    <div class="lis">
-                            <input type="file" id='file0' onchange="zzchangepic2(this,0)" />
-                            <img src="./css/timg.jpg" id="fimg0" alt="">
-                    </div>
-                    <div class="lis">
-                            <input type="file"  id='file1' onchange="zzchangepic2(this,1)" />
-                            <img src="./css/timg.jpg" id="fimg1" alt="">
-                    </div>
-                    <div class="lis">
-                            <input type="file"  id='file2' onchange="zzchangepic2(this,2)" />
-                            <img src="./css/timg.jpg" id="fimg2" alt="">
-                    </div>
+        .t_r_li {
+            color: #999;
+            margin-bottom: 30px;
+            margin-top: 0 !important;
+        }
 
-                    </div>
-                  <div class="tijiao">提交</div>
+        .t_r_cen {
+            margin-left: -50px;
+        }
+
+        .tab_tit {
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 80px;
+            text-align: center;
+        }
+
+        .tab_tit>h2 {
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .tab_tit>span {
+            display: block;
+            padding-top: 20px;
+            color: #999;
+        }
+
+        .tablebox2 {
+            box-sizing: border-box;
+            padding: 0 20px;
+            background: #fff;
+            margin-top: 20px;
+            color: #666;
+            padding-top: 5px;
+            padding-bottom: 20px;
+        }
+
+        .tablebox2>h2 {
+            font-weight: 600;
+            margin: 20px 0;
+            box-sizing: border-box;
+            padding-left: 20px;
+            font-size: 16px;
+        }
+
+        .t2_left {
+            width: 20%;
+            margin-top: 10px;
+        }
+
+        .t2_left>p {
+            width: 100%;
+            height: 39px;
+            text-align: center;
+            line-height: 39px;
+            background: #EFF3F6;
+
+        }
+
+        .tb_tr>th {
+            background: #EFF3F6;
+        }
+
+        .t2_lis {
+            width: 100%;
+            height: 80px;
+            display: flex;
+        }
+
+        .t2_l_left {
+            background: #EFF3F6;
+            border: 1px solid #e6e6e6;
+            width: 40%;
+            border-right: 0;
+            text-align: center;
+            box-sizing: border-box;
+            padding: 20px 10px 0 10px;
+            height: 78px;
+        }
+
+        .t2_l_right {
+            width: 60%;
+        }
+
+        .t2_l_right>p {
+            width: 100%;
+            height: 37px;
+            border: 1px solid #e6e6e6;
+            text-align: center;
+            line-height: 37px;
+        }
+
+        .t2_p {
+            margin-top: -2px;
+        }
+
+        .table_box_copy {
+            width: 100%;
+            margin-top: 30px;
+            background: #fff;
+            padding: 20px 0;
+            box-sizing: border-box;
+            display: flex;
+            position: relative;
+        }
+
+        .table_box_copy>p {
+            position: absolute;
+            top: 0;
+            left: 0;
+            line-height: 60px;
+            padding-left: 30px;
+            box-sizing: border-box;
+            font-size: 14px;
+            font-weight: 600;
+            color: #999;
+            z-index: 999;
+        }
+
+        .t_b_c_left {
+            width: 50%;
+            height: 500px;
+        }
+
+        .t_b_c_right {
+            width: 50%;
+            height: 300px;
+            margin-top: 100px;
+            border-left: 1px solid #ECECEC;
+        }
+
+        .t_b_c_right>ul {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0 100px;
+            overflow-y: scroll;
+        }
+
+        .mrl {
+            margin-left: -80px;
+        }
+
+        .xbfb_li {
+            color: #666;
+            margin: 0;
+            padding-bottom: 14px;
+        }
+
+        .t_b_c_right>ul>li {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .t_b_c_right>ul>li>span {
+            display: block;
+            width: 100px;
+        }
+
+        .t_b_c_right>ul::-webkit-scrollbar {
+            display: none
+        }
+
+        .t_b_c_ul {
+            position: absolute;
+            top: 420px;
+            width: 50%;
+            left: 10px;
+            box-sizing: border-box;
+            padding-left: 7%;
+            padding-right: 8%;
+            display: flex;
+            justify-content: space-evenly;
+            z-index: 99;
+            flex-wrap: wrap;
+        }
+
+        .sp1 {
+            background: #2AC9FD !important;
+        }
+
+        .sp2 {
+            background: #15AF1A !important;
+        }
+
+        .sp3 {
+            background: #6372CC !important;
+        }
+
+        .sp4 {
+            background: #FCC708 !important;
+        }
+
+        .sp5 {
+            background: #48B188 !important;
+        }
+
+        .sp6 {
+            background: #5957C2 !important;
+        }
+
+        .t_b_c_ul>li {
+            display: flex;
+            line-height: 10px;
+            margin-right: 20px;
+            margin-top: 20px;
+        }
+
+        .t_b_c_ul>li>span {
+            display: block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: red;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 头部 -->
+    <!-- <div class="headerpage">
+				
+			</div> -->
+    <header></header>
+    <!-- 内容 -->
+    <div class="hytitle">
+        <div class="hytitle_font2">统计结果展示</div>
+        <div class="hytitle_font todata">会员数据查询</div>
+    </div>
+    <div class="mapdiv">
+
+    </div>
+    <div class="content">
+        <div class="content_nav">
+            <div class="mapinit">
+                <h2 class="am_tit">每个艺术门类，地区会员数</h2>
+                <p>人数</p>
+            </div>
+            <div class="content_navl"><span><i
+                        class="layui-icon layui-icon-home"></i>首页&nbsp;&nbsp;</span>/<span>&nbsp;<a
+                        href="./vipfind_z.html" style="color:#5d8bc8;">会员管理</a>&nbsp;&nbsp;</span>/&nbsp;会员信息统计
+            </div>
+            <div class="maptit">
+                会员总数:<span class="allsize"></span>人
+            </div>
+            <div class="maptit2">
+                每个艺术门类，地区会员数
+            </div>
+            <div id='mapbox'>
+                <div id="allmap">
+
                 </div>
             </div>
 
-</div>
-<script type="text/javascript" src='./js/common.js'></script>
-<script type="text/javascript" src='./js/jquery.min.js'></script>
-<script type="text/javascript" src='./layui/layui.js'></script>
-<script type="text/javascript">
+            <div class="tablebox">
+                <p>各地会员数</p>
+                <div class="tab_tit">
+                    <h2>各地会员数</h2>
+                    <span>会员数</span>
+                </div>
+                <div id="allmap2"></div>
+                <div class="t_right">
+                    <ul class="t_r_ul">
+                        <li class="t_r_li"><span>地域</span><span class="t_r_cen">会员数</span><span>占比</span></li>
+                    </ul>
+                </div>
+            </div>
 
-    let zz = null,filearr = [];
+            <div class="tablebox2">
+                <h2>各单位推荐人数：(单位/人)</h2>
+                <!-- <div class="t2_left">
+                    <p>推荐单位</p>
+                    <div class="t2_lis">
+                        <div class="t2_l_left">全国文艺家协会</div>
+                        <div class="t2_l_right">
+                            <p>中国剧协</p>
+                            <p>中国影协</p>
+                        </div>
+                    </div>
+                    <p class="t2_p">推荐单位</p>
+                    <div class="t2_lis">
+                        <div class="t2_l_left">全国文艺家协会</div>
+                        <div class="t2_l_right">
+                            <p>中国剧协</p>
+                            <p>中国影协</p>
+                        </div>
+                    </div>
+                    </div> -->
+                <table class="layui-table">
+                    <colgroup>
+                        <col width="150">
+                        <col width="200">
+                        <col>
+                    </colgroup>
+                    <thead>
+                        <tr class="tb_tr">
+                            <th>推荐类型</th>
+                            <th>推荐单位/人</th>
 
-    //获取URL数据  
-    function getQueryString() {
-        var url = location.search; //获取url中"?"符后的字串
-        var theRequest = new Object();
-        if (url.indexOf("?") != -1) {
-                    var str = url.substr(1);
-                    strs = str.split("&");
-                    for (var i = 0; i < strs.length; i++) {
-                        theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+
+                        </tr>
+                    </thead>
+                    <tbody class="tbody">
+
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="table_box_copy">
+                <p>会员性别分布</p>
+                <ul class="t_b_c_ul t_b_c_xbul">
+                    <!-- <li><span class="sp1"></span><p>女</p></li>
+                <li><span class="sp2"></span><p>女</p></li>
+                <li><span class="sp3"></span><p>女</p></li> -->
+                </ul>
+                <div class="t_b_c_left" id="echart1"></div>
+                <div class="t_b_c_right">
+                    <ul class="xbfb">
+                        <li class="xbfb_li"><span>性别</span><span class="mrl">会员数</span><span>占比</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="table_box_copy">
+                <p>会员年龄分布</p>
+                <ul class="t_b_c_ul t_b_c_nlul">
+                    <!-- <li><span class="sp1"></span><p>女</p></li>
+                    <li><span class="sp2"></span><p>女</p></li>
+                    <li><span class="sp3"></span><p>女</p></li> -->
+                </ul>
+                <div class="t_b_c_left" id="echart2"></div>
+                <div class="t_b_c_right">
+                    <ul class="nlfb">
+                        <li class="xbfb_li"><span>性别</span><span class="mrl">会员数</span><span>占比</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="table_box_copy">
+                <p>新文艺群体</p>
+                <ul class="t_b_c_ul t_b_c_wyul">
+                    <!-- <li><span class="sp1"></span><p>女</p></li>
+                    <li><span class="sp2"></span><p>女</p></li>
+                    <li><span class="sp3"></span><p>女</p></li> -->
+                </ul>
+                <div class="t_b_c_left" id="echart3"></div>
+                <div class="t_b_c_right">
+                    <ul class="wyqt">
+                        <li class="xbfb_li"><span>性别</span><span class="mrl">会员数</span><span>占比</span></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script src="./layui/layui.js"></script>
+    <script src="./js/layuicommon2.js"></script>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/header.js"></script>
+    <script src="./js/common.js"></script>
+    <script src="./js/hyfind.js"></script>
+    <script type="text/javascript"
+        src="http://api.map.baidu.com/api?v=3.0&ak=UOj9m4dYY5H3Q6Q4Eslvk5CP4N8w5GGT"></script>
+    <script src="./staic/echarts.min.js"></script>
+    <script src="./staic/china.js"></script>
+    <script src="./js/commonheader.js"></script>
+    <script>
+
+        //$('.headerpage').html(commHeader.header);
+        // 引的头部
+        $('header').load('./headerys.html');
+        $('.todata').on('click', function () {
+            window.location.href = "dataFind_w.html";
+        });
+
+        // var data = {
+
+        // };
+
+        $(".tatou").css({ "background-color": "#059afe", "color": "white" });
+        // var map = new BMap.Map("allmap");    // 创建Map实例
+        // map.centerAndZoom(new BMap.Point(108.38277857586398, 34.16830265570435), 6);  // 初始化地图,设置中心点坐标和地图级别
+        // map.setCurrentCity("西安");          // 设置地图显示的城市 此项是必须设置的
+        // //map.enableScrollWheelZoom(false);     //开启鼠标滚轮缩放
+        // map.setMapStyleV2({     
+        // styleId: 'c43c4717ea2685ba993fcd5d5b4ce22e'
+        // });
+        // map.addEventListener("click",function(e){
+        // console.log(e.point.lng + "," + e.point.lat);
+        //});
+
+        let maxlen;
+        base.commonAjax('clav/count/getMemberCount', {}, function (res) {
+            //console.log(res);
+            if (res.code == 1) {
+                $('.allsize').text(res.data);
+            } else {
+                console.log('总人数获取失败');
+            }
+
+        });
+
+        base.commonAjax('clav/count/getIsNewGroupCount', {}, function (res) {
+            //console.log(res);
+            if (res.code == 1) {
+                let arr2 = [];
+                res.data.map(function (v, i) {
+
+                    $('.wyqt').append('<li><span>' + v.name + '</span><span class="mrl">' + v.value + '</span><span>' + v.proportion + '</span></li>');
+                    if (arr2.indexOf(v.name) == -1) {
+                        arr2.push(v.name);
                     }
+                });
+                arr2.map(function (item, i) {
+                    console.log(item);
+                    $('.t_b_c_wyul').append(`<li><span class="${'sp' + (i + 1)}"></span><p>${item}</p></li>`);
+                });
+                var data = { dataAge: res.data };
+
+                let option = {
+                    backgroundColor: '#fff',
+                    grid: {
+                        left: '20%'
+                    },
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: "{a} <br/>{b}: {c} ({d}%)"
+                    },
+                    color: ['#2AC9FD', '#76FBC0', '#35C96E', '#FCC708', '#48B188', '#5957C2', '#4A5D73'],
+                    series: [
+                        {
+                            name: '新文艺群体：',
+                            color: ['#2AC9FD', '#15AF1A', '#6372CC', '#FCC708', '#48B188', '#5957C2'],
+                            type: 'pie',
+                            radius: ['62', '100'],
+                            labelLine: {
+                                normal: {
+                                    length: 25,
+                                    length2: 120,
+                                    lineStyle: {
+                                        type: 'solid'
+                                    }
+                                }
+
+                            },
+                            label: {
+                                normal: {
+                                    formatter: function (params) {
+                                        console.log(params);
+                                        return '{b| ' + params.name + '}  ' + '{c|' + params.percent.toFixed(0) + '%}'
+                                    },
+                                    borderWidth: 0,
+                                    borderRadius: 4,
+                                    padding: [0, -86],
+                                    height: 70,
+                                    fontSize: 13,
+                                    align: 'center',
+                                    color: '#3494BD',
+                                    rich: {
+                                        b: {
+                                            fontSize: 12,
+                                            lineHeight: 20,
+                                            color: '#41B3DC',
+                                            padding: [0, 0, 5, 0]
+                                        },
+                                        c: {
+                                            fontSize: 20,
+                                            lineHeight: 20,
+                                            color: 'orange'
+                                        }
+
+                                    }
+                                }
+                            },
+                            data: data.dataAge,
+                        },
+                        {
+                            type: 'pie',
+                            radius: ['110', '111'],
+                            data: [100],
+                            label: {
+                                show: false
+                            }
+                        },
+                        {
+                            type: 'pie',
+                            radius: ['50', '51'],
+                            data: [100],
+                            label: {
+                                show: false
+                            }
+                        }
+                    ]
+                };
+
+                //初始化echarts实例
+                var myChart = echarts.init(document.getElementById('echart3'));
+
+                //使用制定的配置项和数据显示图表
+                myChart.setOption(option);
+            } else {
+                console.log('总人数获取失败');
+            }
+
+        });
+
+        base.commonAjax('clav/count/getAgeCount', {}, function (res) {
+            //console.log(res);
+            if (res.code == 1) {
+                let arr2 = [];
+                res.data.map(function (v, i) {
+
+                    $('.nlfb').append('<li><span>' + v.name + '</span><span class="mrl">' + v.value + '</span><span>' + v.proportion + '</span></li>');
+                    if (arr2.indexOf(v.name) == -1) {
+                        arr2.push(v.name);
+                    }
+                });
+
+                arr2.map(function (item, i) {
+                    console.log(item);
+                    $('.t_b_c_nlul').append(`<li><span class="${'sp' + (i + 1)}"></span><p>${item}</p></li>`);
+                });
+                var data = { dataAge: res.data };
+
+                let option = {
+                    backgroundColor: '#fff',
+                    grid: {
+                        left: '20%'
+                    },
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: "{a} <br/>{b}: {c} ({d}%)"
+                    },
+                    color: ['#2AC9FD', '#76FBC0', '#35C96E', '#FCC708', '#48B188', '#5957C2', '#4A5D73'],
+                    series: [
+                        {
+                            name: '会员年龄分布：',
+                            color: ['#2AC9FD', '#15AF1A', '#6372CC', '#FCC708', '#48B188', '#5957C2'],
+                            type: 'pie',
+                            radius: ['62', '100'],
+                            labelLine: {
+                                normal: {
+                                    length: 25,
+                                    length2: 120,
+                                    lineStyle: {
+                                        type: 'solid'
+                                    }
+                                }
+
+                            },
+                            label: {
+                                normal: {
+                                    formatter: function (params) {
+                                        console.log(params);
+                                        return '{b| ' + params.name + '}  ' + '{c|' + params.percent.toFixed(0) + '%}'
+                                    },
+                                    borderWidth: 0,
+                                    borderRadius: 4,
+                                    padding: [0, -86],
+                                    height: 70,
+                                    fontSize: 13,
+                                    align: 'center',
+                                    color: '#3494BD',
+                                    rich: {
+                                        b: {
+                                            fontSize: 12,
+                                            lineHeight: 20,
+                                            color: '#41B3DC',
+                                            padding: [0, 0, 5, 0]
+                                        },
+                                        c: {
+                                            fontSize: 20,
+                                            lineHeight: 20,
+                                            color: 'orange'
+                                        }
+
+                                    }
+                                }
+                            },
+                            data: data.dataAge,
+                        },
+                        {
+                            type: 'pie',
+                            radius: ['110', '111'],
+                            data: [100],
+                            label: {
+                                show: false
+                            }
+                        },
+                        {
+                            type: 'pie',
+                            radius: ['50', '51'],
+                            data: [100],
+                            label: {
+                                show: false
+                            }
+                        }
+                    ]
+                };
+
+                //初始化echarts实例
+                var myChart = echarts.init(document.getElementById('echart2'));
+
+                //使用制定的配置项和数据显示图表
+                myChart.setOption(option);
+            } else {
+                console.log('总人数获取失败');
+            }
+
+        });
+
+
+        base.commonAjax('clav/count/getGenderCount', {}, function (res) {
+            //console.log(res);
+            if (res.code == 1) {
+                let arr2 = [];
+                res.data.map(function (v, i) {
+
+                    $('.xbfb').append('<li><span>' + v.name + '</span><span class="mrl">' + v.value + '</span><span>' + v.proportion + '</span></li>');
+                    if (arr2.indexOf(v.name) == -1) {
+                        arr2.push(v.name);
+                    }
+
+                });
+
+                arr2.map(function (item, i) {
+                    console.log(item);
+                    $('.t_b_c_xbul').append(`<li><span class="${'sp' + (i + 1)}"></span><p>${item}</p></li>`);
+                });
+
+                console.log('姓名：', arr2, arr2.length);
+                var data = { dataAge: res.data };
+
+                let option = {
+                    backgroundColor: '#fff',
+                    grid: {
+                        left: '20%'
+                    },
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: "{a} <br/>{b}: {c} ({d}%)"
+                    },
+                    color: ['#2AC9FD', '#76FBC0', '#35C96E', '#FCC708', '#48B188', '#5957C2', '#4A5D73'],
+                    series: [
+                        {
+                            name: '会员性别分布：',
+                            color: ['#2AC9FD', '#15AF1A', '#6372CC', '#FCC708', '#48B188', '#5957C2'],
+                            type: 'pie',
+                            radius: ['62', '100'],
+                            labelLine: {
+                                normal: {
+                                    length: 25,
+                                    length2: 120,
+                                    lineStyle: {
+                                        type: 'solid'
+                                    }
+                                }
+
+                            },
+                            label: {
+                                normal: {
+                                    formatter: function (params) {
+                                        console.log(params);
+                                        return '{b| ' + params.name + '}  ' + '{c|' + params.percent.toFixed(0) + '%}'
+                                    },
+                                    borderWidth: 0,
+                                    borderRadius: 4,
+                                    padding: [0, -86],
+                                    height: 70,
+                                    fontSize: 13,
+                                    align: 'center',
+                                    color: '#3494BD',
+                                    rich: {
+                                        b: {
+                                            fontSize: 12,
+                                            lineHeight: 20,
+                                            color: '#41B3DC',
+                                            padding: [0, 0, 5, 0]
+                                        },
+                                        c: {
+                                            fontSize: 20,
+                                            lineHeight: 20,
+                                            color: 'orange'
+                                        }
+
+                                    }
+                                }
+                            },
+                            data: data.dataAge,
+                        },
+                        {
+                            type: 'pie',
+                            radius: ['110', '111'],
+                            data: [100],
+                            label: {
+                                show: false
+                            }
+                        },
+                        {
+                            type: 'pie',
+                            radius: ['50', '51'],
+                            data: [100],
+                            label: {
+                                show: false
+                            }
+                        }
+                    ]
+                };
+
+                //初始化echarts实例
+                var myChart = echarts.init(document.getElementById('echart1'));
+
+                //使用制定的配置项和数据显示图表
+                myChart.setOption(option);
+            } else {
+                console.log('总人数获取失败');
+            }
+
+        });
+
+        base.commonAjax('clav/allotInfo/getYearList', {}, function (res) {
+            //console.log(res);
+            if (res.code == 1) {
+                let datas = res.data;
+                for (var i = datas.length - 1; i >= 0; i--) {
+                    console.log(datas[i]);
+                    $('.tb_tr').append(' <th>' + datas[i] + '</th>');
                 }
-                return theRequest;
+                $('.tb_tr').append(' <th>总数</th>');
+            } else {
+                console.log('年份列表获取失败');
             }
 
-            $('.xg').on('click', function () {
-                let id = getQueryString('id').id;
-                //window.location.href = "applyFormPage_w.html";
-                window.location.href = "applyFormPage_w.html?id="+id;
-                //window.close();
-               //history.go(-1);
-            });
+        });
 
-            //打印
-            $('.dy').on('click', function () {
+        base.commonAjax('clav/count/getTJunitCount', {}, function (res) {
+            //console.log(res);
+            if (res.code == 1) {
+                let datas = res.data;
+                datas.map(function (v, i) {
+                    let str = '<tr>';
+                    str += '<td>' + v.firstName + '</td><td>' + v.secondName + '</td><td>' + v.num1 + '</td><td>' + v.num2 + '</td><td>' + v.num3 + '</td><td>' + v.num4 + '</td><td>' + v.num5 + '</td><td>' + v.totalNum + '</td>';
+                    str += '</tr>';
+                    $('.tbody').append(str);
+                });
 
-                let idinfo = getQueryString("id").id;
-                window.open('http://39.98.186.243/clav/testWord/exportMillCertificate2?id=' + idinfo);
-                //window.print('http://39.98.186.243/clav/testWord/exportMillCertificate2?id=' + idinfo);
-            });
 
-            function zzchangepic(obj) {
-                //console.log(obj.files[0]);//这里可以获取上传文件的name
-                var newsrc = getObjectURL(obj.files[0]);
-                zz = newsrc;
-                $('.filename').val(newsrc);
+            } else {
+                console.log('推荐单位列表获取失败');
             }
 
+        });
 
-            function zzchangepic2(obj,ind) {
-                console.log(obj.files[0]);//这里可以获取上传文件的name
-                var suffixIndex=obj.files[0].name.lastIndexOf(".");  
-              var suffix=obj.files[0].name.substring(suffixIndex+1).toUpperCase();  
-                console.log(suffix);
-                if(suffix!="BMP"&&suffix!="JPG"&&suffix!="JPEG"&&suffix!="PNG"&&suffix!="GIF"&&suffix!="pdf"&&suffix!="PDF"){ 
-                    layui.use('layer', function () {
-                            var layer = layui.layer;
-                            layer.msg('请上传图片');
-                        }); 
-                    return;
-                  }  
-                 
-                var newsrc = getObjectURL(obj.files[0]);
-              
-                //zz = newsrc;
-                filearr[ind] = newsrc;
-                $('#fimg'+ind).attr("src",newsrc);
-                //console.log(newsrc);
+
+        base.commonAjax('clav/count/getLocalCountFirst', {}, function (res) {
+            //console.log(res);
+            if (res.code == 1) {
+                maxlen = res.data.count;
+            } else {
+                console.log('最大地区人数获取失败');
+            }
+
+        });
+
+        base.commonAjax('clav/count/getLocalCount', {}, function (res) {
+            console.log(res);
+            if (res.code == 1) {
+                res.data.map(function (v, i) {
+                    $('.t_r_ul').append('<li><span>' + v.name + '</span><span class="t_r_cen">' + v.value + '</span><span>' + v.proportion + '</span></li>')
+                });
+                function mapTooltipClick(name) {
+                    alert(name)
+                }
+
+                function tooltipCharts() {
+                    console.log(arguments[0]);
+
+                    var option = {
              
-                
-            }
+                        dataset: {
+                            source: [
+                                ['xAxis', '201701', '201702', '201703', '201704', '201705', '201706', '201707', '201708', '201709', '20170', '201710', '20170', '201801'],
+                                ['amount', 41.1, 30.4, 65.1, 53.3, 83.8, 98.7, 65.1, 53.3, 41.1, 30.4, 53.3, 41.1, 53.3, 83.8]
+                            ]
+                        },
+                        xAxis: {
+                            type: 'category',
+                            interval: true,
+                            axisLabel: {
+                                rotate: 45
+                            },
+                            axisTick: {
+                                show: false
+                            }
+                        },
+                        yAxis: {},
+                        color: ['#4FA8F9', '#F5A623'],
+                        grid: {
+                            show: true,
+                            backgroundColor: '#FAFAFA',
+                            left: 30,
+                            right: 20,
+                            top: 20
+                        },
+                        series: [{
+                            type: 'bar',
+                            smooth: true,
+                            seriesLayoutBy: 'row',
+                            barWidth: 10,
 
+                        }]
+                    };
 
-
-            //建立一個可存取到該file的url
-            function getObjectURL(file) {
-                var url = null;
-                // 下面函数执行的效果是一样的，只是需要针对不同的浏览器执行不同的 js 函数而已
-                if (window.createObjectURL != undefined) { // basic
-                    url = window.createObjectURL(file);
-                } else if (window.URL != undefined) { // mozilla(firefox)
-                    url = window.URL.createObjectURL(file);
-                } else if (window.webkitURL != undefined) { // webkit or chrome
-                    url = window.webkitURL.createObjectURL(file);
                 }
-                return url;
-            }
-$('.tijiao').on('click',function () { 
-      if(zz == null){
-      alert('请上传文件');
-      }else{
-        var file = $("#file")[0].files[0];
-            var formData = new FormData();
-            formData.append("file", file);
-            $.ajax({
-                type: "post",
-                url: base.baseurl + 'clav/upload/uploadFile',
-                data: formData,
-                cache: false,
-                processData: false,
-                contentType: false,
-                success: function (data, textStatus, jqXHR) {
+                option = {
+                    visualMap: {
+                        min: 0,
+                        max: maxlen,
+                        left: '250px',
+                        bottom: '50px',
+                        text: ['高', '低'],
+                        calculable: false,
+                        orient: 'horizontal',
+                        inRange: {
+                            color: ['#e0ffff', '#006edd'],
+                            symbolSize: [30, 100]
+                        }
+                    },
+                    tooltip: {
+                        padding: 0,
+                        enterable: true,
+                        transitionDuration: 1,
+                        textStyle: {
+                            color: '#fff',
+                            decoration: 'none',
+                        },
+                        // position: function (point, params, dom, rect, size) {
+                        //   return [point[0], point[1]];
+                        // },
+                        formatter: function (params) {
+                            console.log(params);
+                            if (!isNaN(params.value)) {
+                                return params.name + '：' + params.data['value'] + '(' + params.data['proportion'] + ')'
+                            };
+                            setTimeout(function () {
+                                tooltipCharts(params.name);
+                            }, 10);
+                            // return tipHtml;
+                        }
+                    },
+                    geo: {
+                        //这里是鼠标滑过地图
+                        itemStyle: {
+                            normal: {
+                        borderWidth: 0, // 区域边框宽度
+                        //borderColor: 'rgba(37, 88, 184, 0.8)', // 区域边框颜色
+                         areaColor: '#ECF7FD' // 区域颜色
+                     },
+                               emphasis: {
+                                areaColor: '#FFB02E'
+                            }
+                        },
+                    },
+                    series: [{
+                        name: 'iphone4',
+                        type: 'map',
+                        mapType: 'china',
+                        roam: false,
+                        itemStyle: {
+                            normal: {
+                                label: {
+                                    show: false
+                                },
+                            },
+                            emphasis: {
+                                label: {
+                                    show: true
+                                }
+                            }
+                        },
+                        data: res.data
+                    },]
+                }
 
-                    var data = {
-                        id : getQueryString("id").id,
-                        uploadFile: data.data[0].url,
+                //初始化echarts实例
+                var myChart = echarts.init(document.getElementById('allmap2'));
+
+                //使用制定的配置项和数据显示图表
+                myChart.setOption(option);
+
+                // var count = 0;
+                // var timeTicket = null;
+                // var dataLength = option.series[0].data.length;
+                // timeTicket && clearInterval(timeTicket);
+                // timeTicket = setInterval(function() {
+                //     myChart.dispatchAction({
+                //         type: 'downplay',
+                //         seriesIndex: 0,
+                //     });
+                //     myChart.dispatchAction({
+                //         type: 'highlight',
+                //         seriesIndex: 0,
+                //         dataIndex: (count) % dataLength
+                //     });
+                //     myChart.dispatchAction({
+                //         type: 'showTip',
+                //         seriesIndex: 0,
+                //         dataIndex: (count) % dataLength
+                //     });
+                //     count++;
+                // }, 1000);
+
+                // myChart.on('mouseover', function(params) {
+                //     console.log(params)
+                //     clearInterval(timeTicket);
+                //     myChart.dispatchAction({
+                //         type: 'downplay',
+                //         seriesIndex: 0
+                //     });
+                //     myChart.dispatchAction({
+                //         type: 'highlight',
+                //         seriesIndex: 0,
+                //         dataIndex: params.dataIndex
+                //     });
+                //     myChart.dispatchAction({
+                //         type: 'showTip',
+                //         seriesIndex: 0,
+                //         dataIndex: params.dataIndex,
+                //     });
+                // });
+                // myChart.on('mouseout', function(params) {
+                //     timeTicket && clearInterval(timeTicket);
+                //     timeTicket = setInterval(function() {
+                //         myChart.dispatchAction({
+                //             type: 'downplay',
+                //             seriesIndex: 0,
+                //         });
+                //         myChart.dispatchAction({
+                //             type: 'highlight',
+                //             seriesIndex: 0,
+                //             dataIndex: (count) % dataLength
+                //         });
+                //         myChart.dispatchAction({
+                //             type: 'showTip',
+                //             seriesIndex: 0,
+                //             dataIndex: (count) % dataLength
+                //         });
+                //         count++;
+                //     }, 1000);
+                // });
+            }
+
+        });
+
+
+        base.commonAjax('clav/count/getLocalCount', {}, function (res) {
+            //console.log(res);
+            if (res.code == 1) {
+                var data = res.data;
+
+                var yData = [];
+
+                data.sort(function (o1, o2) {
+                    if (isNaN(o1.value) || o1.value == null) return -1;
+                    if (isNaN(o2.value) || o2.value == null) return 1;
+                    return o1.value - o2.value;
+                });
+
+                for (var i = 0; i < data.length; i++) {
+                    yData.push(data[i].name);
+                }
+
+                var option = {
+                    // title: {
+                    //     text: '全国色阶地图条形图',
+                    //     textStyle: {
+                    //         fontSize: 30
+                    //     },
+                    //     x: 'center'
+                    // },
+                    tooltip: {
+                        show: true,
+                        formatter: function (params) {
+                            //console.log(params);
+                            if (!isNaN(params.value)) {
+                                return params.name + '：' + params.data['value'] + '(' + params.data['proportion'] + ')'
+                            }
+
+                        },
+                    },
+                    visualMap: {
+                        type: 'continuous',
+                        text: ['', ''],
+                        showLabel: true,
+                        seriesIndex: [0],
+                        min: 0,
+                        max: maxlen,
+                        inRange: {
+                            color: ['#edfbfb', '#b7d6f3', '#40a9ed', '#3598c1', '#215096',]
+                        },
+                        textStyle: {
+                            color: '#000'
+                        },
+                        bottom: '50px',
+                        left: '50px',
+                        //bottom:'bottom'
+                    },
+                    grid: {
+                        right: 10,
+                        top: 80,
+                        bottom: 30,
+                        width: '20%'
+                    },
+                    xAxis: {
+                        type: 'value',
+                        scale: true,
+                        position: 'top',
+                        splitNumber: 1,
+                        boundaryGap: false,
+                        splitLine: {
+                            show: false
+                        },
+                        axisLine: {
+                            show: false
+                        },
+                        axisTick: {
+                            show: false
+                        },
+                        axisLabel: {
+                            margin: 2,
+                            textStyle: {
+                                color: '#aaa'
+                            }
+                        }
+                    },
+                    yAxis: {
+                        type: 'category',
+                        nameGap: 16,
+                        axisLine: {
+                            show: false,
+                            lineStyle: {
+                                color: '#ddd'
+                            }
+                        },
+                        axisTick: {
+                            show: false,
+                            lineStyle: {
+                                color: '#ddd'
+                            }
+                        },
+                        axisLabel: {
+                            interval: 0,
+                            textStyle: {
+                                color: '#999'
+                            }
+                        },
+                        data: yData
+                    },
+                    geo: {
+                        roam: true,
+                        map: 'china',
+                        left: 'left',
+                        right: '300',
+                        layoutSize: '80%',
+                        label: {
+                            emphasis: {
+                                show: false
+                            }
+                        },
+                        itemStyle: {
+                            emphasis: {
+                                areaColor: '#fff464'
+                            }
+                        },
+                        regions: [{
+                            name: '南海诸岛',
+                            value: 0,
+                            itemStyle: {
+                                normal: {
+                                    opacity: 0,
+                                    label: {
+                                        show: false
+                                    }
+                                }
+                            }
+                        }],
+                    },
+                    series: [{
+                        name: 'mapSer',
+                        type: 'map',
+                        roam: false,
+                        geoIndex: 0,
+                        label: {
+                            show: false,
+                        },
+                        data: data
+                    },
+                     {
+                        name: 'barSer',
+                        type: 'bar',
+                        roam: false,
+                        visualMap: false,
+                        zlevel: 2,
+                        barMaxWidth: 20,
+                        itemStyle: {
+                            normal: {
+                                color: '#40a9ed'
+                            },
+                            emphasis: {
+                                color: "#3596c0"
+                            }
+                        },
+                        label: {
+                            normal: {
+                                show: false,
+                                position: 'right',
+                                offset: [5, 10]
+                            },
+                            emphasis: {
+                                show: true,
+                                position: 'right',
+                                offset: [10, 0]
+                            }
+                        },
+                        data: data
                     }
-                    base.commonAjax('clav/member/updateClavMember', data, function (data) {
-                     console.log(data);
-                     if(data.code == 1){
-                         alert('提交成功');
-                        // window.close();
-                        window.location.href = "applyForPage_w.html";
-                     }else{
-                        alert('提交失败');
-                     }
+                    ]
+                };
+
+                //初始化echarts实例
+                var myChart = echarts.init(document.getElementById('allmap'));
+
+                //使用制定的配置项和数据显示图表
+                myChart.setOption(option);
+
+            } else {
+                console.log('各地会员数获取失败');
+            }
+
+        });
+
+
+//     var data = [{
+//         name: '北京',
+//         value: 5.3
+//     },
+//     {
+//         name: '天津',
+//         value: 3.8
+//     },
+//     {
+//         name: '上海',
+//         value: 4.6
+//     },
+//     {
+//         name: '重庆',
+//         value: 3.6
+//     },
+//     {
+//         name: '河北',
+//         value: 3.4
+//     },
+//     {
+//         name: '河南',
+//         value: 3.2
+//     },
+//     {
+//         name: '云南',
+//         value: 20
+//     },
+//     {
+//         name: '辽宁',
+//         value: 4.3
+//     },
+//     {
+//         name: '黑龙江',
+//         value: 4.1
+//     },
+//     {
+//         name: '湖南',
+//         value: 2.4
+//     },
+//     {
+//         name: '安徽',
+//         value: 3.3
+//     },
+//     {
+//         name: '山东',
+//         value: 3.0
+//     },
+//     {
+//         name: '新疆',
+//         value: 1
+//     },
+//     {
+//         name: '江苏',
+//         value: 3.9
+//     },
+//     {
+//         name: '浙江',
+//         value: 3.5
+//     },
+//     {
+//         name: '江西',
+//         value: 2.0
+//     },
+//     {
+//         name: '湖北',
+//         value: 2.1
+//     },
+//     {
+//         name: '广西',
+//         value: 3.0
+//     },
+//     {
+//         name: '甘肃',
+//         value: 1.2
+//     },
+//     {
+//         name: '山西',
+//         value: 3.2
+//     },
+//     {
+//         name: '内蒙古',
+//         value: 3.5
+//     },
+//     {
+//         name: '陕西',
+//         value: 2.5
+//     },
+//     {
+//         name: '吉林',
+//         value: 4.5
+//     },
+//     {
+//         name: '福建',
+//         value: 200
+//     },
+//     {
+//         name: '贵州',
+//         value: 300
+//     },
+//     {
+//         name: '广东',
+//         value: 3.7
+//     },
+//     {
+//         name: '青海',
+//         value: 0.6
+//     },
+//     {
+//         name: '西藏',
+//         value: 0.4
+//     },
+//     {
+//         name: '四川',
+//         value: 3.3
+//     },
+//     {
+//         name: '宁夏',
+//         value: 0.8
+//     },
+//     {
+//         name: '海南',
+//         value: 1.9
+//     },
+//     {
+//         name: '台湾',
+//         value: 0.1
+//     },
+//     {
+//         name: '香港',
+//         value: 0.1
+//     },
+//     {
+//         name: '澳门',
+//         value: 0.1
+//     }
+// ];
+
+
+//--------------------------------------
+
+
+var geoCoordMap = {
+            '黑龙江': [127.9688, 45.368],
+            '内蒙古': [110.3467, 41.4899],
+            "吉林": [125.8154, 44.2584],
+            '北京': [116.4551, 40.2539],
+            "辽宁": [123.1238, 42.1216],
+            "河北": [114.4995, 38.1006],
+            "天津": [117.4219, 39.4189],
+            "山西": [112.3352, 37.9413],
+            "陕西": [109.1162, 34.2004],
+            "甘肃": [103.5901, 36.3043],
+            "宁夏": [106.3586, 38.1775],
+            "青海": [101.4038, 36.8207],
+            "新疆": [87.9236, 43.5883],
+            "西藏": [91.11, 29.97],
+            "四川": [103.9526, 30.7617],
+            "重庆": [108.384366, 30.439702],
+            "山东": [117.1582, 36.8701],
+            "河南": [113.4668, 34.6234],
+            "江苏": [118.8062, 31.9208],
+            "安徽": [117.29, 32.0581],
+            "湖北": [114.3896, 30.6628],
+            "浙江": [119.5313, 29.8773],
+            "福建": [119.4543, 25.9222],
+            "江西": [116.0046, 28.6633],
+            "湖南": [113.0823, 28.2568],
+            "贵州": [106.6992, 26.7682],
+            "云南": [102.9199, 25.4663],
+            "广东": [113.12244, 23.009505],
+            "广西": [108.479, 23.1152],
+            "海南": [110.3893, 19.8516],
+            '上海': [119.1803, 31.2891],
+            '台湾': [121.4648, 25.5630]
+        };
+        var chinaDatas = [
+            [{
+                name: '黑龙江',
+                value: 100
+            }],
+            [{
+                name: '内蒙古',
+                value: 300
+            }],
+            [{
+                name: '吉林',
+                value: 300
+            }],
+            [{
+                name: '辽宁',
+                value: 300
+            }],
+            [{
+                name: '河北',
+                value: 300
+            }],
+            [{
+                name: '天津',
+                value: 300
+            }],
+            [{
+                name: '山西',
+                value: 300
+            }],
+            [{
+                name: '陕西',
+                value: 300
+            }],
+            [{
+                name: '甘肃',
+                value: 300
+            }],
+            [{
+                name: '宁夏',
+                value: 300
+            }],
+            [{
+                name: '青海',
+                value: 300
+            }],
+            [{
+                name: '新疆',
+                value: 300
+            }],
+            [{
+                name: '西藏',
+                value: 300
+            }],
+            [{
+                name: '四川',
+                value: 300
+            }],
+            [{
+                name: '重庆',
+                value: 300
+            }],
+            [{
+                name: '山东',
+                value: 300
+            }],
+            [{
+                name: '河南',
+                value: 300
+            }],
+            [{
+                name: '江苏',
+                value: 300
+            }],
+            [{
+                name: '安徽',
+                value: 300
+            }],
+            [{
+                name: '湖北',
+                value: 300
+            }],
+            [{
+                name: '浙江',
+                value: 300
+            }],
+            [{
+                name: '福建',
+                value: 300
+            }],
+            [{
+                name: '江西',
+                value: 300
+            }],
+            [{
+                name: '湖南',
+                value: 300
+            }],
+            [{
+                name: '贵州',
+                value: 300
+            }],
+            [{
+                name: '广西',
+                value: 300
+            }],
+            [{
+                name: '海南',
+                value: 300
+            }],
+            [{
+                name: '上海',
+                value: 1300
+            }],
+            [{
+                name: '广东',
+                value: 1300
+            }],
+            [{
+                name: '云南',
+                value: 1300
+            }],
+            [{
+                name: '北京',
+                value: 1300
+            }],
+            [{
+                name: '台湾',
+                value: 1300
+            }]
+        ];
+        var defaultP = [
+            [{
+                name: '四川',
+                value: 300,
+                selected: true
+            }]
+        ]
+        var convertData = function(data) {
+            console.log(data)
+            var res = [];
+            for (var i = 0; i < data.length; i++) {
+                var geoCoord = geoCoordMap[data[i][0].name];
+                console.log(geoCoord, 'geoCoord')
+                if (geoCoord) {
+                    res.push({
+                        name: data[i][0].name,
+                        value: geoCoord.concat(data[i][0].value)
                     });
                 }
-            });
-      }
+            }
+            console.log(res, '///')
+            return res;
+        };
 
- });
-           
+         option = {
+            backgroundColor: 'transparent',
+            tooltip: {
+                trigger: 'item',
+                triggerOn: 'click',
+                backgroundColor: 'transparent',
+                alwaysShowContent: true,
+                formatter(params, p, a) {
+                    console.log(params.data.name)
+                    return params.data.name + params.data.value
+                }
+            },
+            geo: {
+                map: 'china',
+                label: {
+                    emphasis: {
+                        color: 'white',
+                        show: false
+                    }
+                },
+                zoom: 1.2,
+                itemStyle: {
+                    normal: {
+                        borderWidth: 1, // 区域边框宽度
+                        borderColor: 'rgba(37, 88, 184, 0.8)', // 区域边框颜色
+                        areaColor: '#0183C3' // 区域颜色
+                    },
+                    emphasis: {
+                        areaColor: '#3889FF'
+                    }
+                },
+                regions: defaultP[0],
+                tooltip: {
+                    show: false
+                }
+            },
+            series: [
+                {
+                type: 'effectScatter',
+                coordinateSystem: 'geo',
+                z:1,
+               
+                data: convertData(defaultP),
+               
+                symbolSize: 14,
+                itemStyle: {              
+                       color:'#fff',       
+                },
+                tooltip: {
+                    show: true
+                }
+            }, {
+                type: 'map',
+                mapType: 'china',
+                geoIndex: 0,
+                z: 0,
+                data: convertData(chinaDatas)
+            }]
+        };
+        setTimeout(() => {
+            myChart.dispatchAction({
+                type: 'showTip',
+                seriesIndex: 0,
+                dataIndex: 0
+            })
 
-        </script>
+        }, 0)
+        // var mymap = echarts.init(document.getElementById('main'));
+        // mymap.setOption(options);
+        myChart.on('click', params => {
+            if (params.seriesType === 'map') {
+                // 如果不存在，则不能选中
+                console.log(params)
+                const selectData = convertData([
+                    [{
+                        name: params.name,
+                        value: params.data.value[2]
+                    }]
+                ])
+                option.geo.regions = [{
+                    name: params.name,
+                    selected: true
+                }]
+
+                // 显示光圈
+                option.series[0].data = selectData
+                myChart.setOption(option)
+                setTimeout(() => {
+                    myChart.dispatchAction({
+                        type: 'showTip',
+                        seriesIndex: 0,
+                        dataIndex: 0
+                    })
+
+                }, 0)
+
+            }
+        })
+
+
+//-------------------------------------------------
+
+
+
+var namedata = [{name:'张'},{name:'刘'},{name:'李'},{name:'邓'},{name:'熊'},{name:'田'},{name:'周'},{name:'赵'},{name:'钱'},{name:'孙'},
+                {name:'吴'},{name:'郑'},{name:'王'},{name:'冯'},{name:'陈'},{name:'杨'},{name:'朱'},{name:'秦'},{name:'许'},{name:'徐'},
+                {name:'何'},{name:'曹'},{name:'陶'},{name:'邹'},{name:'苏'},{name:'范'},{name:'彭'},{name:'鲁'},{name:'马'},{name:'方'},
+                {name:'唐'},{name:'顾'}];
+var option = null;
+var geoCoordMap = {
+    '上海': [119.1803, 31.2891],
+	"福建": [119.4543, 25.9222],
+	"重庆": [108.384366, 30.439702],
+	'北京': [116.4551, 40.2539],
+	"辽宁": [123.1238, 42.1216],
+	"河北": [114.4995, 38.1006],
+	"天津": [117.4219, 39.4189],
+	"山西": [112.3352, 37.9413],
+	"陕西": [109.1162, 34.2004],
+	"甘肃": [103.5901, 36.3043],
+	"宁夏": [106.3586, 38.1775],
+	"青海": [101.4038, 36.8207],
+	"新疆": [87.9236, 43.5883],
+	"西藏": [91.11, 29.97],
+	"四川": [103.9526, 30.7617],
+	"吉林": [125.8154, 44.2584],
+	"山东": [117.1582, 36.8701],
+	"河南": [113.4668, 34.6234],
+	"江苏": [118.8062, 31.9208],
+	"安徽": [117.29, 32.0581],
+	"湖北": [114.3896, 30.6628],
+	"浙江": [119.5313, 29.8773],
+	'内蒙古': [110.3467, 41.4899],
+	"江西": [116.0046, 28.6633],
+	"湖南": [113.0823, 28.2568],
+	"贵州": [106.6992, 26.7682],
+	"云南": [102.9199, 25.4663],
+	"广东": [113.12244, 23.009505],
+	"广西": [108.479, 23.1152],
+	"海南": [110.3893, 19.8516],
+	'黑龙江': [127.9688, 45.368],
+	'台湾': [121.4648, 25.5630]
+};
+var chinaDatas = [
+    {
+		name: '北京',
+		value: 86
+	},
+	{
+		name: '福建',
+		value: 65
+	},
+	{
+		name: '广东',
+		value: 53
+	},
+	{
+		name: '上海',
+		value: 48
+	},
+	
+	{
+		name: '河北',
+		value: 2
+	},
+	{
+		name: '天津',
+		value: 6
+	},
+	{
+		name: '山西',
+		value: 12
+	},
+	{
+		name: '陕西',
+		value: 2
+	},
+	{
+		name: '甘肃',
+		value: 4
+	},
+	{
+		name: '宁夏',
+		value: 5
+	},
+	{
+		name: '青海',
+		value: 3
+	},
+	{
+		name: '新疆',
+		value: 0.4
+	},
+	{
+		name: '西藏',
+		value: 0.3
+	},
+	{
+		name: '四川',
+		value: 22
+	},
+	{
+		name: '重庆',
+		value: 12
+	},
+	{
+		name: '山东',
+		value: 9
+	},
+	{
+		name: '河南',
+		value: 0.9
+	},
+	{
+		name: '江苏',
+		value: 24
+	},
+	{
+		name: '安徽',
+		value: 15
+	},
+	{
+		name: '湖北',
+		value: 6
+	},
+	{
+		name: '浙江',
+		value: 15
+	},
+	{
+		name: '内蒙古',
+		value: 0.3
+	},
+	{
+		name: '江西',
+		value: 34
+	},
+	{
+		name: '湖南',
+		value: 12
+	},
+	{
+		name: '贵州',
+		value: 0.8
+	},
+	{
+		name: '广西',
+		value: 16
+	},
+	{
+		name: '海南',
+		value: 37
+	},
+	{
+		name: '辽宁',
+		value: 0.2
+	},
+	{
+		name: '吉林',
+		value: 0.4
+	},
+	{
+		name: '云南',
+		value: 34
+	},
+	{
+		name: '黑龙江',
+		value: 5
+	},
+	{
+		name: '台湾',
+		value: 43
+	}
+];
+var convertData = function(data, type) {
+	/*type:1 地图参数；type:2数据参数*/
+	var res = [];
+	for (var i = 0; i < data.length; i++) {
+		var geoCoord = geoCoordMap[data[i].name];
+		if (geoCoord) {
+			if (type == 2) {
+				res.push({
+					name: data[i].name,
+					value: geoCoord.concat(data[i].value),
+					username: data[i].username,
+					telphone: data[i].telphone,
+					address: data[i].address
+				});
+			} else {
+				res.push({
+					name: data[i].name,
+					value: geoCoord.concat(data[i].value)
+				});
+			}
+		}
+	}
+	//console.log(res);
+	return res;
+};
+var yData = [];
+var barData = chinaDatas;
+barData = barData.sort(function(a,b){
+    return b.value-a.value;
+});
+for(var j =0;j<barData.length;j++){
+    if(j<10){
+        yData.push('0'+j + barData[j].name);
+    }else{
+        yData.push(j + barData[j].name);
+    }
+}
+
+option = {
+	backgroundColor: '#00013a',
+	title: [{
+        show: true,
+        text: '2019年度销售排行',
+        subtext: '单位：万辆',
+        subtextStyle:{
+            color:'#ffffff',
+            lineHeight:20
+        },
+        textStyle: {
+            color: '#fff',
+            fontSize: 18
+        },
+        right: 140,
+        top: 20
+    }],
+    grid: {
+        right: 10,
+        top: 80,
+        bottom: 20,
+        width: '200'
+    },
+    xAxis: {
+        show: false
+    },
+    yAxis: {
+        type: 'category',
+        inverse: true,
+        nameGap: 16,
+        axisLine: {
+            show: false,
+            lineStyle: {
+                color: '#ddd'
+            }
+        },
+        axisTick: {
+            show: false,
+            lineStyle: {
+                color: '#ddd'
+            }
+        },
+        axisLabel: {
+            interval: 0,
+            margin: 85,
+            textStyle: {
+                color: '#fff',
+                align: 'left',
+                fontSize: 14
+            },
+            rich: {
+                a: {
+                    color: '#fff',
+                    backgroundColor: '#f0515e',
+                    width: 20,
+                    height: 20,
+                    align: 'center',
+                    borderRadius: 2
+                },
+                b: {
+                    color: '#fff',
+                    backgroundColor: '#24a5cd',
+                    width: 20,
+                    height: 20,
+                    align: 'center',
+                    borderRadius: 2
+                }
+            },
+            formatter: function(params) {
+                if (parseInt(params.slice(0, 2)) < 3) {
+                    return [
+                        '{a|' + (parseInt(params.slice(0, 2)) + 1) + '}' + '  ' + params.slice(2)
+                    ].join('\n')
+                } else {
+                    return [
+                        '{b|' + (parseInt(params.slice(0, 2)) + 1) + '}' + '  ' + params.slice(2)
+                    ].join('\n')
+                }
+            }
+        },
+        data: yData
+    },
+	geo: {
+		map: 'china',
+		label: {
+			show: true,
+			color: '#ffffff',
+			emphasis: {
+				color: 'white',
+				show: false
+			}
+		},
+		roam: false,//是否允许缩放
+    	top: 100,
+    	left: 'left',
+        right: '300',
+    	zoom: 1, //默认显示级别
+    	scaleLimit: {
+    		min: 0,
+    		max: 3
+    	}, //缩放级别
+		itemStyle: {
+			normal: {
+				borderColor: 'rgba(26,82,231, 1)',
+				borderWidth: 1,
+				areaColor: {
+					type: 'radial',
+					x: 0.5,
+					y: 0.5,
+					r: 0.8,
+					colorStops: [{
+						offset: 0,
+						color: 'rgba(14, 101, 247, .1)' // 0% 处的颜色
+					}, {
+						offset: 1,
+						color: 'rgba(125, 183, 252, .1)' // 100% 处的颜色
+					}],
+					globalCoord: false // 缺省为 false
+				},
+				shadowColor: 'rgba(255, 255, 255, 0)',
+				shadowOffsetX: -2,
+				shadowOffsetY: 2,
+				shadowBlur: 10
+			},
+			emphasis: {
+				areaColor: 'rgba(249,157,51, .)',
+				borderWidth: 0
+			}
+		},
+		//是否显示南海诸岛
+		/*regions: [{
+			name: "南海诸岛",
+			value: 0,
+			itemStyle: {
+				normal: {
+					opacity: 0,
+					label: {
+						show: false
+					}
+				}
+			}
+		}],*/
+		tooltip: {
+			show: false
+		}
+	},
+	series: [
+		{
+			type: 'effectScatter',
+			coordinateSystem: 'geo',
+			z: 1,
+			data: [],
+			symbolSize: 14,
+			label: {
+				normal: {
+					show: true,
+					formatter: function(params) {
+						return '{fline|客户：'+params.data.username+'  '+params.data.telphone+'}\n{tline|'+params.data.address+'}';
+					},
+					position: 'top',
+					backgroundColor: 'rgba(254,174,33,.8)',
+					padding: [0, 0],
+					borderRadius: 3,
+					lineHeight: 32,
+					color: '#f7fafb',
+					rich:{
+						fline:{
+							padding: [0, 10, 10, 10],
+							color:'#ffffff'
+						},
+						tline:{
+							padding: [10, 10, 0, 10],
+							color:'#ffffff'
+						}
+					}
+				},
+				emphasis: {
+					show: true
+				}
+			},
+			itemStyle: {
+				color: '#feae21',
+			}
+		},
+		{
+			type: 'effectScatter',
+			coordinateSystem: 'geo',
+			z: 1,
+			data: [],
+			symbolSize: 14,
+			label: {
+				normal: {
+					show: true,
+					formatter: function(params) {
+						return '{fline|客户：'+params.data.username+'  '+params.data.telphone+'}\n{tline|'+params.data.address+'}';
+					},
+					position: 'top',
+					backgroundColor: 'rgba(233,63,66,.9)',
+					padding: [0, 0],
+					borderRadius: 3,
+					lineHeight: 32,
+					color: '#ffffff',
+					rich:{
+						fline:{
+							padding: [0, 10, 10, 10],
+							color:'#ffffff'
+						},
+						tline:{
+							padding: [10, 10, 0, 10],
+							color:'#ffffff'
+						}
+					}
+				},
+				emphasis: {
+					show: true
+				}
+			},
+			itemStyle: {
+				color: '#e93f42',
+			}
+		},
+		{
+			type: 'effectScatter',
+			coordinateSystem: 'geo',
+			z: 1,
+			data: [],
+			symbolSize: 14,
+			label: {
+				normal: {
+					show: true,
+					formatter: function(params) {
+						return '{fline|客户：'+params.data.username+'  '+params.data.telphone+'}\n{tline|'+params.data.address+'}';
+					},
+					position: 'top',
+					backgroundColor: 'rgba(8,186,236,.9)',
+					padding: [0, 0],
+					borderRadius: 3,
+					lineHeight: 32,
+					color: '#ffffff',
+					rich:{
+						fline:{
+							padding: [0, 10, 10, 10],
+							color:'#ffffff'
+						},
+						tline:{
+							padding: [10, 10, 0, 10],
+							color:'#ffffff'
+						}
+					}
+				},
+				emphasis: {
+					show: true
+				}
+			},
+			itemStyle: {
+				color: '#08baec',
+			}
+		},
+		//地图
+		{
+			type: 'map',
+			mapType: 'china',
+			geoIndex: 0,
+			z: 0,
+			data: convertData(chinaDatas, 1)
+		},
+		{
+        name: 'barSer',
+        type: 'bar',
+        roam: false,
+        visualMap: false,
+        zlevel: 2,
+        barMaxWidth: 16,
+        barGap: 0,
+        itemStyle: {
+            normal: {
+                color: function(params) {
+                    var colorList = [{
+                            colorStops: [{
+                                offset: 0,
+                                color: '#f0515e'
+                            }, {
+                                offset: 1,
+                                color: '#ef8554'
+                            }]
+                        },
+                        {
+                            colorStops: [{
+                                offset: 0,
+                                color: '#3c38e4'
+                            }, {
+                                offset: 1,
+                                color: '#24a5cd'
+                            }]
+                        }
+                    ];
+                    if (params.dataIndex < 3) {
+                        return colorList[0]
+                    } else {
+                        return colorList[1]
+                    }
+                },
+                barBorderRadius: [0,15,15,0]
+            }
+        },
+        label:{
+            normal: {
+                show: true,
+                textBorderColor: '#333',
+                textBorderWidth: 2
+            }
+        },
+        data: barData.sort((a,b)=>{
+            return b.value-a.value;
+        })
+    }]
+};
+if (option && typeof option === "object") {
+	myChart.setOption(option, true);
+}
+function getTel(){
+    var n = 2,telstr = '1';
+    while(n<12){
+        if(n<3){
+            while(1){
+                var nums = Math.floor(Math.random()*10);
+                if(nums!==0&&nums!==1&&nums!==2&&nums!==3&&nums!==4&&nums!==6){
+                    telstr+=nums;
+                    break;
+                }
+            }
+            
+        }else if(n>3&&n<8){
+            telstr+='*';
+        }else{
+            telstr+=Math.floor(Math.random()*10);
+        }
+        n++;
+    }
+    return telstr;
+}
+function getName(type){
+    var name = '';
+    var roundnum = Math.floor(Math.random()*32);
+    switch (type) {
+        case 1:
+            name = namedata[roundnum].name+'先生';
+            break;
+        case 2:
+            name = namedata[roundnum].name+'女士';
+            break;
+        default:
+            name = namedata[roundnum].name+'先生';
+            break;
+    }
+    return name;
+}
+function getAddress(num,type){
+    var addstr = '';
+    switch (type) {
+        case 1:
+            addstr = '在'+chinaDatas[num].name+'-保时捷4S店购买车辆';
+            break;
+        case 2:
+            addstr = '在'+chinaDatas[num].name+'-奔驰4S店购买车辆';
+            break;
+        default:
+            addstr = '在'+chinaDatas[num].name+'-法拉利4S店购买车辆';
+            break;
+    }
+    return addstr;
+}
+var timer = setInterval(()=>{
+    
+    //数据情况重绘，清除formatter移动效果，也可根据自身需求是否需要，删除这两行代码
+    /*option.series[seriesjson[runidx].createType-1].data = [];
+    myChart.setOption(option, true);*/
+    var runidx = Math.floor(Math.random()*3);
+    var typeidx = Math.floor(Math.random()*3);
+    var dataidx = Math.floor(Math.random()*32);
+    var ranval = Math.floor(Math.random()*10);
+    chinaDatas[dataidx].value = chinaDatas[dataidx].value+ranval;
+    var valarr = geoCoordMap[chinaDatas[dataidx].name];
+    valarr.push(ranval);
+    option.series[typeidx].data = [{
+        name:'',
+        username: getName(runidx),
+		telphone: getTel(),
+		address: getAddress(dataidx,typeidx),
+		value: valarr
+    }];
+    option.series[4].data = option.series[4].data.sort(function(a,b){
+        return b.value-a.value;
+    });
+    myChart.setOption(option, true);
+},3000);
+
+    </script>
 </body>
+
 </html>
