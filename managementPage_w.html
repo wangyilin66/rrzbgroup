@@ -602,15 +602,7 @@
 			});
 
         $('.b_b_xuanze').on('click',function () { 
-			if(tabType == 'gr'){
-				hylist.map(function (v,i) {  
-					$('.m_b_c'+i).prop('checked',false);
-				});
-			}else{
-				zwlist.map(function (v,i) {  
-					$('.m_b_c'+i).prop('checked',false);
-				});
-			}
+
 
 			if(tabType == 'gr'){
 				sendhylist = [];
@@ -706,9 +698,18 @@
 		base.commonAjax('clav/systemNotice/addClavSystemNotice', data, function (data) {
               console.log(data);
               if(data.code == 1){
-
+				if(tabType == 'gr'){
+				hylist.map(function (v,i) {  
+					$('.m_b_c'+i).prop('checked',false);
+				});
+			}else{
+				zwlist.map(function (v,i) {  
+					$('.m_b_c'+i).prop('checked',false);
+				});
+			}
 				  alert('发送成功');
 				  history.go(0);
+
 			  }else{
 				  alert(data.message);
 			  }
