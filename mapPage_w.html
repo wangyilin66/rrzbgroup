@@ -1334,7 +1334,14 @@
                                 $('.yslistbox').html('');
                                 params.data.childList.map(function(v,i) {
                                         console.log(v);
-                                        $('.yslistbox').append(`<div class="m_y_li"><span style="background:${v.sexi};"></span><p>${v.artType}</p></di`);
+                                        if(v.count == 0){
+                                            $('.yslistbox').append(`<div class="m_y_li"><span style="background:#ccc;"></span><p>${v.artType}</p></di`);
+                                        }else{
+                                            $('.yslistbox').append(`<div class="m_y_li"><span style="background:${v.sexi};"></span><p>${v.artType}</p></di`);
+
+                                        }
+
+                                       
                                     });
                                 setTimeout(() => {
                                     var data2 = [];
