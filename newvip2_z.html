@@ -792,7 +792,7 @@ let idss = getQueryString('id').id;
                        // console.log(treedata[arr[0]].title);
                        // console.log(treedata[arr[0]].title);
                        // console.log(obj.data.title);
-                        var place=treedata[arr[0]].title+"-"+treedata[arr[0]].title+"-"+obj.data.title;
+                        var place=treedata[arr[0]].title+"-"+treedata[arr[0]].children[arr[1]].title+"-"+obj.data.title;
                         //console.log("地区",place);
                         $('#szd').val(place);
                         $('#test1').css("visibility","hidden");
